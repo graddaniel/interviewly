@@ -16,6 +16,8 @@ import Application from './src/application';
 
 import ROUTES from './src/consts/routes';
 
+import './src/consts/colors.css';
+
 
 const router = createBrowserRouter(
     createRoutesFromElements(
