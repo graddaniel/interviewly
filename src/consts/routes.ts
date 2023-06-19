@@ -1,43 +1,43 @@
 const ROUTES = {
     HOME: {
         TITLE: 'Home',
-        PATH: '/home'
+        PATH: 'home'
     },
     SIGN_IN: {
         TITLE: 'Sign in',
-        PATH: '/signIn',
+        PATH: 'signIn',
     },
     SIGN_UP: {
         TITLE: 'Sign up',
-        PATH: '/signUp',
+        PATH: 'signUp',
     },
     RESET_PASSWORD: {
         TITLE: 'Reset passsword',
-        PATH: '/resetPassword',
+        PATH: 'resetPassword',
     },
     CALCULATOR: {
         TITLE: 'Price calculator',
-        PATH: '/calculator',
+        PATH: 'calculator',
     },
     TUTORIAL: {
         TITLE: 'Tutorial',
-        PATH: '/tutorial',
+        PATH: 'tutorial',
     },
     BLOG: {
         TITLE: 'Blog',
-        PATH: '/blog',
+        PATH: 'blog',
     },
     CONTACT: {
         TITLE: 'Contact',
-        PATH: '/contact',
+        PATH: 'contact',
     },
     PRIVACY_POLICY: {
         TITLE: 'Privacy policy',
-        PATH: '/privacyPolicy',
+        PATH: 'privacyPolicy',
     },
     TERMS: {
         TITLE: 'Terms',
-        PATH: '/terms',
+        PATH: 'terms',
     },
 };
 

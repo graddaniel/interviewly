@@ -28,7 +28,7 @@ const NavigationBar = () => {
                 <Logo />
                 <section className={classes.links}>
                     {LINKS.map(link => (
-                        <a className={classes.link} href={link.PATH}>{link.TITLE}</a>
+                        <a key={link.PATH} className={classes.link} href={link.PATH}>{link.TITLE}</a>
                     ))}
                 </section>
             </section>

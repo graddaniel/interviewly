@@ -28,7 +28,7 @@ const Footer = () => {
                 <Logo />
                 <div className={classes.group}>
                     {LINKS.map(link => (
-                            <a className={classes.link} href={link.PATH}>{link.TITLE}</a>
+                            <a key={link.TITLE} className={classes.link} href={link.PATH}>{link.TITLE}</a>
                     ))}
                 </div>
             </section>
