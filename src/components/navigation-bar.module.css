@@ -1,11 +1,11 @@
 .navigationBar {
+    --side-margin: 8rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    box-sizing: border-box;
-    width: 100%;
+    width: calc(100% - 2 * var(--side-margin));
     font-family: 'Plus Jakarta Sans', sans-serif;
-    padding: 2rem 4rem;
+    margin: 2rem var(--side-margin);
 }
 
 .leftGroup {

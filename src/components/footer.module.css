@@ -1,0 +1,29 @@
+.footer {
+    --side-margin: 8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: calc(100% 2 * var(--side-margin));
+    height: 9rem;
+    margin: 2rem var(--side-margin);
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.group > * {
+    margin-left: 3rem;
+}
+
+.biggerText {
+    font-size: 1.2rem;
+}
+
+.link {
+    text-decoration: none;
+    color: var(--BLACK);
+    font-size: 1rem;
+}

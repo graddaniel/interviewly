@@ -3,9 +3,23 @@ import React from 'react';
 import TextButton from './text-button';
 import Logo from './logo';
 
-import classes from './navigation-bar.module.css';
 import IconButton from './icon-button';
 import AccountIcon from '../images/account-icon.svg';
+
+import ROUTES from '../consts/routes';
+
+import classes from './navigation-bar.module.css';
+
+
+const LINKS: {
+    TITLE: string,
+    PATH: string,
+}[] = [
+    ROUTES.CALCULATOR,
+    ROUTES.TUTORIAL,
+    ROUTES.BLOG,
+    ROUTES.CONTACT,
+];
 
 const NavigationBar = () => {
     return (
@@ -13,10 +27,9 @@ const NavigationBar = () => {
             <section className={classes.leftGroup}>
                 <Logo />
                 <section className={classes.links}>
-                    <a className={classes.link} href="/">Price calculator</a>
-                    <a className={classes.link} href="/">Tutorials</a>
-                    <a className={classes.link} href="/">Blog</a>
-                    <a className={classes.link} href="/">Contact</a>
+                    {LINKS.map(link => (
+                        <a className={classes.link} href={link.PATH}>{link.TITLE}</a>
+                    ))}
                 </section>
             </section>
             <section className={classes.rightGroup}>
