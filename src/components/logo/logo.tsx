@@ -1,7 +1,7 @@
 import React from 'react';
 
 import classes from './logo.module.css';
-import LogoImage from '../../images/logo.png';
+import LogoImage from '../../images/logo.svg';
 
 const Logo = () => {
     return (

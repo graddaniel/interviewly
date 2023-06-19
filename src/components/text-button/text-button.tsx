@@ -1,5 +1,5 @@
 import React from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 
 import classes from './text-button.module.css';
 
@@ -9,7 +9,7 @@ const Button = ({
     className,
 }) => {
     return (
-        <button className={classnames(classes.button, className)}>
+        <button className={classNames(classes.button, className)}>
             {text}
         </button>
     );

@@ -17,11 +17,11 @@ const ROUTES = {
     },
     CALCULATOR: {
         TITLE: 'Price calculator',
-        PATH: 'calculator',
+        PATH: 'priceCalculator',
     },
-    TUTORIAL: {
-        TITLE: 'Tutorial',
-        PATH: 'tutorial',
+    TUTORIALS: {
+        TITLE: 'Tutorials',
+        PATH: 'tutorials',
     },
     BLOG: {
         TITLE: 'Blog',

@@ -17,12 +17,12 @@ import Application from './src/application';
 import ROUTES from './src/consts/routes';
 
 import './src/consts/colors.css';
-
+import './i18n';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route
-            path="/"
+            path="/:language/"
             element={<Application />}
         >
             <Route

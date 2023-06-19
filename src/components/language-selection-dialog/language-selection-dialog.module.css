@@ -1,0 +1,73 @@
+.open {
+    visibility: visible;
+}
+
+.closed {
+    visibility: hidden;
+}
+
+.closeControl {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+
+.closeControlButton {
+    height: 3rem;
+    width: 3rem;
+}
+
+.closeControlText {
+    margin-left: 1rem;
+}
+
+.title {
+    font-size: 3.5rem;
+    font-weight: 400;
+    margin-top: 2rem;
+    margin-bottom: 4.5rem;
+}
+
+.dialog {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 4rem 6rem;
+    background-color: var(--WHITE);
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 51rem;
+    height: 33rem;
+    margin-top: 2.5rem;
+}
+
+.logo {
+    width: 4rem;
+}
+
+.languageButtons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.languageButton {
+    margin-right: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.languageButton:nth-child(6n),
+.languageButton:last-child {
+    margin-right: 0;
+}

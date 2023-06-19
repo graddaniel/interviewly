@@ -1,0 +1,33 @@
+.languageSelector {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 1.75rem;
+    width: 8.5rem;
+    border-radius: 2rem;
+    border: 0.075rem solid black;
+}
+
+.currentLanguageText {
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+    flex-grow: 2;
+}
+
+.currentLanguageIcon {
+    height: 1.25rem;
+    flex-grow: 1;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    height: 100%;
+    padding: 0;
+    background-color: transparent;
+    color: var(--BLACK);
+    border: none;
+    cursor: pointer;
+}
