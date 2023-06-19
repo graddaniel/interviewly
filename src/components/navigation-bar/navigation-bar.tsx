@@ -1,12 +1,12 @@
 import React from 'react';
 
-import TextButton from './text-button';
-import Logo from './logo';
+import TextButton from '../text-button/text-button';
+import Logo from '../logo/logo';
 
-import IconButton from './icon-button';
-import AccountIcon from '../images/account-icon.svg';
+import IconButton from '../icon-button/icon-button';
+import AccountIcon from '../../images/account-icon.svg';
 
-import ROUTES from '../consts/routes';
+import ROUTES from '../../consts/routes';
 
 import classes from './navigation-bar.module.css';
 
