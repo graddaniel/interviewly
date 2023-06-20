@@ -30,7 +30,7 @@ const LINKS: {
 
 const Footer = () => {
     const { t } = useTranslation();
-    const [ isLanguageDialogOpen, setIsLanguageDialogOpen ] = useState(true);
+    const [ isLanguageDialogOpen, setIsLanguageDialogOpen ] = useState(false);
 
     const openLanguageSelectionDialog = useCallback(
         () => setIsLanguageDialogOpen(true),

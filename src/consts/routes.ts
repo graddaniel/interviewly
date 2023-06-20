@@ -1,11 +1,11 @@
 const ROUTES = {
     HOME: {
         TITLE: 'Home',
-        PATH: 'home'
+        PATH: '/'
     },
-    SIGN_IN: {
-        TITLE: 'Sign in',
-        PATH: 'signIn',
+    LOG_IN: {
+        TITLE: 'Log in',
+        PATH: 'logIn',
     },
     SIGN_UP: {
         TITLE: 'Sign up',
