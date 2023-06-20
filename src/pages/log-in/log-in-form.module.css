@@ -1,0 +1,61 @@
+.form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3rem 2rem;
+    border-radius: 1.5rem;
+    background-color: var(--COLOR3);
+}
+
+.title {
+    z-index: 2;
+    font-size: 3.5rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+.decorators {
+    position: absolute;
+    z-index: 1;
+    top: 10%;
+    right: 25%;
+}
+
+.miscControls {
+    display: flex;
+    justify-content: space-between;
+}
+.miscControls > a {
+    color: var(--BLACK);
+    user-select: none;
+}
+
+.label {
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox {
+    height: 1rem;
+    width: 1rem;
+    margin: 0;
+    margin-right: 0.6rem;
+    accent-color: var(--COLOR1);
+}
+
+.submitButton {
+    background-color: var(--COLOR2);
+    color: var(--COLOR1);
+    cursor: pointer;
+    height: 3rem;
+    padding: 0 2rem;
+    border: 0;
+    border-radius: 1.5rem;
+    font-size: 1rem;
+}
+
+.joinButton {
+    height: 3rem;
+    padding: 0 2rem;
+}

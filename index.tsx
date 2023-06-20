@@ -13,6 +13,8 @@ import {
 } from 'react-router-dom';
 
 import Application from './src/application';
+import LogInPage from './src/pages/log-in/log-in-page';
+import NotFoundPage from './src/pages/not-found/not-found-page';
 
 import ROUTES from './src/consts/routes';
 
@@ -22,28 +24,32 @@ import './i18n';
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route
-            path="/:language/"
+            path="/"
             element={<Application />}
         >
             <Route
                 path={ROUTES.HOME.PATH}
-                element={<div>TODO</div>}
+                element={<div>HOME</div>}
             />
             <Route
-                path={ROUTES.SIGN_IN.PATH}
-                element={<div>TODO</div>}
+                path={ROUTES.LOG_IN.PATH}
+                element={<LogInPage />}
             />
             <Route
                 path={ROUTES.SIGN_UP.PATH}
-                element={<div>TODO</div>}
+                element={<div>SIGN_UP</div>}
             />
             <Route
                 path={ROUTES.RESET_PASSWORD.PATH}
-                element={<div>TODO</div>}
+                element={<div>RESET</div>}
             />
             <Route
                 path={ROUTES.CONTACT.PATH}
-                element={<div>TODO</div>}
+                element={<div>CONTACT</div>}
+            />
+            <Route
+                path={'*'}
+                element={<NotFoundPage />}
             />
         </Route>
     )

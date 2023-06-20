@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 import TextButton from '../text-button/text-button';
 import Logo from '../logo/logo';
@@ -29,6 +30,9 @@ const LINKS: {
 
 const NavigationBar = () => {
     const { t } = useTranslation();
+    const navigate = useNavigate();
+
+    const goToAccount = useCallback(() => navigate(ROUTES.LOG_IN.PATH), []);
 
     return (
         <nav className={classes.navigationBar}>
@@ -50,7 +54,7 @@ const NavigationBar = () => {
                 <TextButton text={t('buttons.signUp')} className={classes.joinButton}/>
                 <IconButton
                     icon={AccountIcon}
-                    onClick={() => console.log('TODO: account icon clicked')}
+                    onClick={goToAccount}
                 />
             </section>
         </nav>

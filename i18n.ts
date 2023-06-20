@@ -11,38 +11,60 @@ i18n.use(LanguageDetector)
         resources: {
             en: {
                 translation: {
-                    test: "testEn",
                     links: {
                         priceCalculator: 'Price calculator',
                         tutorials: 'Tutorials',
                         blog: 'Blog',
-                        contact: 'Contact'
+                        contact: 'Contact',
+                        forgotPassword: 'Forgot password?',
                     },
                     buttons: {
                         signUp: 'Join Interviewly',
                         resign: 'Resign',
+                        logIn: 'Log in',
+                    },
+                    inputs: {
+                        email: 'E-mail',
+                        password: 'Password',
                     },
                     dialogs: {
                         languageSelection: 'Select the language',
+                    },
+                    pages: {
+                        notFound: 'Page not Found',
+                    },
+                    logIn: {
+                        rememberMe: 'Remember me'
                     },
                     currentLanguage: 'English',
                 }
             },
             pl: {
                 translation: {
-                    test: "testPl",
                     links: {
                         priceCalculator: 'Kalkulator cen',
                         tutorials: 'Poradniki',
                         blog: 'Blog',
-                        contact: 'Kontakt'
+                        contact: 'Kontakt',
+                        forgotPassword: 'Zapomniałeś hasła?',
                     },
                     buttons: {
                         signUp: 'Dołącz do Interviewly',
                         resign: 'Zrezygnuj',
+                        logIn: 'Zaloguj się',
+                    },
+                    inputs: {
+                        email: 'E-mail',
+                        password: 'Hasło',
                     },
                     dialogs: {
                         languageSelection: 'Wybierz język strony',
+                    },
+                    pages: {
+                        notFound: 'Nie znaleziono strony',
+                    },
+                    logIn: {
+                        rememberMe: 'Zapamiętaj mnie'
                     },
                     currentLanguage: 'Polski',
                 }

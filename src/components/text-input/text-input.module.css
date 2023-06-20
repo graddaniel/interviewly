@@ -1,0 +1,25 @@
+.inputWrapper {
+    position: relative;
+    padding-bottom: 0.6rem;
+    border-bottom: 0.075rem solid var(--BLACK);
+    cursor: text;
+}
+
+.input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 1rem;
+}
+.input::placeholder {
+    color: var(--BLACK);
+}
+
+.passwordToggle {
+    position: absolute;
+    right: 0;
+    top: 0.25rem;
+    width: 1rem;
+    cursor: pointer;
+}
