@@ -51,7 +51,11 @@ const NavigationBar = () => {
                 </section>
             </section>
             <section className={classes.rightGroup}>
-                <TextButton text={t('buttons.signUp')} className={classes.joinButton}/>
+                <TextButton
+                    className={classes.joinButton}
+                    text={t('buttons.signUp')}
+                    onClick={() => console.log('TODO sign up')}
+                />
                 <IconButton
                     icon={AccountIcon}
                     onClick={goToAccount}

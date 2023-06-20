@@ -1,19 +1,24 @@
 import React, { useState, useRef, useCallback } from 'react';
+import classNames from 'classnames';
 
 import classes from './text-input.module.css'
 import CrossedEyeIcon from '../../images/crossed-eye-icon.svg';
 import EyeIcon from '../../images/eye-icon.svg';
 
 type TextInputProps = {
+    className?: string;
     name: string;
     placeholder: string;
     type?: 'text' | 'password';
+    centerText?: boolean;
 };
 
 const TextInput = ({
+    className,
     name,
     placeholder,
     type = 'text',
+    centerText = false,
 }: TextInputProps) => {
     const [ value, setValue ] = useState('');
     const [ isPasswordVisible, setIsPasswordVisible ] = useState(false);
@@ -35,12 +40,15 @@ const TextInput = ({
 
     return (
         <div
-            className={classes.inputWrapper}
+            className={classNames(classes.inputWrapper, className)}
             onClick={focusInput}
         >
             <input
                 ref={inputRef}
-                className={classes.input}
+                className={classNames(
+                    classes.input,
+                    centerText && classes.centerText || ''
+                )}
                 type={getInputType()}
                 name={name}
                 placeholder={placeholder}

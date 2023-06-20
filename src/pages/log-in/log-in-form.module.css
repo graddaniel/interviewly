@@ -31,17 +31,9 @@
     user-select: none;
 }
 
-.label {
+.passwordReset {
+    text-decoration: underline;
     cursor: pointer;
-    user-select: none;
-}
-
-.checkbox {
-    height: 1rem;
-    width: 1rem;
-    margin: 0;
-    margin-right: 0.6rem;
-    accent-color: var(--COLOR1);
 }
 
 .submitButton {

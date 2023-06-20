@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Form } from 'react-router-dom';
 import classNames from 'classnames';
 
 import TextButton from '../../components/text-button/text-button';
 import TextInput from '../../components/text-input/text-input';
-
-import ROUTES from '../../consts/routes';
+import Checkbox from '../../components/checkbox/checkbox';
 
 import classes from './log-in-form.module.css';
 import DecoratorImage from '../../images/decorator.svg';
@@ -14,9 +13,9 @@ import DecoratorImage from '../../images/decorator.svg';
 
 const LogInForm = ({
     className,
+    openPasswordResetDialog,
 }) => {
     const { t } = useTranslation();
-    const [ rememberMe, setRememberMe ] = useState(false);
 
     return (
         <Form className={classNames(classes.form, className)}>
@@ -36,21 +35,16 @@ const LogInForm = ({
                 placeholder={t('inputs.password')}
             />
             <section className={classes.miscControls}>
-                <label
-                    className={classes.label}
-                    htmlFor="remember"
+                <Checkbox
+                    name="remember"
+                    label={t('logIn.rememberMe')}
+                />
+                <span
+                    className={classes.passwordReset}
+                    onClick={openPasswordResetDialog}
                 >
-                    <input
-                        id="remember"
-                        className={classes.checkbox}
-                        type="checkbox"
-                        name="remember"
-                        checked={rememberMe}
-                        onChange={() => setRememberMe(state => !state)}
-                    />
-                    {t('logIn.rememberMe')}
-                </label>
-                <a href={ROUTES.RESET_PASSWORD.PATH}>{t('links.forgotPassword')}</a>
+                    {t('links.forgotPassword')}
+                </span>
             </section>
             <input
                 className={classes.submitButton}
@@ -60,6 +54,7 @@ const LogInForm = ({
             <TextButton
                 className={classes.joinButton}
                 text={t('buttons.signUp')}
+                onClick={() => console.log('TODO log in')}
             />
         </Form>
     );

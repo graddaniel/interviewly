@@ -1,12 +1,10 @@
 import React from 'react';
-import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
-import IconButton from '../icon-button/icon-button';
 import LanguageButton from '../language-button/language-button';
+import Dialog from '../dialog/dialog';
 
 import classes from './language-selection-dialog.module.css'
-import CrossIcon from '../../images/cross-icon.svg';
 import InterviewlyLogo from '../../images/logo.svg';
 import languagesDefinitions from './languages-definitions';
 
@@ -20,20 +18,10 @@ const LanguageSelectionDialog = ({
     const { t } = useTranslation();
 
     return (
-        <section className={classNames(
-            classes.dialog,
-            isOpen ? classes.open : classes.closed,
-        )}>
-            <div className={classes.closeControl}>
-                <IconButton
-                    icon={CrossIcon}
-                    onClick={onClose}
-                    className={classes.closeControlButton}
-                />
-                <span className={classes.closeControlText}>
-                    {t('buttons.resign')}
-                </span>
-            </div>
+        <Dialog
+            isOpen={isOpen}
+            onClose={onClose}
+        >
             <main className={classes.content}>
                 <img src={InterviewlyLogo} className={classes.logo}/>
                 <h1 className={classes.title}>
@@ -52,7 +40,7 @@ const LanguageSelectionDialog = ({
                     ))}
                 </article>
             </main>
-        </section>
+        </Dialog>
     );
 };
 

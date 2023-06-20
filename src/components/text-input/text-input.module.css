@@ -15,6 +15,12 @@
 .input::placeholder {
     color: var(--BLACK);
 }
+.centerText {
+    text-align: center;
+}
+.centerText::placeholder {
+    text-align: center;
+}
 
 .passwordToggle {
     position: absolute;

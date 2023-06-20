@@ -3,16 +3,25 @@ import classNames from 'classnames';
 
 import classes from './text-button.module.css';
 
+type TextButtonProps = {
+    text: string;
+    className?: string;
+    onClick: () => void;
+};
 
-const Button = ({
+const TextButton = ({
     text,
     className,
-}) => {
+    onClick,
+}: TextButtonProps) => {
     return (
-        <button className={classNames(classes.button, className)}>
+        <button
+            className={classNames(classes.button, className)}
+            onClick={onClick}
+        >
             {text}
         </button>
     );
 };
 
-export default Button;
+export default TextButton;

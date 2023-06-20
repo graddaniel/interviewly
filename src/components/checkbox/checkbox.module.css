@@ -1,0 +1,12 @@
+.label {
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox {
+    height: 1rem;
+    width: 1rem;
+    margin: 0;
+    margin-right: 0.6rem;
+    accent-color: var(--COLOR1);
+}
