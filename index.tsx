@@ -16,6 +16,8 @@ import Application from './src/application';
 import LogInPage from './src/pages/log-in/log-in-page';
 import NotFoundPage from './src/pages/not-found/not-found-page';
 
+import LogInPageAction from './src/actions/log-in-page-action';
+
 import ROUTES from './src/consts/routes';
 
 import './src/consts/colors.css';
@@ -34,6 +36,7 @@ const router = createBrowserRouter(
             <Route
                 path={ROUTES.LOG_IN.PATH}
                 element={<LogInPage />}
+                action={LogInPageAction}
             />
             <Route
                 path={ROUTES.SIGN_UP.PATH}
