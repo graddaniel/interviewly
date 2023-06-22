@@ -2,8 +2,8 @@ import React, { useState, useRef, useCallback } from 'react';
 import classNames from 'classnames';
 
 import classes from './text-input.module.css'
-import CrossedEyeIcon from '../../images/crossed-eye-icon.svg';
-import EyeIcon from '../../images/eye-icon.svg';
+import CrossedEyeIcon from '../../../images/crossed-eye-icon.svg';
+import EyeIcon from '../../../images/eye-icon.svg';
 
 type TextInputProps = {
     className?: string;
@@ -11,6 +11,7 @@ type TextInputProps = {
     placeholder: string;
     type?: 'text' | 'password';
     centerText?: boolean;
+    error?: string;
 };
 
 const TextInput = ({
@@ -19,6 +20,7 @@ const TextInput = ({
     placeholder,
     type = 'text',
     centerText = false,
+    error,
 }: TextInputProps) => {
     const [ value, setValue ] = useState('');
     const [ isPasswordVisible, setIsPasswordVisible ] = useState(false);
@@ -39,32 +41,38 @@ const TextInput = ({
     }, [isPasswordVisible, type]);
 
     return (
-        <div
-            className={classNames(classes.inputWrapper, className)}
-            onClick={focusInput}
-        >
-            <input
-                ref={inputRef}
+        <div className={className}>
+            <div
                 className={classNames(
-                    classes.input,
-                    centerText && classes.centerText || ''
+                    classes.inputWrapper,
+                    error && classes.error || '',
                 )}
-                type={getInputType()}
-                name={name}
-                placeholder={placeholder}
-                value={value}
-                onChange={(event) => setValue(event.target.value)}
-            />
-            {type === 'password' && (
-                <img
-                    className={classes.passwordToggle}
-                    src={isPasswordVisible
-                        ? EyeIcon
-                        : CrossedEyeIcon
-                    }
-                    onClick={() => setIsPasswordVisible(state => !state)}
+                onClick={focusInput}
+            >
+                <input
+                    ref={inputRef}
+                    className={classNames(
+                        classes.input,
+                        centerText && classes.centerText || ''
+                    )}
+                    type={getInputType()}
+                    name={name}
+                    placeholder={placeholder}
+                    value={value}
+                    onChange={(event) => setValue(event.target.value)}
                 />
-            )}
+                {type === 'password' && (
+                    <img
+                        className={classes.passwordToggle}
+                        src={isPasswordVisible
+                            ? EyeIcon
+                            : CrossedEyeIcon
+                        }
+                        onClick={() => setIsPasswordVisible(state => !state)}
+                    />
+                )}
+            </div>
+            <p className={classes.errorMessage}>{error}</p>
         </div>
     );
 };

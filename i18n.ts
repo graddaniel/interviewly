@@ -36,6 +36,45 @@ i18n.use(LanguageDetector)
                     logIn: {
                         rememberMe: 'Remember me'
                     },
+                    join: {
+                        joinControl: 'Do you already have an account?',
+                        back: 'Back',
+                        next: 'Next',
+                        skip: 'Skip',
+                        page1: {
+                            title: 'Join Interviewly',
+                            respondentTitle: 'I am a respondent',
+                            respondentSubtitle: 'I want to take part in market researches',
+                            recruiterTitle: 'I am a recruiter',
+                            recruiterSubtitle: 'I want access the respondents database',
+                        },
+                        page2: {
+                            title: 'Choose your gender',
+                            maleTitle: 'I am a man',
+                            femaleTitle: 'I am a woman',
+                        },
+                        page3: {
+                            title: 'Personal data',
+                            inputs: {
+                                name: 'Name',
+                                surname: 'Surname',
+                                email: 'E-mail',
+                                password: 'Password',
+                                repeatPassword: 'Repeat password',
+                                passwordConstraints: '(minimum: 8 characters, one capital letter, one number and one special character)',
+                            },
+                            rulesAgreement: 'By singing up, I agree to Interviewly Terms and Privacy Policy.',
+                        },
+                        page4: {
+                            title: 'Record a video about yourself',
+                            text: '(max. 10 minutes)',
+                        },
+                        page5: {
+                            title: 'You are almost a part of out family!',
+                            text: 'We have sent you an email with a confirmation link.',
+                            homeButton: 'Home',
+                        },
+                    },
                     passwordReset: {
                         request: {
                             header: 'Create new password',
@@ -77,6 +116,40 @@ i18n.use(LanguageDetector)
                     },
                     logIn: {
                         rememberMe: 'Zapamiętaj mnie'
+                    },
+                    join: {
+                        joinControl: 'Masz już konto?',
+                        back: 'Wróć',
+                        next: 'Dalej',
+                        skip: 'Pomiń',
+                        page1: {
+                            title: 'Dołącz do Interviewly',
+                            respondentTitle: 'Jestem respondentem',
+                            respondentSubtitle: 'Chcę brać udział w badaniach rynku',
+                            recruiterTitle: 'Jestem rekruterem',
+                            recruiterSubtitle: 'Chcę uzyskać dostęp do bazy danych respondentów',
+                        },
+                        page2: {
+                            title: 'Wybierz swoją płeć',
+                            maleTitle: 'Jestem mężczyzną',
+                            femaleTitle: 'Jestem kobietą',
+                        },
+                        page3: {
+                            title: 'Dane personalne',
+                            inputs: {
+                                name: 'Imię',
+                                surname: 'Nazwisko',
+                                email: 'E-mail',
+                                password: 'Hasło',
+                                repeatPassword: 'Powtórz hasło',
+                                passwordConstraints: '(minimum: 8 znaków, jedna wielka litera, jedna cyfra i jeden znak specjalny)',
+                            },
+                            rulesAgreement: 'Rejestrując się potwierdzam, że przeczytałem Regulamin i Politykę Prywatności.',
+                        },
+                        page4: {
+                            title: 'Nagraj wideo o sobie',
+                            text: '(max. 10 minut)',
+                        },
                     },
                     passwordReset: {
                         request: {

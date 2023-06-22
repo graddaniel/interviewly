@@ -5,7 +5,7 @@ import LanguageButton from '../language-button/language-button';
 import Dialog from '../dialog/dialog';
 
 import classes from './language-selection-dialog.module.css'
-import InterviewlyLogo from '../../images/logo.svg';
+import InterviewlyLogo from '../../../images/logo.svg';
 import languagesDefinitions from './languages-definitions';
 
 

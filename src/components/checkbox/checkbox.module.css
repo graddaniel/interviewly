@@ -9,4 +9,13 @@
     margin: 0;
     margin-right: 0.6rem;
     accent-color: var(--COLOR1);
+    cursor: pointer;
+}
+
+.redText {
+    color: var(--RED);
+}
+
+.redOutline {
+    outline: 1px solid var(--RED);
 }

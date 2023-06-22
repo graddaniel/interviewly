@@ -6,9 +6,9 @@ import TextButton from '../text-button/text-button';
 import Logo from '../logo/logo';
 
 import IconButton from '../icon-button/icon-button';
-import AccountIcon from '../../images/account-icon.svg';
+import AccountIcon from '../../../images/account-icon.svg';
 
-import ROUTES from '../../consts/routes';
+import ROUTES, { FORMS_ROUTES } from '../../consts/routes';
 
 import classes from './navigation-bar.module.css';
 
@@ -25,7 +25,7 @@ const LINKS: {
 ].map(route => ({
     title: route.TITLE,
     path: route.PATH,
-    id: route.PATH,
+    id: route.PATH.slice(1), //exclude the slash '/'
 }));
 
 const NavigationBar = () => {
@@ -33,6 +33,7 @@ const NavigationBar = () => {
     const navigate = useNavigate();
 
     const goToAccount = useCallback(() => navigate(ROUTES.LOG_IN.PATH), []);
+    const goToJoin = useCallback(() => navigate(FORMS_ROUTES.JOIN.PATH), []);
 
     return (
         <nav className={classes.navigationBar}>
@@ -54,7 +55,7 @@ const NavigationBar = () => {
                 <TextButton
                     className={classes.joinButton}
                     text={t('buttons.signUp')}
-                    onClick={() => console.log('TODO sign up')}
+                    onClick={goToJoin}
                 />
                 <IconButton
                     icon={AccountIcon}

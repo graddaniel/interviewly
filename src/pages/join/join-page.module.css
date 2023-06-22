@@ -1,0 +1,112 @@
+.page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3.5rem 6rem 8rem;
+}
+
+.controls {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.loginControls {
+    width: 100%;
+}
+.loginControls > p {
+    margin: 0;
+}
+.loginControls > a {
+    color: var(--BLACK);
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.logo {
+    width: 4rem;
+}
+.title {
+    margin: 0;
+    font-size: 3.5rem;
+    font-weight: 400;
+}
+.content {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tiles {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tile {
+    margin: 0 1.5rem;
+}
+.tile.smallTile {
+    width: 20%;
+}
+
+.inputs {
+    width: 80%;
+    height: 60%;
+    display: flex;
+    justify-content: space-around;
+    align-content: space-around;
+    flex-wrap: wrap;
+}
+.input {
+    width: 30%;
+}
+.checkbox {
+    width: 100%;
+    text-align: center;
+}
+
+.recorder {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-around;
+    padding-bottom: 3rem;
+}
+.recorderText {
+    text-align: center;
+}
+.cameraTile {
+    height: 60%;
+}
+
+.navigation {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 1.25rem;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.noDisplay {
+    display: none;
+}
+
+.finalMessageWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

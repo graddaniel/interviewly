@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Form, useActionData } from 'react-router-dom';
+import { Form, useActionData, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 
 import TextButton from '../../components/text-button/text-button';
 import TextInput from '../../components/text-input/text-input';
 import Checkbox from '../../components/checkbox/checkbox';
 import SubmitButton from '../../components/submit-button/submit-button';
+import { FORMS_ROUTES } from '../../consts/routes';
 
 import classes from './log-in-form.module.css';
-import DecoratorImage from '../../images/decorator.svg';
+import DecoratorImage from '../../../images/decorator.svg';
 
 
 const LogInForm = ({
@@ -17,9 +18,16 @@ const LogInForm = ({
     openPasswordResetDialog,
 }) => {
     const { t } = useTranslation();
-    const errors = useActionData() as { [k: string]: string };
+    const navigate = useNavigate();
+    const actionData = useActionData() as { [k: string]: any };
 
-    console.log("errors", errors)
+    const goToJoin = useCallback(() => navigate(FORMS_ROUTES.JOIN.PATH), []);
+
+    const {
+        email: emailError,
+        password: passwordError,
+        generic: genericError,
+    } = actionData?.errors || {};
 
     return (
         <Form method="post" className={classNames(classes.form, className)}>
@@ -33,11 +41,13 @@ const LogInForm = ({
                 type="text"
                 name="email"
                 placeholder={t('inputs.email')}
+                error={emailError}
             />
             <TextInput
                 type="password"
                 name="password"
                 placeholder={t('inputs.password')}
+                error={passwordError}
             />
             <section className={classes.miscControls}>
                 <Checkbox
@@ -52,7 +62,7 @@ const LogInForm = ({
                 </span>
             </section>
             <p className={classes.errorMessage}>
-                {errors ? errors.generic : ''}
+                {genericError ? genericError : ''}
             </p>
             <SubmitButton
                 text={t('buttons.logIn')}
@@ -60,7 +70,7 @@ const LogInForm = ({
             <TextButton
                 className={classes.joinButton}
                 text={t('buttons.signUp')}
-                onClick={() => console.log('TODO log in')}
+                onClick={goToJoin}
             />
         </Form>
     );

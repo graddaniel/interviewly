@@ -10,7 +10,7 @@ import SubmitButton from '../submit-button/submit-button';
 import ROUTES from '../../consts/routes';
 
 import classes from './password-reset-dialog.module.css';
-import InterviewlyLogo from '../../images/logo.svg';
+import InterviewlyLogo from '../../../images/logo.svg';
 import TextInput from '../text-input/text-input';
 
 

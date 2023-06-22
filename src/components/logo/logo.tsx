@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import ROUTES from '../../consts/routes';
 
 import classes from './logo.module.css';
-import LogoImage from '../../images/logo.svg';
+import LogoImage from '../../../images/logo.svg';
 
 const Logo = () => {
     const navigate = useNavigate();

@@ -1,4 +1,8 @@
 .button {
+    min-width: 8rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     background-color: var(--COLOR2);
     color: var(--COLOR1);
     cursor: pointer;
@@ -7,4 +11,19 @@
     border: 0;
     border-radius: 2rem;
     font-size: 1rem;
+}
+.button.monochromatic {
+    background-color: var(--WHITE);
+    color: var(--BLACK);
+    border: 0.075rem solid var(--BLACK);
+}
+.button:disabled {
+    background-color: var(--GRAY);
+    color: var(--WHITE);
+    border: 0.075rem solid var(--WHITE);
+    cursor: not-allowed;
+}
+
+.hidden {
+    visibility: hidden;
 }

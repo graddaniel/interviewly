@@ -1,4 +1,4 @@
-import * as FlagIcons from '../../images/flag-icons';
+import * as FlagIcons from '../../../images/flag-icons';
 
 
 const languagesDefinitions = {

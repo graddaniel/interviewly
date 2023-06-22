@@ -2,10 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
-import IconButton from '../icon-button/icon-button';
-
 import classes from './dialog.module.css'
-import CrossIcon from '../../images/cross-icon.svg';
+import CloseControls from '../close-controls/close-controls';
 
 
 const Dialog = ({
@@ -20,16 +18,10 @@ const Dialog = ({
             classes.dialog,
             isOpen ? classes.open : classes.closed,
         )}>
-            <div className={classes.closeControl}>
-                <IconButton
-                    icon={CrossIcon}
-                    onClick={onClose}
-                    className={classes.closeControlButton}
-                />
-                <span className={classes.closeControlText}>
-                    {t('buttons.resign')}
-                </span>
-            </div>
+            <CloseControls
+                text={t('buttons.resign')}
+                onClose={onClose}
+            />
             {children}
         </section>
     );

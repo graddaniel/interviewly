@@ -1,23 +1,39 @@
 import React, { useState, useCallback } from 'react';
+import classNames from 'classnames';
 
 import classes from './checkbox.module.css';
 
+type CheckboxProps = {
+    className?: string;
+    name: string;
+    label: string;
+    error?: boolean;
+};
 
 const Checkbox = ({
+    className,
     name,
     label,
-}) => {
+    error,
+}: CheckboxProps) => {
     const [ checked, setChecked ] = useState(false);
 
     const toggleCheckbox = useCallback(() => setChecked(state => !state), []);
     return (
         <label
-            className={classes.label}
-            htmlFor="remember"
+            className={classNames(
+                classes.label,
+                error ? classes.redText : '',
+                className,
+            )}
+            htmlFor={name}
         >
             <input
                 id={name}
-                className={classes.checkbox}
+                className={classNames(
+                    classes.checkbox,
+                    error ? classes.redOutline : ''
+                )}
                 type="checkbox"
                 name={name}
                 checked={checked}

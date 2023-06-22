@@ -1,44 +1,48 @@
 const ROUTES = {
     HOME: {
         TITLE: 'Home',
-        PATH: '/'
+        PATH: '/home'
     },
     LOG_IN: {
         TITLE: 'Log in',
-        PATH: 'logIn',
-    },
-    SIGN_UP: {
-        TITLE: 'Sign up',
-        PATH: 'signUp',
-    },
-    RESET_PASSWORD: {
-        TITLE: 'Reset passsword',
-        PATH: 'resetPassword',
+        PATH: '/logIn',
     },
     CALCULATOR: {
         TITLE: 'Price calculator',
-        PATH: 'priceCalculator',
+        PATH: '/priceCalculator',
     },
     TUTORIALS: {
         TITLE: 'Tutorials',
-        PATH: 'tutorials',
+        PATH: '/tutorials',
     },
     BLOG: {
         TITLE: 'Blog',
-        PATH: 'blog',
+        PATH: '/blog',
     },
     CONTACT: {
         TITLE: 'Contact',
-        PATH: 'contact',
+        PATH: '/contact',
     },
     PRIVACY_POLICY: {
         TITLE: 'Privacy policy',
-        PATH: 'privacyPolicy',
+        PATH: '/privacyPolicy',
     },
     TERMS: {
         TITLE: 'Terms',
         PATH: 'terms',
     },
+    FORMS: {
+        PATH: '/forms'
+    }
 };
+
+const FORMS_ROUTES = {
+    JOIN: {
+        TITLE: 'Join Interviewly',
+        PATH: '/forms/join',
+    },
+};
+
+export { FORMS_ROUTES };
 
 export default ROUTES;

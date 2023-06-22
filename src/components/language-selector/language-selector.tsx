@@ -3,11 +3,11 @@ import { useTranslation } from 'react-i18next';
 
 import classes from './language-selector.module.css';
 
-import ThreeDotsIcon from '../../images/three-dots-icon.svg';
+import ThreeDotsIcon from '../../../images/three-dots-icon.svg';
 import {
     PolishFlagIcon,
     BritishFlagIcon,
-} from '../../images/flag-icons';
+} from '../../../images/flag-icons';
 
 
 const getFlagIconByLanguage = (language: string) => {

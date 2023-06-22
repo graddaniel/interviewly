@@ -8,17 +8,20 @@ import {
 import {
     createBrowserRouter,
     createRoutesFromElements,
+    Outlet,
     Route,
     RouterProvider
 } from 'react-router-dom';
 
 import Application from './src/application';
 import LogInPage from './src/pages/log-in/log-in-page';
+import JoinPage from './src/pages/join/join-page';
 import NotFoundPage from './src/pages/not-found/not-found-page';
 
 import LogInPageAction from './src/actions/log-in-page-action';
+import JoinPageAction from './src/actions/join-page-action';
 
-import ROUTES from './src/consts/routes';
+import ROUTES, { FORMS_ROUTES } from './src/consts/routes';
 
 import './src/consts/colors.css';
 import './i18n';
@@ -39,17 +42,19 @@ const router = createBrowserRouter(
                 action={LogInPageAction}
             />
             <Route
-                path={ROUTES.SIGN_UP.PATH}
-                element={<div>SIGN_UP</div>}
-            />
-            <Route
-                path={ROUTES.RESET_PASSWORD.PATH}
-                element={<div>RESET</div>}
-            />
-            <Route
                 path={ROUTES.CONTACT.PATH}
                 element={<div>CONTACT</div>}
             />
+            <Route
+                path={ROUTES.FORMS.PATH}
+                element={<Outlet />}
+            >
+                <Route
+                    path={FORMS_ROUTES.JOIN.PATH}
+                    element={<JoinPage />}
+                    action={JoinPageAction}
+                />
+            </Route>
             <Route
                 path={'*'}
                 element={<NotFoundPage />}

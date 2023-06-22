@@ -7,9 +7,9 @@ import LanguageSelector from '../language-selector/language-selector';
 import ROUTES from '../../consts/routes';
 
 import classes from './footer.module.css';
-import FacebookIcon from '../../images/facebook-icon.svg';
-import TwitterIcon from '../../images/twitter-icon.svg';
-import InstagramIcon from '../../images/instagram-icon.svg';
+import FacebookIcon from '../../../images/facebook-icon.svg';
+import TwitterIcon from '../../../images/twitter-icon.svg';
+import InstagramIcon from '../../../images/instagram-icon.svg';
 import LanguageSelectionDialog from '../language-selection-dialog/language-selection-dialog';
 
 
@@ -25,7 +25,7 @@ const LINKS: {
 ].map(route => ({
     title: route.TITLE,
     path: route.PATH,
-    id: route.PATH,
+    id: route.PATH.slice(1), //exclude the slash '/'
 }));
 
 const Footer = () => {

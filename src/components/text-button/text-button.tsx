@@ -7,17 +7,32 @@ type TextButtonProps = {
     text: string;
     className?: string;
     onClick: () => void;
+    hidden?: boolean;
+    disabled?: boolean;
+    monochromatic?: boolean;
 };
 
 const TextButton = ({
     text,
     className,
     onClick,
+    hidden,
+    disabled,
+    monochromatic,
 }: TextButtonProps) => {
     return (
         <button
-            className={classNames(classes.button, className)}
-            onClick={onClick}
+            className={classNames(
+                classes.button,
+                className,
+                monochromatic && classes.monochromatic || '',
+                hidden && classes.hidden || '',
+            )}
+            onClick={(e) => {
+                e.preventDefault();
+                onClick();
+            }}
+            disabled={disabled || hidden}
         >
             {text}
         </button>

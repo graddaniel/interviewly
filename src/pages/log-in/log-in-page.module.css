@@ -13,7 +13,7 @@
 .opinion {
     width: 60%;
     border-radius: 1.5rem;
-    background-image: url(../../images/TEMP/temp-opinion-background.jpeg);
+    background-image: url(../../../images/TEMP/temp-opinion-background.jpeg);
     background-size: cover;
     background-position: 0 40%;
 }
