@@ -80,6 +80,15 @@ i18n.use(LanguageDetector)
                             firstLine: 'Recruit people from',
                             secondLine: 'all over the world',
                         },
+                        tutorialsSection: {
+                            title: 'Tutorials',
+                            subscriptionsText: 'Subscriptions count: {{subscriptionsCount, number}}',
+                            subscribeButtonText: 'Subscribe',
+                        },
+                        blogSection: {
+                            title: 'Blog',
+                            blogLinkText: 'Read more',
+                        },
                     },
                     passwordReset: {
                         request: {
@@ -161,6 +170,15 @@ i18n.use(LanguageDetector)
                         worldSection: {
                             firstLine: 'Rekrutuj ludzi',
                             secondLine: 'z całego świata',
+                        },
+                        tutorialsSection: {
+                            title: 'Poradniki',
+                            subscriptionsText: 'Liczba subskrypcji: {{subscriptionsCount, number}}',
+                            subscribeButtonText: 'Subskrybuj',
+                        },
+                        blogSection: {
+                            title: 'Blog',
+                            blogLinkText: 'Przeczytaj więcej',
                         },
                     },
                     passwordReset: {

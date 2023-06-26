@@ -1,4 +1,8 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
+import TextButton from '../../../components/text-button/text-button';
 
 import classes from './tutorials-section.module.css';
 import InterviewlyUserIcon from '../../../../images/interviewly-user-icon.png';
@@ -34,10 +38,17 @@ const ARTICLES = [{
 }];
 
 const TutorialsSection = () => {
+    const navigate = useNavigate();
+    const { t } = useTranslation();
+
+    const subscriptionsCount = 0;
+
+    const subscribeToYoutubeChannel = useCallback(() => navigate('http://youtube.com'), []);
+
     return (
         <section className={classes.section}>
             <nav className={classes.navigation}>
-                <h4 className={classes.title}>Tutorials</h4>
+                <h4 className={classes.title}>{t('home.tutorialsSection.title')}</h4>
                 <div className={classes.buttons}>
                     <button className={classes.navigationButton}>
                         <img src={ButtonArrowLeft} />
@@ -64,6 +75,24 @@ const TutorialsSection = () => {
                         </div>
                     </button>
                 ))}
+            </div>
+            <div className={classes.links}>
+                <a className={classes.link}href="http://youtube.com">Go to the channel on YouTube</a>
+                <div className={classes.subscribeControls}>
+                    <div className={classes.subscriptionsCounter}>
+                        <img className={classes.userLogo} src={InterviewlyUserIcon}/>
+                        <p>Interviewly</p>
+                        {subscriptionsCount > 0 && (
+                            <p>{t('home.tutorialsSection.subscriptionsText', { subscriptionsCount })}</p>
+                        )}
+                    </div>
+                    <TextButton
+                        className={classes.subscribeButton}
+                        monochromatic={true}
+                        text={t('home.tutorialsSection.subscribeButtonText')}
+                        onClick={subscribeToYoutubeChannel}
+                    />
+                </div>
             </div>
         </section>
     );

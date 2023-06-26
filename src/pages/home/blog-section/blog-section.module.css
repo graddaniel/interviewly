@@ -1,0 +1,40 @@
+.title {
+    font-size: 3.5rem;
+    font-weight: 400;
+}
+
+.tiles {
+    display: flex;
+    gap: 5%;
+    width: 100%;
+    margin: 3.5rem 0;
+}
+.tile {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 1.5rem;
+    width: 30%;
+    border-radius: 1.5rem;
+    padding: 1.5rem 2rem;
+    background-color: gray;
+}
+.leftColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.tileTitle {
+    color:  var(--WHITE);
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 400;
+}
+.tileDate {
+    margin: 0;
+    color: var(--WHITE);
+}
+
+.blogLink {
+    color: var(--BLACK);
+}
