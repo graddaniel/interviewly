@@ -75,6 +75,12 @@ i18n.use(LanguageDetector)
                             homeButton: 'Home',
                         },
                     },
+                    home: {
+                        worldSection: {
+                            firstLine: 'Recruit people from',
+                            secondLine: 'all over the world',
+                        },
+                    },
                     passwordReset: {
                         request: {
                             header: 'Create new password',
@@ -149,6 +155,12 @@ i18n.use(LanguageDetector)
                         page4: {
                             title: 'Nagraj wideo o sobie',
                             text: '(max. 10 minut)',
+                        },
+                    },
+                    home: {
+                        worldSection: {
+                            firstLine: 'Rekrutuj ludzi',
+                            secondLine: 'z całego świata',
                         },
                     },
                     passwordReset: {

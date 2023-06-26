@@ -1,3 +1,5 @@
+import AmericanFlagIcon from './american-flag-icon.svg';
+export { AmericanFlagIcon };
 import BritishFlagIcon from './british-flag-icon.svg';
 export { BritishFlagIcon };
 import BulgarianFlagIcon from './bulgarian-flag-icon.svg';
@@ -16,6 +18,10 @@ import HungarianFlagIcon from './hungarian-flag-icon.svg';
 export { HungarianFlagIcon };
 import ItalianFlagIcon from './italian-flag-icon.svg';
 export { ItalianFlagIcon };
+import IndianFlagIcon from './indian-flag-icon.svg';
+export { IndianFlagIcon };
+import JapaneseFlagIcon from './japanese-icon-flag.svg';
+export { JapaneseFlagIcon };
 import PolishFlagIcon from './polish-flag-icon.svg';
 export { PolishFlagIcon };
 import PortugueseFlagIcon from './portuguese-flag-icon.svg';

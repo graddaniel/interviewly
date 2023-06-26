@@ -14,6 +14,7 @@ import {
 } from 'react-router-dom';
 
 import Application from './src/application';
+import HomePage from './src/pages/home/home-page';
 import LogInPage from './src/pages/log-in/log-in-page';
 import JoinPage from './src/pages/join/join-page';
 import NotFoundPage from './src/pages/not-found/not-found-page';
@@ -34,7 +35,7 @@ const router = createBrowserRouter(
         >
             <Route
                 path={ROUTES.HOME.PATH}
-                element={<div>HOME</div>}
+                element={<HomePage />}
             />
             <Route
                 path={ROUTES.LOG_IN.PATH}

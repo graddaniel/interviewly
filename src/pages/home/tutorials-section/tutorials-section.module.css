@@ -1,0 +1,80 @@
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons {
+    display: flex;
+    gap: 2rem;
+}
+.navigationButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.title {
+    margin: 0;
+    font-size: 3.5rem;
+    font-weight: 400;
+}
+
+.tiles {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tile {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    border-radius: 1.5rem;
+    background-color: var(--WHITE);
+    padding: 3rem;
+    cursor: pointer;
+}
+.tile:nth-child(2n + 1) {
+    background-color: var(--COLOR3);
+}
+
+.videoCover {
+    width: 14rem;
+    height: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.5rem;
+    background-color: gray;
+}
+
+.youtubeIcon {
+    width: 2rem;
+}
+
+.tileTitle {
+    font-size: 2.5rem;
+    font-weight: 400;
+}
+
+.userDetails {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.userLogo {
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+.username {
+    font-size: 1.2rem;
+}

@@ -1,7 +1,7 @@
 const ROUTES = {
     HOME: {
         TITLE: 'Home',
-        PATH: '/home'
+        PATH: '/'
     },
     LOG_IN: {
         TITLE: 'Log in',
