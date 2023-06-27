@@ -1,0 +1,33 @@
+{
+  "name": "video-calls-library",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --open --config webpack.config.js --mode=development"
+  },
+  "author": "Daniel Grad",
+  "license": "ISC",
+  "dependencies": {
+    "css-loader": "^6.7.4",
+    "dotenv-webpack": "^8.0.1",
+    "html-webpack-plugin": "^5.5.1",
+    "postcss-loader": "^7.3.0",
+    "postcss-preset-env": "^8.4.1",
+    "react": "^18.2.0",
+    "react-app-polyfill": "^3.0.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.11.2",
+    "style-loader": "^3.3.3",
+    "ts-loader": "^9.4.2",
+    "typescript": "^5.0.4",
+    "webpack-dev-server": "^4.15.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.6",
+    "@types/react-dom": "^18.2.4",
+    "webpack": "^5.83.1",
+    "webpack-cli": "^5.1.1"
+  }
+}
