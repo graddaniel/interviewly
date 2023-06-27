@@ -1,0 +1,32 @@
+name: Deploy to S3
+run-name: Deploying Interviewly to S3
+on:
+  push:
+    branches:
+      - master
+jobs:
+  buildAndDeploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 18
+      - name: Installing dependencies
+        run: |
+          cd ./frontend
+          yarn install
+      - name: Building
+        run: |
+          cd ./frontend
+          yarn run build
+      - name: Copying additional resources
+        run: cp -rf ./frontend/public/*.ttf ./frontend/dist/
+      - name: Upload to s3
+        run: |
+          aws s3 sync ./frontend/dist s3://interviewly-frontend
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_WEBSITE_DEPLOYER_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_WEBSITE_DEPLOYER_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: 'eu-central-1'
