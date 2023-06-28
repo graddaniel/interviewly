@@ -18,7 +18,7 @@ import HomePage from './src/pages/home/home-page';
 import LogInPage from './src/pages/log-in/log-in-page';
 import JoinPage from './src/pages/join/join-page';
 import NotFoundPage from './src/pages/not-found/not-found-page';
-
+import BlogPage from './src/pages/blog/blog-page';
 import LogInPageAction from './src/actions/log-in-page-action';
 import JoinPageAction from './src/actions/join-page-action';
 
@@ -41,6 +41,10 @@ const router = createBrowserRouter(
                 path={ROUTES.LOG_IN.PATH}
                 element={<LogInPage />}
                 action={LogInPageAction}
+            />
+            <Route
+                path={ROUTES.BLOG.PATH}
+                element={<BlogPage />}
             />
             <Route
                 path={ROUTES.CONTACT.PATH}
