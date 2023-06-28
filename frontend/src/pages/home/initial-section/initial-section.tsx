@@ -5,9 +5,11 @@ import TextButton from '../../../components/text-button/text-button';
 import { FORMS_ROUTES } from '../../../consts/routes';
 
 import classes from './initial-section.module.css';
-import ClockIcon from '../../../../images/clock-icon.svg';
+import ClockDashedIcon from '../../../../images/clock-dashed-icon.svg';
 import Photo from '../../../../images/home-initial-section-photo.png';
 import DecoratorImage from '../../../../images/decorator.svg';
+import HomeInterviewDecorator from '../../../../images/home-interview-decorator-icon.svg';
+import DashedRoundLabel from '../../../components/dashed-round-label/dashed-round-label';
 
 
 const InitialSection = () => {
@@ -17,21 +19,26 @@ const InitialSection = () => {
         <section className={classes.section}>
             <div className={classes.leftSide}>
                 <div>
-                    <h1 className={classes.title}>Transform your recruitment</h1>
-                    <h3 className={classes.subtitle}>and interviewing process</h3>
+                    <h2 className={classes.title}>AI Powered recruitment and interviewing</h2>
                 </div>
-
-                <TextButton
-                    text="Join interviewly"
-                    onClick={() => navigate(FORMS_ROUTES.JOIN.PATH)}
-                />
+                <div className={classes.labelsRow}>
+                    <DashedRoundLabel text="HR" round={true} />
+                    <DashedRoundLabel text="Positive"/>
+                </div>
+                <div className={classes.buttonsRow}>
+                    <TextButton
+                        text="Join interviewly"
+                        onClick={() => navigate(FORMS_ROUTES.JOIN.PATH)}
+                    />
+                    <img src={HomeInterviewDecorator}/>
+                </div>
             </div>
             <div className={classes.rightSide}>
                 <div className={classes.maximizeYourTimeBox}>
                     <div className={classes.timeBoxIcons}>
                         <img
                             className={classes.clockIcon}
-                            src={ClockIcon}
+                            src={ClockDashedIcon}
                         />
                         <div className={classes.decorators}>
                             <img
