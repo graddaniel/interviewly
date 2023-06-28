@@ -4,6 +4,7 @@ import InitialSection from './initial-section/initial-section';
 import StepsSection from './steps-section/steps-section';
 import WorldSection from './world-section/world-section';
 import OpenAISection from './open-ai-section/open-ai-section';
+import SubscriptionsSection from './subscriptions-section/subscriptions-section';
 import TutorialsSection from './tutorials-section/tutorials-section';
 import BlogSection from './blog-section/blog-section';
 
@@ -18,6 +19,7 @@ const HomePage = () => {
             <StepsSection />
             <WorldSection />
             <OpenAISection />
+            <SubscriptionsSection />
             <TutorialsSection />
             <BlogSection />
         </article>
