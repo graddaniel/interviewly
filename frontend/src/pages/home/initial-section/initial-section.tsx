@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import TextButton from '../../../components/text-button/text-button';
 import { FORMS_ROUTES } from '../../../consts/routes';
@@ -13,16 +14,17 @@ import HomeInterviewDecorator from '../../../../images/home-interview-decorator-
 
 const InitialSection = () => {
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     return (
         <section className={classes.section}>
             <div className={classes.leftSide}>
                 <div>
-                    <h2 className={classes.title}>AI Powered recruitment and interviewing</h2>
+                    <h2 className={classes.title}>{t('home.initialSection.title')}</h2>
                 </div>
                 <div className={classes.buttonsRow}>
                     <TextButton
-                        text="Join interviewly"
+                        text={t('buttons.signUp')}
                         onClick={() => navigate(FORMS_ROUTES.JOIN.PATH)}
                     />
                     <img src={HomeInterviewDecorator}/>
@@ -46,7 +48,7 @@ const InitialSection = () => {
                             />
                         </div>
                     </div>
-                    <h5 className={classes.timeBoxText}>Maximize your time</h5>
+                    <h5 className={classes.timeBoxText}>{t('home.initialSection.timeBoxText')}</h5>
                 </div>
                 <img
                     className={classes.photoBox}

@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import DashedRoundLabel from '../../../components/dashed-round-label/dashed-round-label';
 import TextButton from '../../../components/text-button/text-button';
@@ -11,22 +12,25 @@ import ROUTES from '../../../consts/routes';
 
 const OpenAISection = () => {
     const navigate = useNavigate();
+    const { t } = useTranslation();
     const goToCalculator = useCallback(() => navigate(ROUTES.CALCULATOR.PATH), []);
 
     return (
         <section className={classes.section}>
             <div className={classes.left}>
                 <h4 className={classes.subtitle}>
-                    Upload the brief and get a quote
+                    {t('home.openAISection.subtitle')}
                 </h4>
-                <h2 className={classes.title}>in 1 minute!</h2>
+                <h2 className={classes.title}>
+                    {t('home.openAISection.title')}
+                </h2>
                 <DashedRoundLabel
                     className={classes.label}
-                    text="Artificial Intelligence"
+                    text={t('home.openAISection.dashedLabelText')}
                 />
                 <TextButton
                     className={classes.button}
-                    text="Go to price calculator"
+                    text={t('home.openAISection.buttonText')}
                     onClick={goToCalculator}
                 />
             </div>
