@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 import TextButton from '../../../components/text-button/text-button';
 
@@ -87,6 +88,8 @@ const SubscriptionTile = ({
     label,
     features,
 }: SubscriptionTileProps) => {
+    const { t } = useTranslation();
+
     return (
         <div className={classNames(classes.tile, className)}>
             <header>
@@ -119,7 +122,7 @@ const SubscriptionTile = ({
                     ))}
                 </ul>
                 <TextButton
-                    text="Get started"
+                    text={t('home.subscriptionSection.subscriptionButtonText')}
                     onClick={() => console.log('TODO implement')}
                 />
             </div>
@@ -128,21 +131,27 @@ const SubscriptionTile = ({
 }
 
 const SubscriptionsSection = () => {
+    const { t } = useTranslation();
+
     return (
         <section className={classes.section}>
             <header className={classes.header}>
                 <div className={classes.leftSide}>
                     <h4 className={classes.subtitle}>
-                        We offer
+                        {t('home.subscriptionSection.subtitle')}
                     </h4>
                     <h2 className={classes.title}>
-                        4 subscription plans
+                        {t('home.subscriptionSection.title')}
                     </h2>
                 </div>
                 <div className={classes.rightSide}>
                     <img src={ButtonCheckDashedIcon} />
-                    <p className={classes.text}>No contracts.</p>
-                    <p className={classes.text}>No surprise fees.</p>
+                    <p className={classes.text}>
+                        {t('home.subscriptionSection.labelText1')}
+                    </p>
+                    <p className={classes.text}>
+                        {t('home.subscriptionSection.labelText2')}
+                    </p>
                 </div>
             </header>
             <div className={classes.subscriptions}>

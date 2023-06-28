@@ -76,9 +76,51 @@ i18n.use(LanguageDetector)
                         },
                     },
                     home: {
+                        initialSection: {
+                            title: 'AI Powered recruitment and interviewing',
+                            timeBoxText: 'Maximize your time',
+                        },
+                        stepsSection: {
+                            header: {
+                                firstPart: 'Only',
+                                secondPart: '3 steps',
+                                thirdPart: 'to',
+                                fourthPart: 'find the',
+                                fifthPart: 'best',
+                                sixthPart: 'employee',
+                            },
+                            content: {
+                                firstStep: {
+                                    title: 'Upload',
+                                    text: 'the candidates database'
+                                },
+                                secondStep: {
+                                    title: 'Conduct',
+                                    text1: 'video call, program questionnaires',
+                                    text2: 'check language skills',
+                                },
+                                thirdStep: {
+                                    title: 'Receive',
+                                    text: 'candidate\'s assesment',
+                                },
+                            },
+                        },
                         worldSection: {
                             firstLine: 'Recruit people from',
                             secondLine: 'all over the world',
+                        },
+                        openAISection: {
+                            subtitle: 'Upload the brief and get a quote',
+                            title: 'in 1 minute!',
+                            dashedLabelText: 'Artificial Intelligence',
+                            buttonText: 'Go to price calculator',
+                        },
+                        subscriptionSection: {
+                            subtitle: 'We offer',
+                            title: '4 subscription plans',
+                            labelText1: 'No contracts.',
+                            labelText2: 'No surprise fees.',
+                            subscriptionButtonText: 'Get started',
                         },
                         tutorialsSection: {
                             title: 'Tutorials',
@@ -167,9 +209,51 @@ i18n.use(LanguageDetector)
                         },
                     },
                     home: {
+                        initialSection: {
+                            title: 'Rekrutacja i rozmowy napędzane AI',
+                            timeBoxText: 'Zmaksymalizuj swój czas',
+                        },
+                        stepsSection: {
+                            header: {
+                                firstPart: 'Tylko',
+                                secondPart: '3 kroki',
+                                thirdPart: 'by',
+                                fourthPart: 'znaleźć',
+                                fifthPart: 'najlepszego',
+                                sixthPart: 'pracownika',
+                            },
+                            content: {
+                                firstStep: {
+                                    title: 'Prześlij',
+                                    text: 'bazę kandydatów'
+                                },
+                                secondStep: {
+                                    title: 'Przeprowadź',
+                                    text1: 'wideorozmowy, programuj kwestionariusze',
+                                    text2: 'sprawdź umiejętności językowe',
+                                },
+                                thirdStep: {
+                                    title: 'Otrzymaj',
+                                    text: 'ocenę kandydata',
+                                },
+                            },
+                        },
                         worldSection: {
                             firstLine: 'Rekrutuj ludzi',
                             secondLine: 'z całego świata',
+                        },
+                        openAISection: {
+                            subtitle: 'Wyślij brief i otrzymaj wycenę',
+                            title: 'w 1 minutę!',
+                            dashedLabelText: 'Sztuczna Inteligencja',
+                            buttonText: 'Sprawdź kalkulator kosztów',
+                        },
+                        subscriptionSection: {
+                            subtitle: 'Oferujemy',
+                            title: '4 plany subskrypcji',
+                            labelText1: 'Żadnych umów.',
+                            labelText2: 'Żadnych ukrytych opłat.',
+                            subscriptionButtonText: 'Zacznij',
                         },
                         tutorialsSection: {
                             title: 'Poradniki',

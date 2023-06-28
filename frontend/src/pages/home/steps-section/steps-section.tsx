@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import TextButton from '../../../components/text-button/text-button';
 import DashedRoundLabel from '../../../components/dashed-round-label/dashed-round-label';
@@ -16,19 +17,30 @@ import ButtonCrossIconRed from '../../../../images/button-cross-icon-red.svg';
 
 const StepsSection = () => {
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     return (
         <section className={classes.section}>
             <header className={classes.header}>
                 <span className={classes.titleRow}>
-                    <h4 className={classes.subtitle}>Only</h4>
-                    <DashedRoundLabel text="3 steps"/>
-                    <h4 className={classes.subtitle}>to</h4>
+                    <h4 className={classes.subtitle}>
+                        {t('home.stepsSection.header.firstPart')}
+                    </h4>
+                    <DashedRoundLabel text={t('home.stepsSection.header.secondPart')} />
+                    <h4 className={classes.subtitle}>
+                        {t('home.stepsSection.header.thirdPart')}
+                    </h4>
                 </span>
                 <span className={classes.titleRow}>
-                    <h4 className={classes.subtitle}>find the</h4>
-                    <h2 className={classes.title}>best</h2>
-                    <h4 className={classes.subtitle}>employee</h4>
+                    <h4 className={classes.subtitle}>
+                        {t('home.stepsSection.header.fourthPart')}
+                    </h4>
+                    <h2 className={classes.title}>
+                        {t('home.stepsSection.header.fifthPart')}
+                    </h2>
+                    <h4 className={classes.subtitle}>
+                        {t('home.stepsSection.header.sixthPart')}
+                    </h4>
                 </span>
             </header>
             <section className={classes.content}>
@@ -43,14 +55,14 @@ const StepsSection = () => {
                     </div>
                     <div>
                         <h4 className={classes.sectionTitle}>
-                            Upload
+                            {t('home.stepsSection.content.firstStep.title')}
                         </h4>
                         <p className={classes.sectionText}>
-                            the candidate database
+                            {t('home.stepsSection.content.firstStep.text')}
                         </p>
                     </div>
                     <TextButton
-                        text="Join Interviewly"
+                        text={t('buttons.signUp')}
                         onClick={() => navigate(FORMS_ROUTES.JOIN.PATH)}
                     />
                 </div>
@@ -66,13 +78,13 @@ const StepsSection = () => {
                     </div>
                     <div>
                         <h4 className={classes.sectionTitle}>
-                            Conduct
+                            {t('home.stepsSection.content.secondStep.title')}
                         </h4>
                         <p className={classes.sectionText}>
-                            video call, program questionnaires
+                            {t('home.stepsSection.content.secondStep.text1')}
                         </p>
                         <p className={classes.sectionText}>
-                            check language skills
+                            {t('home.stepsSection.content.secondStep.text2')}
                         </p>
                     </div>
                     <div className={classes.photo}>
@@ -90,18 +102,18 @@ const StepsSection = () => {
                         />
                         <img src={AssesmentIcon}/>
                     </div>
-                    <div>
+                    <div className={classes.rightText}>
                         <h4
                             className={classes.sectionTitle}
                         > 
-                            Receive
+                            {t('home.stepsSection.content.thirdStep.title')}
                         </h4>
                         <p className={classes.sectionText}>
-                            candidate's assesment
+                            {t('home.stepsSection.content.thirdStep.text')}
                         </p>
                     </div>
                     <TextButton
-                        text="Join Interviewly"
+                        text={t('buttons.signUp')}
                         onClick={() => navigate(FORMS_ROUTES.JOIN.PATH)}
                     />
                 </div>
