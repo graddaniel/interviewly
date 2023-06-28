@@ -7,8 +7,7 @@ import IconButton from '../../../components/icon-button/icon-button';
 import ROUTES from '../../../consts/routes';
 
 import classes from './blog-section.module.css';
-import ButtonArrowRightIcon from '../../../../images/button-arrow-right-icon.svg';
-import ArrowRightIcon from '../../../../images/arrow-right-icon.svg';
+import ArrowRightIconPurple from '../../../../images/arrow-right-icon-purple.svg';
 
 const ARTICLES = [{
     title: 'How Web3 makes hiring (and getting more revenue) much easier',
@@ -43,7 +42,8 @@ const BlogSection = () => {
                                 </p>
                         </div>
                         <IconButton
-                            icon={ArrowRightIcon}
+                            className={classes.button}
+                            icon={ArrowRightIconPurple}
                             onClick={() => console.log('TODO Implement blog article navigation!')}
                         />
                     </div>
