@@ -9,7 +9,6 @@ import ClockDashedIcon from '../../../../images/clock-dashed-icon.svg';
 import Photo from '../../../../images/home-initial-section-photo.png';
 import DecoratorImage from '../../../../images/decorator.svg';
 import HomeInterviewDecorator from '../../../../images/home-interview-decorator-icon.svg';
-import DashedRoundLabel from '../../../components/dashed-round-label/dashed-round-label';
 
 
 const InitialSection = () => {
@@ -20,10 +19,6 @@ const InitialSection = () => {
             <div className={classes.leftSide}>
                 <div>
                     <h2 className={classes.title}>AI Powered recruitment and interviewing</h2>
-                </div>
-                <div className={classes.labelsRow}>
-                    <DashedRoundLabel text="HR" round={true} />
-                    <DashedRoundLabel text="Positive"/>
                 </div>
                 <div className={classes.buttonsRow}>
                     <TextButton
