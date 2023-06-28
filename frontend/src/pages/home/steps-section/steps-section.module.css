@@ -10,12 +10,17 @@
     text-align: center;
 }
 
+.titleRow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.25rem;
+}
 .title {
     margin: 0;
     font-size: 6rem;
     font-weight: 400;
 }
-
 .subtitle {
     margin: 0;
     font-size: 3.5rem;
@@ -23,33 +28,61 @@
 }
 
 .content {
+    width: 100%;
+    height: 23rem;
     display: flex;
+    justify-content: space-between;
 }
 
 .left {
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .middle {
-    position: relative;
-    width: 32rem;
-    height: 25rem;    
-}
-.middlePhoto {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
 }
 
 .right {
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 
 .icons {
-
+    display: flex;
+    gap: 1.5rem;
 }
-
-.text {
-    font-size: 2.5rem;
+.numericalLabel {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 2.25rem;
+    font-size: 2.25rem;
+    line-height: 2.25rem;
+}
+.sectionTitle {
+    font-size: 3.5rem;
     font-weight: 400;
+    margin: 0;
+}
+.sectionText {
+    font-size: 1.2rem;
+    margin: 0;
+}
+.photo {
+    width: 100%;
+    height: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    border-radius: 1.5rem;
+    background-image: url(../../../../images/steps-section-photo.jpg);
+    background-size: cover;
 }

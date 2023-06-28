@@ -6,7 +6,7 @@
     justify-content: space-between;
     width: calc(100% 2 * var(--side-margin));
     height: 9rem;
-    margin: 2rem var(--side-margin);
+    padding: 2rem var(--side-margin);
 }
 
 .row {

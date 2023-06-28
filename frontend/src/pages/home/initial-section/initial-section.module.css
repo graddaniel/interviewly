@@ -14,18 +14,16 @@
 
 .title {
     margin: 0;
-    font-size: 7.5rem;
+    font-size: 6rem;
     font-weight: 400;
     line-height: 6rem;
-    word-spacing: 100vw; 
 }
-
-.subtitle {
-    margin: 0;
-    font-size: 4.5rem;
-    font-weight: 400;
-    line-height: 4rem;
-    word-spacing: 100vw; 
+.labelsRow {
+    display: flex;
+}
+.buttonsRow {
+    display: flex;
+    gap: 2rem;
 }
 
 .rightSide {
