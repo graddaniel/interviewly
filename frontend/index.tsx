@@ -21,6 +21,7 @@ import NotFoundPage from './src/pages/not-found/not-found-page';
 import BlogPage from './src/pages/blog/blog-page';
 import LogInPageAction from './src/actions/log-in-page-action';
 import JoinPageAction from './src/actions/join-page-action';
+import TutorialsPage from './src/pages/tutorials/tutorials-page';
 
 import ROUTES, { FORMS_ROUTES } from './src/consts/routes';
 
@@ -49,6 +50,10 @@ const router = createBrowserRouter(
             <Route
                 path={ROUTES.CONTACT.PATH}
                 element={<div>CONTACT</div>}
+            />
+            <Route
+                path={ROUTES.TUTORIALS.PATH}
+                element={<TutorialsPage />}
             />
             <Route
                 path={ROUTES.FORMS.PATH}

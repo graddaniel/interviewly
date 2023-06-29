@@ -257,7 +257,7 @@ i18n.use(LanguageDetector)
                         },
                         tutorialsSection: {
                             title: 'Poradniki',
-                            subscriptionsText: 'Liczba subskrypcji: {{subscriptionsCount, number}}',
+                            subscriptionsText: 'Subskrypcje: {{subscriptionsCount, number}}',
                             subscribeButtonText: 'Subskrybuj',
                         },
                         blogSection: {

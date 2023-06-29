@@ -1,14 +1,13 @@
-import React, { useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import TextButton from '../../../components/text-button/text-button';
 
 import classes from './tutorials-section.module.css';
 import InterviewlyUserIcon from '../../../../images/interviewly-user-icon.png';
 import YoutubeIcon from '../../../../images/youtube-icon.svg';
 import ButtonArrowLeft from '../../../../images/button-arrow-left-icon.svg';
 import ButtonArrowRight from '../../../../images/button-arrow-right-icon.svg';
+import SubscriptionControls from '../../../components/subscription-controls/subscription-controls';
 
 
 const ARTICLES = [{
@@ -38,12 +37,9 @@ const ARTICLES = [{
 }];
 
 const TutorialsSection = () => {
-    const navigate = useNavigate();
     const { t } = useTranslation();
 
-    const subscriptionsCount = 0;
-
-    const subscribeToYoutubeChannel = useCallback(() => navigate('http://youtube.com'), []);
+    const subscriptionsCount = 1;
 
     return (
         <section className={classes.section}>
@@ -78,21 +74,7 @@ const TutorialsSection = () => {
             </div>
             <div className={classes.links}>
                 <a className={classes.link}href="http://youtube.com">Go to the channel on YouTube</a>
-                <div className={classes.subscribeControls}>
-                    <div className={classes.subscriptionsCounter}>
-                        <img className={classes.userLogo} src={InterviewlyUserIcon}/>
-                        <p>Interviewly</p>
-                        {subscriptionsCount > 0 && (
-                            <p>{t('home.tutorialsSection.subscriptionsText', { subscriptionsCount })}</p>
-                        )}
-                    </div>
-                    <TextButton
-                        className={classes.subscribeButton}
-                        monochromatic={true}
-                        text={t('home.tutorialsSection.subscribeButtonText')}
-                        onClick={subscribeToYoutubeChannel}
-                    />
-                </div>
+                <SubscriptionControls subscriptionsCount={subscriptionsCount} />
             </div>
         </section>
     );

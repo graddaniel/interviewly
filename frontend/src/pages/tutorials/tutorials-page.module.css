@@ -1,0 +1,43 @@
+.tutorials {
+    padding: 3rem 8rem;
+}
+
+.header {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: auto auto;
+    align-items: end;
+    row-gap: 5rem;
+}
+.title {
+    font-size: 7.5rem;
+    font-weight: 400;
+    margin: 0;
+}
+.subscriptionControls {
+
+}
+.subtitle {
+    font-size: 3.5rem;
+    font-weight: 400;
+    margin: 0;
+}
+.headerLink {
+    color: var(--BLACK);
+}
+
+
+.content {
+    margin: 5rem 0;
+}
+.latestTutorial {
+    margin: 0;
+}
+.remainingTutorials {
+    display: grid;
+    grid-template-columns: 46% 46%;
+    grid-template-rows: auto auto;
+    column-gap: 8%;
+    row-gap: 5rem;
+    margin-top: 5rem;
+}
