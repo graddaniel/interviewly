@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
 
@@ -6,37 +6,39 @@ import SubscriptionControls from '../../components/subscription-controls/subscri
 import TutorialTile from './tutorial-tile';
 
 import classes from './tutorials-page.module.css';
+import TutorialVideoDialog from './tutorial-video-dialog';
 
 
 const TUTORIALS = [{
     title: '1 Growth Report #36: Building Up the Network in the Downturn.',
     date: Date.now(),
     imageUrl: 'https://img.youtube.com/vi/K4TOrB7at0Y/0.jpg',
-    videoUrl: 'https://www.youtube.com/watch?v=K4TOrB7at0Y',
+    videoUrl: 'https://www.youtube.com/embed/K4TOrB7at0Y',
 }, {
     title: '2 Growth Report #33: Did Someone Leak Our Internal Data?',
     date: Date.now(),
     imageUrl: 'https://img.youtube.com/vi/a3ICNMQW7Ok/0.jpg',
-    videoUrl: 'https://www.youtube.com/watch?v=a3ICNMQW7Ok',
+    videoUrl: 'https://www.youtube.com/embed/a3ICNMQW7Ok',
 }, {
     title: '3 Growth Report #33: Did Someone Leak Our Internal Data?',
     date: Date.now(),
     imageUrl: 'https://img.youtube.com/vi/LXb3EKWsInQ/0.jpg',
-    videoUrl: 'https://www.youtube.com/watch?v=LXb3EKWsInQ'
+    videoUrl: 'https://www.youtube.com/embed/LXb3EKWsInQ',
 }, {
     title: '4 Growth Report #33: Did Someone Leak Our Internal Data?',
     date: Date.now(),
     imageUrl: 'https://img.youtube.com/vi/BHcAXHfUpyA/0.jpg',
-    videoUrl: 'https://www.youtube.com/watch?v=BHcAXHfUpyA',
+    videoUrl: 'https://www.youtube.com/embed/BHcAXHfUpyA',
 }, {
     title: '5 Growth Report #33: Did Someone Leak Our Internal Data?',
     date: Date.now(),
     imageUrl: 'https://img.youtube.com/vi/c-YO1MRGl3M/0.jpg',
-    videoUrl: 'https://www.youtube.com/watch?v=c-YO1MRGl3M'
+    videoUrl: 'https://www.youtube.com/embed/c-YO1MRGl3M',
 
 }];
 
 const TutorialsPage = () => {
+    const [ openedVideo, setOpenedVideo ] = useState<string>('');
     const { t, i18n } = useTranslation();
 
     const { resolvedLanguage } = i18n;
@@ -65,7 +67,7 @@ const TutorialsPage = () => {
             <section className={classes.content}>
                 <div className={classes.latestTutorial}>
                     <TutorialTile
-                        onClick={() => console.log("TODO missing implementation")}
+                        onClick={() => setOpenedVideo(firstTutorial.videoUrl)}
                         horizontalFlow={true}
                         viewsCount={123}
                         {...firstTutorial}
@@ -75,12 +77,17 @@ const TutorialsPage = () => {
                     {remainingTutorials.map(tutorial => (
                         <TutorialTile
                             key={tutorial.imageUrl}
-                            onClick={() => console.log("TODO missing implementation")}
+                            onClick={() => setOpenedVideo(tutorial.videoUrl)}
                             {...tutorial}
                         />
                     ))}
                 </div>
             </section>
+            <TutorialVideoDialog
+                isOpen={!!openedVideo}
+                onClose={() => setOpenedVideo('')}
+                videoUrl={openedVideo}
+            />
         </article>
     );
 };
