@@ -93,16 +93,3 @@
     color: var(--BLACK);
     align-self: flex-end;
 }
-.subscriptionsCounter {
-    display: flex;
-    gap: 1.25rem;
-}
-.subscribeControls {
-    display: flex;
-    gap: 2.5rem;
-}
-.subscribeButton {
-    height: 3rem;
-    width: 8rem;
-    margin-right: 7rem;
-}

@@ -11,6 +11,9 @@ i18n.use(LanguageDetector)
         resources: {
             en: {
                 translation: {
+                    generic: {
+                        loading: 'loading',
+                    },
                     links: {
                         priceCalculator: 'Price calculator',
                         tutorials: 'Tutorials',
@@ -149,6 +152,9 @@ i18n.use(LanguageDetector)
             },
             pl: {
                 translation: {
+                    generic: {
+                        loading: 'ładowanie',
+                    },
                     links: {
                         priceCalculator: 'Kalkulator cen',
                         tutorials: 'Poradniki',
@@ -257,7 +263,7 @@ i18n.use(LanguageDetector)
                         },
                         tutorialsSection: {
                             title: 'Poradniki',
-                            subscriptionsText: 'Liczba subskrypcji: {{subscriptionsCount, number}}',
+                            subscriptionsText: 'Subskrypcje: {{subscriptionsCount, number}}',
                             subscribeButtonText: 'Subskrybuj',
                         },
                         blogSection: {

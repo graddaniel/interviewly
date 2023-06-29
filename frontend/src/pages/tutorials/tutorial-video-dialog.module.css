@@ -1,0 +1,15 @@
+.video {
+    width: 75%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
+    border-radius: 1.5rem;
+    color: var(--WHITE);
+    background-color: var(--BLACK);
+}
+
+.hidden {
+    display: none;
+}

@@ -1,0 +1,23 @@
+.subscriptionsCounter {
+    display: flex;
+    gap: 1.25rem;
+}
+.subscribeControls {
+    display: flex;
+    gap: 2.5rem;
+}
+.subscribeButton {
+    height: 3rem;
+    width: 8rem;
+    margin-right: 7rem;
+}
+.userLogo {
+    width: 3.5rem;
+    height: 3.5rem;
+}
+.text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+}
