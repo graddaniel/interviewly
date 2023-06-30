@@ -7,6 +7,7 @@ import Logo from '../logo/logo';
 
 import IconButton from '../icon-button/icon-button';
 import AccountIcon from '../../../images/account-icon.svg';
+import MenuIcon from '../../../images/menu-icon.svg';
 
 import ROUTES, { FORMS_ROUTES } from '../../consts/routes';
 
@@ -58,8 +59,14 @@ const NavigationBar = () => {
                     onClick={goToJoin}
                 />
                 <IconButton
+                    className={classes.loginButton}
                     icon={AccountIcon}
                     onClick={goToAccount}
+                />
+                <IconButton
+                    className={classes.menuButton}
+                    icon={MenuIcon}
+                    onClick={() => console.log("TODO implement menu")}
                 />
             </section>
         </nav>
