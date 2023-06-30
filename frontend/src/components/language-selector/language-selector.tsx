@@ -32,16 +32,20 @@ const LanguageSelector = ({
     return (
         <div className={classes.languageSelector}>
             <span className={classes.currentLanguageText}>{t('currentLanguage')}</span>
-            <img
-                className={classes.currentLanguageIcon}
-                src={getFlagIconByLanguage(resolvedLanguage || '')}
-            />
-            <button
-                className={classes.button}
+            <div
+                className={classes.controls}
                 onClick={onClick}
             >
-                <img src={ThreeDotsIcon} />
-            </button>
+                <img
+                    className={classes.currentLanguageIcon}
+                    src={getFlagIconByLanguage(resolvedLanguage || '')}
+                />
+                <button
+                    className={classes.button}
+                >
+                    <img src={ThreeDotsIcon} />
+                </button>
+            </div>
         </div>
         
     );

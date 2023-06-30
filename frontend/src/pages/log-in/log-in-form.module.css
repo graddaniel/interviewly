@@ -1,3 +1,6 @@
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
 .form {
     position: relative;
     display: flex;
@@ -42,7 +45,68 @@
     cursor: pointer;
 }
 
+.buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
 .joinButton {
     height: 3rem;
     padding: 0 2rem;
+}
+
+@media (min-width: min-large) {
+    .joinText {
+        display: none;
+    }
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .form {
+        height: 30rem;
+        padding: 1.5rem;
+    }
+    .title {
+        font-size: 4rem;
+        line-height: 4rem;
+    }
+    .decorators {
+        top: 5%;
+        right: 5%;
+    }
+    .buttons {
+        flex-direction: row;
+    }
+    .buttons > * {
+        width: 50%;
+    }
+    .joinText {
+        display: none;
+    }
+}
+
+@media (max-width: max-small) {
+    .form {
+        height: 30rem;
+        padding: 1rem;
+    }
+    .title {
+        font-size: 1.75rem;
+        line-height: 1.75rem;
+        text-align: center;
+    }
+    .decorators {
+        display: none;
+    }
+    .joinButton {
+        display: none;
+    }
+    .joinText {
+        text-align: center;
+    }
+    .joinLink {
+        color: var(--BLACK);
+    }
 }

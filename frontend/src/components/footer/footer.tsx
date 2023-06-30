@@ -43,23 +43,24 @@ const Footer = () => {
 
     return (
         <footer className={classes.footer}>
-            <section className={classes.row}>
-                <Logo />
-                <div className={classes.group}>
+            <div className={classes.nonMobile}>
+                <section className={classes.brand}>
+                    <Logo />
+                    <span className={classes.biggerText}>Maximize your time.</span>
+                    <span>&copy; Interviewly, {(new Date()).getFullYear()}</span>
+                </section>
+                <section className={classes.links}>
                 {LINKS.map(link => (
-                        <a
-                            key={link.id}
-                            className={classes.link}
-                            href={link.path}
-                        >
-                            {t(`links.${link.id}`)}
-                        </a>
-                    ))}
-                </div>
-            </section>
-            <section className={classes.row}>
-                <span className={classes.biggerText}>Maximize your time.</span>
-                <div className={classes.group}>
+                    <a
+                        key={link.id}
+                        className={classes.link}
+                        href={link.path}
+                    >
+                        {t(`links.${link.id}`)}
+                    </a>
+                ))}
+                </section>
+                <section className={classes.socialPages}>
                     <a href="https://facebook.com">
                         <img src={FacebookIcon}/>
                     </a>
@@ -69,18 +70,52 @@ const Footer = () => {
                     <a href="https://instagram.com">
                         <img src={InstagramIcon}/>
                     </a>
-                </div>
-            </section>
-            <section className={classes.row}>
-                <span>&copy; Interviewly, {(new Date()).getFullYear()}</span>
-                <div className={classes.group}>
-                        <a className={classes.link} href={ROUTES.PRIVACY_POLICY.PATH}>{ROUTES.PRIVACY_POLICY.TITLE}</a>
-                        <a className={classes.link} href={ROUTES.TERMS.PATH}>{ROUTES.TERMS.TITLE}</a>
-                        <LanguageSelector
-                            onClick={openLanguageSelectionDialog}
-                        />
-                </div>
-            </section>
+                </section>
+                <section className={classes.formal}>
+                    <a className={classes.link} href={ROUTES.PRIVACY_POLICY.PATH}>{ROUTES.PRIVACY_POLICY.TITLE}</a>
+                    <a className={classes.link} href={ROUTES.TERMS.PATH}>{ROUTES.TERMS.TITLE}</a>
+                    <LanguageSelector
+                        onClick={openLanguageSelectionDialog}
+                    />
+                </section>
+            </div>
+            <div className={classes.mobile}>
+                <Logo />
+
+                <section className={classes.brandText}>
+                    <span className={classes.biggerText}>Maximize your time.</span>
+                    <span>&copy; Interviewly, {(new Date()).getFullYear()}</span>
+                </section>
+                <section className={classes.links}>
+                    {LINKS.map(link => (
+                        <a
+                            key={link.id}
+                            className={classes.link}
+                            href={link.path}
+                        >
+                            {t(`links.${link.id}`)}
+                        </a>
+                    ))}
+                </section>
+                <section className={classes.socialPages}>
+                    <a href="https://facebook.com">
+                        <img src={FacebookIcon}/>
+                    </a>
+                    <a href="https://twitter.com">
+                        <img src={TwitterIcon}/>
+                    </a>
+                    <a href="https://instagram.com">
+                        <img src={InstagramIcon}/>
+                    </a>
+                </section>
+                <section className={classes.formal}>
+                    <a className={classes.link} href={ROUTES.PRIVACY_POLICY.PATH}>{ROUTES.PRIVACY_POLICY.TITLE}</a>
+                    <a className={classes.link} href={ROUTES.TERMS.PATH}>{ROUTES.TERMS.TITLE}</a>
+                </section>
+                <LanguageSelector
+                    onClick={openLanguageSelectionDialog}
+                />
+            </div>
             <LanguageSelectionDialog
                 isOpen={isLanguageDialogOpen}
                 onClose={closeLanguageSelectionDialog}
