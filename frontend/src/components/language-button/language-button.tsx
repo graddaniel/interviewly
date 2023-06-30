@@ -24,7 +24,7 @@ const LanguageButton = ({
             className={classNames(classes.button, className)}
             onClick={selectLanguage}
         >
-            <span>{languageText}</span>
+            <span className={classes.text}>{languageText}</span>
             <img src={icon} />
         </button>
     );

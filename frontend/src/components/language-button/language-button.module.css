@@ -1,3 +1,6 @@
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
 .button {
     display: flex;
     justify-content: space-between;
@@ -10,4 +13,25 @@
     background-color: var(--WHITE);
     cursor: pointer;
     font-size: 0.6rem;
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .button {
+        width: 3rem;
+        justify-content: center;
+    }
+    .text {
+        display: none;
+    }
+}
+
+@media (max-width: max-small) {
+    .button {
+        width: 2rem;
+        height: 2rem;
+        justify-content: center;
+    }
+    .text {
+        display: none;
+    }
 }
