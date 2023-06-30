@@ -1,3 +1,6 @@
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
 .dialog {
     position: fixed;
     z-index: 10;
@@ -19,4 +22,18 @@
 
 .closed {
     visibility: hidden;
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .dialog {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: max-small) {
+    .dialog {
+        display: flex;
+        align-items: center;
+        padding: 1.25rem;
+    }
 }
