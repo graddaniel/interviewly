@@ -37,7 +37,8 @@ i18n.use(LanguageDetector)
                         notFound: 'Page not Found',
                     },
                     logIn: {
-                        rememberMe: 'Remember me'
+                        rememberMe: 'Remember me',
+                        joinText: 'Don\'t have an account?'
                     },
                     join: {
                         joinControl: 'Do you already have an account?',
@@ -178,7 +179,8 @@ i18n.use(LanguageDetector)
                         notFound: 'Nie znaleziono strony',
                     },
                     logIn: {
-                        rememberMe: 'Zapamiętaj mnie'
+                        rememberMe: 'Zapamiętaj mnie',
+                        joinText: 'Nie masz konta?'
                     },
                     join: {
                         joinControl: 'Masz już konto?',

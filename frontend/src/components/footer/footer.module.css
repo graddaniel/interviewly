@@ -1,13 +1,20 @@
-.footer {
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.nonMobile {
+    display: grid;
+    grid-template-columns: 20% 40% 20% 20%;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+        "brand . links links"
+        "brand .  . socialPages"
+        "brand . formal formal";
+    row-gap: 1.75rem;
     --side-margin: 8rem;
-    min-height: 9rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: calc(100% 2 * var(--side-margin));
-    height: 9rem;
+    width: calc(100% - 2 * var(--side-margin));
     padding: 2rem var(--side-margin);
 }
+.mobile { display: none; }
 
 .row {
     display: flex;
@@ -31,4 +38,79 @@
     text-decoration: none;
     color: var(--BLACK);
     font-size: 1rem;
+}
+
+.brand {
+    grid-area: brand;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.links {
+    grid-area: links;
+    display: flex;
+    justify-content: space-between;
+}
+.socialPages {
+    grid-area: socialPages;
+    display: flex;
+    justify-content: space-between;
+}
+.formal {
+    grid-area: formal;
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .mobile { display: none; }
+    .nonMobile {
+        height: 22.5rem;
+        grid-template-columns: 100%;
+        grid-template-rows: 25% 25% 25% 25%;
+        grid-template-areas:
+            "brand"
+            "links"
+            "socialPages"
+            "formal";
+        --side-margin: 2rem;
+        width: calc(100% - 2 * var(--side-margin));
+        padding: 0 var(--side-margin) 2rem;
+    }
+    .brand {
+        flex-direction: row;
+    }
+    .socialPages {
+        justify-content: flex-start;
+        gap: 20%;
+    }
+}
+
+@media (max-width: max-small) {
+    .nonMobile{ display: none; }
+    .mobile {
+        width: 85%;
+        height: 22.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        --side-margin: 1rem;
+        padding: 0 var(--side-margin) 2rem;
+        font-size: 0.8rem !important;
+    }
+    .brandText {
+        display: flex;
+        justify-content: space-between;
+    }
+    .biggerText {
+        font-size: 0.8rem;
+    }
+    .links {
+        gap: 25%;
+        flex-wrap: wrap;
+    }
+    .link {
+        font-size: 0.8rem;
+    }
 }

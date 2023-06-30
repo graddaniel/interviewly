@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Form, useActionData, useNavigate } from 'react-router-dom';
+import { Form, useActionData, useHref, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 
 import TextButton from '../../components/text-button/text-button';
@@ -19,6 +19,7 @@ const LogInForm = ({
 }) => {
     const { t } = useTranslation();
     const navigate = useNavigate();
+    const joinUrl = useHref(FORMS_ROUTES.JOIN.PATH);
     const actionData = useActionData() as { [k: string]: any };
 
     const goToJoin = useCallback(() => navigate(FORMS_ROUTES.JOIN.PATH), []);
@@ -64,14 +65,26 @@ const LogInForm = ({
             <p className={classes.errorMessage}>
                 {genericError ? genericError : ''}
             </p>
-            <SubmitButton
-                text={t('buttons.logIn')}
-            />
-            <TextButton
-                className={classes.joinButton}
-                text={t('buttons.signUp')}
-                onClick={goToJoin}
-            />
+            <div className={classes.buttons}>
+                <SubmitButton
+                    text={t('buttons.logIn')}
+                />
+                <TextButton
+                    className={classes.joinButton}
+                    text={t('buttons.signUp')}
+                    onClick={goToJoin}
+                />
+                <p className={classes.joinText}>
+                    {t('logIn.joinText')}
+                    <br/>
+                    <a
+                        className={classes.joinLink}
+                        href={joinUrl}
+                    >
+                        {t('buttons.signUp')}
+                    </a>
+                </p>
+            </div>
         </Form>
     );
 };

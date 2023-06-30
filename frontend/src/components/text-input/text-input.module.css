@@ -1,3 +1,6 @@
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
 .inputWrapper {
     position: relative;
     padding-bottom: 0.6rem;
@@ -39,4 +42,18 @@
     margin-top: 0.6rem;
     color: var(--RED);
     font-size: 0.8rem;
+}
+
+@media (min-width: min-large) {
+
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+
+}
+
+@media (max-width: max-small) {
+    .input {
+        text-align: center;
+    }
 }
