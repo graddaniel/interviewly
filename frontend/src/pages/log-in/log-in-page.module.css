@@ -1,3 +1,6 @@
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
 .content {
     display: flex;
     flex-grow: 1;
@@ -10,10 +13,33 @@
     box-sizing: border-box;
 }
 
-.opinion {
-    width: 60%;
-    border-radius: 1.5rem;
-    background-image: url(../../../images/TEMP/temp-opinion-background.jpeg);
-    background-size: cover;
-    background-position: 0 40%;
+@media (min-width: min-large) {
+    .opinion {
+        width: 60%;
+        border-radius: 1.5rem;
+        background-image: url(../../../images/TEMP/temp-opinion-background.jpeg);
+        background-size: cover;
+        background-position: 0 40%;
+    }
 }
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .opinion {
+        width: 60%;
+        border-radius: 1.5rem;
+        background-color: red;
+        background-size: cover;
+        background-position: 0 40%;
+    }
+}
+
+@media (max-width: max-small) {
+    .opinion {
+        width: 60%;
+        border-radius: 1.5rem;
+        background-color: green;
+        background-size: cover;
+        background-position: 0 40%;
+    }
+}
+
