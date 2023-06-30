@@ -1,3 +1,6 @@
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
 .blog {
     padding: 3rem 8rem 0;
 }
@@ -105,4 +108,125 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .blog {
+        padding: 3rem 1.75rem 0;
+    }
+    .header {
+        flex-direction: row;
+        align-items: end;
+        margin-bottom: 3.5rem;
+    }
+    .title {
+        text-align: left;
+        font-size: 4rem;
+        line-height: 4rem;
+    }
+    .subtitle {
+        font-size: 1.5rem;
+    }
+    .newestPosts {
+        flex-direction: column;
+        gap: 3.5rem;
+    }
+    .otherNewPosts {
+        flex-direction: row;
+        gap: 10%;
+    }
+    .newestBlogPost {
+        width: 45%;
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 1rem;
+    }
+    .newestPostTitle {
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+    }
+    .date {
+        font-size: 1.2rem;
+    }
+    .remainingPosts {
+        margin: 3rem 0;
+    }
+    .regularBlogPost {
+        margin-bottom: 3.5rem;
+    }
+    .regularPostImage {
+        height: 15rem;
+    }
+    .regularPostTitle {
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+    }
+    .navigation {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2.25rem;
+    }
+}
+
+@media (max-width: max-small) {
+    .blog {
+        padding: 2rem 1.25rem 0;
+    }
+    .header {
+        flex-direction: row;
+        align-items: end;
+        margin-bottom: 2rem;
+    }
+    .title {
+        text-align: left;
+        font-size: 1.8rem;
+        line-height: 1.8rem;
+    }
+    .subtitle {
+        font-size: 1.2rem;
+    }
+    .newestPosts {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .otherNewPosts {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .newestBlogPost {
+        align-items: flex-end;
+        gap: 0;
+        padding: 1.5rem;
+    }
+    .newestPostTitle {
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+    }
+    .date {
+        font-size: 1.2rem;
+    }
+    .remainingPosts {
+        flex-direction: column;
+        margin: 2rem 0;
+    }
+
+    .regularBlogPost {
+        width: auto;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+    .regularPostImage {
+        height: 10rem;
+    }
+    .regularPostTitle {
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+    }
+    .navigation {
+        justify-content: space-between;
+        align-items: flex-end;
+    }
 }
