@@ -1,3 +1,6 @@
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
 .tile {
     aspect-ratio: 6/5;
     width: 25%;
@@ -5,9 +8,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: none;
+    border: 1px solid var(--COLOR2);
     border-radius: 1.5rem;
-    background-color: var(--COLOR3);
+    background-color: var(--WHITE);
     padding: 1.5rem;
     cursor: pointer;
 }
@@ -26,11 +29,66 @@
     justify-content: center;
     align-items: center;
     border-radius: 1rem;
-    background-color: var(--COLOR2);
+    background-color: var(--COLOR3);
 }
 
 .subtitle {
     font-size: 1rem;
     margin: 0;
     margin-top: 1.25rem;
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .tile {
+        display: grid;
+        grid-template-columns: 33% 66%;
+        grid-template-rows: auto auto;
+        grid-template-areas:
+            "icon title"
+            "icon subtitle";
+        width: 60%;
+        aspect-ratio: 3/1;
+    }
+    .title {
+        grid-area: title;
+        margin: 0;
+        text-align: left;
+    }
+    .subtitle {
+        grid-area: subtitle;
+        margin: 0;
+        text-align: left;
+    }
+    .iconWrapper {
+        grid-area: icon;
+    }
+}
+
+@media (max-width: max-small) {
+    .tile {
+        display: grid;
+        grid-template-columns: 33% 66%;
+        grid-template-rows: auto auto;
+        grid-template-areas:
+            "icon title"
+            "icon subtitle";
+        width: 100%;
+        aspect-ratio: 3/1;
+        padding: 0.75rem;
+    }
+    .title {
+        grid-area: title;
+        margin: 0;
+        font-size: 0.8rem;
+        text-align: left;
+    }
+    .subtitle {
+        grid-area: subtitle;
+        margin: 0;
+        font-size: 0.7rem;
+        text-align: left;
+    }
+    .iconWrapper {
+        grid-area: icon;
+    }
 }

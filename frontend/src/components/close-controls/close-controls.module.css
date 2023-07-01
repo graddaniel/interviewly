@@ -24,4 +24,8 @@
     .closeControl {
         justify-content: center;
     }
+    .closeControlButton {
+        height: 2rem;
+        width: 2rem;
+    }
 }

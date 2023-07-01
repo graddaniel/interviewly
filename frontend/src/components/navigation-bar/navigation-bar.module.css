@@ -24,18 +24,20 @@
 
 @media (min-width: min-large) {
     .navigationBar {
-        --side-margin: 8rem;
+        --side-margin: 8.5vw;
         width: calc(100% - 2 * var(--side-margin));
         margin: 2rem var(--side-margin);
     }
-    .links > * {
-        margin-left: 2rem;
+    .links {
+        display: flex;
+        align-items: center;
+        gap: 2vw;
     }
     .menuButton {
         display: none;
     }
     .joinButton {
-        margin-right: 2.5rem;
+        margin-right: 2.5vw;
     }
 }
 
