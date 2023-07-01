@@ -67,7 +67,7 @@
         height: 45vh;
         display: grid;
         grid-template-columns: 100%;
-        grid-template-rows: 20% 20% 20% 40%;
+        grid-template-rows: 17% 17% 17% 49%;
         grid-template-areas: 
             "flagIcons"
             "text"
@@ -92,6 +92,9 @@
     }
     .flagIcon {
         width: 5vw;
+    }
+    .diagramNonDesktop {
+        width: 100%;
     }
 }
 
