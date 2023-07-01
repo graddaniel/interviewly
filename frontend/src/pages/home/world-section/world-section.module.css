@@ -1,41 +1,137 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
 .section {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 25% 50% 25%;
+    grid-template-areas: 
+        "diagram flagIcons"
+        "diagram text"
+        "diagram signUpButton";
+    align-items: center;
+    justify-items: end;
     border-radius: 1.5rem;
-    margin: 0 -6rem;
-    padding: 5rem 6rem;
+    margin: 0 -5vw;
+    padding: 8vh 5vw;
     background-color: var(--COLOR3);
     margin-bottom: 7.5rem;
 }
 
-.content {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-end;
+.diagram {
+    grid-area: diagram;
+    width: 25vw;
+    justify-self: start;
 }
 
 .flagIcons {
+    grid-area: flagIcons;
     display: flex;
-    gap: 3.5rem;
+    gap: 3vw;
 }
 .flagIcon {
-    width: 2.25rem;
+    width: 1.75vw;
 }
 
 .text {
+    grid-area: text;
     text-align: end;
+}
+.signUpButton {
+    grid-area: signUpButton;
 }
 .firstLine {
     margin: 0;
-    font-size: 3.5rem;
+    font-size: 3vw;
     font-weight: 400;
-    line-height: 3.75rem;
+    line-height: 3.25vw;
 }
 .secondLine {
     margin: 0;
-    font-size: 6rem;
+    font-size: 5vw;
     font-weight: 400;
-    line-height: 5.5rem;
+    line-height: 4.5vw;
+}
+.diagramNonDesktop {
+    grid-area: diagram;
+}
+
+@media (min-width: min-large) {
+    .diagramNonDesktop {
+        display: none;
+    }
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .section {
+        height: 45vh;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 20% 20% 20% 40%;
+        grid-template-areas: 
+            "flagIcons"
+            "text"
+            "signUpButton"
+            "diagram";
+        justify-items: start;
+        padding: 6vh 5vw;
+        margin-bottom: 6rem;
+    }
+    .diagram {
+        display: none;
+    }
+    .text {
+        text-align: left;
+    }
+    .secondLine {
+        font-size: 6vw;
+        line-height: 6vw;
+    }
+    .flagIcons {
+        gap: 5vw;
+    }
+    .flagIcon {
+        width: 5vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .section {
+        height: 45vh;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 20% 20% 20% 40%;
+        grid-template-areas: 
+            "flagIcons"
+            "text"
+            "signUpButton"
+            "diagram";
+        justify-items: stretch;
+        padding: 4vh 5vw;
+        margin-bottom: 2rem;
+    }
+    .diagram {
+        display: none;
+    }
+    .text {
+        text-align: left;
+    }
+    .secondLine {
+        font-size: 6vw;
+        line-height: 6vw;
+    }
+    .flagIcons {
+        justify-content: space-between;
+        gap: 5vw;
+    }
+    .flagIcon {
+        width: 10vw;
+    }
+    .signUpButton {
+        grid-area: signUpButton;
+        height: 6vh;
+    }
+    .diagramNonDesktop {
+        width: 100%;
+    }
 }

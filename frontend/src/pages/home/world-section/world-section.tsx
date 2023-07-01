@@ -7,6 +7,7 @@ import { FORMS_ROUTES } from '../../../consts/routes';
 
 import classes from './world-section.module.css';
 import WorldSectionDiagram from '../../../../images/world-section-diagram.png';
+import WorldSectionDiagramSmall from '../../../../images/world-section-diagram-small.svg';
 import {
     PolishFlagIcon,
     AmericanFlagIcon,
@@ -23,28 +24,28 @@ const WorldSection = () => {
 
     return (
         <section className={classes.section}>
-            <img src={WorldSectionDiagram} />
-            <div className={classes.content}>
-                <div className={classes.flagIcons}>
-                    <img className={classes.flagIcon} src={PolishFlagIcon} />
-                    <img className={classes.flagIcon} src={AmericanFlagIcon} />
-                    <img className={classes.flagIcon} src={PortugueseFlagIcon} />
-                    <img className={classes.flagIcon} src={JapaneseFlagIcon} />
-                    <img className={classes.flagIcon} src={IndianFlagIcon} />
-                </div>
-                <div className={classes.text}>
-                    <h4 className={classes.firstLine}>
-                        {t('home.worldSection.firstLine')}
-                    </h4>
-                    <h2 className={classes.secondLine}>
-                        {t('home.worldSection.secondLine')}
-                    </h2>
-                </div>
-                <TextButton
-                    text={t('buttons.signUp')}
-                    onClick={goToJoin}
-                />
+            <img className={classes.diagram} src={WorldSectionDiagram} />
+            <img className={classes.diagramNonDesktop} src={WorldSectionDiagramSmall} />
+            <div className={classes.flagIcons}>
+                <img className={classes.flagIcon} src={PolishFlagIcon} />
+                <img className={classes.flagIcon} src={AmericanFlagIcon} />
+                <img className={classes.flagIcon} src={PortugueseFlagIcon} />
+                <img className={classes.flagIcon} src={JapaneseFlagIcon} />
+                <img className={classes.flagIcon} src={IndianFlagIcon} />
             </div>
+            <div className={classes.text}>
+                <h4 className={classes.firstLine}>
+                    {t('home.worldSection.firstLine')}
+                </h4>
+                <h2 className={classes.secondLine}>
+                    {t('home.worldSection.secondLine')}
+                </h2>
+            </div>
+            <TextButton
+                className={classes.signUpButton}
+                text={t('buttons.signUp')}
+                onClick={goToJoin}
+            />
         </section>
     );
 };

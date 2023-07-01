@@ -26,37 +26,22 @@
 }
 
 .title {
-    font-size: 3.5rem;
+    font-size: 3vw;
     font-weight: 400;
-    margin-top: 2rem;
-    margin-bottom: 4.5rem;
-}
-
-.dialog {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 4rem 6rem;
-    background-color: var(--WHITE);
+    margin-top: 4vh;
+    margin-bottom: 7vh;
 }
 
 .content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 51rem;
-    height: 33rem;
-    margin-top: 2.5rem;
+    height: 50vh;
+    margin-top: 5vh;
 }
 
 .logo {
-    width: 4rem;
+    width: 3rem;
 }
 
 .languageButtons {
@@ -67,10 +52,16 @@
 }
 
 .languageButton {
-    margin-bottom: 3rem;
+    margin-bottom: 3vh;
 }
 
 @media (min-width: min-medium) and (max-width: max-medium) {
+    .logo {
+        width: 10vw;
+    }
+    .title {
+        font-size: 6vw;
+    }
     .content {
         width: auto;
         height: auto;
@@ -85,6 +76,9 @@
 }
 
 @media (max-width: max-small) {
+    .logo {
+        width: 15vw;
+    }
     .title {
         font-size: 1.75rem;
         line-height: 1.75rem;
