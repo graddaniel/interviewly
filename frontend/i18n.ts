@@ -56,6 +56,8 @@ i18n.use(LanguageDetector)
                             title: 'Choose your gender',
                             maleTitle: 'I am a man',
                             femaleTitle: 'I am a woman',
+                            maleTitleShort: 'Man',
+                            femaleTitleShort: 'Woman',
                         },
                         page3: {
                             title: 'Personal data',
@@ -198,6 +200,8 @@ i18n.use(LanguageDetector)
                             title: 'Wybierz swoją płeć',
                             maleTitle: 'Jestem mężczyzną',
                             femaleTitle: 'Jestem kobietą',
+                            maleTitleShort: 'Mężczyzna',
+                            femaleTitleShort: 'Kobieta',
                         },
                         page3: {
                             title: 'Dane personalne',

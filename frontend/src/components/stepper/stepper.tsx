@@ -5,6 +5,7 @@ import classes from './stepper.module.css';
 
 
 const Stepper = ({
+    className,
     currentStep,
     maxSteps,
     hidden,
@@ -32,7 +33,7 @@ const Stepper = ({
     }
 
     return (
-        <div className={classes.stepper}>
+        <div className={classNames(classes.stepper, className)}>
             {generateSteps()}
         </div>
     );

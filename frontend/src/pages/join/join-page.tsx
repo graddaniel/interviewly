@@ -86,7 +86,22 @@ const JoinPage = () => {
                 <img src={InterviewlyLogo} className={classes.logo}/>
                 <h1 className={classes.title}>{t(`join.page${step}.title`)}</h1>
             </header>
-            <section className={classes.content}>
+            <section className={classNames(
+                classes.content,
+                step !== STEPS.ROLE_SELECTION && classes.noDisplay || ''
+            )}> 
+                <Tile
+                    className={classNames(
+                        classes.tile,
+                    )}                    title={t('join.page1.recruiterTitle')}
+                    icon={RecruiterIcon}
+                    subtitle={t('join.page1.recruiterSubtitle')}
+                    onClick={() => {
+                        setRole('recruiter');
+                        setStep(step => step + 1);
+                        setMaxSteps(4);
+                    }}
+                />
                 <Tile
                     className={classNames(
                         classes.tile,
@@ -101,25 +116,17 @@ const JoinPage = () => {
                         setMaxSteps(5);
                     }}
                 />
-                <Tile
-                    className={classNames(
-                        classes.tile,
-                        step !== STEPS.ROLE_SELECTION && classes.noDisplay || ''
-                    )}                    title={t('join.page1.recruiterTitle')}
-                    icon={RecruiterIcon}
-                    subtitle={t('join.page1.recruiterSubtitle')}
-                    onClick={() => {
-                        setRole('recruiter');
-                        setStep(step => step + 1);
-                        setMaxSteps(4);
-                    }}
-                />
-                {/* STEP 2*/}
+            </section>
+            {/* STEP 2*/}
+            <section className={classNames(
+                classes.horizontalContent,
+                step !== STEPS.GENDER_SELECTION && classes.noDisplay || ''
+            )}>     
                 <Tile
                     className={classNames(
                         classes.tile,
                         classes.smallTile,
-                        step !== STEPS.GENDER_SELECTION && classes.noDisplay || ''
+                        classes.desktop,
                     )}
                     title={t('join.page2.maleTitle')}
                     icon={MaleIcon}
@@ -132,7 +139,7 @@ const JoinPage = () => {
                     className={classNames(
                         classes.tile,
                         classes.smallTile,
-                        step !== STEPS.GENDER_SELECTION && classes.noDisplay || ''
+                        classes.desktop,
                     )}
                     title={t('join.page2.femaleTitle')}
                     icon={FemaleIcon}
@@ -141,11 +148,41 @@ const JoinPage = () => {
                         setStep(step => step + 1);
                     }}
                 />
-                {/* STEP 3 */}
+                <Tile
+                    className={classNames(
+                        classes.tile,
+                        classes.smallTile,
+                        classes.nonDesktop,
+                    )}
+                    title={t('join.page2.maleTitleShort')}
+                    icon={MaleIcon}
+                    onClick={() => {
+                        setGender('male');
+                        setStep(step => step + 1);
+                    }}
+                />
+                <Tile
+                    className={classNames(
+                        classes.tile,
+                        classes.smallTile,
+                        classes.nonDesktop,
+                    )}
+                    title={t('join.page2.femaleTitleShort')}
+                    icon={FemaleIcon}
+                    onClick={() => {
+                        setGender('female');
+                        setStep(step => step + 1);
+                    }}
+                />
+            </section>
+            {/* STEP 3 */}
+            <section className={classNames(
+                classes.content,
+                step !== STEPS.DATA_FORM && classes.noDisplay || ''
+            )}>                
                 <section
                     className={classNames(
                         classes.inputs,
-                        step !== STEPS.DATA_FORM && classes.noDisplay || ''
                     )}
                 >
                     {['name', 'surname', 'email', 'password', 'repeatPassword'].map(
@@ -170,9 +207,13 @@ const JoinPage = () => {
                         error={actionData?.errors?.agreement}
                     />
                 </section>
+            </section>
+            <section className={classNames(
+                classes.content,
+                step !== STEPS.VIDEO_RECORDING && classes.noDisplay || ''
+            )}>
                 <section className={classNames(
                     classes.recorder,
-                    step !== STEPS.VIDEO_RECORDING && classes.noDisplay || ''
                 )}>
                     <p className={classes.recorderText}>{t('join.page4.text')}</p>
                     <CameraTile
@@ -183,7 +224,11 @@ const JoinPage = () => {
                         }}
                     />
                 </section>
-                {step === STEPS.FINAL && (
+            </section>
+            {step === STEPS.FINAL && (
+                <section className={classNames(
+                    classes.content,
+                )}>
                     <div className={classes.finalMessageWrapper}>
                         <p
                             className={classes.recorderText}
@@ -191,31 +236,33 @@ const JoinPage = () => {
                             {t('join.page5.text')}
                         </p>
                         <TextButton
+                            className={classes.finalButton}
                             text={t('join.page5.homeButton')}
                             onClick={goToHome}
                         />
                     </div>
-                )}
-            </section>
-            <section className={classes.navigation}>
+                </section>
+            )}
+            <section className={classNames(
+                classes.navigation,
+                step === STEPS.ROLE_SELECTION && classes.noDisplay || ''
+            )}>
                 <TextButton
+                    className={classes.backButton}
                     text={t('join.back')}
                     onClick={() => setStep(step => step - 1)}
                     hidden={step === STEPS.ROLE_SELECTION || step === STEPS.FINAL}
                     disabled={false}
                     monochromatic={true}
                 />
-                <TextButton
-                    text={'fake'}
-                    onClick={() => {}}
-                    hidden={true}
-                />
                 <Stepper
+                    className={classes.stepper}
                     currentStep={step - 1}
                     maxSteps={maxSteps - 1}
                     hidden={step === 1}
                 />
                 <TextButton
+                    className={classes.skipButton}
                     text={t('join.skip')}
                     onClick={() => setStep(step => step + 1)}
                     hidden={step !== STEPS.VIDEO_RECORDING}
@@ -223,6 +270,7 @@ const JoinPage = () => {
                     monochromatic={true}
                 />
                 <TextButton
+                    className={classes.nextButton}
                     text={t('join.next')}
                     onClick={() => {
                         if (step === STEPS.DATA_FORM || step === STEPS.VIDEO_RECORDING) {
@@ -236,11 +284,17 @@ const JoinPage = () => {
                     disabled={step === STEPS.VIDEO_RECORDING && !isVideoUploaded}
                     monochromatic={false}
                 />
-                <InterviewDialog
-                    isOpen={isInterviewDialogOpen}
-                    onClose={() => setIsInterviewDialogOpen(false)}
-                />
             </section>
+            <InterviewDialog
+                isOpen={isInterviewDialogOpen}
+                onClose={() => setIsInterviewDialogOpen(false)}
+            />
+            <div className={classes.mobileLoginControls}>
+                <p>{t('join.joinControl')}</p>
+                <a href={ROUTES.LOG_IN.PATH}>
+                    {t('buttons.logIn')}
+                </a>
+            </div>
         </Form>
     );
 };
