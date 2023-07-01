@@ -42,11 +42,11 @@ const PasswordResetDialog = ({
                     <>
                         <input type="hidden" value="resetPassword" name="actionType" />
                         <img src={InterviewlyLogo} className={classes.logo}/>
-                        <article className={classes.article}>
-                            <h1 className={classes.header}>
+                        <article className={classes.header}>
+                            <h1 className={classes.title}>
                                 {t('passwordReset.request.header')}
                             </h1>
-                            <p className={classes.text}>
+                            <p className={classes.subtitle}>
                                 {t('passwordReset.request.subheader')}
                             </p>
                         </article>

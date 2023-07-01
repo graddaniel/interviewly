@@ -79,6 +79,11 @@
     .loginButton {
         display: none;
     }
+    .menuButton {
+        width: 10vw;
+        height: 10vw;
+        padding: 0;
+    }
 }
 
 .link {

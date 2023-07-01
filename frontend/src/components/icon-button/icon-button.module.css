@@ -17,8 +17,7 @@
 
 @media (max-width: max-small) {
     .button {
-        height: 2rem;
-        width: 2rem;
-        padding: 0;
+        height: 15vw;
+        width: 15vw;
     }
 }

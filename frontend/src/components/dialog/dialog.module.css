@@ -7,12 +7,12 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    top: 0;
     left: 0;
-    height: 100%;
-    width: 100%;
+    bottom: 0;
+    height: 101vh;
+    width: 101vw;
     box-sizing: border-box;
-    padding: 4rem 6rem;
+    padding: 6vh 5vw;
     background-color: var(--WHITE);
 }
 
