@@ -1,3 +1,6 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
 .section {
     display: flex;
     flex-direction: column;
@@ -25,6 +28,7 @@
     margin: 0;
     font-size: 3.5rem;
     font-weight: 400;
+    text-wrap: nowrap;
 }
 
 .content {
@@ -88,4 +92,78 @@
     border-radius: 1.5rem;
     background-image: url(../../../../images/steps-section-photo.jpg);
     background-size: cover;
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .section {
+        align-items: flex-start;
+    }
+    .title, .subtitle {
+        font-size: 1.75rem;
+    }
+    .titleRow {
+        justify-content: flex-start;
+    }
+    .joinButton {
+        display: none;
+    }
+    .photo {
+        display: none;
+    }
+    .arrow {
+        display: none;
+    }
+    .content {
+        height: auto;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+    .middle {
+        align-items: flex-start;
+        text-align: left;
+    }
+    .right {
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: max-small) {
+    .section {
+        align-items: flex-start;
+    }
+    .title, .subtitle {
+        font-size: 1.75rem;
+    }
+    .titleRow {
+        justify-content: flex-start;
+    }
+    .joinButton {
+        display: none;
+    }
+    .photo {
+        display: none;
+    }
+    .arrow {
+        display: none;
+    }
+    .sectionTitle {
+        font-size: 1.75rem;
+    }
+    .sectionText {
+        font-size: 1rem;
+    }
+    .content {
+        height: auto;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+    .middle {
+        align-items: flex-start;
+        text-align: left;
+    }
+    .right {
+        align-items: flex-start;
+    }
 }
