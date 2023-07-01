@@ -1,40 +1,49 @@
-@value photoMargin: 3.5rem;
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
 
 .section {
-    display: flex;
+    display: grid;
+    height: 55vh;
+    grid-template-columns: 55% 40%;
+    grid-template-rows: 45% 5% 5% 45%;
+    grid-template-areas:
+        "title maximizeBox"
+        "title ."
+        "title ."
+        "buttonsRow photoBox";
+    column-gap: 5%;
     margin-top: 1.5rem;
+    margin-bottom: 7rem;
 }
 
-.leftSide {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
+.interviewDecorator {
+    height: 4vw;
 }
-
 .title {
+    grid-area: title;
     margin: 0;
-    font-size: 7vw;
+    font-size: 6vw;
     font-weight: 400;
-    line-height: 7vw;
+    line-height: 6vw;
 }
 .labelsRow {
     display: flex;
 }
 .buttonsRow {
+    grid-area: buttonsRow;
     display: flex;
+    align-items: flex-end;
     gap: 2rem;
+    margin-top: 2rem;
 }
-
-.rightSide {
-    min-height: calc(100% - photoMargin);
-    display: flex;
-    flex-direction: column;
+.joinButton {
+    height: 4vw;
 }
 
 .maximizeYourTimeBox {
+    grid-area: maximizeBox;
     border-radius: 1.5rem;
-    padding: 9vh 6vw;
+    padding: 1.25rem 2rem;
     background-color: var(--COLOR3);
 }
 
@@ -56,12 +65,95 @@
 .timeBoxText {
     margin: 0;
     text-align: center;
-    font-size: 2.25rem;
+    font-size: 2vw;
     font-weight: 400;
 }
 
 .photoBox {
-    align-self: self-end;
-    width: 20wv;
-    margin-top: photoMargin;
+    grid-area: photoBox;
+    aspect-ratio: 2;
+    justify-self: end;
+    border-radius: 1.5rem;
+    background-position: center;
+    background-size: cover;
+}
+
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .section {
+        display: grid;
+        height: 55vh;
+        grid-template-columns: 100%;
+        grid-template-rows: 50% 25% 25%;
+        grid-template-areas:
+            "title"
+            "maximizeBox"
+            "buttonsRow";
+        margin-top: 3.5rem;
+        margin-bottom: 6rem;
+    }
+    .title {
+        font-size: 8vh;
+        line-height: 8vh;
+    }
+    .joinButton {
+        height: 6vh;
+    }
+    .interviewDecorator {
+        display: none;
+    }
+    .maximizeYourTimeBox {
+        display: flex;
+        justify-content: space-around;
+    }
+    .timeBoxIcons {
+        margin: 0;
+    }
+    .timeBoxText {
+        font-size: 2.5vh;
+    }
+    .photoBox {
+        display: none;
+    }
+}
+
+@media (max-width: max-small) {
+    .section {
+        display: grid;
+        height: 45vh;
+        grid-template-columns: 100%;
+        grid-template-rows: 40% 30% 30%;
+        grid-template-areas:
+            "title"
+            "maximizeBox"
+            "buttonsRow";
+        margin: 2rem 0;
+    }
+    .title {
+        font-size: 4vh;
+        line-height: 4vh;
+    }
+    .joinButton {
+        width: 100%;
+        height: 2.5rem;
+        padding: 0.75rem;
+    }
+    .interviewDecorator {
+        display: none;
+    }
+    .maximizeYourTimeBox {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .timeBoxIcons {
+        justify-content: center;
+        margin: 0;
+    }
+    .timeBoxText {
+        font-size: 2.5vh;
+    }
+    .photoBox {
+        display: none;
+    }
 }

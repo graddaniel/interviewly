@@ -18,42 +18,40 @@ const InitialSection = () => {
 
     return (
         <section className={classes.section}>
-            <div className={classes.leftSide}>
-                <div>
-                    <h2 className={classes.title}>{t('home.initialSection.title')}</h2>
-                </div>
-                <div className={classes.buttonsRow}>
-                    <TextButton
-                        text={t('buttons.signUp')}
-                        onClick={() => navigate(FORMS_ROUTES.JOIN.PATH)}
-                    />
-                    <img src={HomeInterviewDecorator}/>
-                </div>
+            <div>
+                <h2 className={classes.title}>{t('home.initialSection.title')}</h2>
             </div>
-            <div className={classes.rightSide}>
-                <div className={classes.maximizeYourTimeBox}>
-                    <div className={classes.timeBoxIcons}>
-                        <img
-                            className={classes.clockIcon}
-                            src={ClockDashedIcon}
-                        />
-                        <div className={classes.decorators}>
-                            <img
-                                className={classes.decoratorImage}
-                                src={DecoratorImage}
-                            />
-                            <img
-                                className={classes.decoratorImage}
-                                src={DecoratorImage}
-                            />
-                        </div>
-                    </div>
-                    <h5 className={classes.timeBoxText}>{t('home.initialSection.timeBoxText')}</h5>
-                </div>
-                <img
-                    className={classes.photoBox}
-                    src={Photo}
+            <div className={classes.buttonsRow}>
+                <TextButton
+                    className={classes.joinButton}
+                    text={t('buttons.signUp')}
+                    onClick={() => navigate(FORMS_ROUTES.JOIN.PATH)}
                 />
+                <img className={classes.interviewDecorator} src={HomeInterviewDecorator}/>
+            </div>
+            <div className={classes.maximizeYourTimeBox}>
+                <div className={classes.timeBoxIcons}>
+                    <img
+                        className={classes.clockIcon}
+                        src={ClockDashedIcon}
+                    />
+                    <div className={classes.decorators}>
+                        <img
+                            className={classes.decoratorImage}
+                            src={DecoratorImage}
+                        />
+                        <img
+                            className={classes.decoratorImage}
+                            src={DecoratorImage}
+                        />
+                    </div>
+                </div>
+                <h5 className={classes.timeBoxText}>{t('home.initialSection.timeBoxText')}</h5>
+            </div>
+            <div
+                style={{ backgroundImage: `url(${Photo})`}}
+                className={classes.photoBox}
+            >
             </div>
         </section>
     );

@@ -15,7 +15,6 @@ const HomePage = () => {
     return (
         <article className={classes.homePage}>
             <InitialSection />
-            <hr className={classes.hr}/>
             <StepsSection />
             <WorldSection />
             <OpenAISection />

@@ -51,7 +51,7 @@ const StepsSection = () => {
                             text="1"
                             round={true}
                         />
-                        <img src={UploadIcon} />
+                        <img className={classes.sectionIcon} src={UploadIcon} />
                     </div>
                     <div>
                         <h4 className={classes.sectionTitle}>
@@ -62,11 +62,12 @@ const StepsSection = () => {
                         </p>
                     </div>
                     <TextButton
+                        className={classes.joinButton}
                         text={t('buttons.signUp')}
                         onClick={() => navigate(FORMS_ROUTES.JOIN.PATH)}
                     />
                 </div>
-                <img src={ArrowRightIcon}/>
+                <img className={classes.arrow} src={ArrowRightIcon}/>
                 <div className={classes.middle}>
                     <div className={classes.icons}>
                         <DashedRoundLabel
@@ -74,7 +75,7 @@ const StepsSection = () => {
                             text="2"
                             round={true}
                         />
-                        <img src={CharactersIcon} />
+                        <img className={classes.sectionIcon} src={CharactersIcon} />
                     </div>
                     <div>
                         <h4 className={classes.sectionTitle}>
@@ -92,7 +93,7 @@ const StepsSection = () => {
                         <img src={ButtonCrossIconRed} />
                     </div>
                 </div>
-                <img src={ArrowRightIcon}/>
+                <img className={classes.arrow} src={ArrowRightIcon}/>
                 <div className={classes.right}>
                     <div className={classes.icons}>
                         <DashedRoundLabel
@@ -100,7 +101,7 @@ const StepsSection = () => {
                             text="3"
                             round={true}
                         />
-                        <img src={AssesmentIcon}/>
+                        <img className={classes.sectionIcon} src={AssesmentIcon}/>
                     </div>
                     <div className={classes.rightText}>
                         <h4
@@ -113,6 +114,7 @@ const StepsSection = () => {
                         </p>
                     </div>
                     <TextButton
+                        className={classes.joinButton}
                         text={t('buttons.signUp')}
                         onClick={() => navigate(FORMS_ROUTES.JOIN.PATH)}
                     />
