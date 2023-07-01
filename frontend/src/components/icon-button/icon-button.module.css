@@ -1,3 +1,6 @@
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
 .button {
     display: flex;
     justify-content: center;
@@ -10,4 +13,12 @@
     border: 0.075rem solid black;
     border-radius: 2rem;
     font-size: 1rem;
+}
+
+@media (max-width: max-small) {
+    .button {
+        height: 2rem;
+        width: 2rem;
+        padding: 0;
+    }
 }

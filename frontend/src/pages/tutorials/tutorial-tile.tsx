@@ -48,16 +48,23 @@ const TutorialTile = ({
             )}>{title}</h5>
             {horizontalFlow && (
                 <div className={classes.stats}>
-                    <span>{date}</span>
-                    <span className={classes.views}>
-                        <img className={classes.eyeIcon} src={EyeIcon}/> {viewsCount} views
+                    <img className={classes.interviewlyIconHorizontal} src={InterviewlyUserIcon} />
+                    <span className={classes.authorNameHorizontal}>Interviewly</span>
+                    <span className={classes.date}>{date}</span>
+                    <span className={classes.viewsHorizontal}>
+                        <img className={classes.eyeIcon} src={EyeIcon}/>
+                        {viewsCount} views
                     </span>
                 </div>
             )}
             {!horizontalFlow && (<>
                 <div className={classes.author}>
-                    <img src={InterviewlyUserIcon} />
+                    <img className={classes.interviewlyIcon} src={InterviewlyUserIcon} />
                     <span className={classes.authorName}>Interviewly</span>
+                    <span className={classes.views}>
+                        <img className={classes.eyeIcon} src={EyeIcon}/>
+                        {viewsCount} views
+                    </span>
                 </div>
             </>)}
         </div>

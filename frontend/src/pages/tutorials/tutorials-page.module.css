@@ -1,3 +1,6 @@
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
 .tutorials {
     padding: 3rem 8rem;
 }
@@ -25,7 +28,9 @@
 .headerLink {
     color: var(--BLACK);
 }
-
+.joinButton {
+    display: none;
+}
 
 .content {
     margin: 5rem 0;
@@ -40,4 +45,95 @@
     column-gap: 8%;
     row-gap: 5rem;
     margin-top: 5rem;
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .tutorials {
+        padding: 3rem 2rem;
+    }
+    .header {
+        grid-template-columns: 100%;
+        grid-template-rows: auto auto auto auto;
+        grid-template-areas: 
+        "title"
+        "subscriptionControls"
+        "headerLink"
+        "subtitle";
+        row-gap: 3rem;
+    }
+    .title {
+        grid-area: title;
+        font-size: 4rem;
+        line-height: 4rem;
+    }
+    .subtitle {
+        grid-area: subtitle;
+        font-size: 2.25rem;
+        line-height: 2.25rem;
+    }
+    .subscriptionControls {
+        grid-area: subscriptionControls;
+    }
+    .headerLink {
+        grid-area: headerLink;
+    }
+    .joinButton {
+        display: none;
+    }
+    .content {
+        margin: 3.5rem 0;
+    }
+    .remainingTutorials {
+        margin-top: 3.5rem;
+    }
+}
+
+@media (max-width: max-small) {
+    .tutorials {
+        padding: 1.5rem;
+    }
+    .header {
+        grid-template-columns: 100%;
+        grid-template-rows: auto auto auto;
+        grid-template-areas: 
+        "title"
+        "joinButton"
+        "subtitle";
+        row-gap: 3rem;
+    }
+    .title {
+        grid-area: title;
+        font-size: 1.75rem;
+        line-height: 1.75rem;
+    }
+    .subtitle {
+        grid-area: subtitle;
+        font-size: 2.25rem;
+        line-height: 2.25rem;
+    }
+    .subscriptionControls {
+        grid-area: subscriptionControls;
+        display: none;
+    }
+    .headerLink {
+        grid-area: headerLink;
+        display: none;
+    }
+    .joinButton {
+        grid-area: joinButton;
+        display: block;
+        height: 2.5rem;
+        padding: 0.75rem;
+        font-size: 0.75rem;
+        line-height: 0.75rem;
+    }
+    .content {
+        margin: 3rem 0 2rem;
+    }
+    .remainingTutorials {
+        display: flex;
+        flex-direction: column;
+        margin-top: 2rem;
+        row-gap: 2rem;
+    }
 }

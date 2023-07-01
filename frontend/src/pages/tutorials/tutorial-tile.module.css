@@ -1,3 +1,6 @@
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
 .thumbnail {
     grid-area: thumbnail;
     width: 100%;
@@ -41,10 +44,16 @@
     justify-content: space-between;
     align-items: flex-end;
 }
+.interviewlyIconHorizontal {
+    display: none;
+}
+.views {
+    display: none;
+}
 .eyeIcon {
     width: 1rem;
 }
-.views {
+.viewsHorizontal {
     display: flex;
     gap: 0.5rem;
 }
@@ -55,4 +64,89 @@
 }
 .authorName {
     font-size: 1.2rem;
+}
+.authorNameHorizontal {
+    display: none;   
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .horizontalTile {
+        display: grid;
+        grid-template-columns: 45% 50%;
+        grid-template-rows: auto auto;
+        column-gap: 5%;
+        grid-template-areas:
+            "thumbnail title"
+            "thumbnail stats";
+    }
+    .thumbnail {
+        aspect-ratio: 1;
+        height: auto;
+    }
+    .title {
+        font-size: 1.5rem;
+    }
+    .titleHorizontal {
+        font-size: 2.5rem;
+    }
+    .interviewlyIcon, .interviewlyIconHorizontal {
+        display: block;
+        width: 2.5rem;
+    }
+    .author {
+        justify-content: space-between;
+    }
+    .authorName, .authorNameHorizontal {
+        display: none;
+    }
+    .date {
+        display: none;
+    }
+    .views, .viewsHorizontal {
+        display: flex;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: max-small) {
+    .tile, .horizontalTile {
+        display: flex;
+        flex-direction: column;
+    }
+    .thumbnail {
+        aspect-ratio: 7/4;
+        height: auto;
+    }
+    .title {
+        font-size: 1.25rem;
+        margin: 1.5rem 0;
+    }
+    .stats {
+        align-items: center;
+    }
+    .author {
+        justify-content: space-between;
+    }
+    .date {
+        display: none;
+    }
+    .interviewlyIconHorizontal {
+        display: block;
+        width: 1.75rem;
+    }
+    .interviewlyIcon, .interviewlyIconHorizontal {
+        display: block;
+        width: 1.75rem;
+    }
+    .authorName, .authorNameHorizontal {
+        position: relative;
+        left: -12%;
+        display: block;
+        font-size: 0.8rem;
+    }
+    .views, .viewsHorizontal {
+        display: flex;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+    }
 }
