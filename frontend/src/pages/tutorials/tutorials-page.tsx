@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 
 import SubscriptionControls from '../../components/subscription-controls/subscription-controls';
 import TutorialTile from './tutorial-tile';
+import TextButton from '../../components/text-button/text-button';
+import { FORMS_ROUTES } from '../../consts/routes';
 
 import classes from './tutorials-page.module.css';
 import TutorialVideoDialog from './tutorial-video-dialog';
@@ -40,6 +43,9 @@ const TUTORIALS = [{
 const TutorialsPage = () => {
     const [ openedVideo, setOpenedVideo ] = useState<string>('');
     const { t, i18n } = useTranslation();
+    const navigate = useNavigate();
+
+    const goToJoin = useCallback(() => navigate(FORMS_ROUTES.JOIN.PATH), []);
 
     const { resolvedLanguage } = i18n;
 
@@ -63,6 +69,11 @@ const TutorialsPage = () => {
                 />
                 <h4 className={classes.subtitle}>Latest</h4>
                 <a className={classes.headerLink}href="http://youtube.com">Go to the YouTube channel</a>
+                <TextButton
+                    className={classes.joinButton}
+                    text={t('buttons.signUp')}
+                    onClick={goToJoin}
+                />
             </section>
             <section className={classes.content}>
                 <div className={classes.latestTutorial}>
@@ -78,6 +89,7 @@ const TutorialsPage = () => {
                         <TutorialTile
                             key={tutorial.imageUrl}
                             onClick={() => setOpenedVideo(tutorial.videoUrl)}
+                            viewsCount={123}
                             {...tutorial}
                         />
                     ))}

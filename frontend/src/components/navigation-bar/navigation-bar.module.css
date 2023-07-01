@@ -45,6 +45,12 @@
         width: calc(100% - 2 * var(--side-margin));
         margin: 1.5rem var(--side-margin);
     }
+    .leftGroup {
+        width: auto;
+    }
+    .rightGroup {
+        width: auto;
+    }
     .joinButton {
         margin-right: 1.5rem;
     }
