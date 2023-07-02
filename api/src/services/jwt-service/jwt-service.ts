@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import config from 'config';
+import 'dotenv/config';
 
 import MissingJWTSecretError from './errors/missing-jwt-secret-error.js';
 import JWTVerificationFailedError from './errors/jwt-verification-failed-error.js';

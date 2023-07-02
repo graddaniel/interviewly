@@ -36,6 +36,8 @@ export default class AccountsController {
         req: AuthenticationRequest,
         res: Response,
     ): Promise<void> => {
+        const { notify } = req.query;
+
         const {
             email,
             password,
@@ -44,6 +46,8 @@ export default class AccountsController {
         const {
             name,
             surname,
+            role,
+            gender,
         } = req.body;
 
         await AccountsValidator.validateNewAccount({
@@ -51,6 +55,8 @@ export default class AccountsController {
             password,
             name,
             surname,
+            role,
+            gender,
         });
 
         const jwtToken = await this.accountsService.register(
@@ -58,6 +64,9 @@ export default class AccountsController {
             password,
             name,
             surname,
+            role,
+            gender,
+            !!notify,
         );
 
         res.status(StatusCodes.OK).send(jwtToken);
