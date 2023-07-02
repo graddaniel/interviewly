@@ -13,12 +13,23 @@ const SURNAME_MAX_LENGTH = 32;
 const PASSWORD_LENGTH = 64; //SHA256
 const EMAIL_MAX_LENGTH = 64;
 
+enum Role {
+    RECRUITER = 'recruiter',
+    RESPONDENT = 'respondent',
+};
+
+enum Gender {
+    MALE = 'male',
+    FEMALE = 'female',
+};
+
 export default class AccountModel extends Model {
     declare id: number;
     declare uuid: string;
     declare name: string;
     declare surname: string;
-    declare passwordHash: string;
+    declare role: Role;
+    declare passwordHash: Gender;
     declare email: string;
     declare confirmed: boolean;
     declare reset_request: ResetRequestModel;
@@ -41,6 +52,14 @@ AccountModel.init({
     },
     surname: {
         type: DataTypes.STRING(SURNAME_MAX_LENGTH),
+        allowNull: false,
+    },
+    role: {
+        type: DataTypes.ENUM('recruiter', 'respondent'),
+        allowNull: false,
+    },
+    gender: {
+        type: DataTypes.ENUM('male', 'female'),
         allowNull: false,
     },
     passwordHash: {

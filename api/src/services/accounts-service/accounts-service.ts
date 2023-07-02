@@ -55,6 +55,9 @@ export default class AccountsService {
         password: string,
         name: string,
         surname: string,
+        role: string,
+        gender: string,
+        notify?: boolean,
     ): Promise<string> => {
         const account = await AccountModel.findOne({
             where: {
@@ -73,14 +76,23 @@ export default class AccountsService {
             name,
             surname,
             confirmed: false,
+            role,
+            gender,
         });
 
-        console.log("accId", newAccount.uuid);
         await this.mailService.send(
             newAccount.email,
             'Confirm account',
             `To confirm account click: ${newAccount.uuid}`
         );
+
+        if (notify) {
+            await this.mailService.send(
+                'joanna.zabawa@stratega.pl',
+                'New account',
+                `New account has been created: ${newAccount.email} ${newAccount.role}`
+            );
+        }
 
         return JWTService.sign({
             uuid: newAccount.uuid,
@@ -126,7 +138,6 @@ export default class AccountsService {
             accountId: account.id,
         });
 
-        console.log("reqId", request.uuid)
         await this.mailService.send(
             account.email,
             'Password reset confirmation',

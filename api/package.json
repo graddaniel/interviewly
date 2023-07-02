@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc && JWT_SECRET=secret123 node dist/index.js",
+    "start": "tsc && node dist/index.js",
     "start:nodemon": "./node_modules/nodemon/bin/nodemon.js -e ts --exec \"npm start\""
   },
   "author": "Daniel Grad",

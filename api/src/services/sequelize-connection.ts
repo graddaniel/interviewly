@@ -1,6 +1,7 @@
 import cls from 'cls-hooked';
 import { Sequelize } from 'sequelize';
 import config from 'config';
+import 'dotenv/config';
 
 type DatabaseConfig = {
     username: string;
@@ -10,6 +11,10 @@ type DatabaseConfig = {
     name: string;
 };
 
+const username = process.env.DATABASE_USER as string;
+const password = process.env.DATABASE_PASSWORD as string;
+const host = process.env.DATABASE_HOST as string;
+
 const namespace = cls.createNamespace('sequelize');
 Sequelize.useCLS(namespace);
 
@@ -18,9 +23,6 @@ export default class SequelizeConnection {
 
     private static init = () => {
         const {
-            username,
-            password,
-            host,
             port,
             name,
         } = config.get("database") as DatabaseConfig;

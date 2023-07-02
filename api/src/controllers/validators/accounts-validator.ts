@@ -30,6 +30,12 @@ const newAccountSchema = object({
         .required()
         .min(validationConfig.surname.minLength)
         .max(validationConfig.surname.maxLength),
+    role: string()
+        .required()
+        .oneOf(['recruiter', 'respondent']),
+    gender: string()
+        .required()
+        .oneOf(['male', 'female']),
 });
 
 export default class AccountsValidator {
