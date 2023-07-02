@@ -52,7 +52,6 @@ export default class Validator {
     }
 
     static validateLogInData = async (logInData) => {
-        console.log("logInData", logInData)
         const errors: any = await Validator._validateParams(
             ['email', 'password'],
             logInData

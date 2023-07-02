@@ -1,21 +1,28 @@
 import React, { useState, useCallback } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { redirect, useSearchParams } from 'react-router-dom';
 
 import LogInForm from './log-in-form';
 import PasswordResetDialog from '../../components/password-reset-dialog/password-reset-dialog';
+import useAuth from '../../hooks/useAuth';
 
 import classes from './log-in-page.module.css';
+import ROUTES from '../../consts/routes';
 
 
 const LogInPage = () => {
     const [ passwordResetDialogOpen, setPasswordResetDialogOpen ] = useState(false);
     const [ searchParams, setSearchParams ] = useSearchParams();
+    const auth = useAuth();
 
     const openPasswordResetDialog = useCallback(() => setPasswordResetDialogOpen(true), []);
     const closePasswordResetDialog = useCallback(() => {
         setPasswordResetDialogOpen(false);
         setSearchParams('');
     }, []);
+
+    if (auth.currentUser) {
+        redirect(ROUTES.USER_PROFILE.PATH);
+    }
 
     return (
         <main className={classes.content}>

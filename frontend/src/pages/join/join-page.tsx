@@ -42,10 +42,13 @@ const JoinPage = () => {
     const [ gender, setGender ] = useState('');
     const [ isInterviewDialogOpen, setIsInterviewDialogOpen ] = useState(false);
     const [ isVideoUploaded, setIsVideoUploaded ] = useState(false);
+    const [ isLoading, setIsLoading ] = useState(false);
 
     const goToHome = useCallback(() => navigate(ROUTES.HOME.PATH), []);
 
     useEffect(() => {
+        setIsLoading(false);
+
         console.log("useEffect actionData", actionData)
         if (!actionData) {
             return;
@@ -67,6 +70,8 @@ const JoinPage = () => {
     return (
         <Form method="post" className={classes.page} ref={formRef}>
             <input type="hidden" value={step} name="step" />
+            <input type="hidden" value={gender} name="gender" />
+            <input type="hidden" value={role} name="role" />
             <section className={classNames(
                 classes.controls,
                 step === 5 && classes.hidden || '',
@@ -264,9 +269,12 @@ const JoinPage = () => {
                 <TextButton
                     className={classes.skipButton}
                     text={t('join.skip')}
-                    onClick={() => setStep(step => step + 1)}
+                    onClick={() => {
+                        setIsLoading(true);
+                        submit(formRef.current)
+                    }}
                     hidden={step !== STEPS.VIDEO_RECORDING}
-                    disabled={false}
+                    disabled={isLoading}
                     monochromatic={true}
                 />
                 <TextButton
@@ -274,14 +282,14 @@ const JoinPage = () => {
                     text={t('join.next')}
                     onClick={() => {
                         if (step === STEPS.DATA_FORM || step === STEPS.VIDEO_RECORDING) {
-                            console.log("submitting")
+                            setIsLoading(true);
                             submit(formRef.current);
                         } else {
                             setStep(step => step + 1);
                         }
                     }}
                     hidden={step !== STEPS.DATA_FORM && step !== STEPS.VIDEO_RECORDING}
-                    disabled={step === STEPS.VIDEO_RECORDING && !isVideoUploaded}
+                    disabled={isLoading || step === STEPS.VIDEO_RECORDING && !isVideoUploaded}
                     monochromatic={false}
                 />
             </section>

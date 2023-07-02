@@ -27,6 +27,9 @@ import ROUTES, { FORMS_ROUTES } from './src/consts/routes';
 
 import './src/consts/colors.css';
 import './i18n';
+import GuardedRoute from './src/utils/protected';
+import ProfilePage from './src/pages/home/profile-page/profile-page';
+import Protected from './src/utils/protected';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -54,6 +57,14 @@ const router = createBrowserRouter(
             <Route
                 path={ROUTES.TUTORIALS.PATH}
                 element={<TutorialsPage />}
+            />
+            <Route
+                path={ROUTES.USER_PROFILE.PATH}
+                element={
+                    <Protected requiredRoles={[]}>
+                        <ProfilePage />
+                    </Protected>
+                }
             />
             <Route
                 path={ROUTES.FORMS.PATH}
