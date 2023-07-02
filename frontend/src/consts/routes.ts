@@ -29,7 +29,11 @@ const ROUTES = {
     },
     TERMS: {
         TITLE: 'Terms',
-        PATH: 'terms',
+        PATH: '/terms',
+    },
+    USER_PROFILE: {
+        TITLE: 'Profile',
+        PATH: '/profile'
     },
     FORMS: {
         PATH: '/forms'

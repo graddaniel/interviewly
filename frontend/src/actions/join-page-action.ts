@@ -1,3 +1,4 @@
+import AuthService from '../services/auth-service';
 import Validator from '../utils/validator';
 
 
@@ -6,6 +7,8 @@ type JoinData = {
     surname: string;
     email: string;
     password: string;
+    role: string;
+    gender: string;
     repeatPassword: string;
     step: string;
     agreement?: string;
@@ -30,13 +33,13 @@ const JoinPageAction = async ({
     console.log("step", step)
     if (step === 3) {
         //TODO TEMPORARY REMOVE IT AFTER THE VIDEO RECORDING IS FINISHED
-        return {
-            success: true,
-        }
+        // return {
+        //     success: true,
+        // }
         try {
             await Validator.validateJoinData(formData);
 
-            if (agreement !== 'on') {
+            if (!agreement) {
                 return {
                     success: false,
                     errors: {
@@ -51,7 +54,23 @@ const JoinPageAction = async ({
             }
         }
     } else if (step === 4) {
-        //submit everything
+        const {
+            email,
+            password,
+            name,
+            surname,
+            role,
+            gender,
+        } = formData;
+
+        await AuthService.register(
+            email,
+            password,
+            name,
+            surname,
+            role,
+            gender,
+        );
     }
 
     return {

@@ -109,23 +109,22 @@ const SubscriptionTile = ({
                 </div>
             </header>
             <hr className={classes.divider}/>
-            <div className={classes.tileContent}>
-                <ul className={classes.features}>
-                    {features.map(({
-                        icon,
-                        name,
-                    }) => (
-                        <li className={classes.feature} key={name}>
-                            <img className={classes.icon} src={icon} />
-                            <span>{name}</span>
-                        </li>
-                    ))}
-                </ul>
-                <TextButton
-                    text={t('home.subscriptionSection.subscriptionButtonText')}
-                    onClick={() => console.log('TODO implement')}
-                />
-            </div>
+            <ul className={classes.features}>
+                {features.map(({
+                    icon,
+                    name,
+                }) => (
+                    <li className={classes.feature} key={name}>
+                        <img className={classes.icon} src={icon} />
+                        <span>{name}</span>
+                    </li>
+                ))}
+            </ul>
+            <TextButton
+                className={classes.subscribeButton}
+                text={t('home.subscriptionSection.subscriptionButtonText')}
+                onClick={() => console.log('TODO implement')}
+            />
         </div>
     );
 }
@@ -145,7 +144,7 @@ const SubscriptionsSection = () => {
                     </h2>
                 </div>
                 <div className={classes.rightSide}>
-                    <img src={ButtonCheckDashedIcon} />
+                    <img className={classes.dashedTick} src={ButtonCheckDashedIcon} />
                     <p className={classes.text}>
                         {t('home.subscriptionSection.labelText1')}
                     </p>

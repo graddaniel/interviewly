@@ -38,6 +38,7 @@ const Checkbox = ({
                 name={name}
                 checked={checked}
                 onChange={toggleCheckbox}
+                value={name}
             />
             {label}
         </label>
