@@ -26,6 +26,8 @@
 
 import adapter from './adapter';
 
+const MAX_RETRIES = 999999;
+
 // List of sessions
 Janus.sessions = new Map();
 
@@ -693,7 +695,7 @@ function Janus(gatewayCallbacks) {
 			error: function(textStatus, errorThrown) {
 				Janus.error(textStatus + ":", errorThrown);
 				retries++;
-				if(retries > 3) {
+				if(retries > MAX_RETRIES) {
 					// Did we just lose the server? :-(
 					connected = false;
 					gatewayCallbacks.error("Lost connection to the server (is it down?)");

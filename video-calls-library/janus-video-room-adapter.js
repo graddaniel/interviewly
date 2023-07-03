@@ -38,9 +38,7 @@ var localTracks = {}, localVideos = 0, remoteTracks = {};
 
 class JanusConfig {
     constructor(janusVideoRoomAdapter) {
-        this.server = janusVideoRoomAdapter.serverConfig.useHttps
-            ? "https://" + janusVideoRoomAdapter.serverConfig.host + ":8089/janus"
-            : "http://" + janusVideoRoomAdapter.serverConfig.host + ":8088/janus";
+        this.server = janusVideoRoomAdapter.serverConfig.host;
         this.iceServers = janusVideoRoomAdapter.serverConfig.iceServers;
 
         this.success = () => janusVideoRoomAdapter.janus.attach(janusVideoRoomAdapter._generateJanusCallbacks());

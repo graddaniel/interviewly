@@ -98,7 +98,8 @@ const JoinPage = () => {
                 <Tile
                     className={classNames(
                         classes.tile,
-                    )}                    title={t('join.page1.recruiterTitle')}
+                    )}
+                    title={t('join.page1.recruiterTitle')}
                     icon={RecruiterIcon}
                     subtitle={t('join.page1.recruiterSubtitle')}
                     onClick={() => {
@@ -221,13 +222,19 @@ const JoinPage = () => {
                     classes.recorder,
                 )}>
                     <p className={classes.recorderText}>{t('join.page4.text')}</p>
-                    <CameraTile
-                        className={classes.cameraTile}
-                        onClick={() => {
-                            setIsInterviewDialogOpen(true);
-                            setIsVideoUploaded(true);
-                        }}
-                    />
+                    {isLoading
+                        ? (
+                            <p className={classes.recorderText}>{t('join.page4.submissionText')}...</p>
+                        ) : (
+                            <CameraTile
+                                className={classes.cameraTile}
+                                onClick={() => {
+                                    setIsInterviewDialogOpen(true);
+                                    setIsVideoUploaded(true);
+                                }}
+                            />
+                        )
+                    }
                 </section>
             </section>
             {step === STEPS.FINAL && (
@@ -293,10 +300,12 @@ const JoinPage = () => {
                     monochromatic={false}
                 />
             </section>
-            <InterviewDialog
-                isOpen={isInterviewDialogOpen}
-                onClose={() => setIsInterviewDialogOpen(false)}
-            />
+            {isInterviewDialogOpen && (
+                <InterviewDialog
+                    isOpen={isInterviewDialogOpen}
+                    onClose={() => setIsInterviewDialogOpen(false)}
+                />
+            )}
             <div className={classes.mobileLoginControls}>
                 <p>{t('join.joinControl')}</p>
                 <a href={ROUTES.LOG_IN.PATH}>

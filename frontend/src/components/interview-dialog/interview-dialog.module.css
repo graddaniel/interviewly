@@ -1,0 +1,29 @@
+.content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.placeholder {
+    width: 50%;
+    height: 50%;
+    border-radius: 1.5rem;
+    background-color: var(--BLACK);
+}
+
+.recording {
+    border: 3px solid var(--RED);
+}
+
+.video {
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5rem;
+}
+
+.button {
+    margin-top: 2rem;
+}
