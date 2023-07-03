@@ -74,12 +74,18 @@ i18n.use(LanguageDetector)
                         page4: {
                             title: 'Record a video about yourself',
                             text: '(max. 10 minutes)',
+                            submissionText: 'Submitting the form'
                         },
                         page5: {
                             title: 'You are almost a part of out family!',
                             text: 'We have sent you an email with a confirmation link.',
                             homeButton: 'Home',
                         },
+                        interviewDialog: {
+                            record: "Record",
+                            stop: "Stop",
+                            finish: "Finish",
+                        }
                     },
                     home: {
                         initialSection: {
@@ -218,7 +224,18 @@ i18n.use(LanguageDetector)
                         page4: {
                             title: 'Nagraj wideo o sobie',
                             text: '(max. 10 minut)',
+                            submissionText: 'Wysyłam formularz'
                         },
+                        page5: {
+                            title: 'Już prawie jesteś częścią naszej rodziny!',
+                            text: 'Wysłaliśmy Ci na e-mail link do potwierdzenia rejestracji.',
+                            homeButton: 'Powrót',
+                        },
+                        interviewDialog: {
+                            record: "Nagrywaj",
+                            stop: "Zakończ",
+                            finish: "Zamknij",
+                        }
                     },
                     home: {
                         initialSection: {

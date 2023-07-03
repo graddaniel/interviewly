@@ -2,12 +2,22 @@ import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
 import React, { useState, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
-import { JanusVideoRoomAdapter, Utils } from 'video-calls-library';
-import * as RecorderLibrary from './janus-record-play-adapter';
+import VideoCalls from 'video-calls-library';
 
-import { useStateCallback } from './useStateCallback'
+import { useStateCallback } from './useStateCallback';
+
+
+const {
+    videoRoomAdapter,
+    recordPlayAdapter: RecorderLibrary,
+} = VideoCalls;
+
+const { JanusVideoRoomAdapter, Utils } = videoRoomAdapter;
 
 const USER_TYPES = ['Researcher', 'Translator', 'Respondee', 'Recorder'];
+
+const useVideoChat = true;
+const server = 'https://id8d03szbk.execute-api.eu-central-1.amazonaws.com/prod/janus'
 
 const Application = () => {
     const [janusAdapter, setJanusAdapter] = useState<any>();
@@ -46,11 +56,6 @@ const Application = () => {
         janusAdapter.setUserType(userType)
     },[userType, janusAdapter]);
 
-    /*
-    "room": 2653673015024348,
-    "authToken": "auth-ba34563b-1af5-4730-b4fe-8e11aec43eb5",
-    "userToken": "token-0aaa6fb3-4237-459c-8022-d6f27f2a7b6a"
-    */
     console.log("DANIEL remoteVideos", remoteVideos, remoteAudios, slots)
     console.log("ROOM", Utils.getQueryStringValue("room"), Utils.getQueryStringValue("roomToken"))
     useEffect(() => {
@@ -62,14 +67,13 @@ const Application = () => {
                 || Utils.getQueryStringValue("msid") === "true",
             userType,
             serverConfig: {
-                host: 'localhost',
+                host: server,
                 iceServers: null,
-                useHttps: false,
             },
-            token: 'token1234',//'token1234',
-            roomToken: Utils.getQueryStringValue("roomToken") !== ""
-                ? Utils.getQueryStringValue("roomToken")
-                : null,
+            //token: 'token1234',//'token1234',
+            // roomToken: Utils.getQueryStringValue("roomToken") !== ""
+            //     ? Utils.getQueryStringValue("roomToken")
+            //     : null,
         }, {
             janusStarting: () => {}, // disable start button
             muteStateChanged: (muted: boolean) => setMuted(muted),
@@ -229,7 +233,7 @@ const Application = () => {
         </React.Fragment>
     )
 }
-/*
+
 const RecorderApplication = () => {
     const [ isRecordingStarted, setIsRecordingStarted ] = useState(false);
     const [ recordName, setRecordName ] = useState('');
@@ -246,6 +250,9 @@ const RecorderApplication = () => {
             onRemoteVideoTrackAdded: (track, cb) => cb(),
             getRemoteVideoElement: (mid) => document.getElementById('remotevideo'),
             newRecordingsListReceived: (list) => setRecordingsList(list),
+        }, {
+            server,
+            iceServers: null,
         });
     }, []);
 
@@ -310,7 +317,7 @@ const RecorderApplication = () => {
         </React.Fragment>
     )
 }
-*/
+
 const container = document.getElementById('root');
 const root = createRoot(container!);
-root.render(<Application />);
+root.render(useVideoChat ? <Application /> : <RecorderApplication />);

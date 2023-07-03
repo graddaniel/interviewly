@@ -2,7 +2,7 @@
   "name": "video-calls-library",
   "version": "1.0.0",
   "description": "",
-  "main": "janus-video-room-adapter.js",
+  "main": "index.js",
   "author": "Daniel Grad",
   "license": "ISC",
   "dependencies": {

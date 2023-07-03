@@ -50,6 +50,7 @@ const TextInput = ({
                 onClick={focusInput}
             >
                 <input
+                    id={name}
                     ref={inputRef}
                     className={classNames(
                         classes.input,
