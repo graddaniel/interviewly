@@ -35,9 +35,20 @@
 }
 
 @media (max-width: max-small) {
-    .dialog {
-        display: flex;
-        align-items: center;
-        padding: 1.25rem;
+    .subscribeControls {
+        gap: 7vw;
+    }
+    .userLogo {
+        width: 12vw;
+        height: 12vw;
+    }
+    .text {
+        font-size: 4vw;
+    }
+    .subscribeButton {
+        width: 32vw;
+        height: 12vw;
+        margin: 0;
+        font-size: 4.5vw;
     }
 }

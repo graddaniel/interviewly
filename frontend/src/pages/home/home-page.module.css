@@ -1,3 +1,22 @@
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
 .homePage {
     padding: 0 8.5vw;
+}
+
+@media (min-width: min-large) {
+
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .homePage {
+        padding: 0 5vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .homePage {
+        padding: 0 6vw;
+    }
 }

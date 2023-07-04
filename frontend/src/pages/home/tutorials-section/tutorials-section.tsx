@@ -74,7 +74,10 @@ const TutorialsSection = () => {
             </div>
             <div className={classes.links}>
                 <a className={classes.link}href="http://youtube.com">Go to the channel on YouTube</a>
-                <SubscriptionControls subscriptionsCount={subscriptionsCount} />
+                <SubscriptionControls
+                    className={classes.subscriptionControls}
+                    subscriptionsCount={subscriptionsCount}
+                />
             </div>
         </section>
     );

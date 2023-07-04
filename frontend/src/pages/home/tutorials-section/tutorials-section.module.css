@@ -1,3 +1,6 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
 .section {
     display: flex;
     flex-direction: column;
@@ -40,7 +43,7 @@
     border: none;
     border-radius: 1.5rem;
     background-color: var(--WHITE);
-    padding: 3rem;
+    padding: 9vh 2.5vw;
     cursor: pointer;
 }
 .tile:nth-child(2n + 1) {
@@ -48,8 +51,8 @@
 }
 
 .videoCover {
-    width: 14rem;
-    height: 8rem;
+    width: 14vw;
+    height: 23vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,22 +70,22 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    font-size: 2.5rem;
+    font-size: 1.75vw;
     font-weight: 400;
 }
 
 .userDetails {
     display: flex;
-    gap: 1.25rem;
+    gap: 1vw;
 }
 
 .userLogo {
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 3vw;
+    height: 3vw;
 }
 
 .username {
-    font-size: 1.2rem;
+    font-size: 0.9vw;
 }
 
 .links {
@@ -92,4 +95,88 @@
 .link {
     color: var(--BLACK);
     align-self: flex-end;
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .tiles {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        overflow-x: auto;
+    }
+    .tile {
+        width: 40vw;
+        padding: 5vh 4vw;
+    }
+    .videoCover {
+        width: 30vw;
+    }
+    .tileTitle {
+        font-size: 3vw;
+    }
+    .userDetails {
+        gap: 2vw;
+        align-items: center;
+    }
+    .userLogo {
+        width: 7vw;
+        height: 7vw;
+    }
+    .username {
+        font-size: 2.5vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .section {
+        display: grid;
+        grid-template-rows: auto auto auto;
+        grid-template-areas:
+            "title"
+            "subscriptionControls"
+            "tiles";
+        row-gap: 10vw;
+    }
+    .title {
+        grid-area: title;
+        font-size: 10vw;
+    }
+    .buttons {
+        display: none;
+    }
+    .tiles {
+        grid-area: tiles;
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        overflow-x: auto;
+    }
+    .tile {
+        width: 65vw;
+        padding: 2.5vh 4vw;
+    }
+    .videoCover {
+        width: 54vw;
+    }
+    .tileTitle {
+        font-size: 5vw;
+    }
+    .userDetails {
+        gap: 2vw;
+        align-items: center;
+    }
+    .userLogo {
+        width: 12vw;
+        height: 12vw;
+    }
+    .username {
+        font-size: 5vw;
+    }
+    .subscriptionControls {
+        grid-area: subscriptionControls;
+    }
+    .link {
+        display: none;
+    }
 }
