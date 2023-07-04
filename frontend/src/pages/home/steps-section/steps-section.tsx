@@ -26,7 +26,7 @@ const StepsSection = () => {
                     <h4 className={classes.subtitle}>
                         {t('home.stepsSection.header.firstPart')}
                     </h4>
-                    <DashedRoundLabel text={t('home.stepsSection.header.secondPart')} />
+                    <DashedRoundLabel  className={classes.label} text={t('home.stepsSection.header.secondPart')} />
                     <h4 className={classes.subtitle}>
                         {t('home.stepsSection.header.thirdPart')}
                     </h4>
@@ -89,8 +89,8 @@ const StepsSection = () => {
                         </p>
                     </div>
                     <div className={classes.photo}>
-                        <img src={ConversationIconBlue} />
-                        <img src={ButtonCrossIconRed} />
+                        <img className={classes.sectionIcon} src={ConversationIconBlue} />
+                        <img className={classes.sectionIcon} src={ButtonCrossIconRed} />
                     </div>
                 </div>
                 <img className={classes.arrow} src={ArrowRightIcon}/>

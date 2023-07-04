@@ -2,7 +2,7 @@
 @value min-large, max-medium, min-medium, max-small from breakpoints;
 
 .homePage {
-    padding: 0 8.5vw;
+    padding: 0 8.5vw 5rem;
 }
 
 @media (min-width: min-large) {
@@ -11,12 +11,12 @@
 
 @media (min-width: min-medium) and (max-width: max-medium) {
     .homePage {
-        padding: 0 5vw;
+        padding: 0 5vw 5rem;
     }
 }
 
 @media (max-width: max-small) {
     .homePage {
-        padding: 0 6vw;
+        padding: 0 6vw 2rem;
     }
 }
