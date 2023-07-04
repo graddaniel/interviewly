@@ -300,12 +300,10 @@ const JoinPage = () => {
                     monochromatic={false}
                 />
             </section>
-            {isInterviewDialogOpen && (
-                <InterviewDialog
-                    isOpen={isInterviewDialogOpen}
-                    onClose={() => setIsInterviewDialogOpen(false)}
-                />
-            )}
+            <InterviewDialog
+                isOpen={isInterviewDialogOpen}
+                onClose={() => setIsInterviewDialogOpen(false)}
+            />
             <div className={classes.mobileLoginControls}>
                 <p>{t('join.joinControl')}</p>
                 <a href={ROUTES.LOG_IN.PATH}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
@@ -11,6 +11,9 @@ import FeatureChatIcon from '../../../../images/feature-chat-icon.svg';
 import FeatureAIIcon from '../../../../images/feature-ai-icon.svg';
 import FeatureSquaresIcon from '../../../../images/feature-squares-icon.svg';
 import FeaturePersonIcon from '../../../../images/feature-person-icon.svg';
+import IconButton from '../../../components/icon-button/icon-button';
+import ArrowLeftIconPurple from '../../../../images/arrow-left-icon-purple.svg';
+import ArrowRightIconPurple from '../../../../images/arrow-right-icon-purple.svg';
 
 
 const SUBSCRIPTION_PLANS = [{
@@ -131,6 +134,23 @@ const SubscriptionTile = ({
 
 const SubscriptionsSection = () => {
     const { t } = useTranslation();
+    const [ subscriptionIndex, setSubscriptionIndex ] = useState(0);
+    const tabletSubscriptionsBoxRef = useRef(null);
+
+    const showNextSubscription = useCallback(
+        () => setSubscriptionIndex(
+            index => index === SUBSCRIPTION_PLANS.length - 1
+             ? 0
+             : index + 1
+        ),
+    []);
+    const showPreviousSubscription = useCallback(
+        () => setSubscriptionIndex(
+            index => index === 0
+             ? SUBSCRIPTION_PLANS.length - 1
+             : index - 1
+        ),
+    []);
 
     return (
         <section className={classes.section}>
@@ -145,12 +165,26 @@ const SubscriptionsSection = () => {
                 </div>
                 <div className={classes.rightSide}>
                     <img className={classes.dashedTick} src={ButtonCheckDashedIcon} />
-                    <p className={classes.text}>
-                        {t('home.subscriptionSection.labelText1')}
-                    </p>
-                    <p className={classes.text}>
-                        {t('home.subscriptionSection.labelText2')}
-                    </p>
+                    <div className={classes.textWrapper}>
+                        <p className={classes.text}>
+                            {t('home.subscriptionSection.labelText1')}
+                        </p>
+                        <p className={classes.text}>
+                            {t('home.subscriptionSection.labelText2')}
+                        </p>
+                    </div>
+                    <div className={classes.mobileSubscriptionButtons}>
+                        <IconButton
+                            className={classes.mobileSubscriptionButton}
+                            onClick={showPreviousSubscription}
+                            icon={ArrowLeftIconPurple}
+                        />
+                        <IconButton
+                            className={classes.mobileSubscriptionButton}
+                            onClick={showNextSubscription}
+                            icon={ArrowRightIconPurple}
+                        />
+                    </div>
                 </div>
             </header>
             <div className={classes.subscriptions}>
@@ -170,6 +204,15 @@ const SubscriptionsSection = () => {
                         features={features}
                     />
                 ))}
+            </div>
+            <div className={classes.mobileSubscriptions}>
+                <SubscriptionTile
+                    name={SUBSCRIPTION_PLANS[subscriptionIndex].name}
+                    price={SUBSCRIPTION_PLANS[subscriptionIndex].price}
+                    period={SUBSCRIPTION_PLANS[subscriptionIndex].period}
+                    label={SUBSCRIPTION_PLANS[subscriptionIndex].label}
+                    features={SUBSCRIPTION_PLANS[subscriptionIndex].features}
+                />
             </div>
         </section>
     );
