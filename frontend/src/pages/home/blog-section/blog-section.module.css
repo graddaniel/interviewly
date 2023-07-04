@@ -1,5 +1,8 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
 .title {
-    font-size: 3.5rem;
+    font-size: 3vw;
     font-weight: 400;
 }
 
@@ -16,7 +19,7 @@
     gap: 1.5rem;
     width: 30%;
     border-radius: 1.5rem;
-    padding: 1.5rem 2rem;
+    padding: 4vh 1.5vw;
     background-color: gray;
 }
 .leftColumn {
@@ -27,19 +30,78 @@
 .tileTitle {
     color:  var(--WHITE);
     margin: 0;
-    font-size: 2.5rem;
+    font-size: 2vw;
     font-weight: 400;
 }
 .tileDate {
     margin: 0;
+    font-size: 0.85vw;
     color: var(--WHITE);
 }
 .button {
-    width: 4rem;
-    background-color: var(--COLOR3);
+    width: 3.5vw;
+    height: 3.5vw;
+    border-radius: 4vw;
     border: none;
+    background-color: var(--COLOR3);
 }
 
 .blogLink {
     color: var(--BLACK);
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .title {
+        font-size: 7vw;
+    }
+    .tiles {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        overflow-x: auto;
+    }
+    .tile {
+        width: 60vw;
+        aspect-ratio: 5/6;
+        padding: 3vw;
+    }
+    .tileTitle {
+        font-size: 4.5vw;
+    }
+    .tileDate {
+        font-size: 2vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .title {
+        font-size: 12vw;
+    }
+    .tiles {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        column-gap: 10vw;
+        overflow-x: auto;
+    }
+    .tile {
+        width: 60vw;
+        flex-direction: column;
+        align-items: flex-start;
+        aspect-ratio: 4/3;
+        padding: 6vw;
+    }
+    .tileTitle {
+        font-size: 5vw;
+    }
+    .tileDate {
+        font-size: 4vw;
+    }
+    .button {
+        width: 15vw;
+        height: 15vw;
+        border-radius: 15vw;
+        padding: 0;
+    }
 }
