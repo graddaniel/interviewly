@@ -20,9 +20,6 @@ const InterviewDialog = ({
     const [ isRecordingCompleted, setIsRecordingCompleted ] = useState(false);
     const { t } = useTranslation();
 
-    // TODO fix this workaround
-    const recordName = (document.getElementById("email") as HTMLInputElement).value;
-
     const displayCameraPicture = async () => {
         const video = document.getElementById("cameraLookup") as HTMLVideoElement;
 
@@ -39,26 +36,30 @@ const InterviewDialog = ({
     };
 
     useEffect(() => {
-        RecorderLibrary.init({
-            onRecordingStarted: () => setIsRecordingInProgress(true),
-            onRecordingStopped: () => {
-                setIsRecordingInProgress(false);
-                setIsRecordingCompleted(true);
-            },
-            onLocalVideoTrackAdded: (track, cb) => cb(),
-            getLocalVideoElement: (trackId) => document.getElementById("cameraLookup"),
-            onRemoteAudioTrackAdded: (track, cb) => cb(),
-            getRemoteAudioElement: (mid) => null,
-            onRemoteVideoTrackAdded: (track, cb) => cb(),
-            getRemoteVideoElement: (mid) => null,
-            newRecordingsListReceived: (list) => console.log("Recordings list:", list),
-        }, {
-            server,
-            iceServers: null,
-        });
-
-        displayCameraPicture();
-    }, []);
+        if (isOpen === false) {
+            RecorderLibrary.stopJanus();
+        } else {
+            RecorderLibrary.init({
+                onRecordingStarted: () => setIsRecordingInProgress(true),
+                onRecordingStopped: () => {
+                    setIsRecordingInProgress(false);
+                    setIsRecordingCompleted(true);
+                },
+                onLocalVideoTrackAdded: (track, cb) => cb(),
+                getLocalVideoElement: (trackId) => document.getElementById("cameraLookup"),
+                onRemoteAudioTrackAdded: (track, cb) => cb(),
+                getRemoteAudioElement: (mid) => null,
+                onRemoteVideoTrackAdded: (track, cb) => cb(),
+                getRemoteVideoElement: (mid) => null,
+                newRecordingsListReceived: (list) => console.log("Recordings list:", list),
+            }, {
+                server,
+                iceServers: null,
+            });
+    
+            displayCameraPicture();
+        }
+    }, [isOpen]);
 
     const getButtonText = () => {
         if (!isRecordingInProgress && !isRecordingCompleted) {
@@ -74,6 +75,8 @@ const InterviewDialog = ({
         if (!isRecordingInProgress && !isRecordingCompleted) {
             setIsRecordingInProgress(true);
 
+            // TODO fix this workaround
+            const recordName = (document.getElementById("email") as HTMLInputElement).value;
             RecorderLibrary.startRecording(recordName);
         } else if (isRecordingInProgress && !isRecordingCompleted) {
             setIsRecordingInProgress(false);

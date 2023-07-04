@@ -30,7 +30,7 @@ class Auth {
         // return this.currentUser.roles.includes(role);
     }
 
-    logout = () => {
+    clearSession = () => {
         sessionStorage.removeItem('accessToken');
         localStorage.removeItem('accessToken');
     }

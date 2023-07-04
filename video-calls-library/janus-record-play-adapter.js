@@ -289,17 +289,19 @@ const initJanus = (serverInfo) => {
 				},
 				error: function(error) {
 					Janus.error(error);
-					window.alert(error);
-					window.location.reload();
 				},
 				destroyed: function() {
-					window.location.reload();
+					Janus.debug('Janus has been stopped');
 				}
 			});
 	}});
 }
 
 const stopJanus = () => {
+	if (!janus) {
+		return;
+	}
+
 	Janus.debug('Stopping Janus');
 
 	janus.destroy();
