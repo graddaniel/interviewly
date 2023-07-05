@@ -1,8 +1,12 @@
 import { v4 as generateUuidV4 } from 'uuid';
 import moment from 'moment';
+import config from 'config';
+import { AccountTypes, ProfileTypes } from 'shared';
 
 import AccountModel from '../../models/account';
-import ResetRequestModel from '../../models/reset-request';
+import RecruiterProfileModel from '../../models/recruiter-profile';
+import RespondentProfileModel from '../../models/respondent-profile';
+import ResetRequestModel from '../../models/password-reset-request';
 import AccountAlreadyExistsError from './errors/account-already-exists-error';
 import AccountNotFoundError from './errors/account-not-found-error';
 import IncorrectPasswordError from './errors/incorrect-password-error';
@@ -13,16 +17,20 @@ import SequelizeConnection from '../sequelize-connection';
 
 import type MailService from '../mail-service/mail-service';
 import PasswordResetExpired from './errors/password-reset-expired-error';
-import AccountAlreadyConfirmed from './errors/account-already-confirmed-error';
+import AccountAlreadyActive from './errors/account-already-active-error';
+import CompanyModel from '../../models/company';
 
 
 export default class AccountsService {
     private mailService: MailService;
+    private additionalNotificationsTarget: string;
 
     constructor(
         mailService: MailService,
     ) {
         this.mailService = mailService;
+
+        this.additionalNotificationsTarget = config.get('registration.additionalNotificationsTarget');
     }
 
     login = async (
@@ -32,7 +40,12 @@ export default class AccountsService {
         const account = await AccountModel.findOne({
             where: {
                 email,
-            }
+            },
+            include: [{
+                association: AccountModel.associations.RecruiterProfile,
+            }, {
+                association: AccountModel.associations.RespondentProfile,
+            }]
         });
 
         if (!account) {
@@ -50,13 +63,13 @@ export default class AccountsService {
         });
     };
 
-    register = async (
+    register = SequelizeConnection.transaction(async (
         email: string,
         password: string,
+        type: AccountTypes.Type,
         name: string,
         surname: string,
-        role: string,
-        gender: string,
+        gender: ProfileTypes.Gender,
         notify?: boolean,
     ): Promise<string> => {
         const account = await AccountModel.findOne({
@@ -69,16 +82,51 @@ export default class AccountsService {
             throw new AccountAlreadyExistsError(email);
         }
 
+        //check if company already has an account
+        let companyId;
+        if (!companyId) {
+            const newCompany = await CompanyModel.create({});
+
+            companyId = newCompany.id;
+        }
+
         const newAccount = await AccountModel.create({
             uuid: generateUuidV4(),
             email,
             passwordHash: hash(password),
-            name,
-            surname,
-            confirmed: false,
-            role,
-            gender,
+            type,
+            status: AccountTypes.Status.UNCONFIRMED,
+            [type === AccountTypes.Type.RECRUITER ? 'RecruiterProfile' : 'RespondentProfile']: {
+                name,
+                surname,
+                gender,
+                role: ProfileTypes.Role.Admin,
+                CompanyId: companyId,
+            }
+        }, {
+            include: [{
+                association: type === AccountTypes.Type.RECRUITER
+                    ? AccountModel.associations.RecruiterProfileModel
+                    : AccountModel.associations.RespondentProfileModel,
+            }]
         });
+
+        // if (type === AccountTypes.Type.RECRUITER) {
+        //     await RecruiterProfileModel.create({
+        //         account_id: newAccount.id,
+        //         name,
+        //         surname,
+        //         gender,
+        //         role: ProfileTypes.Role.Admin,
+        //     });
+        // } else {
+        //     await RespondentProfileModel.create({
+        //         account_id: newAccount.id,
+        //         name,
+        //         surname,
+        //         gender,
+        //     });
+        // }
 
         await this.mailService.send(
             newAccount.email,
@@ -88,9 +136,9 @@ export default class AccountsService {
 
         if (notify) {
             await this.mailService.send(
-                'joanna.zabawa@stratega.pl',
+                this.additionalNotificationsTarget,
                 'New account',
-                `New account has been created: ${newAccount.email} ${newAccount.role}`
+                `New account has been created: ${newAccount.email} ${newAccount.type}`
             );
         }
 
@@ -98,7 +146,7 @@ export default class AccountsService {
             uuid: newAccount.uuid,
             email: newAccount.email
         });
-    };
+    });
 
     confirmAccountRegistration = async (
         uuid: string,
@@ -113,11 +161,11 @@ export default class AccountsService {
             throw new AccountNotFoundError();
         }
 
-        if (account.confirmed) {
-            throw new AccountAlreadyConfirmed();
+        if (account.status === AccountTypes.Status.ACTIVE) {
+            throw new AccountAlreadyActive();
         }
 
-        await account.update({ confirmed: true });
+        await account.update({ status: AccountTypes.Status.ACTIVE });
     };
 
     requestPasswordReset = async (

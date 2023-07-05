@@ -938,6 +938,9 @@ sha2@^1.0.2:
   resolved "https://registry.yarnpkg.com/sha2/-/sha2-1.0.2.tgz#80c9efa6b918f3bfe8bd71a6c78dd4c0dc0ab618"
   integrity sha512-sQ1sFn+WN2weGkwwt25bllwocaJLyYeDrn/T221Bovc6XEHRf7NSn0KPoPQMV2+NT+RhJoStkdm4TrEGCXkKHA==
 
+shared@../shared/:
+  version "1.0.0"
+
 shimmer@^1.2.0:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/shimmer/-/shimmer-1.2.1.tgz#610859f7de327b587efebf501fb43117f9aff337"

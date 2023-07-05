@@ -46,7 +46,7 @@ export default class AccountsController {
         const {
             name,
             surname,
-            role,
+            type,
             gender,
         } = req.body;
 
@@ -55,16 +55,16 @@ export default class AccountsController {
             password,
             name,
             surname,
-            role,
+            type,
             gender,
         });
 
         const jwtToken = await this.accountsService.register(
             email,
             password,
+            type,
             name,
             surname,
-            role,
             gender,
             !!notify,
         );
