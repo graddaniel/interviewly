@@ -3,11 +3,10 @@
         "port": 7081
     },
     "database": {
-        "username": "user",
-        "password": "password",
         "host": "localhost",
         "port": 3306,
-        "name": "interviewly"
+        "name": "interviewly",
+        "forceSync": false
     },
     "validation": {
         "password": {
@@ -24,6 +23,9 @@
             "maxLength": 32,
             "regexp": "^[A-Za-z]+$"
         }
+    },
+    "registration": {
+        "additionalNotificationsTarget": "yyyeey@gmail.com"
     },
     "token": {
         "validity_duration": "1d"

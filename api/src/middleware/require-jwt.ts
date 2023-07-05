@@ -1,7 +1,7 @@
-import MissingAuthorizationHeaderError from './errors/missing-authorization-header-error.js';
-import InvalidAuthorizationTypeError from './errors/invalid-authorization-type-error.js';
-import MissingTokenError from './errors/missing-token-error.js';
-import JWTService from '../services/jwt-service/jwt-service.js';
+import MissingAuthorizationHeaderError from './errors/missing-authorization-header-error';
+import InvalidAuthorizationTypeError from './errors/invalid-authorization-type-error';
+import MissingTokenError from './errors/missing-token-error';
+import JWTService from '../services/jwt-service/jwt-service';
 
 import type {
     Response,
@@ -10,6 +10,7 @@ import type {
 import type {
     AuthenticatedRequest,
 } from '../generic/types.js'
+
 
 export function requireJWT(
     req: AuthenticatedRequest,

@@ -2,40 +2,29 @@ import {
     DataTypes,
     Model
 } from 'sequelize';
+import { AccountTypes } from 'shared';
 
 import SequelizeConnection from '../services/sequelize-connection';
-import ResetRequestModel from './reset-request';
+import PasswordResetRequestModel from './password-reset-request';
+import RecruiterProfileModel from './recruiter-profile';
+import RespondentProfileModel from './respondent-profile';
 
 
 const UUID_V4_LENGTH = 40;
-const NAME_MAX_LENGTH = 32;
-const SURNAME_MAX_LENGTH = 32;
 const PASSWORD_LENGTH = 64; //SHA256
 const EMAIL_MAX_LENGTH = 64;
 
-enum Role {
-    RECRUITER = 'recruiter',
-    RESPONDENT = 'respondent',
-};
 
-enum Gender {
-    MALE = 'male',
-    FEMALE = 'female',
-};
-
-export default class AccountModel extends Model {
+export default class Account extends Model {
     declare id: number;
     declare uuid: string;
-    declare name: string;
-    declare surname: string;
-    declare role: Role;
-    declare passwordHash: Gender;
     declare email: string;
-    declare confirmed: boolean;
-    declare reset_request: ResetRequestModel;
+    declare passwordHash: string;
+    declare type: AccountTypes.Type;
+    declare status: AccountTypes.Status;
 }
 
-AccountModel.init({
+Account.init({
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -46,37 +35,24 @@ AccountModel.init({
         allowNull: false,
         unique: true,
     },
-    name: {
-        type: DataTypes.STRING(NAME_MAX_LENGTH),
-        allowNull: false,
-    },
-    surname: {
-        type: DataTypes.STRING(SURNAME_MAX_LENGTH),
-        allowNull: false,
-    },
-    role: {
-        type: DataTypes.ENUM('recruiter', 'respondent'),
-        allowNull: false,
-    },
-    gender: {
-        type: DataTypes.ENUM('male', 'female'),
-        allowNull: false,
-    },
-    passwordHash: {
-        type: DataTypes.STRING(PASSWORD_LENGTH),
-        allowNull: false,
-    },
     email: {
         type: DataTypes.STRING(EMAIL_MAX_LENGTH),
         allowNull: false,
         unique: true,
     },
-    confirmed: {
-        type: DataTypes.BOOLEAN,
+    passwordHash: {
+        type: DataTypes.STRING(PASSWORD_LENGTH),
+        allowNull: false,
+    },
+    type: {
+        type: DataTypes.ENUM(...Object.values(AccountTypes.Type)),
+        allowNull: false,
+    },
+    status: {
+        type: DataTypes.ENUM(...Object.values(AccountTypes.Status)),
         allowNull: false,
     }
 }, {
-    modelName: 'account',
     timestamps: false,
     sequelize: SequelizeConnection.instance(),
     indexes: [{
@@ -85,9 +61,15 @@ AccountModel.init({
     }],
 });
 
-AccountModel.hasMany(ResetRequestModel);
-ResetRequestModel.belongsTo(AccountModel, {
+Account.associations.PasswordResetRequestModel = Account.hasMany(PasswordResetRequestModel);
+PasswordResetRequestModel.associations.Account = PasswordResetRequestModel.belongsTo(Account, {
     foreignKey: {
         allowNull: false,
     }
 });
+
+Account.associations.RecruiterProfileModel = Account.hasOne(RecruiterProfileModel);
+RecruiterProfileModel.associations.Account = RecruiterProfileModel.belongsTo(Account);
+
+Account.associations.RespondentProfileModel = Account.hasOne(RespondentProfileModel);
+RespondentProfileModel.associations.Account = RespondentProfileModel.belongsTo(Account);

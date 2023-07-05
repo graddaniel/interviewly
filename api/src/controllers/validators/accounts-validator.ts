@@ -4,6 +4,7 @@ import {
     ValidationError as YupValidationError,
 } from 'yup';
 import config from 'config';
+import { AccountTypes, ProfileTypes } from 'shared';
 
 import ValidationError from './validation-error';
 import configJson from '../../../config/default.json';
@@ -30,12 +31,12 @@ const newAccountSchema = object({
         .required()
         .min(validationConfig.surname.minLength)
         .max(validationConfig.surname.maxLength),
-    role: string()
+    type: string()
         .required()
-        .oneOf(['recruiter', 'respondent']),
+        .oneOf(Object.values(AccountTypes.Type)),
     gender: string()
         .required()
-        .oneOf(['male', 'female']),
+        .oneOf(Object.values(ProfileTypes.Gender)),
 });
 
 export default class AccountsValidator {

@@ -1,7 +1,7 @@
-import MissingAuthorizationHeaderError from './errors/missing-authorization-header-error.js';
-import InvalidAuthorizationTypeError from './errors/invalid-authorization-type-error.js';
-import InvalidBasicAuthorizationHeaderFormatError from './errors/invalid-basic-authorization-header-format-error.js';
-import MissingCredentialsError from './errors/missing-credentials-error.js';
+import MissingAuthorizationHeaderError from './errors/missing-authorization-header-error';
+import InvalidAuthorizationTypeError from './errors/invalid-authorization-type-error';
+import InvalidBasicAuthorizationHeaderFormatError from './errors/invalid-basic-authorization-header-format-error';
+import MissingCredentialsError from './errors/missing-credentials-error';
 
 import type {
     Response,

@@ -3,6 +3,7 @@ import { Sequelize } from 'sequelize';
 import config from 'config';
 import 'dotenv/config';
 
+
 type DatabaseConfig = {
     username: string;
     password: string;
@@ -27,7 +28,14 @@ export default class SequelizeConnection {
             name,
         } = config.get("database") as DatabaseConfig;
 
-        SequelizeConnection._sequelize = new Sequelize(`mysql://${username}:${password}@${host}:${port}/${name}`);
+        SequelizeConnection._sequelize = new Sequelize(`mysql://${username}:${password}@${host}:${port}/${name}`, {
+            define: {
+                underscored: true,
+            },
+        });
+
+        // to initialize all the models; may be redundant once the app is finished and all models are referenced in services
+        const Models = import('../models');
     }
 
     static instance = () => {

@@ -8,13 +8,13 @@ import SequelizeConnection from '../services/sequelize-connection';
 
 const UUID_V4_LENGTH = 40;
 
-export default class ResetRequestModel extends Model {
+export default class PasswordResetRequest extends Model {
     declare id: number;
     declare uuid: string;
     declare updatedAt: Date;
 }
 
-ResetRequestModel.init({
+PasswordResetRequest.init({
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -26,7 +26,6 @@ ResetRequestModel.init({
         unique: true,
     },
 }, {
-    modelName: 'reset_requests',
     sequelize: SequelizeConnection.instance(),
     indexes: [{
         unique: true,

@@ -24,12 +24,16 @@ export default class Appplication {
     private app: Application;
 
     constructor() {
+        console.log("Running as: ", process.env.NODE_ENV)
+
         const mailService = new MailService();
 
         const accountsService = new AccountsService(mailService);
         const accountsController = new AccountsController(accountsService);
 
-        SequelizeConnection.instance().sync();
+        SequelizeConnection.instance().sync({
+            force: config.get('database.forceSync'),
+        });
 
         this.app = express();
 
