@@ -33,24 +33,37 @@ export default class AccountsService {
         this.additionalNotificationsTarget = config.get('registration.additionalNotificationsTarget');
     }
 
-    login = async (
-        email: string,
-        password: string
-    ): Promise<string> => {
+    getAccount = async (query: Partial<AccountModel>) => {
         const account = await AccountModel.findOne({
             where: {
-                email,
-            },
-            include: [{
-                association: AccountModel.associations.RecruiterProfile,
-            }, {
-                association: AccountModel.associations.RespondentProfile,
-            }]
+                ...query,
+            }
         });
 
         if (!account) {
             throw new AccountNotFoundError();
         }
+
+        return account;
+    }
+
+    checkIfAccountExists = async (query: Partial<AccountModel>) => {
+        const account = await AccountModel.findOne({
+            where: {
+                ...query,
+            }
+        });
+
+        if (account) {
+            throw new AccountAlreadyExistsError(account.email);
+        }
+    }
+
+    login = async (
+        email: string,
+        password: string
+    ): Promise<string> => {
+        const account = await this.getAccount({ email });
 
         const providedPasswordHash = hash(password);
         if (providedPasswordHash !== account.passwordHash) {
@@ -72,15 +85,7 @@ export default class AccountsService {
         gender: ProfileTypes.Gender,
         notify?: boolean,
     ): Promise<string> => {
-        const account = await AccountModel.findOne({
-            where: {
-                email,
-            }
-        });
-
-        if (account) {
-            throw new AccountAlreadyExistsError(email);
-        }
+        await this.checkIfAccountExists({ email });
 
         //check if company already has an account
         let companyId;
@@ -111,23 +116,6 @@ export default class AccountsService {
             }]
         });
 
-        // if (type === AccountTypes.Type.RECRUITER) {
-        //     await RecruiterProfileModel.create({
-        //         account_id: newAccount.id,
-        //         name,
-        //         surname,
-        //         gender,
-        //         role: ProfileTypes.Role.Admin,
-        //     });
-        // } else {
-        //     await RespondentProfileModel.create({
-        //         account_id: newAccount.id,
-        //         name,
-        //         surname,
-        //         gender,
-        //     });
-        // }
-
         await this.mailService.send(
             newAccount.email,
             'Confirm account',
@@ -151,15 +139,7 @@ export default class AccountsService {
     confirmAccountRegistration = async (
         uuid: string,
     ) => {
-        const account = await AccountModel.findOne({
-            where: {
-                uuid,
-            }
-        });
-
-        if (!account) {
-            throw new AccountNotFoundError();
-        }
+        const account = await this.getAccount({ uuid });
 
         if (account.status === AccountTypes.Status.ACTIVE) {
             throw new AccountAlreadyActive();
@@ -171,15 +151,7 @@ export default class AccountsService {
     requestPasswordReset = async (
         uuid: string,
     ) => {
-        const account = await AccountModel.findOne({
-            where: {
-                uuid,
-            }
-        });
-
-        if (!account) {
-            throw new AccountNotFoundError();
-        }
+        const account = await this.getAccount({ uuid });
 
         const request = await ResetRequestModel.create({
             uuid: generateUuidV4(),
