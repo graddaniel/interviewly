@@ -1,8 +1,26 @@
 @value breakpoints: "../../../consts/breakpoints.css";
 @value min-large, max-medium, min-medium, max-small from breakpoints;
 
-.labels {
+.myTeam{
     display: flex;
+    flex-direction: column;
+}
+
+.header {
+    height: 8vw;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: 50% 30%;
+    grid-template-areas:
+        "labels addMembersButton"
+        "counters .";
+    row-gap: 20%;
+}
+.labels {
+    grid-area: labels;
+    display: flex;
+    align-items: flex-start;
+    gap: 2vw;
 }
 .headerIcon {
     width: 1vw;
@@ -11,24 +29,204 @@
 .title {
     margin: 0;
     font-size: 3.5vw;
+    line-height: 3.5vw;
+    font-weight: 400;
 }
+.membersCountLabel {
+    border-radius: 2.5vw;
+    padding: 0.5vw 1.5vw;
+    font-size: 1.2vw;
+    color: var(--BLACK);
+    background-color: var(--GREEN3);
+}
+
+.addMembersButton {
+    grid-area: addMembersButton;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: start;
+    gap: 0.75vw;
+    padding: 0.6vw;
+    font-size: 1vw;
+    border: 1px solid var(--BLACK);
+    border-radius: 3vw;
+    background-color: transparent;
+
+}
+.addMembersButtonIcon {
+    width: 0.75vw;
+    height: 0.75vw;
+}
+
 .counters {
+    grid-area: counters;
+    display: flex;
+    gap: 3vw;
     padding: 0;
     margin: 0;
     list-style: none;
 }
-
+.counterWrapper {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+    font-size: 1.2vw;
+}
 .counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2vw;
+    height: 2vw;
+    border-radius: 1vw;
     color: var(--COLOR5);
     background-color: var(--COLOR2);
+}
+
+.tiles {
+    display: flex;
+    gap: 1.5vw;
+    flex-wrap: wrap;
+    padding: 3vw 0;
 }
 
 @media (min-width: min-large) {
 }
 
 @media (min-width: min-medium) and (max-width: max-medium) {
+    .header {
+        height: 31vw;
+        grid-template-columns: 33% 33% 33%;
+        grid-template-rows: 33% 16.5% 16.5%;
+        grid-template-areas:
+            "labels labels labels"
+            "counters counters counters"
+            "addMembersButton addMembersButton .";
+        row-gap: 16.5%;
+        margin-bottom: 5vw;
+    }
+    .labels {
+        grid-area: labels;
+        gap: 3vw;
+    }
+    .headerIcon {
+        width: 3vw;
+        height: 3vw;
+    }
+    .title {
+        font-size: 10vw;
+        line-height: 10vw;
+    }
+    .membersCountLabel {
+        border-radius: 7vw;
+        padding: 0.5vw 4.5vw;
+        font-size: 3.5vw;
+    }
+    
+    .addMembersButton {
+        grid-area: addMembersButton;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 0.75vw;
+        padding: 1vw 2vw;
+        font-size: 3vw;
+        border-radius: 8vw;    
+    }
+    .addMembersButtonIcon {
+        width: 2.5vw;
+        height: 2.5vw;
+    }
+    
+    .counters {
+        grid-area: counters;
+        gap: 6vw;
+    }
+    .counterWrapper {
+        gap: 2vw;
+        font-size: 3vw;
+    }
+    .counter {
+        width: 6.5vw;
+        height: 6.5vw;
+        border-radius: 4vw;
+    }
+
+    .tiles {
+        display: flex;
+        flex-direction: row;
+        gap: 5vw;
+        flex-wrap: unset;
+        padding: 3vw 0;
+        overflow-x: auto;
+    }
 }
 
 @media (max-width: max-small) {
+    .header {
+        height: 75vw;
+        grid-template-columns: 100%;
+        grid-template-rows: 15% 40% 15%;
+        grid-template-areas:
+            "labels"
+            "counters"
+            "addMembersButton";
+        row-gap: 15%;
+    }
+    .labels {
+        grid-area: labels;
+        gap: 3vw;
+    }
+    .headerIcon {
+        width: 6vw;
+        height: 6vw;
+    }
+    .title {
+        font-size: 9vw;
+        line-height: 9vw;
+    }
+    .membersCountLabel {
+        border-radius: 12vw;
+        padding: 3vw;
+        font-size: 4vw;
+    }
+    
+    .addMembersButton {
+        height: 100%;
+        grid-area: addMembersButton;
+        flex-direction: row;
+        justify-content: center;
+        gap: 3vw;
+        padding: 1vw 2vw;
+        font-size: 4vw;
+        border-radius: 15vw;
+    
+    }
+    .addMembersButtonIcon {
+        width: 4vw;
+        height: 4vw;
+    }
+    .counters {
+        grid-area: counters;
+        flex-direction: column;
+        gap: 3vw;
+    }
+    .counterWrapper {
+        gap: 4vw;
+        font-size: 4vw;
+    }
+    .counter {
+        width: 8vw;
+        height: 8vw;
+        border-radius: 8vw;
+    }
 
+    .tiles {
+        display: flex;
+        flex-direction: row;
+        gap: 5vw;
+        flex-wrap: unset;
+        padding: 6vw 0;
+        overflow-x: auto;
+    }
 }
