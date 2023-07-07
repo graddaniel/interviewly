@@ -2,22 +2,35 @@
 @value min-large, max-medium, min-medium, max-small from breakpoints;
 
 .button {
+    height: 4vw;
+    width: 4vw;
+    aspect-ratio: 1;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--WHITE);
     color: var(--BLACK);
     cursor: pointer;
-    height: 4rem;
-    padding: 1.5rem 1.5rem;
     border: 0.075rem solid black;
-    border-radius: 2rem;
+    border-radius: 2vw;
     font-size: 1rem;
+}
+.icon {
+    width: 1vw;
+    height: 1vw;
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .icon {
+        width: 3vw;
+        height: 3vw;
+    }
 }
 
 @media (max-width: max-small) {
-    .button {
-        height: 15vw;
-        width: 15vw;
+    .icon {
+        width: 4vw;
+        height: 4vw;
     }
 }

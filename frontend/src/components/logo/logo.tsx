@@ -1,17 +1,24 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import classNames from 'classnames';
 
 import ROUTES from '../../consts/routes';
 
 import classes from './logo.module.css';
 import LogoImage from '../../../images/logo.svg';
 
-const Logo = () => {
+type LogoProps = {
+    className?: string;
+};
+
+const Logo = ({
+    className,
+}: LogoProps) => {
     const navigate = useNavigate();
 
     return (
         <section
-            className={classes.logo}
+            className={classNames(classes.logo, className)}
             onClick={() => navigate(ROUTES.HOME.PATH)}
         >
             <img className={classes.image} src={LogoImage}/>

@@ -1,0 +1,33 @@
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 15vw;
+    border-radius: 1.5rem;
+    padding: 1vw;
+    background-color: var(--BLACK);
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .menu {
+        width: auto;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1.5vw;
+        border-radius: 10vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .menu {
+        width: auto;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
