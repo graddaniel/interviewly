@@ -13,6 +13,7 @@ const Application = () => {
     const location = useLocation();
 
     const isFormsLocation = location.pathname.startsWith(ROUTES.FORMS.PATH);
+    const isAppLocation = location.pathname.startsWith(ROUTES.APP.PATH);
 
     const {
         resolvedLanguage,
@@ -25,11 +26,11 @@ const Application = () => {
 
     return (
         <>
-            {!isFormsLocation && (
+            {!isFormsLocation && !isAppLocation && (
                 <NavigationBar />
             )}
             <Outlet />
-            {!isFormsLocation && (
+            {!isFormsLocation && !isAppLocation && (
                 <Footer />
             )}
         </>

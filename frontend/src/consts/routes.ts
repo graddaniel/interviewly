@@ -37,6 +37,9 @@ const ROUTES = {
     },
     FORMS: {
         PATH: '/forms'
+    },
+    APP: {
+        PATH: '/app'
     }
 };
 
@@ -47,6 +50,32 @@ const FORMS_ROUTES = {
     },
 };
 
-export { FORMS_ROUTES };
+const APP_ROUTES = {
+    MY_ACCOUNT: {
+        TITLE: 'My Account',
+        PATH: '/app/myAccount',
+    },
+    PROJECTS: {
+        TITLE: 'Projects',
+        PATH: '/app/projects',
+    },
+    MY_TEAM: {
+        TITLE: 'My Team',
+        PATH: '/app/myTeam',
+    },
+    CALENDAR: {
+        TITLE: 'Calendar',
+        PATH: '/app/calendar',
+    },
+    LIBRARY: {
+        TITLE: 'Library',
+        PATH: '/app/library',
+    },
+}
+
+export {
+    FORMS_ROUTES,
+    APP_ROUTES
+};
 
 export default ROUTES;

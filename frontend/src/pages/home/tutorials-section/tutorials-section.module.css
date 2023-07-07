@@ -104,6 +104,8 @@
     .tiles {
         display: grid;
         grid-template-columns: auto auto auto auto;
+        grid-auto-columns: auto;
+        grid-template-rows: 1fr;
         overflow-x: auto;
     }
     .tile {

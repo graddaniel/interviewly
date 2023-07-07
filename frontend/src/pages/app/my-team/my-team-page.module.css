@@ -1,0 +1,34 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.labels {
+    display: flex;
+}
+.headerIcon {
+    width: 1vw;
+    height: 1vw;
+}
+.title {
+    margin: 0;
+    font-size: 3.5vw;
+}
+.counters {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.counter {
+    color: var(--COLOR5);
+    background-color: var(--COLOR2);
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+}
+
+@media (max-width: max-small) {
+
+}

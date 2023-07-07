@@ -1,0 +1,126 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.tile {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas: 
+        "avatar editButton"
+        "user user"
+        "status status";
+    row-gap: 0.8vw;
+    padding: 1.25vw 1.75vw;
+    border-radius: 1.5rem;
+    background-color: var(--WHITE);
+}
+
+.avatar {
+    grid-area: avatar;
+    width: 3.5vw;
+    height: 3.5vw;
+    border-radius: 3.5vw;
+}
+.editButton {
+    grid-area: editButton;
+    width: 3.5vw;
+    height: 3.5vw;
+    justify-self: end;
+}
+.user {
+    grid-area: user;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    font-size: 1vw;
+}
+
+.status {
+    grid-area: status;
+    padding: 0.375vw 0;
+    border-radius: 3vw;
+    font-size: 0.75vw;
+    line-height: 0.75vw;
+    text-align: center;
+}
+.active {
+    color: var(--GREEN2);
+    background-color: var(--GREEN1);
+}
+.unconfirmed {
+    color: var(--YELLOW2);
+    background-color: var(--YELLOW1);
+}
+.inactive {
+    color: var(--WHITE);
+    background-color: var(--BLACK);
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .tile {
+        width: 35vw;
+        grid-template-areas: 
+        "avatar editButton"
+        "user user"
+        "status .";
+        row-gap: 2vw;
+        padding: 5vw;
+        border-radius: 4vw;
+        flex-shrink: 0;
+    }
+    .avatar {
+        width: 9vw;
+        height: 9vw;
+    }
+    .editButton {
+        width: 9vw;
+        height: 9vw;
+        border-radius: 9vw;
+        justify-self: auto;
+    }
+    .user {
+        display: flex;
+        flex-direction: row;
+        gap: 1vw;
+        font-size: 2.5vw;
+        line-height: 2.5vw;
+    }
+    .status {
+        padding: 1.5vw 0;
+        border-radius: 8vw;
+        font-size: 2vw;
+        line-height: 2vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .tile {
+        width: 40vw;
+        padding: 6.25vw 3.75vw;
+        border-radius: 8vw;
+        row-gap: 4vw;
+        flex-shrink: 0;
+    }
+    .avatar {
+        width: 10vw;
+        height: 10vw;
+    }
+    .editButton {
+        width: 10vw;
+        height: 10vw;
+        border-radius: 10vw;
+        justify-self: auto;
+    }
+    .user {
+        font-size: 5vw;
+        line-height: 5vw;
+    }
+    .status {
+        padding: 2vw 0;
+        border-radius: 15vw;
+        font-size: 5vw;
+        line-height: 5vw;
+    }
+}

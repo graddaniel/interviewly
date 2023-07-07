@@ -1,0 +1,224 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.myAccount {
+    display: grid;
+    grid-template-columns: 48% 48%;
+    grid-template-rows: min-content 18vw auto;
+    grid-template-areas: 
+        "welcomeMessage details"
+        "latestTeamMembers upcomingInterview"
+        "projects projects";
+    column-gap: 4%;
+    row-gap: 4%;
+}
+
+.welcomeMessage {
+    grid-area: welcomeMessage;
+    margin: 0;
+    font-size: 3.5vw;
+    line-height: 3.5vw;
+    font-weight: 400;
+}
+
+.details {
+    grid-area: details;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.userText {
+    font-size: 1vw;
+    line-height: 1vw;
+    margin: 0;
+}
+.companyText {
+    font-size: 1vw;
+    line-height: 1vw;
+    margin: 0;
+}
+
+.latestTeamMembers {
+    grid-area: latestTeamMembers;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vw;
+    box-sizing: border-box;
+    padding: 1.5vw;
+    border-radius: 1.5rem;
+    background-color: var(--COLOR8);
+}
+.header {
+    display: flex;
+    gap: 0.3vw;
+    font-size: 1.25vw;
+}
+.headerIcon {
+    width: 1.25vw;
+    width: 1.25vw;
+}
+.latestTeamMembersTiles {
+    display: grid;
+    grid-template-columns: 48% 48%;
+    grid-template-rows: auto auto;
+    column-gap: 4%;
+}
+
+.upcomingInterview {
+    grid-area: upcomingInterview;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vw;
+    box-sizing: border-box;
+    padding: 1.5vw;
+    border: 1px dashed var(--BLACK);
+    border-radius: 1.5rem;
+}
+
+.projects {
+    grid-area: projects;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vw;
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .myAccount {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: min-content min-content auto auto auto;
+        grid-template-areas: 
+            "welcomeMessage"
+            "details"
+            "latestTeamMembers"
+            "upcomingInterview"
+            "projects";
+        column-gap: 0;
+        row-gap: 6vw;
+    }
+    .details {
+        align-items: flex-start;
+    }
+    .welcomeMessage {
+        font-size: 10vw;
+        line-height: 10vw;
+    }
+    .userText {
+        font-size: 3vw;
+        line-height: 3vw;
+    }
+    .companyText {
+        font-size: 3vw;
+        line-height: 3vw;
+    }
+    .header {
+        font-size: 3vw;
+        line-height: 3vw;
+        gap: 2vw;
+    }
+    .headerIcon {
+        width: 3vw;
+    }
+    .latestTeamMembers {
+        grid-area: latestTeamMembers;
+        width: auto;
+        gap: 5vw;
+        padding: 5vw 4vw;
+    }
+    .latestTeamMembersTiles {
+        display: flex;
+        overflow-x: auto;
+    }
+    .upcomingInterview {
+        grid-area: upcomingInterview;
+        gap: 5vw;
+        padding: 5vw 4vw;
+    }
+    .projects {
+        grid-area: projects;
+        display: flex;
+        flex-direction: column;
+        gap: 10vw;
+    }
+    .projectsContent {
+        grid-area: projects;
+        display: flex;
+        flex-direction: row;
+        gap: 9vw;
+        overflow-x: auto;
+    }
+}
+
+@media (max-width: max-small) {
+    .myAccount {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: min-content min-content auto auto auto;
+        grid-template-areas: 
+            "welcomeMessage"
+            "details"
+            "latestTeamMembers"
+            "upcomingInterview"
+            "projects";
+        column-gap: 0;
+        row-gap: 10vw;
+    }
+    .details {
+        align-items: flex-start;
+    }
+    .welcomeMessage {
+        font-size: 10vw;
+        line-height: 10vw;
+    }
+    .userText {
+        font-size: 5vw;
+        line-height: 5vw;
+    }
+    .companyText {
+        font-size: 5vw;
+        line-height: 5vw;
+    }
+    .header {
+        font-size: 5vw;
+        line-height: 5vw;
+        gap: 5vw;
+    }
+    .headerIcon {
+        width: 5vw;
+    }
+    .latestTeamMembers {
+        grid-area: latestTeamMembers;
+        width: auto;
+        gap: 8vw;
+        padding: 9vw 7.5vw;
+    }
+    .latestTeamMembersTiles {
+        display: flex;
+        overflow-x: auto;
+    }
+    .upcomingInterview {
+        grid-area: upcomingInterview;
+        gap: 8vw;
+        padding: 9vw 7.5vw;
+    }
+    .projects {
+        grid-area: projects;
+        display: flex;
+        flex-direction: column;
+        gap: 10vw;
+    }
+    .projectsContent {
+        grid-area: projects;
+        display: flex;
+        flex-direction: row;
+        gap: 9vw;
+        overflow-x: auto;
+    }
+}

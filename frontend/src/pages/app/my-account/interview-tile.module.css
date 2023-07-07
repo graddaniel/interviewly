@@ -1,0 +1,61 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.interviewTile {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vw;
+    padding: 2vw 2.5vw;
+    border-radius: 1.5vw;
+    color: var(--COLOR5);
+    background-color: var(--COLOR8);
+}
+.duration {
+    padding: 1vw 0;
+    border-radius: 3vw;
+    font-size: 1.25vw;
+    text-align: center;
+    background-color: var(--COLOR2);
+}
+.date {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.25vw;
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .interviewTile {
+        height: 100%;
+        gap: 6vw;
+        padding: 10vw 5vw;
+        border-radius: 8vw;
+    }
+    .duration {
+        padding: 4vw 0;
+        border-radius: 15vw;
+        font-size: 5vw;
+    }
+    .date {
+        font-size: 5vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .interviewTile {
+        height: 100%;
+        gap: 6vw;
+        padding: 10vw 5vw;
+        border-radius: 8vw;
+    }
+    .duration {
+        padding: 4vw 0;
+        border-radius: 15vw;
+        font-size: 5vw;
+    }
+    .date {
+        font-size: 5vw;
+    }
+}

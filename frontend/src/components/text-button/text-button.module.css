@@ -12,8 +12,8 @@
     padding: 1.75vh 3vw;
     border: 0;
     border-radius: 2rem;
-    font-size: 1rem;
-    line-height: 1rem;
+    font-size: 1vw;
+    line-height: 1vw;
 }
 .button.monochromatic {
     background-color: var(--WHITE);
@@ -33,9 +33,14 @@
 
 @media (min-width: min-medium) and (max-width: max-medium) {
     .button {
-        height: 6.5vh;
+        height: 10vw;
+        padding: 3vw 0;
+        font-size: 2.5vw;
     }
 }
 
 @media (max-width: max-small) {
+    .button {
+        font-size: 5vw;
+    }
 }

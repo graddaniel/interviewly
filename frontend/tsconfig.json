@@ -15,6 +15,9 @@
     "types": ["node"],
     "outDir": "./dist/",
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "~*": ["./*"]
+    }
   },
 }

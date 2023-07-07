@@ -19,7 +19,7 @@ const IconButton = ({
             className={classNames(classes.button, className)}
             onClick={onClick}
         >
-            <img src={icon}/>
+            <img className={classes.icon} src={icon}/>
         </button>
     );
 };

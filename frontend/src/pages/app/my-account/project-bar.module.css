@@ -1,0 +1,185 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.projectBar {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 5% 2.5% 5% 2.5% 22.5% 7.5% 12.5% 10% 10% 12.5% 10%;
+    grid-template-areas: "copyButton . projectButton . title . type . dates . status";
+    justify-items: stretch;
+    align-items: center;
+    flex-shrink: 0;
+    padding: 1.75vw;
+    box-sizing: border-box;
+    border-radius: 0.75vw;
+    background-color: var(--WHITE);
+}
+
+.avatar {
+    grid-area: avatar;
+}
+
+.copyButton {
+    grid-area: copyButton;
+    width: 3vw;
+    height: 3vw;
+}
+.projectButton {
+    grid-area: projectButton;
+    width: 3vw;
+    height: 3vw;
+    border: none;
+    background-color: var(--GREEN1);
+}
+
+.title {
+    grid-area: title;
+    font-size: 1vw;
+}
+.type {
+    grid-area: type;
+    font-size: 1vw;
+}
+.dates {
+    grid-area: dates;
+    display: flex;
+    flex-direction: column;
+    font-size: 1vw;
+}
+
+.status {
+    grid-area: status;
+    padding: 0.5vw;
+    border-radius: 3vw;
+    font-size: 0.75vw;
+    text-align: center;
+}
+.finished {
+    color: var(--GREEN2);
+    background-color: var(--GREEN1);
+}
+.canceled {
+    color: var(--RED2);
+    background-color: var(--RED1);
+}
+.in_progress {
+    color: var(--YELLOW2);
+    background-color: var(--YELLOW1);
+}
+
+@media (min-width: min-large) {
+    .avatar {
+        display: none;
+    }
+    .hyphen {
+        display: none;
+    }
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .projectBar {
+        width: 52vw;
+        height: 52vw;
+        grid-template-columns: 22% 11% 22% 11% 22% 11%;
+        grid-template-rows: 20% 10% 10% 10% 20%;
+        grid-template-areas:
+            "avatar . copyButton . projectButton ."
+            "title title title title title title"
+            "type type type type type type"
+            "dates dates dates dates dates dates"
+            "status status . . . .";
+        row-gap: 7.5%;
+        padding: 4vw 5vw;
+        border-radius: 2vw;
+    }
+    .avatar {
+        width: 12vw;
+        height: 12vw;
+        border-radius: 12vw;
+    }
+    .copyButton {
+        width: 12vw;
+        height: 12vw;
+        border-radius: 12vw;
+    }
+    .projectButton {
+        width: 12vw;
+        height: 12vw;
+        border-radius: 12vw;
+    }
+    .title {
+        grid-area: title;
+        font-size: 3vw;
+    }
+    .type {
+        grid-area: type;
+        font-size: 3vw;
+    }
+    .dates {
+        grid-area: dates;
+        display: flex;
+        flex-direction: row;
+        font-size: 3vw;
+    }
+    .status {
+        grid-area: status;
+        padding: 1vw;
+        border-radius: 10vw;
+        font-size: 2vw;
+        text-align: center;
+    }
+}
+
+@media (max-width: max-small) {
+    .projectBar {
+        width: 66vw;
+        height: 75vw;
+        grid-template-columns: 22% 11% 22% 11% 22% 11%;
+        grid-template-rows: 20% 10% 10% 10% 20%;
+        grid-template-areas:
+            "avatar . copyButton . projectButton ."
+            "title title title title title title"
+            "type type type type type type"
+            "dates dates dates dates dates dates"
+            "status status status status status .";
+        row-gap: 7.5%;
+        padding: 8vw;
+        border-radius: 4vw;
+    }
+    .avatar {
+        width: 10vw;
+        height: 10vw;
+        border-radius: 10vw;
+    }
+    .copyButton {
+        width: 10vw;
+        height: 10vw;
+        border-radius: 10vw;
+    }
+    .projectButton {
+        width: 10vw;
+        height: 10vw;
+        border-radius: 10vw;
+    }
+    .title {
+        grid-area: title;
+        font-size: 4vw;
+    }
+    .type {
+        grid-area: type;
+        font-size: 4vw;
+    }
+    .dates {
+        grid-area: dates;
+        display: flex;
+        flex-direction: row;
+        font-size: 4vw;
+    }
+    .status {
+        grid-area: status;
+        padding: 2vw;
+        border-radius: 10vw;
+        font-size: 4vw;
+        text-align: center;
+    }
+}
