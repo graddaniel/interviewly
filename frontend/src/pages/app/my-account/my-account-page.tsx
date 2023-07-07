@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TeamMemberTile from './team-member-tile';
+import LatestTeamMemberTile from './latest-team-member-tile';
 import InterviewTile from './interview-tile';
 import ProjectBar from './project-bar';
 
@@ -8,6 +8,7 @@ import classes from './my-account-page.module.css';
 import PeopleIconBlack from '~/images/people-icon-black.svg';
 import CalendarIconBlack from '~/images/calendar-icon-black.svg';
 import MetricsIconBlack from '~/images/metrics-icon-black.svg';
+import { AccountTypes } from 'shared';
 
 const user = {
     name: 'Mateusz',
@@ -20,13 +21,13 @@ const teamMembers = [{
     name: 'Ewelina',
     surname: 'Izbicka',
     email: 'asd@asd.pl',
-    status: 'active',
+    status: AccountTypes.Status.ACTIVE,
 }, {
     avatarUrl: 'https://i.pravatar.cc/101',
     name: 'Karol',
     surname: 'Walewski',
     email: 'dsad@32.pl',
-    status: 'unconfirmed',
+    status: AccountTypes.Status.UNCONFIRMED,
 }];
 
 const upcomingInterview = {
@@ -66,7 +67,7 @@ const MyAccountPage = () => {
             </div>
             <div className={classes.latestTeamMembersTiles}>
                 {teamMembers.map(member => (
-                    <TeamMemberTile
+                    <LatestTeamMemberTile
                         key={member.email}
                         {...member}
                         onEdit={() => console.log(`Editing ${member.name} ${member.surname}`)}
