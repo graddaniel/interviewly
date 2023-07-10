@@ -1,0 +1,155 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.myTeam{
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5vw;
+    margin-bottom: 3.5vw;
+}
+.labels {
+    grid-area: labels;
+    display: flex;
+    align-items: flex-start;
+    gap: 2vw;
+}
+.headerIcon {
+    width: 1vw;
+    height: 1vw;
+}
+.title {
+    margin: 0;
+    font-size: 3.5vw;
+    line-height: 3.5vw;
+    font-weight: 400;
+}
+.projectsCountLabel {
+    border-radius: 2.5vw;
+    padding: 0.5vw 1.5vw;
+    font-size: 1.2vw;
+    color: var(--BLACK);
+    background-color: var(--GREEN3);
+}
+
+.search {
+    display: flex;
+    gap: 2vw;
+}
+.pending {
+    background-color: var(--YELLOW1);
+    color: var(--YELLOW2);
+}
+.canceled {
+    background-color: var(--RED1);
+    color: var(--RED2);
+}
+.finished {
+    background-color: var(--GREEN1);
+    color: var(--GREEN2);
+}
+
+.content {
+    display: flex;
+    gap: 2.25vw;
+    flex-wrap: wrap;
+}
+
+.pill {
+    height: 1vw;
+    display: flex;
+    align-items: center;
+    padding: 0.5vw 1vw;
+    border-radius: 3vw;
+    font-size: 1vw;
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .header {
+        gap: 10vw;
+        margin-bottom: 10vw;
+    }
+    .headerIcon {
+        width: 3vw;
+        height: 3vw;
+    }
+    .title {
+        font-size: 10vw;
+        line-height: 10vw;
+    }
+    .labels {
+        gap: 3vw;
+    }
+    .projectsCountLabel {
+        padding: 1vw 4.5vw;
+        border-radius: 7vw;
+        font-size: 3.5vw;
+    }
+    .search {
+        gap: 5vw;
+    }
+
+    .content {
+        flex-direction: row;
+        gap: 8vw;
+        flex-wrap: unset;
+        overflow-x: auto;
+    }
+
+    .pill {
+        height: 2.5vw;
+        padding: 1vw 3vw;
+        border-radius: 8vw;
+        font-size: 2vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .header {
+        gap: 10vw;
+        margin-bottom: 10vw;
+    }
+    .headerIcon {
+        width: 5.5vw;
+        height: 5.5vw;
+    }
+    .title {
+        font-size: 10vw;
+        line-height: 10vw;
+    }
+    .labels {
+        gap: 4vw;
+    }
+    .projectsCountLabel {
+        padding: 3.5vw 2vw;
+        border-radius: 12vw;
+        font-size: 4vw;
+    }
+
+    .search {
+        flex-direction: column;
+        gap: 10vw;
+    }
+
+    .content {
+        flex-direction: row;
+        gap: 10vw;
+        flex-wrap: unset;
+        overflow-x: auto;
+    }
+
+    .pill {
+        height: 8vw;
+        box-sizing: border-box;
+        padding: 2vw 6vw;
+        border-radius: 15vw;
+        font-size: 4vw;
+    }
+}

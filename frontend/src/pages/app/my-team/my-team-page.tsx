@@ -1,10 +1,11 @@
 import React from 'react';
 import { AccountTypes, ProfileTypes } from 'shared';
 
+import TeamMemberTile from './team-member-tile';
+
 import classes from './my-team-page.module.css'
 import PeopleIconBlack from '~/images/people-icon-black.svg';
 import PlusIconBlack from '~/images/plus-icon-black.svg';
-import TeamMemberTile from './team-member-tile';
 
 
 const TEAM_MEMBERS = [{
@@ -88,8 +89,8 @@ const MyTeamPage = () => {
             <div className={classes.tiles}>
                 {TEAM_MEMBERS.map(m => (
                     <TeamMemberTile
-                        className={classes.tile}
                         key={m.email}
+                        className={classes.tile}
                         {...m}
                         onEdit={() => console.log(`Editing: ${m.email}`)}
                     />

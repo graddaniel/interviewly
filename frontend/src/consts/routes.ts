@@ -71,11 +71,19 @@ const APP_ROUTES = {
         TITLE: 'Library',
         PATH: '/app/library',
     },
-}
+};
+
+const APP_FORMS_ROUTES = {
+    EDIT_PROJECT: {
+        TITLE: 'Edit project',
+        PATH: '/app/projects/:projectId/edit'
+    },
+};
 
 export {
     FORMS_ROUTES,
-    APP_ROUTES
+    APP_ROUTES,
+    APP_FORMS_ROUTES,
 };
 
 export default ROUTES;
