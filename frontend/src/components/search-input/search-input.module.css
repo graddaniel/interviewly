@@ -1,0 +1,68 @@
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1vw;
+    padding: 0.75vw 1.25vw;
+    border: 1px solid var(--BLACK);
+    border-radius: 3vw;
+}
+
+.icon {
+    width: 1vw;
+    height: 1vw;
+}
+
+.input {
+    padding: 0;
+    border: none;
+    outline: none;
+    font-size: 1vw;
+    background-color: transparent;
+    color: var(--BLACK);
+}
+.input::placeholder {
+    color: var(--BLACK);
+    text-align: right;
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .wrapper {
+        gap: 3vw;
+        padding: 2vw;
+        border-radius: 9vw;
+    }
+    
+    .icon {
+        width: 3vw;
+        height: 3vw;
+    }
+    
+    .input {
+        font-size: 2.5vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .wrapper {
+        gap: 5vw;
+        padding: 4vw;
+        border-radius: 15vw;
+    }
+    
+    .icon {
+        width: 4.5vw;
+        height: 4.5vw;
+    }
+    
+    .input {
+        width: 100%;
+        font-size: 4vw;
+    }
+}

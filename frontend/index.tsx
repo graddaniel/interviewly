@@ -28,8 +28,12 @@ import MyTeamPage from './src/pages/app/my-team/my-team-page';
 import ProfilePage from './src/pages/home/profile-page/profile-page';
 import Protected from './src/utils/protected';
 import RequireAnonymous from './src/utils/require-anonymous';
+import ProjectsPage from './src/pages/app/projects/projects-page';
+import AppAction from './src/actions/app/app-action';
+import EditProjectPage from './src/pages/app/edit-project/edit-project-page';
+import EditProjectAction from './src/actions/app/edit-project-action';
 
-import ROUTES, { APP_ROUTES, FORMS_ROUTES } from './src/consts/routes';
+import ROUTES, { APP_FORMS_ROUTES, APP_ROUTES, FORMS_ROUTES } from './src/consts/routes';
 
 import './src/consts/colors.css';
 import './i18n';
@@ -86,6 +90,7 @@ const router = createBrowserRouter(
             <Route
                 path={ROUTES.APP.PATH}
                 element={<App />}
+                action={AppAction}
             >
                 <Route
                     path={APP_ROUTES.MY_ACCOUNT.PATH}
@@ -93,7 +98,12 @@ const router = createBrowserRouter(
                 />
                 <Route
                     path={APP_ROUTES.PROJECTS.PATH}
-                    element={<div>PROJECTS</div>}
+                    element={<ProjectsPage />}
+                />
+                <Route
+                    path={APP_FORMS_ROUTES.EDIT_PROJECT.PATH}
+                    element={<EditProjectPage />}
+                    action={EditProjectAction}
                 />
                 <Route
                     path={APP_ROUTES.MY_TEAM.PATH}

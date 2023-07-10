@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
-import { Outlet } from 'react-router-dom';
+import { Form, Outlet, matchPath, useLocation } from 'react-router-dom';
 
 import Logo from '../../components/logo/logo';
 import IconButton from '../../components/icon-button/icon-button';
@@ -11,6 +11,7 @@ import MenuDropdown from './menu-dropdown';
 
 import classes from './app.module.css';
 import BellIconBlack from '../../../images/bell-icon-black.svg';
+import { APP_FORMS_ROUTES } from '../../consts/routes';
 
 const USER = {
     name: 'Mateusz',
@@ -20,6 +21,7 @@ const USER = {
 const App = () => {
     const [ isMenuOpen, setIsMenuOpen ] = useState(false);
     const { i18n } = useTranslation();
+    const location = useLocation();
     const { resolvedLanguage } = i18n;
 
     const toggleDropdown = useCallback(() => setIsMenuOpen(state => !state), []);
@@ -28,6 +30,15 @@ const App = () => {
     const formattedDate = moment(Date.now())
         .locale(resolvedLanguage as string)
         .format('dddd, LL');
+
+    const matchingFormRoutes = Object
+        .values(APP_FORMS_ROUTES)
+        .filter(route => matchPath(route.PATH, location.pathname));
+    if (matchingFormRoutes.length > 0) {
+        console.log('Rendering APP form route');
+    
+        return <Outlet />;
+    }
 
     return (
         <div className={classes.paddingWrapper}>
@@ -57,11 +68,14 @@ const App = () => {
                 </header>
                 <nav className={classes.navigation}>
                     <Menu />
-                    <TextButton
-                        className={classes.createProjectButton}
-                        text={'Create Project'}
-                        onClick={() => console.log('TODO create project')}
-                    />
+                    <Form method="post">
+                        <TextButton
+                            className={classes.createProjectButton}
+                            text={'Create Project'}
+                            onClick={() => console.log('TODO create project')}
+                        />
+                        <input type="submit" value="Create Project" />
+                    </Form>
                 </nav>
                 <main className={classes.main}>
                     <Outlet />
