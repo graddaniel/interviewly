@@ -12,9 +12,8 @@ const AddQuestionForm = () => {
     const [ mandatory, setMandatory ] = useState('N');
     const [ newCheckbox, setNewCheckbox ] = useState('');
     const [ checkboxes, setCheckboxes ] = useState<string[]>([]);
-    const [ dropdownName, setDropdownName ] = useState<string>('');
-    const [ dropdownValue, setDropdownValue ] = useState<string>('');
-    const [ dropdownOptions, setDropdownOptions ] = useState<[string, string][]>([]);
+    const [ newDropdown, setNewDropdown ] = useState<string>('');
+    const [ dropdowns, setDropdowns ] = useState<string[]>([]);
     const { surveyId, groupId } = useParams();
 
     const questionParams = {
@@ -25,7 +24,7 @@ const AddQuestionForm = () => {
         //id: '19',
         question,//: 'Yes/No',
         language: 'en',
-        qid: '14',
+        qid: '999',
         parent_qid: '0',
         sid: surveyId || '',
         gid: groupId || '',
@@ -37,11 +36,18 @@ const AddQuestionForm = () => {
         //other: 'N',
     };
 
+    // const extraParams = {
+    //     type: 'T',
+    //     parent_qid: '14',
+    //     sid: '1',
+    //     gid: '2',
+    // };
+
     const extraParams = {
         type: 'T',
-        parent_qid: '14',
-        sid: '1',
-        gid: '2',
+        parent_qid: '999',
+        sid: surveyId || '',
+        gid: groupId || '',
     };
 
     const buildQuestionsFile = () => {
@@ -54,7 +60,7 @@ const AddQuestionForm = () => {
             question,
         }, extraParams, {
             checkboxes,
-            dropdownOptions,
+            dropdownOptions: dropdowns,
         });
 
         return lsqFile;
@@ -112,21 +118,15 @@ const AddQuestionForm = () => {
                 <section>
                     <input
                         type="text"
-                        onChange={(event) => setDropdownName(event.target.value)}
-                        value={dropdownName}
-                        placeholder="Dropdown name"
-                    />
-                    <input
-                        type="text"
-                        onChange={(event) => setDropdownValue(event.target.value)}
-                        value={dropdownValue}
+                        onChange={(event) => setNewDropdown(event.target.value)}
+                        value={newDropdown}
                         placeholder="Dropdown value"
                     />
-                    <Button onClick={() => setDropdownOptions(options => ([...options, [dropdownName, dropdownValue]]))}>Add option</Button>
-                    {dropdownOptions.map(([name, value], i) => (
-                        <div key={name}>
-                            {name}:{value}
-                            <Button onClick={() => setDropdownOptions(options => {
+                    <Button onClick={() => setDropdowns(dropdowns => ([...dropdowns, newDropdown]))}>Add option</Button>
+                    {dropdowns.map((dropdown, i) => (
+                        <div key={i}>
+                            {dropdown}
+                            <Button onClick={() => setDropdowns(options => {
                                 const o = [...options];
                                 o.splice(i, 1);
                                 return o;

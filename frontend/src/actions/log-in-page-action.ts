@@ -1,15 +1,14 @@
 import { redirect } from 'react-router-dom';
 
-import Validator from '../utils/validator';
 import AuthService from '../services/auth-service';
 
-import ROUTES from '../consts/routes';
+import ROUTES, { APP_ROUTES } from '../consts/routes';
+import LogInValidator from '../validators/log-in-validator';
 
 
 const LogInPageAction = async ({ request }) => {
     const formData =  Object.fromEntries(await request.formData());
     const { actionType } = formData;
-    console.log(formData)
 
     switch (actionType) {
         case 'logIn':
@@ -21,14 +20,14 @@ const LogInPageAction = async ({ request }) => {
                     remember,
                 } = formData;
 
-                await Validator.validateLogInData(formData);
+                await LogInValidator.validateData(formData);
 
                 const jwtToken = await AuthService.login(email, password);
                 console.log(sessionStorage, localStorage);
                 (remember ? localStorage : sessionStorage)
                     .setItem('accessToken', jwtToken);
 
-                return redirect(ROUTES.USER_PROFILE.PATH);
+                return redirect(APP_ROUTES.MY_ACCOUNT.PATH);
 
             } catch (errors) {
                 console.error("Login validation failed", errors);

@@ -1,0 +1,124 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.tile {
+    height: 18vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.25vw;
+    padding: 3.75vw 2vw;
+    border: 1px solid var(--COLOR3);
+    border-radius: 1.5vw;
+    background-color: var(--WHITE);
+    cursor: pointer;
+}
+.miniTile {
+    height: 3.5vw;
+    display: flex;
+    align-items: center;
+    gap: 1.25vw;
+    padding: 0.5vw;
+    border-radius: 1vw;
+}
+.selected {
+    border-color: var(--COLOR5);
+    background-color: var(--COLOR2);
+}
+
+.title {
+    font-size: 1.2vw;
+}
+
+.iconWrapper {
+    width: 4vw;
+    height: 4vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1vw;
+    background-color: var(--COLOR3);
+}
+.miniTile > .iconWrapper {
+    width: 2.5vw;
+    height: 2.5vw;
+}
+.selected > .iconWrapper {
+    background-color: var(--COLOR6);
+}
+
+.icon {
+    width: 1vw;
+    height: 1vw;
+}
+
+.text {
+    font-size: 1vw;
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .tile {
+        width: 26vw;
+        height: 34vw;
+        gap: 3.5vw;
+        padding: 3vw 0;
+        border-radius: 4.5vw;
+    }
+    
+    .title {
+        font-size: 2.5vw;
+    }
+    
+    .iconWrapper {
+        width: 12vw;
+        height: 12vw;
+        border-radius: 3vw;
+    }
+    
+    .icon {
+        width: 3vw;
+        height: 3vw;
+    }
+    
+    .text {
+        font-size: 2vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .tile {
+        height: 25vw;
+        display: grid;
+        grid-template-areas: 
+        "iconWrapper title"
+        "iconWrapper text";
+        padding: 3.5vw;
+        border-radius: 8vw;
+    }
+    
+    .title {
+        grid-area: title;
+        font-size: 4vw;
+    }
+    
+    .iconWrapper {
+        grid-area: iconWrapper;
+        width: 16vw;
+        height: 16vw;
+        border-radius: 4.5vw;
+    }
+    
+    .icon {
+        width: 5vw;
+        height: 5vw;
+    }
+    
+    .text {
+        grid-area: text;
+        font-size: 3.5vw;
+    }
+}

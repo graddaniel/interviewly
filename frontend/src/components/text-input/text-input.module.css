@@ -3,8 +3,8 @@
 
 .inputWrapper {
     position: relative;
-    padding-bottom: 0.6rem;
-    border-bottom: 0.075rem solid var(--BLACK);
+    padding-bottom: 0.6vw;
+    border-bottom: 0.075vw solid var(--BLACK);
     cursor: text;
 }
 
@@ -13,7 +13,8 @@
     border: none;
     outline: none;
     background-color: transparent;
-    font-size: 1rem;
+    font-size: 1vw;
+    resize: none;
 }
 .input::placeholder {
     color: var(--BLACK);
@@ -28,8 +29,8 @@
 .passwordToggle {
     position: absolute;
     right: 0;
-    top: 0.25rem;
-    width: 1rem;
+    top: 0.25vw;
+    width: 1vw;
     cursor: pointer;
 }
 
@@ -37,11 +38,11 @@
     border-color: var(--RED);
 }
 .errorMessage {
-    height: 0.8rem;
+    height: 0.8vw;
     margin: 0;
-    margin-top: 0.6rem;
+    margin-top: 0.6vw;
     color: var(--RED);
-    font-size: 0.8rem;
+    font-size: 0.8vw
 }
 
 @media (min-width: min-large) {
@@ -49,11 +50,46 @@
 }
 
 @media (min-width: min-medium) and (max-width: max-medium) {
-
+    .inputWrapper {
+        padding-bottom: 2vw;
+        border-bottom: 0.075vw solid var(--BLACK);
+    }
+    
+    .input {
+        font-size: 3vw;
+    }
+    
+    .passwordToggle {
+        top: 1vw;
+        width: 3vw;
+    }
+    
+    .errorMessage {
+        height: 2vw;
+        margin-top: 2vw;
+        font-size: 2vw
+    }
 }
 
 @media (max-width: max-small) {
+    .inputWrapper {
+        padding-bottom: 3vw;
+        border-bottom: 0.075vw solid var(--BLACK);
+    }
+    
     .input {
         text-align: center;
+        font-size: 4vw;
+    }
+    
+    .passwordToggle {
+        top: 1vw;
+        width: 5vw;
+    }
+    
+    .errorMessage {
+        height: 4vw;
+        margin-top: 3vw;
+        font-size: 4vw
     }
 }

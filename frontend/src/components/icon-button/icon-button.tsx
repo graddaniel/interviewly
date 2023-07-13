@@ -5,7 +5,7 @@ import classes from './icon-button.module.css';
 
 type IconButtonProps = {
     icon: string,
-    onClick: () => void,
+    onClick: (e?: React.MouseEvent) => void,
     className?: string,
 };
 

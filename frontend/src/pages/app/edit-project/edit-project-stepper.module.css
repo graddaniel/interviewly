@@ -1,3 +1,6 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
 .steps {
     display: flex;
     align-items: flex-end;
@@ -26,4 +29,33 @@
 
 .purple {
     background-color: var(--COLOR5);
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .steps {
+        gap: 5.5vw;
+    }
+    .step {
+        width: 11.5vw;
+        gap: 3vw;
+    }
+    .title {
+        font-size: 1.75vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .step {
+        width: 10vw;
+    }
+    .title {
+        display: none;
+    }
+    .line {
+        height: 1vw;
+        border-radius: 1vw;
+    }
 }

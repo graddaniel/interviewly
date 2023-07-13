@@ -1,0 +1,135 @@
+.page {
+    height: 100%;
+    display: grid;
+    grid-template-rows: min-content min-content auto min-content;
+    grid-template-areas: 
+        "header"
+        "stepper"
+        "content"
+        "navigation";
+    row-gap: 5vw;
+    margin: 3.5vw 6vw 9vw;
+}
+
+.header {
+    grid-area: header;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2vw;
+}
+.logo {
+    width: 4vw;
+}
+.title {
+    margin: 0;
+    font-size: 1vw;
+    font-weight: 400;
+    text-align: center;
+}
+.closeControls {
+    justify-self: flex-end;
+}
+
+.content {
+    grid-area: content;
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+}
+
+.surveySettings {
+    display: grid;
+    grid-template-columns: auto 5% 15% 15% 5%;
+    grid-template-areas: 
+        "templateName addLanguage availableLanguages selectedLanguages removeLanguage";
+    column-gap: 1%;
+}
+.templateNameInput {
+    grid-area: templateName;
+    align-self: flex-end;
+}
+.addLanguageButton {
+    grid-area: addLanguage;
+}
+.availableLanguagesDropdown {
+    grid-area: availableLanguages;
+    z-index: 3;
+}
+.selectedLanguagesDropdown {
+    grid-area: selectedLanguages;
+    z-index: 3;
+}
+.removeLanguageButton {
+    grid-area: removeLanguage;
+}
+.dropdownList {
+    padding-top: 4vw;
+}
+
+.questionControls {
+    display: grid;
+    grid-template-columns: auto 15% 15% 5%;
+    column-gap: 1%;
+}
+.selectedButton {
+    color: var(--WHITE) !important;
+    background-color: var(--BLACK) !important;
+}
+
+.conditionalQuestionControlsSmall {
+    display: grid;
+    grid-template-columns: 20% auto;
+    grid-template-areas: 
+        "conditionalHeader conditionalPrimaryRow";
+    align-items: center;
+}
+.conditionalQuestionControlsBig {
+    height: 35vh;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 10% 70% 20%;
+    grid-template-rows: 2.5vw 5vw;
+    grid-template-areas: 
+        "conditionalHeaderTwo conditionalHeaderTwo conditionalHeaderOne "
+        "conditionalPrimaryRow conditionalPrimaryRow conditionalPrimaryRow";
+    grid-auto-rows: 5vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.conditionalHeader {
+    grid-area: conditionalHeader;
+}
+.conditionalHeaderOne {
+    grid-area: conditionalHeaderOne;
+    justify-self: center;
+}
+.conditionalHeaderTwo {
+    grid-area: conditionalHeaderTwo;
+}
+.conditionalPrimaryRow {
+    grid-area: conditionalPrimaryRow;
+    display: flex;
+    gap: 4.5vw;
+}
+.answerInput {
+    width: 70%;
+}
+.secondaryRowCheckbox {
+    align-self: stretch;
+    accent-color: var(--COLOR1);
+}
+.secondaryRowText {
+    grid-area: secondaryRowText;
+}
+.secondaryRowIcon {
+    grid-area: secondaryRowIcon;
+}
+
+
+.navigation {
+    grid-area: navigation;
+    display: flex;
+    justify-content: flex-end;
+}

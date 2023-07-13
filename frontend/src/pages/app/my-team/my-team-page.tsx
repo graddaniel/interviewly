@@ -1,63 +1,32 @@
-import React from 'react';
-import { AccountTypes, ProfileTypes } from 'shared';
+import React, { useEffect, useState } from 'react';
+import { ProfileTypes } from 'shared';
+import { useActionData, useLoaderData } from 'react-router-dom';
 
 import TeamMemberTile from './team-member-tile';
+import TeamMemberPopup from './team-member-popup';
 
 import classes from './my-team-page.module.css'
 import PeopleIconBlack from '~/images/people-icon-black.svg';
 import PlusIconBlack from '~/images/plus-icon-black.svg';
 
 
-const TEAM_MEMBERS = [{
-    avatarUrl: 'https://i.pravatar.cc/100',
-    name: 'Ewelina',
-    surname: 'Izbicka',
-    email: 'ewelina.izbicka@o2.pl',
-    role: ProfileTypes.Role.Moderator,
-    status: AccountTypes.Status.ACTIVE,    
-}, {
-    avatarUrl: 'https://i.pravatar.cc/100',
-    name: 'Karol',
-    surname: 'Walewski',
-    email: 'walewski.k @o2.pl',
-    role: ProfileTypes.Role.Admin,
-    status: AccountTypes.Status.UNCONFIRMED,    
-}, {
-    avatarUrl: 'https://i.pravatar.cc/100',
-    name: 'Malwina',
-    surname: 'Kowalska',
-    email: 'mal34@gmail.com',
-    role: ProfileTypes.Role.Observer,
-    status: AccountTypes.Status.INACTIVE,    
-}, {
-    avatarUrl: 'https://i.pravatar.cc/100',
-    name: 'Patrycjusz',
-    surname: 'Ziembkiewicz',
-    email: 'patrycjusz235@o2.pl',
-    role: ProfileTypes.Role.Moderator,
-    status: AccountTypes.Status.ACTIVE,    
-}, {
-    avatarUrl: 'https://i.pravatar.cc/100',
-    name: 'Marek',
-    surname: 'Kowal',
-    email: 'kowal.marek@wp.pl',
-    role: ProfileTypes.Role.Observer,
-    status: AccountTypes.Status.INACTIVE,    
-}, {
-    avatarUrl: 'https://i.pravatar.cc/100',
-    name: 'Iwona',
-    surname: 'Kizior',
-    email: 'kizior1993@gmail.com',
-    role: ProfileTypes.Role.Moderator,
-    status: AccountTypes.Status.ACTIVE,    
-}];
-
-
 const MyTeamPage = () => {
-    const membersCount = TEAM_MEMBERS.length;
-    const adminsCount = TEAM_MEMBERS.filter(m => m.role === ProfileTypes.Role.Admin).length;
-    const moderatorsCount = TEAM_MEMBERS.filter(m => m.role === ProfileTypes.Role.Moderator).length;
-    const observersCount = TEAM_MEMBERS.filter(m => m.role === ProfileTypes.Role.Observer).length;
+    const teamMembers = useLoaderData() as any;
+    const actionData = useActionData() as { [k: string]: any };
+
+    const [ popupOpen, setPopupOpen ] = useState(false);
+    const [ selectedMember, setSelectedMember ] = useState(null);
+    const [ errors, setErrors ] = useState<any>(null);
+
+    useEffect(() => {
+        console.log("UPDATING ERRORS", actionData)
+        setErrors(actionData);
+    }, [actionData]);
+
+    const membersCount = teamMembers.length;
+    const adminsCount = teamMembers.filter(m => m.role === ProfileTypes.Role.Admin).length;
+    const moderatorsCount = teamMembers.filter(m => m.role === ProfileTypes.Role.Moderator).length;
+    const observersCount = teamMembers.filter(m => m.role === ProfileTypes.Role.Observer).length;
 
     return (
         <section>
@@ -67,7 +36,10 @@ const MyTeamPage = () => {
                     <h4 className={classes.title}>My team</h4>
                     <span className={classes.membersCountLabel}>{membersCount} members</span>
                 </div>
-                <button className={classes.addMembersButton}>
+                <button
+                    className={classes.addMembersButton}
+                    onClick={() => setPopupOpen(true)}
+                >
                     <img className={classes.addMembersButtonIcon} src={PlusIconBlack}/>
                     Invite team member
                 </button>
@@ -87,15 +59,30 @@ const MyTeamPage = () => {
                 </ul>
             </div>
             <div className={classes.tiles}>
-                {TEAM_MEMBERS.map(m => (
+                {teamMembers.map(m => (
                     <TeamMemberTile
                         key={m.email}
                         className={classes.tile}
                         {...m}
-                        onEdit={() => console.log(`Editing: ${m.email}`)}
+                        onEdit={() => {
+                            setSelectedMember(m);
+                            setPopupOpen(true);
+                        }}
                     />
                 ))}
             </div>
+            {popupOpen && (
+                <TeamMemberPopup
+                    onClose={() => {
+                        setSelectedMember(null);
+                        setPopupOpen(false);
+                        setErrors(null);
+                    }}
+                    defaultValues={selectedMember}
+                    edit={!!selectedMember}
+                    errors={errors}
+                />
+            )}
         </section>
     );
 };

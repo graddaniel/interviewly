@@ -44,6 +44,7 @@
     background-color: var(--WHITE);
     list-style: none;
     cursor: default;
+    z-index: 1;
 }
 
 .listElement {

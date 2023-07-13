@@ -1,0 +1,47 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.stepTitle {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1.75vw;
+}
+.icon {
+    width: 1vw;
+    height: 1vw;
+}
+.title {
+    margin: 0;
+    font-size: 1.75vw;
+    font-weight: 400;
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .stepTitle {
+        gap: 5vw;
+    }
+    .icon {
+        width: 3vw;
+        height: 3vw;
+    }
+    .title {
+        font-size: 5vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .stepTitle {
+        gap: 5vw;
+    }
+    .icon {
+        width: 5vw;
+        height: 5vw;
+    }
+    .title {
+        font-size: 6vw;
+    }
+}

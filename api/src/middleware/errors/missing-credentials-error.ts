@@ -1,11 +1,8 @@
-import { StatusCodes } from 'http-status-codes';
+import AuthorizationError from '../../generic/authorization-error';
 
-export default class MissingCredentialsError extends Error {
-    statusCode: StatusCodes;
-    
+
+export default class MissingCredentialsError extends AuthorizationError {   
     constructor() {
         super('Missing credentials');
-
-        this.statusCode = StatusCodes.UNAUTHORIZED;
     }
 }

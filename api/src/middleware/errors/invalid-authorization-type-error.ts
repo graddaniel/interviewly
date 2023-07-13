@@ -1,14 +1,11 @@
-import { StatusCodes } from 'http-status-codes';
+import AuthorizationError from '../../generic/authorization-error';
 
-export default class InvalidAuthorizationTypeError extends Error {
-    statusCode: StatusCodes;
-    
+
+export default class InvalidAuthorizationTypeError extends AuthorizationError {   
     constructor(
         receivedType: string,
         expectedType: string,
     ) {
         super(`Invalid authorization type. Received: ${receivedType}, expected: ${expectedType}`);
-
-        this.statusCode = StatusCodes.UNAUTHORIZED;
     }
 }

@@ -1,0 +1,42 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+
+.detailsStep {
+    display: flex;
+    flex-direction: column;
+    gap: 5vw;
+}
+
+.questionsGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5vw;
+}
+
+.label {
+    display: flex;
+    align-items: center;
+    gap: 1.2vw;
+    font-size: 1vw;
+}
+.dropdown {
+    height: 2.5vw;
+    z-index: 1;
+}
+.dropdownError {
+    border-color: var(--RED);
+}
+
+.payment {
+    width: 5vw;
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+}
+
+@media (max-width: max-small) {
+}

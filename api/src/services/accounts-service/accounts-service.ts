@@ -4,9 +4,9 @@ import config from 'config';
 import { AccountTypes, ProfileTypes } from 'shared';
 
 import AccountModel from '../../models/account';
+import ResetRequestModel from '../../models/password-reset-request';
 import RecruiterProfileModel from '../../models/recruiter-profile';
 import RespondentProfileModel from '../../models/respondent-profile';
-import ResetRequestModel from '../../models/password-reset-request';
 import AccountAlreadyExistsError from './errors/account-already-exists-error';
 import AccountNotFoundError from './errors/account-not-found-error';
 import IncorrectPasswordError from './errors/incorrect-password-error';
@@ -14,21 +14,31 @@ import JWTService from '../jwt-service/jwt-service';
 import { hash } from '../../utils'
 import AccountHasNotRequestedPasswordResetError from './errors/account-has-not-requested-password-reset-error';
 import SequelizeConnection from '../sequelize-connection';
-
-import type MailService from '../mail-service/mail-service';
+import CompanyModel from '../../models/company';
 import PasswordResetExpired from './errors/password-reset-expired-error';
 import AccountAlreadyActive from './errors/account-already-active-error';
-import CompanyModel from '../../models/company';
+import RecruiterAccountMissingCompanyNameError from './errors/recruiter-account-missing-company-name-error';
+import RecruiterAccountMissingCompanyDataError from './errors/recruiter-account-missing-company-data-error';
+
+import type MailService from '../mail-service/mail-service';
+import type CompaniesService from '../companies-service/companies-service';
+import IncorrectAccountType from './errors/incorrect-account-type';
+import ProfileNotFoundError from './errors/profile-not-found-error';
+import NotPermittedError from '../../middleware/errors/not-permitted-error';
 
 
 export default class AccountsService {
     private mailService: MailService;
+    private companiesService: CompaniesService;
     private additionalNotificationsTarget: string;
 
     constructor(
         mailService: MailService,
+        companiesService: CompaniesService
     ) {
         this.mailService = mailService;
+
+        this.companiesService = companiesService;
 
         this.additionalNotificationsTarget = config.get('registration.additionalNotificationsTarget');
     }
@@ -37,7 +47,13 @@ export default class AccountsService {
         const account = await AccountModel.findOne({
             where: {
                 ...query,
-            }
+            },
+            include: [{
+                model: RecruiterProfileModel,
+                include: [CompanyModel],
+            }, {
+                model: RespondentProfileModel,
+            }],
         });
 
         if (!account) {
@@ -70,10 +86,9 @@ export default class AccountsService {
             throw new IncorrectPasswordError();
         }
 
-        return JWTService.sign({
-            uuid: account.uuid,
-            email: account.email,
-        });
+        const userPublicData = await this._getUserPublicData(account);
+
+        return JWTService.sign(userPublicData);
     };
 
     register = SequelizeConnection.transaction(async (
@@ -83,38 +98,20 @@ export default class AccountsService {
         name: string,
         surname: string,
         gender: ProfileTypes.Gender,
+        companyName?: string,
         notify?: boolean,
     ): Promise<string> => {
         await this.checkIfAccountExists({ email });
 
-        //check if company already has an account
-        let companyId;
-        if (!companyId) {
-            const newCompany = await CompanyModel.create({});
-
-            companyId = newCompany.id;
-        }
-
-        const newAccount = await AccountModel.create({
-            uuid: generateUuidV4(),
+        const newAccount = await this.createAccount(
             email,
-            passwordHash: hash(password),
+            password,
             type,
-            status: AccountTypes.Status.UNCONFIRMED,
-            [type === AccountTypes.Type.RECRUITER ? 'RecruiterProfile' : 'RespondentProfile']: {
-                name,
-                surname,
-                gender,
-                role: ProfileTypes.Role.Admin,
-                CompanyId: companyId,
-            }
-        }, {
-            include: [{
-                association: type === AccountTypes.Type.RECRUITER
-                    ? AccountModel.associations.RecruiterProfileModel
-                    : AccountModel.associations.RespondentProfileModel,
-            }]
-        });
+            name,
+            surname,
+            gender,
+            companyName,
+        );
 
         await this.mailService.send(
             newAccount.email,
@@ -130,10 +127,168 @@ export default class AccountsService {
             );
         }
 
-        return JWTService.sign({
-            uuid: newAccount.uuid,
-            email: newAccount.email
+        return this._getUserPublicData(newAccount);
+    });
+
+    private _getUserPublicData = async (
+        account: AccountModel
+    ) => {
+        const userPublicData: any = {
+            uuid: account.uuid,
+            email: account.email,
+            type: account.type,
+        };
+
+        if (account.type === AccountTypes.Type.RESPONDENT) {
+            return userPublicData;
+        }
+
+        const company = await this.companiesService.getCompanyOfAccount(account.uuid);
+        if (!company) {
+            throw new RecruiterAccountMissingCompanyDataError(account.email);
+        }
+        userPublicData.companyUuid = company.uuid;
+
+        userPublicData.role = (account as any)?.RecruiterProfile.role;;
+
+        return userPublicData;
+    }
+
+    createAccount = async (
+        email: string,
+        password: string,
+        type: AccountTypes.Type,
+        name: string,
+        surname: string,
+        gender: ProfileTypes.Gender,
+        companyName?: string,
+    ): Promise<AccountModel> => {
+        switch (type) {
+            case AccountTypes.Type.RESPONDENT:
+                return await this._createRespondentAccount(
+                    email,
+                    password,
+                    name,
+                    surname,
+                    gender,
+                );
+
+            case AccountTypes.Type.RECRUITER:
+                if (!companyName) {
+                    throw new RecruiterAccountMissingCompanyNameError();
+                }
+
+                const company = await this.companiesService.create(companyName);
+
+                return await this.createRecruiterAccount(
+                    email,
+                    password,
+                    name,
+                    surname,
+                    gender,
+                    company,
+                );
+        }
+    }
+
+    private _createRespondentAccount = async (
+        email: string,
+        password: string,
+        name: string,
+        surname: string,
+        gender: ProfileTypes.Gender,
+    ): Promise<AccountModel> => {
+        const newAccount = await AccountModel.create({
+            uuid: generateUuidV4(),
+            email,
+            passwordHash: hash(password),
+            type: AccountTypes.Type.RESPONDENT,
+            status: AccountTypes.Status.UNCONFIRMED,
+            RespondentProfile: {
+                name,
+                surname,
+                gender,
+                role: ProfileTypes.Role.Admin,
+            }
+        }, {
+            include: [{
+                association: AccountModel.associations.RespondentProfileModel,
+            }]
         });
+
+        return newAccount;
+    }
+
+    createRecruiterAccount = async (
+        email: string,
+        password: string,
+        name: string,
+        surname: string,
+        gender: ProfileTypes.Gender,
+        company: CompanyModel,
+        role: ProfileTypes.Role = ProfileTypes.Role.Admin,
+        status: AccountTypes.Status = AccountTypes.Status.UNCONFIRMED,
+    ): Promise<AccountModel> => {
+        const newAccount = await AccountModel.create({
+            uuid: generateUuidV4(),
+            email,
+            passwordHash: hash(password),
+            type: AccountTypes.Type.RECRUITER,
+            status,
+            RecruiterProfile: {
+                name,
+                surname,
+                gender,
+                role,
+                CompanyId: company.id,
+            }
+        }, {
+            include: [{
+                association: AccountModel.associations.RecruiterProfileModel,
+            }]
+        });
+
+        return newAccount;
+    };
+
+    editRecruiterAccount = SequelizeConnection.transaction(async (
+        currentUserRole: ProfileTypes.Role,
+        uuid: string,
+        email: string,
+        name: string,
+        surname: string,
+        gender: ProfileTypes.Gender,
+        role: ProfileTypes.Role = ProfileTypes.Role.Admin,
+        status: AccountTypes.Status = AccountTypes.Status.UNCONFIRMED,
+    ) => {
+        if (role === ProfileTypes.Role.InterviewlyStaff
+            && currentUserRole !== ProfileTypes.Role.InterviewlyStaff) {
+            throw new NotPermittedError();
+        }
+
+        const account = await this.getAccount({ uuid });
+        if (account.type !== AccountTypes.Type.RECRUITER) {
+            throw new IncorrectAccountType(account.type);
+        }
+
+        const recruiterProfile = await RecruiterProfileModel.findOne({ where: { account_id: account.id }});
+        if (!recruiterProfile) {
+            throw new ProfileNotFoundError();
+        }
+
+        await account.update({
+            email,
+            status,
+        });
+        await recruiterProfile.update({
+            name,
+            surname,
+            gender,
+            role,
+        });
+
+        await account.save();
+        await recruiterProfile.save();
     });
 
     confirmAccountRegistration = async (

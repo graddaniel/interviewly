@@ -9,15 +9,20 @@
 }
 
 .closeControlButton {
-    height: 3rem;
-    width: 3rem;
+    height: 3vw;
+    width: 3vw;
 }
 
 .closeControlText {
-    margin-left: 1rem;
+    margin-left: 1vw;
 }
 
 @media (min-width: min-medium) and (max-width: max-medium) {
+    .closeControlButton {
+        height: 8.5vw;
+        width: 8.5vw;
+        border-radius: 9vw;
+    }
 }
 
 @media (max-width: max-small) {
@@ -25,7 +30,8 @@
         justify-content: center;
     }
     .closeControlButton {
-        height: 2rem;
-        width: 2rem;
+        height: 10vw;
+        width: 10vw;
+        border-radius: 10vw;
     }
 }

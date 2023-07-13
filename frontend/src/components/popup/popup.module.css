@@ -1,0 +1,40 @@
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--COLOR3-OPAQUE);
+}
+
+.popup {
+    width: 43vw;
+    padding: 2.5vw;
+    border-radius: 1.5vw;
+    background-color: var(--WHITE);
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .popup {
+        width: 90vw;
+        padding: 7vw;
+        border-radius: 4.5vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .popup {
+        width: 90vw;
+        padding: 9vw 6vw;
+        border-radius: 8vw;
+    }
+}
