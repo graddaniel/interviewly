@@ -1,0 +1,102 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.switchInput {
+    display: flex;
+    align-items: center;
+    gap: 1.25vw;
+}
+
+.leftLabel {
+    font-size: 1.2vw;
+}
+.rightLabel {
+    font-size: 1.2vw;
+}
+
+.switchRoot {
+    all: unset;
+    position: relative;
+    width: 2vw;
+    height: 1vw;
+    border: 1px solid var(--BLACK);
+    border-radius: 20vw;
+    background-color: var(--WHITE);
+    cursor: pointer;
+}
+.switchRoot[data-state='checked'] {
+    border: 1px solid var(--COLOR5);
+    background-color: var(--WHITE);
+}
+
+.switchThumb {
+    width: 0.5vw;
+    height: 0.5vw;
+    display: block;
+    border-radius: 20vw;
+    background-color: var(--BLACK);
+    transition: transform 100ms;
+    transform: translateX(0.25vw);
+    will-change: transform;
+}
+.switchThumb[data-state='checked'] {
+    background-color: var(--COLOR5);
+    transform: translateX(1.25vw);
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .switchInput {
+        gap: 5.5vw;
+    }
+    .leftLabel {
+        font-size: 3vw;
+    }
+    .rightLabel {
+        font-size: 3vw;
+    }
+
+    .switchRoot {
+        width: 5vw;
+        height: 2.5vw;
+        border-radius: 20vw;
+    }
+    .switchThumb {
+        width: 1.3vw;
+        height: 1.3vw;
+        border-radius: 20vw;
+        transform: translateX(0.5vw);
+    }
+    .switchThumb[data-state='checked'] {
+        transform: translateX(3.2vw);
+    }
+}
+
+@media (max-width: max-small) {
+    .switchInput {
+        gap: 6vw;
+    }
+    .leftLabel {
+        font-size: 4vw;
+    }
+    .rightLabel {
+        font-size: 4vw;
+    }
+
+    .switchRoot {
+        width: 10vw;
+        height: 5vw;
+        border-radius: 40vw;
+    }
+    .switchThumb {
+        width: 2.5vw;
+        height: 2.5vw;
+        border-radius: 40vw;
+        transform: translateX(1.25vw);
+    }
+    .switchThumb[data-state='checked'] {
+        transform: translateX(6.25vw);
+    }
+}

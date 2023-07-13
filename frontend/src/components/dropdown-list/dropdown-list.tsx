@@ -1,38 +1,68 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import classNames from 'classnames';
 
 import classes from './dropdown-list.module.css';
 import ArrowDownIconBlack from '~/images/arrow-down-icon-black.svg';
 
 
+type DropdownListProps = {
+    name: string;
+    elementsList: any[];
+    onChange: (index: number) => void;
+    index?: number;
+    className?: string;
+    listClassName?: string;
+    defaultIndex?: number,
+};
+
+// if we pass index, then the dropdown is controlled from the outside
 const DropdownList = ({
+    name,
     elementsList,
     onChange,
-}) => {
-    const [ selectedIndex, setSelectedIndex ] = useState(-1);
+    index: indexInput,
+    className,
+    listClassName,
+    defaultIndex,
+}: DropdownListProps) => {
+    const [ selectedIndex, setSelectedIndex ] = useState(defaultIndex === undefined ? -1 : defaultIndex);
     const [ isOpen, setIsOpen ] = useState(false);
+
+    const currentSelectionIndex = indexInput ?? selectedIndex;
+
+    useEffect(() => {
+        if (elementsList.length > 0) {
+            return;
+        }
+
+        setIsOpen(false);
+    }, [elementsList]);
 
     return (
         <div
-            className={classes.dropdownList}
-            onClick={() => setIsOpen(state => !state)}
+            className={classNames(classes.dropdownList, className)}
+            onClick={() => elementsList.length > 0 && setIsOpen(state => !state)}
         >
             <div
                 className={classes.controls}
             >
-                <span>{selectedIndex >= 0 ? elementsList[selectedIndex] : 'Status'}</span>
+                <span>{currentSelectionIndex >= 0 ? elementsList[currentSelectionIndex] : name}</span>
                 <img
                     className={classes.icon}
                     src={ArrowDownIconBlack}
                 />
             </div>
             {isOpen && (
-                <ul className={classes.dropdown}>
+                <ul className={classNames(classes.dropdown, listClassName)}>
                     {elementsList.map((e, i) => (
                         <li
                             className={classes.listElement}
-                            key={e}
+                            key={typeof e === 'string' ? e : i}
                             onClick={() => {
-                                setSelectedIndex(currentIndex => i === currentIndex ? -1 : i);
+                                if (typeof indexInput !== 'number') {
+                                    setSelectedIndex(currentIndex => i === currentIndex ? -1 : i);
+                                }
+
                                 onChange(i);
                             }}
                         >

@@ -1,5 +1,6 @@
+import { AccountTypes } from 'shared';
 import AuthService from '../services/auth-service';
-import Validator from '../utils/validator';
+import JoinValidator from '../validators/join-validator';
 
 
 type JoinData = {
@@ -7,10 +8,11 @@ type JoinData = {
     surname: string;
     email: string;
     password: string;
-    role: string;
+    type: string;
     gender: string;
     repeatPassword: string;
     step: string;
+    companyName?: string;
     agreement?: string;
 };
 
@@ -37,7 +39,7 @@ const JoinPageAction = async ({
         //     success: true,
         // }
         try {
-            await Validator.validateJoinData(formData);
+            await JoinValidator.validateData(formData);
 
             if (!agreement) {
                 return {
@@ -53,13 +55,35 @@ const JoinPageAction = async ({
                 errors,
             }
         }
+
+        const {
+            email,
+            password,
+            name,
+            surname,
+            type,
+            gender,
+            companyName,
+        } = formData;
+
+        if (type === AccountTypes.Type.RECRUITER) {   
+            await AuthService.register(
+                email,
+                password,
+                name,
+                surname,
+                type,
+                gender,
+                companyName,
+            );
+        }
     } else if (step === 4) {
         const {
             email,
             password,
             name,
             surname,
-            role,
+            type,
             gender,
         } = formData;
 
@@ -68,7 +92,7 @@ const JoinPageAction = async ({
             password,
             name,
             surname,
-            role,
+            type,
             gender,
         );
     }

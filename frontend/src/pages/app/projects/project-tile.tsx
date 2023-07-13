@@ -1,13 +1,15 @@
 import React from 'react';
 import moment from 'moment';
 import classNames from 'classnames';
+import { generatePath, useNavigate } from 'react-router-dom';
 
 import IconButton from '../../../components/icon-button/icon-button';
+import { APP_FORMS_ROUTES } from '../../../../src/consts/routes';
+import capitalizeFirstLetter from '../../../utils/capitalize-first-letter';
 
 import classes from './project-tile.module.css'
 import PaperSheetsIconBlack from '~/images/paper-sheets-icon-black.svg';
 import MetricsIconBlack from '~/images/metrics-icon-black.svg';
-import capitalizeFirstLetter from '../../../utils/capitalize-first-letter';
 
 
 const ProjectTile = ({
@@ -17,7 +19,10 @@ const ProjectTile = ({
     startDate,
     endDate,
     status,
+    uuid,
 }) => {
+    const navigate = useNavigate();
+
     const formattedStartDate = moment(startDate).format('l');
     const formattedEndDate = moment(endDate).format('l');
 
@@ -32,7 +37,7 @@ const ProjectTile = ({
             <IconButton
                 className={classes.projectButton}
                 icon={MetricsIconBlack}
-                onClick={() => console.log("TODO idk what does this do")}
+                onClick={() => navigate(generatePath(APP_FORMS_ROUTES.EDIT_PROJECT.PATH, { projectId: uuid }))}
             />
             <span className={classes.title}>
                 {title}

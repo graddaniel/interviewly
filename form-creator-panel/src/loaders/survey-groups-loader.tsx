@@ -6,11 +6,15 @@ const limeSurveyAdapter = new LimeSurveyAdapter();
 const SurveyGroupsLoader = async ({
     params,
 }) => {
-    const surveyGroups = await limeSurveyAdapter.groupList(params.surveyId);
+    const response = await limeSurveyAdapter.groupList(params.surveyId);
+
+    if (response.status === "No groups found") {
+        return [];
+    }
 
     // const surveyGroups2 = await limeSurveyAdapter.surveyGroupList(true);
     // console.log(surveyGroups2)
-    return surveyGroups;
+    return response;
 }
 
 export default SurveyGroupsLoader;

@@ -62,14 +62,10 @@
     background-color: transparent;
     cursor: pointer;
 }
-.userName {
-    z-index: 2;
-}
 .avatar {
     width: 2vw;
     height: 2vw;
     border-radius: 2vw;
-    z-index: 2;
 }
 
 .navigation {

@@ -1,0 +1,73 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3.5vw;
+}
+.title {
+    margin: 0;
+    font-size: 3.5vw;
+    font-weight: 400;
+}
+.closeIcon {
+    width: 2.5vw;
+    height: 2.5vw;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 3vw 3vw 3vw 3vw;
+    grid-template-areas: 
+    "nameInput roleDropdown"
+    "surnameInput statusDropdown"
+    "emailInput genderDropdown"
+    ". saveButton";
+    column-gap: 3vw;
+    row-gap: 2.5vw;
+}
+.nameInput {
+    grid-area: nameInput;
+}
+.surnameInput {
+    grid-area: surnameInput;
+}
+.emailInput {
+    grid-area: emailInput;
+}
+.roleDropdown {
+    grid-area: roleDropdown;
+    justify-self: end;
+    z-index: 4;
+}
+.statusDropdown {
+    grid-area: statusDropdown;
+    justify-self: end;
+    z-index: 3;
+}
+.genderDropdown {
+    grid-area: genderDropdown;
+    justify-self: end;
+}
+.saveButton {
+    grid-area: saveButton;
+    height: 100%;
+    justify-self: end;
+}
+
+.active {
+    color: var(--GREEN2);
+    background-color: var(--GREEN1);
+}
+.unconfirmed {
+    color: var(--YELLOW2);
+    background-color: var(--YELLOW1);
+}
+.inactive {
+    color: var(--WHITE);
+    background-color: var(--BLACK);
+}
+
+.dropdownError {
+    border-color: var(--RED);
+}

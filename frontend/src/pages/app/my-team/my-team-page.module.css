@@ -52,6 +52,7 @@
     border: 1px solid var(--BLACK);
     border-radius: 3vw;
     background-color: transparent;
+    cursor: pointer;
 
 }
 .addMembersButtonIcon {

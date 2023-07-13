@@ -3,21 +3,36 @@ import 'express-async-errors';
 import config from 'config';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import multer from 'multer';
 import { StatusCodes } from 'http-status-codes';
 import { UniqueConstraintError } from 'sequelize';
+import { AccountTypes, ProfileTypes, ValidationSchemas } from 'shared';
 
 import AccountsController from './controllers/accounts-controller';
 import AccountsService from './services/accounts-service/accounts-service';
+import ResearchController from './controllers/research-controller';
 import MailService from './services/mail-service/mail-service';
 import SequelizeConnection from './services/sequelize-connection';
 import { extractCredentials } from './middleware/extract-credentials';
 import { requireJWT } from './middleware/require-jwt';
 import ValidationError from './controllers/validators/validation-error';
-
-import type { Application, Request, Response, NextFunction } from 'express';
+import CompaniesController from './controllers/companies-controller';
+import CompaniesService from './services/companies-service/companies-service';
 import IncorrectPasswordError from './services/accounts-service/errors/incorrect-password-error';
 import AccountNotFoundError from './services/accounts-service/errors/account-not-found-error';
 import BussinessLogicError from './generic/business-logic-error';
+import NotPermittedError from './middleware/errors/not-permitted-error';
+import AuthorizationError from './generic/authorization-error';
+import requireAccountType from './middleware/require-account-type';
+import requireProfileRole from './middleware/require-profile-role';
+
+import type { Application, Request, Response, NextFunction } from 'express';
+import CompanyNotFound from './services/companies-service/errors/company-not-found-error';
+import ResearchNotFoundError from './services/research-service/errors/research-not-found-error';
+import ProfileNotFoundError from './services/accounts-service/errors/profile-not-found-error';
+import ResearchService from './services/research-service/research-service';
+import LimeSurveyAdapter from './services/lime-survey-adapter';
+import LSQBuilder from './services/lsq-builder';
 
 
 export default class Appplication {
@@ -25,15 +40,43 @@ export default class Appplication {
 
     constructor() {
         console.log("Running as: ", process.env.NODE_ENV)
+        ValidationSchemas.instance();
 
         const mailService = new MailService();
 
-        const accountsService = new AccountsService(mailService);
+        const limeSurveyAdapter = new LimeSurveyAdapter();
+        const lsqBuilder = new LSQBuilder();
+        const companiesService = new CompaniesService();
+        const accountsService = new AccountsService(mailService, companiesService);
+        const researchService = new ResearchService(
+            accountsService,
+            companiesService,
+            limeSurveyAdapter,
+            lsqBuilder,
+        );
+
+        const companiesController = new CompaniesController(accountsService, companiesService);
         const accountsController = new AccountsController(accountsService);
+
+        const researchController = new ResearchController(researchService);
 
         SequelizeConnection.instance().sync({
             force: config.get('database.forceSync'),
         });
+
+        const uploadHandler = multer({
+            dest: './uploads',
+            limits: {
+                fileSize: 1048576,
+            }
+        });
+        const researchUpdateFilesMiddleware = uploadHandler.fields([{
+            name: 'avatarFile',
+            maxCount: 1,
+        }, {
+            name: 'respondentsFile',
+            maxCount: 1,
+        }]);
 
         this.app = express();
 
@@ -50,11 +93,56 @@ export default class Appplication {
         accountsRouter.post('/:accountId/introductionVideo', /*require admin*/ accountsController.createIntroductionVideo);
         this.app.use('/accounts', accountsRouter);
 
-        this.app.post('/mailTest', (req: express.Request, res: express.Response) => {
-            const { email, message, subject } = req.body;
-            const result = mailService.send(email, subject, message);
-            res.status(200).send(result);
-        });
+        const companiesRouter = express.Router();
+        companiesRouter.get(
+            '/accounts',
+            requireJWT,
+            requireAccountType(AccountTypes.Type.RECRUITER),
+            companiesController.getCompanysAccounts
+        );
+        companiesRouter.post(
+            '/accounts',
+            requireJWT,
+            requireAccountType(AccountTypes.Type.RECRUITER),
+            requireProfileRole(ProfileTypes.Role.Admin),
+            companiesController.createCompanysAccount
+        );
+        companiesRouter.patch(
+            '/accounts/:accountId',
+            requireJWT,
+            requireAccountType(AccountTypes.Type.RECRUITER),
+            requireProfileRole(ProfileTypes.Role.Admin),
+            companiesController.editCompanysAccount
+        );
+        this.app.use('/companies', companiesRouter);
+
+        const researchRouter = express.Router();
+        researchRouter.get('/', requireJWT, requireAccountType(AccountTypes.Type.RECRUITER), researchController.getAllResearch);
+        researchRouter.post(
+            '/',
+            requireJWT,
+            requireAccountType(AccountTypes.Type.RECRUITER),
+            requireProfileRole(ProfileTypes.Role.Admin),
+            researchController.createResearch
+        );
+        researchRouter.get('/:researchId', requireJWT, requireAccountType(AccountTypes.Type.RECRUITER), researchController.getOneResearch);
+        researchRouter.patch(
+            '/:researchId',
+            requireJWT,
+            requireAccountType(AccountTypes.Type.RECRUITER),
+            requireProfileRole(ProfileTypes.Role.Admin),
+            researchUpdateFilesMiddleware,
+            researchController.updateResearch
+        );
+        researchRouter.post(
+            '/:researchId/survey',
+            requireJWT,
+            requireAccountType(AccountTypes.Type.RECRUITER),
+            requireProfileRole(ProfileTypes.Role.Admin),
+            researchUpdateFilesMiddleware,
+            researchController.addSurveyToResearch
+        );
+        this.app.use('/research', researchRouter);
 
         this.app.use((
             err: Error,
@@ -63,39 +151,45 @@ export default class Appplication {
             next: NextFunction
         ) => {
             if (res.headersSent) {
-                console.log("SENT");
+                console.error("Headers are already sent!");
                 next(err);
             }
 
+            //TODO debugging purposes only
             console.error(err);
 
             let statusCode = StatusCodes.INTERNAL_SERVER_ERROR;
-            let responseMessage = 'Unknown error';
+            let response: any = {
+                error: {
+                    type: 'generic',
+                    message: 'Unknown error',
+                }
+            };
         
-            switch(err.constructor) {
-                case ValidationError:
-                    statusCode = StatusCodes.BAD_REQUEST;
-                    responseMessage = err.message;
-                    break;
-        
-                case UniqueConstraintError:
-                    statusCode = StatusCodes.BAD_REQUEST;
-                    responseMessage = 'Parameters are not unique';
-                    break;
-                
-                case IncorrectPasswordError:
-                case AccountNotFoundError:
-                    //TODO make sure this works
-                case BussinessLogicError:
+            if (err instanceof BussinessLogicError
+                || err instanceof IncorrectPasswordError
+                || err instanceof AccountNotFoundError
+                || err instanceof CompanyNotFound
+                || err instanceof ProfileNotFoundError
+                || err instanceof ResearchNotFoundError
+                || err instanceof NotPermittedError
+                || err instanceof AuthorizationError) {
                     statusCode = (err as any).statusCode;
-                    responseMessage = err.message;
-                    break;
-        
-                default:
-                    console.log(err.constructor, err)
+                    response.error.message = err.message;
+            } else if (err instanceof UniqueConstraintError) {
+                statusCode = StatusCodes.BAD_REQUEST;
+                response.error.message = 'Parameters are not unique';
+            } else if (err instanceof ValidationError) {
+                statusCode = StatusCodes.BAD_REQUEST;
+                response.error.message = err.message;
+                response.error.type = "validation";
+                response.error.path = err.path;
+                response.error.code = err.errorCode;
+            } else {
+                console.log(err.constructor, err);
             }
 
-            res.status(statusCode).send(responseMessage)
+            res.status(statusCode).send(response)
           });
     }
 

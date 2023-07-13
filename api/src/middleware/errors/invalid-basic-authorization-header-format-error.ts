@@ -1,11 +1,8 @@
-import { StatusCodes } from 'http-status-codes';
+import AuthorizationError from '../../generic/authorization-error';
 
-export default class InvalidBasicAuthorizationHeaderFormatError extends Error {
-    statusCode: StatusCodes;
-    
+
+export default class InvalidBasicAuthorizationHeaderFormatError extends AuthorizationError {   
     constructor() {
         super(`Invalid basic authorization header format.`);
-
-        this.statusCode = StatusCodes.UNAUTHORIZED;
     }
 }

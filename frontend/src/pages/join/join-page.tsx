@@ -19,10 +19,11 @@ import RespondentIcon from '../../../images/respondent-icon.svg';
 import RecruiterIcon from '../../../images/recruiter-icon.svg';
 import MaleIcon from '../../../images/male-icon.svg';
 import FemaleIcon from '../../../images/female-icon.svg';
+import { AccountTypes } from 'shared';
 
 
 enum STEPS {
-    ROLE_SELECTION = 1,
+    TYPE_SELECTION = 1,
     GENDER_SELECTION = 2,
     DATA_FORM = 3,
     VIDEO_RECORDING = 4,
@@ -38,7 +39,7 @@ const JoinPage = () => {
 
     const [ step, setStep ] = useState(1);
     const [ maxSteps, setMaxSteps ] = useState(0);
-    const [ role, setRole ] = useState('');
+    const [ type, setType ] = useState('');
     const [ gender, setGender ] = useState('');
     const [ isInterviewDialogOpen, setIsInterviewDialogOpen ] = useState(false);
     const [ isVideoUploaded, setIsVideoUploaded ] = useState(false);
@@ -56,7 +57,7 @@ const JoinPage = () => {
 
         if (actionData.success) {
             if (step === STEPS.DATA_FORM) {
-                role === 'recruiter'
+                type === 'recruiter'
                     ? setStep(STEPS.FINAL)
                     : setStep(STEPS.VIDEO_RECORDING);
             } else if (step === STEPS.VIDEO_RECORDING) {
@@ -71,7 +72,7 @@ const JoinPage = () => {
         <Form method="post" className={classes.page} ref={formRef}>
             <input type="hidden" value={step} name="step" />
             <input type="hidden" value={gender} name="gender" />
-            <input type="hidden" value={role} name="role" />
+            <input type="hidden" value={type} name="type" />
             <section className={classNames(
                 classes.controls,
                 step === 5 && classes.hidden || '',
@@ -93,7 +94,7 @@ const JoinPage = () => {
             </header>
             <section className={classNames(
                 classes.content,
-                step !== STEPS.ROLE_SELECTION && classes.noDisplay || ''
+                step !== STEPS.TYPE_SELECTION && classes.noDisplay || ''
             )}> 
                 <Tile
                     className={classNames(
@@ -103,7 +104,7 @@ const JoinPage = () => {
                     icon={RecruiterIcon}
                     subtitle={t('join.page1.recruiterSubtitle')}
                     onClick={() => {
-                        setRole('recruiter');
+                        setType('recruiter');
                         setStep(step => step + 1);
                         setMaxSteps(4);
                     }}
@@ -111,13 +112,13 @@ const JoinPage = () => {
                 <Tile
                     className={classNames(
                         classes.tile,
-                        step !== STEPS.ROLE_SELECTION && classes.noDisplay || ''
+                        step !== STEPS.TYPE_SELECTION && classes.noDisplay || ''
                     )}
                     title={t('join.page1.respondentTitle')}
                     icon={RespondentIcon}
                     subtitle={t('join.page1.respondentSubtitle')}
                     onClick={() => {
-                        setRole('respondent');
+                        setType('respondent');
                         setStep(step => step + 1);
                         setMaxSteps(5);
                     }}
@@ -206,6 +207,15 @@ const JoinPage = () => {
                                 error={actionData?.errors?.[dataField]}
                             />
                     ))}
+                    {type === AccountTypes.Type.RECRUITER && (
+                        <TextInput
+                            type="text"
+                            className={classes.input}
+                            name="companyName"
+                            placeholder={t(`join.page3.inputs.companyName`)}
+                            error={actionData?.errors?.companyName}
+                        />
+                    )}
                     <Checkbox
                         className={classes.checkbox}
                         name="agreement"
@@ -257,13 +267,13 @@ const JoinPage = () => {
             )}
             <section className={classNames(
                 classes.navigation,
-                step === STEPS.ROLE_SELECTION && classes.noDisplay || ''
+                step === STEPS.TYPE_SELECTION && classes.noDisplay || ''
             )}>
                 <TextButton
                     className={classes.backButton}
                     text={t('join.back')}
                     onClick={() => setStep(step => step - 1)}
-                    hidden={step === STEPS.ROLE_SELECTION || step === STEPS.FINAL}
+                    hidden={step === STEPS.TYPE_SELECTION || step === STEPS.FINAL}
                     disabled={false}
                     monochromatic={true}
                 />

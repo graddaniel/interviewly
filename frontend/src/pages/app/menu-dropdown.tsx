@@ -10,6 +10,8 @@ import classNames from 'classnames';
 
 const MenuDropdown = ({
     isOpen,
+    avatarUrl,
+    username,
 }) => {
     const auth = useAuth();
     const navigate = useNavigate();
@@ -39,6 +41,10 @@ const MenuDropdown = ({
         <ul 
             className={classNames(classes.dropdownMenu, !isOpen ? classes.hidden : '')}
         >
+            <li className={classes.user}>
+                <span>{username}</span>
+                <img className={classes.avatar} src={avatarUrl} />
+            </li>
             {menuItems.map(item => (
                 <li key={item.text} className={classes.menuItem}>
                     <a className={classes.link} href={item.link}>{item.text}</a> 

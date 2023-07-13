@@ -25,6 +25,7 @@ i18n.use(LanguageDetector)
                         signUp: 'Join Interviewly',
                         resign: 'Resign',
                         logIn: 'Log in',
+                        save: 'Save'
                     },
                     inputs: {
                         email: 'E-mail',
@@ -67,6 +68,7 @@ i18n.use(LanguageDetector)
                                 email: 'E-mail',
                                 password: 'Password',
                                 repeatPassword: 'Repeat password',
+                                companyName: 'Company name',
                                 passwordConstraints: '(minimum: 8 characters, one capital letter, one number and one special character)',
                             },
                             rulesAgreement: 'By singing up, I agree to Interviewly Terms and Privacy Policy.',
@@ -156,6 +158,9 @@ i18n.use(LanguageDetector)
                             submitButton: 'Back to home page',
                         },
                     },
+                    editProject: {
+                        title: 'Project creator'
+                    },
                     currentLanguage: 'English',
                 }
             },
@@ -175,6 +180,7 @@ i18n.use(LanguageDetector)
                         signUp: 'Dołącz do Interviewly',
                         resign: 'Zrezygnuj',
                         logIn: 'Zaloguj się',
+                        save: 'Zapisz',
                     },
                     inputs: {
                         email: 'E-mail',
@@ -217,6 +223,7 @@ i18n.use(LanguageDetector)
                                 email: 'E-mail',
                                 password: 'Hasło',
                                 repeatPassword: 'Powtórz hasło',
+                                companyName: 'Nazwa firmy',
                                 passwordConstraints: '(minimum: 8 znaków, jedna wielka litera, jedna cyfra i jeden znak specjalny)',
                             },
                             rulesAgreement: 'Rejestrując się potwierdzam, że przeczytałem Regulamin i Politykę Prywatności.',
@@ -293,6 +300,9 @@ i18n.use(LanguageDetector)
                             title: 'Blog',
                             blogLinkText: 'Przeczytaj więcej',
                         },
+                    },
+                    editProject: {
+                        title: 'Kreator projektu',
                     },
                     passwordReset: {
                         request: {

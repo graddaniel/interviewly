@@ -1,0 +1,33 @@
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.pill {
+    height: 1vw;
+    display: flex;
+    align-items: center;
+    padding: 0.5vw 1vw;
+    border-radius: 3vw;
+    font-size: 1vw;
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .pill {
+        height: 2.5vw;
+        padding: 1vw 3vw;
+        border-radius: 8vw;
+        font-size: 2vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .pill {
+        height: 8vw;
+        box-sizing: border-box;
+        padding: 2vw 6vw;
+        border-radius: 15vw;
+        font-size: 4vw;
+    }
+}

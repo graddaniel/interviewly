@@ -78,6 +78,10 @@ const APP_FORMS_ROUTES = {
         TITLE: 'Edit project',
         PATH: '/app/projects/:projectId/edit'
     },
+    LIBRARY_EDITOR: {
+        TITLE: 'Library editor',
+        PATH: '/app/library/editor'
+    }
 };
 
 export {

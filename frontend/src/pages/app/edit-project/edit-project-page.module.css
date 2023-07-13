@@ -23,7 +23,7 @@
     gap: 2vw;
 }
 .logo {
-    width: 4rem;
+    width: 4vw;
 }
 .title {
     margin: 0;
@@ -32,7 +32,7 @@
     text-align: center;
 }
 .closeControls {
-    justify-self: end;
+    justify-self: flex-end;
 }
 
 .content {
@@ -54,22 +54,36 @@
 
 @media (min-width: min-medium) and (max-width: max-medium) {
     .page {
-        margin: 2rem;
+        margin: 6vw;
+    }
+    .logo {
+        width: 10vw;
     }
     .title {
         text-align: center;
+        font-size: 3vw;
     }
+    .backButton, .nextButton {
+        width: 23vw;
+    } 
 }
 
 @media (max-width: max-small) {
     .page {
-        margin: 1.25rem;
+        margin: 11vw 6.5vw;
     }
     .logo {
-        width: 3rem;
+        width: 13vw;
     }
     .title {
-        font-size: 1.75rem;
         text-align: center;
+        font-size: 4vw;
+    }
+    .stepper {
+        display: flex;
+        justify-content: center;
+    }
+    .backButton, .nextButton {
+        width: 40vw;
     }
 }

@@ -31,17 +31,16 @@ export default class LimeSurveyAdapter {
         });
 
         console.log("Received response: ", response);
-        const { result } = response.data;
+        const { result, error } = response.data;
 
         const { status } = result;
+        if (error) {
+            throw new Error(status);
+        }
         if (status === "Invalid session key") {
             await this.getSessionKey();
 
             return await this._sendRequest(method, params);
-        } else if (status === 'OK') {
-            //do nothing
-        } else if (status) {
-            throw new Error(status);
         }
 
         return result;

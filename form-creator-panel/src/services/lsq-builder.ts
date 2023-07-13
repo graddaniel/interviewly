@@ -116,11 +116,11 @@ export default class LSQBuilder {
         });
     };
 
-    private _generateDropdownAnswerProperties = (i, qid, optionValue ) => {
+    private _generateDropdownAnswerProperties = (i, qid ) => {
         return {
             aid: i,
             qid,
-            code: optionValue,
+            code: i,
             sortorder: i,
             assessment_value: 0,
             scale_id: 0,
@@ -142,8 +142,7 @@ export default class LSQBuilder {
         }, allSubquestionsParams: {
             [k: string]: string,
         }, extraParams: {
-            checkboxes: string[],
-            dropdownOptions: [string, string][],
+            dropdownOptions: string[],
         }) => {
             const { dropdownOptions } = extraParams;
 
@@ -152,9 +151,9 @@ export default class LSQBuilder {
             ANSWERS_FIELDS.forEach(field => answersFieldElement.e('fieldname', {}, field));
 
             const answersRowsElement = answersElement.e('rows');
-            dropdownOptions.forEach(([, value], i) => {
+            dropdownOptions.forEach((_, i) => {
                 const rowElement = answersRowsElement.e('row');
-                const dropdownOptionProperties = this._generateDropdownAnswerProperties(i, allQuestionsParams.qid, value);
+                const dropdownOptionProperties = this._generateDropdownAnswerProperties(i, allQuestionsParams.qid);
 
                 ANSWERS_FIELDS.forEach(field => rowElement.e(field).dat(dropdownOptionProperties[field]));
             });
@@ -163,9 +162,9 @@ export default class LSQBuilder {
             const answerL10NSFieldElement = answerL10NS.e('fields');
             ANSWER_L10NS_FIELDS.forEach(field => answerL10NSFieldElement.e('fieldname', {}, field));
             const answerL10NSRowsElement = answerL10NS.e('rows');
-            dropdownOptions.forEach(([name,], i) => {
+            dropdownOptions.forEach((dropdown, i) => {
                 const rowElement = answerL10NSRowsElement.e('row');
-                const dropdownOptionProperties = this._generateDropdownAnswerL10NSProperties(i, name);
+                const dropdownOptionProperties = this._generateDropdownAnswerL10NSProperties(i, dropdown);
 
                 ANSWER_L10NS_FIELDS.forEach(field => rowElement.e(field).dat(dropdownOptionProperties[field]));
             });
@@ -178,7 +177,7 @@ export default class LSQBuilder {
             [k: string]: string,
         }, extraParams: {
             checkboxes: string[],
-            dropdownOptions: [string, string][],
+            dropdownOptions: string[],
         }) => {
             const allQuestionsParams = this._getAllQuestionsParams(
                 questionsInputParams

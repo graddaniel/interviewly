@@ -1,7 +1,7 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
-import { Form, Outlet, matchPath, useLocation } from 'react-router-dom';
+import { Form, Outlet, matchPath, useLocation, useSubmit } from 'react-router-dom';
 
 import Logo from '../../components/logo/logo';
 import IconButton from '../../components/icon-button/icon-button';
@@ -23,9 +23,15 @@ const App = () => {
     const { i18n } = useTranslation();
     const location = useLocation();
     const { resolvedLanguage } = i18n;
+    const formRef = useRef(null);
+    const submit = useSubmit();
 
-    const toggleDropdown = useCallback(() => setIsMenuOpen(state => !state), []);
-    const closeDropdown = useCallback(() => setIsMenuOpen(false), []);
+    const openDropdown = useCallback(() => setIsMenuOpen(true), []);
+    const handleDropdownBlur = useCallback((event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) {
+            setIsMenuOpen(false);
+        }
+    }, []);
 
     const formattedDate = moment(Date.now())
         .locale(resolvedLanguage as string)
@@ -34,9 +40,7 @@ const App = () => {
     const matchingFormRoutes = Object
         .values(APP_FORMS_ROUTES)
         .filter(route => matchPath(route.PATH, location.pathname));
-    if (matchingFormRoutes.length > 0) {
-        console.log('Rendering APP form route');
-    
+    if (matchingFormRoutes.length > 0) {   
         return <Outlet />;
     }
 
@@ -54,27 +58,28 @@ const App = () => {
                         />
                         <nav
                             className={classes.userButton}
-                            onClick={toggleDropdown}
-                            tabIndex={1}
-                            onBlur={closeDropdown}
+                            onClick={openDropdown}
+                            onBlur={handleDropdownBlur}
+                            tabIndex={-1}
                         >
                             <span className={classes.userName}>{USER.name}</span>
                             <img className={classes.avatar} src={USER.avatarUrl} />
                             <MenuDropdown
                                 isOpen={isMenuOpen}
+                                avatarUrl={USER.avatarUrl}
+                                username={USER.name}
                             />
                         </nav>
                     </div>
                 </header>
                 <nav className={classes.navigation}>
                     <Menu />
-                    <Form method="post">
+                    <Form method="post" ref={formRef}>
                         <TextButton
                             className={classes.createProjectButton}
                             text={'Create Project'}
-                            onClick={() => console.log('TODO create project')}
+                            onClick={() => submit(formRef.current)}
                         />
-                        <input type="submit" value="Create Project" />
                     </Form>
                 </nav>
                 <main className={classes.main}>

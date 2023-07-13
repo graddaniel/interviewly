@@ -22,6 +22,11 @@
             "minLength": 1,
             "maxLength": 32,
             "regexp": "^[A-Za-z]+$"
+        },
+        "companyName": {
+            "minLength": 1,
+            "maxLength": 32,
+            "regexp": "^[A-Za-z ]+$"
         }
     },
     "registration": {

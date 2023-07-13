@@ -1,0 +1,48 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.step {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75vw;
+}
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75vw;
+}
+.titleInput {
+    width: auto;
+}
+.titleInputWrapper {
+    border: none;
+}
+.titleInputElement {
+    border-bottom: 1px dashed var(--BLACK);
+    font-size: 1.75vw;
+    background-color: var(--COLOR8);
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .section {
+        gap: 5vw;
+    }
+    .titleInputElement {
+        font-size: 5vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .section {
+        gap: 9vw;
+    }
+    .titleInputElement {
+        font-size: 6vw;
+    }
+    .descriptionInputElement {
+        text-align: start;
+    }
+}

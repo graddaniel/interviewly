@@ -1,54 +1,38 @@
 import {
     object,
-    string,
-    ValidationError as YupValidationError,
 } from 'yup';
-import config from 'config';
-import { AccountTypes, ProfileTypes } from 'shared';
+import { ValidationSchemas } from 'shared';
 
-import ValidationError from './validation-error';
-import configJson from '../../../config/default.json';
+import validate from './validate';
 
-type ValidationConfiguration = typeof configJson.validation;
 
-const validationConfig = config.get('validation') as ValidationConfiguration;
-
-const newAccountSchema = object({
-    email: string()
-        .email()
-        .required(),
-    password: string()
-        .required()
-        .min(validationConfig.password.minLength)
-        .max(validationConfig.password.maxLength)
-        .matches(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/),
-        //TODO move the regexp to JSON, but make sure it's correctly escaped
-    name: string()
-        .required()
-        .min(validationConfig.name.minLength)
-        .max(validationConfig.name.maxLength),
-    surname: string()
-        .required()
-        .min(validationConfig.surname.minLength)
-        .max(validationConfig.surname.maxLength),
-    type: string()
-        .required()
-        .oneOf(Object.values(AccountTypes.Type)),
-    gender: string()
-        .required()
-        .oneOf(Object.values(ProfileTypes.Gender)),
-});
+const schemas = ValidationSchemas.instance();
 
 export default class AccountsValidator {
     static async validateNewAccount(newAccount) {
-        try {
-            return await newAccountSchema.validate(newAccount);
-        } catch (error) {
-            //TODO log original error
-            console.log("VALIDATION", error)
-            throw new ValidationError(
-                (error as YupValidationError).errors[0]
-            );
-        }
+        const newAccountSchema = object({
+            email: schemas.email,
+            password: schemas.accountPassword,
+            name: schemas.accountName,
+            surname: schemas.accountSurname,
+            type: schemas.accountType,
+            gender: schemas.gender,
+            companyName: schemas.companyName,
+        });
+
+        await validate(newAccountSchema, newAccount);
+    }
+
+    static async validateCompanyAccount(companyAccount) {
+        const companyAccountSchema = object({
+            name: schemas.accountName,
+            surname: schemas.accountSurname,
+            email: schemas.email,
+            gender: schemas.gender,
+            role: schemas.accountRole,
+            status: schemas.accountStatus,
+        });
+
+        await validate(companyAccountSchema, companyAccount);
     }
 }

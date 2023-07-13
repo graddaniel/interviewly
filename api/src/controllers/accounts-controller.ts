@@ -48,6 +48,7 @@ export default class AccountsController {
             surname,
             type,
             gender,
+            companyName,
         } = req.body;
 
         await AccountsValidator.validateNewAccount({
@@ -57,6 +58,7 @@ export default class AccountsController {
             surname,
             type,
             gender,
+            companyName,
         });
 
         const jwtToken = await this.accountsService.register(
@@ -66,6 +68,7 @@ export default class AccountsController {
             name,
             surname,
             gender,
+            companyName,
             !!notify,
         );
 

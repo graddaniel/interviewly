@@ -1,0 +1,89 @@
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.inputWrapper {
+    position: relative;
+    padding-bottom: 0.6vw;
+    border-bottom: 0.075vw solid var(--BLACK);
+    cursor: text;
+}
+
+.label {
+    font-size: 1vw;
+}
+.input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 1vw;
+    resize: none;
+}
+.input::placeholder {
+    color: var(--BLACK);
+}
+.centerText {
+    text-align: center;
+}
+.centerText::placeholder {
+    text-align: center;
+}
+
+.error {
+    border-color: var(--RED);
+}
+.errorMessage {
+    height: 0.8vw;
+    margin: 0;
+    margin-top: 0.6vw;
+    color: var(--RED);
+    font-size: 0.8vw
+}
+
+@media (min-width: min-large) {
+
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .inputWrapper {
+        padding-bottom: 2vw;
+        border-bottom: 0.075vw solid var(--BLACK);
+    }
+    
+    .label {
+        font-size: 3vw;
+    }
+    .input {
+        font-size: 3vw;
+    }
+    
+    .errorMessage {
+        height: 2vw;
+        margin-top: 2vw;
+        font-size: 2vw
+    }
+}
+
+@media (max-width: max-small) {
+    .inputWrapper {
+        padding-bottom: 3vw;
+        border-bottom: 0.075vw solid var(--BLACK);
+    }
+    
+    .label {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        font-size: 4vw;
+    }
+    .input {
+        text-align: center;
+        font-size: 4vw;
+    }
+    
+    .errorMessage {
+        height: 4vw;
+        margin-top: 3vw;
+        font-size: 4vw
+    }
+}

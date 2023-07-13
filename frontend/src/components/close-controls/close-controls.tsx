@@ -8,7 +8,7 @@ import CrossIcon from '../../../images/cross-icon.svg';
 
 type CloseControlsProps = {
     text: string;
-    onClose: () => void;
+    onClose: (e?: React.MouseEvent) => void;
     className?: string;
 }
 
@@ -21,7 +21,10 @@ const CloseControls = ({
         <div className={classNames(classes.closeControl, className)}>
             <IconButton
                 icon={CrossIcon}
-                onClick={onClose}
+                onClick={(e: React.MouseEvent) => {
+                    e.preventDefault();
+                    onClose();
+                }}
                 className={classes.closeControlButton}
             />
             <span className={classes.closeControlText}>

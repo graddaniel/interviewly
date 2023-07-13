@@ -9,12 +9,12 @@ import SequelizeConnection from '../services/sequelize-connection';
 
 export default class Address extends Model {
     declare id: number;
-    postCode: string;
-    country: string;
-    region: string;
-    city: string;
-    street: string;
-    number: string;
+    declare postCode: string;
+    declare country: string;
+    declare region: string;
+    declare city: string;
+    declare street: string;
+    declare number: string;
 };
 
 Address.init({
