@@ -41,12 +41,17 @@ import MyTeamAction from './src/actions/app/my-team-action';
 import ProjectsLoader from './src/loaders/app/projects-loader';
 import LibraryPage from './src/pages/app/library/library-page';
 import LibraryEditorAction from './src/actions/app/library-editor-action';
+import TermsAndConditionsPage from './src/pages/terms-and-conditions/terms-and-conditions-page';
+import PrivacyPolicyPage from './src/pages/privacy-policy/privacy-policy-page';
+import PersonalDataProcessingAgreementPage from './src/pages/personal-data-processing-agreement/personal-data-processing-agreement-page';
+import ContactPage from './src/pages/contact/contact-page';
+import RegistrationConfirmationPage from './src/pages/registration-confirmation/registration-confirmation-page';
+import RegistrationConfirmationPageLoader from './src/loaders/registration-confirmation-page-loader';
 
 import ROUTES, { APP_FORMS_ROUTES, APP_ROUTES, FORMS_ROUTES } from './src/consts/routes';
 
 import './src/consts/colors.css';
-import './i18n';
-
+import './i18n/i18n';
 
 ValidationSchemas.instance().init(i18next.resolvedLanguage || i18next.language);
 
@@ -74,12 +79,29 @@ const router = createBrowserRouter(
                 element={<BlogPage />}
             />
             <Route
-                path={ROUTES.CONTACT.PATH}
-                element={<div>CONTACT</div>}
-            />
-            <Route
                 path={ROUTES.TUTORIALS.PATH}
                 element={<TutorialsPage />}
+            />
+            <Route
+                path={ROUTES.CONTACT.PATH}
+                element={<ContactPage />}
+            />
+            <Route
+                path={ROUTES.REGISTRATION_CONFIRMATION.PATH}
+                element={<RegistrationConfirmationPage />}
+                loader={RegistrationConfirmationPageLoader}
+            />
+            <Route
+                path={ROUTES.PERSONAL_DATA_PROCESSING_AGREEMENT.PATH}
+                element={<PersonalDataProcessingAgreementPage />}
+            />
+            <Route
+                path={ROUTES.TERMS_AND_CONDITIONS.PATH}
+                element={<TermsAndConditionsPage />}
+            />
+            <Route
+                path={ROUTES.PRIVACY_POLICY.PATH}
+                element={<PrivacyPolicyPage />}
             />
             <Route
                 path={ROUTES.USER_PROFILE.PATH}

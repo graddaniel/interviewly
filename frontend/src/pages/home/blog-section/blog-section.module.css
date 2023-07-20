@@ -73,6 +73,11 @@
     .tileDate {
         font-size: 2vw;
     }
+    .button {
+        width: 10vw;
+        height: 10vw;
+        border-radius: 5vw;
+    }
 }
 
 @media (max-width: max-small) {

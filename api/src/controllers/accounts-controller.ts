@@ -36,8 +36,8 @@ export default class AccountsController {
         req: AuthenticationRequest,
         res: Response,
     ): Promise<void> => {
-        const { notify } = req.query;
-
+        const { notify, language = 'en' } = req.query;
+        console.log(language)
         const {
             email,
             password,
@@ -49,6 +49,7 @@ export default class AccountsController {
             type,
             gender,
             companyName,
+            newsletter,
         } = req.body;
 
         await AccountsValidator.validateNewAccount({
@@ -61,18 +62,22 @@ export default class AccountsController {
             companyName,
         });
 
-        const jwtToken = await this.accountsService.register(
+        const newAccountData = await this.accountsService.register(
             email,
             password,
             type,
             name,
             surname,
             gender,
+            newsletter,
+            language as string,
             companyName,
             !!notify,
         );
 
-        res.status(StatusCodes.OK).send(jwtToken);
+        //TODO validate language
+
+        res.status(StatusCodes.OK).send(newAccountData);
     }
 
     confirmAccountRegistration = async (

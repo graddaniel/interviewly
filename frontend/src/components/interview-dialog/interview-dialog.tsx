@@ -5,12 +5,13 @@ import VideoCalls from 'video-calls-library';
 
 import Dialog from '../dialog/dialog';
 import TextButton from '../text-button/text-button';
+import { JANUS_HOST } from '~/config/production';
 
 import classes from './interview-dialog.module.css';
 
 
 const { recordPlayAdapter: RecorderLibrary } = VideoCalls;
-const server = 'https://id8d03szbk.execute-api.eu-central-1.amazonaws.com/prod/janus';
+const server = JANUS_HOST;
 
 const InterviewDialog = ({
     isOpen,

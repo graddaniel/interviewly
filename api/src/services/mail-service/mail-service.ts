@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer';
+import hbs from 'nodemailer-express-handlebars';
 import config from 'config';
 import 'dotenv/config';
 
@@ -22,6 +23,15 @@ export default class MailService {
             }
         });
 
+        this.transport.use('compile', hbs({
+            viewEngine: {
+                layoutsDir: './views/layouts/',
+                defaultLayout: false,
+                partialsDir: './views/',
+            },
+            viewPath: './views/',
+        }))
+
         this.transport.verify((error, success) => {
             if (error) {
               console.log(error);
@@ -42,6 +52,22 @@ export default class MailService {
             to: recipient,
             subject,
             html: message,
+        });
+    }
+
+    sendTemplate = async (
+        recipient: string,
+        subject: string,
+        template: string,
+        context: any,
+    ) => {
+        console.log(`Sending template email to ${recipient} with subject: ${subject}.`)
+        return await this.transport.sendMail({
+            from: 'notification@interviewlyapp.com',
+            to: recipient,
+            subject,
+            template,
+            context,
         });
     }
 }

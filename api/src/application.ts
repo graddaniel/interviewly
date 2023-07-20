@@ -6,6 +6,7 @@ import cors from 'cors';
 import multer from 'multer';
 import { StatusCodes } from 'http-status-codes';
 import { UniqueConstraintError } from 'sequelize';
+import i18next from 'i18next';
 import { AccountTypes, ProfileTypes, ValidationSchemas } from 'shared';
 
 import AccountsController from './controllers/accounts-controller';
@@ -33,6 +34,7 @@ import ProfileNotFoundError from './services/accounts-service/errors/profile-not
 import ResearchService from './services/research-service/research-service';
 import LimeSurveyAdapter from './services/lime-survey-adapter';
 import LSQBuilder from './services/lsq-builder';
+import translations from './i18n';
 
 
 export default class Appplication {
@@ -41,6 +43,12 @@ export default class Appplication {
     constructor() {
         console.log("Running as: ", process.env.NODE_ENV)
         ValidationSchemas.instance();
+
+        i18next.init({
+            lng: 'en',
+            debug: true,
+            resources: translations,
+        });
 
         const mailService = new MailService();
 

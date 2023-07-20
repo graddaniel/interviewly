@@ -22,6 +22,7 @@ export default class Account extends Model {
     declare passwordHash: string;
     declare type: AccountTypes.Type;
     declare status: AccountTypes.Status;
+    declare newsletter: boolean;
 }
 
 Account.init({
@@ -51,7 +52,11 @@ Account.init({
     status: {
         type: DataTypes.ENUM(...Object.values(AccountTypes.Status)),
         allowNull: false,
-    }
+    },
+    newsletter: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+    },
 }, {
     timestamps: false,
     sequelize: SequelizeConnection.instance(),
@@ -61,15 +66,16 @@ Account.init({
     }],
 });
 
-Account.associations.PasswordResetRequestModel = Account.hasMany(PasswordResetRequestModel);
+Account.associations.PasswordResetRequestModel = Account.hasMany(PasswordResetRequestModel, { onDelete: 'CASCADE' });
 PasswordResetRequestModel.associations.Account = PasswordResetRequestModel.belongsTo(Account, {
     foreignKey: {
         allowNull: false,
-    }
+    },
+    onDelete: 'CASCADE',
 });
 
-Account.associations.RecruiterProfileModel = Account.hasOne(RecruiterProfileModel);
-RecruiterProfileModel.associations.Account = RecruiterProfileModel.belongsTo(Account);
+Account.associations.RecruiterProfileModel = Account.hasOne(RecruiterProfileModel, { onDelete: 'CASCADE' });
+RecruiterProfileModel.associations.Account = RecruiterProfileModel.belongsTo(Account, { onDelete: 'CASCADE' });
 
-Account.associations.RespondentProfileModel = Account.hasOne(RespondentProfileModel);
-RespondentProfileModel.associations.Account = RespondentProfileModel.belongsTo(Account);
+Account.associations.RespondentProfileModel = Account.hasOne(RespondentProfileModel, { onDelete: 'CASCADE' });
+RespondentProfileModel.associations.Account = RespondentProfileModel.belongsTo(Account, { onDelete: 'CASCADE' });

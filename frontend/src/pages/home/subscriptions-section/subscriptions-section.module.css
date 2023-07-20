@@ -133,6 +133,9 @@
         grid-template-columns: auto auto auto auto;
         overflow-x: auto;
     }
+    .dashedTick {
+        width: 7vw;
+    }
     .tile {
         width: 35vw;
         padding: 3vw;
@@ -154,6 +157,12 @@
     }
     .feature {
         font-size: 2vw;
+    }
+    .label {
+        width: 10vw;
+        height: 3vw;
+        font-size: 2.5vw;
+        text-align: center;
     }
 }
 
@@ -197,7 +206,9 @@
         gap: 15vw;
     }
     .mobileSubscriptionButton {
-        width: 6vw;
+        width: 15vw;
+        height: 15vw;
+        border-radius: 7.5vw;
         border: none;
         background-color: var(--COLOR2);
     }

@@ -68,6 +68,17 @@ const JoinPage = () => {
         }
     }, [actionData]);
 
+    const rulesAgreement = t('join.page3.rulesAgreement', { returnObjects: true }) as any;
+    const { text, termsAndConditionsKeyword, privacyPolicyKeyword } = rulesAgreement;
+    const checkboxElement = (
+        <span dangerouslySetInnerHTML={{
+            __html: text
+            .replace(termsAndConditionsKeyword, `<a href="${ROUTES.TERMS_AND_CONDITIONS.PATH}" target="_blank">${termsAndConditionsKeyword}</a>`)
+            .replace(privacyPolicyKeyword, `<a href="${ROUTES.PRIVACY_POLICY.PATH}" target="_blank">${privacyPolicyKeyword}</a>`)
+        }}>
+        </span>
+    );
+
     return (
         <Form method="post" className={classes.page} ref={formRef}>
             <input type="hidden" value={step} name="step" />
@@ -219,9 +230,16 @@ const JoinPage = () => {
                     <Checkbox
                         className={classes.checkbox}
                         name="agreement"
-                        label={t('join.page3.rulesAgreement')}
                         error={actionData?.errors?.agreement}
+                        labelElement={checkboxElement}
+                        label=""
                     />
+                    <Checkbox
+                        className={classes.checkbox}
+                        name="newsletter"
+                        label={t('join.page3.inputs.newsletter')}
+                    />
+                    <span className={classes.newsletter}>{t('join.page3.inputs.newsletterDetails')}</span>
                 </section>
             </section>
             <section className={classNames(
