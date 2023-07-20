@@ -14,6 +14,7 @@ type JoinData = {
     step: string;
     companyName?: string;
     agreement?: string;
+    newsletter?: string;
 };
 
 const JoinPageAction = async ({
@@ -64,6 +65,7 @@ const JoinPageAction = async ({
             type,
             gender,
             companyName,
+            newsletter,
         } = formData;
 
         if (type === AccountTypes.Type.RECRUITER) {   
@@ -74,6 +76,7 @@ const JoinPageAction = async ({
                 surname,
                 type,
                 gender,
+                !!newsletter,
                 companyName,
             );
         }
@@ -85,6 +88,7 @@ const JoinPageAction = async ({
             surname,
             type,
             gender,
+            newsletter,
         } = formData;
 
         await AuthService.register(
@@ -94,6 +98,7 @@ const JoinPageAction = async ({
             surname,
             type,
             gender,
+            !!newsletter,
         );
     }
 

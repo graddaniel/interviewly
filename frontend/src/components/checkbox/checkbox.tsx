@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, ReactNode } from 'react';
 import classNames from 'classnames';
 
 import classes from './checkbox.module.css';
@@ -8,6 +8,7 @@ type CheckboxProps = {
     name: string;
     label: string;
     error?: boolean;
+    labelElement?: ReactNode,
 };
 
 const Checkbox = ({
@@ -15,6 +16,7 @@ const Checkbox = ({
     name,
     label,
     error,
+    labelElement,
 }: CheckboxProps) => {
     const [ checked, setChecked ] = useState(false);
 
@@ -40,7 +42,7 @@ const Checkbox = ({
                 onChange={toggleCheckbox}
                 value={name}
             />
-            {label}
+            {labelElement || label}
         </label>
     );
 };

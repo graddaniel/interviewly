@@ -84,6 +84,9 @@
     width: 100%;
     text-align: center;
 }
+.newsletter {
+    font-size: 0.5vw;
+}
 
 .recorder {
     width: 40%;
@@ -182,6 +185,12 @@
     .desktop {
         display: none !important;
     }
+    .inputs {
+        gap: 2vw;
+    }
+    .newsletter {
+        font-size: 1.5vw;
+    }
     .recorder {
         width: 80%;
     }
@@ -240,9 +249,13 @@
         height: auto;
         flex-direction: column;
         margin: 2rem 0;
+        gap: 2vw;
     }
     .input {
         width: 100%;
+    }
+    .newsletter {
+        font-size: 3vw;
     }
     .recorderText {
         margin: 0;

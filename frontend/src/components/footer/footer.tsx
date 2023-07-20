@@ -72,8 +72,8 @@ const Footer = () => {
                     </a>
                 </section>
                 <section className={classes.formal}>
-                    <a className={classes.link} href={ROUTES.PRIVACY_POLICY.PATH}>{ROUTES.PRIVACY_POLICY.TITLE}</a>
-                    <a className={classes.link} href={ROUTES.TERMS.PATH}>{ROUTES.TERMS.TITLE}</a>
+                    <a className={classes.link} href={ROUTES.PRIVACY_POLICY.PATH}>{t('links.privacyPolicy')}</a>
+                    <a className={classes.link} href={ROUTES.TERMS_AND_CONDITIONS.PATH}>{t('links.termsAndConditions')}</a>
                     <LanguageSelector
                         onClick={openLanguageSelectionDialog}
                     />
@@ -109,8 +109,8 @@ const Footer = () => {
                     </a>
                 </section>
                 <section className={classes.formal}>
-                    <a className={classes.link} href={ROUTES.PRIVACY_POLICY.PATH}>{ROUTES.PRIVACY_POLICY.TITLE}</a>
-                    <a className={classes.link} href={ROUTES.TERMS.PATH}>{ROUTES.TERMS.TITLE}</a>
+                    <a className={classes.link} href={ROUTES.PRIVACY_POLICY.PATH}>{t('links.privacyPolicy')}</a>
+                    <a className={classes.link} href={ROUTES.TERMS_AND_CONDITIONS.PATH}>{t('links.termsAndConditions')}</a>
                 </section>
                 <LanguageSelector
                     onClick={openLanguageSelectionDialog}

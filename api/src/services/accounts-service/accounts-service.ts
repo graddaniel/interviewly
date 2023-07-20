@@ -1,7 +1,8 @@
 import { v4 as generateUuidV4 } from 'uuid';
 import moment from 'moment';
-import config from 'config';
 import { AccountTypes, ProfileTypes } from 'shared';
+import i18next from 'i18next';
+import config from 'config';
 
 import AccountModel from '../../models/account';
 import ResetRequestModel from '../../models/password-reset-request';
@@ -98,6 +99,8 @@ export default class AccountsService {
         name: string,
         surname: string,
         gender: ProfileTypes.Gender,
+        newsletter: boolean,
+        language: string,
         companyName?: string,
         notify?: boolean,
     ): Promise<string> => {
@@ -110,22 +113,11 @@ export default class AccountsService {
             name,
             surname,
             gender,
+            newsletter,
             companyName,
         );
 
-        await this.mailService.send(
-            newAccount.email,
-            'Confirm account',
-            `To confirm account click: ${newAccount.uuid}`
-        );
-
-        if (notify) {
-            await this.mailService.send(
-                this.additionalNotificationsTarget,
-                'New account',
-                `New account has been created: ${newAccount.email} ${newAccount.type}`
-            );
-        }
+        this.sendConfirmationEmail(newAccount.uuid, name, email, language, notify);
 
         return this._getUserPublicData(newAccount);
     });
@@ -149,7 +141,7 @@ export default class AccountsService {
         }
         userPublicData.companyUuid = company.uuid;
 
-        userPublicData.role = (account as any)?.RecruiterProfile.role;;
+        userPublicData.role = (account as any)?.RecruiterProfile.role;
 
         return userPublicData;
     }
@@ -161,6 +153,7 @@ export default class AccountsService {
         name: string,
         surname: string,
         gender: ProfileTypes.Gender,
+        newsletter: boolean,
         companyName?: string,
     ): Promise<AccountModel> => {
         switch (type) {
@@ -171,6 +164,7 @@ export default class AccountsService {
                     name,
                     surname,
                     gender,
+                    newsletter,
                 );
 
             case AccountTypes.Type.RECRUITER:
@@ -186,6 +180,7 @@ export default class AccountsService {
                     name,
                     surname,
                     gender,
+                    newsletter,
                     company,
                 );
         }
@@ -197,6 +192,7 @@ export default class AccountsService {
         name: string,
         surname: string,
         gender: ProfileTypes.Gender,
+        newsletter: boolean,
     ): Promise<AccountModel> => {
         const newAccount = await AccountModel.create({
             uuid: generateUuidV4(),
@@ -204,6 +200,7 @@ export default class AccountsService {
             passwordHash: hash(password),
             type: AccountTypes.Type.RESPONDENT,
             status: AccountTypes.Status.UNCONFIRMED,
+            newsletter,
             RespondentProfile: {
                 name,
                 surname,
@@ -225,6 +222,7 @@ export default class AccountsService {
         name: string,
         surname: string,
         gender: ProfileTypes.Gender,
+        newsletter: boolean,
         company: CompanyModel,
         role: ProfileTypes.Role = ProfileTypes.Role.Admin,
         status: AccountTypes.Status = AccountTypes.Status.UNCONFIRMED,
@@ -235,6 +233,7 @@ export default class AccountsService {
             passwordHash: hash(password),
             type: AccountTypes.Type.RECRUITER,
             status,
+            newsletter,
             RecruiterProfile: {
                 name,
                 surname,
@@ -249,6 +248,38 @@ export default class AccountsService {
         });
 
         return newAccount;
+    };
+
+    sendConfirmationEmail = async (
+        accountUuid: string,
+        name: string,
+        email: string,
+        language: string,
+        notify?: boolean,
+    ) => {
+        const { t } = i18next;
+
+        const subject = t('email.subject', { lng: language });
+        const context = {
+            welcome: t('email.welcome', { lng: language }),
+            name,
+            firstParagraph: t('email.paragraphs.first', { lng: language }),
+            secondParagraph: t('email.paragraphs.second', { lng: language }),
+            thirdParagraph: t('email.paragraphs.third', { lng: language }),
+            confirmationLink: `https://interviewlyapp.com/confirm/${accountUuid}`,
+            signature: t('email.signature', { lng: language })
+        };
+        await this.mailService.sendTemplate(email, subject, 'fakedoor', context);
+
+
+        if (notify) {
+            await this.mailService.sendTemplate(
+                this.additionalNotificationsTarget,
+                subject,
+                'fakedoor',
+                context,
+            );
+        }
     };
 
     editRecruiterAccount = SequelizeConnection.transaction(async (

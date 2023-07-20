@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Example App</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
+        @media screen {
+            @font-face {
+              font-family: 'Lato';
+              font-style: normal;
+              font-weight: 400;
+              src: local('Plus Jakarta Sans'), local('Plus Jakarta Sans'), url(https://fonts.gstatic.com/s/plusjakartasans/v8/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko20yw.woff2) format('woff');
+            }
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: black;
+        }
+
+        h1 {
+            font-size: 2vw;
+        }
+
+        h2 {
+            font-size: 1vw;
+        }
+
+        main {
+            padding: 4vw 1.5vw;
+            border-radius: 2.5vw;
+            background-color: #FBF3FF;
+        }
+
+        p {
+            font-size: 1vw;
+        }
+
+        span {
+            font-size: 0.75vw;
+        }
+
+        a {
+            margin: 1vw;
+            padding: 1vw 1.5vw;
+            border-radius: 2.5vw;
+            color: #9029E2;
+            background-color: #F2E1FF;
+            font-size: 1.5vw;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="header">Interviewly</h1>
+    <h2 class="message">{{ welcome }} {{ name }}!</h2>
+    <main>
+        <p>{{ firstParagraph }}</p>
+        <p>{{ paragraps.first }}</p>
+        <p>{{ paragraps.second }}</p>
+        <a href={{confirmationLink}}>{{ confirmationLink }}</a>
+        <p>{{ paragraps.third }}</p>
+        <p>{{ signature }}</p>
+    </main>
+    <span>&copy; Interviewly, 2023</span>
+</body>
+</html>

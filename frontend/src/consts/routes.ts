@@ -23,13 +23,21 @@ const ROUTES = {
         TITLE: 'Contact',
         PATH: '/contact',
     },
-    PRIVACY_POLICY: {
-        TITLE: 'Privacy policy',
-        PATH: '/privacyPolicy',
+    REGISTRATION_CONFIRMATION: {
+        TITLE: 'Registration confirmation',
+        PATH: '/confirm/:accountId',
     },
-    TERMS: {
-        TITLE: 'Terms',
-        PATH: '/terms',
+    PRIVACY_POLICY: {
+        TITLE: 'PrivacyPolicy',
+        PATH: '/privacyPolicy'
+    },
+    TERMS_AND_CONDITIONS: {
+        TITLE: 'Terms and conditions',
+        PATH: '/termsAndConditions',
+    },
+    PERSONAL_DATA_PROCESSING_AGREEMENT: {
+        TITLE: 'Agreement on the Processing of Personal Data',
+        PATH: '/personalDataProcessingAgreement',
     },
     USER_PROFILE: {
         TITLE: 'Profile',

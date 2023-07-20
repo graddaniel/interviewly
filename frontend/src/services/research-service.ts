@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_HOST = 'http://localhost:7081';
+import { API_HOST } from '~/config/default';
+
 
 export default class ResearchService {
     static createResearch = async (title: string) => {

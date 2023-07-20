@@ -1,0 +1,134 @@
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.pdpa {
+    padding: 5.5vw 7.5vw;
+    display: grid;
+    grid-template-columns: 27.5% 65%;
+    column-gap: 7.5%;
+    grid-template-areas: 
+        "header header"
+        "navigation content";
+}
+
+.header {
+    grid-area: header;
+    font-size: 7.5vw;
+    font-weight: 400;
+    margin: 0;
+    margin-bottom: 5vw;
+}
+
+.navigation {
+    grid-area: navigation;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.link {
+    padding: 1vw 0;
+    padding-left: 1.5vw;
+    border: 1px solid var(--BLACK);
+    border-radius: 2.5vw;
+    font-size: 1vw;
+    color: var(--BLACK);
+    text-decoration: none;
+}
+
+.rules {
+    list-style: none;
+}
+
+.content {
+    grid-area: content;
+    font-size: 1.5vw;
+}
+
+.contentHeader {
+    font-size: 3.5vw;
+    font-weight: 400;
+    margin: 5vw 0;
+}
+
+.table {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: auto auto auto;
+}
+.cell {
+    padding: 0.5vw;
+    border: 1px solid var(--BLACK);
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .pdpa {
+        padding: 10vw 5.5vw;
+        grid-template-columns: 100%;
+        grid-template-areas: 
+        "header"
+        "navigation"
+        "content";
+    }
+    .header {
+        margin: 0;
+        margin-bottom: 10vw;
+        font-size: 12vw;
+    }
+
+    .navigation {
+        gap: 3.5vw;
+    }
+    
+    .link {
+        padding: 3vw 0;
+        border-radius: 7.5vw;
+        font-size: 3vw;
+        text-align: center;
+    }
+    
+    .content {
+        font-size: 4vw;
+    }
+    
+    .contentHeader {
+        font-size: 5.5vw;
+        margin: 10vw 0;
+    }
+}
+
+@media (max-width: max-small) {
+    .pdpa {
+        padding: 10vw 6vw;
+        grid-template-columns: 100%;
+        grid-template-areas: 
+        "header"
+        "navigation"
+        "content";
+    }
+    .header {
+        margin: 0;
+        margin-bottom: 10vw;
+        font-size: 9vw;
+    }
+
+    .navigation {
+        gap: 6vw;
+    }
+    
+    .link {
+        padding: 3vw 0;
+        border-radius: 10vw;
+        font-size: 4.5vw;
+        text-align: center;
+    }
+    
+    .content {
+        font-size: 4.5vw;
+    }
+    
+    .contentHeader {
+        font-size: 9vw;
+        margin: 10vw 0;
+    }
+}
