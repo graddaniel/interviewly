@@ -83,6 +83,11 @@ In accordance with the provisions of the Act of 18 July 2002 on the provision of
                 text: 'We have sent you an email with a confirmation link.',
                 homeButton: 'Home',
             },
+            interviewDialog: {
+                record: 'Record',
+                stop: 'Stop',
+                finish: 'Finish'
+            },
         },
         home: {
             initialSection: {

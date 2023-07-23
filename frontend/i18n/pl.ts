@@ -80,6 +80,11 @@ Zgoda nieobowiązkowa`,
                 text: '(max. 10 minut)',
                 submissionText: 'Wysyłam formularz',
             },
+            interviewDialog: {
+                record: 'Nagrywaj',
+                stop: 'Zatrzymaj',
+                finish: 'Zakończ'
+            },
         },
         home: {
             initialSection: {
