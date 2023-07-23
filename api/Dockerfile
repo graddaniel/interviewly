@@ -1,9 +1,12 @@
 FROM node:18-alpine
 WORKDIR /app
-COPY . .
-RUN yarn install --production
+COPY api /app/api
+COPY shared /app/shared
+WORKDIR /app/api
 RUN yarn global add typescript
+RUN yarn install --production
 RUN tsc
-CMD ["node", "NODE_ENV=production dist/index.js"]
+ENV NODE_ENV=production
+ENTRYPOINT ["node", "dist/index.js"]
 
 EXPOSE 7081

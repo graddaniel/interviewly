@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { API_HOST } from '~/config/default';
+import { API_HOST } from '~/config/current';
 
 
 export default class CompanyService {
