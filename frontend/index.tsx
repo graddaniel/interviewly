@@ -49,6 +49,7 @@ import RegistrationConfirmationPage from './src/pages/registration-confirmation/
 import RegistrationConfirmationPageLoader from './src/loaders/registration-confirmation-page-loader';
 
 import ROUTES, { APP_FORMS_ROUTES, APP_ROUTES, FORMS_ROUTES } from './src/consts/routes';
+import { SAMPLE_VERSION } from '~/config/current';
 
 import './src/consts/colors.css';
 import './i18n/i18n';
@@ -65,6 +66,7 @@ const router = createBrowserRouter(
                 path={ROUTES.HOME.PATH}
                 element={<HomePage />}
             />
+            {!SAMPLE_VERSION && (<>
             <Route
                 path={ROUTES.LOG_IN.PATH}
                 element={
@@ -82,6 +84,7 @@ const router = createBrowserRouter(
                 path={ROUTES.TUTORIALS.PATH}
                 element={<TutorialsPage />}
             />
+            </>)}
             <Route
                 path={ROUTES.CONTACT.PATH}
                 element={<ContactPage />}
