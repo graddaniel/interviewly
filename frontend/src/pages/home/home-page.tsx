@@ -9,6 +9,7 @@ import TutorialsSection from './tutorials-section/tutorials-section';
 import BlogSection from './blog-section/blog-section';
 
 import classes from './home-page.module.css';
+import { SAMPLE_VERSION } from '~/config/current';
 
 
 const HomePage = () => {
@@ -19,8 +20,10 @@ const HomePage = () => {
             <WorldSection />
             <OpenAISection />
             <SubscriptionsSection />
+            {!SAMPLE_VERSION && (<>
             <TutorialsSection />
             <BlogSection />
+            </>)}
         </article>
     );
 };

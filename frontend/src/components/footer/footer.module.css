@@ -49,8 +49,8 @@
 .links {
     grid-area: links;
     display: flex;
-    justify-content: space-between;
-    gap: 1rem;
+    justify-content: flex-end;
+    gap: 4vw;
 }
 .socialPages {
     grid-area: socialPages;

@@ -11,6 +11,7 @@ import FacebookIcon from '../../../images/facebook-icon.svg';
 import TwitterIcon from '../../../images/twitter-icon.svg';
 import InstagramIcon from '../../../images/instagram-icon.svg';
 import LanguageSelectionDialog from '../language-selection-dialog/language-selection-dialog';
+import { SAMPLE_VERSION } from '~/config/current';
 
 
 const LINKS: {
@@ -18,9 +19,11 @@ const LINKS: {
     path: string,
     id: string,
 }[] = [
-    ROUTES.CALCULATOR,
-    ROUTES.TUTORIALS,
-    ROUTES.BLOG,
+    ...(SAMPLE_VERSION ? [] : [
+        ROUTES.CALCULATOR,
+        ROUTES.TUTORIALS,
+        ROUTES.BLOG,
+    ]),
     ROUTES.CONTACT,
 ].map(route => ({
     title: route.TITLE,
@@ -59,8 +62,9 @@ const Footer = () => {
                         {t(`links.${link.id}`)}
                     </a>
                 ))}
-                </section>
+                </section>  
                 <section className={classes.socialPages}>
+                    {!SAMPLE_VERSION && (<>
                     <a href="https://facebook.com">
                         <img src={FacebookIcon}/>
                     </a>
@@ -70,6 +74,7 @@ const Footer = () => {
                     <a href="https://instagram.com">
                         <img src={InstagramIcon}/>
                     </a>
+                    </>)}
                 </section>
                 <section className={classes.formal}>
                     <a className={classes.link} href={ROUTES.PRIVACY_POLICY.PATH}>{t('links.privacyPolicy')}</a>
