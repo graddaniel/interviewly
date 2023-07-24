@@ -38,6 +38,7 @@ export default class ValidationSchemas {
         participantsPaymentValue: Schema;
         participantsPaymentCurrency: Schema;
     };
+    contactRequestMessage: Schema;
 
     static instance = () => {
         if (!ValidationSchemas._instance) {
@@ -130,6 +131,11 @@ export default class ValidationSchemas {
                 .required(`${ErrorCodes.ResearchParticipantsPaymentValueRequired}`)
                 .min(validationConfig.research.participantsPaymentValue.min, `${ErrorCodes.ResearchParticipantsPaymentValueTooLow}`),
         };
+
+        this.contactRequestMessage = string()
+            .required(`${ErrorCodes.ContactRequestMessageRequired}`)
+            .min(validationConfig.contactRequest.min, `${ErrorCodes.ContactRequestMessageTooShort}`)
+            .max(validationConfig.contactRequest.max, `${ErrorCodes.ContactRequestMessageTooLong}`);
     }
 
     decodeError = (errorCode: string) => {

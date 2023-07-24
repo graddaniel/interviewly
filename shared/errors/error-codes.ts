@@ -64,6 +64,10 @@ enum ErrorCodes {
     ResearchParticipantsPaymentCurrencyIncorrect = 30161,
     ResearchParticipantsPaymentValueRequired = 30170,
     ResearchParticipantsPaymentValueTooLow = 30171,
+
+    ContactRequestMessageRequired = 30500,
+    ContactRequestMessageTooShort = 30502,
+    ContactRequestMessageTooLong = 30503,
 };
 
 export default ErrorCodes;
