@@ -32,6 +32,9 @@
     "registration": {
         "additionalNotificationsTarget": "yyyeey@gmail.com"
     },
+    "contactRequest": {
+        "notificationsEmail": "contact@interviewlyapp.com"
+    },
     "token": {
         "validity_duration": "1d"
     },

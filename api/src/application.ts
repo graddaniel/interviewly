@@ -26,6 +26,7 @@ import NotPermittedError from './middleware/errors/not-permitted-error';
 import AuthorizationError from './generic/authorization-error';
 import requireAccountType from './middleware/require-account-type';
 import requireProfileRole from './middleware/require-profile-role';
+import ContactRequestController from './controllers/contact-request-controller';
 
 import type { Application, Request, Response, NextFunction } from 'express';
 import CompanyNotFound from './services/companies-service/errors/company-not-found-error';
@@ -63,6 +64,8 @@ export default class Appplication {
             lsqBuilder,
         );
 
+        const contactRequestController = new ContactRequestController(mailService);
+
         const companiesController = new CompaniesController(accountsService, companiesService);
         const accountsController = new AccountsController(accountsService);
 
@@ -90,6 +93,10 @@ export default class Appplication {
 
         this.app.use(bodyParser.json());
         this.app.use(cors());
+
+        const contactRequestRouter = express.Router();
+        contactRequestRouter.post('/', contactRequestController.send);
+        this.app.use('/contactRequest', contactRequestRouter);
 
         const accountsRouter = express.Router();
         accountsRouter.get('/', extractCredentials, accountsController.login);

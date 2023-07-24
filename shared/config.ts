@@ -43,6 +43,10 @@ const config = {
                 min: 0,
             },
         },
+        contactRequest: {
+            min: 32,
+            max: 512,
+        }
     }
 };
 

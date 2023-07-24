@@ -48,6 +48,7 @@ import ContactPage from './src/pages/contact/contact-page';
 import RegistrationConfirmationPage from './src/pages/registration-confirmation/registration-confirmation-page';
 import RegistrationConfirmationPageLoader from './src/loaders/registration-confirmation-page-loader';
 import ViewProject from './src/pages/app/view-project/view-project';
+import ContactPageAction from './src/actions/contact-page-action';
 
 import ROUTES, { APP_FORMS_ROUTES, APP_ROUTES, FORMS_ROUTES } from './src/consts/routes';
 import { SAMPLE_VERSION } from '~/config/current';
@@ -89,6 +90,7 @@ const router = createBrowserRouter(
             <Route
                 path={ROUTES.CONTACT.PATH}
                 element={<ContactPage />}
+                action={ContactPageAction}
             />
             <Route
                 path={ROUTES.REGISTRATION_CONFIRMATION.PATH}

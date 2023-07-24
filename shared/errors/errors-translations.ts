@@ -68,6 +68,9 @@ const ErrorsTranslations = {
             [ErrorCodes.ResearchParticipantsPaymentCurrencyIncorrect]: 'Currency value is incorrect',
             [ErrorCodes.ResearchParticipantsPaymentValueRequired]: 'Payment is required',
             [ErrorCodes.ResearchParticipantsPaymentValueTooLow]: 'Payment value is incorrect',
+            [ErrorCodes.ContactRequestMessageRequired]: 'Message is required',
+            [ErrorCodes.ContactRequestMessageTooShort]: 'Message is too short',
+            [ErrorCodes.ContactRequestMessageTooLong]: 'Messsage is too long',
         },
     },
     pl: {
@@ -137,6 +140,10 @@ const ErrorsTranslations = {
             [ErrorCodes.ResearchParticipantsPaymentCurrencyIncorrect]: 'Wartość waluty jest nieprawidłowa',
             [ErrorCodes.ResearchParticipantsPaymentValueRequired]: 'Wartość wynagrodzenia jest wymagana',
             [ErrorCodes.ResearchParticipantsPaymentValueTooLow]: 'Wartość wynagrodzenia jest zbyt niska',
+
+            [ErrorCodes.ContactRequestMessageRequired]: 'Wiadomość jest wymagana',
+            [ErrorCodes.ContactRequestMessageTooShort]: 'Wiadomość jest zbyt krótka',
+            [ErrorCodes.ContactRequestMessageTooLong]: 'Wiadomość jest zbyt długa'
         },
     },
 };

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Form } from 'react-router-dom';
+import { Form, useActionData } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import Decorator from '../../components/decorator/decorator';
@@ -14,6 +14,9 @@ const ENCRYPTED_EMAIL_ADDRESS = "Y29udGFjdEBpbnRlcnZpZXdseWFwcC5jb20=";
 
 const ContactPage = () => {
     const { t } = useTranslation();
+    const actionData = useActionData() as any;
+
+    const errors = actionData?.errors || null;
 
     useEffect(() => {
         const email = document.getElementById("email");
@@ -33,17 +36,19 @@ const ContactPage = () => {
             </div>
             <h4 className={classes.phoneNumber}>+48 (22) 290 43 74</h4>
             <h4 className={classes.email}><a id="email">{atob(ENCRYPTED_EMAIL_ADDRESS)}</a></h4>
-            <Form className={classes.contactForm}>
+            <Form method="post" className={classes.contactForm}>
                 <h4 className={classes.formHeader}>Send us a message</h4>
                 <Decorator />
                 <TextInput
                     name="email"
                     placeholder="E-mail"
+                    error={errors?.email}
                 />
                 <TextInput
                     name="message"
                     placeholder="Message"
                     multiline={true}
+                    error={errors?.message}
                 />
                 <SubmitButton
                     className={classes.submitButton}
