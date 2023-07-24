@@ -5,6 +5,11 @@ const en = {
             loading: 'loading',
             created: 'created',
         },
+        validation: {
+            join: {
+                repeatPasswordError: 'Passwords do not match',
+            },
+        },
         links: {
             priceCalculator: 'Price calculator',
             tutorials: 'Tutorials',

@@ -2,10 +2,11 @@ import {
     object,
 } from 'yup';
 import { ValidationSchemas } from 'shared';
+import i18next from 'i18next';
 
 import validateParams from './validate-params';
 
-
+const { t } = i18next;
 const SCHEMAS = ValidationSchemas.instance();
 
 export default class JoinValidator {
@@ -24,7 +25,11 @@ export default class JoinValidator {
         );
 
         if (joinData.password !== joinData.repeatPassword) {
-            errors.repeatPassword = 'passwords must match';
+            errors.repeatPassword = t('validation.join.repeatPasswordError');
+        }
+
+        if (!joinData.agreement) {
+            errors.agreement = 'Required';
         }
 
         if (Object.keys(errors).length > 0) {

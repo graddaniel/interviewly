@@ -47,6 +47,7 @@ import PersonalDataProcessingAgreementPage from './src/pages/personal-data-proce
 import ContactPage from './src/pages/contact/contact-page';
 import RegistrationConfirmationPage from './src/pages/registration-confirmation/registration-confirmation-page';
 import RegistrationConfirmationPageLoader from './src/loaders/registration-confirmation-page-loader';
+import ViewProject from './src/pages/app/view-project/view-project';
 
 import ROUTES, { APP_FORMS_ROUTES, APP_ROUTES, FORMS_ROUTES } from './src/consts/routes';
 import { SAMPLE_VERSION } from '~/config/current';
@@ -137,6 +138,10 @@ const router = createBrowserRouter(
                     path={APP_ROUTES.PROJECTS.PATH}
                     element={<ProjectsPage />}
                     loader={ProjectsLoader}
+                />
+                <Route
+                    path={APP_ROUTES.VIEW_PROJECT.PATH}
+                    element={<ViewProject />}
                 />
                 <Route
                     path={APP_FORMS_ROUTES.EDIT_PROJECT.PATH}

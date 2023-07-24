@@ -28,7 +28,6 @@ const JoinPageAction = async ({
     console.log('Join Action', method, formData);
     const {
         step: stepString,
-        agreement
     } = formData;
 
     const step = parseInt(stepString, 10);
@@ -41,15 +40,6 @@ const JoinPageAction = async ({
         // }
         try {
             await JoinValidator.validateData(formData);
-
-            if (!agreement) {
-                return {
-                    success: false,
-                    errors: {
-                        agreement: 'Required',
-                    },
-                };
-            }
         } catch (errors) {
             return {
                 success: false,

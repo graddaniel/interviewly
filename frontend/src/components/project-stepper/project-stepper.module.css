@@ -1,4 +1,4 @@
-@value breakpoints: "../../../consts/breakpoints.css";
+@value breakpoints: "../../consts/breakpoints.css";
 @value min-large, max-medium, min-medium, max-small from breakpoints;
 
 .steps {
@@ -14,6 +14,10 @@
     display: flex;
     flex-direction: column;
     gap: 1.75vw;
+}
+
+.clickable {
+    cursor: pointer;
 }
 
 .title {

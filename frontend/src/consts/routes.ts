@@ -67,6 +67,10 @@ const APP_ROUTES = {
         TITLE: 'Projects',
         PATH: '/app/projects',
     },
+    VIEW_PROJECT: {
+        TITLE: 'View project',
+        PATH: '/app/projects/:projectId',
+    },
     MY_TEAM: {
         TITLE: 'My Team',
         PATH: '/app/myTeam',

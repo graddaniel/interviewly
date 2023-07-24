@@ -5,6 +5,11 @@ const pl = {
             loading: 'ładowanie',
             created: 'utworzono',
         },
+        validation: {
+            join: {
+                repeatPasswordError: 'Hasła się różnią',
+            },
+        },
         links: {
             priceCalculator: 'Kalkulator cen',
             tutorials: 'Poradniki',
