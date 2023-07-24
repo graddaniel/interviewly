@@ -1,0 +1,63 @@
+.viewProject {}
+
+.header {
+    display: grid;
+    grid-template-columns: 70% 20%;
+    column-gap: 10%;
+    grid-template-rows: auto auto;
+    row-gap: 1.25vw;
+    grid-template-areas: 
+    "title status"
+    "stepper button";
+}
+.headerIcon {
+    height: 1vw;
+    width: 1vw;
+}
+.title {
+    grid-area: title;
+    display: flex;
+    gap: 1vw;
+    font-size: 3.5vw;
+    line-height: 3.5vw;
+    font-weight: 400;
+    margin: 0;
+}
+.stepper {
+    grid-area: stepper;
+    justify-content: space-between;
+    gap: unset;
+}
+.statusLabel {
+    grid-area: status;
+    align-self: end;
+    height: 1.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.75vw;
+    text-align: center;
+    border-radius: 2vw;
+    background-color: var(--COLOR2);
+}
+.actionButton {
+    grid-area: button;
+}
+
+.content {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 5vw;
+    padding-top: 5vw;
+}
+.projectTitle {
+    font-size: 3.5vw;
+    line-height: 3.5vw;
+    font-weight: 400;
+    border-bottom: 1px dashed var(--BLACK);
+    background-color: var(--COLOR8);
+}
+.projectDescription {
+    font-size: 1vw;
+}

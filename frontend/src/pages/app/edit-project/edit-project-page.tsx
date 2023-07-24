@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { APP_ROUTES } from '../../../consts/routes';
 import CloseControls from '../../../components/close-controls/close-controls';
 import TextButton from '../../../components/text-button/text-button';
-import EditProjectStepper from './edit-project-stepper';
+import ProjectStepper from '../../../components/project-stepper/project-stepper';
 import MethodologyStep from './methodology-step';
 import GeneralStep from './general-step';
 import RespondentsStep from './respondents-step';
@@ -17,6 +17,13 @@ import classes from './edit-project-page.module.css';
 import InterviewlyLogo from '~/images/logo.svg';
 
 const Steps = ResearchTypes.EditSteps;
+const StepsArray = [
+    { title: 'About project' },
+    { title: 'Research methodology' },
+    { title: 'Selection of respondents' },
+    { title: 'Project details' },
+    { title: 'Summary' },
+];
 
 const EditProjectPage = () => {
     const [ step, setStep ] = useState(0);
@@ -56,7 +63,7 @@ const EditProjectPage = () => {
                 />
             </header>
             <div className={classes.stepper}>
-                <EditProjectStepper currentStep={step}/>
+                <ProjectStepper steps={StepsArray} currentStep={step}/>
             </div>
             <div className={classes.content}>
                 {step === Steps.General && <GeneralStep project={project}/>}
