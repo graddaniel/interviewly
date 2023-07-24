@@ -1,0 +1,22 @@
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.decorator {
+    position: absolute;
+    z-index: 1;
+    top: 10%;
+    right: 25%;
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .decorator {
+        top: 5%;
+        right: 5%;
+    }
+}
+
+@media (max-width: max-small) {
+    .decorator {
+        display: none;
+    }
+}
