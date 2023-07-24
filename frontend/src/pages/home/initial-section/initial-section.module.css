@@ -3,7 +3,7 @@
 
 .section {
     display: grid;
-    height: 55vh;
+    height: 27.5vw;
     grid-template-columns: 55% 40%;
     grid-template-rows: 45% 5% 5% 45%;
     grid-template-areas:
@@ -49,17 +49,18 @@
 
 .timeBoxIcons {
     display: flex;
-    margin-bottom: 1.5rem;
+    justify-content: flex-end;
+    margin-bottom: 1.5vw;
 }
 .clockIcon {
-    width: 7vw;
-    margin-right: 2.5rem;
+    width: 5vw;
+    margin-right: 2.5vw;
 }
 .decorators {
     display: flex;
 }
 .decoratorImage {
-    width: 7vw;
+    width: 5vw;
 }
 
 .timeBoxText {
@@ -105,11 +106,20 @@
     .maximizeYourTimeBox {
         display: flex;
         justify-content: space-around;
+        padding: 3.5vw 5vw;
+    }
+    .clockIcon {
+        width: auto;
+        margin-right: 2.5vw;
+    }
+    .decoratorImage {
+        width: auto;
     }
     .timeBoxIcons {
         margin: 0;
     }
     .timeBoxText {
+        align-self: center;
         font-size: 2.5vh;
     }
     .photoBox {
@@ -145,14 +155,21 @@
     .maximizeYourTimeBox {
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: space-between;
+    }
+    .decoratorImage {
+        width: 9vw;
+    }
+    .clockIcon {
+        width: 9vw;
+        margin-right: 12vw;
     }
     .timeBoxIcons {
         justify-content: center;
         margin: 0;
     }
     .timeBoxText {
-        font-size: 2.5vh;
+        font-size: 4vw;
     }
     .photoBox {
         display: none;
