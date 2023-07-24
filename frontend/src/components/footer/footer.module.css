@@ -78,6 +78,7 @@
             "formal";
         --side-margin: 2rem;
         width: calc(100% - 2 * var(--side-margin));
+        row-gap: 0;
         padding: 0 var(--side-margin) 2rem;
     }
     .brand {

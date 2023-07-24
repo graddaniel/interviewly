@@ -18,13 +18,6 @@
     margin: 0;
 }
 
-.decorators {
-    position: absolute;
-    z-index: 1;
-    top: 10%;
-    right: 25%;
-}
-
 .errorMessage {
     color: var(--RED);
     font-size: 0.8rem;
@@ -67,10 +60,6 @@
         font-size: 4rem;
         line-height: 4rem;
     }
-    .decorators {
-        top: 5%;
-        right: 5%;
-    }
     .buttons {
         flex-direction: row;
     }
@@ -91,9 +80,6 @@
         font-size: 1.75rem;
         line-height: 1.75rem;
         text-align: center;
-    }
-    .decorators {
-        display: none;
     }
     .joinButton {
         display: none;

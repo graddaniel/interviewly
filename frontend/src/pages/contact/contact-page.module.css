@@ -2,25 +2,163 @@
 @value min-large, max-medium, min-medium, max-small from breakpoints;
 
 .contactPage {
-    height: 100%;
+    display: grid;
+    grid-template-columns: 47% 47%;
+    column-gap: 6%;
+    grid-template-rows: auto auto auto;
+    row-gap: 8.5vw;
+    grid-template-areas: 
+    "header address"
+    "phoneNumber email"
+    "contactForm poster";
+    padding: 0 8vw;
+}
+
+.header {
+    grid-area: header;
+    margin: 0;
+    font-size: 7.5vw;
+    line-height: 7.5vw;
+    font-weight: 400;
+}
+.address {
+    grid-area: address;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-end;
     font-size: 1.5vw;
-    line-height: 2.5vw;
+}
+.phoneNumber {
+    grid-area: phoneNumber;
+}
+.email {
+    grid-area: email;
+}
+.phoneNumber, .email, .posterTitle, .formHeader {
+    margin: 0;
+    font-size: 3.5vw;
+    font-weight: 400;
+}
+
+.email > a {
+    color: var(--BLACK);
+    font-size: 3vw;
+}
+
+.contactForm {
+    grid-area: contactForm;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 3vw;
+    padding: 5vw 7vw;
+    border-radius: 1.5vw;
+    background-color: var(--COLOR3);
+}
+
+.formHeader {
+    position: relative;
+    z-index: 2;
+}
+.submitButton {
+    width: 100%;
+}
+
+.poster {
+    grid-area: poster;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 4.5vw 4vw;
+    border-radius: 1.5vw;
+    background-image: url(../../../images/TEMP/contact-form-poster.jpg);
+    background-size: cover;
+}
+.posterTitle {
+    text-align: right;
+    color: var(--WHITE);
 }
 
 @media (min-width: min-medium) and (max-width: max-medium) {
     .contactPage {
-        font-size: 4vw;
-        line-height: 6vw;
+        grid-template-rows: auto auto auto auto auto;
+        row-gap: 10vw;
+        grid-template-areas: 
+        "header address"
+        "phoneNumber phoneNumber"
+        "email email"
+        "contactForm contactForm"
+        "poster poster";
+        padding: 10vw 6vw 15vw;
+    }
+
+    .address {
+        font-size: 3.5vw;
+    }
+    .phoneNumber, .email {
+        font-size: 7vw;
+    }
+    .formHeader, .posterTitle {
+        font-size: 10vw;
+        line-height: 10vw;
+    }
+    .email > a {
+        font-size: 6vw;
+    }
+
+    .contactForm {
+        gap: 10vw;
+        border-radius: 4vw;
+    }
+    .submitButton {
+        width: 50%;
+    }
+
+    .poster {
+        height: 90vw;
+        padding: 8.5vw;
+        border-radius: 4vw;
     }
 }
 
 @media (max-width: max-small) {
     .contactPage {
-        font-size: 4.5vw;
-        line-height: 8vw;
+        grid-template-rows: auto auto auto auto auto;
+        row-gap: 10vw;
+        grid-template-areas: 
+        "header address"
+        "phoneNumber phoneNumber"
+        "email email"
+        "contactForm contactForm"
+        "poster poster";
+        padding: 10vw 7.5vw;
+    }
+
+    .address {
+        font-size: 4vw;
+    }
+    .phoneNumber, .email, .posterTitle  {
+        font-size: 6vw;
+    }
+    .formHeader {
+        font-size: 12vw;
+        line-height: 12vw;
+    }
+    .email > a {
+        font-size: 6vw;
+    }
+
+    .contactForm {
+        gap: 15vw;
+        border-radius: 7.5vw;
+    }
+    .submitButton {
+        width: 100%;
+    }
+
+    .poster {
+        height: 65vw;
+        padding: 7.5vw;
+        border-radius: 7.5vw;
     }
 }
