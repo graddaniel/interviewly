@@ -93,6 +93,23 @@ In accordance with the provisions of the Act of 18 July 2002 on the provision of
                 stop: 'Stop',
                 finish: 'Finish'
             },
+            fakedoor: {
+                title: 'Your account has been created',
+                text1: {
+                    regular: 'Our website will be fully operational ',
+                    strong: 'in a few days',
+                },
+                subtitle: {
+                    regular1: 'You will be the ',
+                    strong: 'first',
+                    regular2: ' to be informed',
+                },
+                text2: {
+                    regular: 'You also will be the first to take full advantage of our ',
+                    strong: 'innovative solutions',
+                },
+                text3: "Let's stay in touch!",
+            },
         },
         home: {
             initialSection: {

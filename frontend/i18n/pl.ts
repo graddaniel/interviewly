@@ -90,6 +90,23 @@ Zgoda nieobowiązkowa`,
                 stop: 'Zatrzymaj',
                 finish: 'Zakończ'
             },
+            fakedoor: {
+                title: 'Twoje konto zostało stworzone',
+                text1: {
+                    regular: 'Nasza strona będzie w pełni funkcjonalna  ',
+                    strong: 'w ciągu kilku dni',
+                },
+                subtitle: {
+                    regular1: 'Będziesz ',
+                    strong: 'pierwszym',
+                    regular2: ' który się o tym dowie',
+                },
+                text2: {
+                    regular: 'Będziesz również pierwszym, który skorzysta z naszych ',
+                    strong: 'innowacyjnych rozwiązań',
+                },
+                text3: "Bądźmy w kontakcie!",
+            },
         },
         home: {
             initialSection: {

@@ -20,6 +20,8 @@ import RecruiterIcon from '../../../images/recruiter-icon.svg';
 import MaleIcon from '../../../images/male-icon.svg';
 import FemaleIcon from '../../../images/female-icon.svg';
 import { AccountTypes } from 'shared';
+import FakedoorFinal from './fakedoor-final';
+import { SAMPLE_VERSION } from '~/config/current';
 
 
 enum STEPS {
@@ -99,10 +101,12 @@ const JoinPage = () => {
                     onClose={goToHome}
                 />
             </section>
-            <header className={classes.header}>
-                <img src={InterviewlyLogo} className={classes.logo}/>
-                <h1 className={classes.title}>{t(`join.page${step}.title`)}</h1>
-            </header>
+            {(!SAMPLE_VERSION || step !== STEPS.FINAL) && (
+                <header className={classes.header}>
+                    <img src={InterviewlyLogo} className={classes.logo}/>
+                    <h1 className={classes.title}>{t(`join.page${step}.title`)}</h1>
+                </header>
+            )}
             <section className={classNames(
                 classes.content,
                 step !== STEPS.TYPE_SELECTION && classes.noDisplay || ''
@@ -265,24 +269,26 @@ const JoinPage = () => {
                     }
                 </section>
             </section>
-            {step === STEPS.FINAL && (
-                <section className={classNames(
-                    classes.content,
-                )}>
-                    <div className={classes.finalMessageWrapper}>
-                        <p
-                            className={classes.recorderText}
-                        >
-                            {t('join.page5.text')}
-                        </p>
-                        <TextButton
-                            className={classes.finalButton}
-                            text={t('join.page5.homeButton')}
-                            onClick={goToHome}
-                        />
-                    </div>
-                </section>
-            )}
+            {step === STEPS.FINAL && 
+                (SAMPLE_VERSION ? <FakedoorFinal /> : (
+                    <section className={classNames(
+                        classes.content,
+                    )}>
+                        <div className={classes.finalMessageWrapper}>
+                            <p
+                                className={classes.recorderText}
+                            >
+                                {t('join.page5.text')}
+                            </p>
+                            <TextButton
+                                className={classes.finalButton}
+                                text={t('join.page5.homeButton')}
+                                onClick={goToHome}
+                            />
+                        </div>
+                    </section>
+                ))
+            }
             <section className={classNames(
                 classes.navigation,
                 step === STEPS.TYPE_SELECTION && classes.noDisplay || ''
@@ -299,7 +305,7 @@ const JoinPage = () => {
                     className={classes.stepper}
                     currentStep={step - 1}
                     maxSteps={maxSteps - 1}
-                    hidden={step === 1}
+                    hidden={step === STEPS.TYPE_SELECTION || (step === STEPS.FINAL && SAMPLE_VERSION)}
                 />
                 <TextButton
                     className={classes.skipButton}
