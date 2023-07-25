@@ -7,7 +7,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin: 3.5rem 6rem 8rem;
+    padding: 3.5rem 6rem 8rem;
 }
 
 .controls {
@@ -82,7 +82,9 @@
 }
 .checkbox {
     width: 100%;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .newsletter {
     font-size: 0.5vw;
@@ -144,6 +146,10 @@
     display: none;
 }
 
+.agreementLabel {
+    font-size: 1vw;
+}
+
 @media (min-width: min-large) {
     .nonDesktop {
         display: none !important;
@@ -152,7 +158,8 @@
 
 @media (min-width: min-medium) and (max-width: max-medium) {
     .page {
-        margin: 2rem;
+        padding: 2rem;
+        gap: 9vw;
     }
     .title {
         text-align: center;
@@ -205,11 +212,15 @@
         column-gap: 5%;
         row-gap: 4rem;
     }
+    .agreementLabel {
+        font-size: 3vw;
+    }
 }
 
 @media (max-width: max-small) {
     .page {
-        margin: 1.25rem;
+        padding: 1.25rem;
+        gap: 10vw;
     }
     .loginControls {
         display: none;
@@ -255,7 +266,7 @@
         width: 100%;
     }
     .newsletter {
-        font-size: 3vw;
+        font-size: 5vw;
     }
     .recorderText {
         margin: 0;
@@ -269,6 +280,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding-bottom: 10vw;
     }
     .mobileLoginControls > * {
         margin: 0;
@@ -299,5 +311,8 @@
             "skipButton skipButton skipButton"
             "backButton . nextButton";
         row-gap: 1rem;
+    }
+    .agreementLabel {
+        font-size: 5vw;
     }
 }
