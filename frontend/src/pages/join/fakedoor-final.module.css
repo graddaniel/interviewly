@@ -1,0 +1,173 @@
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.fakedoor {
+    padding: 5vw 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5vw;
+}
+.topTextArea {
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5vw;
+    text-align: center;
+}
+.bottomTextArea {
+    width: 23vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5vw;
+    text-align: center;
+}
+
+.title {
+    margin: 0;
+    font-size: 6vw;
+    line-height: 6vw;
+    font-weight: 400;
+}
+
+.text1, .text2 {
+    font-size: 1.2vw;
+}
+.text1 > strong {
+    color: var(--COLOR5);
+}
+.text2 > strong {
+    text-decoration: underline;
+}
+
+.subtitle {
+    margin: 0;
+    font-size: 1.8vw;
+    line-height: 1.8vw;
+    font-weight: 400;
+}
+.subtitle > strong {
+    text-decoration: underline;
+}
+
+.text3 {
+    margin: 0;
+    font-size: 3.5vw;
+    line-height: 3.5vw;
+    font-weight: 400;
+}
+
+.email {
+    font-size: 1vw;
+    padding: 1vw 2vw;
+    border-radius: 3vw;
+    color: var(--COLOR1);
+    background-color: var(--COLOR2);
+}
+
+@media (min-width: min-large) {
+    .desktopPoster {
+        width: 100%;
+    }
+    .tabletPoster {
+        display: none;
+    }
+    .mobilePoster {
+        display: none;
+    }
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .fakedoor {
+        gap: 10vw;
+    }
+    .topTextArea {
+        width: 100%;
+        gap: 10vw;
+    }
+    .bottomTextArea {
+        width: 65vw;
+        gap: 10vw;
+    }
+
+    .title {
+        font-size: 11vw;
+        line-height: 11vw;
+    }
+    .text1, .text2 {
+        font-size: 3.5vw;
+    }
+    .subtitle {
+        font-size: 5vw;
+        line-height: 5vw;
+    }
+    .text3 {
+        font-size: 11vw;
+        line-height: 11vw;
+    }
+
+    .desktopPoster {
+        display: none;
+    }
+    .tabletPoster {
+        width: 100%;
+    }
+    .mobilePoster {
+        display: none;
+    }
+
+    .email {
+        padding: 2.5vw 5.5vw;
+        border-radius: 8vw;
+        font-size: 3vw;
+        line-height: 3vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .fakedoor {
+        gap: 15vw;
+    }
+    .topTextArea {
+        width: 100%;
+        gap: 15vw;
+    }
+    .bottomTextArea {
+        width: 100%;
+        gap: 15vw;
+    }
+
+    .title {
+        font-size: 9vw;
+        line-height: 9vw;
+    }
+    .text1, .text2 {
+        font-size: 4vw;
+    }
+    .subtitle {
+        font-size: 9vw;
+        line-height: 9vw;
+    }
+    .text3 {
+        font-size: 9vw;
+        line-height: 9vw;
+    }
+    .desktopPoster {
+        display: none;
+    }
+    .tabletPoster {
+        display: none;
+    }
+    .mobilePoster {
+        width: 100%;
+    }
+
+    .email {
+        padding: 4vw 10vw;
+        border-radius: 15vw;
+        font-size: 5vw;
+        line-height: 5vw;
+    }
+}
