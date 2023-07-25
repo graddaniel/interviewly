@@ -28,7 +28,7 @@ const ContactPage = () => {
 
     return (
         <section className={classes.contactPage}>
-            <h1 className={classes.header}>Get in touch</h1>
+            <h1 className={classes.header}>{t('contact.getInTouch')}</h1>
             <div className={classes.address}>
                 <span>Equator II Business Centre</span>
                 <span>Al. Jerozolimskie 96</span>
@@ -37,7 +37,7 @@ const ContactPage = () => {
             <h4 className={classes.phoneNumber}>+48 (22) 290 43 74</h4>
             <h4 className={classes.email}><a id="email">{atob(ENCRYPTED_EMAIL_ADDRESS)}</a></h4>
             <Form method="post" className={classes.contactForm}>
-                <h4 className={classes.formHeader}>Send us a message</h4>
+                <h4 className={classes.formHeader}>{t('contact.sendUsAMessage')}</h4>
                 <Decorator />
                 <TextInput
                     name="email"
@@ -56,7 +56,7 @@ const ContactPage = () => {
                 />
             </Form>
             <div className={classes.poster}>
-                <h4 className={classes.posterTitle}>"Interviewly has everything we need on a single platform."</h4>
+                <h4 className={classes.posterTitle}>{t('contact.quote')}</h4>
             </div>
         </section>
     );

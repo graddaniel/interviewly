@@ -164,9 +164,9 @@ In accordance with the provisions of the Act of 18 July 2002 on the provision of
             },
         },
         contact: {
-            address: 'address',
-            warsaw: 'Warsaw',
-            phone: 'phone'
+            getInTouch: 'Get in touch',
+            sendUsAMessage: 'Send us a message',
+            quote: '"Interviewly has everything we need on a single platform."',
         },
         registrationConfirmation: {
             header: 'It\'s ready!',

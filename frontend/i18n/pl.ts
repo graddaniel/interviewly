@@ -161,9 +161,9 @@ Zgoda nieobowiązkowa`,
             },
         },
         contact: {
-            address: 'adres',
-            warsaw: 'Warszawa',
-            phone: 'telefon'
+            getInTouch: 'Skontaktuj się z nami',
+            sendUsAMessage: 'Wyślij nam wiadomość',
+            quote: '"Interviewly ma wszystko czego potrzebujemy na jednej platformie."',
         },
         registrationConfirmation: {
             header: 'Gotowe!',
