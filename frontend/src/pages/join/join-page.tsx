@@ -72,8 +72,8 @@ const JoinPage = () => {
 
     const rulesAgreement = t('join.page3.rulesAgreement', { returnObjects: true }) as any;
     const { text, termsAndConditionsKeyword, privacyPolicyKeyword } = rulesAgreement;
-    const checkboxElement = (
-        <span dangerouslySetInnerHTML={{
+    const agreementElement = (
+        <span className={classes.agreementLabel} dangerouslySetInnerHTML={{
             __html: text
             .replace(termsAndConditionsKeyword, `<a href="${ROUTES.TERMS_AND_CONDITIONS.PATH}" target="_blank">${termsAndConditionsKeyword}</a>`)
             .replace(privacyPolicyKeyword, `<a href="${ROUTES.PRIVACY_POLICY.PATH}" target="_blank">${privacyPolicyKeyword}</a>`)
@@ -235,7 +235,7 @@ const JoinPage = () => {
                         className={classes.checkbox}
                         name="agreement"
                         error={actionData?.errors?.agreement}
-                        labelElement={checkboxElement}
+                        labelElement={agreementElement}
                         label=""
                     />
                     <Checkbox
