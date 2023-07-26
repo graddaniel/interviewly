@@ -165,6 +165,10 @@ Zgoda nieobowiązkowa`,
                 blogLinkText: 'Przeczytaj więcej',
             },
         },
+        viewProject: {},
+        editProject: {
+            title: 'Kreator nowego badania',
+        },
         passwordReset: {
             request: {
                 header: 'Stwórz nowe hasło',

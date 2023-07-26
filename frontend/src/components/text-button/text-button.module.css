@@ -37,6 +37,7 @@
         padding: 3vw 5vw;
         border-radius: 5vw;
         font-size: 2.5vw;
+        line-height: 2.5vw;
     }
 }
 
@@ -45,5 +46,6 @@
         height: 12vw;
         border-radius: 6vw;
         font-size: 5vw;
+        line-height: 5vw;
     }
 }

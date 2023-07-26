@@ -12,7 +12,8 @@ type DropdownListProps = {
     index?: number;
     className?: string;
     listClassName?: string;
-    defaultIndex?: number,
+    defaultIndex?: number;
+    allowDeselect?: boolean;
 };
 
 // if we pass index, then the dropdown is controlled from the outside
@@ -24,6 +25,7 @@ const DropdownList = ({
     className,
     listClassName,
     defaultIndex,
+    allowDeselect = true,
 }: DropdownListProps) => {
     const [ selectedIndex, setSelectedIndex ] = useState(defaultIndex === undefined ? -1 : defaultIndex);
     const [ isOpen, setIsOpen ] = useState(false);
@@ -60,7 +62,13 @@ const DropdownList = ({
                             key={typeof e === 'string' ? e : i}
                             onClick={() => {
                                 if (typeof indexInput !== 'number') {
-                                    setSelectedIndex(currentIndex => i === currentIndex ? -1 : i);
+                                    setSelectedIndex(currentIndex => {
+                                        if (i === currentIndex && allowDeselect) {
+                                            return -1;
+                                        }
+
+                                        return i;
+                                    });
                                 }
 
                                 onChange(i);
