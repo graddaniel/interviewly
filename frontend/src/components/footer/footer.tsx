@@ -11,7 +11,7 @@ import FacebookIcon from '../../../images/facebook-icon.svg';
 import TwitterIcon from '../../../images/twitter-icon.svg';
 import InstagramIcon from '../../../images/instagram-icon.svg';
 import LanguageSelectionDialog from '../language-selection-dialog/language-selection-dialog';
-import { SAMPLE_VERSION } from '~/config/current';
+import { SAMPLE_VERSION } from 'config/current';
 
 
 const LINKS: {

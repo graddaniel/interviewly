@@ -1,4 +1,4 @@
-@value breakpoints: "../../../consts/breakpoints.css";
+@value breakpoints: "../../consts/breakpoints.css";
 @value min-large, max-medium, min-medium, max-small from breakpoints;
 
 .tile {
@@ -20,7 +20,9 @@
     align-items: center;
     gap: 1.25vw;
     padding: 0.5vw;
+    border: 1px solid var(--BLACK);
     border-radius: 1vw;
+    background-color: var(--COLOR3);
 }
 .selected {
     border-color: var(--COLOR5);
@@ -43,6 +45,7 @@
 .miniTile > .iconWrapper {
     width: 2.5vw;
     height: 2.5vw;
+    background-color: var(--COLOR2);
 }
 .selected > .iconWrapper {
     background-color: var(--COLOR6);
@@ -68,6 +71,12 @@
         padding: 3vw 0;
         border-radius: 4.5vw;
     }
+    .miniTile {
+        height: 10vw;
+        gap: 3.5vw;
+        padding: 1.5vw;
+        border-radius: 3vw;
+    }
     
     .title {
         font-size: 2.5vw;
@@ -77,6 +86,11 @@
         width: 12vw;
         height: 12vw;
         border-radius: 3vw;
+    }
+    .miniTile > .iconWrapper {
+        width: 7vw;
+        height: 7vw;
+        border-radius: 2vw;
     }
     
     .icon {
@@ -99,10 +113,19 @@
         padding: 3.5vw;
         border-radius: 8vw;
     }
+    .miniTile {
+        height: 18vw;
+        gap: 15vw;
+        padding: 2.5vw;
+        border-radius: 5vw;
+    }
     
     .title {
         grid-area: title;
         font-size: 4vw;
+    }
+    .miniTile > .title {
+        font-size: 6vw;
     }
     
     .iconWrapper {
@@ -110,6 +133,11 @@
         width: 16vw;
         height: 16vw;
         border-radius: 4.5vw;
+    }
+    .miniTile > .iconWrapper {
+        width: 13vw;
+        height: 13vw;
+        border-radius: 3vw;
     }
     
     .icon {

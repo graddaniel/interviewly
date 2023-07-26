@@ -12,7 +12,7 @@ import MenuIcon from '../../../images/menu-icon.svg';
 import ROUTES, { FORMS_ROUTES } from '../../consts/routes';
 
 import classes from './navigation-bar.module.css';
-import { SAMPLE_VERSION } from '~/config/current';
+import { SAMPLE_VERSION } from 'config/current';
 
 
 const LINKS: {

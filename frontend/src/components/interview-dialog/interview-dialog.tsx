@@ -5,7 +5,7 @@ import VideoCalls from 'video-calls-library';
 
 import Dialog from '../dialog/dialog';
 import TextButton from '../text-button/text-button';
-import { JANUS_HOST } from '~/config/current';
+import { JANUS_HOST } from 'config/current';
 
 import classes from './interview-dialog.module.css';
 

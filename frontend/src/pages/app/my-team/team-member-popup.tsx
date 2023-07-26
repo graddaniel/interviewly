@@ -10,7 +10,7 @@ import TextInput from '../../../components/text-input/text-input';
 import TextButton from '../../../components/text-button/text-button';
 
 import classes from './team-member-popup.module.css';
-import CrossIcon from '~/images/cross-icon.svg';
+import CrossIcon from 'images/cross-icon.svg';
 import classNames from 'classnames';
 
 const ROLES = [

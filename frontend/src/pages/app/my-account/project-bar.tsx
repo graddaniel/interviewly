@@ -5,8 +5,8 @@ import classNames from 'classnames';
 import IconButton from '../../../components/icon-button/icon-button';
 
 import classes from './project-bar.module.css'
-import PaperSheetsIconBlack from '~/images/paper-sheets-icon-black.svg';
-import MetricsIconBlack from '~/images/metrics-icon-black.svg';
+import PaperSheetsIconBlack from 'images/paper-sheets-icon-black.svg';
+import MetricsIconBlack from 'images/metrics-icon-black.svg';
 import capitalizeFirstLetter from '../../../utils/capitalize-first-letter';
 
 

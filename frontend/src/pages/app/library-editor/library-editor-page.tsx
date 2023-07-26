@@ -11,9 +11,9 @@ import NumericalInput from '../../../components/numerical-input/numerical-input'
 import { APP_ROUTES } from '../../../consts/routes';
 
 import classes from './library-editor-page.module.css';
-import InterviewlyLogo from '~/images/logo.svg';
-import PlusIconBlack from '~/images/plus-icon-black.svg';
-import MinusIconBlack from '~/images/minus-icon-black.svg';
+import InterviewlyLogo from 'images/logo.svg';
+import PlusIconBlack from 'images/plus-icon-black.svg';
+import MinusIconBlack from 'images/minus-icon-black.svg';
 
 
 const LANGUAGES = [{

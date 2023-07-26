@@ -51,7 +51,7 @@ import ViewProject from './src/pages/app/view-project/view-project';
 import ContactPageAction from './src/actions/contact-page-action';
 
 import ROUTES, { APP_FORMS_ROUTES, APP_ROUTES, FORMS_ROUTES } from './src/consts/routes';
-import { SAMPLE_VERSION } from '~/config/current';
+import { SAMPLE_VERSION } from 'config/current';
 
 import './src/consts/colors.css';
 import './i18n/i18n';

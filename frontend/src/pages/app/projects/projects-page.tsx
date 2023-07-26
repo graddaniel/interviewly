@@ -6,7 +6,7 @@ import DropdownList from '../../../components/dropdown-list/dropdown-list';
 import Pill from '../../../components/pill/pill';
 
 import classes from './projects-page.module.css';
-import MetricsIconBlack from '~/images/metrics-icon-black.svg';
+import MetricsIconBlack from 'images/metrics-icon-black.svg';
 import { useLoaderData } from 'react-router-dom';
 
 

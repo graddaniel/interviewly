@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Buffer } from 'buffer';
 import i18next from 'i18next';
 
-import { API_HOST } from '~/config/current';
+import { API_HOST } from 'config/current';
 
 
 export default class AuthService {

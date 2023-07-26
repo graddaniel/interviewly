@@ -5,9 +5,9 @@ import InterviewTile from './interview-tile';
 import ProjectBar from './project-bar';
 
 import classes from './my-account-page.module.css';
-import PeopleIconBlack from '~/images/people-icon-black.svg';
-import CalendarIconBlack from '~/images/calendar-icon-black.svg';
-import MetricsIconBlack from '~/images/metrics-icon-black.svg';
+import PeopleIconBlack from 'images/people-icon-black.svg';
+import CalendarIconBlack from 'images/calendar-icon-black.svg';
+import MetricsIconBlack from 'images/metrics-icon-black.svg';
 import { AccountTypes } from 'shared';
 
 const user = {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import classes from './search-input.module.css';
-import MagnifyingGLassIconBlack from '~/images/magnifying-glass-icon-black.svg';
+import MagnifyingGLassIconBlack from 'images/magnifying-glass-icon-black.svg';
 
 
 const SearchInput = ({

@@ -88,6 +88,7 @@
 
 @media (min-width: min-medium) and (max-width: max-medium) {
     .paddingWrapper {
+        height: auto;
         padding: 0 5vw 40vw;
     }
     .app {
@@ -147,6 +148,7 @@
 
 @media (max-width: max-small) {
     .paddingWrapper {
+        height: auto;
         padding: 0 5vw 40vw;
     }
     .app {

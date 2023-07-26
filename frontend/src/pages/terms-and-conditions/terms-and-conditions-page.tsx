@@ -4,9 +4,9 @@ import { useTranslation } from 'react-i18next';
 import ROUTES from '../../consts/routes';
 
 import classes from './terms-and-conditions-page.module.css';
-import Decorator from '~/images/decorator.svg';
+import Decorator from 'images/decorator.svg';
 
-import type en from '~/i18n/en';
+import type en from '../../../i18n/en';
 
 type TermsAndConditions = typeof en.translation.termsAndConditions;
 

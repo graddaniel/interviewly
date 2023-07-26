@@ -5,10 +5,10 @@ import SwitchInput from './switch-input';
 import TitledDivider from '../../../components/titled-divider/titled-divider';
 
 import classes from './respondents-step.module.css';
-import IDIconBlack from '~/images/id-icon-black.svg';
-import LanguagesIconBlack from '~/images/languages-icon-black.svg';
-import PlayIconBlack from '~/images/play-icon-black.svg';
-import BlankSurveyIconBlack from '~/images/blank-survey-icon-black.svg'
+import IDIconBlack from 'images/id-icon-black.svg';
+import LanguagesIconBlack from 'images/languages-icon-black.svg';
+import PlayIconBlack from 'images/play-icon-black.svg';
+import BlankSurveyIconBlack from 'images/blank-survey-icon-black.svg'
 
 
 const RespondentsStep = ({

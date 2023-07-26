@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { ResearchTypes } from 'shared';
 
 import StepTitle from './step-title';
-import MethodologyTile from './methodology-tile';
+import MethodologyTile from '../../../components/methodology-tile/methodology-tile';
 
 import classes from './methodology-step.module.css';
-import TilesIconBlack from '~/images/tiles-icon-black.svg';
+import TilesIconBlack from 'images/tiles-icon-black.svg';
 
 
 const METHODOLOGIES = Object.values(ResearchTypes.Methodology);

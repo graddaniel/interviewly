@@ -5,7 +5,7 @@ import IconButton from '../../../components/icon-button/icon-button';
 import capitalizeFirstLetter from '../../../utils/capitalize-first-letter';
 
 import classes from './latest-team-member-tile.module.css';
-import PencilIconBlack from '~/images/pencil-icon-black.svg'; 
+import PencilIconBlack from 'images/pencil-icon-black.svg'; 
 import { AccountTypes } from 'shared';
 
 type LatestTeamMemberTile = {

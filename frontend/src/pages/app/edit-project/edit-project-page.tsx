@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Form, useActionData, useLoaderData, useNavigate, useSubmit } from 'react-router-dom';
 import { useTranslation } from 'react-i18next'
+import { ResearchTypes } from 'shared';
 
 import { APP_ROUTES } from '../../../consts/routes';
 import CloseControls from '../../../components/close-controls/close-controls';
@@ -11,10 +12,9 @@ import GeneralStep from './general-step';
 import RespondentsStep from './respondents-step';
 import DetailsStep from './details-step';
 import SummaryStep from './summary-step';
-import { ResearchTypes } from 'shared';
 
 import classes from './edit-project-page.module.css';
-import InterviewlyLogo from '~/images/logo.svg';
+import InterviewlyLogo from 'images/logo.svg';
 
 const Steps = ResearchTypes.EditSteps;
 const StepsArray = [
