@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
 import classes from './dropdown-list.module.css';
-import ArrowDownIconBlack from '~/images/arrow-down-icon-black.svg';
+import ArrowDownIconBlack from 'images/arrow-down-icon-black.svg';
 
 
 type DropdownListProps = {

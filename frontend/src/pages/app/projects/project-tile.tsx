@@ -8,8 +8,8 @@ import { APP_FORMS_ROUTES } from '../../../../src/consts/routes';
 import capitalizeFirstLetter from '../../../utils/capitalize-first-letter';
 
 import classes from './project-tile.module.css'
-import PaperSheetsIconBlack from '~/images/paper-sheets-icon-black.svg';
-import MetricsIconBlack from '~/images/metrics-icon-black.svg';
+import PaperSheetsIconBlack from 'images/paper-sheets-icon-black.svg';
+import MetricsIconBlack from 'images/metrics-icon-black.svg';
 
 
 const ProjectTile = ({

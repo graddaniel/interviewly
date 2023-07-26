@@ -49,6 +49,10 @@
     .title {
         font-size: 1.75vw;
     }
+    .line {
+        height: 0.5vw;
+        border-radius: 0.5vw;
+    }
 }
 
 @media (max-width: max-small) {

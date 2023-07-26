@@ -168,7 +168,51 @@ In accordance with the provisions of the Act of 18 July 2002 on the provision of
                 blogLinkText: 'Read more',
             },
         },
-        viewProject: {},
+        methodologies: {
+            interviews: {
+                title: 'Interviews',
+                text: 'I want to transfer data for statistical purposes.',
+            },
+            focusGroups: {
+                title: 'Focus Groups',
+                text: 'I want to transfer data for statistical purposes.',
+            },
+            onlineCommunities: {
+                title: 'Online Communities',
+                text: 'I want to transfer data for statistical purposes.',
+            },
+            uxInterviews: {
+                title: 'UX Interviews',
+                text: 'I want to transfer data for statistical purposes.',
+            },
+            productTests: {
+                title: 'Product tests',
+                text: 'I want to transfer data for statistical purposes.',
+            },
+        },
+        viewProject: {
+            title: 'Project details',
+            edit: 'Edit',
+            steps: [
+                'General',
+                'Methodology',
+                'Respondents',
+                'Screening survey',
+                'Details',
+            ],
+            general: {
+                title: 'User Experience in Samsung company',
+                description: `\
+It can be nerve-wracking, vulnerable, and challenging at times, but getting out of our own heads and incorporating collaboration into our design processes can make us all better designers.\n
+\n
+Over the years, I’ve come to learn that designing collaboratively means putting your egos aside to make something that transcends the sum of its creators.`,
+            },
+            methodology: {
+                createSurvey: 'Create Survey',
+                instruction: 'or choose a survey from the library',
+                save: 'Save',
+            }
+        },
         editProject: {
             title: 'New research creator',
         },

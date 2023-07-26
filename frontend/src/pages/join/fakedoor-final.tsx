@@ -4,11 +4,11 @@ import { useTranslation } from 'react-i18next';
 import TextButton from '../../components/text-button/text-button';
 
 import classes from './fakedoor-final.module.css';
-import FakedoorVideocallDesktop from '~/images/TEMP/fakedoor-videocall-desktop.png';
-import FakedoorVideocallTablet from '~/images/TEMP/fakedoor-videocall-tablet.png';
-import FakedoorVideocallMobile from '~/images/TEMP/fakedoor-videocall-mobile.png';
+import FakedoorVideocallDesktop from 'images/TEMP/fakedoor-videocall-desktop.png';
+import FakedoorVideocallTablet from 'images/TEMP/fakedoor-videocall-tablet.png';
+import FakedoorVideocallMobile from 'images/TEMP/fakedoor-videocall-mobile.png';
 import { useNavigate } from 'react-router-dom';
-import ROUTES from '~/src/consts/routes';
+import ROUTES from '../../consts/routes';
 
 
 const ENCRYPTED_EMAIL_ADDRESS = "Y29udGFjdEBpbnRlcnZpZXdseWFwcC5jb20=";

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import classes from './decorator.module.css';
-import DecoratorImage from '~/images/decorator.svg';
+import DecoratorImage from 'images/decorator.svg';
 
 
 const Decorator = () => {

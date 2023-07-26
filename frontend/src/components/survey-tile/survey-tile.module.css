@@ -1,0 +1,47 @@
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.tile {
+    box-sizing: border-box;
+    width: 12.5vw;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5vw;
+    padding: 1.5vw 2vw;
+    border-radius: 1.5vw;
+    background-color: var(--COLOR8);
+    cursor: pointer;
+}
+
+.icon {
+    background-color: var(--COLOR8);
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .tile {
+        width: 35vw;
+        gap: 1.5vw;
+        flex-shrink: 0;
+        padding: 4vw 6vw;
+        border-radius: 4vw;
+    }
+}
+
+@media (max-width: max-small) { 
+    .tile {
+        width: 64vw;
+        gap: 2.5vw;
+        flex-shrink: 0;
+        padding: 7vw 10vw;
+        border-radius: 8vw;
+    }
+
+    .icon {
+        width: 16vw;
+        height: 16vw;
+        border-radius: 8vw;
+    }
+}

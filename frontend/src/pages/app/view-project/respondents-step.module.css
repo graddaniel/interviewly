@@ -1,0 +1,11 @@
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+}
+
+@media (max-width: max-small) { 
+}

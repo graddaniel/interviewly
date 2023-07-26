@@ -2,10 +2,10 @@ import React from 'react';
 import { ResearchTypes } from 'shared';
 
 import StepTitle from './step-title';
-import MethodologyTile from './methodology-tile';
+import MethodologyTile from '../../../components/methodology-tile/methodology-tile';
 
 import classes from './summary-step.module.css';
-import CartIconBlack from '~/images/cart-icon-black.svg';
+import CartIconBlack from 'images/cart-icon-black.svg';
 
 
 type SummaryStepProps = {
@@ -26,7 +26,7 @@ const SummaryStep = ({
             </div>
             <MethodologyTile
                 methodology={project.methodology}
-                selected={true}
+                selected={false}
                 mini={true}
             />
         </section>

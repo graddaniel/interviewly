@@ -10,10 +10,10 @@ import NumericalInput from '../../../components/numerical-input/numerical-input'
 
 import classes from './details-step.module.css';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
-import '~/src/lib/react-timepicker.css';
-import QuestionMarkIconBlack from '~/images/question-mark-icon-black.svg';
-import LanguagesIconBlack from '~/images/languages-icon-black.svg';
-import DollarSignIconBlack from '~/images/dollar-sign-icon-black.svg';
+import '../../../lib/react-timepicker.css';
+import QuestionMarkIconBlack from 'images/question-mark-icon-black.svg';
+import LanguagesIconBlack from 'images/languages-icon-black.svg';
+import DollarSignIconBlack from 'images/dollar-sign-icon-black.svg';
 import { useActionData } from 'react-router-dom';
 import classNames from 'classnames';
 

@@ -6,7 +6,7 @@ import TextButton from '../../components/text-button/text-button';
 import ROUTES from '../..//consts/routes';
 
 import classes from './registration-confirmation-page.module.css';
-import Logo from '~/images/logo.svg';
+import Logo from 'images/logo.svg';
 
 const RegistrationConfirmationPage = () => {
     const { t } = useTranslation();

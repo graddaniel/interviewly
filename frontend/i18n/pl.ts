@@ -165,7 +165,51 @@ Zgoda nieobowiązkowa`,
                 blogLinkText: 'Przeczytaj więcej',
             },
         },
-        viewProject: {},
+        methodologies: {
+            interviews: {
+                title: 'Interviews',
+                text: 'Chcę dostarczać dane do analizy statystycznej.',
+            },
+            focusGroups: {
+                title: 'Focus Groups',
+                text: 'Chcę dostarczać dane do analizy statystycznej.',
+            },
+            onlineCommunities: {
+                title: 'Online Communities',
+                text: 'Chcę dostarczać dane do analizy statystycznej.',
+            },
+            uxInterviews: {
+                title: 'UX Interviews',
+                text: 'Chcę dostarczać dane do analizy statystycznej.',
+            },
+            productTests: {
+                title: 'Product tests',
+                text: 'Chcę dostarczać dane do analizy statystycznej.',
+            },
+        },
+        viewProject: {
+            title: 'Szczegóły projektu',
+            edit: 'Edytuj',
+            steps: [
+                'Ogólne',
+                'Metodologia',
+                'Respondenci',
+                'Ankiety przesiewowe',
+                'Szczegóły',
+            ],
+            general: {
+                title: 'PL User Experience in Samsung company',
+                description: `\
+PLPLPLPL It can be nerve-wracking, vulnerable, and challenging at times, but getting out of our own heads and incorporating collaboration into our design processes can make us all better designers.\n
+\n
+Over the years, I’ve come to learn that designing collaboratively means putting your egos aside to make something that transcends the sum of its creators.`,
+            },
+            methodology: {
+                createSurvey: 'Stwórz ankietę',
+                instruction: 'lub wybierz jedną z biblioteki',
+                save: 'Zapisz',
+            }
+        },
         editProject: {
             title: 'Kreator nowego badania',
         },

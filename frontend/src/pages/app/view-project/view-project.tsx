@@ -1,57 +1,59 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import ProjectStepper from '../../../components/project-stepper/project-stepper';
 import TextButton from '../../../components/text-button/text-button';
 import DropdownList from '../../../components/dropdown-list/dropdown-list';
+import GeneralStep from './general-step';
 
 import classes from './view-project.module.css';
-import QuestionMarkIconBlack from '~/images/question-mark-icon-black.svg';
+import QuestionMarkIconBlack from 'images/question-mark-icon-black.svg';
+import MethodologyStep from './methodology-step';
 
 
 const ViewProject = () => {
-    const [ currentStep, setCurrentStep ] = useState(0)
-    const StepsArray = [
-        { title: 'General', onClick: () => setCurrentStep(0) },
-        { title: 'Methodology', onClick: () => setCurrentStep(1) },
-        { title: 'Respondents', onClick: () => setCurrentStep(2) },
-        { title: 'Screening survey', onClick: () => setCurrentStep(3) },
-        { title: 'Details', onClick: () => setCurrentStep(4) },
-    ];
+    const { t } = useTranslation();
+
+    const stepsNames = t('viewProject.steps', { returnObjects: true }) as string[];
+
+    const stepsArray = stepsNames.map((name, i) => ({
+        title: name,
+        onClick: () => setCurrentStep(i),
+    }));
+
+    const [ currentStep, setCurrentStep ] = useState(1);
 
     return (
         <section className={classes.viewProject}>
             <header className={classes.header}>
                 <h4 className={classes.title}>
                     <img src={QuestionMarkIconBlack} className={classes.headerIcon} />
-                    Project details
+                    {t('viewProject.title')}
                 </h4>
                 <ProjectStepper
                     className={classes.stepper}
-                    steps={StepsArray}
+                    steps={stepsArray}
                     currentStep={currentStep}
                     markCurrentStepOnly={true}
                 />
                 <div className={classes.statusLabel}>Status</div>
                 <TextButton
                     className={classes.actionButton}
-                    text="Edit"
+                    text={t('viewProject.edit')}
                     onClick={() => console.log("TODO different action different label and handler")}
                 />
                 <DropdownList
+                    className={classes.dropdown}
                     name="viewStep"
-                    elementsList={StepsArray.map(e => e.title)}
-                    onChange={(i) => StepsArray[i].onClick()}
+                    elementsList={stepsArray.map(e => e.title)}
+                    onChange={(i) => stepsArray[i].onClick()}
                     allowDeselect={false}
-                    defaultIndex={StepsArray.findIndex(e => e.title === 'General')}
+                    defaultIndex={currentStep}
                 />
             </header>
             <div className={classes.content}>
-                <div className={classes.projectTitle}>User Experience in Samsung company</div>
-                <div className={classes.projectDescription}>
-                It can be nerve-wracking, vulnerable, and challenging at times, but getting out of our own heads and incorporating collaboration into our design processes can make us all better designers.
-
-Over the years, I’ve come to learn that designing collaboratively means putting your egos aside to make something that transcends the sum of its creators.
-                </div>
+                {currentStep === 0 && (<GeneralStep />)}
+                {currentStep === 1 && (<MethodologyStep />)}
             </div>
         </section>
     );

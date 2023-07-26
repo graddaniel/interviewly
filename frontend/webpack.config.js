@@ -60,7 +60,8 @@ const config = {
     resolve: {
         extensions: [".ts", ".js", ".tsx"],
         alias: {
-            '~': path.resolve(__dirname, '.'),
+            'images': path.resolve(__dirname, 'images'),
+            'config': path.resolve(__dirname, 'config/'),
         },
     },
     output: {

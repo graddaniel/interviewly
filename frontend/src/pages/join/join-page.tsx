@@ -21,7 +21,7 @@ import MaleIcon from '../../../images/male-icon.svg';
 import FemaleIcon from '../../../images/female-icon.svg';
 import { AccountTypes } from 'shared';
 import FakedoorFinal from './fakedoor-final';
-import { SAMPLE_VERSION } from '~/config/current';
+import { SAMPLE_VERSION } from 'config/current';
 
 
 enum STEPS {

@@ -6,8 +6,8 @@ import TeamMemberTile from './team-member-tile';
 import TeamMemberPopup from './team-member-popup';
 
 import classes from './my-team-page.module.css'
-import PeopleIconBlack from '~/images/people-icon-black.svg';
-import PlusIconBlack from '~/images/plus-icon-black.svg';
+import PeopleIconBlack from 'images/people-icon-black.svg';
+import PlusIconBlack from 'images/plus-icon-black.svg';
 
 
 const MyTeamPage = () => {
