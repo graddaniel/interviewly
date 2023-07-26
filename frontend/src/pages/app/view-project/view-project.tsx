@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import ProjectStepper from '../../../components/project-stepper/project-stepper';
 import TextButton from '../../../components/text-button/text-button';
+import DropdownList from '../../../components/dropdown-list/dropdown-list';
 
 import classes from './view-project.module.css';
 import QuestionMarkIconBlack from '~/images/question-mark-icon-black.svg';
@@ -9,11 +10,11 @@ import QuestionMarkIconBlack from '~/images/question-mark-icon-black.svg';
 
 const ViewProject = () => {
     const [ currentStep, setCurrentStep ] = useState(0)
-    const StepsNamesArray = [
+    const StepsArray = [
         { title: 'General', onClick: () => setCurrentStep(0) },
         { title: 'Methodology', onClick: () => setCurrentStep(1) },
         { title: 'Respondents', onClick: () => setCurrentStep(2) },
-        { title: 'Screening questionnaire', onClick: () => setCurrentStep(3) },
+        { title: 'Screening survey', onClick: () => setCurrentStep(3) },
         { title: 'Details', onClick: () => setCurrentStep(4) },
     ];
 
@@ -26,7 +27,7 @@ const ViewProject = () => {
                 </h4>
                 <ProjectStepper
                     className={classes.stepper}
-                    steps={StepsNamesArray}
+                    steps={StepsArray}
                     currentStep={currentStep}
                     markCurrentStepOnly={true}
                 />
@@ -34,7 +35,14 @@ const ViewProject = () => {
                 <TextButton
                     className={classes.actionButton}
                     text="Edit"
-                    onClick={() => console.log("EDIT")}
+                    onClick={() => console.log("TODO different action different label and handler")}
+                />
+                <DropdownList
+                    name="viewStep"
+                    elementsList={StepsArray.map(e => e.title)}
+                    onChange={(i) => StepsArray[i].onClick()}
+                    allowDeselect={false}
+                    defaultIndex={StepsArray.findIndex(e => e.title === 'General')}
                 />
             </header>
             <div className={classes.content}>

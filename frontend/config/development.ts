@@ -1,4 +1,6 @@
 const API_HOST = 'http://localhost:7081';
 const JANUS_HOST = 'http://localhost:8088/janus';
 
-export { API_HOST, JANUS_HOST };
+const SAMPLE_VERSION = false;
+
+export { API_HOST, JANUS_HOST, SAMPLE_VERSION };

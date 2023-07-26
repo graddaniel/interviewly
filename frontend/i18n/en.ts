@@ -168,6 +168,10 @@ In accordance with the provisions of the Act of 18 July 2002 on the provision of
                 blogLinkText: 'Read more',
             },
         },
+        viewProject: {},
+        editProject: {
+            title: 'New research creator',
+        },
         passwordReset: {
             request: {
                 header: 'Create new password',

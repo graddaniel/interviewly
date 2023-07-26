@@ -1,3 +1,7 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+
 .viewProject {}
 
 .header {
@@ -52,6 +56,7 @@
     padding-top: 5vw;
 }
 .projectTitle {
+    padding: 2vw 0;
     font-size: 3.5vw;
     line-height: 3.5vw;
     font-weight: 400;
@@ -60,4 +65,114 @@
 }
 .projectDescription {
     font-size: 1vw;
+}
+
+@media (min-width: min-large) {
+    .dropdown {
+        display: none;
+    }
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .header {
+        grid-template-columns: 48% 48%;
+        column-gap: 4%;
+        grid-template-rows: auto auto auto;
+        row-gap: 14vw;
+        grid-template-areas: 
+        "title title"
+        "status button"
+        "stepper stepper";
+    }
+    .headerIcon {
+        width: 3vw;
+        height: 3vw;
+    }
+    .title {
+        font-size: 10vw;
+        line-height: 10vw;
+        gap: 3vw;
+    }
+    .statusLabel {
+        height: auto;
+        padding: 1.5vw 0;
+        font-size: 2vw;
+        border-radius: 8vw;
+    }
+    .actionButton {
+        height: auto;
+        padding: 1.5vw 0;
+    }
+    .dropdown {
+        display: none;
+    }
+
+    .content {
+        width: 100%;
+        gap: 15vw;
+        padding-bottom: 40vw;
+    }
+    .projectTitle {
+        font-size: 8vw;
+        line-height: 8vw;
+    }
+    .projectDescription {
+        font-size: 3vw;
+        line-height: 3vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .header {
+        grid-template-columns: 100%;
+        grid-template-rows: auto auto auto auto;
+        row-gap: 10vw;
+        grid-template-areas: 
+        "title"
+        "status"
+        "button"
+        "dropdown";
+    }
+    .headerIcon {
+        width: 4vw;
+        height: 4vw;
+    }
+    .title {
+        font-size: 9vw;
+        line-height: 9vw;
+        gap: 5vw;
+    }
+    .stepper {
+        display: none;
+    }
+    .dropdown {
+
+    }
+
+    .statusLabel {
+        height: auto;
+        width: 35%;
+        padding: 3vw 0;
+        font-size: 4vw;
+        border-radius: 8vw;
+    }
+    .actionButton {
+        height: auto;
+        padding: 3vw 0;
+    }
+
+    .content {
+        width: 100%;
+        gap: 15vw;
+        padding-top: 10vw;
+        padding-bottom: 50vw;
+    }
+    .projectTitle {
+        font-size: 9vw;
+        line-height: 9vw;
+    }
+    .projectDescription {
+        font-size: 5vw;
+        line-height: 5vw;
+    }
 }
