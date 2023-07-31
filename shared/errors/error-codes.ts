@@ -37,8 +37,6 @@ enum ErrorCodes {
     AccountPasswordIncorrect = 30051,
     AccountPasswordTooShort = 30052,
     AccountPasswordTooLong = 30053,
-    AccountCompanyNameTooShort = 30062,
-    AccountCompanyNameTooLong = 30063,
     AccountRoleRequired = 30070,
     AccountRoleIncorrect = 30071,
     AccountStatusRequired = 30080,
@@ -68,6 +66,21 @@ enum ErrorCodes {
     ContactRequestMessageRequired = 30500,
     ContactRequestMessageTooShort = 30502,
     ContactRequestMessageTooLong = 30503,
+
+    CompanyNameTooShort = 30602,
+    CompanyNameTooLong = 30603,
+    CompanyTaxIdTooLong = 30613,
+
+    AddressCountryTooShort = 30702,
+    AddressCountryTooLong = 30703,
+    AddressCityTooShort = 30712,
+    AddressCityTooLong = 30713,
+    AddressStreetTooLong = 30723,
+    AddressBuildingNumberTooShort = 30732,
+    AddressBuildingNumberTooLong = 30733,
+    AddressUnitNumberTooLong = 30743,
+    AddressPostalCodeTooShort = 30752,
+    AddressPostalCodeTooLong = 30753,
 };
 
 export default ErrorCodes;

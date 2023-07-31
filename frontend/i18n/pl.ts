@@ -1,3 +1,6 @@
+import { Errors } from 'shared';
+const { ErrorsTranslations } = Errors;
+
 const pl = {
     translation: {
         currentLanguage: 'Polski',
@@ -9,6 +12,10 @@ const pl = {
             join: {
                 repeatPasswordError: 'Hasła się różnią',
             },
+        },
+        errors: {
+            networkError: 'Nie można połączyć z serwerem',
+            ...ErrorsTranslations.pl.translation,
         },
         links: {
             priceCalculator: 'Kalkulator cen',
@@ -61,21 +68,20 @@ const pl = {
             page3: {
                 title: 'Dane personalne',
                 inputs: {
-                    name: 'Imię',
-                    surname: 'Nazwisko',
-                    email: 'E-mail',
-                    password: 'Hasło',
-                    repeatPassword: 'Powtórz hasło',
-                    companyName: 'Nazwa firmy',
+                    name: 'Imię*',
+                    surname: 'Nazwisko*',
+                    email: 'E-mail*',
+                    password: 'Hasło*',
+                    repeatPassword: 'Powtórz hasło*',
+                    companyName: 'Nazwa firmy*',
                     passwordConstraints: '(minimum: 8 znaków, jedna wielka litera, jedna cyfra i jeden znak specjalny)',
                     newsletter: 'Akceptuję wysyłkę newsletter',
                     newsletterDetails:`\
-Akceptuję wysyłkę newsletter \
 Zgodnie z postanowieniami ustawy z dnia 18 lipca 2002 r. o świadczeniu usług drogą elektroniczną (t.j.: Dz.U. 2020.344) wyrażam zgodę na otrzymywanie od STRATEGA CEE SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ z siedzibą w Łodzi, ul. Wólczańska 125, 90-521 Łódź, informacji handlowej o produktach i usługach Serwisu Interviewlyapp.com w formie Newslettera. Zgoda jest dobrowolna i może zostać odwołana w każdym czasie. Odwołanie zgody nie wpływa na zgodność z prawem przetwarzania przed wycofaniem zgody. \
 Zgoda nieobowiązkowa`,
                 },
                 rulesAgreement: {
-                    text: 'Akceptuję regulamin usługi wraz z umową powierzenia przetwarzania danych osobowych',
+                    text: 'Akceptuję regulamin usługi wraz z umową powierzenia przetwarzania danych osobowych*',
                     termsAndConditionsKeyword: 'regulamin',
                     privacyPolicyKeyword: 'umową'
                 },
@@ -187,6 +193,19 @@ Zgoda nieobowiązkowa`,
                 text: 'Chcę dostarczać dane do analizy statystycznej.',
             },
         },
+        companyData: {
+            title: 'Dane firmy',
+            name: 'Nazwa firmy',
+            taxIdNumber: 'Numer identyfikacji podatkowej',
+            country: 'Kraj',
+            city: 'Miasto',
+            street: 'Ulica',
+            buildingNumber: 'Numer budynku',
+            unitNumber: 'Numer lokalu',
+            postalCode: 'Kod pocztowy',
+            save: 'Zapisz',
+            success: 'Zapisano poprawnie',
+        },
         viewProject: {
             title: 'Szczegóły projektu',
             edit: 'Edytuj',
@@ -229,6 +248,7 @@ Over the years, I’ve come to learn that designing collaboratively means puttin
             getInTouch: 'Skontaktuj się z nami',
             sendUsAMessage: 'Wyślij nam wiadomość',
             quote: '"Interviewly ma wszystko czego potrzebujemy na jednej platformie."',
+            messageSent: 'Wysłano wiadomość!',
         },
         registrationConfirmation: {
             header: 'Gotowe!',

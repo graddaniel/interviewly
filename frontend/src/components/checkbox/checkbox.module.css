@@ -38,7 +38,7 @@
 
 @media (max-width: max-small) {
     .label {
-        font-size: 5vw;
+        font-size: 4vw;
     }
     .checkbox {
         height: 5vw;

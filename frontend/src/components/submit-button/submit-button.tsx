@@ -5,13 +5,13 @@ import classes from './submit-button.module.css';
 
 
 type SubmitButtonProps = {
-    text: string;
     className?: string;
+    text: string;
 };
 
 const SubmitButton = ({
-    text,
     className,
+    text,
 }: SubmitButtonProps) => {
     return (
         <input

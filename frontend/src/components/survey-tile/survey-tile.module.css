@@ -17,6 +17,18 @@
     background-color: var(--COLOR8);
 }
 
+.pill {
+    width: min-content;
+    text-wrap: nowrap;
+}
+.pending {
+    background-color: var(--WHITE);
+}
+.finished {
+    color: var(--COLOR5);
+    background-color: var(--COLOR2);
+}
+
 @media (min-width: min-large) {
 }
 

@@ -25,6 +25,7 @@ type TextInputProps = {
     onChange?: (value: string) => void;
     // passing the value will make this component controlled from outside
     value?: string;
+    disabled?: boolean;
 };
 
 const TextInput = ({
@@ -39,6 +40,7 @@ const TextInput = ({
     defaultValue,
     onChange,
     value: valueInput,
+    disabled,
 }: TextInputProps) => {
     const [ value, setValue ] = useState(defaultValue || '');
     const [ isPasswordVisible, setIsPasswordVisible ] = useState(false);
@@ -97,6 +99,7 @@ const TextInput = ({
                             }
                         }}
                         rows={4}
+                        disabled={disabled}
                     >
                     </textarea>
                 </>) : (
@@ -118,6 +121,7 @@ const TextInput = ({
                                 onChange(event.target.value);
                             }
                         }}
+                        disabled={disabled}
                     />
                 )}
                 {type === 'password' && (

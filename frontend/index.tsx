@@ -12,8 +12,6 @@ import {
     Route,
     RouterProvider
 } from 'react-router-dom';
-import { ValidationSchemas } from 'shared';
-import i18next from 'i18next';
 
 import Application from './src/application';
 import HomePage from './src/pages/home/home-page';
@@ -49,6 +47,12 @@ import RegistrationConfirmationPage from './src/pages/registration-confirmation/
 import RegistrationConfirmationPageLoader from './src/loaders/registration-confirmation-page-loader';
 import ViewProject from './src/pages/app/view-project/view-project';
 import ContactPageAction from './src/actions/contact-page-action';
+import ProjectRespondent from './src/pages/app/project-respondent/project-respondent-page';
+import ProjectRespondentLoader from './src/loaders/app/project-respondent-loader';
+import CompanyDataPage from './src/pages/app/company-data/company-data-page';
+import PersonalDataPage from './src/pages/app/personal-data/personal-data-page';
+import CompanyDataLoader from './src/loaders/app/company-data-loader';
+import CompanyDataAction from './src/actions/app/company-data-action';
 
 import ROUTES, { APP_FORMS_ROUTES, APP_ROUTES, FORMS_ROUTES } from './src/consts/routes';
 import { SAMPLE_VERSION } from 'config/current';
@@ -56,7 +60,6 @@ import { SAMPLE_VERSION } from 'config/current';
 import './src/consts/colors.css';
 import './i18n/i18n';
 
-ValidationSchemas.instance().init(i18next.resolvedLanguage || i18next.language);
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -91,6 +94,7 @@ const router = createBrowserRouter(
                 path={ROUTES.CONTACT.PATH}
                 element={<ContactPage />}
                 action={ContactPageAction}
+                errorElement={<ContactPage />}
             />
             <Route
                 path={ROUTES.REGISTRATION_CONFIRMATION.PATH}
@@ -137,13 +141,29 @@ const router = createBrowserRouter(
                     element={<MyAccountPage />}
                 />
                 <Route
+                    path={APP_ROUTES.PERSONAL_DATA.PATH}
+                    element={<PersonalDataPage />}
+                />
+                <Route
+                    path={APP_ROUTES.COMPANY_DATA.PATH}
+                    element={<CompanyDataPage />}
+                    loader={CompanyDataLoader}
+                    action={CompanyDataAction}
+                />
+                <Route
                     path={APP_ROUTES.PROJECTS.PATH}
                     element={<ProjectsPage />}
                     loader={ProjectsLoader}
+                    errorElement={<ProjectsPage />}
                 />
                 <Route
                     path={APP_ROUTES.VIEW_PROJECT.PATH}
                     element={<ViewProject />}
+                />
+                <Route
+                    path={APP_ROUTES.PROJECT_RESPONDENT.PATH}
+                    element={<ProjectRespondent />}
+                    loader={ProjectRespondentLoader}
                 />
                 <Route
                     path={APP_FORMS_ROUTES.EDIT_PROJECT.PATH}

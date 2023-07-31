@@ -1,10 +1,7 @@
 import type {
     Schema,
 } from 'yup';
-import { ValidationSchemas } from 'shared';
-
-
-const SCHEMAS = ValidationSchemas.instance();
+import { t } from 'i18next';
 
 const validateParams = async (
     schema: Schema,
@@ -28,7 +25,7 @@ const validateParams = async (
             const errorCode = parseInt(errorMessage);
             errors[path] = isNaN(errorCode)
                 ? errorMessage
-                : SCHEMAS.decodeError(errorMessage);
+                : t(`errors.${errorMessage}`);
         }
 
         console.log(JSON.stringify(error), errors)

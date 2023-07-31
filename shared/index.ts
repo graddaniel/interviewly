@@ -1,6 +1,3 @@
-import countries from './definitions/countries';
-export { countries };
-
 import * as AccountTypes from './types/account';
 export { AccountTypes };
 

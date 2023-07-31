@@ -6,10 +6,10 @@ import { ValidationSchemas } from 'shared';
 import validateParams from './validate-params';
 
 
-const SCHEMAS = ValidationSchemas.instance();
-
 export default class LogInValidator {
     static validateData = async (logInData) => {
+        const SCHEMAS = ValidationSchemas.instance();
+
         const loginDataSchema = object({
             email: SCHEMAS.email,
             password: SCHEMAS.accountPassword,

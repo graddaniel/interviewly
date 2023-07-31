@@ -60,27 +60,30 @@ const FORMS_ROUTES = {
 
 const APP_ROUTES = {
     MY_ACCOUNT: {
-        TITLE: 'My Account',
         PATH: '/app/myAccount',
     },
+    PERSONAL_DATA: {
+        PATH: '/app/personalData',
+    },
+    COMPANY_DATA: {
+        PATH: '/app/companyData',
+    },
     PROJECTS: {
-        TITLE: 'Projects',
         PATH: '/app/projects',
     },
     VIEW_PROJECT: {
-        TITLE: 'View project',
         PATH: '/app/projects/:projectId',
     },
+    PROJECT_RESPONDENT: {
+        PATH: '/app/projects/:projectId/:respondentId',
+    },
     MY_TEAM: {
-        TITLE: 'My Team',
         PATH: '/app/myTeam',
     },
     CALENDAR: {
-        TITLE: 'Calendar',
         PATH: '/app/calendar',
     },
     LIBRARY: {
-        TITLE: 'Library',
         PATH: '/app/library',
     },
 };

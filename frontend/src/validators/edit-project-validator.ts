@@ -7,10 +7,11 @@ import validateParams from './validate-params';
 
 
 const Steps = ResearchTypes.EditSteps;
-const SCHEMAS = ValidationSchemas.instance();
 
 export default class EditProjectValidator {
     private static getSchema = (step: ResearchTypes.EditSteps) => {
+        const SCHEMAS = ValidationSchemas.instance();
+
         const schemas = {
             [Steps.General]: object({
                 title: SCHEMAS.research.title,

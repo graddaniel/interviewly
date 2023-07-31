@@ -7,16 +7,17 @@ import i18next from 'i18next';
 import validateParams from './validate-params';
 
 const { t } = i18next;
-const SCHEMAS = ValidationSchemas.instance();
 
 export default class JoinValidator {
     static validateData = async (joinData) => {
+        const schemas = ValidationSchemas.instance();
+
         const joinDataSchema = object({
-            name: SCHEMAS.accountName,
-            surname: SCHEMAS.accountSurname,
-            email: SCHEMAS.email,
-            password: SCHEMAS.accountPassword,
-            companyName: SCHEMAS.companyName,
+            name: schemas.accountName,
+            surname: schemas.accountSurname,
+            email: schemas.email,
+            password: schemas.accountPassword,
+            companyName: schemas.company.name,
         });
 
         const errors: any = await validateParams(

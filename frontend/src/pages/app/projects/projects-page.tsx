@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
+import { useLoaderData, useRouteError } from 'react-router-dom';
 
 import ProjectTile from './project-tile';
 import SearchInput from '../../../components/search-input/search-input';
 import DropdownList from '../../../components/dropdown-list/dropdown-list';
 import Pill from '../../../components/pill/pill';
+import useErrorHandler from '../../../hooks/use-error-handler';
 
 import classes from './projects-page.module.css';
 import MetricsIconBlack from 'images/metrics-icon-black.svg';
-import { useLoaderData } from 'react-router-dom';
 
 
 
 const STATUSES = ['pending', 'canceled', 'finished'];
 
 const ProjectsPage = () => {
-    const projects = useLoaderData() as any;
+    const projects = useLoaderData() as any[] || [];
+    useErrorHandler(useRouteError());
 
     const [ status, setStatus ] = useState<any>();
-
 
     return (
         <section className={classes.projects}>

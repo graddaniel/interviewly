@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { generatePath, useNavigate, useParams } from 'react-router-dom';
 
 import ProjectStepper from '../../../components/project-stepper/project-stepper';
 import TextButton from '../../../components/text-button/text-button';
@@ -9,10 +10,14 @@ import GeneralStep from './general-step';
 import classes from './view-project.module.css';
 import QuestionMarkIconBlack from 'images/question-mark-icon-black.svg';
 import MethodologyStep from './methodology-step';
+import RespondentsStep from './respondents-step';
+import { APP_FORMS_ROUTES } from '../../../consts/routes';
 
 
 const ViewProject = () => {
     const { t } = useTranslation();
+    const navigate = useNavigate();
+    const { projectId } = useParams();
 
     const stepsNames = t('viewProject.steps', { returnObjects: true }) as string[];
 
@@ -21,7 +26,9 @@ const ViewProject = () => {
         onClick: () => setCurrentStep(i),
     }));
 
-    const [ currentStep, setCurrentStep ] = useState(1);
+    const editProject = () => navigate(generatePath(APP_FORMS_ROUTES.EDIT_PROJECT.PATH, { projectId }));
+
+    const [ currentStep, setCurrentStep ] = useState(2);
 
     return (
         <section className={classes.viewProject}>
@@ -40,7 +47,7 @@ const ViewProject = () => {
                 <TextButton
                     className={classes.actionButton}
                     text={t('viewProject.edit')}
-                    onClick={() => console.log("TODO different action different label and handler")}
+                    onClick={editProject}
                 />
                 <DropdownList
                     className={classes.dropdown}
@@ -54,6 +61,7 @@ const ViewProject = () => {
             <div className={classes.content}>
                 {currentStep === 0 && (<GeneralStep />)}
                 {currentStep === 1 && (<MethodologyStep />)}
+                {currentStep === 2 && (<RespondentsStep />)}
             </div>
         </section>
     );

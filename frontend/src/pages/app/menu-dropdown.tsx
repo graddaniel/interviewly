@@ -25,16 +25,16 @@ const MenuDropdown = ({
     // TODO add correct links
     const menuItems = [{
         text: 'Open user panel',
-        link: myAccountLink,
+        route: APP_ROUTES.MY_ACCOUNT.PATH,
     }, {
         text: 'Personal data',
-        link: myAccountLink,
+        route: APP_ROUTES.PERSONAL_DATA.PATH,
     }, {
         text: 'Company data',
-        link: myAccountLink,
+        route: APP_ROUTES.COMPANY_DATA.PATH,
     }, {
         text: 'My team',
-        link: myAccountLink,
+        route: APP_ROUTES.MY_TEAM.PATH,
     }];
 
     return (
@@ -46,8 +46,12 @@ const MenuDropdown = ({
                 <img className={classes.avatar} src={avatarUrl} />
             </li>
             {menuItems.map(item => (
-                <li key={item.text} className={classes.menuItem}>
-                    <a className={classes.link} href={item.link}>{item.text}</a> 
+                <li
+                    key={item.text}
+                    className={classes.menuItem}
+                    onClick={() => navigate(item.route)}
+                >
+                    {item.text}
                 </li>
             ))}
             <li className={classes.menuItem}>

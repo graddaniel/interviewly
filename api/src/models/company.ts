@@ -1,5 +1,6 @@
 import {
     DataTypes,
+    HasOneGetAssociationMixin,
     Model
 } from 'sequelize';
 
@@ -11,10 +12,12 @@ import ResearchModel from './research';
 const UUID_V4_LENGTH = 40;
 
 export default class Company extends Model {
-    id: number | null;
-    uuid: string;
-    name: string;
-    taxNumber: string;
+    declare id: number | null;
+    declare uuid: string;
+    declare name: string;
+    declare taxIdNumber: string;
+
+    declare getAddress: HasOneGetAssociationMixin<AddressModel>;
 };
 
 Company.init({
@@ -26,7 +29,7 @@ Company.init({
     name: {
         type: DataTypes.STRING,
     },
-    taxNumber: {
+    taxIdNumber: {
         type: DataTypes.STRING,
     }
 }, {

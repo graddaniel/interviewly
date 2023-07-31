@@ -33,11 +33,9 @@
 
 .menuItem {
     list-style: none;
+    cursor: pointer;
 }
-.link {
-    color: var(--BLACK);
-    text-decoration: none;
-}
+
 .logoutButton {
     width: 100%;
     padding: 0.375vw;

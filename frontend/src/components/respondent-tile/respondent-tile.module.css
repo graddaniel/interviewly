@@ -1,0 +1,192 @@
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+
+.respondentsTile {
+    box-sizing: border-box;
+    height: 5vw;
+    display: grid;
+    grid-template-columns: 20% auto auto 15%;
+    column-gap: 2.5vw;
+    align-items: center;
+    padding: 1.5vw 1.25vw;
+    border-radius: 1.5vw;
+    background-color: var(--WHITE);
+}
+
+.shortInfo {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    align-items: center;
+    column-gap: 1vw;
+}
+.avatar {
+    width: 2vw;
+    height: 2vw;
+    border-radius: 1vw;
+}
+.flag {
+    width: 2vw;
+    height: 2vw;
+    border-radius: 1vw;
+}
+.gender {
+    width: 1.25vw;
+    height: 2vw;
+}
+.age {
+    font-size: 1.2vw;
+    line-height: 1.2vw;
+}
+
+.name {
+    font-size: 1.2vw;
+    line-height: 1.2vw;
+}
+
+.email {
+    font-size: 0.8vw;
+    line-height: 0.8vw;
+    justify-self: end;
+}
+
+@media (min-width: min-large) {
+    .detailsTextButton {
+        width: min-content;
+        height: auto;
+        justify-self: end;
+        align-self: stretch;
+        padding: 0.25vw 0.75vw;
+        font-size: 0.8vw;
+        line-height: 0.8vw;
+        white-space: nowrap;
+    }
+
+    .detailsIconButton {
+        display: none;
+    }
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .respondentsTile {
+        height: 25vw;
+        grid-template-columns: 21% auto auto 15%;
+        column-gap: 5vw;
+        padding: 5vw 3.5vw;
+        border-radius: 5vw;
+    }
+
+    .shortInfo {
+        display: grid;
+        grid-template-columns: auto auto;
+        column-gap: 5vw;
+        grid-template-rows: auto auto;
+        row-gap: 3vw;
+        grid-template-areas: 
+        "avatar gender"
+        "flag age";
+        align-items: center;
+    }
+    .avatar {
+        grid-area: avatar;
+        width: 6vw;
+        height: 6vw;
+        border-radius: 3vw;
+    }
+    .flag {
+        grid-area: flag;
+        width: 6vw;
+        height: 6vw;
+        border-radius: 3vw;
+    }
+    .gender {
+        grid-area: gender;
+        width: 4.5vw;
+        height: 6vw;
+    }
+    .age {
+        grid-area: age;
+        font-size: 3.5vw;
+        line-height: 3.5vw;
+    }
+
+    .name {
+        font-size: 3vw;
+        line-height: 3vw;
+    }
+    
+    .email {
+        font-size: 2.5vw;
+        line-height: 2.5vw;
+        justify-self: end;
+    }
+
+    .detailsTextButton {
+        display: none;
+    }
+    .detailsIconButton {
+        background-color: var(--COLOR2);
+        border-color: var(--COLOR2)
+    }
+}
+
+@media (max-width: max-small) {
+    .respondentsTile {
+        height: 65vw;
+        grid-template-columns: auto;
+        grid-template-rows:  20% auto auto 25%;
+        row-gap: 7vw;
+        padding: 4.5vw 6vw;
+        border-radius: 8vw;
+    }
+
+    .shortInfo {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        column-gap: 10vw;
+        align-items: center;
+    }
+    .avatar {
+        width: 10vw;
+        height: 10vw;
+        border-radius: 5vw;
+    }
+    .flag {
+        width: 10vw;
+        height: 10vw;
+        border-radius: 5vw;
+    }
+    .gender {
+        width: 7.5vw;
+        height: 10vw;
+    }
+    .age {
+        font-size: 6vw;
+        line-height: 6vw;
+    }
+
+    .name {
+        font-size: 5vw;
+        line-height: 5vw;
+    }
+    
+    .email {
+        font-size: 4vw;
+        line-height: 4vw;
+        justify-self: start;
+    }
+
+    .detailsTextButton {
+        display: none;
+    }
+    .detailsIconButton {
+        width: 15vw;
+        height: 15vw;
+        border-radius: 7.5vw;
+        background-color: var(--COLOR2);
+        border-color: var(--COLOR2)
+    }
+    .detailsIconButton > img {
+        width: 6vw;
+    }
+}

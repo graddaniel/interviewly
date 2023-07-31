@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { generatePath, useNavigate } from 'react-router-dom';
 
 import IconButton from '../../../components/icon-button/icon-button';
-import { APP_FORMS_ROUTES } from '../../../../src/consts/routes';
+import { APP_ROUTES } from '../../../../src/consts/routes';
 import capitalizeFirstLetter from '../../../utils/capitalize-first-letter';
 
 import classes from './project-tile.module.css'
@@ -37,7 +37,7 @@ const ProjectTile = ({
             <IconButton
                 className={classes.projectButton}
                 icon={MetricsIconBlack}
-                onClick={() => navigate(generatePath(APP_FORMS_ROUTES.EDIT_PROJECT.PATH, { projectId: uuid }))}
+                onClick={() => navigate(generatePath(APP_ROUTES.VIEW_PROJECT.PATH, { projectId: uuid }))}
             />
             <span className={classes.title}>
                 {title}

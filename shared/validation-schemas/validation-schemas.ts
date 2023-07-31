@@ -2,9 +2,8 @@ import {
     string,
     number,
 } from 'yup';
-import i18next from 'i18next';
 
-import { ErrorCodes, ErrorsTranslations } from '../errors';
+import { ErrorCodes } from '../errors';
 import { AccountTypes, ProfileTypes } from '../types';
 import { Duration, Methodology, PaymentCurrency } from '../types/research';
 import config from '../config'; 
@@ -14,11 +13,9 @@ import type { Schema } from 'yup';
 
 const validationConfig = config.validation;
 
-const { t } = i18next;
 
 export default class ValidationSchemas {
     private static _instance: ValidationSchemas;
-    currentLanguage: string;
     email: Schema;
     accountName: Schema;
     accountSurname: Schema;
@@ -28,6 +25,18 @@ export default class ValidationSchemas {
     accountStatus: Schema;
     gender: Schema;
     companyName: Schema;
+    address: {
+        country: Schema;
+        city: Schema;
+        street: Schema;
+        buildingNumber: Schema;
+        unitNumber: Schema;
+        postalCode: Schema;
+    };
+    company: {
+        name: Schema;
+        taxIdNumber: Schema;
+    };
     research: {
         title: Schema;
         description: Schema;
@@ -50,12 +59,6 @@ export default class ValidationSchemas {
     }
 
     init = async (languageCode: string) => {
-        await i18next.init({
-            lng: languageCode,
-            debug: true,
-            resources: ErrorsTranslations,
-        });
-
         this.resetSchemas();
     }
 
@@ -97,9 +100,31 @@ export default class ValidationSchemas {
             .required(`${ErrorCodes.AccountStatusRequired}`)
             .oneOf(Object.values(AccountTypes.Status), `${ErrorCodes.AccountStatusIncorrect}`);
 
-        this.companyName = string()
-            .min(validationConfig.companyName.minLength, `${ErrorCodes.AccountCompanyNameTooShort}`)
-            .max(validationConfig.companyName.maxLength, `${ErrorCodes.AccountCompanyNameTooLong}`);
+        this.address = {
+            country: string()
+                .min(validationConfig.address.country.minLength, `${ErrorCodes.AddressCountryTooShort}`)
+                .max(validationConfig.address.country.maxLength, `${ErrorCodes.AddressCountryTooLong}`),
+            city: string()
+                .min(validationConfig.address.city.minLength, `${ErrorCodes.AddressCityTooShort}`)
+                .max(validationConfig.address.city.maxLength, `${ErrorCodes.AddressCityTooLong}`),
+            street: string()
+                .max(validationConfig.address.street.maxLength, `${ErrorCodes.AddressStreetTooLong}`),
+            buildingNumber: string()
+                .min(validationConfig.address.buildingNumber.minLength, `${ErrorCodes.AddressBuildingNumberTooShort}`)
+                .max(validationConfig.address.buildingNumber.maxLength, `${ErrorCodes.AddressBuildingNumberTooLong}`),
+            unitNumber: string()
+                .max(validationConfig.address.unitNumber.maxLength, `${ErrorCodes.AddressUnitNumberTooLong}`),
+            postalCode: string()
+                .min(validationConfig.address.postalCode.minLength, `${ErrorCodes.AddressPostalCodeTooShort}`)
+                .max(validationConfig.address.postalCode.maxLength, `${ErrorCodes.AddressCountryTooLong}`),
+        };
+            
+        this.company = {
+            name: string()
+                .min(validationConfig.companyName.minLength, `${ErrorCodes.CompanyNameTooShort}`)
+                .max(validationConfig.companyName.maxLength, `${ErrorCodes.CompanyNameTooLong}`),
+                taxIdNumber: string().max(validationConfig.company.taxIdNumber.maxLength, `${ErrorCodes.CompanyTaxIdTooLong}`),
+        };
 
         this.research = {
             title: string()
@@ -136,17 +161,5 @@ export default class ValidationSchemas {
             .required(`${ErrorCodes.ContactRequestMessageRequired}`)
             .min(validationConfig.contactRequest.min, `${ErrorCodes.ContactRequestMessageTooShort}`)
             .max(validationConfig.contactRequest.max, `${ErrorCodes.ContactRequestMessageTooLong}`);
-    }
-
-    decodeError = (errorCode: string) => {
-        return t(errorCode);
-    }
-
-    changeLanguage = async (languageCode: string) => {
-        this.currentLanguage = languageCode;
-
-        await i18next.changeLanguage(languageCode);
-
-        this.resetSchemas();
     }
 }
