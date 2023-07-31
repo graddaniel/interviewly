@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
-import { Form, useActionData } from 'react-router-dom';
+import { Form, useActionData, useRouteError } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import Decorator from '../../components/decorator/decorator';
 import TextInput from '../../components/text-input/text-input';
 import SubmitButton from '../../components/submit-button/submit-button';
+import useErrorHandler from '../../hooks/use-error-handler';
 
 import classes from './contact-page.module.css';
+import useSuccessFeedback from '../../hooks/use-success-feedback';
 
 
 // to prevent bots from scraping it
@@ -15,8 +17,12 @@ const ENCRYPTED_EMAIL_ADDRESS = "Y29udGFjdEBpbnRlcnZpZXdseWFwcC5jb20=";
 const ContactPage = () => {
     const { t } = useTranslation();
     const actionData = useActionData() as any;
+    useErrorHandler(useRouteError());
+    useSuccessFeedback(actionData, t('contact.messageSent'));
 
     const errors = actionData?.errors || null;
+
+    console.log("contact", errors)
 
     useEffect(() => {
         const email = document.getElementById("email");

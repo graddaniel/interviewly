@@ -17,7 +17,7 @@ export default class AccountsValidator {
             surname: schemas.accountSurname,
             type: schemas.accountType,
             gender: schemas.gender,
-            companyName: schemas.companyName,
+            companyName: schemas.company.name,
         });
 
         await validate(newAccountSchema, newAccount);

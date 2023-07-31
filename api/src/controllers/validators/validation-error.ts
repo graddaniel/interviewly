@@ -1,5 +1,6 @@
 import { StatusCodes } from 'http-status-codes';
-import { Errors, ValidationSchemas } from "shared";
+import { Errors } from "shared";
+import { t } from 'i18next';
 
 
 export default class ValidationError extends Error {
@@ -18,7 +19,7 @@ export default class ValidationError extends Error {
             super(errorMessage);
             this.errorCode = Errors.ErrorCodes.Unknown;
         } else {
-            super(ValidationSchemas.instance().decodeError(errorMessage));
+            super(t(`errors.${errorMessage}`));
             this.errorCode = errorCode;
         }
 

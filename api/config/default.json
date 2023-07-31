@@ -8,27 +8,6 @@
         "name": "interviewly",
         "forceSync": false
     },
-    "validation": {
-        "password": {
-            "minLength": 8,
-            "maxLength": 32
-        },
-        "name": {
-            "minLength": 1,
-            "maxLength": 32,
-            "regexp": "^[A-Za-z ]+$"
-        },
-        "surname": {
-            "minLength": 1,
-            "maxLength": 32,
-            "regexp": "^[A-Za-z]+$"
-        },
-        "companyName": {
-            "minLength": 1,
-            "maxLength": 32,
-            "regexp": "^[A-Za-z ]+$"
-        }
-    },
     "registration": {
         "additionalNotificationsTarget": "yyyeey@gmail.com"
     },

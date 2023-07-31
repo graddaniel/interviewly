@@ -7,6 +7,7 @@ import type CompaniesService from '../services/companies-service/companies-servi
 import AccountsValidator from './validators/accounts-validator';
 import { ProfileTypes } from 'shared';
 import NotPermittedError from '../middleware/errors/not-permitted-error';
+import CompaniesValidator from './validators/comapnies-validator';
 
 
 export default class CompaniesController {
@@ -19,6 +20,38 @@ export default class CompaniesController {
     ) {
         this.accountsService = accountsService;
         this.companiesService = companiesService;
+    }
+
+    getCompany = async (
+        req: AuthenticatedRequest,
+        res: Response,
+    ) => {
+        const { companyUuid } = req.currentUser;
+
+        const company = await this.companiesService.getCompanyDetails(companyUuid);
+
+        res.status(StatusCodes.OK).send(company);
+    }
+
+    editCompany = async (
+        req: AuthenticatedRequest,
+        res: Response,
+    ) => {
+        const {
+            companyUuid,
+        } = req.currentUser;
+
+        const companyDetails = req.body;
+
+        const validatedCompanyDetails =
+            await CompaniesValidator.validateCompanyDetails(companyDetails);
+
+        const company = await this.companiesService.editCompanyDetails(
+            companyUuid,
+            validatedCompanyDetails,
+        );
+
+        res.status(StatusCodes.OK).send(company);
     }
 
     getCompanysAccounts = async (

@@ -6,10 +6,10 @@ import { ValidationSchemas } from 'shared';
 import validateParams from './validate-params';
 
 
-const SCHEMAS = ValidationSchemas.instance();
-
 export default class TeamMemberValidator {
     static validateData = async (teamMemberData) => {
+        const SCHEMAS = ValidationSchemas.instance();
+
         const teamMemberSchema = object({
             name: SCHEMAS.accountName,
             surname: SCHEMAS.accountSurname,

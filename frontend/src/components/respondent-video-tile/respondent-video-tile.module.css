@@ -1,0 +1,127 @@
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.respondentVideoTile {
+    box-sizing: border-box;
+    width: 26.5vw;
+    height: 20vw;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5vw;
+    padding: 1.75vw 1.5vw;
+    border-radius: 1.5vw;
+    background-color: var(--COLOR8);
+}
+
+.header {
+    display: flex;
+    gap: 0.75vw;
+}
+.icon {
+    width: 1.5vw;
+    height: 1.5vw;
+}
+.title {
+    font-size: 1.2vw;
+    line-height: 1.2vw;
+}
+
+.cover {
+    width: 23.5vw;
+    height: 13vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.5vw;
+    cursor: pointer;
+}
+.playButton {
+    width: 4vw;
+    height: 4vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2vw;
+    background-color: var(--COLOR2);
+}
+.playIcon {
+    width: 0.75vw;
+    height: 0.75vw;
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .respondentVideoTile {
+        width: 100%;
+        height: 68vw;
+        row-gap: 4.5vw;
+        padding: 5vw 4vw;
+        border-radius: 5vw;
+    }
+    
+    .header {
+        gap: 2vw;
+    }
+    .icon {
+        width: 4vw;
+        height: 4vw;
+    }
+    .title {
+        font-size: 3.5vw;
+        line-height: 3.5vw;
+    }
+    
+    .cover {
+        width: 100%;
+        height: 50vw;
+        border-radius: 5vw;
+    }
+    .playButton {
+        width: 15vw;
+        height: 15vw;
+        border-radius: 7.5vw;
+    }
+    .playIcon {
+        width: 2.5vw;
+        height: 2.5vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .respondentVideoTile {
+        width: 100%;
+        height: 72vw;
+        row-gap: 7.5vw;
+        padding: 8.5vw 7.5vw;
+        border-radius: 8vw;
+    }
+    
+    .header {
+        gap: 3vw;
+    }
+    .icon {
+        width: 7.5vw;
+        height: 7.5vw;
+    }
+    .title {
+        font-size: 6vw;
+        line-height: 6vw;
+    }
+    
+    .cover {
+        width: 100%;
+        height: 40vw;
+        border-radius: 8vw;
+    }
+    .playButton {
+        width: 12vw;
+        height: 12vw;
+        border-radius: 6vw;
+    }
+    .playIcon {
+        width: 4vw;
+        height: 4vw;
+    }
+}

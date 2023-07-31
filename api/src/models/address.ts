@@ -2,19 +2,19 @@ import {
     DataTypes,
     Model
 } from 'sequelize';
-import { countries } from 'shared';
 
 import SequelizeConnection from '../services/sequelize-connection';
 
 
 export default class Address extends Model {
     declare id: number;
-    declare postCode: string;
     declare country: string;
     declare region: string;
     declare city: string;
     declare street: string;
-    declare number: string;
+    declare buildingNumber: string;
+    declare unitNumber: string;
+    declare postalCode: string;
 };
 
 Address.init({
@@ -23,11 +23,11 @@ Address.init({
         primaryKey: true,
         autoIncrement: true,
     },
-    postCode: {
+    postalCode: {
         type: DataTypes.STRING,
     },
     country: {
-        type: DataTypes.ENUM(...countries.map(c => c.rawName)),
+        type: DataTypes.STRING,
     },
     region: {
         type: DataTypes.STRING,
@@ -38,9 +38,12 @@ Address.init({
     street: {
         type: DataTypes.STRING,
     },
-    number: {
+    buildingNumber: {
         type: DataTypes.STRING,
-    }
+    },
+    unitNumber: {
+        type: DataTypes.STRING,
+    },
 }, {
     timestamps: false,
     sequelize: SequelizeConnection.instance(),

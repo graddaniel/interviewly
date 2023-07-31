@@ -129,6 +129,19 @@ export default class Appplication {
             requireProfileRole(ProfileTypes.Role.Admin),
             companiesController.editCompanysAccount
         );
+        companiesRouter.get(
+            '/current',
+            requireJWT,
+            requireAccountType(AccountTypes.Type.RECRUITER),
+            companiesController.getCompany
+        );
+        companiesRouter.patch(
+            '/current',
+            requireJWT,
+            requireAccountType(AccountTypes.Type.RECRUITER),
+            requireProfileRole(ProfileTypes.Role.Admin),
+            companiesController.editCompany
+        );
         this.app.use('/companies', companiesRouter);
 
         const researchRouter = express.Router();

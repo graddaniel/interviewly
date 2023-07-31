@@ -1,3 +1,6 @@
+import { Errors } from 'shared';
+const { ErrorsTranslations } = Errors;
+
 const en = {
     translation: {
         email: {
@@ -9,7 +12,10 @@ const en = {
                 third: `We are currently working on key functionalities of our service that will effectively minimize the time to recruit employees. However, for good things you should wait :) Our service is in the process of preparation, you will be the first person to be informed once we start working comprehensively. So expect an email from us with information in the coming days.`,
             },
             signature: `Best regards,\nInterviewly team`
-        }
+        },
+        errors: {
+            ...ErrorsTranslations.en.translation,
+        },
     }
 };
 

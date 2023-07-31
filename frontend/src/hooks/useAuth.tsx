@@ -1,13 +1,15 @@
 import jwtDecode from 'jwt-decode';
+import { AccountTypes, ProfileTypes } from 'shared';
 
 // import consts from './consts.json';
 
 
-// const { ROLES } = consts;
-
 export type User = {
-    email: string;
     uuid: string;
+    email: string;
+    type: AccountTypes.Type; 
+    companyUuid?: string;
+    role?: ProfileTypes.Role;
 }
 
 class Auth {
@@ -21,13 +23,12 @@ class Auth {
         return this._currentUser;
     }
 
-    currentUserHasRole(role) {
-        return !!this._currentUser;
-        // if (!this.currentUser) {
-        //     return false;
-        // }
-
-        // return this.currentUser.roles.includes(role);
+    currentUserHasRole(role: ProfileTypes.Role) {
+        if (!this._currentUser) {
+            return false;
+        }
+            
+        return this._currentUser?.role === role;
     }
 
     clearSession = () => {
@@ -42,4 +43,12 @@ const useAuth = (): Auth => {
     return new Auth(jwtToken);
 }
 
+// To decouple hook from generic auth functionality, which currently do not differ
+const getAuth = () => {
+    const jwtToken = sessionStorage.getItem('accessToken') || localStorage.getItem('accessToken');
+
+    return new Auth(jwtToken);
+}
+
 export default useAuth;
+export { getAuth };

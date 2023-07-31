@@ -1,3 +1,6 @@
+import { Errors } from 'shared';
+const { ErrorsTranslations } = Errors;
+
 const en = {
     translation: {
         currentLanguage: 'English',
@@ -9,6 +12,10 @@ const en = {
             join: {
                 repeatPasswordError: 'Passwords do not match',
             },
+        },
+        errors: {
+            networkError: 'Cannot connect to the server',
+            ...ErrorsTranslations.en.translation,
         },
         links: {
             priceCalculator: 'Price calculator',
@@ -61,19 +68,19 @@ const en = {
             page3: {
                 title: 'Personal data',
                 inputs: {
-                    name: 'Name',
-                    surname: 'Surname',
-                    email: 'E-mail',
-                    password: 'Password',
-                    repeatPassword: 'Repeat password',
-                    companyName: 'Company name',
+                    name: 'Name*',
+                    surname: 'Surname*',
+                    email: 'E-mail*',
+                    password: 'Password*',
+                    repeatPassword: 'Repeat password*',
+                    companyName: 'Company name*',
                     passwordConstraints: '(minimum: 8 characters, one capital letter, one number and one special character)',
                     newsletter: 'I accept sending newsletter',
                     newsletterDetails: `\
 In accordance with the provisions of the Act of 18 July 2002 on the provision of electronic services (d. 2020.344) I agree to receive from STRATEGA CEE, COMPANY WITH LIMITED RESPONSIBILITY with headquarters in Łódź, ul. Wólczańska 125, 90-521 Łódź, commercial information about products and services of the Service Interviewlyapp.com in the form of a newsletter. This consent is voluntary and can be revoked at any time. Withdrawal of consent does not affect the lawfulness of processing before withdrawing consent.`,
                 },
                 rulesAgreement: {
-                    text: 'I accept the regulations of the service together with the contract for entrusting the processing of personal data',
+                    text: 'I accept the regulations of the service together with the contract for entrusting the processing of personal data*',
                     termsAndConditionsKeyword: 'regulations',
                     privacyPolicyKeyword: 'contract'
                 },
@@ -132,7 +139,7 @@ In accordance with the provisions of the Act of 18 July 2002 on the provision of
                     },
                     secondStep: {
                         title: 'Conduct',
-                        text1: 'video call, program questionnaires',
+                        text1: 'video call, program surveys',
                         text2: 'check language skills',
                     },
                     thirdStep: {
@@ -190,6 +197,19 @@ In accordance with the provisions of the Act of 18 July 2002 on the provision of
                 text: 'I want to transfer data for statistical purposes.',
             },
         },
+        companyData: {
+            title: 'Company data',
+            name: 'Company name',
+            taxIdNumber: 'Tax ID number',
+            country: 'Country',
+            city: 'City',
+            street: 'Street',
+            buildingNumber: 'Building number',
+            unitNumber: 'Unit number',
+            postalCode: 'Postal code',
+            save: 'Save',
+            success: 'Saved succesfully',
+        },
         viewProject: {
             title: 'Project details',
             edit: 'Edit',
@@ -232,6 +252,7 @@ Over the years, I’ve come to learn that designing collaboratively means puttin
             getInTouch: 'Get in touch',
             sendUsAMessage: 'Send us a message',
             quote: '"Interviewly has everything we need on a single platform."',
+            messageSent: 'Message sent!',
         },
         registrationConfirmation: {
             header: 'It\'s ready!',

@@ -4,6 +4,36 @@ import { API_HOST } from 'config/current';
 
 
 export default class CompanyService {
+    static getCompanyData = async () => {
+        const accessToken = sessionStorage.getItem('accessToken') || localStorage.getItem('accessToken');
+
+        const response = await axios.get(`${API_HOST}/companies/current`, {
+            headers: {
+                'authorization': `bearer ${accessToken}`
+            },
+        });
+
+        const { data } = response;
+
+        return data;
+    }
+
+    static editCompanyData = async (companyData) => {
+        const accessToken = sessionStorage.getItem('accessToken') || localStorage.getItem('accessToken');
+
+        const response = await axios.patch(
+            `${API_HOST}/companies/current`,
+            companyData, {
+            headers: {
+                'authorization': `bearer ${accessToken}`
+            },
+        });
+
+        const { data } = response;
+
+        return data;
+    }
+
     static getCompanyAccounts = async () => {
         const accessToken = sessionStorage.getItem('accessToken') || localStorage.getItem('accessToken');
 
@@ -31,7 +61,9 @@ export default class CompanyService {
     static editCompanyAccount = async (account) => {
         const accessToken = sessionStorage.getItem('accessToken') || localStorage.getItem('accessToken');
 
-        await axios.patch(`${API_HOST}/companies/accounts/${account.uuid}`, account, {
+        await axios.patch(
+            `${API_HOST}/companies/accounts/${account.uuid}`,
+            account, {
             headers: {
                 'authorization': `bearer ${accessToken}`
             },

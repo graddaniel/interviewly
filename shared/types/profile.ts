@@ -12,6 +12,8 @@ enum Gender {
 
 enum Nationality {
     Polish = 'polish',
+    British = 'british',
+    French = 'french',
 };
 
 enum Sector {

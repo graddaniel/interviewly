@@ -59,7 +59,7 @@ const EditProjectPage = () => {
                 <CloseControls
                     className={classes.closeControls}
                     text={t('buttons.resign')}
-                    onClose={() => navigate(APP_ROUTES.PROJECTS.PATH)}
+                    onClose={() => navigate(-1)}
                 />
             </header>
             <div className={classes.stepper}>

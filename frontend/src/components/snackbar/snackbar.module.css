@@ -1,0 +1,49 @@
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.snackbar {
+    position: fixed;
+    bottom: 5vw;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40vw;
+    padding: 0.5vw 1vw;
+    border-radius: 2vw;
+    font-size: 1vw;
+    z-index: 5;
+}
+
+.iconButton {
+    width: 2vw;
+    height: 2vw;
+}
+
+.success {
+    color: var(--GREEN2);
+    background-color: var(--GREEN1);
+}
+.success > button {
+    background-color: var(--GREEN1);
+}
+
+.error {
+    color: var(--RED2);
+    background-color: var(--RED1);
+}
+.error > button {
+    background-color: var(--RED1);
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+}
+
+@media (max-width: max-small) { 
+}

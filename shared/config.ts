@@ -21,6 +21,40 @@ const config = {
             "maxLength": 32,
             "regexp": "^[A-Za-z ]+$"
         },
+        "address": {
+            "country": {
+                "minLength": 2,
+                "maxLength": 32
+            },
+            "city": {
+                "minLength": 1,
+                "maxLength": 128
+            },
+            "street": {
+                "maxLength": 32
+            },
+            "buildingNumber": {
+                "minLength": 1,
+                "maxLength": 5
+            },
+            "unitNumber": {
+                "maxLength": 5
+            },
+            "postalCode": {
+                "minLength": 3,
+                "maxLength": 7
+            }
+        },
+        "company": {
+            "name": {
+                "minLength": 1,
+                "maxLength": 32,
+                "regexp": "^[A-Za-z ]+$"
+            },
+            "taxIdNumber": {
+                "maxLength": 13
+            }
+        },
         research: {
             title: {
                 minLength: 1,

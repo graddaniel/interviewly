@@ -1,11 +1,23 @@
-@value breakpoints: "../../consts/breakpoints.css";
+@value breakpoints: "../../../consts/breakpoints.css";
 @value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.responsentsStep {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vw;
+}
 
 @media (min-width: min-large) {
 }
 
 @media (min-width: min-medium) and (max-width: max-medium) {
+    .responsentsStep {
+        gap: 4vw;
+    }
 }
 
-@media (max-width: max-small) { 
+@media (max-width: max-small) {
+    .responsentsStep {
+        gap: 10vw;
+    }
 }
