@@ -15,7 +15,7 @@
     margin: 0;
     padding: 0.75vw 1.2vw 1vw;
     font-size: 0.75vw;
-    outline: 1px solid var(--WHITE);
+    border: 1px solid var(--WHITE);
     border-radius: 0.75vw;
     box-sizing: border-box;
     background-color: var(--WHITE);
