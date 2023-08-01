@@ -20,6 +20,7 @@
     box-sizing: border-box;
     background-color: var(--WHITE);
     cursor: default;
+    z-index: 1;
 }
 
 .user {

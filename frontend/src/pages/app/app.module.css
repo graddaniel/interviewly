@@ -1,7 +1,13 @@
 @value breakpoints: "../../consts/breakpoints.css";
 @value min-large, max-medium, min-medium, max-small from breakpoints;
 
+.background {
+    height: 100%;
+    background-color: var(--COLOR3);
+}
+
 .paddingWrapper {
+    box-sizing: border-box;
     height: 100%;
     padding: 0 9vw 5vw;
     background-color: var(--COLOR3);

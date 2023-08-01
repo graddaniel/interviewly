@@ -197,6 +197,15 @@ In accordance with the provisions of the Act of 18 July 2002 on the provision of
                 text: 'I want to transfer data for statistical purposes.',
             },
         },
+        personalData: {
+            title: 'Personal data',
+            marketingConsentsSubtitle: 'Marketing consents',
+            changePasswordSubtitle: 'Password change',
+            currentPassword: 'Current password',
+            newPassword: 'New password',
+            repeatedNewPassword: 'Repeat new password',
+            save: 'Save',
+        },
         companyData: {
             title: 'Company data',
             name: 'Company name',

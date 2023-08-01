@@ -46,6 +46,7 @@ const App = () => {
     }
 
     return (
+        <div className={classes.background}>
         <div className={classes.paddingWrapper}>
             <div className={classes.app}>
                 <header className={classes.header}>
@@ -92,6 +93,7 @@ const App = () => {
                     <Outlet />
                 </main>
             </div>
+        </div>
         </div>
     );
 };

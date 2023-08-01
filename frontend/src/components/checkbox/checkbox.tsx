@@ -9,6 +9,8 @@ type CheckboxProps = {
     label: string;
     error?: boolean;
     labelElement?: ReactNode,
+    defaultValue?: boolean,
+    onChange?: () => void,
 };
 
 const Checkbox = ({
@@ -17,8 +19,10 @@ const Checkbox = ({
     label,
     error,
     labelElement,
+    defaultValue,
+    onChange,
 }: CheckboxProps) => {
-    const [ checked, setChecked ] = useState(false);
+    const [ checked, setChecked ] = useState(defaultValue ?? false);
 
     const toggleCheckbox = useCallback(() => setChecked(state => !state), []);
     return (
@@ -39,7 +43,12 @@ const Checkbox = ({
                 type="checkbox"
                 name={name}
                 checked={checked}
-                onChange={toggleCheckbox}
+                onChange={() => {
+                    toggleCheckbox();
+                    if (onChange) {
+                        onChange();
+                    }
+                }}
                 value={name}
             />
             {labelElement || label}

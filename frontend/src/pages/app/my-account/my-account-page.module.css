@@ -9,8 +9,8 @@
         "welcomeMessage details"
         "latestTeamMembers upcomingInterview"
         "projects projects";
-    column-gap: 4%;
-    row-gap: 4%;
+    column-gap: 2vw;
+    row-gap: 2vw;
 }
 
 .welcomeMessage {
