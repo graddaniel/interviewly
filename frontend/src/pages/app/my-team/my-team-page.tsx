@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { ProfileTypes } from 'shared';
 import { useActionData, useLoaderData } from 'react-router-dom';
 
-import TeamMemberTile from './team-member-tile';
 import TeamMemberPopup from './team-member-popup';
+import TeamMemberTile from '../../../components/team-member-tile/team-member-tile';
 
 import classes from './my-team-page.module.css'
 import PeopleIconBlack from 'images/people-icon-black.svg';

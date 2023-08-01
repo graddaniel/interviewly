@@ -1,4 +1,4 @@
-@value breakpoints: "../../../consts/breakpoints.css";
+@value breakpoints: "../../consts/breakpoints.css";
 @value min-large, max-medium, min-medium, max-small from breakpoints;
 
 .tile {
@@ -20,12 +20,30 @@
     border-radius: 1.5rem;
     background-color: var(--WHITE);
 }
+.smallTile {
+    width: auto;
+    height: auto;
+    grid-template-areas: 
+    "avatar editButton"
+    "user user"
+    "status status";
+}
 
 .avatar {
     grid-area: avatar;
     width: 3.5vw;
     height: 3.5vw;
     border-radius: 3.5vw;
+}
+.avatarPlaceholder {
+    grid-area: avatar;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3.5vw;
+    height: 3.5vw;
+    border-radius: 3.5vw;
+    border: 1px solid var(--BLACK);
 }
 .editButton {
     grid-area: editButton;
@@ -86,8 +104,19 @@
         padding: 4vw 3vw;
         border-radius: 4.5vw;
         flex-shrink: 0;
-    }   
+    }
+    .smallTile {
+        grid-template-areas: 
+        "avatar editButton"
+        "user user"
+        "status status";
+    }
     .avatar {
+        width: 9vw;
+        height: 9vw;
+        border-radius: 9vw;
+    }
+    .avatarPlaceholder {
         width: 9vw;
         height: 9vw;
         border-radius: 9vw;
@@ -132,8 +161,13 @@
         padding: 6vw 4vw;
         border-radius: 8vw;
         flex-shrink: 0;
-    }   
+    }
     .avatar {
+        width: 10vw;
+        height: 10vw;
+        border-radius: 10vw;
+    }
+    .avatarPlaceholder {
         width: 10vw;
         height: 10vw;
         border-radius: 10vw;
