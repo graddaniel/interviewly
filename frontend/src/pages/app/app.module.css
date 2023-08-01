@@ -50,8 +50,10 @@
     padding: 0;
     background: transparent;
 }
-.userButton {
+.dropdown {
     position: relative;
+}
+.userButton {
     display: flex;
     align-items: center;
     gap: 1vw;

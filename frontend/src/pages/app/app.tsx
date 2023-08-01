@@ -27,6 +27,7 @@ const App = () => {
     const submit = useSubmit();
 
     const openDropdown = useCallback(() => setIsMenuOpen(true), []);
+    const closeDropdown = useCallback(() => setIsMenuOpen(false), []);
     const handleDropdownBlur = useCallback((event) => {
         if (!event.currentTarget.contains(event.relatedTarget)) {
             setIsMenuOpen(false);
@@ -57,15 +58,20 @@ const App = () => {
                             icon={BellIconBlack}
                         />
                         <nav
-                            className={classes.userButton}
+                            className={classes.dropdown}
                             onClick={openDropdown}
                             onBlur={handleDropdownBlur}
                             tabIndex={-1}
                         >
-                            <span className={classes.userName}>{USER.name}</span>
-                            <img className={classes.avatar} src={USER.avatarUrl} />
+                            <div
+                                className={classes.userButton}
+                            >
+                                <span className={classes.userName}>{USER.name}</span>
+                                <img className={classes.avatar} src={USER.avatarUrl} />
+                            </div>
                             <MenuDropdown
                                 isOpen={isMenuOpen}
+                                onClose={closeDropdown}
                                 avatarUrl={USER.avatarUrl}
                                 username={USER.name}
                             />

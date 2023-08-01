@@ -1,3 +1,6 @@
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
 .hidden {
     visibility: hidden;
 }
@@ -24,6 +27,7 @@
     justify-content: center;
     align-items: center;
     gap: 1vw;
+    cursor: pointer;
 }
 .avatar {
     width: 2vw;
@@ -35,6 +39,10 @@
     list-style: none;
     cursor: pointer;
 }
+.link {
+    text-decoration: none;
+    color: var(--BLACK);
+}
 
 .logoutButton {
     width: 100%;
@@ -44,4 +52,62 @@
     font-size: 0.75vw;
     background-color: var(--WHITE);
     cursor: pointer;
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .dropdownMenu {
+        width: 40vw;
+        left: unset;
+        right: 0;
+        gap: 5vw;
+        padding: 2vw;
+        font-size: 3vw;
+        border-radius: 2vw;
+    }
+    
+    .user {
+        justify-content: space-between;
+        gap: 1vw;
+    }
+    .avatar {
+        width: 5.5vw;
+        height: 5.5vw;
+        border-radius: 5.5vw;
+    }
+    
+    .logoutButton {
+        padding: 1vw;
+        border-radius: 3vw;
+        font-size: 3vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .dropdownMenu {
+        width: 50vw;
+        left: unset;
+        right: 0;
+        gap: 7.5vw;
+        padding: 4vw;
+        padding-top: 2vw;
+        padding-right: 2vw;
+        font-size: 5vw;
+        border-radius: 2vw;
+    }
+    
+    .user {
+        justify-content: space-between;
+        gap: 1vw;
+    }
+    .avatar {
+        width: 6.5vw;
+        height: 6.5vw;
+        border-radius: 6.5vw;
+    }
+    
+    .logoutButton {
+        padding: 2vw;
+        border-radius: 5vw;
+        font-size: 5vw;
+    }
 }

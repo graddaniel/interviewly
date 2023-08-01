@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { useHref, useNavigate } from 'react-router-dom';
+import { Link, useHref, useNavigate } from 'react-router-dom';
 
 import useAuth from '../../hooks/useAuth';
 import ROUTES, { APP_ROUTES } from '../../consts/routes';
@@ -10,6 +10,7 @@ import classNames from 'classnames';
 
 const MenuDropdown = ({
     isOpen,
+    onClose,
     avatarUrl,
     username,
 }) => {
@@ -20,6 +21,11 @@ const MenuDropdown = ({
     const logout = useCallback(() => {
         auth.clearSession();
         navigate(ROUTES.HOME.PATH);
+    }, []);
+
+    const closeDropdown = useCallback((e) => {
+        e.stopPropagation();
+        onClose();
     }, []);
 
     // TODO add correct links
@@ -41,7 +47,10 @@ const MenuDropdown = ({
         <ul 
             className={classNames(classes.dropdownMenu, !isOpen ? classes.hidden : '')}
         >
-            <li className={classes.user}>
+            <li
+                className={classes.user}
+                onClick={closeDropdown}
+            >
                 <span>{username}</span>
                 <img className={classes.avatar} src={avatarUrl} />
             </li>
@@ -51,7 +60,12 @@ const MenuDropdown = ({
                     className={classes.menuItem}
                     onClick={() => navigate(item.route)}
                 >
-                    {item.text}
+                    <Link
+                        to={item.route}
+                        className={classes.link}
+                    >
+                        {item.text}
+                    </Link>
                 </li>
             ))}
             <li className={classes.menuItem}>
