@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { generatePath, useNavigate, useParams } from 'react-router-dom';
+import { ResearchTypes } from 'shared';
 
 import ProjectStepper from '../../../components/project-stepper/project-stepper';
 import TextButton from '../../../components/text-button/text-button';
 import DropdownList from '../../../components/dropdown-list/dropdown-list';
 import GeneralStep from './general-step';
 
-import classes from './view-project.module.css';
+import classes from './view-project-page.module.css';
 import QuestionMarkIconBlack from 'images/question-mark-icon-black.svg';
 import MethodologyStep from './methodology-step';
 import RespondentsStep from './respondents-step';
 import { APP_FORMS_ROUTES } from '../../../consts/routes';
 
+const METHODOLOGY = ResearchTypes.Methodology.OnlineCommunities
 
 const ViewProject = () => {
     const { t } = useTranslation();
@@ -28,7 +30,7 @@ const ViewProject = () => {
 
     const editProject = () => navigate(generatePath(APP_FORMS_ROUTES.EDIT_PROJECT.PATH, { projectId }));
 
-    const [ currentStep, setCurrentStep ] = useState(2);
+    const [ currentStep, setCurrentStep ] = useState(1);
 
     return (
         <section className={classes.viewProject}>
@@ -60,7 +62,7 @@ const ViewProject = () => {
             </header>
             <div className={classes.content}>
                 {currentStep === 0 && (<GeneralStep />)}
-                {currentStep === 1 && (<MethodologyStep />)}
+                {currentStep === 1 && (<MethodologyStep methodology={METHODOLOGY}/>)}
                 {currentStep === 2 && (<RespondentsStep />)}
             </div>
         </section>

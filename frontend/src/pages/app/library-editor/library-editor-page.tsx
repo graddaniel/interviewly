@@ -102,7 +102,7 @@ const LibraryEditorPage = () => {
 
     const currentLanguageCode = selectedLanguages[currentSelectedLanguageIndex].code;
 
-    const goToProjects = useCallback(() => navigate(APP_ROUTES.LIBRARY.PATH), []);
+    const goBack = useCallback(() => navigate(-1), []);
 
     const addLanguage = (e: React.MouseEvent) => {
         e.preventDefault();
@@ -304,7 +304,7 @@ const LibraryEditorPage = () => {
                 <CloseControls
                     className={classes.closeControls}
                     text={t('buttons.resign')}
-                    onClose={goToProjects}
+                    onClose={goBack}
                 />
             </header>
             <div className={classes.content}>

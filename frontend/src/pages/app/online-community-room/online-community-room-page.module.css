@@ -1,0 +1,54 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.onlineCommunityRoom {
+    display: grid;
+    grid-template-columns: min-content auto;
+    column-gap: 3vw;
+    grid-template-rows: auto auto auto;
+    row-gap: 3vw;
+    grid-template-areas: 
+    "backIcon ."
+    "title dropdown"
+    "content content";
+}
+
+.backIcon {
+    grid-area: backIcon;
+    border-color: var(--COLOR2);
+    background-color: var(--COLOR2);
+}
+.backIcon > img {
+    width: 1.25vw;
+}
+
+.title {
+    grid-area: title;
+    margin: 0;
+    font-size: 3.5vw;
+    line-height: 3.5vw;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.sortDropdown {
+    grid-area: dropdown;
+    height: 2.5vw;
+    align-self: end ;
+}
+
+.content {
+    grid-area: content;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vw;
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+}
+
+@media (max-width: max-small) { 
+}

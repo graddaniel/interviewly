@@ -8,7 +8,6 @@
 
 .paddingWrapper {
     box-sizing: border-box;
-    height: 100%;
     padding: 0 9vw 5vw;
     background-color: var(--COLOR3);
 }

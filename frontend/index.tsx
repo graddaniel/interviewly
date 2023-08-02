@@ -45,14 +45,15 @@ import PersonalDataProcessingAgreementPage from './src/pages/personal-data-proce
 import ContactPage from './src/pages/contact/contact-page';
 import RegistrationConfirmationPage from './src/pages/registration-confirmation/registration-confirmation-page';
 import RegistrationConfirmationPageLoader from './src/loaders/registration-confirmation-page-loader';
-import ViewProject from './src/pages/app/view-project/view-project';
+import ViewProjectPage from './src/pages/app/view-project/view-project-page';
 import ContactPageAction from './src/actions/contact-page-action';
-import ProjectRespondent from './src/pages/app/project-respondent/project-respondent-page';
+import ProjectRespondentPage from './src/pages/app/project-respondent/project-respondent-page';
 import ProjectRespondentLoader from './src/loaders/app/project-respondent-loader';
 import CompanyDataPage from './src/pages/app/company-data/company-data-page';
 import PersonalDataPage from './src/pages/app/personal-data/personal-data-page';
 import CompanyDataLoader from './src/loaders/app/company-data-loader';
 import CompanyDataAction from './src/actions/app/company-data-action';
+import OnlineCommunityRoomPage from './src/pages/app/online-community-room/online-community-room-page';
 
 import ROUTES, { APP_FORMS_ROUTES, APP_ROUTES, FORMS_ROUTES } from './src/consts/routes';
 import { SAMPLE_VERSION } from 'config/current';
@@ -158,12 +159,16 @@ const router = createBrowserRouter(
                 />
                 <Route
                     path={APP_ROUTES.VIEW_PROJECT.PATH}
-                    element={<ViewProject />}
+                    element={<ViewProjectPage />}
                 />
                 <Route
                     path={APP_ROUTES.PROJECT_RESPONDENT.PATH}
-                    element={<ProjectRespondent />}
+                    element={<ProjectRespondentPage />}
                     loader={ProjectRespondentLoader}
+                />
+                <Route
+                    path={APP_ROUTES.ONLINE_COMMUNITY_ROOM.PATH}
+                    element={<OnlineCommunityRoomPage />}
                 />
                 <Route
                     path={APP_FORMS_ROUTES.EDIT_PROJECT.PATH}

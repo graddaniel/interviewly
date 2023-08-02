@@ -1,0 +1,102 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.topic {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vw;
+    padding: 1.5vw;
+    border-radius: 1.5vw;
+    background-color: var(--WHITE);
+}
+
+.text {
+    font-size: 1vw;
+    line-height: 1vw;
+}
+.subscript {
+    font-size: 0.75vw;
+    line-height: 0.75vw;
+}
+
+.header {
+    display: grid;
+    grid-template-rows: auto auto;
+    row-gap: 0.5vw;
+    grid-template-columns: min-content auto;
+    column-gap: 1vw;
+    grid-template-areas: 
+    "avatar authorName"
+    "avatar postDate";
+}
+.avatar {
+    grid-area: avatar;
+}
+.authorName {
+    grid-area: authorName;
+    align-self: end;
+}
+.postDate {
+    grid-area: postDate;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vw;
+}
+.attachment {
+    width: 100%;;
+    border-radius: 1.5vw;
+}
+
+.comments {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75vw;
+}
+.commentsControls {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1.25vw;
+    font-size: 0.75vw;
+    line-height: 0.75vw;
+}
+.smallAvatar {
+    width: 1vw;
+    height: 1vw;
+}
+.smallAvatar > div > img {
+    width: 0.5vw;
+    height: 0.5vw;
+}
+.addCommentBox {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.75vw;
+    padding: 1.25vw;
+    border-radius: 1.5vw;
+    background-color: var(--COLOR3);
+}
+.addCommentInput {
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: var(--COLOR3);
+}
+.addCommentIcon {
+    cursor: pointer;
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+}
+
+@media (max-width: max-small) { 
+}

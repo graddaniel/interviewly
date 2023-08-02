@@ -77,6 +77,9 @@ const APP_ROUTES = {
     PROJECT_RESPONDENT: {
         PATH: '/app/projects/:projectId/:respondentId',
     },
+    ONLINE_COMMUNITY_ROOM: {
+        PATH: '/app/projects/:projectId/rooms/:roomId',
+    },
     MY_TEAM: {
         PATH: '/app/myTeam',
     },

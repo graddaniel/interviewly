@@ -7,12 +7,12 @@ import SubmitButton from '../../../components/submit-button/submit-button';
 import IconButton from '../../../components/icon-button/icon-button';
 import DropdownList from '../../../components/dropdown-list/dropdown-list';
 import TextInput from '../../../components/text-input/text-input';
+import Checkbox from '../../../components/checkbox/checkbox';
 import nationalityToFlagIcon from '../../../utils/nationality-to-flag-icon';
 
 import classes from './personal-data-page.module.css';
 import PencilIconBlack from 'images/pencil-icon-black.svg';
-import AccountIcon from 'images/account-icon.svg';
-import Checkbox from '../../../components/checkbox/checkbox';
+import Avatar from '../../../components/avatar/avatar';
 
 
 const NATIONALITIES = [...Object.values(ProfileTypes.Nationality)] as ProfileTypes.Nationality[];
@@ -49,13 +49,11 @@ const PersonalDataPage = () => {
             <Form className={classes.personalSection}>
                 <div className={classes.avatarAndNationality}>
                     <div className={classes.avatarEditor}>
-                        {avatarUrl ? (
-                            <img className={classes.avatar} src={avatarUrl} />
-                        ) : (
-                            <div className={classes.avatar}>
-                                <img className={classes.avatarPlaceholder} src={AccountIcon} />
-                            </div>
-                        )}
+                        <Avatar
+                            url={avatarUrl}
+                            className={classes.avatar}
+                            placeholderIconClassName={classes.avatarPlaceholderIcon}
+                        />
                         <IconButton
                             className={classes.editAvatarButton}
                             icon={PencilIconBlack}
@@ -73,6 +71,7 @@ const PersonalDataPage = () => {
                             />
                         ))}
                         defaultIndex={NATIONALITIES.indexOf(nationality)}
+                        allowDeselect={false}
                     />
                 </div>
                 <div className={classes.inputs}>

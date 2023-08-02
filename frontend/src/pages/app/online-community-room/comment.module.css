@@ -1,0 +1,52 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.comment {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25vw;
+}
+.commentBox {
+    display: grid;
+    grid-template-columns: min-content auto;
+    column-gap: 0.75vw;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+    "avatar authorName"
+    ". content";
+    padding: 1vw;
+    border-radius: 1.5vw;
+    background-color: var(--COLOR3);
+}
+
+.avatar {
+    grid-area: avatar;
+    width: 1vw;
+    height: 1vw;
+}
+.avatar > div > img {
+    width: 0.5vw;
+    height: 0.5vw;
+}
+.authorName {
+    grid-area: authorName;
+    font-size: 0.6vw;
+}
+.content {
+    grid-area: content;
+    font-size: 1vw;
+}
+
+.date {
+    font-size: 0.6vw;
+    align-self: flex-end;
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+}
+
+@media (max-width: max-small) { 
+}

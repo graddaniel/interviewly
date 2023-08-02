@@ -1,0 +1,39 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.tile {
+    width: 14vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vw;
+    padding: 1.5vw 1vw;
+    border-radius: 1.5vw;
+    background-color: var(--WHITE);
+    cursor: pointer;
+}
+
+.pill {
+    width: min-content;
+    white-space: nowrap;
+    color: var(--COLOR5);
+    background-color: var(--GREEN3);
+}
+
+.title, .datePart {
+    font-size: 1.2vw;
+    line-height: 1.2vw;
+}
+
+.date {
+    display: flex;
+    gap: 1.5vw;
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+}
+
+@media (max-width: max-small) { 
+}

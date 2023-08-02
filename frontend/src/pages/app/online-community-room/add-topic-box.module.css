@@ -1,0 +1,32 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.addTopicBox {
+    width: 100%;
+    display: flex;
+    gap: 2.5vw;
+    padding: 1.5vw;
+    border-radius: 1.5vw;
+    background-color: var(--WHITE);
+}
+
+.input {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0.6vw 1vw;
+    border-radius: 1.5vw;
+    font-size: 1.2vw;
+    line-height: 1.2vw;
+    background-color: var(--COLOR3);
+    cursor: text;
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+}
+
+@media (max-width: max-small) { 
+}

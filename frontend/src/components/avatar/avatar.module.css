@@ -1,0 +1,36 @@
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.avatar {
+    height: 3vw;
+    width: 3vw;
+    display: flex;
+    border-radius: 1.5vw;
+}
+
+.avatarImage, .avatarPlaceholder {
+    height: inherit;
+    width: inherit;
+    border-radius: inherit;
+}
+
+.avatarPlaceholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--BLACK);
+}
+
+.placeholderIcon {
+    width: 1vw;
+    height: 1vw;
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+}
+
+@media (max-width: max-small) { 
+}

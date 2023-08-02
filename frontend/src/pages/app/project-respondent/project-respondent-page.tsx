@@ -47,7 +47,7 @@ const surveys = [{
     status: 'Finished'
 }];
 
-const ProjectRespondent = () => {
+const ProjectRespondentPage = () => {
     const navigate = useNavigate();
     const respondent = useLoaderData() as Respondent;
 
@@ -112,4 +112,4 @@ const ProjectRespondent = () => {
     );
 };
 
-export default ProjectRespondent;
+export default ProjectRespondentPage;
