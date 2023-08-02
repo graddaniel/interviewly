@@ -1,0 +1,151 @@
+@value breakpoints: "../../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.createRoomPopup {
+    box-sizing: border-box;
+    position: relative;
+    width: 71vw;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3.5vw;
+}
+
+.title {
+    margin: 0;
+    font-size: 3.5vw;
+    line-height: 3.5vw;
+    font-weight: 400;
+}
+.closeIcon {
+    position: absolute;
+    top: 2.5vw;
+    right: 2.5vw;
+    width: 2.5vw;
+    height: 2.5vw;
+}
+
+.subtitle {
+    margin: 0;
+    font-size: 1.5vw;
+    line-height: 1.5vw;
+    font-weight: 400;
+}
+.roomNameInput {
+    width: 21vw;
+}
+.roomNameInternalInput {
+    text-align: center;
+}
+.desktopRespondents {
+    height: 18vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25vw;
+    overflow-x: auto;
+}
+.respondentTile {
+    border: 1px solid var(--COLOR2);
+}
+.selectedRespondentTile {
+    background-color: var(--COLOR2) !important;
+}
+
+@media (min-width: min-large) {
+    .nonDesktopRespondents {
+        display: none;
+    }
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .createRoomPopup {
+        width: 90vw;
+    }
+    
+    .form {
+        gap: 7vw;
+    }
+    
+    .title {
+        font-size: 10vw;
+        line-height: 10vw;
+        align-self: flex-start;
+    }
+    .closeIcon {
+        top: 9vw;
+        right: 7vw;
+        width: 7vw;
+        height: 7vw;
+    }
+    
+    .subtitle {
+        font-size: 4vw;
+        line-height: 4vw;
+    }
+    .roomNameInput {
+        width: 60vw;
+    }
+
+    .desktopRespondents {
+        display: none;
+    }
+    .nonDesktopRespondents {
+        display: flex;
+        justify-content: center;
+        gap: 3vw;
+        flex-wrap: wrap;
+        height: 50vw;
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: max-small) { 
+    .createRoomPopup {
+        width: 85vw;
+    }
+    
+    .form {
+        gap: 10vw;
+    }
+    
+    .title {
+        font-size: 9vw;
+        line-height: 9vw;
+        align-self: flex-start;
+    }
+    .closeIcon {
+        top: 9vw;
+        right: 6vw;
+        width: 9vw;
+        height: 9vw;
+    }
+    
+    .subtitle {
+        font-size: 6vw;
+        line-height: 6vw;
+    }
+    .roomNameInput {
+        width: 75vw;
+    }
+    .createRoomButton {
+        width: 70vw;
+        height: 20vw;
+        border-radius: 15vw;
+        font-size: 5vw;
+    }
+
+    .desktopRespondents {
+        display: none;
+    }
+    .nonDesktopRespondents {
+        width: 100%;
+        height: 50vw;
+        display: flex;
+        flex-direction: column;
+        gap: 10vw;
+        overflow-y: auto;
+    }
+}

@@ -1,0 +1,93 @@
+@value breakpoints: "../../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.tile {
+    box-sizing: border-box;
+    display: grid;
+    border: 1px solid var(--COLOR2);
+}
+
+.switchInput {
+    grid-area: switch;
+}
+
+.avatar {
+    grid-area: avatar;
+}
+
+.name {
+    grid-area: name;
+}
+
+.email {
+    grid-area: email;
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .tile {
+        width: 35vw;
+        grid-template-areas: 
+        "switch"
+        "avatar"
+        "name"
+        "email";
+        row-gap: 3vw;
+        justify-items: center;
+        padding: 4vw 3vw;
+        border-radius: 4.5vw;
+    }
+
+    .avatar {
+        width: 10vw !important;
+        height: 10vw !important;
+        border-radius: 5vw !important;
+    }
+
+    .name {
+        font-size: 3.5vw;
+        line-height: 3.5vw;
+    }
+
+    .email {
+        font-size: 2vw;
+        line-height: 2vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .tile {
+        width: 100%;
+        grid-template-columns: min-content auto;
+        column-gap: 7.5vw;
+        grid-template-areas: 
+        "switch name"
+        "avatar email";
+        row-gap: 3vw;
+        padding: 4vw 5vw;
+        border-radius: 9vw;
+    }
+    
+    .switchInput {
+        justify-self: center;
+    }
+
+    .avatar {
+        width: 15vw !important;
+        height: 15vw !important;
+        border-radius: 7.5vw !important;
+    }
+
+    .name {
+        font-size: 6vw;
+        line-height: 6vw;
+    }
+
+    .email {
+        font-size: 4vw;
+        line-height: 4vw;
+        align-self: end;
+    } 
+}

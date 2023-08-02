@@ -10,6 +10,7 @@ type SwitchInputProps = {
     leftLabel?: string;
     rightLabel?: string;
     defaultValue?: boolean;
+    onChange?: (checked: boolean) => void;
     name: string;
 };
 
@@ -18,6 +19,7 @@ const SwitchInput = ({
     leftLabel,
     rightLabel,
     defaultValue,
+    onChange,
     name,
 }: SwitchInputProps) => {
     const [ checked, setChecked ] = useState(!!defaultValue);
@@ -33,7 +35,13 @@ const SwitchInput = ({
                 className={classes.switchRoot}
                 id={name}
                 name={name}
-                onCheckedChange={(checked: boolean) => setChecked(checked)}
+                onCheckedChange={(checked: boolean) => {
+                    setChecked(checked);
+
+                    if (onChange) {
+                        onChange(checked);
+                    }
+                }}
                 checked={checked}
             >
                 <Switch.Thumb className={classes.switchThumb} />

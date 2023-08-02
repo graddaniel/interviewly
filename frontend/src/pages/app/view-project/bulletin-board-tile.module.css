@@ -2,7 +2,8 @@
 @value min-large, max-medium, min-medium, max-small from breakpoints;
 
 .tile {
-    width: 14vw;
+    box-sizing: border-box;
+    width: 19vw;
     display: flex;
     flex-direction: column;
     gap: 1.5vw;
@@ -33,7 +34,37 @@
 }
 
 @media (min-width: min-medium) and (max-width: max-medium) {
+    .tile {
+        width: 55vw;
+        gap: 4.5vw;
+        padding: 4.5vw 3vw;
+        border-radius: 4.5vw;
+    }
+    
+    .title, .datePart {
+        font-size: 3.5vw;
+        line-height: 3.5vw;
+    }
+    
+    .date {
+        gap: 4.5vw;
+    }
 }
 
-@media (max-width: max-small) { 
+@media (max-width: max-small) {
+    .tile {
+        width: 70vw;
+        gap: 7.5vw;
+        padding: 7.5vw 5vw;
+        border-radius: 8vw;
+    }
+    
+    .title, .datePart {
+        font-size: 6vw;
+        line-height: 6vw;
+    }
+    
+    .date {
+        gap: 7.5vw;
+    }
 }

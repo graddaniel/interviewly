@@ -5,9 +5,11 @@ import moment from 'moment';
 import Pill from '../../../components/pill/pill';
 
 import classes from './bulletin-board-tile.module.css';
+import classNames from 'classnames';
 
 
 type BulletinBoardTileProps = {
+    className?: string;
     startDate: Date;
     endDate: Date;
     membersCount: number;
@@ -15,6 +17,7 @@ type BulletinBoardTileProps = {
 };
 
 const BulletinBoardTile = ({
+    className,
     startDate,
     endDate,
     membersCount,
@@ -27,7 +30,7 @@ const BulletinBoardTile = ({
     const end = moment(endDate).locale(resolvedLanguage as string);
 
     return (
-        <div className={classes.tile} onClick={onClick}>
+        <div className={classNames(classes.tile, className)} onClick={onClick}>
             <span className={classes.title}>Bulletin Board</span>
             <Pill
                 className={classes.pill}

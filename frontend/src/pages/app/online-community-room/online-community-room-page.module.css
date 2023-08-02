@@ -37,6 +37,29 @@
     align-self: end ;
 }
 
+.addTopicButton {
+    width: 12.5vw;
+    height: 2.5vw;
+    grid-area: addTopicButton;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-self: end;
+    gap: 0.75vw;
+    padding: 0.6vw;
+    font-size: 1vw;
+    border: 1px solid var(--BLACK);
+    border-radius: 3vw;
+    background-color: transparent;
+    cursor: pointer;
+
+}
+.addTopicButtonIcon {
+    width: 0.75vw;
+    height: 0.75vw;
+}
+
 .content {
     grid-area: content;
     display: flex;
@@ -45,10 +68,99 @@
 }
 
 @media (min-width: min-large) {
+    .addTopicButton {
+        display: none;
+    }
 }
 
 @media (min-width: min-medium) and (max-width: max-medium) {
+    .onlineCommunityRoom {
+        display: grid;
+        grid-template-columns: 47% 47%;
+        column-gap: 4.5vw;
+        grid-template-rows: auto auto auto;
+        row-gap: 10vw;
+        grid-template-areas: 
+        "backIcon ."
+        "title title"
+        "dropdown addTopicButton"
+        "content content";
+    }
+
+    .backIcon > img {
+        width: 2.5vw;
+    }
+
+    .title {
+        font-size: 10vw;
+        line-height: 10vw;
+    }
+
+    .sortDropdown {
+        width: 100%;
+        height: 7vw;
+    }
+
+    .addTopicButton {
+        width: 100%;
+        height: 7vw;
+        gap: 2vw;
+        padding: 2vw;
+        font-size: 3vw;
+        border-radius: 9vw;
+    
+    }
+    .addTopicButtonIcon {
+        width: 2vw;
+        height: 2vw;
+    }
+    .addTopicBox {
+        display: none;
+    }
+
+    .content {
+        gap: 5vw;
+    }
 }
 
-@media (max-width: max-small) { 
+@media (max-width: max-small) {
+    .onlineCommunityRoom {
+        display: flex;
+        flex-direction: column;
+        gap: 10vw;
+    }
+
+    .backIcon {
+        display: none;
+    }
+
+    .title {
+        font-size: 9vw;
+        line-height: 9vw;
+    }
+
+    .sortDropdown {
+        width: 100%;
+        height: 12vw;
+    }
+
+    .addTopicButton {
+        width: 100%;
+        height: 12vw;
+        gap: 3vw;
+        padding: 4vw;
+        font-size: 5vw;
+        border-radius: 15vw;
+    }
+    .addTopicButtonIcon {
+        width: 4vw;
+        height: 4vw;
+    }
+    .addTopicBox {
+        display: none;
+    }
+
+    .content {
+        gap: 10vw;
+    }
 }

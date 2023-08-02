@@ -10,9 +10,11 @@ import classes from './respondent-tile.module.css';
 import ArrowRightIconPurple from 'images/arrow-right-icon-purple.svg';
 import { generatePath, useNavigate, useParams } from 'react-router-dom';
 import { APP_ROUTES } from '../../consts/routes';
+import classNames from 'classnames';
 
 
 type RespondentTileProps = {
+    className?: string;
     name: string;
     surname: string;
     age: number;
@@ -20,9 +22,11 @@ type RespondentTileProps = {
     email: string;
     nationality: ProfileTypes.Nationality;
     avatarUrl: string;
+    onClick?: () => void;
 };
 
 const RespondentTile = ({
+    className,
     name,
     surname,
     age,
@@ -30,6 +34,7 @@ const RespondentTile = ({
     email,
     nationality,
     avatarUrl,
+    onClick,
 }: RespondentTileProps) => {
     const navigate = useNavigate();
     const { projectId } = useParams();
@@ -40,7 +45,10 @@ const RespondentTile = ({
     ));
 
     return (
-        <section className={classes.respondentsTile}>
+        <section
+            className={classNames(classes.respondentsTile, onClick && classes.clickable, className)}
+            onClick={onClick}
+        >
             <div className={classes.shortInfo}>
                 <img className={classes.avatar} src={avatarUrl}/>
                 <img className={classes.flag} src={nationalityToFlagIcon(nationality)} />

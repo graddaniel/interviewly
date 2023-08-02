@@ -31,6 +31,7 @@
 
 .title {
     font-size: 1.2vw;
+    white-space: nowrap;
 }
 
 .iconWrapper {
@@ -39,6 +40,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
     border-radius: 1vw;
     background-color: var(--COLOR3);
 }

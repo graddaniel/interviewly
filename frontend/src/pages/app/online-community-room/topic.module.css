@@ -2,6 +2,7 @@
 @value min-large, max-medium, min-medium, max-small from breakpoints;
 
 .topic {
+    box-sizing: border-box;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -47,11 +48,11 @@
     gap: 1.5vw;
 }
 .attachment {
-    width: 100%;;
+    width: 100%;
     border-radius: 1.5vw;
 }
 
-.comments {
+.nonMobileComments {
     display: flex;
     flex-direction: column;
     gap: 0.75vw;
@@ -93,10 +94,148 @@
 }
 
 @media (min-width: min-large) {
+    .mobileComments {
+        display: none;
+    }
 }
 
 @media (min-width: min-medium) and (max-width: max-medium) {
+    .topic {
+        gap: 5vw;
+        padding: 4.5vw 5vw;
+        border-radius: 4.5vw;
+    }
+    
+    .text {
+        font-size: 2.5vw;
+        line-height: 2.5vw;
+    }
+    .subscript {
+        font-size: 2vw;
+        line-height: 2vw;
+    }
+    
+    .header {
+        row-gap: 1.5vw;
+        column-gap: 3vw;
+    }
+    
+    .content {
+        gap: 5vw;
+    }
+    .attachment {
+        width: 100%;
+        border-radius: 4.5vw;
+    }
+    
+    .nonMobileComments {
+        gap: 2vw;
+    }
+    .commentsControls {
+        gap: 3.5vw;
+        font-size: 2vw;
+        line-height: 2vw;
+    }
+    .smallAvatar {
+        width: 2.5vw;
+        height: 2.5vw;
+    }
+    .smallAvatar > div > img {
+        width: 1.25vw;
+        height: 1.25vw;
+    }
+    .addCommentBox {
+        gap: 2vw;
+        padding: 3.5vw;
+        border-radius: 4vw;
+    }
+    .addCommentInput {
+        font-size: 2.5vw;
+        line-height: 2.5vw;
+    }
+    .addCommentIcon {
+        width: 3vw;
+        height: 3vw;
+    }
+
+    .mobileComments {
+        display: none;
+    }
 }
 
-@media (max-width: max-small) { 
+@media (max-width: max-small) {
+    .topic {
+        gap: 7.5vw;
+        padding: 7.5vw 3vw;
+        border-radius: 8vw;
+    }
+    
+    .text {
+        font-size: 4vw;
+        line-height: 4vw;
+    }
+    .subscript {
+        font-size: 3vw;
+        line-height: 3vw;
+    }
+    
+    .header {
+        row-gap: 3vw;
+        column-gap: 6vw;
+    }
+    
+    .content {
+        gap: 7.5vw;
+    }
+    .attachment {
+        width: 100%;
+        border-radius: 7.5vw;
+    }
+    
+    .nonMobileComments {
+        display: none;
+    }
+    .smallAvatar {
+        width: 5vw;
+        height: 5vw;
+    }
+    .smallAvatar > div > img {
+        width: 2.5vw;
+        height: 2.5vw;
+    }
+    .addCommentBox {
+        position: fixed;
+        bottom: 12vw;
+        width: 85vw;
+        gap: 2vw;
+        padding: 7.5vw;
+        border-radius: 15vw;
+    }
+    .addCommentInput {
+        font-size: 4vw;
+        line-height: 4vw;
+    }
+    .addCommentIcon {
+        width: 4.5vw;
+        height: 4.5vw;
+    }
+
+    .commentsWrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 6vw;
+        padding: 5vw 0 10vw;
+    }
+    .mobileComments {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 10vw;
+    }
+    .addCommentButton {
+        height: 10vw;
+        font-size: 4vw;
+        line-height: 4vw;
+    }
 }

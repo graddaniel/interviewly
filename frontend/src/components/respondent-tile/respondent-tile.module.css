@@ -13,6 +13,9 @@
     border-radius: 1.5vw;
     background-color: var(--WHITE);
 }
+.clickable {
+    cursor: pointer;
+}
 
 .shortInfo {
     display: grid;

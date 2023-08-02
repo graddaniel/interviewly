@@ -30,7 +30,27 @@
 }
 
 @media (min-width: min-medium) and (max-width: max-medium) {
+    .avatar {
+        height: 7vw;
+        width: 7vw;
+        border-radius: 3.5vw;
+    }
+    
+    .placeholderIcon {
+        width: 2vw;
+        height: 2vw;
+    }
 }
 
-@media (max-width: max-small) { 
+@media (max-width: max-small) {
+    .avatar {
+        height: 15vw;
+        width: 15vw;
+        border-radius: 7.5vw;
+    }
+    
+    .placeholderIcon {
+        width: 7.5vw;
+        height: 7.5vw;
+    }
 }

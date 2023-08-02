@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import IconButton from '../../../components/icon-button/icon-button';
 import AddTopicBox from './add-topic-box';
 import DropdownList from '../../../components/dropdown-list/dropdown-list';
+import Topic from './topic';
 
 import classes from './online-community-room-page.module.css';
 import ArrowLeftIconPurple from 'images/arrow-left-icon-purple.svg';
-import { useNavigate } from 'react-router-dom';
-import Topic from './topic';
+import PlusIconBlack from 'images/plus-icon-black.svg';
+
 
 const SORTING = [
     'Newest',
@@ -41,9 +43,17 @@ const OnlineCommunityRoomPage = ({
                 elementsList={SORTING}
                 onChange={(i) => setSorting(SORTING[i])}
                 defaultIndex={SORTING.indexOf(sorting)}
+                allowDeselect={false}
             />
+            <button
+                className={classes.addTopicButton}
+                onClick={() => console.log('open create room popup')}
+            >
+                <img className={classes.addTopicButtonIcon} src={PlusIconBlack}/>
+                Add topic
+            </button>
             <div className={classes.content}>
-                <AddTopicBox />
+                <AddTopicBox className={classes.addTopicBox}/>
                 <Topic
                     author={{
                         name: 'Ewelina Zalewska',

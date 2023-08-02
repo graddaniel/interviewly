@@ -8,6 +8,8 @@ import Comment from './comment';
 
 import classes from './topic.module.css';
 import SendIconBlack from 'images/send-icon-black.svg';
+import TextButton from '../../../components/text-button/text-button';
+import Dialog from '../../../components/dialog/dialog';
 
 
 type Postable = {
@@ -34,6 +36,7 @@ const Topic = ({
     attachment,
     comments = [],
 }: TopicProps) => {
+    const [ isMobileCommentsDialogOpen, setIsMobileCommentsDialogOpen ] = useState(false);
     const { i18n } = useTranslation();
     const { resolvedLanguage } = i18n;
     const localizedPostDate = moment(postDate)
@@ -89,23 +92,23 @@ const Topic = ({
                 <span className={classes.text}>{content}</span>
                 {attachment && generateAttachmentElement(attachment)}
             </div>
-            <div className={classes.comments}>
+            <div className={classes.nonMobileComments}>
                 <div className={classes.commentsControls}>
                     <span className={classes.text}>
                         {generateCommentsCounter(comments.length)}
                     </span>
                     <div className={classes.addCommentBox}>
-                    <Avatar url={author.avatarUrl} className={classes.smallAvatar}/>
-                    <input
-                        className={classes.addCommentInput}
-                        type="text"
-                        name="newComment"
-                        placeholder="Add comment"
-                        value={newComment}
-                        onChange={(e) => setNewComment(e.target.value)}
-                    />
-                    <img src={SendIconBlack} className={classes.addCommentIcon}/>
-                </div>
+                        <Avatar url={author.avatarUrl} className={classes.smallAvatar}/>
+                        <input
+                            className={classes.addCommentInput}
+                            type="text"
+                            name="newComment"
+                            placeholder="Add comment"
+                            value={newComment}
+                            onChange={(e) => setNewComment(e.target.value)}
+                        />
+                        <img src={SendIconBlack} className={classes.addCommentIcon}/>
+                    </div>
                 </div>
                 {comments.map(comment => (
                     <Comment
@@ -113,6 +116,41 @@ const Topic = ({
                         {...comment}
                     />
                 ))}
+            </div>
+            <div className={classes.mobileComments}>
+                <span className={classes.text}>
+                    {generateCommentsCounter(comments.length)}
+                </span>
+                <TextButton
+                    className={classes.addCommentButton}
+                    text="Add comment"
+                    onClick={() => setIsMobileCommentsDialogOpen(true)}
+                />
+                <Dialog
+                    isOpen={isMobileCommentsDialogOpen}
+                    onClose={() => setIsMobileCommentsDialogOpen(false)}
+                >
+                    <div className={classes.commentsWrapper}>
+                        {comments.map(comment => (
+                            <Comment
+                                key={comment.postDate.getMilliseconds()}
+                                {...comment}
+                            />
+                        ))}
+                        <div className={classes.addCommentBox}>
+                            <Avatar url={author.avatarUrl} className={classes.smallAvatar}/>
+                            <input
+                                className={classes.addCommentInput}
+                                type="text"
+                                name="newComment"
+                                placeholder="Add comment"
+                                value={newComment}
+                                onChange={(e) => setNewComment(e.target.value)}
+                            />
+                            <img src={SendIconBlack} className={classes.addCommentIcon}/>
+                        </div>
+                    </div>
+                </Dialog>
             </div>
         </section>
     );
