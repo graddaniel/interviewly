@@ -5,7 +5,7 @@ import classes from './icon-button.module.css';
 
 type IconButtonProps = {
     icon: string,
-    onClick: (e?: React.MouseEvent) => void,
+    onClick: () => void,
     className?: string,
 };
 
@@ -17,7 +17,10 @@ const IconButton = ({
     return (
         <button
             className={classNames(classes.button, className)}
-            onClick={onClick}
+            onClick={(e) => {
+                e.preventDefault();
+                onClick();
+            }}
         >
             <img className={classes.icon} src={icon}/>
         </button>

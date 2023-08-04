@@ -21,10 +21,7 @@ const CloseControls = ({
         <div className={classNames(classes.closeControl, className)}>
             <IconButton
                 icon={CrossIcon}
-                onClick={(e: React.MouseEvent) => {
-                    e.preventDefault();
-                    onClose();
-                }}
+                onClick={() => onClose()}
                 className={classes.closeControlButton}
             />
             <span className={classes.closeControlText}>

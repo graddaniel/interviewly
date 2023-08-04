@@ -12,6 +12,7 @@
     font-size: 1vw;
     user-select: none;
     cursor: pointer;
+    z-index: 0;
 }
 
 .controls {

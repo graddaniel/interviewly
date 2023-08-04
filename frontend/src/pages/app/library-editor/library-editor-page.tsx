@@ -104,9 +104,7 @@ const LibraryEditorPage = () => {
 
     const goBack = useCallback(() => navigate(-1), []);
 
-    const addLanguage = (e: React.MouseEvent) => {
-        e.preventDefault();
-
+    const addLanguage = () => {
         if (currentAvailableLanguageIndex < 0) {
             return;
         }
@@ -129,9 +127,7 @@ const LibraryEditorPage = () => {
         setCurrentAvailableLanguageIndex(-1);
     };
 
-    const removeLanguage = (e: React.MouseEvent) => {
-        e.preventDefault();
-
+    const removeLanguage = () => {
         if (currentSelectedLanguageIndex < 0) {
             return;
         }
@@ -182,9 +178,7 @@ const LibraryEditorPage = () => {
     };
 
     //TODO clear answers also
-    const addQuestion = (e: React.MouseEvent) => {
-        e.preventDefault();
-
+    const addQuestion = () => {
         const newState = JSON.parse(JSON.stringify(questions));
 
         const newQuestion: any = {
@@ -254,9 +248,7 @@ const LibraryEditorPage = () => {
         max,
     });
 
-    const addAnswer = (e: React.MouseEvent) => {
-        e.preventDefault();
-
+    const addAnswer = () => {
         if (!currentlyEditedAnswers[currentLanguageCode]) {
             return;
         }
@@ -274,9 +266,7 @@ const LibraryEditorPage = () => {
         });
         setCurrentlyEditedAnswers(newCurrentlyEditedAnswers);
     };
-    const removeAnswer = (e, index: number) => {
-        e.preventDefault();
-
+    const removeAnswer = (index: number) => {
         const newState = JSON.parse(JSON.stringify(currentlyEditedQuestion));
         newState.answers.splice(index, 1);
 
@@ -473,7 +463,7 @@ const LibraryEditorPage = () => {
                         {currentlyEditedQuestion.answers.map((answer, i) => (<React.Fragment key={i}>
                             <IconButton
                                 icon={MinusIconBlack}
-                                onClick={(e) => removeAnswer(e, i)}
+                                onClick={() => removeAnswer(i)}
                             />
                             <span>
                                 {answer.text[currentLanguageCode]}

@@ -9,6 +9,7 @@ import Avatar from '../../../components/avatar/avatar';
 type CommentProps = {
     author: {
         name: string;
+        surname: string;
         avatarUrl?: string;
     },
     postDate: Date;
@@ -29,7 +30,7 @@ const Comment = ({
         <section className={classes.comment}>
             <div className={classes.commentBox}>
                 <Avatar url={author.avatarUrl} className={classes.avatar}/>
-                <span className={classes.authorName}>{author.name}</span>
+                <span className={classes.authorName}>{author.name} {author.surname}</span>
                 <span className={classes.content}>{content}</span>
             </div>
             <span className={classes.date}>

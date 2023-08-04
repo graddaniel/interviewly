@@ -11,6 +11,7 @@
     justify-content: center;
     align-items: center;
     background-color: var(--COLOR3-OPAQUE);
+    z-index: 2;
 }
 
 .popup {

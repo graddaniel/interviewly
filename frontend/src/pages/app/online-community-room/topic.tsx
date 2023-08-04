@@ -15,6 +15,7 @@ import Dialog from '../../../components/dialog/dialog';
 type Postable = {
     author: {
         name: string;
+        surname: string;
         avatarUrl?: string;
     };
     postDate: Date;
@@ -82,7 +83,7 @@ const Topic = ({
             <div className={classes.header}>
                 <Avatar url={author.avatarUrl} className={classes.avatar}/>
                 <span className={classNames(classes.text, classes.authorName)}>
-                    {author.name}
+                    {author.name} {author.surname}
                 </span>
                 <span className={classNames(classes.subscript, classes.postDate)}>
                     {localizedPostDate.format('D MMMM')} {localizedPostDate.format('LT')}

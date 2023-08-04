@@ -40,7 +40,7 @@ const CreateRoomPopup = ({
         <Popup className={classes.createRoomPopup}>
             <Form className={classes.form} method="post">
                 <IconButton
-                    className={classes.closeIcon}
+                    className={classes.closeButton}
                     icon={CrossIcon}
                     onClick={onClose}
                 />

@@ -5,6 +5,7 @@ import IconButton from '../../../components/icon-button/icon-button';
 import AddTopicBox from './add-topic-box';
 import DropdownList from '../../../components/dropdown-list/dropdown-list';
 import Topic from './topic';
+import AddTopicPopup from './add-topic-popup';
 
 import classes from './online-community-room-page.module.css';
 import ArrowLeftIconPurple from 'images/arrow-left-icon-purple.svg';
@@ -16,6 +17,29 @@ const SORTING = [
     'Oldest',
 ];
 
+const ROOM_MEMBERS = [{
+    name: 'Mateusz',
+    surname: 'Kościński',
+    email: 'mat@kos.pl',
+    avatarUrl: 'https://i.pravatar.cc/75',
+}, {
+    name: 'Ignacy',
+    surname: 'Marecki',
+    email: 'ig@mar.pl',
+    avatarUrl: '',
+}, {
+    name: 'Adrian',
+    surname: 'Kowalski',
+    email: 'ad@kow.pl',
+}];
+
+const CURRENT_USER = {
+    name: 'Ewelina',
+    surname: 'Zalewska',
+    email: 'ew@zal.pl',
+    avatarUrl: 'https://i.pravatar.cc/75',
+};
+
 type OnlineCommunityRoomPageProps = {
 
 };
@@ -24,6 +48,7 @@ const OnlineCommunityRoomPage = ({
 
 }: OnlineCommunityRoomPageProps) => {
     const [ sorting, setSorting ] = useState(SORTING[0]);
+    const [ isTopicPopupOpen, setIsTopicPopupOpen ] = useState(false);
     const navigate = useNavigate();
     const goBack = () => navigate(-1);
 
@@ -47,17 +72,18 @@ const OnlineCommunityRoomPage = ({
             />
             <button
                 className={classes.addTopicButton}
-                onClick={() => console.log('open create room popup')}
+                onClick={() => setIsTopicPopupOpen(true)}
             >
                 <img className={classes.addTopicButtonIcon} src={PlusIconBlack}/>
                 Add topic
             </button>
             <div className={classes.content}>
-                <AddTopicBox className={classes.addTopicBox}/>
+                <AddTopicBox className={classes.addTopicBox} onClick={() => setIsTopicPopupOpen(true)} />
                 <Topic
                     author={{
-                        name: 'Ewelina Zalewska',
-                        avatarUrl: 'https://i.pravatar.cc/75'
+                        name: 'Ewelina',
+                        surname: 'Zalewska',
+                        avatarUrl: 'https://i.pravatar.cc/75',
                     }}
                     postDate={new Date()}
                     content={'Are you also having trouble creating the questionnaire?'}
@@ -68,7 +94,8 @@ const OnlineCommunityRoomPage = ({
                 />
                 <Topic
                     author={{
-                        name: 'Karol Walewski',
+                        name: 'Karol',
+                        surname: 'Walewski',
                     }}
                     postDate={new Date()}
                     content={'How can I add members to my team...'}
@@ -79,13 +106,15 @@ const OnlineCommunityRoomPage = ({
                 />
                 <Topic
                     author={{
-                        name: 'Karol Walewski',
+                        name: 'Karol',
+                        surname: 'Walewski',
                     }}
                     postDate={new Date()}
                     content={'How can I add members to my team...'}
                     comments={[{
                         author: {
-                            name: 'Ewelina Zalewska',
+                            name: 'Ewelina',
+                            surname: 'Zalewska',
                             avatarUrl: 'https://i.pravatar.cc/75',
                         },
                         postDate: new Date(),
@@ -93,6 +122,13 @@ const OnlineCommunityRoomPage = ({
                     }]}
                 />
             </div>
+            {isTopicPopupOpen && (
+                <AddTopicPopup
+                    author={CURRENT_USER}
+                    users={ROOM_MEMBERS}
+                    onClose={() => setIsTopicPopupOpen(false)}
+                />
+            )}
         </section>
     );
 };

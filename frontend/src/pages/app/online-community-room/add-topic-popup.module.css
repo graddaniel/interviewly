@@ -1,0 +1,296 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.popup {
+    width: 32.5vw;
+}
+
+.closeButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.initialStep {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto auto auto;
+    row-gap: 2.5vw;
+    grid-template-areas:
+    "title title"
+    "author visibilityControls"
+    "topic topic"
+    "fileUpload ."
+    "submitButton submitButton";
+}
+
+.title {
+    grid-area: title;
+    justify-self: center;
+    margin: 0;
+    font-size: 3.5vw;
+    line-height: 3.5vw;
+    font-weight: 400;
+}
+
+.author {
+    grid-area: author;
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+}
+.avatar {
+    width: 3vw;
+    height: 3vw;
+    border-radius: 1.5vw;
+}
+.avatar > div > div {
+    width: 1vw;
+    height: 1vw;
+}
+.name {
+    font-size: 0.75vw;
+    line-height: 0.75vw;
+}
+
+.visibilityControls {
+    grid-area: visibilityControls;
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+    font-size: 0.75vw;
+}
+.visibilityIcon {
+    width: 1.5vw;
+    height: 1.5vw;
+    border-color: var(--COLOR2);
+    background-color: var(--COLOR2);
+}
+.visibilityIcon > img {
+    width: 0.75vw;
+    height: 0.75vw;
+}
+
+.topic {
+    grid-area: topic;
+    border: none;
+    outline: none;
+    font-size: 1.2vw;
+    resize: none;
+}
+
+.fileUpload {
+    grid-area: fileUpload;
+}
+
+.submitButton {
+    grid-area: submitButton;
+    width: 14vw;
+}
+
+.visibilityStep {
+    display: grid;
+    grid-template-columns: 4vw auto 4vw;
+    grid-template-rows: auto auto auto auto;
+    row-gap: 4vw;
+    grid-template-areas:
+    "backButton title ."
+    "visibilitySwitch visibilitySwitch visibilitySwitch"
+    "users users users"
+    ". addButton .";
+}
+.backButton {
+    grid-area: backButton;
+    border-color: var(--COLOR2);
+    background-color: var(--COLOR2);
+}
+.visibilitySwitch {
+    grid-area: visibilitySwitch;
+    justify-self: center;
+}
+.users {
+    grid-area: users;
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+}
+.user {
+    display: grid;
+    grid-template-columns: min-content auto min-content;
+    column-gap: 2vw;
+    align-items: center;
+}
+.userName {
+    justify-self: start;
+}
+.addButton {
+    grid-area: addButton;
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .popup {
+        width: 90vw;
+    }
+    
+    .closeButton {
+        width: 5vw;
+        height: 5vw;
+    }
+    .closeButton > img {
+        width: 2vw;
+        height: 2vw;
+    }
+    
+    .initialStep {
+        row-gap: 10vw;
+    }
+    
+    .title {
+        font-size: 10vw;
+        line-height: 10vw;
+    }
+    
+    .author {
+        gap: 3vw;
+    }
+    .avatar {
+        width: 8vw;
+        height: 8vw;
+        border-radius: 4vw;
+    }
+    .avatar > div > div {
+        width: 2vw;
+        height: 2vw;
+    }
+    .name {
+        font-size: 2.5vw;
+        line-height: 2.5vw;
+    }
+    
+    .visibilityControls {
+        gap: 1.5vw;
+        font-size: 2.5vw;
+    }
+    .visibilityIcon {
+        width: 4vw;
+        height: 4vw;
+    }
+    .visibilityIcon > img {
+        width: 1.5vw;
+        height: 1.5vw;
+    }
+    
+    .topic {
+        font-size: 3.5vw;
+    }
+    
+    .submitButton {
+        width: 40vw;
+    }
+    
+    .visibilityStep {
+        grid-template-columns: 11vw auto 11vw;
+        row-gap: 6vw;
+    }
+    .users {
+        gap: 5.5vw;
+    }
+    .user {
+        column-gap: 5.5vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .popup {
+        width: 85vw;
+    }
+    
+    .closeButton {
+        width: 9vw;
+        height: 9vw;
+    }
+    .closeButton > img {
+        width: 3vw;
+        height: 3vw;
+    }
+    
+    .initialStep {
+        grid-template-rows: auto auto auto auto auto;
+        row-gap: 10vw;
+        grid-template-areas:
+        "title "
+        "author"
+        "visibilityControls"
+        "topic "
+        "fileUpload"
+        "submitButton";
+    }
+    
+    .title {
+        font-size: 9vw;
+        line-height: 9vw;
+    }
+    
+    .author {
+        gap: 6vw;
+    }
+    .avatar {
+        width: 15vw;
+        height: 15vw;
+        border-radius: 7.5vw;
+    }
+    .avatar > div > div {
+        width: 5vw;
+        height: 5vw;
+    }
+    .name {
+        font-size: 4vw;
+        line-height: 4vw;
+    }
+    
+    .visibilityControls {
+        gap: 3vw;
+        font-size: 4vw;
+    }
+    .visibilityIcon {
+        width: 7.5vw;
+        height: 7.5vw;
+    }
+    .visibilityIcon > img {
+        width: 3vw;
+        height: 3vw;
+    }
+    
+    .topic {
+        font-size: 4vw;
+    }
+    
+    .submitButton {
+        width: 100%;
+    }
+    
+    .backButton {
+        width: 15vw;
+        height: 15vw;
+        border-radius: 7.5vw;
+    }
+    .backButton > img {
+        width: 6vw;
+    }
+
+    .visibilityStep {
+        grid-template-columns: 15vw auto 15vw;
+        row-gap: 10vw;
+    }
+    
+    .users {
+        gap: 10vw;
+    }
+    .user {
+        column-gap: 4vw;
+    }
+}

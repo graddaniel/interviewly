@@ -20,7 +20,7 @@
     line-height: 3.5vw;
     font-weight: 400;
 }
-.closeIcon {
+.closeButton {
     position: absolute;
     top: 2.5vw;
     right: 2.5vw;
@@ -74,7 +74,7 @@
         line-height: 10vw;
         align-self: flex-start;
     }
-    .closeIcon {
+    .closeButton {
         top: 9vw;
         right: 7vw;
         width: 7vw;
@@ -116,7 +116,7 @@
         line-height: 9vw;
         align-self: flex-start;
     }
-    .closeIcon {
+    .closeButton {
         top: 9vw;
         right: 6vw;
         width: 9vw;

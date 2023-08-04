@@ -56,7 +56,7 @@ const TeamMemberPopup = ({
             <div className={classes.header}>
                 <h4 className={classes.title}>{edit ? 'Edit' : 'Add'} member</h4>
                 <IconButton
-                    className={classes.closeIcon}
+                    className={classes.closeButton}
                     icon={CrossIcon}
                     onClick={onClose}
                 />
