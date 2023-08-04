@@ -2,6 +2,7 @@
 @value min-large, max-medium, min-medium, max-small from breakpoints;
 
 .snackbar {
+    box-sizing: border-box;
     position: fixed;
     bottom: 5vw;
     left: 0;
@@ -43,7 +44,31 @@
 }
 
 @media (min-width: min-medium) and (max-width: max-medium) {
+    .snackbar {
+        bottom: 40vw;
+        width: 90vw;
+        padding: 1.25vw 2.5vw;
+        border-radius: 5vw;
+        font-size: 2.5vw;
+    }
+    
+    .iconButton {
+        width: 5vw;
+        height: 5vw;
+    }
 }
 
-@media (max-width: max-small) { 
+@media (max-width: max-small) {
+    .snackbar {
+        bottom: 50vh;
+        width: 90vw;
+        padding: 2.5vw 5vw;
+        border-radius: 10vw;
+        font-size: 5vw;
+    }
+    
+    .iconButton {
+        width: 10vw;
+        height: 10vw;
+    }
 }

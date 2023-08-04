@@ -26,7 +26,7 @@ const StepsArray = [
 ];
 
 const EditProjectPage = () => {
-    const [ step, setStep ] = useState(0);
+    const [ step, setStep ] = useState(3);
     const { t } = useTranslation();
     const formRef = useRef(null);
     const navigate = useNavigate();

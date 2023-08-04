@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
-import TimePicker from 'react-time-picker';
 import { ResearchTypes } from 'shared';
+import classNames from 'classnames';
+import { useActionData } from 'react-router-dom';
+import moment from 'moment';
 
 import StepTitle from './step-title';
 import SwitchInput from './switch-input';
@@ -9,31 +11,38 @@ import DropdownList from '../../../components/dropdown-list/dropdown-list';
 import NumericalInput from '../../../components/numerical-input/numerical-input';
 
 import classes from './details-step.module.css';
-import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+import '../../../lib/react-datepicker.css';
 import '../../../lib/react-timepicker.css';
 import QuestionMarkIconBlack from 'images/question-mark-icon-black.svg';
 import LanguagesIconBlack from 'images/languages-icon-black.svg';
 import DollarSignIconBlack from 'images/dollar-sign-icon-black.svg';
-import { useActionData } from 'react-router-dom';
-import classNames from 'classnames';
 
+import { registerLocale, setDefaultLocale } from  "react-datepicker";
+//import pl from 'date-fns/locale/pl';
+import { pl } from 'date-fns/locale';
+import { useTranslation } from 'react-i18next';
+registerLocale('pl', pl)
 
 const DURATIONS = Object.values(ResearchTypes.Duration);
 const CURRENCIES = Object.values(ResearchTypes.PaymentCurrency);
+const HOURS = [] as string[];
+for (let i = 0; i < 24; i += 1) HOURS.push(`${i}`);
 
 const DetailsStep = ({
     project,
 }) => {
     const actionData = useActionData() as any;
 
+    const { i18n } = useTranslation();
+    const { resolvedLanguage } = i18n;
+
     const [ duration, setDuration ] = useState(project?.meetingDuration || '');
     const [ currency, setCurrency ] = useState(project?.participantsPaymentCurrency || '');
+    const [ startDate, setStartDate] = useState(new Date());
+    const [ endDate, setEndDate] = useState(new Date(parseInt(moment(Date.now()).add(7, 'days').format('x'), 10)));
+    const [ startTime, setStartTime ] = useState(HOURS[0]);
+    const [ endTime, setEndTime ] = useState(HOURS[0]);
 
-    const [ datetime, setDatetime ] = useState<any>();
-    const [ time, setTime ] = useState<any>('12:00');
-    const [date, setDate] = useState(new Date());
-    const [startDate, setStartDate] = useState();
-    const [endDate, setEndDate] = useState();
     const handleChange = (range) => {
       const [startDate, endDate] = range;
       setStartDate(startDate);
@@ -70,6 +79,7 @@ const DetailsStep = ({
                     <DropdownList
                         className={classNames(
                             classes.dropdown,
+                            classes.meetingDurationDropdown,
                             errors.meetingDuration && classes.dropdownError
                         )}
                         name="Duration"
@@ -79,8 +89,58 @@ const DetailsStep = ({
                     />
                     <input type="hidden" name="meetingDuration" value={duration}/>
                 </label>
-                <DatePicker selected={date} onChange={(date) => setDate(date)} />
-                <TimePicker value={time} onChange={setTime}/>
+                <div className={classes.dateTimePickers}>
+                    <label className={classNames(classes.withMargin, classes.label)}>
+                        Start date
+                    </label>
+                    <DatePicker
+                        className={classes.datePickerInput}
+                        wrapperClassName={classes.withMargin}
+                        selected={startDate}
+                        onChange={(date) => setStartDate(date)}
+                        locale={resolvedLanguage}
+                        dateFormat="dd.MM.yyyy"
+                    />
+                    <input type="hidden" value={startTime} name="startTime" />
+                    <DropdownList
+                        className={classNames(
+                            classes.dropdown,
+                            classes.startTimeDropdown,
+                            errors.participantsPaymentCurrency && classes.dropdownError
+                        )}
+                        name="startTime"
+                        onChange={(i) => setStartTime(HOURS[i])}
+                        elementsList={HOURS}
+                        defaultIndex={HOURS.indexOf(startTime)}
+                        allowDeselect={false}
+                    />
+                </div>
+                <div className={classes.dateTimePickers}>
+                    <label className={classNames(classes.withMargin, classes.label)}>
+                        End date
+                    </label>
+                    <DatePicker
+                        className={classes.datePickerInput}
+                        wrapperClassName={classes.withMargin}
+                        selected={endDate}
+                        onChange={(date) => setEndDate(date)}
+                        locale={resolvedLanguage}
+                        dateFormat="dd.MM.yyyy"
+                    />
+                    <input type="hidden" value={endTime} name="endTime" />
+                    <DropdownList
+                        className={classNames(
+                            classes.dropdown,
+                            classes.endTimeDropdown,
+                            errors.participantsPaymentCurrency && classes.dropdownError
+                        )}   
+                        name="endTime"
+                        onChange={(i) => setEndTime(HOURS[i])}
+                        elementsList={HOURS}
+                        defaultIndex={HOURS.indexOf(endTime)}
+                        allowDeselect={false}
+                    />
+                </div>
             </div>
             <div className={classes.questionsGroup}>
                 <StepTitle
@@ -110,23 +170,26 @@ const DetailsStep = ({
                     icon={DollarSignIconBlack}
                 />
                 <span>Please enter gross amount. The currency should match the currency used for the invoice payment.</span>
-                <NumericalInput
-                    className={classes.payment}
-                    name="participantsPaymentValue"
-                    placeholder=""
-                    error={errors.participantsPaymentValue}
-                    defaultValue={project.participantsPaymentValue}
-                />
-                <DropdownList
-                    className={classNames(
-                        classes.dropdown,
-                        errors.participantsPaymentCurrency && classes.dropdownError
-                    )}                
-                    name="Currency"
-                    elementsList={CURRENCIES}
-                    onChange={(index: number) => setCurrency(CURRENCIES[index])}
-                    defaultIndex={CURRENCIES.indexOf(project.participantsPaymentCurrency)}
-                />
+                <div className={classes.paymentWrapper}>
+                    <NumericalInput
+                        className={classes.payment}
+                        name="participantsPaymentValue"
+                        placeholder=""
+                        error={errors.participantsPaymentValue}
+                        defaultValue={project.participantsPaymentValue}
+                    />
+                    <DropdownList
+                        className={classNames(
+                            classes.dropdown,
+                            classes.currencyDropdown,
+                            errors.participantsPaymentCurrency && classes.dropdownError
+                        )}                
+                        name="Currency"
+                        elementsList={CURRENCIES}
+                        onChange={(index: number) => setCurrency(CURRENCIES[index])}
+                        defaultIndex={CURRENCIES.indexOf(project.participantsPaymentCurrency)}
+                    />
+                </div>
                 <input type="hidden" name="participantsPaymentCurrency" value={currency}/>
             </div>
         </section>

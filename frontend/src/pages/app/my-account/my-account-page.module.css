@@ -85,6 +85,11 @@
     flex-direction: column;
     gap: 1.5vw;
 }
+.projectsContent {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vw;
+}
 
 @media (min-width: min-large) {
 }

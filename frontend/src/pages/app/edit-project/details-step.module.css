@@ -20,23 +20,123 @@
     gap: 1.2vw;
     font-size: 1vw;
 }
+.dateTimePickers {
+    display: flex;
+}
 .dropdown {
     height: 2.5vw;
-    z-index: 1;
 }
 .dropdownError {
     border-color: var(--RED);
 }
+.meetingDurationDropdown {
+    z-index: 5;
+}
+.startTimeDropdown {
+    z-index: 4;
+
+}
+.endTimeDropdown {
+    z-index: 3;
+
+}
+.currencyDropdown {
+    z-index: 2;
+}
 
 .payment {
     width: 5vw;
+}
+.paymentWrapper {
+    display: flex;
+    gap: 2vw;
+}
+
+.datePickerInput {
+    padding: 0.6vw 1vw;
+    border-radius: 2vw;
+    border: 1px solid var(--BLACK);
+    font-size: 1vw;
+    text-align: center;
+}
+.withMargin {
+    margin-right: 1.2vw;
 }
 
 @media (min-width: min-large) {
 }
 
 @media (min-width: min-medium) and (max-width: max-medium) {
+    .detailsStep {
+        gap: 10vw;
+    }
+    
+    .questionsGroup {
+        gap: 10vw;
+    }
+    
+    .label {
+        gap: 3.5vw;
+        font-size: 3vw;
+    }
+    .dropdown {
+        height: 7vw;
+    }   
+    .payment {
+        width: 15vw;
+    }
+    .paymentWrapper {
+        gap: 6vw;
+    }
+
+    .dateTimePickers {
+        justify-content: space-between;
+        align-items: center;
+    }
+    .datePickerInput {
+        padding: 2vw 3vw;
+        border-radius: 8vw;
+        font-size: 3vw;
+    }
 }
 
 @media (max-width: max-small) {
+    .detailsStep {
+        gap: 18vw;
+    }
+    
+    .questionsGroup {
+        gap: 18vw;
+    }
+    
+    .label {
+        gap: 6vw;
+        font-size: 4vw;
+    }
+    .dateTimePickers {
+        flex-direction: column;
+    }
+    .dropdown {
+        height: 12.5vw;
+    }   
+    .payment {
+        width: 25vw;
+    }
+    .paymentWrapper {
+        align-items: center;
+        gap: 10vw;
+    }
+
+    .currencyDropdown {
+        width: 35vw;
+    }
+
+    .datePickerInput {
+        padding: 3.5vw 5vw;
+        border-radius: 15vw;
+        font-size: 4vw;
+    }
+    .withMargin {
+        margin-bottom: 10vw;
+    }
 }

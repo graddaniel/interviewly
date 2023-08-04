@@ -32,7 +32,6 @@
     "react-i18next": "^13.0.0",
     "react-is": "^18.2.0",
     "react-router-dom": "^6.13.0",
-    "react-time-picker": "^6.2.0",
     "shared": "../shared/",
     "style-loader": "^3.3.3",
     "ts-loader": "^9.4.3",
