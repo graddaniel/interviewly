@@ -2,6 +2,7 @@ import React from 'react';
 
 import MenuButton from './menu-button';
 import { APP_ROUTES } from '../../consts/routes';
+import useAuth from '../../hooks/useAuth';
 
 import classes from './menu.module.css'
 import HomeIconBlack from '../../../images/home-icon-black.svg';
@@ -14,9 +15,12 @@ import CalendarIconBlack from '../../../images/calendar-icon-black.svg';
 import CalendarIconWhite from '../../../images/calendar-icon-white.svg';
 import FoldersIconBlack from '../../../images/folders-icon-black.svg';
 import FoldersIconWhite from '../../../images/folders-icon-white.svg';
+import { AccountTypes } from 'shared';
 
 
 const Menu = () => {
+    const auth = useAuth();
+
     return (
         <section className={classes.menu}>
                     <MenuButton
@@ -35,14 +39,16 @@ const Menu = () => {
                             regular: MetricsIconWhite,
                         }}
                     />
-                    <MenuButton
-                        path={APP_ROUTES.MY_TEAM.PATH}
-                        text={'My Team'}
-                        icon={{
-                            highlighted: PeopleIconBlack,
-                            regular: PeopleIconWhite,
-                        }}
-                    />
+                    {auth.type === AccountTypes.Type.RECRUITER && (
+                        <MenuButton
+                            path={APP_ROUTES.MY_TEAM.PATH}
+                            text={'My Team'}
+                            icon={{
+                                highlighted: PeopleIconBlack,
+                                regular: PeopleIconWhite,
+                            }}
+                        />
+                    )}
                     <MenuButton
                         path={APP_ROUTES.CALENDAR.PATH}
                         text={'Calendar'}
@@ -51,14 +57,16 @@ const Menu = () => {
                             regular: CalendarIconWhite,
                         }}
                     />
-                    <MenuButton
-                        path={APP_ROUTES.LIBRARY.PATH}
-                        text={'Library'}
-                        icon={{
-                            highlighted: FoldersIconBlack,
-                            regular: FoldersIconWhite,
-                        }}
-                    />
+                    {auth.type === AccountTypes.Type.RECRUITER && (
+                        <MenuButton
+                            path={APP_ROUTES.LIBRARY.PATH}
+                            text={'Library'}
+                            icon={{
+                                highlighted: FoldersIconBlack,
+                                regular: FoldersIconWhite,
+                            }}
+                        />
+                    )}
                 </section>
     );
 }

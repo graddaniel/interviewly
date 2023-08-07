@@ -117,7 +117,7 @@ const router = createBrowserRouter(
             <Route
                 path={ROUTES.USER_PROFILE.PATH}
                 element={
-                    <Protected requiredRoles={[]}>
+                    <Protected>
                         <ProfilePage />
                     </Protected>
                 }
@@ -134,7 +134,11 @@ const router = createBrowserRouter(
             </Route>
             <Route
                 path={ROUTES.APP.PATH}
-                element={<App />}
+                element={
+                    <Protected>
+                        <App />
+                    </Protected>
+                }
                 action={AppAction}
             >
                 <Route

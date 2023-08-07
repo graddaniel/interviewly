@@ -1,12 +1,21 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.popup {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5vw;
+}
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 3.5vw;
 }
 .title {
     margin: 0;
     font-size: 3.5vw;
+    line-height: 3.5vw;
     font-weight: 400;
 }
 .closeButton {
@@ -70,4 +79,93 @@
 
 .dropdownError {
     border-color: var(--RED);
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .popup {
+        width: 90vw;
+        gap: 10vw;
+    }
+    .title {
+        font-size: 10vw;
+        line-height: 10vw;
+    }
+    .closeButton {
+        width: 7vw;
+        height: 7vw;
+    }
+    .closeButton > img {
+        width: 2vw;
+        height: 2vw;
+    }
+    
+    .content {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-template-rows: auto auto auto auto auto;
+        grid-template-areas: 
+        "nameInput nameInput nameInput"
+        "surnameInput surnameInput surnameInput"
+        "emailInput emailInput emailInput"
+        "roleDropdown statusDropdown genderDropdown"
+        ". saveButton .";
+        column-gap: 3.5vw;
+        row-gap: 7vw;
+    }
+    .roleDropdown, .statusDropdown, .genderDropdown {
+        height: 7.5vw;
+        width: 22vw;
+        justify-self: center;
+    }
+
+    .saveButton {
+        grid-area: saveButton;
+        height: 100%;
+        justify-self: stretch;
+    }
+}
+
+@media (max-width: max-small) {
+    .popup {
+        width: 90vw;
+        gap: 10vw;
+    }
+    .title {
+        font-size: 9vw;
+        line-height: 9vw;
+    }
+    .closeButton {
+        width: 9vw;
+        height: 9vw;
+    }
+    .closeButton > img {
+        width: 3vw;
+        height: 3vw;
+    }
+    
+    .content {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto auto auto auto auto;
+        grid-template-areas: 
+        "nameInput"
+        "surnameInput"
+        "emailInput"
+        "roleDropdown"
+        "statusDropdown"
+        "genderDropdown"
+        "saveButton";
+        column-gap: 3.5vw;
+        row-gap: 7vw;
+    }
+    .roleDropdown, .statusDropdown, .genderDropdown, .saveButton {
+        height: 12.5vw;
+        width: 100%;
+    }
+
+    .saveButton {
+        grid-area: saveButton;
+        height: 100%;
+        justify-self: stretch;
+    }
 }

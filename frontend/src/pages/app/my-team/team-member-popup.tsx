@@ -42,9 +42,7 @@ const TeamMemberPopup = ({
     defaultValues,
     edit,
     errors,
-}: TeamMemberPopupProps) => {
-    console.log("ERRORS", errors)
-    
+}: TeamMemberPopupProps) => {  
     const formRef = useRef(null);
     const submit = useSubmit();
     const [ role, setRole ] = useState(defaultValues?.role || '');
@@ -52,7 +50,7 @@ const TeamMemberPopup = ({
     const [ gender, setGender ] = useState(defaultValues?.gender || '');
 
     return (
-        <Popup>
+        <Popup className={classes.popup}>
             <div className={classes.header}>
                 <h4 className={classes.title}>{edit ? 'Edit' : 'Add'} member</h4>
                 <IconButton

@@ -13,6 +13,13 @@
     row-gap: 2vw;
 }
 
+.myRespondentAccount {
+    grid-template-areas: 
+    "welcomeMessage details"
+    "upcomingInterview ."
+    "projects projects";
+}
+
 .welcomeMessage {
     grid-area: welcomeMessage;
     margin: 0;

@@ -46,7 +46,7 @@ const ProjectBar = ({
                 <span>{formattedEndDate}</span>
             </div>
             <div className={classNames(classes.status, classes[status])}>
-                {capitalizeFirstLetter(status)}
+                {capitalizeFirstLetter(status).replace('_', ' ')}
             </div>
         </section>
     );

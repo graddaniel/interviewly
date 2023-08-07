@@ -12,6 +12,8 @@ import MenuDropdown from './menu-dropdown';
 import classes from './app.module.css';
 import BellIconBlack from '../../../images/bell-icon-black.svg';
 import { APP_FORMS_ROUTES } from '../../consts/routes';
+import useAuth from '../../hooks/useAuth';
+import { AccountTypes } from 'shared';
 
 const USER = {
     name: 'Mateusz',
@@ -25,6 +27,7 @@ const App = () => {
     const { resolvedLanguage } = i18n;
     const formRef = useRef(null);
     const submit = useSubmit();
+    const auth = useAuth();
 
     const openDropdown = useCallback(() => setIsMenuOpen(true), []);
     const closeDropdown = useCallback(() => setIsMenuOpen(false), []);
@@ -41,12 +44,13 @@ const App = () => {
     const matchingFormRoutes = Object
         .values(APP_FORMS_ROUTES)
         .filter(route => matchPath(route.PATH, location.pathname));
+
     if (matchingFormRoutes.length > 0) {   
         return <Outlet />;
     }
 
     return (
-        <div className={classes.background}>
+        <div className={auth.type === AccountTypes.Type.RECRUITER ? classes.pinkBackground : classes.blueBackground}>
         <div className={classes.paddingWrapper}>
             <div className={classes.app}>
                 <header className={classes.header}>
@@ -81,13 +85,15 @@ const App = () => {
                 </header>
                 <nav className={classes.navigation}>
                     <Menu />
-                    <Form method="post" ref={formRef}>
-                        <TextButton
-                            className={classes.createProjectButton}
-                            text={'Create Project'}
-                            onClick={() => submit(formRef.current)}
-                        />
-                    </Form>
+                    {auth.type === AccountTypes.Type.RECRUITER && (
+                        <Form method="post" ref={formRef}>
+                            <TextButton
+                                className={classes.createProjectButton}
+                                text={'Create Project'}
+                                onClick={() => submit(formRef.current)}
+                            />
+                        </Form>
+                    )}
                 </nav>
                 <main className={classes.main}>
                     <Outlet />

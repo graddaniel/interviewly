@@ -23,12 +23,25 @@ class Auth {
         return this._currentUser;
     }
 
-    currentUserHasRole(role: ProfileTypes.Role) {
+    currentUserHasRole(roles: ProfileTypes.Role[]) {
         if (!this._currentUser) {
             return false;
         }
-            
-        return this._currentUser?.role === role;
+
+        const { role } = this._currentUser;
+        if (!role) {
+            return false;
+        }    
+
+        return roles.includes(role);
+    }
+
+    get type () {
+        if (!this._currentUser) {
+            return null;
+        }
+
+        return this._currentUser.type;
     }
 
     clearSession = () => {

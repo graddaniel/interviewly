@@ -6,6 +6,7 @@ import ROUTES, { APP_ROUTES } from '../../consts/routes';
 
 import classes from './menu-dropdown.module.css';
 import classNames from 'classnames';
+import { AccountTypes } from 'shared';
 
 
 const MenuDropdown = ({
@@ -16,7 +17,6 @@ const MenuDropdown = ({
 }) => {
     const auth = useAuth();
     const navigate = useNavigate();
-    const myAccountLink = useHref(APP_ROUTES.MY_ACCOUNT.PATH);
 
     const logout = useCallback(() => {
         auth.clearSession();
@@ -28,20 +28,24 @@ const MenuDropdown = ({
         onClose();
     }, []);
 
-    // TODO add correct links
+
     const menuItems = [{
         text: 'Open user panel',
         route: APP_ROUTES.MY_ACCOUNT.PATH,
     }, {
         text: 'Personal data',
         route: APP_ROUTES.PERSONAL_DATA.PATH,
-    }, {
-        text: 'Company data',
-        route: APP_ROUTES.COMPANY_DATA.PATH,
-    }, {
-        text: 'My team',
-        route: APP_ROUTES.MY_TEAM.PATH,
     }];
+
+    if (auth.type === AccountTypes.Type.RECRUITER) {
+        menuItems.push({
+            text: 'Company data',
+            route: APP_ROUTES.COMPANY_DATA.PATH,
+        }, {
+            text: 'My team',
+            route: APP_ROUTES.MY_TEAM.PATH,
+        });
+    }
 
     return (
         <ul 

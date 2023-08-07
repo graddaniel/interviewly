@@ -129,8 +129,9 @@
         grid-area: addMembersButton;
         flex-direction: row;
         justify-content: space-between;
-        gap: 0.75vw;
-        padding: 1vw 2vw;
+        justify-self: start;
+        gap: 2vw;
+        padding: 2vw 4vw;
         font-size: 3vw;
         border-radius: 8vw;    
     }

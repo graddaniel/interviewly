@@ -1,7 +1,7 @@
 @value breakpoints: "../../consts/breakpoints.css";
 @value min-large, max-medium, min-medium, max-small from breakpoints;
 
-.background {
+.pinkBackground {
     height: 100%;
     background-color: var(--COLOR3);
 }
@@ -9,7 +9,11 @@
 .paddingWrapper {
     box-sizing: border-box;
     padding: 0 9vw 5vw;
-    background-color: var(--COLOR3);
+}
+
+.blueBackground {
+    height: 100%;
+    background-color: var(--BLUE1);
 }
 
 .app {
@@ -107,7 +111,6 @@
         grid-template-areas:
             "header"
             "main";
-        background-color: var(--COLOR3);
     }
     .header {
         grid-template-columns: 65% 35%;
@@ -167,7 +170,6 @@
         grid-template-areas:
             "header"
             "main";
-        background-color: var(--COLOR3);
     }
     .header {
         grid-template-columns: 65% 35%;

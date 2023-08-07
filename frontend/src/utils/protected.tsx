@@ -6,12 +6,11 @@ import ROUTES from '../consts/routes';
 
 
 const Protected = ({
-    requiredRoles,
     children,
 }) => {
     const auth = useAuth();
 
-    if (!auth.currentUserHasRole(requiredRoles)) {
+    if (!auth.currentUser) {
         return (
             <Navigate
                 to={ROUTES.LOG_IN.PATH}

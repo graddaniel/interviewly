@@ -9,6 +9,8 @@ import CalendarIconBlack from 'images/calendar-icon-black.svg';
 import MetricsIconBlack from 'images/metrics-icon-black.svg';
 import { AccountTypes } from 'shared';
 import TeamMemberTile from '../../../components/team-member-tile/team-member-tile';
+import useAuth from '../../../hooks/useAuth';
+import classNames from 'classnames';
 
 
 const user = {
@@ -59,6 +61,8 @@ const projects = [{
 }];
 
 const MyAccountPage = () => {
+    const auth = useAuth();
+
     const latestTeamMembersSection = (
         <div className={classes.latestTeamMembers}>
             <div className={classes.header}>
@@ -109,7 +113,10 @@ const MyAccountPage = () => {
     );
 
     return (
-        <section className={classes.myAccount}>
+        <section className={classNames(
+            classes.myAccount,
+            auth.type === AccountTypes.Type.RESPONDENT && classes.myRespondentAccount,
+        )}>
             <h4 className={classes.welcomeMessage}>
                 Hi, {user.name}!
             </h4>
@@ -121,7 +128,7 @@ const MyAccountPage = () => {
                     {user.company}
                 </span>
             </div>
-            {latestTeamMembersSection}
+            {auth.type === AccountTypes.Type.RECRUITER && latestTeamMembersSection}
             {upcomingInterviewsSection}
             {projectsSection}
         </section>

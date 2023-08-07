@@ -12,7 +12,7 @@ const config = {
                 test: /\.tsx$|\.ts$/i,
                 use: ["ts-loader"],
                 exclude: /node_modules/,
-            },{
+            }, {
                 test: /\.css$/i,
                 use: [
                   "style-loader",
@@ -54,6 +54,10 @@ const config = {
                     name: 'fonts/[name].[ext]',
                   },
                 },
+            }, {
+                test: /\.m?js$/,
+                enforce: 'pre',
+                use: ['source-map-loader'],
             },
         ],
     },

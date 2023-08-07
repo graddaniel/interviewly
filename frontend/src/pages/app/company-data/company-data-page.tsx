@@ -37,7 +37,7 @@ const CompanyDataPage = ({
     const actionErrors = useActionDataWithSnackbar(t('companyData.success'));
     const companyData = useLoaderDataWithSnackbar();
 
-    const isAdmin = auth.currentUserHasRole(ProfileTypes.Role.Admin);
+    const isAdmin = auth.currentUserHasRole([ProfileTypes.Role.Admin]);
 
     if (!companyData) {
         return null;
