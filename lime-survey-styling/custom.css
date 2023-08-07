@@ -1,0 +1,164 @@
+/******************
+    User custom CSS
+    ---------------
+
+    In this file you can add your own custom CSS
+    It will be loaded last, so you can override any other property.
+    Also, it will never be updated. So if you inheritate a core template and just add here some CSS, you'll still benefit of all the updates
+*/
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Plus Jakarta Sans'), local('Plus Jakarta Sans'), url(https://fonts.gstatic.com/s/plusjakartasans/v8/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko20yw.woff2) format('woff');
+}
+
+* {
+    --COLOR1: #6B26A1;
+    --COLOR2: #F2E1FF;
+    --COLOR3: #FBF3FF;
+    --COLOR4: #DAC5EA;
+    --COLOR5: #9029E2;
+    --COLOR6: #E9D0FC;
+    --COLOR7: #F9ECFF;
+    --COLOR8: #F8EBFF;
+    --BLACK: black;
+    --WHITE: white;
+}
+
+#dynamicReloadContainer {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.interviewly .group-title {
+    margin: 0;
+    font-size: 3.5vw;
+    line-height: 3.5vw;
+    font-weight: 400;
+}
+
+.interviewly .progress-bar {
+    background-color: var(--COLOR1);
+}
+
+.interviewly .question-container {
+    border: none;
+    box-shadow: none;
+}
+
+.interviewly .ls-question-help {
+    color: var(--COLOR1);
+}
+
+.question-icon {
+    width: 1.2vw;
+    height: 0.75vw;
+}
+
+.question-text {
+    display: flex;
+    align-items: center;
+    gap: 1.5vw;
+}
+
+.ls-label-question {
+    width: min-content;
+    font-size: 1.75vw;
+    border-bottom: 1px dashed var(--BLACK);
+    background-color: var(--COLOR8);
+}
+
+.interviewly .btn-primary {
+    color: var(--BLACK);
+    background-color: var(--COLOR2);
+    border-color: var(--COLOR2);
+}
+.interviewly .btn-primary:hover, .interviewly .btn-check:checked+.btn-primary {
+    background-color: var(--COLOR1);
+    border-color: var(--COLOR1);
+}
+
+.form-select.form-control.list-question-select {
+    border-color: var(--COLOR1);
+}
+
+.checkbox-item input[type=checkbox]:checked+label:after {
+    background-color: var(--COLOR1);
+}
+    
+
+.fruity .form-control:focus {
+    border: 1px solid var(--COLOR1);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgb(127, 17, 224, 0.6);
+}
+
+
+#ls-button-submit {
+    padding: 1vw 3vw;
+    border-radius: 3vw;
+    font-size: 1vw;
+    color: var(--COLOR1);
+}
+#ls-button-submit:hover {
+    color: var(--WHITE);
+}
+
+
+@media (min-width: 401px) and (max-width: 1000px) {
+    .interviewly .group-title {
+        font-size: 10vw;
+        line-height: 10vw;
+    }
+    
+    .question-icon {
+        width: 3vw;
+        height: 2.5vw;
+    }
+    
+    .question-text {
+        gap: 5vw;
+    }
+    
+    .ls-label-question {
+        font-size: 5vw;
+    }
+    
+    
+    #ls-button-submit {
+        padding: 3vw 4.5vw;
+        border-radius: 8vw;
+        font-size: 3vw;
+    }
+}
+
+@media (max-width: 400px) {
+.interviewly .group-title {
+        font-size: 10vw;
+        line-height: 10vw;
+    }
+    
+    .question-icon {
+        width: 6vw;
+        height: 4vw;
+    }
+    
+    .question-text {
+        gap: 8.5vw;
+    }
+    
+    .ls-label-question {
+        font-size: 9vw;
+    }
+    
+    .interviewly .btn-primary {
+        width: 25vw;
+    }
+    
+    #ls-button-submit {
+        width: auto;
+        padding: 3vw 4.5vw;
+        border-radius: 14vw;
+        font-size: 5vw;
+    }
+}
