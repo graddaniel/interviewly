@@ -18,7 +18,7 @@ const TextButton = ({
     onClick,
     hidden,
     disabled,
-    monochromatic,
+    monochromatic = false,
 }: TextButtonProps) => {
     return (
         <button

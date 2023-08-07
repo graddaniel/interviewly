@@ -24,6 +24,12 @@
     z-index: 2;
 }
 
+.overflowingSelectionText {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .icon {
 }
 
@@ -50,6 +56,12 @@
 
 .listElement {
     cursor: pointer;
+}
+.overflowingListElement {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 @media (min-width: min-large) {

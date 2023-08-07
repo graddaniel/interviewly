@@ -1,0 +1,59 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.languageButton {
+    width: 7vw;
+    height: 2.75vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vw 0.75vw;
+    border: 1px solid var(--BLACK);
+    border-radius: 2.75vw;
+    font-size: 0.75vw;
+    background-color: var(--WHITE);
+    cursor: pointer;
+}
+
+.purpleBorder {
+    border-color: var(--COLOR1);
+    background-color: var(--COLOR8);
+}
+
+.flagIcon {
+    width: 1vw;
+    height: 1vw;
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .languageButton {
+        width: 20vw;
+        height: 8vw;
+        padding: 2.5vw;
+        border-radius: 8vw;
+        font-size: 2vw;
+    }
+    
+    .flagIcon {
+        width: 3vw;
+        height: 3vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .languageButton {
+        width: 34vw;
+        height: 14vw;
+        padding: 4vw;
+        border-radius: 14vw;
+        font-size: 3vw;
+    }
+    
+    .flagIcon {
+        width: 5vw;
+        height: 5vw;
+    }
+}

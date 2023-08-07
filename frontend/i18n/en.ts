@@ -31,6 +31,10 @@ const en = {
             signUp: 'Join Interviewly',
             resign: 'Resign',
             logIn: 'Log in',
+            save: 'Save',
+            next: 'Next',
+            back: 'Back',
+            add: 'Add',
         },
         inputs: {
             email: 'E-mail',

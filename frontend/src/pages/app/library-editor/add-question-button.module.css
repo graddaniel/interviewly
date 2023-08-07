@@ -1,0 +1,51 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.addQuestionButton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5vw;
+    padding: 1vw 1.5vw;
+    border: 1px solid var(--COLOR2);
+    border-radius: 1vw;
+    font-size: 1.2vw;
+    background-color: var(--WHITE);
+    cursor: pointer;
+}
+
+.icon {
+    width: 0.8vw;
+    height: 0.8vw;
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .addQuestionButton {
+        gap: 1.5vw;
+        padding: 4vw;
+        border-radius: 3vw;
+        font-size: 3.5vw;
+    }
+    
+    .icon {
+        width: 2.5vw;
+        height: 2.5vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .addQuestionButton {
+        gap: 2.5vw;
+        padding: 6vw;
+        border-radius: 5vw;
+        font-size: 4vw;
+    }
+    
+    .icon {
+        width: 4vw;
+        height: 4vw;
+    }
+}
