@@ -7,6 +7,8 @@ const en = {
         generic: {
             loading: 'loading',
             created: 'created',
+            yes: 'yes',
+            no: 'no',
         },
         validation: {
             join: {
@@ -36,9 +38,28 @@ const en = {
             back: 'Back',
             add: 'Add',
         },
+        menu: {
+            home: 'Home',
+            projects: 'Projects',
+            myTeam: 'My Team',
+            calendar: 'Calendar',
+            library: 'Library',
+            createProject: 'Create Project',
+        },
+        dropdownMenu: {
+            openUserPanel: 'Open user panel',
+            personalData: 'Personal data',
+            companyData: 'Company data',
+            myTeam: 'My team',
+            logout: 'Logout',
+        },
         inputs: {
             email: 'E-mail',
             password: 'Password',
+        },
+        sorting: {
+            newest: 'newest',
+            oldest: 'oldest',
         },
         dialogs: {
             languageSelection: 'Select the language',
@@ -182,24 +203,68 @@ In accordance with the provisions of the Act of 18 July 2002 on the provision of
         methodologies: {
             interviews: {
                 title: 'Interviews',
-                text: 'I want to transfer data for statistical purposes.',
+                text: '1:1 conversation with the participant.',
             },
             focusGroups: {
                 title: 'Focus Groups',
-                text: 'I want to transfer data for statistical purposes.',
+                text: 'Group discussion with a moderator.',
             },
             onlineCommunities: {
                 title: 'Online Communities',
-                text: 'I want to transfer data for statistical purposes.',
+                text: 'Online community using Bulletin Board.',
             },
             uxInterviews: {
                 title: 'UX Interviews',
-                text: 'I want to transfer data for statistical purposes.',
+                text: 'Participant interview with screen sharing.',
             },
             productTests: {
                 title: 'Product tests',
-                text: 'I want to transfer data for statistical purposes.',
+                text: 'Testing products with potential customers.',
             },
+        },
+        accountStatuses: {
+            active: 'active',
+            unconfirmed: 'unconfirmed',
+            inactive: 'inactive',
+        },
+        genders: {
+            male: 'male',
+            female: 'female',
+        },
+        profileRoles: {
+            admin: 'admin',
+            moderator: 'moderator',
+            observer: 'observer',
+            interviewlyStaff: 'Interviewly staff',
+        },
+        projectStatuses: {
+            pending: 'pending',
+            canceled: 'canceled',
+            finished: 'finished',
+        },
+        surveyStatuses: {
+            pending: 'pending',
+            finished: 'finished',
+            seeResultsLabel: 'See results'
+        },
+        languages: {
+            bulgarian: 'bulgarian',
+            czech: 'czech',
+            dutch: 'dutch',
+            english: 'english',
+            french: 'french',
+            german: 'german',
+            greek: 'greek',
+            hungarian: 'hungarian',
+            italian: 'italian',
+            polish: 'polish',
+            portuguese: 'portuguese',
+            romanian: 'romanian',
+            russian: 'russian',
+            slovak: 'slovak',
+            spanish: 'spanish',
+            swedish: 'swedish',
+            ukrainian: 'ukrainian',
         },
         personalData: {
             title: 'Personal data',
@@ -223,6 +288,18 @@ In accordance with the provisions of the Act of 18 July 2002 on the provision of
             save: 'Save',
             success: 'Saved succesfully',
         },
+        myAccount: {
+            greeting: 'Hi',
+            latestTeamMembersLabel: 'Latest team members',
+            upcomingInterviewsLabel: 'Upcoming interviews',
+            projectsLabel: 'Projects', 
+        },
+        projects: {
+            title: 'Projects',
+            projectsCounterText: 'projects',
+            searchInputPlaceholder: 'Search by project name',
+            statusLabel: 'Status',
+        },
         viewProject: {
             title: 'Project details',
             edit: 'Edit',
@@ -241,13 +318,128 @@ It can be nerve-wracking, vulnerable, and challenging at times, but getting out 
 Over the years, I’ve come to learn that designing collaboratively means putting your egos aside to make something that transcends the sum of its creators.`,
             },
             methodology: {
-                createSurvey: 'Create Survey',
-                instruction: 'or choose a survey from the library',
-                save: 'Save',
-            }
+                interview: {
+                    createSurvey: 'Create Survey',
+                    instruction: 'or choose a survey from the library',
+                    save: 'Save',
+                },
+                onlineCommunity: {
+                    createBulletinBoardButtonText: 'Create Bulletin Board',
+                    membersLabel: 'members',
+                    createRoomButtonText: 'Create room',
+                    roomName: 'Room name',
+                    addMembersLabel: 'Add members',
+                    surveySubtitle: 'or choose survey from the library',
+                    room: {
+                        addTopicLabel: 'Add topic',
+                        visibilityLabel: 'Visibility',
+                        publicVisibility: 'Public',
+                        specificMembersVisibility: 'Specific members',
+                        topicInputPlaceholder: 'Topic',
+                        addCommentLabel: 'Add comment',
+                        noCommentsCabel: 'No comments',
+                        commentSingularLabel: 'comment',
+                        commentPluralLabel: 'comments',
+                    },
+                }
+            },
+            respondents: {
+                seeDetailsLabel: 'See details',
+                respondentVideoSubtitle: 'Respondent Video',
+                upcomingInterviewsSubtitle: 'Upcoming interviews',
+                respondentSurveysSubtitle: 'Respondent\'s surveys',
+            },
         },
         editProject: {
             title: 'New research creator',
+            aboutStepTitle: 'About project',
+            methodologyStepTitle: 'Research methodology',
+            respondentsStepTitle: 'Selection of respondents',
+            detailsStepTitle: 'Project details',
+            summaryStepTitle: 'Summary',
+            aboutStep: {
+                title: 'About project',
+                projectNameSubtitle: 'Please provide the project name',
+                projectNameInputPlaceholder: 'Project name',
+                descriptionInputPlaceholder: 'Description (optional)',
+                avatarSubtitle: 'Upload the Avatar',
+            },
+            methodologyStep: {
+                title: 'Research methodology',
+                methodologySubtitle: 'Choose the research methodology.',
+            },
+            respondentsStep: {
+                title: 'Selection of respondents',
+                respondentsSelectionSubtitle: 'Select respondents for this research',
+                respondentsSelectionInstructionPart1: `\
+If you're unsure how the respondents file should look like, download our sample file, where you will find all the necessary information.`,
+                respondentsSelectionInstructionPart2: 'or specify the desired respondents profile with the filters below',
+                genderLabel: 'Gender',
+                otherRequirementsInputPlaceholder: 'Other requirements',
+                languageTestSubtitle: 'Language test for the respondent',
+                screeningSurveySubtitle: 'Do you need a screening survey?',
+                screeningSurveyDescription: `\
+After paying for the survey, you will have an option to use a ready-made surveys library or two create your own.`,
+                recordingSubtitle: 'Do you need a preliminary respondent recruitment recording?',
+            },
+            detailsStep: {
+                title: 'Project details',
+                participantsCountInputLabel: 'Number of participants',
+                reserveParticipantsCountInputLabel: 'Number of reserve participants',
+                interviewDurationDropdownName: 'Interview duration',
+                startDateLabel: 'Start date',
+                endDateLabel: 'End date',
+                transcriptionSubtitle: 'Do you need transcription?',
+                moderatorSubtitle: 'Do you need a moderator?',
+                paymentSubtitle: 'Payment for the respondent',
+                paymentInstruction: `\
+Please enter gross amount. The currency should match the currency used for the invoice payment.`,
+            },
+            summaryStep: {
+                title: 'Summary',
+            },
+            nameStepTitle: 'Name the survey',
+            questionStepTitle: 'Add questions',
+            nameInputLabel: 'Please provide the',
+            nameInputPlaceholder: 'survey title',
+            availableLanguagesDropdownName: 'Available Languages',
+            addLanguageButtonText: 'Add language',
+            addLabel: 'Add',
+            openQuestionName: 'open question',
+            closedQuestionName: 'closed question',
+            multipleChoiceQuestionName: 'multiple-choice question',
+            singleChoiceQuestionName: 'single-choice question',
+            newQuestionText: 'New question',
+            addAnswerButtonText: 'Add answer',
+            newAnswerText: 'New answer',
+            correctAnswerLabel: 'Correct answer',
+            correctAnswerDropdownName: 'Correct answer',
+        },
+        myTeam: {
+            title: 'My team',
+            membersLabel: 'members',
+            inviteTeamMemberButton: 'Invite team member',
+            administratorsLabel: 'Administrators',
+            moderatorsLabel: 'Moderators',
+            observersLabel: 'Observers',
+            popup: {
+                addLabel: 'Add',
+                editLabel: 'Edit',
+                memberText: 'member',
+                nameInputPlaceholder: 'Name',
+                surnameInputPlaceholder: 'Surname',
+                emailInputPlaceholder: 'E-mail',
+                roleDropdownName: 'Role',
+                statusDropdownName: 'Status',
+                genderDropdownName: 'Gender',
+                saveButtonText: 'Save'
+            }
+        },
+        library: {
+            title: 'Library',
+            mySurveys: 'My surveys',
+            publicSurveys: 'Public surveys',
+            addNewTemplate: 'Add new template',
         },
         passwordReset: {
             request: {

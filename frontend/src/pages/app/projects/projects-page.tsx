@@ -9,6 +9,7 @@ import useErrorHandler from '../../../hooks/use-error-handler';
 
 import classes from './projects-page.module.css';
 import MetricsIconBlack from 'images/metrics-icon-black.svg';
+import { useTranslation } from 'react-i18next';
 
 
 
@@ -16,6 +17,7 @@ const STATUSES = ['pending', 'canceled', 'finished'];
 
 const ProjectsPage = () => {
     const projects = useLoaderData() as any[] || [];
+    const { t } = useTranslation();
     useErrorHandler(useRouteError());
 
     const [ status, setStatus ] = useState<any>();
@@ -25,17 +27,19 @@ const ProjectsPage = () => {
             <div className={classes.header}>
                 <div className={classes.labels}>
                     <img className={classes.headerIcon} src={MetricsIconBlack}/>
-                    <h4 className={classes.title}>Projects</h4>
-                    <span className={classes.projectsCountLabel}>{projects.length} projects</span>
+                    <h4 className={classes.title}>{t('projects.title')}</h4>
+                    <span className={classes.projectsCountLabel}>{projects.length} {t('projects.projectsCounterText')}</span>
                 </div>
                 <div className={classes.search}>
-                    <SearchInput />
+                    <SearchInput
+                        text={t('projects.searchInputPlaceholder')}
+                    />
                     <DropdownList
-                        name="Status"
+                        name={t('projects.statusLabel')}
                         elementsList={STATUSES.map(status => (
                             <Pill
                                 className={classes[status]}
-                                text={status}
+                                text={t(`projectStatuses.${status}`)}
                             />
                         ))}
                         onChange={(i: number) => setStatus(STATUSES[i])}

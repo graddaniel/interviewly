@@ -11,6 +11,7 @@ import { AccountTypes } from 'shared';
 import TeamMemberTile from '../../../components/team-member-tile/team-member-tile';
 import useAuth from '../../../hooks/useAuth';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 
 const user = {
@@ -62,12 +63,13 @@ const projects = [{
 
 const MyAccountPage = () => {
     const auth = useAuth();
+    const { t } = useTranslation();
 
     const latestTeamMembersSection = (
         <div className={classes.latestTeamMembers}>
             <div className={classes.header}>
                 <img className={classes.headerIcon} src={PeopleIconBlack} />
-                Latest team members
+                {t('myAccount.latestTeamMembersLabel')}
             </div>
             <div className={classes.latestTeamMembersTiles}>
                 {teamMembers.map(member => (
@@ -86,7 +88,7 @@ const MyAccountPage = () => {
         <div className={classes.upcomingInterview}>
             <div className={classes.header}>
                 <img className={classes.headerIcon} src={CalendarIconBlack} />
-                Upcoming interviews
+                {t('myAccount.upcomingInterviewsLabel')}
             </div>
             <InterviewTile
                 duration={upcomingInterview.duration}
@@ -99,7 +101,7 @@ const MyAccountPage = () => {
         <div className={classes.projects}>
             <div className={classes.header}>
                 <img className={classes.headerIcon} src={MetricsIconBlack} />
-                Projects
+                {t('myAccount.projectsLabel')}
             </div>
             <div className={classes.projectsContent}>
                 {projects.map(project => (
@@ -118,7 +120,7 @@ const MyAccountPage = () => {
             auth.type === AccountTypes.Type.RESPONDENT && classes.myRespondentAccount,
         )}>
             <h4 className={classes.welcomeMessage}>
-                Hi, {user.name}!
+                {t('myAccount.greeting')} {user.name}!
             </h4>
             <div className={classes.details}>
                 <span className={classes.userText}>

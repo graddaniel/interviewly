@@ -23,7 +23,7 @@ const BulletinBoardTile = ({
     membersCount,
     onClick,
 }: BulletinBoardTileProps) => {
-    const { i18n } = useTranslation();
+    const { i18n, t } = useTranslation();
     const { resolvedLanguage } = i18n;
 
     const start = moment(startDate).locale(resolvedLanguage as string);
@@ -34,7 +34,7 @@ const BulletinBoardTile = ({
             <span className={classes.title}>Bulletin Board</span>
             <Pill
                 className={classes.pill}
-                text={`${membersCount} members`}
+                text={`${membersCount} ${t('viewProject.methodology.onlineCommunity.membersLabel')}`}
             />
             <div className={classes.date}>
                 <span className={classes.datePart}>{start.format('D MMMM')}</span>

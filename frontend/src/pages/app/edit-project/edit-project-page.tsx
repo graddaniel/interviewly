@@ -16,24 +16,26 @@ import SummaryStep from './summary-step';
 import classes from './edit-project-page.module.css';
 import InterviewlyLogo from 'images/logo.svg';
 
-const Steps = ResearchTypes.EditSteps;
-const StepsArray = [
-    { title: 'About project' },
-    { title: 'Research methodology' },
-    { title: 'Selection of respondents' },
-    { title: 'Project details' },
-    { title: 'Summary' },
-];
 
 const EditProjectPage = () => {
-    const [ step, setStep ] = useState(3);
     const { t } = useTranslation();
+
+    const Steps = ResearchTypes.EditSteps;
+    const StepsArray = [
+        { title: t('editProject.aboutStep.title') },
+        { title: t('editProject.methodologyStep.title') },
+        { title: t('editProject.respondentsStep.title') },
+        { title: t('editProject.detailsStep.title') },
+        { title: t('editProject.summaryStep.title') },
+    ];
+
+    const [ step, setStep ] = useState(3);
     const formRef = useRef(null);
     const navigate = useNavigate();
     const submit = useSubmit();
     const actionData = useActionData() as { [k: string]: any };
     const project = useLoaderData() as { [k: string]: any };;
-    console.log(project);
+
     const goToProjects = useCallback(() => navigate(APP_ROUTES.PROJECTS.PATH), []);
 
     useEffect(() => {

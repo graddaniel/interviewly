@@ -11,6 +11,7 @@ import ArrowRightIconPurple from 'images/arrow-right-icon-purple.svg';
 import { generatePath, useNavigate, useParams } from 'react-router-dom';
 import { APP_ROUTES } from '../../consts/routes';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 
 type RespondentTileProps = {
@@ -36,6 +37,8 @@ const RespondentTile = ({
     avatarUrl,
     onClick,
 }: RespondentTileProps) => {
+    const { t } = useTranslation();
+
     const navigate = useNavigate();
     const { projectId } = useParams();
 
@@ -59,7 +62,7 @@ const RespondentTile = ({
             <span className={classes.email}>{email}</span>
             <TextButton
                 className={classes.detailsTextButton}
-                text="See details"
+                text={t('viewProject.respondents.seeDetailsLabel')}
                 onClick={goToProjectRespondentPage}
             />
             <IconButton

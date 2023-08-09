@@ -13,6 +13,7 @@ import EarthIconPurple from 'images/earth-icon-purple.svg';
 import PencilIconBlack from 'images/pencil-icon-black.svg';
 import SwitchInput from '../edit-project/switch-input';
 import TextButton from '../../../components/text-button/text-button';
+import { useTranslation } from 'react-i18next';
 
 
 type User = {
@@ -33,6 +34,7 @@ const AddTopicPopup = ({
     users,
     onClose,
 }: AddTopicPopupProps) => {
+    const { t } = useTranslation();
     const [ showInitialStep, setShowInitialStep ] = useState(true);
     const [ isVisibilityPublic, setIsVisibilityPublic ] = useState(true);
     const [ topicMembers, setTopicMembers ] = useState<string[]>([]);
@@ -62,7 +64,9 @@ const AddTopicPopup = ({
                             icon={CrossIcon}
                             onClick={onClose}
                         />
-                        <h4 className={classes.title}>Add topic</h4>
+                        <h4 className={classes.title}>
+                            {t('viewProject.methodology.onlineCommunity.room.addTopicLabel')}
+                        </h4>
                         <div className={classes.author}>
                             <Avatar url={author.avatarUrl} className={classes.avatar}/>
                             <span className={classes.name}>
@@ -70,7 +74,11 @@ const AddTopicPopup = ({
                             </span>
                         </div>
                         <div className={classes.visibilityControls}>
-                            Visibility: {isVisibilityPublic ? "Public" : "Specific members"}
+                            {t('viewProject.methodology.onlineCommunity.room.visibilityLabel')}: {
+                            isVisibilityPublic
+                                ? t('viewProject.methodology.onlineCommunity.room.publicVisibility')
+                                : t('viewProject.methodology.onlineCommunity.room.specificMembersVisibility')
+                            }
                             <IconButton
                                 className={classes.visibilityIcon}
                                 icon={EarthIconPurple}
@@ -94,7 +102,7 @@ const AddTopicPopup = ({
                             value={topic}
                             onChange={e => setTopic(e.target.value)}
                             rows={3}
-                            placeholder="Topic"
+                            placeholder={t('viewProject.methodology.onlineCommunity.room.topicInputPlaceholder')}
                         ></textarea>
                         <input
                             className={classes.fileUpload}
@@ -104,7 +112,7 @@ const AddTopicPopup = ({
                         />
                         <SubmitButton
                             className={classes.submitButton}
-                            text={"Add topic"}
+                            text={t('viewProject.methodology.onlineCommunity.room.addTopicLabel')}
                         />
                     </div>
                 ) : (
@@ -114,13 +122,15 @@ const AddTopicPopup = ({
                             onClick={() => setShowInitialStep(true)}
                             icon={ArrowLeftIconPurple}
                         />
-                        <h4 className={classes.title}>Visibility</h4>
+                        <h4 className={classes.title}>
+                            {t('viewProject.methodology.onlineCommunity.room.visibilityLabel')}
+                        </h4>
                         <SwitchInput
                             className={classes.visibilitySwitch}
                             name="publicVisibility"
                             defaultValue={pickingMembers}
-                            leftLabel="Public"
-                            rightLabel="Specific members"
+                            leftLabel={t('viewProject.methodology.onlineCommunity.room.publicVisibility')}
+                            rightLabel={t('viewProject.methodology.onlineCommunity.room.specificMembersVisibility')}
                             onChange={(value) => setPickingMembers(value)}
                         />
                         <div className={classes.users}>
@@ -137,7 +147,7 @@ const AddTopicPopup = ({
                         </div>
                         <TextButton
                             className={classes.addButton}
-                            text="Save"
+                            text={t('buttons.save')}
                             onClick={() => {
                                 setIsVisibilityPublic(pickingMembers);
                                 setShowInitialStep(true);

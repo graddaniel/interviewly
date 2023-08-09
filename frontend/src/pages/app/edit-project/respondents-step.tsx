@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import StepTitle from './step-title';
 import SwitchInput from './switch-input';
@@ -9,36 +10,40 @@ import IDIconBlack from 'images/id-icon-black.svg';
 import LanguagesIconBlack from 'images/languages-icon-black.svg';
 import PlayIconBlack from 'images/play-icon-black.svg';
 import BlankSurveyIconBlack from 'images/blank-survey-icon-black.svg'
+import capitalizeFirstLetter from '../../../utils/capitalize-first-letter';
 
 
 const RespondentsStep = ({
     project,
 }) => {
+    const { t } = useTranslation();
+
     return (
         <section className={classes.respondentsStep}>
             <StepTitle
                 icon={IDIconBlack}
-                title="Select respondents for this research"
+                title={t('editProject.respondentsStep.respondentsSelectionSubtitle')}
             />
             <div className={classes.text}>
-                <span>If you're unsure how the respondents file should look like,</span>
-                <span>download our sample file where you will find all the necessary information.</span>
+                <span>{t('editProject.respondentsStep.respondentsSelectionInstructionPart1')}</span>
             </div>
             <input type="file" id="respondentsFile" name="respondentsFile" />
             <div className={classes.text}>
-                <span>or specify the desired respondents profile with the filters below</span>
+                <span>{t('editProject.respondentsStep.respondentsSelectionInstructionPart2')}</span>
             </div>
             <div className={classes.filters}>
                 <div className={classes.genderFilters}>
-                    <span className={classes.genderTitle}>Gender</span>
+                    <span className={classes.genderTitle}>
+                        {t('editProject.respondentsStep.genderLabel')}
+                    </span>
                     <SwitchInput
                         className={classes.maleSwitch}
-                        rightLabel="Male"
+                        rightLabel={capitalizeFirstLetter(t('genders.male'))}
                         name="male"
                     />
                     <SwitchInput
                         className={classes.femaleSwitch}
-                        rightLabel="Female"
+                        rightLabel={capitalizeFirstLetter(t('genders.female'))}
                         name="female"
                     />
                 </div>
@@ -88,38 +93,36 @@ const RespondentsStep = ({
                         name="40-46"
                     />
                 </div>
-                <TitledDivider title="Other requirements" />
+                <TitledDivider title={t('editProject.respondentsStep.otherRequirementsInputPlaceholder')} />
                 <StepTitle
                     icon={LanguagesIconBlack}
-                    title="Language test for the respondent"
+                    title={t('editProject.respondentsStep.languageTestSubtitle')}
                 />
                 <SwitchInput
-                    leftLabel="No"
+                    leftLabel={capitalizeFirstLetter(t('generic.no'))}
                     name="languagesTest"
-                    rightLabel="Yes"
+                    rightLabel={capitalizeFirstLetter(t('generic.yes'))}
                 />
                 <StepTitle
                     icon={BlankSurveyIconBlack}
-                    title="Do you need a screening survey"
+                    title={t('editProject.respondentsStep.screeningSurveySubtitle')}
                 />
                 <SwitchInput
-                    leftLabel="No"
+                    leftLabel={capitalizeFirstLetter(t('generic.no'))}
                     name="screening"
-                    rightLabel="Yes"
+                    rightLabel={capitalizeFirstLetter(t('generic.yes'))}
                 />
                 <div className={classes.text}>
-                    <span>After paying for the survey, you will have an option</span>
-                    <br/>
-                    <span>to use a ready-made surveys library or two create your own.</span>
+                    <span>{t('editProject.respondentsStep.screeningSurveyDescription')}</span>
                 </div>
                 <StepTitle
                     icon={PlayIconBlack}
-                    title="Do you need a preliminary respondent recruitment recording?"
+                    title={t('editProject.respondentsStep.recordingSubtitle')}
                 />
                 <SwitchInput
-                    leftLabel="No"
+                    leftLabel={capitalizeFirstLetter(t('generic.no'))}
                     name="recording"
-                    rightLabel="Yes"
+                    rightLabel={capitalizeFirstLetter(t('generic.yes'))}
                 />
             </div>
         </section>

@@ -1,18 +1,20 @@
 import React from 'react';
 
 import classes from './library-editor-language-button.module.css';
-import languageToFlagIcon from '../../../utils/language-to-flag-icon';
+import languageCodeToFlagIcon from '../../../utils/language-code-to-flag-icon';
 import classNames from 'classnames';
 
 
 type LibraryEditorLanguageButtonProps = {
     language: string;
+    code: string;
     selected: boolean;
     onClick: () => void;
 };
 
 const LibraryEditorLanguageButton = ({
     language,
+    code,
     selected,
     onClick,
 }: LibraryEditorLanguageButtonProps) => {
@@ -27,7 +29,7 @@ const LibraryEditorLanguageButton = ({
                 selected && classes.purpleBorder
             )}
         >
-            {language} <img className={classes.flagIcon} src={languageToFlagIcon(language)}/>
+            {language} <img className={classes.flagIcon} src={languageCodeToFlagIcon(code)}/>
         </button>
     );
 };

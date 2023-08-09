@@ -13,6 +13,7 @@ import classes from './project-respondent-page.module.css';
 import ArrowLeftIconPurple from 'images/arrow-left-icon-purple.svg';
 import CalendarIconBlack from 'images/calendar-icon-black.svg';
 import MetricsIconBlack from 'images/metrics-icon-black.svg';
+import { useTranslation } from 'react-i18next';
 
 
 type Respondent = {
@@ -32,22 +33,23 @@ const upcomingInterview = {
 
 const surveys = [{
     name: 'Interviewly survey 1',
-    status: 'Pending'
+    status: 'pending'
 }, {
     name: 'Interviewly survey 2',
-    status: 'Pending'
+    status: 'pending'
 }, {
     name: 'Interviewly survey 3',
-    status: 'Finished'
+    status: 'finished'
 }, {
     name: 'Interviewly survey 4',
-    status: 'Finished'
+    status: 'finished'
 }, {
     name: 'Interviewly survey 5',
-    status: 'Finished'
+    status: 'finished'
 }];
 
 const ProjectRespondentPage = () => {
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const respondent = useLoaderData() as Respondent;
 
@@ -86,7 +88,7 @@ const ProjectRespondentPage = () => {
                 <div className={classes.upcomingInterview}>
                     <div className={classes.sectionHeaderTitle}>
                         <img className={classes.sectionHeaderIcon} src={CalendarIconBlack} />
-                        Upcoming interviews
+                        {t('viewProject.respondents.upcomingInterviewsSubtitle')}
                     </div>
                     <InterviewTile
                         duration={upcomingInterview.duration}
@@ -95,7 +97,7 @@ const ProjectRespondentPage = () => {
                 </div>
                 <span className={classes.sectionHeaderTitle}>
                     <img className={classes.sectionHeaderIcon} src={MetricsIconBlack} />
-                    Respondent's surveys
+                    {t('viewProject.respondents.respondentSurveysSubtitle')}
                 </span>
                 <div className={classes.surveysList}>
                     {surveys.map(survey => (

@@ -28,6 +28,8 @@ const InterviewSection = ({
     const navigate = useNavigate();
     const { t } = useTranslation();
 
+    console.log(t('viewProject.methodology', { returnObjects: true } ), t('viewProject.methodology.interview.createSurvey'))
+
     return (
         <div className={classes.content}>
             <MethodologyTile
@@ -38,10 +40,10 @@ const InterviewSection = ({
             />
             <TextButton
                 className={classes.createSurveyButton}
-                text={t('viewProject.methodology.createSurvey')}
+                text={t('viewProject.methodology.interview.createSurvey')}
                 onClick={() => navigate(APP_FORMS_ROUTES.LIBRARY_EDITOR.PATH)}
             />
-            <h6 className={classes.instruction}>{t('viewProject.methodology.instruction')}</h6>
+            <h6 className={classes.instruction}>{t('viewProject.methodology.interview.instruction')}</h6>
             <div className={classes.tiles}>
                 {TILES.map(tileName => (
                     <SurveyTile
@@ -53,7 +55,7 @@ const InterviewSection = ({
             </div>
             <TextButton
                 className={classes.saveSurveySelectionButton}
-                text={t('viewProject.methodology.save')}
+                text={t('viewProject.methodology.interview.save')}
                 onClick={() => console.log("Save survey selection")}
             />
         </div>

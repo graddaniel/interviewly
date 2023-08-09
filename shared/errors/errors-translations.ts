@@ -87,7 +87,7 @@ const ErrorsTranslations = {
     },
     pl: {
         translation: {
-            [ErrorCodes.Unknown]: 'Unknown error',
+            [ErrorCodes.Unknown]: 'Nieznany błąd',
             // Unauthorized
             [ErrorCodes.JWTVerificationFailed]: 'Weryfikacja JWT się nie powiodła',
             [ErrorCodes.MissingCredentials]: 'Brak danych do logowania',

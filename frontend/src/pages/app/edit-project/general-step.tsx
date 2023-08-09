@@ -7,11 +7,13 @@ import ParagraphIconBlack from 'images/paragraph-icon-black.svg';
 import PictureIconBlack from 'images/picture-icon-black.svg';
 import StepTitle from './step-title';
 import { useActionData } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 
 const GeneralStep = ({
     project,
 }) => {
+    const { t } = useTranslation();
     const actionData = useActionData() as any;
 
     const errors = actionData?.errors || {};
@@ -20,7 +22,7 @@ const GeneralStep = ({
         <section className={classes.step}>
             <section className={classes.section}>
                 <StepTitle
-                    title="Please provide the project name"
+                    title={t('editProject.aboutStep.projectNameSubtitle')}
                     icon={ParagraphIconBlack}
                 />
                 <TextInput
@@ -34,7 +36,7 @@ const GeneralStep = ({
                         },
                     }}
                     name="title"
-                    placeholder="Project name"
+                    placeholder={t('editProject.aboutStep.projectNameInputPlaceholder')}
                     error={errors.title}
                     defaultValue={project.title}
                 />
@@ -45,7 +47,7 @@ const GeneralStep = ({
                         },
                     }}
                     name="description"
-                    placeholder="Description (optional)"
+                    placeholder={t('editProject.aboutStep.descriptionInputPlaceholder')}
                     multiline={true}
                     error={errors.description}
                     defaultValue={project.description}
@@ -53,7 +55,7 @@ const GeneralStep = ({
             </section>
             <section className={classes.section}>
                 <StepTitle
-                    title="Upload the Avatar"
+                    title={t('editProject.aboutStep.avatarSubtitle')}
                     icon={PictureIconBlack}
                 />
                 <input type="file" name="avatarFile" id="avatarFile" />

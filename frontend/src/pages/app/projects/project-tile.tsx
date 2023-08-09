@@ -10,6 +10,7 @@ import capitalizeFirstLetter from '../../../utils/capitalize-first-letter';
 import classes from './project-tile.module.css'
 import PaperSheetsIconBlack from 'images/paper-sheets-icon-black.svg';
 import MetricsIconBlack from 'images/metrics-icon-black.svg';
+import { useTranslation } from 'react-i18next';
 
 
 const ProjectTile = ({
@@ -22,6 +23,7 @@ const ProjectTile = ({
     uuid,
 }) => {
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     const formattedStartDate = moment(startDate).format('l');
     const formattedEndDate = moment(endDate).format('l');
@@ -51,7 +53,7 @@ const ProjectTile = ({
                 <span>{formattedEndDate}</span>
             </div>
             <div className={classNames(classes.status, classes[status])}>
-                {capitalizeFirstLetter(status)}
+                {capitalizeFirstLetter(t(`projectStatuses.${status}`))}
             </div>
         </section>
     );

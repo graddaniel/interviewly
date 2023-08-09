@@ -6,6 +6,7 @@ import MagnifyingGLassIconBlack from 'images/magnifying-glass-icon-black.svg';
 
 const SearchInput = ({
     //onSearch
+    text,
 }) => {
     const [ value, setValue ] = useState('');
 
@@ -17,7 +18,7 @@ const SearchInput = ({
                 type="text"
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
-                placeholder="Search by project name"
+                placeholder={text}
             />
         </div>
     );

@@ -9,31 +9,74 @@ import DropdownList from '../../../components/dropdown-list/dropdown-list';
 import LibraryEditorStepper from './library-editor-stepper';
 import LibraryEditorLanguageButton from './library-editor-language-button';
 import AddQuestionButton from './add-question-button';
-import languageToFlagIcon from '../../../utils/language-to-flag-icon';
+import languageCodeToFlagIcon from '../../../utils/language-code-to-flag-icon';
 
 import classes from './library-editor-page.module.css';
 import InterviewlyLogo from 'images/logo.svg';
 import PlusIconBlack from 'images/plus-icon-black.svg';
 import ParagraphIconBlack from 'images/paragraph-icon-black.svg';
 import PlusIconPurple from 'images/plus-icon-purple.svg';
-
-
-const LANGUAGES = [{
-    name: 'English',
-    code: 'en',
-}, {
-    name: 'Polish',
-    code: 'pl',
-}, {
-    name: 'French',
-    code: 'fr',
-}];
-const DEFAULT_LANGUAGE = LANGUAGES[0];
-const INTITIAL_AVAILABLE_LANGUAGES = LANGUAGES.filter(l => l.code !== DEFAULT_LANGUAGE.code);
+import capitalizeFirstLetter from '../../../utils/capitalize-first-letter';
 
 
 const LibraryEditorPage = () => {
     const { t } = useTranslation();
+
+    const LANGUAGES = [{
+        name: capitalizeFirstLetter(t('languages.bulgarian')),
+        code: 'bg',
+    }, {
+        name: capitalizeFirstLetter(t('languages.czech')),
+        code: 'cz',
+    }, {
+        name: capitalizeFirstLetter(t('languages.dutch')),
+        code: 'nl',
+    }, {
+        name: capitalizeFirstLetter(t('languages.english')),
+        code: 'en',
+    }, {
+        name: capitalizeFirstLetter(t('languages.french')),
+        code: 'fr',
+    }, {
+        name: capitalizeFirstLetter(t('languages.german')),
+        code: 'de',
+    }, {
+        name: capitalizeFirstLetter(t('languages.greek')),
+        code: 'gr',
+    }, {
+        name: capitalizeFirstLetter(t('languages.hungarian')),
+        code: 'hu',
+    }, {
+        name: capitalizeFirstLetter(t('languages.italian')),
+        code: 'it',
+    }, {
+        name: capitalizeFirstLetter(t('languages.polish')),
+        code: 'pl',
+    }, {
+        name: capitalizeFirstLetter(t('languages.portuguese')),
+        code: 'pt',
+    }, {
+        name: capitalizeFirstLetter(t('languages.romanian')),
+        code: 'ro',
+    }, {
+        name: capitalizeFirstLetter(t('languages.russian')),
+        code: 'ru',
+    }, {
+        name: capitalizeFirstLetter(t('languages.slovak')),
+        code: 'sk',
+    }, {
+        name: capitalizeFirstLetter(t('languages.spanish')),
+        code: 'es',
+    }, {
+        name: capitalizeFirstLetter(t('languages.swedish')),
+        code: 'se',
+    }, {
+        name: capitalizeFirstLetter(t('languages.ukrainian')),
+        code: 'ua',
+    }];
+    
+    const DEFAULT_LANGUAGE = LANGUAGES[3];
+    const INTITIAL_AVAILABLE_LANGUAGES = LANGUAGES.filter(l => l.code !== DEFAULT_LANGUAGE.code);
     const navigate = useNavigate();
     const submit = useSubmit();
     const formRef = useRef(null);
@@ -87,7 +130,7 @@ const LibraryEditorPage = () => {
 
         const text = Object.values(selectedLanguages).reduce((acc, cur) => ({
             ...acc,
-            [cur.code]: `New question (${cur.code})`,
+            [cur.code]: t('editProject.newQuestionText'),
         }), {});
 
         const newQuestion: any = {
@@ -123,13 +166,13 @@ const LibraryEditorPage = () => {
     const questionTypeToName = (type: string) => {
         switch (type) {
             case 'T':
-                return 'open question'
+                return t('editProject.openQuestionName')
             case 'Y':
-                return 'Closed question'; 
+                return t('editProject.closedQuestionName'); 
             case 'M':
-                return 'Multiple-choice question';
+                return t('editProject.multipleChoiceQuestionName');
             case '!':
-                return 'Single-choice question';
+                return t('editProject.singleChoiceQuestionName');
             default:
                 console.error('Unknown question type');
                 return null;
@@ -142,7 +185,7 @@ const LibraryEditorPage = () => {
 
         const newAnswer = Object.values(selectedLanguages).reduce((acc, cur) => ({
             ...acc,
-            [cur.code]: `New answer (${cur.code})`,
+            [cur.code]: t('editProject.newAnswerText'),
         }), {});
 
         question.answers.push(newAnswer);
@@ -197,9 +240,9 @@ const LibraryEditorPage = () => {
             <LibraryEditorStepper
                 className={classes.stepper}
                 steps={[{
-                    title: 'Name the survey'
+                    title: t('editProject.nameStepTitle'),
                 }, {
-                    title: 'Add questions'
+                    title: t('editProject.questionStepTitle'),
                 }]}
                 currentStep={showTitleStep ? 0 : 1}
             />
@@ -207,14 +250,14 @@ const LibraryEditorPage = () => {
                 <div className={classes.titleStepTitleWrapper}>
                     <img className={classes.titleStepTitleIcon} src={ParagraphIconBlack}/>
                     <h6 className={classes.titleStepTitle}>
-                        Please provide the
+                        {t('editProject.nameInputLabel')}
                     </h6>
                 </div>
                 <input
                     className={classes.titleStepInput}
                     type="text"
                     name="surveyTitle"
-                    placeholder="survey title"
+                    placeholder={t('editProject.nameInputPlaceholder')}
                     value={surveyTitle}
                     onChange={e => setSurveyTitle(e.target.value)}
                 />
@@ -230,6 +273,7 @@ const LibraryEditorPage = () => {
                         {selectedLanguages.map((language, i) => (
                             <LibraryEditorLanguageButton
                                 key={language.code}
+                                code={language.code}
                                 language={language.name}
                                 onClick={() => handleLanguageChange(i)}
                                 selected={currentSelectedLanguageIndex === i}
@@ -239,12 +283,12 @@ const LibraryEditorPage = () => {
                     <DropdownList
                         className={classes.availableLanguagesDropdown}
                         listClassName={classes.dropdownList}
-                        name="Available Languages"
+                        name={t('editProject.availableLanguagesDropdownName')}
                         elementsList={availableLanguages.map(l => (
                             <div className={classes.languageDropdownElement} key={l.name}>
                                 <img
                                     className={classes.flagIcon}
-                                    src={languageToFlagIcon(l.name)}
+                                    src={languageCodeToFlagIcon(l.code)}
                                 /> {l.name}
                             </div>
                         ))}
@@ -253,7 +297,7 @@ const LibraryEditorPage = () => {
                     />
                     <span className={classes.addLanguage} onClick={addLanguage}>
                         <img src={PlusIconBlack} className={classes.addLanguageIcon}/>
-                        Add language
+                        {t('editProject.addLanguageButtonText')}
                     </span>
                     <input
                         type="hidden"
@@ -265,7 +309,7 @@ const LibraryEditorPage = () => {
                     {['T', 'Y', 'M', '!'].map(questionType => (
                         <AddQuestionButton
                             key={questionType}
-                            text={`Add ${questionTypeToName(questionType)?.toLowerCase()}`}
+                            text={`${t('editProject.addLabel')} ${questionTypeToName(questionType)?.toLowerCase()}`}
                             onClick={() => addNewQuestion(questionType)}
                         />
                     ))}
@@ -312,16 +356,16 @@ const LibraryEditorPage = () => {
                                             className={classes.addAnswerIcon}
                                             src={PlusIconPurple}
                                         />
-                                        Add answer
+                                        {t('editProject.addAnswerButtonText')}
                                     </li>
                                 )}
                             </ul>
                             {['Y', 'M', '!'].includes(q.type) && (
                                 <div className={classes.correctAnswerWrapper}>
-                                    Correct answer:
+                                    {t('editProject.correctAnswerLabel')}:
                                     <DropdownList
                                         className={classes.correctAnswerDropdown}
-                                        name="correctAnswer"
+                                        name={t('editProject.correctAnswerDropdownName')}
                                         elementsList={q.answers.map(
                                             a => a[currentLanguageCode]
                                         )}

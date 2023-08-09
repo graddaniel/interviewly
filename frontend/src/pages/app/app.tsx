@@ -22,7 +22,7 @@ const USER = {
 
 const App = () => {
     const [ isMenuOpen, setIsMenuOpen ] = useState(false);
-    const { i18n } = useTranslation();
+    const { i18n, t } = useTranslation();
     const location = useLocation();
     const { resolvedLanguage } = i18n;
     const formRef = useRef(null);
@@ -89,7 +89,7 @@ const App = () => {
                         <Form method="post" ref={formRef}>
                             <TextButton
                                 className={classes.createProjectButton}
-                                text={'Create Project'}
+                                text={t('menu.createProject')}
                                 onClick={() => submit(formRef.current)}
                             />
                         </Form>

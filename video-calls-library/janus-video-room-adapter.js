@@ -36,6 +36,36 @@ var sfutest = null;
 var feeds = {}, feedStreams = {}, subStreams = {}, slots = {}, mids = {}, subscriptions = {};
 var localTracks = {}, localVideos = 0, remoteTracks = {};
 
+const DEFAULT_CALLBACKS = {
+    janusStarting: () => {}, // disable start button
+    muteStateChanged: (muted) => {}, //handle mute state change
+    unpublishingOwnFeed: () => {}, //disable unpublish button
+    publishingOwnFeed: () => {}, //disable publish button
+    createOfferFailed: () => {}, //we could try to publish again
+    getUsername: () => '', // get the username from the parent
+    videoStreamRejected: () => {}, //display info that there's no video stream
+    videoPluginAttachSuccess: () => {}, //unblock user registration and janus stop
+    peerConnectionStateChanged: (on) => {}, //remove publish button and unblock ui
+    localVideoControlsCanBeEnabled: () => {}, //show or enable mute and publish buttons
+    localStreamUnpublished: () => {}, //show publish button
+    unpublished: (slot) => {}, //remove video of slot
+    joinedAsSubscriber: () => {}, //hide join controls, show videos
+    newStream: (slot, streamName) => {}, //handle new stream
+    publishingStream: () => {}, //display info that publishing is in progress
+    localVideoTrackRemoved: (trackId) => {}, //remove video track
+    noMoreLocalVideoTracks: () => {}, //show info that there are no video tracks
+    localVideoTrackAdded: (trackId) => {}, //add video element; not needed
+    getLocalVideoElement: (trackId) => null, //get element where the local video will be displayed
+    remoteStreamUnpublished: (slot) => {}, //remove whole the container dedicated to remote slot
+    remoteVideoTrackRemoved: (slot, mid) => {}, //remove video element of a certain track
+    noMoreRemoteVideoTracks: (slot) => {}, //display message about no more remote video tracks
+    remoteAudioTrackAdded: (slot, mid, callback) => {}, // get element where the remote audio will be played
+    // remoteVideosRef.current = [...remoteVideosRef.current, `${slot}-${mid}`]
+    remoteVideoTrackAdded: (slot, mid, callback) => {}, //get element where the remote video will be played
+    getRemoteAudioElement: (slot, mid) => null, //get one particular audio element
+    getRemoteVideoElement: (slot, mid) => null, //get one particular video element
+};
+
 class JanusConfig {
     constructor(janusVideoRoomAdapter) {
         this.server = janusVideoRoomAdapter.serverConfig.host;
@@ -82,7 +112,24 @@ export class JanusVideoRoomAdapter {
 
         this.use_msid = use_msid;
 
-        this.callbacks = callbacks;
+        this.callbacks = {
+            ...DEFAULT_CALLBACKS,
+            ...callbacks,
+        };
+    }
+
+    temp_getLocalVars = () => {
+        return {
+            feeds,
+            feedStreams,
+            subStreams,
+            slots,
+            mids,
+            subscriptions,
+            localTracks,
+            localVideos,
+            remoteTracks,
+        };
     }
 
     init = () => {
@@ -189,9 +236,14 @@ export class JanusVideoRoomAdapter {
             this.callbacks.videoPluginAttachSuccess();
         },
         error: (error) => Janus.error("  -- Error attaching plugin...", error),
+        iceState: (state) => Janus.log("ICE state changed to " + state),
         webrtcState: (on) => {
             Janus.log("Janus says our WebRTC PeerConnection is " + (on ? "up" : "down") + " now");
             this.callbacks.peerConnectionStateChanged(on);
+        },
+        slowLink: (uplink, lost, mid) => {
+            Janus.warn("Janus reports problems " + (uplink ? "sending" : "receiving") +
+            " packets on mid " + mid + " (" + lost + " lost packets)");
         },
         onmessage: (msg, jsep) => {
             Janus.debug(" ::: Got a message (publisher) :::", msg);

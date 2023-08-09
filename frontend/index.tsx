@@ -54,6 +54,7 @@ import PersonalDataPage from './src/pages/app/personal-data/personal-data-page';
 import CompanyDataLoader from './src/loaders/app/company-data-loader';
 import CompanyDataAction from './src/actions/app/company-data-action';
 import OnlineCommunityRoomPage from './src/pages/app/online-community-room/online-community-room-page';
+import MeetingPage from './src/pages/app/meeting/meeting-page';
 
 import ROUTES, { APP_FORMS_ROUTES, APP_ROUTES, FORMS_ROUTES } from './src/consts/routes';
 import { SAMPLE_VERSION } from 'config/current';
@@ -198,6 +199,10 @@ const router = createBrowserRouter(
                     path={APP_FORMS_ROUTES.LIBRARY_EDITOR.PATH}
                     element={<LibraryEditorPage />}
                     action={LibraryEditorAction}
+                />
+                <Route
+                    path={APP_FORMS_ROUTES.MEETING.PATH}
+                    element={<MeetingPage />}
                 />
             </Route>
             <Route

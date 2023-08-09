@@ -21,6 +21,7 @@ import { registerLocale, setDefaultLocale } from  "react-datepicker";
 //import pl from 'date-fns/locale/pl';
 import { pl } from 'date-fns/locale';
 import { useTranslation } from 'react-i18next';
+import capitalizeFirstLetter from '../../../utils/capitalize-first-letter';
 registerLocale('pl', pl)
 
 const DURATIONS = Object.values(ResearchTypes.Duration);
@@ -31,6 +32,8 @@ for (let i = 0; i < 24; i += 1) HOURS.push(`${i}`);
 const DetailsStep = ({
     project,
 }) => {
+    const { t } = useTranslation();
+
     const actionData = useActionData() as any;
 
     const { i18n } = useTranslation();
@@ -57,25 +60,25 @@ const DetailsStep = ({
         <section className={classes.detailsStep}>
             <div className={classes.questionsGroup}>
                 <StepTitle
-                    title="Project details"
+                    title={t('editProject.detailsStep.title')}
                     icon={QuestionMarkIconBlack}
                 />
                 <NumericalInput
                     className={classes.participants}
                     name="participantsCount"
-                    placeholder="Number of participants"
+                    placeholder={t('editProject.detailsStep.participantsCountInputLabel')}
                     error={errors.participantsCount}
                     defaultValue={project.participantsCount}
                 />
                 <NumericalInput
                     className={classes.reserveParticipants}
                     name="reserveParticipantsCount"
-                    placeholder="Number of reserve participants"
+                    placeholder={t('editProject.detailsStep.reserveParticipantsCountInputLabel')}
                     error={errors.reserveParticipantsCount}
                     defaultValue={project.reserveParticipantsCount}
                 />
                 <label className={classes.label}>
-                    Interview duration:
+                    {t('editProject.detailsStep.interviewDurationDropdownName')}:
                     <DropdownList
                         className={classNames(
                             classes.dropdown,
@@ -86,12 +89,13 @@ const DetailsStep = ({
                         elementsList={DURATIONS}
                         onChange={(index: number) => setDuration(DURATIONS[index])}
                         defaultIndex={DURATIONS.indexOf(project.meetingDuration)}
+                        allowDeselect={false}
                     />
                     <input type="hidden" name="meetingDuration" value={duration}/>
                 </label>
                 <div className={classes.dateTimePickers}>
                     <label className={classNames(classes.withMargin, classes.label)}>
-                        Start date
+                        {t('editProject.detailsStep.startDateLabel')}
                     </label>
                     <DatePicker
                         className={classes.datePickerInput}
@@ -117,7 +121,7 @@ const DetailsStep = ({
                 </div>
                 <div className={classes.dateTimePickers}>
                     <label className={classNames(classes.withMargin, classes.label)}>
-                        End date
+                        {t('editProject.detailsStep.endDateLabel')}
                     </label>
                     <DatePicker
                         className={classes.datePickerInput}
@@ -144,32 +148,32 @@ const DetailsStep = ({
             </div>
             <div className={classes.questionsGroup}>
                 <StepTitle
-                    title="Do you need transcription?"
+                    title={t('editProject.detailsStep.transcriptionSubtitle')}
                     icon={LanguagesIconBlack}
                 />
                 <SwitchInput
                     name="transcription"
-                    leftLabel="No"
-                    rightLabel="Yes"
+                    leftLabel={capitalizeFirstLetter(t('generic.no'))}
+                    rightLabel={capitalizeFirstLetter(t('generic.yes'))}
                 />
             </div>
             <div className={classes.questionsGroup}>
                 <StepTitle
-                    title="Do you need a moderator?"
+                    title={t('editProject.detailsStep.moderatorSubtitle')}
                     icon={LanguagesIconBlack}
                 />
                 <SwitchInput
                     name="moderator"
-                    leftLabel="No"
-                    rightLabel="Yes"
+                    leftLabel={capitalizeFirstLetter(t('generic.no'))}
+                    rightLabel={capitalizeFirstLetter(t('generic.yes'))}
                 />
             </div>
             <div className={classes.questionsGroup}>
                 <StepTitle
-                    title="Payment for the respondent"
+                    title={t('editProject.detailsStep.paymentSubtitle')}
                     icon={DollarSignIconBlack}
                 />
-                <span>Please enter gross amount. The currency should match the currency used for the invoice payment.</span>
+                <span>{t('editProject.detailsStep.paymentInstruction')}</span>
                 <div className={classes.paymentWrapper}>
                     <NumericalInput
                         className={classes.payment}

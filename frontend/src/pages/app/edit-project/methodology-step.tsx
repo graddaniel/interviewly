@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ResearchTypes } from 'shared';
+import { useTranslation } from 'react-i18next';
 
 import StepTitle from './step-title';
 import MethodologyTile from '../../../components/methodology-tile/methodology-tile';
@@ -13,13 +14,14 @@ const METHODOLOGIES = Object.values(ResearchTypes.Methodology);
 const MethodologyStep = ({
     project,
 }) => {
+    const { t } = useTranslation();
     const [ methodology, setMethodology ] = useState<ResearchTypes.Methodology>(project.methodology);
 
     return (
         <section className={classes.methodologyStep}>
             <input type="hidden" name="methodology" value={methodology} />
             <StepTitle
-                title="Choose the research methodology."
+                title={t('editProject.methodologyStep.methodologySubtitle')}
                 icon={TilesIconBlack}
             />
             <section className={classes.content}>

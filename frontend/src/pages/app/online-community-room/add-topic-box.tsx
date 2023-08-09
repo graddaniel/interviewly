@@ -3,6 +3,7 @@ import classNames from 'classnames';
 
 import classes from './add-topic-box.module.css';
 import Avatar from '../../../components/avatar/avatar';
+import { useTranslation } from 'react-i18next';
 
 
 type AddTopicBoxProps = {
@@ -16,11 +17,13 @@ const AddTopicBox = ({
     avatarUrl,
     onClick,
 }: AddTopicBoxProps) => {
+    const { t } = useTranslation();
+
     return (
         <div className={classNames(classes.addTopicBox, className)}>
             <Avatar url={avatarUrl}/>
             <div className={classes.input} onClick={onClick}>
-                Add Topic
+                {t('viewProject.methodology.onlineCommunity.room.addTopicLabel')}
             </div>
         </div>
     );

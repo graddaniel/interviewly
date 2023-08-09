@@ -6,6 +6,7 @@ import MethodologyTile from '../../../components/methodology-tile/methodology-ti
 
 import classes from './summary-step.module.css';
 import CartIconBlack from 'images/cart-icon-black.svg';
+import { useTranslation } from 'react-i18next';
 
 
 type SummaryStepProps = {
@@ -15,10 +16,12 @@ type SummaryStepProps = {
 const SummaryStep = ({
     project,
 }: SummaryStepProps) => {
+    const { t } = useTranslation();
+
     return (
         <section>
             <StepTitle
-                title="Summary"
+                title={t('editProject.summaryStep.title')}
                 icon={CartIconBlack}
             />
             <div className={classes.titleBox}>

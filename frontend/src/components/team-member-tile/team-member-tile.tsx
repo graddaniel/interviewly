@@ -8,6 +8,7 @@ import capitalizeFirstLetter from '../../utils/capitalize-first-letter';
 import classes from './team-member-tile.module.css';
 import PencilIconBlack from 'images/pencil-icon-black.svg'; 
 import AccountIcon from 'images/account-icon.svg';
+import { useTranslation } from 'react-i18next';
 
 
 type TeamMemberTileProps = {
@@ -33,6 +34,8 @@ const TeamMemberTile = ({
     small,
     onEdit,
 }: TeamMemberTileProps) => {
+    const { t } = useTranslation();
+
     return (
         <div className={classNames(
             classes.tile,
@@ -66,7 +69,7 @@ const TeamMemberTile = ({
                 </span>
             )}
             <div className={classNames(classes.status, classes[status])}>
-                {capitalizeFirstLetter(status)}
+                {capitalizeFirstLetter(t(`accountStatuses.${status}`))}
             </div>
         </div>
     );

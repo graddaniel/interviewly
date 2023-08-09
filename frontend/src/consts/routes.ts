@@ -99,6 +99,9 @@ const APP_FORMS_ROUTES = {
     LIBRARY_EDITOR: {
         TITLE: 'Library editor',
         PATH: '/app/library/editor'
+    },
+    MEETING: {
+        PATH: '/app/meeting/:meetingId'
     }
 };
 

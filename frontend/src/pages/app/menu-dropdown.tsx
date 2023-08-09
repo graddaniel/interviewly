@@ -7,6 +7,7 @@ import ROUTES, { APP_ROUTES } from '../../consts/routes';
 import classes from './menu-dropdown.module.css';
 import classNames from 'classnames';
 import { AccountTypes } from 'shared';
+import { useTranslation } from 'react-i18next';
 
 
 const MenuDropdown = ({
@@ -17,6 +18,7 @@ const MenuDropdown = ({
 }) => {
     const auth = useAuth();
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     const logout = useCallback(() => {
         auth.clearSession();
@@ -30,19 +32,19 @@ const MenuDropdown = ({
 
 
     const menuItems = [{
-        text: 'Open user panel',
+        text: t('dropdownMenu.openUserPanel'),
         route: APP_ROUTES.MY_ACCOUNT.PATH,
     }, {
-        text: 'Personal data',
+        text: t('dropdownMenu.personalData'),
         route: APP_ROUTES.PERSONAL_DATA.PATH,
     }];
 
     if (auth.type === AccountTypes.Type.RECRUITER) {
         menuItems.push({
-            text: 'Company data',
+            text: t('dropdownMenu.companyData'),
             route: APP_ROUTES.COMPANY_DATA.PATH,
         }, {
-            text: 'My team',
+            text: t('dropdownMenu.myTeam'),
             route: APP_ROUTES.MY_TEAM.PATH,
         });
     }
@@ -74,7 +76,7 @@ const MenuDropdown = ({
             ))}
             <li className={classes.menuItem}>
                 <button className={classes.logoutButton} onClick={logout}>
-                    Logout
+                    {t('dropdownMenu.logout')}
                 </button>
             </li>
         </ul>

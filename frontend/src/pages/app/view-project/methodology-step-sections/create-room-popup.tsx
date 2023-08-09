@@ -11,6 +11,7 @@ import { Form } from 'react-router-dom';
 import RespondentTile from '../../../../components/respondent-tile/respondent-tile';
 import classNames from 'classnames';
 import SelectableRespondentTile from './selectable-respondent-tile';
+import { useTranslation } from 'react-i18next';
 
 
 type CreateRoomPopupProps = {
@@ -22,6 +23,7 @@ const CreateRoomPopup = ({
     onClose,
     respondents,
 }: CreateRoomPopupProps) => {
+    const { t } = useTranslation();
     const [ selectedRespondents, setSelectedRespondents ] = useState<string[]>([]);
     const toggleRespondentSelection = (email: string) => {
         const index = selectedRespondents.indexOf(email);
@@ -44,7 +46,9 @@ const CreateRoomPopup = ({
                     icon={CrossIcon}
                     onClick={onClose}
                 />
-                <h4 className={classes.title}>Create room</h4>
+                <h4 className={classes.title}>
+                    {t('viewProject.methodology.onlineCommunity.createRoomButtonText')}
+                </h4>
                 <TextInput
                     className={classes.roomNameInput}
                     inputProps={{
@@ -53,9 +57,11 @@ const CreateRoomPopup = ({
                         }
                     }}
                     name="roomName"
-                    placeholder="Room name"
+                    placeholder={t('viewProject.methodology.onlineCommunity.roomName')}
                 />
-                <h6 className={classes.subtitle}>Add members:</h6>
+                <h6 className={classes.subtitle}>
+                    {t('viewProject.methodology.onlineCommunity.addMembersLabel')}:
+                </h6>
                 <div className={classes.desktopRespondents}>
                     {respondents.map(respondent => (
                         <RespondentTile
@@ -83,7 +89,7 @@ const CreateRoomPopup = ({
                 </div>
                 <SubmitButton
                     className={classes.createRoomButton}
-                    text="Create room"
+                    text={t('viewProject.methodology.onlineCommunity.createRoomButtonText')}
                 />
             </Form>
         </Popup>

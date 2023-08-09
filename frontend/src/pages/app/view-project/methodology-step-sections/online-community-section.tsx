@@ -75,7 +75,7 @@ const OnlineCommunitySection = ({
                 onClick={() => setIsPopupOpen(true)}
             >
                 <img className={classes.createRoomButtonIcon} src={PlusIconBlack}/>
-                Create room
+                {t('viewProject.methodology.onlineCommunity.createRoomButtonText')}
             </button>
             <BulletinBoardTile
                 className={classes.bulletinBoardTile}

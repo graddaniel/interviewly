@@ -10,12 +10,9 @@ import AddTopicPopup from './add-topic-popup';
 import classes from './online-community-room-page.module.css';
 import ArrowLeftIconPurple from 'images/arrow-left-icon-purple.svg';
 import PlusIconBlack from 'images/plus-icon-black.svg';
+import { useTranslation } from 'react-i18next';
+import capitalizeFirstLetter from '../../../utils/capitalize-first-letter';
 
-
-const SORTING = [
-    'Newest',
-    'Oldest',
-];
 
 const ROOM_MEMBERS = [{
     name: 'Mateusz',
@@ -47,6 +44,12 @@ type OnlineCommunityRoomPageProps = {
 const OnlineCommunityRoomPage = ({
 
 }: OnlineCommunityRoomPageProps) => {
+    const { t } = useTranslation();
+    const SORTING = [
+        capitalizeFirstLetter(t('sorting.newest')),
+        capitalizeFirstLetter(t('sorting.oldest')),
+    ];
+
     const [ sorting, setSorting ] = useState(SORTING[0]);
     const [ isTopicPopupOpen, setIsTopicPopupOpen ] = useState(false);
     const navigate = useNavigate();
@@ -60,7 +63,7 @@ const OnlineCommunityRoomPage = ({
                 onClick={goBack}
             />
             <h4 className={classes.title}>
-                Room name
+                {t('viewProject.methodology.onlineCommunity.roomName')}
             </h4>
             <DropdownList
                 className={classes.sortDropdown}
@@ -75,7 +78,7 @@ const OnlineCommunityRoomPage = ({
                 onClick={() => setIsTopicPopupOpen(true)}
             >
                 <img className={classes.addTopicButtonIcon} src={PlusIconBlack}/>
-                Add topic
+                {t('viewProject.methodology.onlineCommunity.room.addTopicLabel')}
             </button>
             <div className={classes.content}>
                 <AddTopicBox className={classes.addTopicBox} onClick={() => setIsTopicPopupOpen(true)} />

@@ -6,6 +6,8 @@ import classes from './survey-tile.module.css';
 import FoldersIconBlack from 'images/folders-icon-black.svg';
 import Pill from '../pill/pill';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
+import capitalizeFirstLetter from '../../utils/capitalize-first-letter';
 
 
 type SurveyTileProps = {
@@ -19,6 +21,8 @@ const SurveyTile = ({
     onClick,
     status,
 }: SurveyTileProps) => {
+    const { t } = useTranslation();
+
     return (
         <div className={classes.tile} onClick={onClick}>
             <IconButton
@@ -30,7 +34,10 @@ const SurveyTile = ({
             {status && (
                 <Pill
                     className={classNames(classes.pill, classes[status.toLowerCase()])}
-                    text={status === 'Finished' ? 'See results' : status}
+                    text={status === 'finished'
+                        ? t('surveyStatuses.seeResultsLabel')
+                        : capitalizeFirstLetter(t(`surveyStatuses.${status}`))
+                    }
                 />
             )}
         </div>

@@ -14,7 +14,7 @@ import MethodologyStep from './methodology-step';
 import RespondentsStep from './respondents-step';
 import { APP_FORMS_ROUTES } from '../../../consts/routes';
 
-const METHODOLOGY = ResearchTypes.Methodology.OnlineCommunities
+const METHODOLOGY = ResearchTypes.Methodology.OnlineCommunities;
 
 const ViewProject = () => {
     const { t } = useTranslation();
@@ -30,7 +30,7 @@ const ViewProject = () => {
 
     const editProject = () => navigate(generatePath(APP_FORMS_ROUTES.EDIT_PROJECT.PATH, { projectId }));
 
-    const [ currentStep, setCurrentStep ] = useState(1);
+    const [ currentStep, setCurrentStep ] = useState(0);
 
     return (
         <section className={classes.viewProject}>

@@ -37,6 +37,7 @@ const Topic = ({
     attachment,
     comments = [],
 }: TopicProps) => {
+    const { t } = useTranslation();
     const [ isMobileCommentsDialogOpen, setIsMobileCommentsDialogOpen ] = useState(false);
     const { i18n } = useTranslation();
     const { resolvedLanguage } = i18n;
@@ -70,11 +71,11 @@ const Topic = ({
 
     const generateCommentsCounter = (commentsCount: number) => {
         if (commentsCount === 0) {
-            return 'No comments';
+            return t('viewProject.methodology.onlineCommunity.room.noCommentsCabel');
         } else if (commentsCount === 1) {
-            return `${commentsCount} comment`;
+            return `${commentsCount} ${t('viewProject.methodology.onlineCommunity.room.commentSingularLabel')}`;
         } else {
-            return `${commentsCount} comments`;
+            return `${commentsCount} ${t('viewProject.methodology.onlineCommunity.room.commentPluralLabel')}`;
         }
     }
 
@@ -104,7 +105,7 @@ const Topic = ({
                             className={classes.addCommentInput}
                             type="text"
                             name="newComment"
-                            placeholder="Add comment"
+                            placeholder={t('viewProject.methodology.onlineCommunity.room.addCommentLabel')}
                             value={newComment}
                             onChange={(e) => setNewComment(e.target.value)}
                         />
@@ -124,7 +125,7 @@ const Topic = ({
                 </span>
                 <TextButton
                     className={classes.addCommentButton}
-                    text="Add comment"
+                    text={t('viewProject.methodology.onlineCommunity.room.addCommentLabel')}
                     onClick={() => setIsMobileCommentsDialogOpen(true)}
                 />
                 <Dialog
@@ -144,7 +145,7 @@ const Topic = ({
                                 className={classes.addCommentInput}
                                 type="text"
                                 name="newComment"
-                                placeholder="Add comment"
+                                placeholder={t('viewProject.methodology.onlineCommunity.room.addCommentLabel')}
                                 value={newComment}
                                 onChange={(e) => setNewComment(e.target.value)}
                             />
