@@ -165,8 +165,8 @@ export default class ProjectsService {
                 const lsqCode = this.lsqBuilder.buildLSQ(
                     questionParams,
                     extraParams, {
-                    checkboxes: question.answers?.map(a => a.text),
-                    dropdowns: question.answers?.map(a => a.text),
+                    checkboxes: question.answers,
+                    dropdowns: question.answers,
                 });
 
                 const encodedLsqCode = Buffer.from(lsqCode, 'utf8').toString('base64');

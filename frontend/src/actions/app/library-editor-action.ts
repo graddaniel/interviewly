@@ -8,7 +8,7 @@ export default async function LibraryEditorAction ({
     console.log(formData);
 
     const newSurvey = {
-        name: formData.templateName,
+        name: formData.surveyTitle,
         languages: JSON.parse(formData.languages),
         questions: JSON.parse(formData.questions),
     };
