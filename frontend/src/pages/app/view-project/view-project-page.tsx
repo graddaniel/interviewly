@@ -1,26 +1,28 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { generatePath, useNavigate, useParams } from 'react-router-dom';
+import { generatePath, useLoaderData, useNavigate, useParams, useRouteError } from 'react-router-dom';
 import { ProjectTypes } from 'shared';
 
 import ProjectStepper from '../../../components/project-stepper/project-stepper';
 import TextButton from '../../../components/text-button/text-button';
 import DropdownList from '../../../components/dropdown-list/dropdown-list';
 import GeneralStep from './general-step';
-
-import classes from './view-project-page.module.css';
-import QuestionMarkIconBlack from 'images/question-mark-icon-black.svg';
 import MethodologyStep from './methodology-step';
 import RespondentsStep from './respondents-step';
 import { APP_FORMS_ROUTES } from '../../../consts/routes';
 import DetailsStep from './details-step';
+import useErrorHandler from '../../../hooks/use-error-handler';
 
-const METHODOLOGY = ProjectTypes.Methodology.OnlineCommunities;
+import classes from './view-project-page.module.css';
+import QuestionMarkIconBlack from 'images/question-mark-icon-black.svg';
+
 
 const ViewProject = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
     const { projectId } = useParams();
+    const project = useLoaderData() as any;
+    useErrorHandler(useRouteError());
 
     const stepsNames = t('viewProject.steps', { returnObjects: true }) as string[];
 
@@ -32,6 +34,8 @@ const ViewProject = () => {
     const editProject = () => navigate(generatePath(APP_FORMS_ROUTES.EDIT_PROJECT.PATH, { projectId }));
 
     const [ currentStep, setCurrentStep ] = useState(0);
+
+    console.log(project)
 
     return (
         <section className={classes.viewProject}>
@@ -62,19 +66,28 @@ const ViewProject = () => {
                 />
             </header>
             <div className={classes.content}>
-                {currentStep === 0 && (<GeneralStep />)}
-                {currentStep === 1 && (<MethodologyStep methodology={METHODOLOGY}/>)}
+                {currentStep === 0 && (
+                    <GeneralStep
+                        title={project.title}
+                        description={project.description}
+                    />
+                )}
+                {currentStep === 1 && (
+                    <MethodologyStep
+                        methodology={project.methodology}
+                    />
+                )}
                 {currentStep === 2 && (<RespondentsStep />)}
                 {currentStep === 4 && (
                     <DetailsStep
-                        participantsCount={20}
-                        reserveParticipantsCount={10}
-                        interviewDuration={30}
-                        startDate={new Date()}
-                        endDate={new Date()}
+                        participantsCount={project.participantsCount}
+                        reserveParticipantsCount={project.reserveParticipantsCount}
+                        interviewDuration={project.meetingDuration}
+                        startDate={new Date(project.startDate)}
+                        endDate={new Date(project.endDate)}
                         transcriptionAvailable={true}
-                        respondentFee={100}
-                        currency={'EUR'}
+                        participantsPaymentValue={project.participantsPaymentValue}
+                        participantsPaymentCurrency={project.participantsPaymentCurrency}
                     />
                 )}
             </div>

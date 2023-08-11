@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ProfileTypes } from 'shared';
-import { useActionData, useLoaderData } from 'react-router-dom';
+import { useActionData, useLoaderData, useRouteError } from 'react-router-dom';
 
 import TeamMemberPopup from './team-member-popup';
 import TeamMemberTile from '../../../components/team-member-tile/team-member-tile';
@@ -9,10 +9,12 @@ import classes from './my-team-page.module.css'
 import PeopleIconBlack from 'images/people-icon-black.svg';
 import PlusIconBlack from 'images/plus-icon-black.svg';
 import { useTranslation } from 'react-i18next';
+import useErrorHandler from '../../../hooks/use-error-handler';
 
 
 const MyTeamPage = () => {
-    const teamMembers = useLoaderData() as any;
+    const teamMembers = useLoaderData() as any || [];
+    useErrorHandler(useRouteError());
     const actionData = useActionData() as { [k: string]: any };
     const { t } = useTranslation();
 

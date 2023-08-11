@@ -88,6 +88,32 @@ export default class ProjectsController {
         await ProjectValidator.validateEditProjectStep(step);
         await ProjectValidator.validateEditProject(step, formData);
 
+        if (step === ProjectTypes.EditSteps.Respondents) {
+            for (const param of [
+                'addLanguageTest',
+                'addScreeningSurvey',
+                'requireCandidateRecording'
+            ]) {
+                formData[param] = formData[param] === 'true' ? true : false;
+            }
+        } else if (step === ProjectTypes.EditSteps.Details) {
+            for (const param of [
+                'transcriptionNeeded',
+                'moderatorNeeded',
+            ]) {
+                formData[param] = formData[param] === 'true' ? true : false;
+            }
+
+            for (const param of [
+                'startDate',
+                'endDate',
+            ]) {
+                formData[param] = new Date(parseInt(formData[param], 10));
+            }
+        }
+
+        console.log("FORM DATA", formData, step)
+
         await this.projectsService.updateProject(companyUuid, projectId, formData);
 
         res.status(StatusCodes.OK).send();

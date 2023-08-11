@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { ProjectTypes } from 'shared';
 import classNames from 'classnames';
@@ -17,12 +17,28 @@ import QuestionMarkIconBlack from 'images/question-mark-icon-black.svg';
 import LanguagesIconBlack from 'images/languages-icon-black.svg';
 import DollarSignIconBlack from 'images/dollar-sign-icon-black.svg';
 
-import { registerLocale, setDefaultLocale } from  "react-datepicker";
-//import pl from 'date-fns/locale/pl';
-import { pl } from 'date-fns/locale';
+import { registerLocale } from  "react-datepicker";
+import { bg, cs, nl, enGB, fr, de, el, hu, it, pl, pt, ro, ru, sk, es, sv, uk  } from 'date-fns/locale';
 import { useTranslation } from 'react-i18next';
 import capitalizeFirstLetter from '../../../utils/capitalize-first-letter';
-registerLocale('pl', pl)
+
+registerLocale('bg', bg);
+registerLocale('cz', cs);
+registerLocale('nl', nl);
+registerLocale('en', enGB);
+registerLocale('fr', fr);
+registerLocale('de', de);
+registerLocale('gr', el);
+registerLocale('hu', hu);
+registerLocale('it', it);
+registerLocale('pl', pl);
+registerLocale('pt', pt);
+registerLocale('ro', ro);
+registerLocale('ru', ru);
+registerLocale('sk', sk);
+registerLocale('es', es);
+registerLocale('se', sv);
+registerLocale('ua', uk);
 
 const DURATIONS = Object.values(ProjectTypes.Duration);
 const CURRENCIES = Object.values(ProjectTypes.PaymentCurrency);
@@ -32,6 +48,18 @@ for (let i = 0; i < 24; i += 1) HOURS.push(`${i}`);
 const DetailsStep = ({
     project,
 }) => {
+    const {
+        participantsCount,
+        reserveParticipantsCount,
+        meetingDuration,
+        startDate: currentStartDate,
+        endDate: currentEndDate,
+        transcriptionNeeded,
+        moderatorNeeded,
+        participantsPaymentValue,
+        participantsPaymentCurrency,
+    } = project;
+
     const { t } = useTranslation();
 
     const actionData = useActionData() as any;
@@ -39,22 +67,44 @@ const DetailsStep = ({
     const { i18n } = useTranslation();
     const { resolvedLanguage } = i18n;
 
-    const [ duration, setDuration ] = useState(project?.meetingDuration || '');
-    const [ currency, setCurrency ] = useState(project?.participantsPaymentCurrency || '');
-    const [ startDate, setStartDate] = useState(new Date());
-    const [ endDate, setEndDate] = useState(new Date(parseInt(moment(Date.now()).add(7, 'days').format('x'), 10)));
-    const [ startTime, setStartTime ] = useState(HOURS[0]);
-    const [ endTime, setEndTime ] = useState(HOURS[0]);
+    const [ duration, setDuration ] = useState(meetingDuration || '');
+    const [ currency, setCurrency ] = useState(participantsPaymentCurrency || '');
+    const [ startDate, setStartDate] = useState(
+        new Date(currentStartDate
+        || Date.now())
+    );
+    const [ startTime, setStartTime ] = useState(
+        HOURS.find(h => h === ''+moment(currentStartDate).hours())
+        || HOURS[0]
+    );
+    const [ endDate, setEndDate] = useState(
+        currentEndDate
+            ? new Date(currentEndDate)
+            : moment().add(7, 'days').toDate()
+    );
+    const [ endTime, setEndTime ] = useState(
+        HOURS.find(h => h === ''+moment(currentEndDate).hours())
+        || HOURS[0]
+    );
+    const [ startDateAndTime, setStartDateAndTime ] = useState<Date>(new Date(currentStartDate));
+    const [ endDateAndTime, setEndDateAndTime ] = useState<Date>(new Date(currentEndDate));
 
-    const handleChange = (range) => {
-      const [startDate, endDate] = range;
-      setStartDate(startDate);
-      setEndDate(endDate);
-    };
+    useEffect(() => {
+        setStartDateAndTime(
+            moment(startDate)
+                .hour(parseInt(startTime, 10))
+                .toDate()
+        );
+    }, [startDate, startTime]);
+    useEffect(() => {
+        setEndDateAndTime(
+            moment(endDate)
+                .hour(parseInt(endTime, 10))
+                .toDate()
+        );
+    }, [endDate, endTime]);
 
     const errors = actionData?.errors || {};
-
-    //console.log("DateTime", datetime)
 
     return (
         <section className={classes.detailsStep}>
@@ -68,14 +118,14 @@ const DetailsStep = ({
                     name="participantsCount"
                     label={t('editProject.detailsStep.participantsCountInputLabel')}
                     error={errors.participantsCount}
-                    defaultValue={project.participantsCount}
+                    defaultValue={participantsCount}
                 />
                 <NumericalInput
                     className={classes.reserveParticipants}
                     name="reserveParticipantsCount"
                     label={t('editProject.detailsStep.reserveParticipantsCountInputLabel')}
                     error={errors.reserveParticipantsCount}
-                    defaultValue={project.reserveParticipantsCount}
+                    defaultValue={reserveParticipantsCount}
                 />
                 <label className={classes.label}>
                     {t('editProject.detailsStep.interviewDurationDropdownName')}:
@@ -83,7 +133,7 @@ const DetailsStep = ({
                         className={classNames(
                             classes.dropdown,
                             classes.meetingDurationDropdown,
-                            errors.meetingDuration && classes.dropdownError
+                            errors.meetingDuration && classes.error
                         )}
                         name="Duration"
                         elementsList={DURATIONS}
@@ -97,20 +147,27 @@ const DetailsStep = ({
                     <label className={classNames(classes.withMargin, classes.label)}>
                         {t('editProject.detailsStep.startDateLabel')}
                     </label>
+                    <input
+                        type="hidden"
+                        value={startDateAndTime.getTime()}
+                        name="startDate"
+                    />
                     <DatePicker
-                        className={classes.datePickerInput}
+                        className={classNames(
+                            classes.datePickerInput,
+                            errors.startDate && classes.error
+                        )}
                         wrapperClassName={classes.withMargin}
                         selected={startDate}
                         onChange={(date) => setStartDate(date)}
                         locale={resolvedLanguage}
                         dateFormat="dd.MM.yyyy"
                     />
-                    <input type="hidden" value={startTime} name="startTime" />
                     <DropdownList
                         className={classNames(
                             classes.dropdown,
                             classes.startTimeDropdown,
-                            errors.participantsPaymentCurrency && classes.dropdownError
+                            errors.startDate && classes.error
                         )}
                         name="startTime"
                         onChange={(i) => setStartTime(HOURS[i])}
@@ -119,10 +176,20 @@ const DetailsStep = ({
                         allowDeselect={false}
                     />
                 </div>
+                {errors.startDate && (
+                    <div className={classes.errorText}>
+                        {errors.startDate}
+                    </div>
+                )}
                 <div className={classes.dateTimePickers}>
                     <label className={classNames(classes.withMargin, classes.label)}>
                         {t('editProject.detailsStep.endDateLabel')}
                     </label>
+                    <input
+                        type="hidden"
+                        value={endDateAndTime.getTime()}
+                        name="endDate"
+                    />
                     <DatePicker
                         className={classes.datePickerInput}
                         wrapperClassName={classes.withMargin}
@@ -131,12 +198,10 @@ const DetailsStep = ({
                         locale={resolvedLanguage}
                         dateFormat="dd.MM.yyyy"
                     />
-                    <input type="hidden" value={endTime} name="endTime" />
                     <DropdownList
                         className={classNames(
                             classes.dropdown,
                             classes.endTimeDropdown,
-                            errors.participantsPaymentCurrency && classes.dropdownError
                         )}   
                         name="endTime"
                         onChange={(i) => setEndTime(HOURS[i])}
@@ -152,9 +217,10 @@ const DetailsStep = ({
                     icon={LanguagesIconBlack}
                 />
                 <SwitchInput
-                    name="transcription"
+                    name="transcriptionNeeded"
                     leftLabel={capitalizeFirstLetter(t('generic.no'))}
                     rightLabel={capitalizeFirstLetter(t('generic.yes'))}
+                    defaultValue={transcriptionNeeded}
                 />
             </div>
             <div className={classes.questionsGroup}>
@@ -163,9 +229,10 @@ const DetailsStep = ({
                     icon={LanguagesIconBlack}
                 />
                 <SwitchInput
-                    name="moderator"
+                    name="moderatorNeeded"
                     leftLabel={capitalizeFirstLetter(t('generic.no'))}
                     rightLabel={capitalizeFirstLetter(t('generic.yes'))}
+                    defaultValue={moderatorNeeded}
                 />
             </div>
             <div className={classes.questionsGroup}>
@@ -180,18 +247,18 @@ const DetailsStep = ({
                         name="participantsPaymentValue"
                         label=""
                         error={errors.participantsPaymentValue}
-                        defaultValue={project.participantsPaymentValue}
+                        defaultValue={participantsPaymentValue}
                     />
                     <DropdownList
                         className={classNames(
                             classes.dropdown,
                             classes.currencyDropdown,
-                            errors.participantsPaymentCurrency && classes.dropdownError
+                            errors.participantsPaymentCurrency && classes.error
                         )}                
                         name="Currency"
                         elementsList={CURRENCIES}
                         onChange={(index: number) => setCurrency(CURRENCIES[index])}
-                        defaultIndex={CURRENCIES.indexOf(project.participantsPaymentCurrency)}
+                        defaultIndex={CURRENCIES.indexOf(participantsPaymentCurrency)}
                     />
                 </div>
                 <input type="hidden" name="participantsPaymentCurrency" value={currency}/>

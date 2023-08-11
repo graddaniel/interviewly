@@ -6,6 +6,7 @@ import {
 import { ErrorCodes } from '../errors';
 import { AccountTypes, ProfileTypes } from '../types';
 import { Duration, Methodology, PaymentCurrency } from '../types/project';
+import { BoolStrings } from '../types/generic'; 
 import config from '../config'; 
 
 import type { Schema } from 'yup'; 
@@ -46,6 +47,14 @@ export default class ValidationSchemas {
         meetingDuration: Schema;
         participantsPaymentValue: Schema;
         participantsPaymentCurrency: Schema;
+        startDate: Schema;
+        endDate: Schema;
+        otherRequirements: Schema;
+        addLanguageTest: Schema;
+        addScreeningSurvey: Schema;
+        requireCandidateRecording: Schema;
+        transcriptionNeeded: Schema;
+        moderatorNeeded: Schema;
     };
     contactRequestMessage: Schema;
 
@@ -155,6 +164,31 @@ export default class ValidationSchemas {
             participantsPaymentValue: number()
                 .required(`${ErrorCodes.ProjectParticipantsPaymentValueRequired}`)
                 .min(validationConfig.project.participantsPaymentValue.min, `${ErrorCodes.ProjectParticipantsPaymentValueTooLow}`),
+            startDate: string()
+                .required(`${ErrorCodes.ProjectStartDateRequired}`)
+                .matches(/^\d+$/, `${ErrorCodes.ProjectStartDateIncorrect}`)
+                .min(1, `${ErrorCodes.ProjectStartDateIncorrect}`),
+            endDate: string()
+                .required(`${ErrorCodes.ProjectEndDateRequired}`)
+                .matches(/^\d+$/, `${ErrorCodes.ProjectEndDateIncorrect}`)
+                .min(1, `${ErrorCodes.ProjectEndDateIncorrect}`),
+            otherRequirements: string()
+                .max(validationConfig.project.otherRequirements.max, `${ErrorCodes.ProjectOtherRequirementsTooLong}`),
+            addLanguageTest: string()
+                .required(`${ErrorCodes.ProjectLanguagesTestRequired}`)
+                .oneOf(Object.values(BoolStrings), `${ErrorCodes.ProjectLanguagesTestIncorrect}`),
+            addScreeningSurvey: string()
+                .required(`${ErrorCodes.ProjectScreeningRequired}`)
+                .oneOf(Object.values(BoolStrings), `${ErrorCodes.ProjectScreeningIncorrect}`),
+            requireCandidateRecording: string()
+                .required(`${ErrorCodes.ProjectRecordingRequired}`)
+                .oneOf(Object.values(BoolStrings), `${ErrorCodes.ProjectRecordingIncorrect}`),
+            transcriptionNeeded: string()
+                .required(`${ErrorCodes.ProjectTranscriptionRequired}`)
+                .oneOf(Object.values(BoolStrings), `${ErrorCodes.ProjectTranscriptionIncorrect}`),
+            moderatorNeeded: string()
+                .required(`${ErrorCodes.ProjectModeratorRequired}`)
+                .oneOf(Object.values(BoolStrings), `${ErrorCodes.ProjectModeratorIncorreect}`),
         };
 
         this.contactRequestMessage = string()

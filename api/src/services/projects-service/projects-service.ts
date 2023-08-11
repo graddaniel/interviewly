@@ -54,9 +54,13 @@ export default class ProjectsService {
         const company = await this.companiesService.getCompany({ uuid: companyUuid });
 
         const project = await ProjectModel.findOne({
-            attributes: ['uuid', 'title', 'description',
-                'methodology', 'participantsCount', 'meetingDuration',
-                'participantsPaymentCurrency', 'participantsPaymentValue'],
+            attributes: ['uuid', 'title', 'description', 'methodology',
+                'participantsCount', 'reserveParticipantsCount', 'meetingDuration',
+                'participantsPaymentCurrency', 'participantsPaymentValue',
+                'startDate', 'endDate', 'otherRequirements',
+                'addLanguageTest', 'addScreeningSurvey', 'requireCandidateRecording',
+                'transcriptionNeeded', 'moderatorNeeded'
+            ],
             where: {
                 uuid: projectUuid,
                 CompanyId: company.id,

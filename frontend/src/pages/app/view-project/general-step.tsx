@@ -5,18 +5,22 @@ import classes from './general-step-module.css';
 
 
 type GeneralStepProps = {
-
+    title: string;
+    description: string;
 };
 
 const GeneralStep = ({
-
+    title,
+    description,
 }: GeneralStepProps) => {
     const { t } = useTranslation();
     return (
         <section className={classes.generalStep}>
-            <div className={classes.projectTitle}>{t('viewProject.general.title')}</div>
+            <div className={classes.projectTitle}>
+                {title}
+            </div>
             <div className={classes.projectDescription}>
-                {t('viewProject.general.description')}
+                {description}
             </div>
         </section>
     );

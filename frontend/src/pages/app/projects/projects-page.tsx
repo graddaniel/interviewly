@@ -12,7 +12,6 @@ import MetricsIconBlack from 'images/metrics-icon-black.svg';
 import { useTranslation } from 'react-i18next';
 
 
-
 const STATUSES = ['pending', 'canceled', 'finished'];
 
 const ProjectsPage = () => {

@@ -13,50 +13,6 @@
     gap: 5vw;
 }
 
-.genderFilters {
-    width: min-content;
-    display: grid;
-    grid-template-areas: 
-        "genderTitle maleSwitch"
-        ". femaleSwitch";
-    column-gap: 2vw;
-}
-.genderTitle { grid-area: genderTitle; }
-.maleSwitch { grid-area: maleSwitch; }
-.femaleSwitch { grid-area: femaleSwitch; }
-
-.interestsFilters {
-    width: min-content;
-    display: grid;
-    grid-template-areas: 
-        "interestsTitle interestsSport"
-        ". interestsMusic"
-        ". interestsAutomotive"
-        ". interestsPainting";
-    column-gap: 2vw;
-}
-.interestsTitle { grid-area: interestsTitle; }
-.interestsSport { grid-area: interestsSport; }
-.interestsMusic { grid-area: interestsMusic; }
-.interestsAutomotive { grid-area: interestsAutomotive; }
-.interestsPainting { grid-area: interestsPainting; }
-
-.ageFilters {
-    width: min-content;
-    display: grid;
-    grid-template-areas: 
-        "ageTitle ageFiler1"
-        ". ageFiler2"
-        ". ageFiler3"
-        ". ageFiler4";
-    column-gap: 2vw;
-    white-space: nowrap;
-}
-.ageTitle { grid-area: ageTitle; }
-.ageFilter1 { grid-area: ageFiler1; }
-.ageFilter2 { grid-area: ageFiler2; }
-.ageFilter3 { grid-area: ageFiler3; }
-.ageFilter4 { grid-area: ageFiler4; }
 
 @media (min-width: min-large) {
 }
@@ -68,16 +24,6 @@
     .filters {
         gap: 10vw;
     }
-    .genderTitle {
-        font-size: 3.5vw;
-    }
-    .interestsTitle {
-        font-size: 3.5vw;
-    }
-    .ageTitle {
-        font-size: 3.5vw;
-    }
-
     .text {
         font-size: 3.5vw;
     }
@@ -89,24 +35,6 @@
     }
     .filters {
         gap: 10vw;
-    }
-    .genderFilters {
-        row-gap: 6vw;
-    }
-    .interestsFilters {
-        row-gap: 6vw;
-    }
-    .ageFilters {
-        row-gap: 6vw;
-    }
-    .genderTitle {
-        font-size: 4vw;
-    }
-    .interestsTitle {
-        font-size: 4vw;
-    }
-    .ageTitle {
-        font-size: 4vw;
     }
     .text {
         font-size: 4vw;

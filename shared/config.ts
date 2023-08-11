@@ -76,6 +76,9 @@ const config = {
             participantsPaymentValue: {
                 min: 0,
             },
+            otherRequirements: {
+                max: 512,
+            },
         },
         contactRequest: {
             min: 32,

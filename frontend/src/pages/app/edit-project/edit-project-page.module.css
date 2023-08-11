@@ -2,7 +2,7 @@
 @value min-large, max-medium, min-medium, max-small from breakpoints;
 
 .page {
-    height: 100%;
+    flex-grow: 1;
     display: grid;
     grid-template-rows: min-content min-content auto min-content;
     grid-template-areas: 
@@ -11,7 +11,7 @@
         "content"
         "navigation";
     row-gap: 5vw;
-    margin: 3.5vw 6vw 9vw;
+    padding: 3.5vw 6vw 9vw;
 }
 
 .header {

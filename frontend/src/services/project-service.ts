@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { ProjectTypes } from 'shared';
 
 import { API_HOST } from 'config/current';
 
@@ -54,7 +55,10 @@ export default class ProjectService {
     ) => {
         const bodyFormData = new FormData();
 
-        for (const [key, value] of Object.entries(formData)) {
+        const formDataObject = Object.entries(formData);
+
+        const step = parseInt(formData.step, 10);
+        for (const [key, value] of formDataObject) {
             switch(key) {
                 case 'step':
                 case 'title':
@@ -65,22 +69,10 @@ export default class ProjectService {
                 case 'meetingDuration':
                 case 'participantsPaymentCurrency':
                 case 'participantsPaymentValue':
+                case 'otherRequirements':
+                case 'startDate':
+                case 'endDate':
                     bodyFormData.append(key, value as string);
-                    break;
-                case '18-25':
-                case '26-32':
-                case '33-39':
-                case '40-46':
-                case 'male':
-                case 'female':
-                case 'automotive':
-                case 'music':
-                case 'painting':
-                case 'sports':
-                case 'languagesTest':
-                case 'recording':
-                case 'screening':
-                    bodyFormData.append(key, value === 'on' ? 'true' : 'false');
                     break;
                 case 'avatarFile':
                 case 'respondentsFile':
@@ -92,8 +84,41 @@ export default class ProjectService {
 
                     bodyFormData.append(key, files[0]);
                     break;
+                case 'addLanguageTest':
+                case 'addScreeningSurvey':
+                case 'requireCandidateRecording':
+                case 'transcriptionNeeded':
+                case 'moderatorNeeded':
+                    // skip and handle below;
+                    // false values are not present in the bodyFormData 
+                    break;
                 default:
                     console.log(`Unrecognized form field: ${key}`);
+            }
+        }
+
+        if (step === ProjectTypes.EditSteps.Respondents) {
+            for (const boolParamName of [
+                'addLanguageTest',
+                'addScreeningSurvey',
+                'requireCandidateRecording'
+            ]) {
+                const booleanValue =
+                    formDataObject.find(e => e[0] === boolParamName)
+                    ? 'true'
+                    : 'false';
+                bodyFormData.append(boolParamName, booleanValue);
+            }
+        } else if (step === ProjectTypes.EditSteps.Details) {
+            for (const boolParamName of [
+                'transcriptionNeeded',
+                'moderatorNeeded',
+            ]) {
+                const booleanValue =
+                    formDataObject.find(e => e[0] === boolParamName)
+                    ? 'true'
+                    : 'false';
+                bodyFormData.append(boolParamName, booleanValue);
             }
         }
 

@@ -26,9 +26,12 @@
 .dropdown {
     height: 2.5vw;
 }
-.dropdownError {
-    border-color: var(--RED);
+.error {
+    border-color: var(--RED) !important;
 }
+.errorText {
+    color: var(--RED);
+};
 .meetingDurationDropdown {
     z-index: 5;
 }

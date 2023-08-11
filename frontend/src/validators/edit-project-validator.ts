@@ -1,10 +1,12 @@
 import {
     object,
 } from 'yup';
-import { ProjectTypes, ValidationSchemas } from 'shared';
+import { t } from 'i18next';
+import { ProjectTypes, ValidationSchemas, Errors } from 'shared';
 
 import validateParams from './validate-params';
 
+const { ErrorCodes } = Errors;
 
 const Steps = ProjectTypes.EditSteps;
 
@@ -21,6 +23,7 @@ export default class EditProjectValidator {
                 methodology: SCHEMAS.project.methodology,
             }),
             [Steps.Respondents]: object({
+                otherRequirements: SCHEMAS.project.otherRequirements,
                 // if they exist then they're true, otherwise theyre false
             }),
             [Steps.Details]: object({
@@ -44,6 +47,14 @@ export default class EditProjectValidator {
             EditProjectValidator.getSchema(step),
             editProjectData,
         );
+
+        if (
+            step === ProjectTypes.EditSteps.Details
+            && editProjectData.startDate >= editProjectData.endDate
+            && !errors.startDate
+        ) {
+            errors.startDate = t(`errors.${ErrorCodes.ProjectStartDateAfterEndDate}`);
+        }
 
         if (Object.keys(errors).length > 0) {
             throw errors;

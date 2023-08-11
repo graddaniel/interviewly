@@ -2,6 +2,7 @@ import React from 'react';
 import DatePicker from 'react-datepicker';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
+import { ProjectTypes } from 'shared';
 
 import NumericalInput from '../../../components/numerical-input/numerical-input';
 import StepTitle from '../edit-project/step-title';
@@ -17,12 +18,12 @@ import moment from 'moment';
 type DetailsStepProps = {
     participantsCount: number;
     reserveParticipantsCount: number;
-    interviewDuration: number;
+    interviewDuration: ProjectTypes.Duration;
     startDate: Date;
     endDate: Date;
     transcriptionAvailable: boolean;
-    respondentFee: number;
-    currency: string;
+    participantsPaymentValue: number;
+    participantsPaymentCurrency: ProjectTypes.PaymentCurrency;
 };
 
 const DetailsStep = ({
@@ -32,8 +33,8 @@ const DetailsStep = ({
     startDate,
     endDate,
     transcriptionAvailable,
-    respondentFee,
-    currency,
+    participantsPaymentValue,
+    participantsPaymentCurrency,
 }: DetailsStepProps) => {
     const { t, i18n } = useTranslation();
     const { resolvedLanguage } = i18n;
@@ -131,12 +132,12 @@ const DetailsStep = ({
                 <NumericalInput
                     name="respondentFee"
                     label=""
-                    defaultValue={respondentFee}
+                    defaultValue={participantsPaymentValue}
                 />
                 <DropdownList
                     className={classes.feeCurrencyDropdown}
                     name={t('viewProject.details.currencyLabel')}
-                    elementsList={[currency]}
+                    elementsList={[participantsPaymentCurrency]}
                     allowDeselect={false}
                     onChange={() => {}}
                     defaultIndex={0}

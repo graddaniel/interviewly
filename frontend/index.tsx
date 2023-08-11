@@ -62,6 +62,7 @@ import { SAMPLE_VERSION } from 'config/current';
 
 import './src/consts/colors.css';
 import './i18n/i18n';
+import ProjectLoader from './src/loaders/app/project-loader';
 
 
 const router = createBrowserRouter(
@@ -166,6 +167,8 @@ const router = createBrowserRouter(
                 <Route
                     path={APP_ROUTES.VIEW_PROJECT.PATH}
                     element={<ViewProjectPage />}
+                    loader={ProjectLoader}
+                    errorElement={<ViewProjectPage />}
                 />
                 <Route
                     path={APP_ROUTES.PROJECT_RESPONDENT.PATH}
@@ -185,6 +188,7 @@ const router = createBrowserRouter(
                 <Route
                     path={APP_ROUTES.MY_TEAM.PATH}
                     element={<MyTeamPage />}
+                    errorElement={<MyTeamPage />}
                     loader={MyTeamLoader}
                     action={MyTeamAction}
                 />

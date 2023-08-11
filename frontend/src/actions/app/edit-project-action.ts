@@ -32,8 +32,6 @@ const EditProjectAction = async ({
         await EditProjectValidator.validateData(step, editProjectData);
 
         const result = await ProjectService.updateProject(projectId, formData);
-
-        console.log("update result", result);
     } catch (errors) {
         console.log("EditProjectError", errors);
 

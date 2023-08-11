@@ -2,10 +2,12 @@ import {
     object,
     mixed,
 } from 'yup';
-import { ProjectTypes, ValidationSchemas } from 'shared';
+import { ProjectTypes, ValidationSchemas, Errors } from 'shared';
 
 import validate from './validate';
+import ValidationError from './validation-error';
 
+const { ErrorCodes } = Errors;
 
 const Steps = ProjectTypes.EditSteps;
 const schemas = ValidationSchemas.instance();
@@ -21,12 +23,19 @@ export default class ProjectValidator {
                 methodology: schemas.project.methodology,
             }),
             [Steps.Respondents]: object({
-                // if they exist then they're true, otherwise theyre false
+                otherRequirements: schemas.project.otherRequirements,
+                addLanguageTest: schemas.project.addLanguageTest,
+                addScreeningSurvey: schemas.project.addScreeningSurvey,
+                requireCandidateRecording: schemas.project.requireCandidateRecording,
             }),
             [Steps.Details]: object({
                 participantsCount: schemas.project.participantsCount,
                 reserveParticipantsCount: schemas.project.reserveParticipantsCount,
                 meetingDuration: schemas.project.meetingDuration,
+                startDate: schemas.project.startDate,
+                endDate: schemas.project.endDate,
+                transcriptionNeeded: schemas.project.transcriptionNeeded,
+                moderatorNeeded: schemas.project.moderatorNeeded,
                 participantsPaymentCurrency: schemas.project.participantsPaymentCurrency,
                 participantsPaymentValue: schemas.project.participantsPaymentValue,
             }),
@@ -54,7 +63,14 @@ export default class ProjectValidator {
     ) => {
         const schema = ProjectValidator.getEditProjectSchema(step);
 
-        await validate(schema, editProjectData);   
+        await validate(schema, editProjectData);
+
+        if (editProjectData.startDate >= editProjectData.endDate) {
+            throw new ValidationError(
+                'startDate',
+                `${ErrorCodes.ProjectStartDateAfterEndDate}`,
+            );
+        }
     }
 
     static validateNewProject = async (

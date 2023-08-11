@@ -6,6 +6,11 @@ enum Methodology {
     ProductTests = 'productTests'
 };
 
+enum Status {
+    Draft = 'draft',
+    New = 'new',
+}
+
 enum EditSteps {
     General = 0,
     Methodology = 1,
@@ -51,6 +56,7 @@ enum Gender {
 
 export {
     Methodology,
+    Status,
     EditSteps,
     RespondentsAges,
     RespondentsInterests,
