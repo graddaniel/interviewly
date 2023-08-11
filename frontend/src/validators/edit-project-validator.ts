@@ -1,34 +1,34 @@
 import {
     object,
 } from 'yup';
-import { ResearchTypes, ValidationSchemas } from 'shared';
+import { ProjectTypes, ValidationSchemas } from 'shared';
 
 import validateParams from './validate-params';
 
 
-const Steps = ResearchTypes.EditSteps;
+const Steps = ProjectTypes.EditSteps;
 
 export default class EditProjectValidator {
-    private static getSchema = (step: ResearchTypes.EditSteps) => {
+    private static getSchema = (step: ProjectTypes.EditSteps) => {
         const SCHEMAS = ValidationSchemas.instance();
 
         const schemas = {
             [Steps.General]: object({
-                title: SCHEMAS.research.title,
-                description: SCHEMAS.research.description,
+                title: SCHEMAS.project.title,
+                description: SCHEMAS.project.description,
             }),
             [Steps.Methodology]: object({
-                methodology: SCHEMAS.research.methodology,
+                methodology: SCHEMAS.project.methodology,
             }),
             [Steps.Respondents]: object({
                 // if they exist then they're true, otherwise theyre false
             }),
             [Steps.Details]: object({
-                participantsCount: SCHEMAS.research.participantsCount,
-                reserveParticipantsCount: SCHEMAS.research.reserveParticipantsCount,
-                meetingDuration: SCHEMAS.research.meetingDuration,
-                participantsPaymentCurrency: SCHEMAS.research.participantsPaymentCurrency,
-                participantsPaymentValue: SCHEMAS.research.participantsPaymentValue,
+                participantsCount: SCHEMAS.project.participantsCount,
+                reserveParticipantsCount: SCHEMAS.project.reserveParticipantsCount,
+                meetingDuration: SCHEMAS.project.meetingDuration,
+                participantsPaymentCurrency: SCHEMAS.project.participantsPaymentCurrency,
+                participantsPaymentValue: SCHEMAS.project.participantsPaymentValue,
             }),
             [Steps.Summary]: object({}),
         };
@@ -37,7 +37,7 @@ export default class EditProjectValidator {
     };
 
     static validateData = async (
-        step: ResearchTypes.EditSteps,
+        step: ProjectTypes.EditSteps,
         editProjectData: any
     ) => {
         const errors: any = await validateParams(

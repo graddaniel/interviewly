@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { generatePath, useNavigate, useParams } from 'react-router-dom';
-import { ResearchTypes } from 'shared';
+import { ProjectTypes } from 'shared';
 
 import ProjectStepper from '../../../components/project-stepper/project-stepper';
 import TextButton from '../../../components/text-button/text-button';
@@ -15,7 +15,7 @@ import RespondentsStep from './respondents-step';
 import { APP_FORMS_ROUTES } from '../../../consts/routes';
 import DetailsStep from './details-step';
 
-const METHODOLOGY = ResearchTypes.Methodology.OnlineCommunities;
+const METHODOLOGY = ProjectTypes.Methodology.OnlineCommunities;
 
 const ViewProject = () => {
     const { t } = useTranslation();

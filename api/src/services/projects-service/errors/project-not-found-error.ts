@@ -1,10 +1,10 @@
 import { StatusCodes } from 'http-status-codes';
 
-export default class ResearchNotFoundError extends Error {
+export default class ProjectNotFoundError extends Error {
     statusCode: StatusCodes;
 
     constructor() {
-        super('Research not found');
+        super('Project not found');
 
         this.statusCode = StatusCodes.NOT_FOUND;
     }

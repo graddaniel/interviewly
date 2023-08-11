@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { generatePath, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ProfileTypes, ResearchTypes } from 'shared';
+import { ProfileTypes, ProjectTypes } from 'shared';
 
 import MethodologyTile from '../../../../components/methodology-tile/methodology-tile';
 import BulletinBoardTile from '../bulletin-board-tile';
@@ -68,7 +68,7 @@ const OnlineCommunitySection = ({
                 className={classes.methodologyTile}
                 mini={true}
                 selected={false}
-                methodology={ResearchTypes.Methodology.OnlineCommunities}
+                methodology={ProjectTypes.Methodology.OnlineCommunities}
             />
             <button
                 className={classes.createRoomButton}

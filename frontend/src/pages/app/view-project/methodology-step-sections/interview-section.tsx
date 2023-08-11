@@ -2,7 +2,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ResearchTypes } from 'shared';
+import { ProjectTypes } from 'shared';
 
 import MethodologyTile from '../../../../components/methodology-tile/methodology-tile';
 import TextButton from '../../../../components/text-button/text-button';
@@ -36,7 +36,7 @@ const InterviewSection = ({
                 className={classes.methodologyTile}
                 mini={true}
                 selected={false}
-                methodology={ResearchTypes.Methodology.Interview}
+                methodology={ProjectTypes.Methodology.Interview}
             />
             <TextButton
                 className={classes.createSurveyButton}

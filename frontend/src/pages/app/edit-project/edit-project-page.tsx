@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Form, useActionData, useLoaderData, useNavigate, useSubmit } from 'react-router-dom';
 import { useTranslation } from 'react-i18next'
-import { ResearchTypes } from 'shared';
+import { ProjectTypes } from 'shared';
 
 import { APP_ROUTES } from '../../../consts/routes';
 import CloseControls from '../../../components/close-controls/close-controls';
@@ -20,7 +20,7 @@ import InterviewlyLogo from 'images/logo.svg';
 const EditProjectPage = () => {
     const { t } = useTranslation();
 
-    const Steps = ResearchTypes.EditSteps;
+    const Steps = ProjectTypes.EditSteps;
     const StepsArray = [
         { title: t('editProject.aboutStep.title') },
         { title: t('editProject.methodologyStep.title') },
@@ -29,7 +29,7 @@ const EditProjectPage = () => {
         { title: t('editProject.summaryStep.title') },
     ];
 
-    const [ step, setStep ] = useState(3);
+    const [ step, setStep ] = useState(0);
     const formRef = useRef(null);
     const navigate = useNavigate();
     const submit = useSubmit();

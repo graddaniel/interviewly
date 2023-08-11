@@ -5,7 +5,7 @@ import {
 
 import { ErrorCodes } from '../errors';
 import { AccountTypes, ProfileTypes } from '../types';
-import { Duration, Methodology, PaymentCurrency } from '../types/research';
+import { Duration, Methodology, PaymentCurrency } from '../types/project';
 import config from '../config'; 
 
 import type { Schema } from 'yup'; 
@@ -37,7 +37,7 @@ export default class ValidationSchemas {
         name: Schema;
         taxIdNumber: Schema;
     };
-    research: {
+    project: {
         title: Schema;
         description: Schema;
         methodology: Schema;
@@ -126,35 +126,35 @@ export default class ValidationSchemas {
                 taxIdNumber: string().max(validationConfig.company.taxIdNumber.maxLength, `${ErrorCodes.CompanyTaxIdTooLong}`),
         };
 
-        this.research = {
+        this.project = {
             title: string()
-                .required(`${ErrorCodes.ResearchTitleRequired}`)
-                .matches(new RegExp(validationConfig.research.title.regexp), `${ErrorCodes.ResearchTitleIncorrect}`)//todo verify
-                .min(validationConfig.research.title.minLength, `${ErrorCodes.ResearchTitleTooShort}`)
-                .max(validationConfig.research.title.maxLength, `${ErrorCodes.ResearchTitleTooLong}`),
+                .required(`${ErrorCodes.ProjectTitleRequired}`)
+                .matches(new RegExp(validationConfig.project.title.regexp), `${ErrorCodes.ProjectTitleIncorrect}`)//todo verify
+                .min(validationConfig.project.title.minLength, `${ErrorCodes.ProjectTitleTooShort}`)
+                .max(validationConfig.project.title.maxLength, `${ErrorCodes.ProjectTitleTooLong}`),
             description: string()
-                .min(validationConfig.research.description.minLength, `${ErrorCodes.ResearchDescriptionTooShort}`)
-                .max(validationConfig.research.description.maxLength, `${ErrorCodes.ResearchDescriptionTooLong}`),
+                .min(validationConfig.project.description.minLength, `${ErrorCodes.ProjectDescriptionTooShort}`)
+                .max(validationConfig.project.description.maxLength, `${ErrorCodes.ProjectDescriptionTooLong}`),
             methodology: string()
-                .required(`${ErrorCodes.ResearchMethodologyRequired}`)
-                .oneOf(Object.values(Methodology), `${ErrorCodes.ResearchMethodologyIncorrect}`),
+                .required(`${ErrorCodes.ProjectMethodologyRequired}`)
+                .oneOf(Object.values(Methodology), `${ErrorCodes.ProjectMethodologyIncorrect}`),
             participantsCount: number()
-                .required(`${ErrorCodes.ResearchParticipantsCountRequried}`)
-                .min(validationConfig.research.participantsCount.min, `${ErrorCodes.ResearchParticipantsCountTooLow}`)
-                .max(validationConfig.research.participantsCount.max, `${ErrorCodes.ResearchParticipantsCountTooHigh}`),
+                .required(`${ErrorCodes.ProjectParticipantsCountRequried}`)
+                .min(validationConfig.project.participantsCount.min, `${ErrorCodes.ProjectParticipantsCountTooLow}`)
+                .max(validationConfig.project.participantsCount.max, `${ErrorCodes.ProjectParticipantsCountTooHigh}`),
             reserveParticipantsCount: number()
-                .required(`${ErrorCodes.ResearchReserveParticipantsCountRequired}`)
-                .min(validationConfig.research.reserveParticipantsCount.min, `${ErrorCodes.ResearchReserveParticipantsCountTooLow}`)
-                .max(validationConfig.research.reserveParticipantsCount.max, `${ErrorCodes.ResearchReserveParticipantsCountTooHigh}`),
+                .required(`${ErrorCodes.ProjectReserveParticipantsCountRequired}`)
+                .min(validationConfig.project.reserveParticipantsCount.min, `${ErrorCodes.ProjectReserveParticipantsCountTooLow}`)
+                .max(validationConfig.project.reserveParticipantsCount.max, `${ErrorCodes.ProjectReserveParticipantsCountTooHigh}`),
             meetingDuration: string()
-                .required(`${ErrorCodes.ResearchMeetingDurationRequried}`)
-                .oneOf(Object.values(Duration), `${ErrorCodes.ResearchMeetingDurationIncorrect}`),
+                .required(`${ErrorCodes.ProjectMeetingDurationRequried}`)
+                .oneOf(Object.values(Duration), `${ErrorCodes.ProjectMeetingDurationIncorrect}`),
             participantsPaymentCurrency: string()
-                .required(`${ErrorCodes.ResearchParticipantsPaymentCurrencyRequired}`)
-                .oneOf(Object.values(PaymentCurrency), `${ErrorCodes.ResearchParticipantsPaymentCurrencyIncorrect}`),
+                .required(`${ErrorCodes.ProjectParticipantsPaymentCurrencyRequired}`)
+                .oneOf(Object.values(PaymentCurrency), `${ErrorCodes.ProjectParticipantsPaymentCurrencyIncorrect}`),
             participantsPaymentValue: number()
-                .required(`${ErrorCodes.ResearchParticipantsPaymentValueRequired}`)
-                .min(validationConfig.research.participantsPaymentValue.min, `${ErrorCodes.ResearchParticipantsPaymentValueTooLow}`),
+                .required(`${ErrorCodes.ProjectParticipantsPaymentValueRequired}`)
+                .min(validationConfig.project.participantsPaymentValue.min, `${ErrorCodes.ProjectParticipantsPaymentValueTooLow}`),
         };
 
         this.contactRequestMessage = string()

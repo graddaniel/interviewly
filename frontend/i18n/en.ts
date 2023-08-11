@@ -353,15 +353,16 @@ Over the years, I’ve come to learn that designing collaboratively means puttin
                 participantsCountInputLabel: 'Participants Count',
                 reserveParticipantsCountInputLabel: 'Reserve Participants Count',
                 interviewDurationLabel: 'Interview duration',
-                startDateLabel: 'Start date',
+                startDatelabel: 'Start date',
                 endDateLabel: 'End date',
                 transcriptionSubtitle: 'Transcription',
                 respondentFeeSubtitle: 'Payment for the respondent',
+                respondentFeeLabel: 'Respondent fee',
                 currencyLabel: 'Currency',
             }
         },
         editProject: {
-            title: 'New research creator',
+            title: 'New project creator',
             aboutStepTitle: 'About project',
             methodologyStepTitle: 'Research methodology',
             respondentsStepTitle: 'Selection of respondents',
@@ -380,7 +381,7 @@ Over the years, I’ve come to learn that designing collaboratively means puttin
             },
             respondentsStep: {
                 title: 'Selection of respondents',
-                respondentsSelectionSubtitle: 'Select respondents for this research',
+                respondentsSelectionSubtitle: 'Select respondents for this project',
                 respondentsSelectionInstructionPart1: `\
 If you're unsure how the respondents file should look like, download our sample file, where you will find all the necessary information.`,
                 respondentsSelectionInstructionPart2: 'or specify the desired respondents profile with the filters below',

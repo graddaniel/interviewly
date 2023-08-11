@@ -3,11 +3,11 @@ import axios from 'axios';
 import { API_HOST } from 'config/current';
 
 
-export default class ResearchService {
-    static createResearch = async (title: string) => {
+export default class ProjectService {
+    static createProject = async (title: string) => {
         const accessToken = sessionStorage.getItem('accessToken') || localStorage.getItem('accessToken');
 
-        const response = await axios.post(`${API_HOST}/research`, {
+        const response = await axios.post(`${API_HOST}/projects`, {
             title,
         }, {
             headers: {
@@ -20,10 +20,10 @@ export default class ResearchService {
         return data;
     }
 
-    static getResearch = async (uuid: string) => {
+    static getProject = async (uuid: string) => {
         const accessToken = sessionStorage.getItem('accessToken') || localStorage.getItem('accessToken');
 
-        const response = await axios.get(`${API_HOST}/research/${uuid}`, {
+        const response = await axios.get(`${API_HOST}/projects/${uuid}`, {
             headers: {
                 'authorization': `bearer ${accessToken}`
             },
@@ -34,10 +34,10 @@ export default class ResearchService {
         return data;
     }
 
-    static getAllResearch = async () => {
+    static getAllProjects = async () => {
         const accessToken = sessionStorage.getItem('accessToken') || localStorage.getItem('accessToken');
 
-        const response = await axios.get(`${API_HOST}/research`, {
+        const response = await axios.get(`${API_HOST}/projects`, {
             headers: {
                 'authorization': `bearer ${accessToken}`
             },
@@ -48,7 +48,7 @@ export default class ResearchService {
         return data;
     }
 
-    static updateResearch = async (
+    static updateProject = async (
         projectId: string,
         formData
     ) => {
@@ -99,7 +99,7 @@ export default class ResearchService {
 
         const accessToken = sessionStorage.getItem('accessToken') || localStorage.getItem('accessToken');
 
-        return axios.patch(`${API_HOST}/research/${projectId}`, bodyFormData, {
+        return axios.patch(`${API_HOST}/projects/${projectId}`, bodyFormData, {
             headers: {
                 'content-type': 'multipart/form-data',
                 'authorization': `bearer ${accessToken}`
@@ -111,7 +111,7 @@ export default class ResearchService {
     static addSurvey = async (projectId, surveyData) => {
         const accessToken = sessionStorage.getItem('accessToken') || localStorage.getItem('accessToken');
 
-        return axios.post(`${API_HOST}/research/${projectId}/survey`, surveyData, {
+        return axios.post(`${API_HOST}/projects/${projectId}/survey`, surveyData, {
             headers: {
                 'content-type': 'multipart/form-data',
                 'authorization': `bearer ${accessToken}`

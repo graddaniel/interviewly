@@ -1,9 +1,9 @@
 import * as AccountTypes from "./account";
 import * as ProfileTypes from "./profile";
-import * as ResearchTypes from "./research";
+import * as ProjectTypes from "./project";
 
 export {
     AccountTypes,
     ProfileTypes,
-    ResearchTypes,
+    ProjectTypes,
 };

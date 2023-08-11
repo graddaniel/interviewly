@@ -7,7 +7,7 @@ import {
 import SequelizeConnection from '../services/sequelize-connection';
 import AddressModel from './address';
 import RecruiterProfileModel from './recruiter-profile';
-import ResearchModel from './research';
+import ProjectModel from './project';
 
 const UUID_V4_LENGTH = 40;
 
@@ -52,12 +52,12 @@ RecruiterProfileModel.associations.CompanyModel = RecruiterProfileModel.belongsT
         allowNull: false,
     }
 });
-Company.associations.ResearchModel = Company.hasMany(ResearchModel, {
+Company.associations.ProjectModel = Company.hasMany(ProjectModel, {
     foreignKey: {
         allowNull: false,
     }
 });
-ResearchModel.associations.CompanyModel = ResearchModel.belongsTo(Company, {
+ProjectModel.associations.CompanyModel = ProjectModel.belongsTo(Company, {
     foreignKey: {
         allowNull: false,
     }

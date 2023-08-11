@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ResearchTypes } from 'shared';
+import { ProjectTypes } from 'shared';
 import { useTranslation } from 'react-i18next';
 
 import StepTitle from './step-title';
@@ -9,13 +9,13 @@ import classes from './methodology-step.module.css';
 import TilesIconBlack from 'images/tiles-icon-black.svg';
 
 
-const METHODOLOGIES = Object.values(ResearchTypes.Methodology);
+const METHODOLOGIES = Object.values(ProjectTypes.Methodology);
 
 const MethodologyStep = ({
     project,
 }) => {
     const { t } = useTranslation();
-    const [ methodology, setMethodology ] = useState<ResearchTypes.Methodology>(project.methodology);
+    const [ methodology, setMethodology ] = useState<ProjectTypes.Methodology>(project.methodology);
 
     return (
         <section className={classes.methodologyStep}>

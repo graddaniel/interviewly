@@ -1,6 +1,6 @@
-import { ResearchTypes } from 'shared';
+import { ProjectTypes } from 'shared';
 
-import ResearchService from '../../services/research-service';
+import ProjectService from '../../services/project-service';
 import EditProjectValidator from '../../validators/edit-project-validator';
 
 
@@ -17,7 +17,7 @@ const EditProjectAction = async ({
     } = formData;
 
     const step = parseInt(stepString, 10);
-    if (step === ResearchTypes.EditSteps.Details) {
+    if (step === ProjectTypes.EditSteps.Details) {
         for (const param of ['participantsCount', 'participantsPaymentValue', 'reserveParticipantsCount']) {
             const parsedValue = parseInt(editProjectData[param], 10);
             editProjectData[param] = isNaN(parsedValue) ? 0 : parsedValue;
@@ -25,13 +25,13 @@ const EditProjectAction = async ({
     }
 
     try {
-        if (!Object.values(ResearchTypes.EditSteps).includes(step)) {
+        if (!Object.values(ProjectTypes.EditSteps).includes(step)) {
             throw new Error(`Unrecognized project edition step: ${step}`);
         }
 
         await EditProjectValidator.validateData(step, editProjectData);
 
-        const result = await ResearchService.updateResearch(projectId, formData);
+        const result = await ProjectService.updateProject(projectId, formData);
 
         console.log("update result", result);
     } catch (errors) {

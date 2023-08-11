@@ -1,9 +1,9 @@
-import ResearchService from '../../services/research-service';
+import ProjectService from '../../services/project-service';
 
 
 const ProjectsLoader = async ({
 }) => {
-    return ResearchService.getAllResearch();
+    return ProjectService.getAllProjects();
 };
 
 export default ProjectsLoader;

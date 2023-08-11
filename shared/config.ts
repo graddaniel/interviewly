@@ -55,7 +55,7 @@ const config = {
                 "maxLength": 13
             }
         },
-        research: {
+        project: {
             title: {
                 minLength: 1,
                 maxLength: 64,

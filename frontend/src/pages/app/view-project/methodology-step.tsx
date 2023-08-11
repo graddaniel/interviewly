@@ -1,12 +1,12 @@
 import React from 'react';
-import { ResearchTypes } from 'shared';
+import { ProjectTypes } from 'shared';
 
 import classes from './methodology-step.module.css';
 import OnlineCommunitySection from './methodology-step-sections/online-community-section';
 import InterviewSection from './methodology-step-sections/interview-section';
 
 type MethodologyStepProps = {
-    methodology: ResearchTypes.Methodology;
+    methodology: ProjectTypes.Methodology;
 };
 
 const MethodologyStep = ({
@@ -14,10 +14,10 @@ const MethodologyStep = ({
 }: MethodologyStepProps) => {
     return (
         <section className={classes.methodologyStep}>
-            {methodology === ResearchTypes.Methodology.Interview && (
+            {methodology === ProjectTypes.Methodology.Interview && (
                 <InterviewSection />
             )}
-            {methodology === ResearchTypes.Methodology.OnlineCommunities && (
+            {methodology === ProjectTypes.Methodology.OnlineCommunities && (
                 <OnlineCommunitySection />
             )}
         </section>

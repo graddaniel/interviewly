@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { ResearchTypes } from 'shared';
+import { ProjectTypes } from 'shared';
 import { useTranslation } from 'react-i18next';
 
 import classes from './methodology-tile.module.css';
@@ -12,7 +12,7 @@ import QuestionaireIconPurple from 'images/respondent-icon.svg';
 
 type MethodologyTileProps = {
     className?: string;
-    methodology: ResearchTypes.Methodology;
+    methodology: ProjectTypes.Methodology;
     onClick?: () => void;
     selected: boolean;
     mini?: boolean;
@@ -28,27 +28,27 @@ const MethodologyTile = ({
     const { t } = useTranslation();
 
     const METHODOLOGIES = {
-        [ResearchTypes.Methodology.Interview]: {
+        [ProjectTypes.Methodology.Interview]: {
             title: t('methodologies.interviews.title'),
             text: t('methodologies.interviews.text'),
             icon: ChatIconPurple,
         },
-        [ResearchTypes.Methodology.FocusGroups]: {
+        [ProjectTypes.Methodology.FocusGroups]: {
             title: t('methodologies.focusGroups.title'),
             text: t('methodologies.focusGroups.text'),
             icon: PeopleIconPurple,
         },
-        [ResearchTypes.Methodology.OnlineCommunities]: {
+        [ProjectTypes.Methodology.OnlineCommunities]: {
             title: t('methodologies.onlineCommunities.title'),
             text: t('methodologies.onlineCommunities.text'),
             icon: EarthIconPurple,
         },
-        [ResearchTypes.Methodology.UXInterviews]: {
+        [ProjectTypes.Methodology.UXInterviews]: {
             title: t('methodologies.uxInterviews.title'),
             text: t('methodologies.uxInterviews.text'),
             icon: ElementsIconPurple,
         },
-        [ResearchTypes.Methodology.ProductTests]: {
+        [ProjectTypes.Methodology.ProductTests]: {
             title: t('methodologies.productTests.title'),
             text: t('methodologies.productTests.text'),
             icon: QuestionaireIconPurple,

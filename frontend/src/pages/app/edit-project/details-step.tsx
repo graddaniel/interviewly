@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
-import { ResearchTypes } from 'shared';
+import { ProjectTypes } from 'shared';
 import classNames from 'classnames';
 import { useActionData } from 'react-router-dom';
 import moment from 'moment';
@@ -24,8 +24,8 @@ import { useTranslation } from 'react-i18next';
 import capitalizeFirstLetter from '../../../utils/capitalize-first-letter';
 registerLocale('pl', pl)
 
-const DURATIONS = Object.values(ResearchTypes.Duration);
-const CURRENCIES = Object.values(ResearchTypes.PaymentCurrency);
+const DURATIONS = Object.values(ProjectTypes.Duration);
+const CURRENCIES = Object.values(ProjectTypes.PaymentCurrency);
 const HOURS = [] as string[];
 for (let i = 0; i < 24; i += 1) HOURS.push(`${i}`);
 

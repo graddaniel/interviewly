@@ -1,4 +1,4 @@
-import ResearchService from '../../services/research-service';
+import ProjectService from '../../services/project-service';
 
 
 const EditProjectLoader = async ({
@@ -6,7 +6,7 @@ const EditProjectLoader = async ({
 }) => {
     const { projectId } = params;
 
-    return ResearchService.getResearch(projectId);
+    return ProjectService.getProject(projectId);
 };
 
 export default EditProjectLoader;

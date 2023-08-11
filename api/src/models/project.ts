@@ -2,7 +2,7 @@ import {
     DataTypes,
     Model,
 } from 'sequelize';
-import { ResearchTypes } from 'shared';
+import { ProjectTypes } from 'shared';
 
 import SequelizeConnection from '../services/sequelize-connection';
 import { UUID_V4_LENGTH } from '../consts';
@@ -11,20 +11,20 @@ import { UUID_V4_LENGTH } from '../consts';
 const TITLE_LENGTH = 64;
 const DESCRIPTION_LENGTH = 512;
 
-export default class Research extends Model {
+export default class Project extends Model {
     declare id: number;
     declare uuid: string;
     declare title: string;
     declare description: string;
-    declare methodology: ResearchTypes.Methodology;
+    declare methodology: ProjectTypes.Methodology;
     declare participantsCount: number;
     declare reserveParticipantsCount: number;
-    declare meetingDuration: ResearchTypes.Duration;
-    declare participantsPaymentCurrency: ResearchTypes.PaymentCurrency;
+    declare meetingDuration: ProjectTypes.Duration;
+    declare participantsPaymentCurrency: ProjectTypes.PaymentCurrency;
     declare participantsPaymentValue: number;
 };
 
-Research.init({
+Project.init({
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -43,9 +43,9 @@ Research.init({
         type: DataTypes.STRING(DESCRIPTION_LENGTH),
     },
     methodology: {
-        type: DataTypes.ENUM(...Object.values(ResearchTypes.Methodology)),
+        type: DataTypes.ENUM(...Object.values(ProjectTypes.Methodology)),
         allowNull: false,
-        defaultValue: ResearchTypes.Methodology.Interview,
+        defaultValue: ProjectTypes.Methodology.Interview,
     },
     participantsCount: {
         type: DataTypes.INTEGER,
@@ -58,10 +58,10 @@ Research.init({
         defaultValue: 0,
     },
     meetingDuration: {
-        type: DataTypes.ENUM(...Object.values(ResearchTypes.Duration)),
+        type: DataTypes.ENUM(...Object.values(ProjectTypes.Duration)),
     },
     participantsPaymentCurrency: {
-        type: DataTypes.ENUM(...Object.values(ResearchTypes.PaymentCurrency)),
+        type: DataTypes.ENUM(...Object.values(ProjectTypes.PaymentCurrency)),
     },
     participantsPaymentValue: {
         type: DataTypes.INTEGER,

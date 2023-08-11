@@ -11,7 +11,7 @@ import { AccountTypes, ProfileTypes, ValidationSchemas } from 'shared';
 
 import AccountsController from './controllers/accounts-controller';
 import AccountsService from './services/accounts-service/accounts-service';
-import ResearchController from './controllers/research-controller';
+import ProjectsController from './controllers/projects-controller';
 import MailService from './services/mail-service/mail-service';
 import SequelizeConnection from './services/sequelize-connection';
 import { extractCredentials } from './middleware/extract-credentials';
@@ -30,9 +30,9 @@ import ContactRequestController from './controllers/contact-request-controller';
 
 import type { Application, Request, Response, NextFunction } from 'express';
 import CompanyNotFound from './services/companies-service/errors/company-not-found-error';
-import ResearchNotFoundError from './services/research-service/errors/research-not-found-error';
+import ProjectNotFoundError from './services/projects-service/errors/project-not-found-error';
 import ProfileNotFoundError from './services/accounts-service/errors/profile-not-found-error';
-import ResearchService from './services/research-service/research-service';
+import ProjectsService from './services/projects-service/projects-service';
 import LimeSurveyAdapter from './services/lime-survey-adapter';
 import LSQBuilder from './services/lsq-builder';
 import translations from './i18n';
@@ -57,7 +57,7 @@ export default class Appplication {
         const lsqBuilder = new LSQBuilder();
         const companiesService = new CompaniesService();
         const accountsService = new AccountsService(mailService, companiesService);
-        const researchService = new ResearchService(
+        const projectsService = new ProjectsService(
             accountsService,
             companiesService,
             limeSurveyAdapter,
@@ -69,7 +69,7 @@ export default class Appplication {
         const companiesController = new CompaniesController(accountsService, companiesService);
         const accountsController = new AccountsController(accountsService);
 
-        const researchController = new ResearchController(researchService);
+        const projectsController = new ProjectsController(projectsService);
 
         SequelizeConnection.instance().sync({
             force: config.get('database.forceSync'),
@@ -81,7 +81,7 @@ export default class Appplication {
                 fileSize: 1048576,
             }
         });
-        const researchUpdateFilesMiddleware = uploadHandler.fields([{
+        const projectUpdateFilesMiddleware = uploadHandler.fields([{
             name: 'avatarFile',
             maxCount: 1,
         }, {
@@ -144,33 +144,33 @@ export default class Appplication {
         );
         this.app.use('/companies', companiesRouter);
 
-        const researchRouter = express.Router();
-        researchRouter.get('/', requireJWT, requireAccountType(AccountTypes.Type.RECRUITER), researchController.getAllResearch);
-        researchRouter.post(
+        const projectsRouter = express.Router();
+        projectsRouter.get('/', requireJWT, requireAccountType(AccountTypes.Type.RECRUITER), projectsController.getAllProjects);
+        projectsRouter.post(
             '/',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
             requireProfileRole(ProfileTypes.Role.Admin),
-            researchController.createResearch
+            projectsController.createProject
         );
-        researchRouter.get('/:researchId', requireJWT, requireAccountType(AccountTypes.Type.RECRUITER), researchController.getOneResearch);
-        researchRouter.patch(
-            '/:researchId',
+        projectsRouter.get('/:projectId', requireJWT, requireAccountType(AccountTypes.Type.RECRUITER), projectsController.getOneProject);
+        projectsRouter.patch(
+            '/:projectId',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
             requireProfileRole(ProfileTypes.Role.Admin),
-            researchUpdateFilesMiddleware,
-            researchController.updateResearch
+            projectUpdateFilesMiddleware,
+            projectsController.updateProject
         );
-        researchRouter.post(
-            '/:researchId/survey',
+        projectsRouter.post(
+            '/:projectId/survey',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
             requireProfileRole(ProfileTypes.Role.Admin),
-            researchUpdateFilesMiddleware,
-            researchController.addSurveyToResearch
+            projectUpdateFilesMiddleware,
+            projectsController.addSurveyToProject
         );
-        this.app.use('/research', researchRouter);
+        this.app.use('/projects', projectsRouter);
 
         this.app.use((
             err: Error,
@@ -199,7 +199,7 @@ export default class Appplication {
                 || err instanceof AccountNotFoundError
                 || err instanceof CompanyNotFound
                 || err instanceof ProfileNotFoundError
-                || err instanceof ResearchNotFoundError
+                || err instanceof ProjectNotFoundError
                 || err instanceof NotPermittedError
                 || err instanceof AuthorizationError) {
                     statusCode = (err as any).statusCode;

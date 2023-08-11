@@ -1,4 +1,4 @@
-import ResearchService from "../../services/research-service";
+import ProjectService from "../../services/project-service";
 
 export default async function LibraryEditorAction ({
     request,
@@ -15,7 +15,7 @@ export default async function LibraryEditorAction ({
 
     console.log(newSurvey);
 
-    ResearchService.addSurvey(0, newSurvey)
+    ProjectService.addSurvey(0, newSurvey)
 
     return null;
 }

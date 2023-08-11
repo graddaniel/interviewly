@@ -1,5 +1,5 @@
-import ResearchModel from '../../models/research'
-import ResearchNotFoundError from './errors/research-not-found-error';
+import ProjectModel from '../../models/project'
+import ProjectNotFoundError from './errors/project-not-found-error';
 import { v4 as generateUuidV4 } from 'uuid';
 
 import type AccountsService from '../accounts-service/accounts-service';
@@ -8,7 +8,7 @@ import type LimeSurveyAdapter from '../lime-survey-adapter';
 import type LSQBuilder from '../lsq-builder';
 
 
-export default class ResearchService {
+export default class ProjectsService {
     accountsService: AccountsService;
     companiesService: CompaniesService;
     limeSurveyAdapter: LimeSurveyAdapter;
@@ -27,100 +27,100 @@ export default class ResearchService {
     }
 
     //TODO no need to find the company by user when we have its uuid
-    createNewResearch = async (
+    createNewProject = async (
         currentUserUuid: string,
         title: string,
-    ): Promise<ResearchModel> => {
+    ): Promise<ProjectModel> => {
         const account = await this.accountsService.getAccount({ uuid: currentUserUuid });
 
         //@ts-ignore
         const company = await account.RecruiterProfile.getCompany();
 
-        const research = await ResearchModel.create({
+        const project = await ProjectModel.create({
             title,
             uuid: generateUuidV4(),
             CompanyId: company.id,
         }, {
-            include: [ResearchModel.associations.Company]
+            include: [ProjectModel.associations.Company]
         });
 
-        return research;
+        return project;
     }
 
-    getResearch = async (
+    getProject = async (
         companyUuid: string,
-        researchUuid: string,
+        projectUuid: string,
     ) => {
         const company = await this.companiesService.getCompany({ uuid: companyUuid });
 
-        const research = await ResearchModel.findOne({
+        const project = await ProjectModel.findOne({
             attributes: ['uuid', 'title', 'description',
                 'methodology', 'participantsCount', 'meetingDuration',
                 'participantsPaymentCurrency', 'participantsPaymentValue'],
             where: {
-                uuid: researchUuid,
+                uuid: projectUuid,
                 CompanyId: company.id,
             },
         });
 
-        if (!research) {
-            throw new ResearchNotFoundError();
+        if (!project) {
+            throw new ProjectNotFoundError();
         }
 
-        //TODO check if thr user despite belonging to the company has also access to the research
+        //TODO check if thr user despite belonging to the company has also access to the project
 
-        return research;
+        return project;
     }
 
     //TODO no need to find the company by user when we have its uuid
-    getAllResearchOfUser = async (
+    getAllProjectsOfUser = async (
         currentUserUuid: string,
-    ): Promise<ResearchModel[]> => {
+    ): Promise<ProjectModel[]> => {
         const account = await this.accountsService.getAccount({ uuid: currentUserUuid });
 
         //@ts-ignore
         const company = await account.RecruiterProfile.getCompany();
 
-        const allResearch = await ResearchModel.findAll({
+        const allProjects = await ProjectModel.findAll({
             attributes: ['uuid', 'title', 'methodology'],
             where: {
                 CompanyId: company.id,
             },
         });
 
-        //TODO check also if the user when not an admin, can access this research
+        //TODO check also if the user when not an admin, can access this project
 
-        return allResearch;
+        return allProjects;
     }
 
-    updateResearch = async (
+    updateProject = async (
         companyUuid,
-        researchUuid,
-        newResearchData
+        projectUuid,
+        newProjectData
     ) => {
         const company = await this.companiesService.getCompany({ uuid: companyUuid });
 
-        const research = await ResearchModel.findOne({
+        const project = await ProjectModel.findOne({
             where: {
-                uuid: researchUuid,
+                uuid: projectUuid,
                 CompanyId: company.id,
             },
         });
 
-        if (!research) {
-            throw new ResearchNotFoundError();
+        if (!project) {
+            throw new ProjectNotFoundError();
         }
 
-        await research.update(newResearchData);
+        await project.update(newProjectData);
 
-        await research.save();
+        await project.save();
 
-        //TODO check if user belongs to the research and if has admin role
+        //TODO check if user belongs to the project and if has admin role
 
-        //TODO check if research is in draft mode
+        //TODO check if project is in draft mode
     }
 
-    addSurveyToResearch = async (researchId, surveyTemplate) => {
+    addSurveyToProject = async (projectId, surveyTemplate) => {
         const {
             name,
             languages,

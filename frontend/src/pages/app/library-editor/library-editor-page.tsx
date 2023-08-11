@@ -366,9 +366,16 @@ const LibraryEditorPage = () => {
                                     <DropdownList
                                         className={classes.correctAnswerDropdown}
                                         name={t('editProject.correctAnswerDropdownName')}
-                                        elementsList={q.answers.map(
-                                            a => a[currentLanguageCode]
-                                        )}
+                                        elementsList={
+                                            q.type === 'Y'
+                                                ? [
+                                                    t('generic.no'),
+                                                    t('generic.yes'),
+                                                ]
+                                                : q.answers.map(
+                                                    a => a[currentLanguageCode]
+                                                )    
+                                        }
                                         onChange={(i) => selectCorrectAnswer(
                                             q.code,
                                             i,

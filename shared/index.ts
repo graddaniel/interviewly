@@ -4,8 +4,8 @@ export { AccountTypes };
 import * as ProfileTypes from './types/profile';
 export { ProfileTypes };
 
-import * as ResearchTypes from './types/research';
-export { ResearchTypes };
+import * as ProjectTypes from './types/project';
+export { ProjectTypes };
 
 import ValidationSchemas from './validation-schemas/validation-schemas';
 export { ValidationSchemas };

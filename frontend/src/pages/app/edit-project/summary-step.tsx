@@ -1,5 +1,4 @@
 import React from 'react';
-import { ResearchTypes } from 'shared';
 
 import StepTitle from './step-title';
 import MethodologyTile from '../../../components/methodology-tile/methodology-tile';
