@@ -15,6 +15,7 @@ type DropdownListProps = {
     defaultIndex?: number;
     allowDeselect?: boolean;
     ellipsis?: boolean;
+    disabled?: boolean;
 };
 
 // if we pass index, then the dropdown is controlled from the outside
@@ -28,6 +29,7 @@ const DropdownList = ({
     defaultIndex,
     allowDeselect = true,
     ellipsis = false,
+    disabled = false,
 }: DropdownListProps) => {
     const [ selectedIndex, setSelectedIndex ] = useState(defaultIndex === undefined ? -1 : defaultIndex);
     const [ isOpen, setIsOpen ] = useState(false);
@@ -44,8 +46,15 @@ const DropdownList = ({
 
     return (
         <div
-            className={classNames(classes.dropdownList, className)}
-            onClick={() => elementsList.length > 0 && setIsOpen(state => !state)}
+            className={
+                classNames(
+                    classes.dropdownList,
+                    disabled && classes.disabled,
+                    className,
+            )}
+            onClick={() => elementsList.length > 0
+                && !disabled
+                && setIsOpen(state => !state)}
         >
             <div
                 className={classes.controls}
@@ -56,10 +65,12 @@ const DropdownList = ({
                         : name
                     }
                 </span>
-                <img
-                    className={classes.icon}
-                    src={ArrowDownIconBlack}
-                />
+                {!disabled && (
+                    <img
+                        className={classes.icon}
+                        src={ArrowDownIconBlack}
+                    />
+                )}
             </div>
             {isOpen && (
                 <ul className={classNames(classes.dropdown, listClassName)}>

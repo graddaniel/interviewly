@@ -66,14 +66,14 @@ const DetailsStep = ({
                 <NumericalInput
                     className={classes.participants}
                     name="participantsCount"
-                    placeholder={t('editProject.detailsStep.participantsCountInputLabel')}
+                    label={t('editProject.detailsStep.participantsCountInputLabel')}
                     error={errors.participantsCount}
                     defaultValue={project.participantsCount}
                 />
                 <NumericalInput
                     className={classes.reserveParticipants}
                     name="reserveParticipantsCount"
-                    placeholder={t('editProject.detailsStep.reserveParticipantsCountInputLabel')}
+                    label={t('editProject.detailsStep.reserveParticipantsCountInputLabel')}
                     error={errors.reserveParticipantsCount}
                     defaultValue={project.reserveParticipantsCount}
                 />
@@ -178,7 +178,7 @@ const DetailsStep = ({
                     <NumericalInput
                         className={classes.payment}
                         name="participantsPaymentValue"
-                        placeholder=""
+                        label=""
                         error={errors.participantsPaymentValue}
                         defaultValue={project.participantsPaymentValue}
                     />

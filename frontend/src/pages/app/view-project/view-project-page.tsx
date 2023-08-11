@@ -13,6 +13,7 @@ import QuestionMarkIconBlack from 'images/question-mark-icon-black.svg';
 import MethodologyStep from './methodology-step';
 import RespondentsStep from './respondents-step';
 import { APP_FORMS_ROUTES } from '../../../consts/routes';
+import DetailsStep from './details-step';
 
 const METHODOLOGY = ResearchTypes.Methodology.OnlineCommunities;
 
@@ -64,6 +65,18 @@ const ViewProject = () => {
                 {currentStep === 0 && (<GeneralStep />)}
                 {currentStep === 1 && (<MethodologyStep methodology={METHODOLOGY}/>)}
                 {currentStep === 2 && (<RespondentsStep />)}
+                {currentStep === 4 && (
+                    <DetailsStep
+                        participantsCount={20}
+                        reserveParticipantsCount={10}
+                        interviewDuration={30}
+                        startDate={new Date()}
+                        endDate={new Date()}
+                        transcriptionAvailable={true}
+                        respondentFee={100}
+                        currency={'EUR'}
+                    />
+                )}
             </div>
         </section>
     );

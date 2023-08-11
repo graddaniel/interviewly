@@ -1,0 +1,142 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.detailsStep {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5vw;
+}
+
+.interviewDurationWrapper {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+}
+.interviewDurationLabel {
+    font-size: 1vw;
+}
+.interviewDurationDropdown {
+    height: 2.5vw;
+}
+
+.dateTimePickers {
+    display: flex;
+}
+.label {
+    display: flex;
+    align-items: center;
+    gap: 1.2vw;
+    font-size: 1vw;
+}
+.datePickerInput {
+    padding: 0.6vw 1vw;
+    border-radius: 2vw;
+    border: 1px solid var(--BLACK);
+    font-size: 1vw;
+    text-align: center;
+    background-color: var(--COLOR3);
+}
+.withMargin {
+    margin-right: 1.2vw;
+}
+
+.yes {
+    width: min-content;
+    background-color: var(--GREEN1);
+}
+.no {
+    width: min-content;
+    background-color: var(--RED1);
+}
+
+.fee {
+    display: flex;
+    align-items: baseline;
+    gap: 2vw;
+}
+.feeCurrencyDropdown {
+    height: 3vw;
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .detailsStep {
+        gap: 10vw;
+    }
+    
+    .interviewDurationWrapper {
+        gap: 3vw;
+    }
+    .interviewDurationLabel {
+        font-size: 3vw;
+    }
+    .interviewDurationDropdown {
+        height: 7vw;
+    }
+    
+    .dateTimePickers {
+        justify-content: space-between;
+    }
+    .label {
+        gap: 3vw;
+        font-size: 3vw;
+    }
+    .datePickerInput {
+        padding: 2vw 3vw;
+        border-radius: 8vw;
+        font-size: 3vw;
+    }
+
+    .fee {
+        gap: 3.5vw;
+    }
+    .feeCurrencyDropdown {
+        height: 7vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .detailsStep {
+        gap: 10vw;
+    }
+    
+    .interviewDurationWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 6vw;
+    }
+    .interviewDurationLabel {
+        font-size: 5vw;
+    }
+    .interviewDurationDropdown {
+        height: 12vw;
+    }
+    
+    .dateTimePickers {
+        flex-direction: column;
+        gap: 6vw;
+    }
+    .label {
+        gap: 1.2vw;
+        font-size: 5vw;
+    }
+    .datePickerInput {
+        padding: 3.5vw 5vw;
+        border-radius: 15vw;
+        font-size: 5vw;
+    }
+    .withMargin {
+        margin-bottom: 0;
+    }
+
+    .fee {
+        display: flex;
+        align-items: center;
+        gap: 10vw;
+    }
+    .feeCurrencyDropdown {
+        height: 12vw;
+    }
+}

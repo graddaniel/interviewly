@@ -6,7 +6,7 @@ import classes from './numerical-input.module.css'
 
 type NumericalInputProps = {
     name: string;
-    placeholder: string;
+    label: string;
     className?: string;
     defaultValue?: number;
     inputProps?: {
@@ -26,7 +26,7 @@ const NumericalInput = ({
     className,
     inputProps,
     name,
-    placeholder,
+    label,
     defaultValue = 0,
     centerText = false,
     error,
@@ -59,7 +59,7 @@ const NumericalInput = ({
                 onClick={focusInput}
             >
                 <label className={classes.label}>
-                    {placeholder}
+                    {label}
                 </label>
                 <input
                     id={name}

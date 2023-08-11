@@ -14,14 +14,14 @@
     gap: 3.5vw;
 }
 
+.dateTimePickers {
+    display: flex;
+}
 .label {
     display: flex;
     align-items: center;
     gap: 1.2vw;
     font-size: 1vw;
-}
-.dateTimePickers {
-    display: flex;
 }
 .dropdown {
     height: 2.5vw;

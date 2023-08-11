@@ -54,6 +54,11 @@
     z-index: 1;
 }
 
+.disabled {
+    color: var(--GRAY);
+    border-color: var(--GRAY);
+}
+
 .listElement {
     cursor: pointer;
 }

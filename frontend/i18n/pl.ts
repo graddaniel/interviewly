@@ -345,6 +345,16 @@ Over the years, I’ve come to learn that designing collaboratively means puttin
                 upcomingInterviewsSubtitle: 'Nadchodzące spotkania',
                 respondentSurveysSubtitle: 'Ankiety respondenta',
             },
+            details: {
+                participantsCountInputLabel: 'Liczba uczestników',
+                reserveParticipantsCountInputLabel: 'Liczba rezerwowych uczestników',
+                interviewDurationLabel: 'Długość spotkania',
+                startDateLabel: 'Data rozpoczęcia',
+                endDateLabel: 'Data zakończenia',
+                transcriptionSubtitle: 'Transkrypcja',
+                respondentFeeSubtitle: 'Wynagrodzenie respondenta',
+                currencyLabel: 'Waluta',
+            }
         },
         editProject: {
             title: 'Kreator nowego badania',
