@@ -5,8 +5,6 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import en from './en';
 import pl from './pl';
 
-console.log(JSON.stringify(pl))
-
 i18n.use(LanguageDetector)
     .use(initReactI18next)
     .init({

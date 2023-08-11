@@ -2,18 +2,19 @@ import React, { useCallback, useRef, useState } from 'react';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 import { Form, Outlet, matchPath, useLocation, useSubmit } from 'react-router-dom';
+import classNames from 'classnames';
+import { AccountTypes } from 'shared';
 
 import Logo from '../../components/logo/logo';
 import IconButton from '../../components/icon-button/icon-button';
 import TextButton from '../../components/text-button/text-button';
 import Menu from './menu';
 import MenuDropdown from './menu-dropdown';
+import useAuth from '../../hooks/useAuth';
+import { APP_FORMS_ROUTES } from '../../consts/routes';
 
 import classes from './app.module.css';
 import BellIconBlack from '../../../images/bell-icon-black.svg';
-import { APP_FORMS_ROUTES } from '../../consts/routes';
-import useAuth from '../../hooks/useAuth';
-import { AccountTypes } from 'shared';
 
 const USER = {
     name: 'Mateusz',
@@ -50,8 +51,18 @@ const App = () => {
     }
 
     return (
-        <div className={auth.type === AccountTypes.Type.RECRUITER ? classes.pinkBackground : classes.blueBackground}>
-        <div className={classes.paddingWrapper}>
+        <div className={classNames(
+            classes.backgroundWrapper,
+            auth.type === AccountTypes.Type.RECRUITER
+                ? classes.pink
+                : classes.blue
+    )}>
+        <div className={classNames(
+            classes.paddingWrapper,
+            auth.type === AccountTypes.Type.RECRUITER
+                ? classes.pink
+                : classes.blue
+        )}>
             <div className={classes.app}>
                 <header className={classes.header}>
                     <Logo className={classes.logo} />

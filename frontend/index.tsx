@@ -55,6 +55,7 @@ import CompanyDataLoader from './src/loaders/app/company-data-loader';
 import CompanyDataAction from './src/actions/app/company-data-action';
 import OnlineCommunityRoomPage from './src/pages/app/online-community-room/online-community-room-page';
 import MeetingPage from './src/pages/app/meeting/meeting-page';
+import CalendarPage from './src/pages/calendar/calendar';
 
 import ROUTES, { APP_FORMS_ROUTES, APP_ROUTES, FORMS_ROUTES } from './src/consts/routes';
 import { SAMPLE_VERSION } from 'config/current';
@@ -189,7 +190,7 @@ const router = createBrowserRouter(
                 />
                 <Route
                     path={APP_ROUTES.CALENDAR.PATH}
-                    element={<div>CALENDAR</div>}
+                    element={<CalendarPage />}
                 />
                 <Route
                     path={APP_ROUTES.LIBRARY.PATH}

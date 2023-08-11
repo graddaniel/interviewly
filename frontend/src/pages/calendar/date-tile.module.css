@@ -1,0 +1,93 @@
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.dateTile {
+    width: 5.5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vw 0.75vw;
+    border-radius: 1.5vw;
+    border: 1px solid var(--COLOR2);
+    cursor: pointer;
+}
+
+.selected {
+    border-color: var(--COLOR5);
+}
+
+.today {
+    background-color: var(--COLOR2);
+}
+
+.day {
+    font-size: 1.75vw;
+    line-height: 1.75vw;
+}
+
+.otherMonth {
+    opacity: 0.5;
+}
+
+.interviews {
+    width: 1.5vw;
+    height: 1.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1vw;
+    font-size: 1vw;
+    color: var(--COLOR1);
+    background-color: var(--COLOR2);
+}
+.highlightedInterviews {
+    color: var(--WHITE);
+    background-color: var(--BLACK);
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .dateTile {
+        width: 8.5vw;
+        height: 6vw;
+        padding: 1.5vw 1vw;
+        border-radius: 3vw;
+    }
+
+    .day {
+        font-size: 3.5vw;
+        line-height: 4vw;
+    }
+    
+    .interviews {
+        width: 4vw;
+        height: 4vw;
+        border-radius: 3.5vw;
+        font-size: 2vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .dateTile {
+        width: 9vw;
+        height: 12vw;
+        flex-direction: column;
+        gap: 2vw;
+        padding: 1.5vw 1vw;
+        border-radius: 3vw;
+    }
+
+    .day {
+        font-size: 5vw;
+        line-height: 5vw;
+    }
+    
+    .interviews {
+        width: 5vw;
+        height: 5vw;
+        border-radius: 3.5vw;
+        font-size: 4vw;
+    }
+}

@@ -441,6 +441,9 @@ Please enter gross amount. The currency should match the currency used for the i
             publicSurveys: 'Public surveys',
             addNewTemplate: 'Add new template',
         },
+        calendar: {
+            title: 'Calendar',
+        },
         passwordReset: {
             request: {
                 header: 'Create new password',

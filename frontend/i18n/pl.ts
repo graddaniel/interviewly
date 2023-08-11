@@ -437,6 +437,9 @@ Proszę podać wartość brutto. Waluta powinna być zgodna z walutą faktury.`,
             publicSurveys: 'Publiczne ankiety',
             addNewTemplate: 'Dodaj nowy wzór',
         },
+        calendar: {
+            title: 'Kalendarz',
+        },
         passwordReset: {
             request: {
                 header: 'Stwórz nowe hasło',

@@ -1,0 +1,101 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+
+.libraryPage {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3vw;
+}
+
+.header {
+    display: flex;
+    gap: 1vw;
+}
+.headerIcon {
+    width: 1vw;
+    height: 1vw;
+}
+.title {
+    margin: 0;
+    font-size: 3.5vw;
+    line-height: 3.5vw;
+    font-weight: 400;
+}
+
+.contentSection {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75vw;
+}
+.subtitle {
+    font-size: 1.2vw;
+}
+.surveysList {
+    display: flex;
+    gap: 1.75vw;
+    overflow-x: auto;
+}
+
+
+@media (min-width: min-large) {
+    
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .libraryPage {
+        gap: 10vw;
+    }
+    
+    .header {
+        gap: 2vw;
+    }
+    .headerIcon {
+        width: 3vw;
+        height: 3vw;
+    }
+    .title {
+        font-size: 10vw;
+        line-height: 10vw;
+    }
+    
+    .contentSection {
+        gap: 5vw;
+    }
+    .subtitle {
+        font-size: 3.5vw;
+    }
+    .surveysList {
+        gap: 5vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .libraryPage {
+        gap: 10vw;
+    }
+    
+    .header {
+        gap: 5vw;
+    }
+    .headerIcon {
+        width: 5vw;
+        height: 5vw;
+    }
+    .title {
+        font-size: 9vw;
+        line-height: 9vw;
+    }
+    
+    .contentSection {
+        gap: 9vw;
+    }
+    .subtitle {
+        font-size: 4vw;
+    }
+    .surveysList {
+        gap: 9vw;
+    }
+}

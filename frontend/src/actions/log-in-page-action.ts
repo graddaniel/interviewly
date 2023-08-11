@@ -34,12 +34,12 @@ const LogInPageAction = async ({ request }) => {
                 if (errors.name === 'AxiosError') {
                     return {
                         success: false,
-                        errors: errors?.response?.data === 'Incorrect password'
+                        errors: errors?.response?.data?.error?.message === 'Incorrect password'
                             ? {
                                 password: 'Incorrect password',
                             }
                             : {
-                                generic: errors?.response?.data || 'Unknown error'
+                                generic: errors?.response?.data?.error?.message || 'Unknown error'
                             },
                     }
                 }
