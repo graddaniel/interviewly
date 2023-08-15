@@ -20,5 +20,8 @@
     "mailer": {
         "host": "smtp.office365.com",
         "port": 587
+    },
+    "limesurvey": {
+        "apiUrl": "http://127.0.0.1/limesurvey/index.php/admin/remotecontrol"
     }
 }

@@ -9,13 +9,14 @@ type DropdownListProps = {
     name: string;
     elementsList: any[];
     onChange: (index: number) => void;
-    index?: number;
+    index?: number | number[];
     className?: string;
     listClassName?: string;
     defaultIndex?: number;
     allowDeselect?: boolean;
     ellipsis?: boolean;
     disabled?: boolean;
+    multiselect?: boolean;
 };
 
 // if we pass index, then the dropdown is controlled from the outside
@@ -30,11 +31,21 @@ const DropdownList = ({
     allowDeselect = true,
     ellipsis = false,
     disabled = false,
+    multiselect = false,
 }: DropdownListProps) => {
     const [ selectedIndex, setSelectedIndex ] = useState(defaultIndex === undefined ? -1 : defaultIndex);
+    // for multiselect only
+    const [ selectedIndexes, setSelectedIndexes ] = useState(defaultIndex === undefined ? [] : [defaultIndex]);
     const [ isOpen, setIsOpen ] = useState(false);
 
-    const currentSelectionIndex = indexInput ?? selectedIndex;
+    if (multiselect && indexInput && !Array.isArray(indexInput)
+        || !multiselect && indexInput && Array.isArray(indexInput)) {
+        console.error("Multiselect and array of input indexes must be used together, when the dropdown is uncontrolled");
+        return null;
+    }
+
+    const currentSelectionIndex = indexInput as number ?? selectedIndex;
+    const currentSelectionIndexes = indexInput as number[] ?? selectedIndexes;
 
     useEffect(() => {
         if (elementsList.length > 0) {
@@ -43,6 +54,18 @@ const DropdownList = ({
 
         setIsOpen(false);
     }, [elementsList]);
+
+    const getDropdownName = () => {
+        if (multiselect && currentSelectionIndexes.length > 0) {
+            return elementsList.filter((e, i) => currentSelectionIndexes
+                                                    .includes(i))
+                                                    .join(", ");
+        } else if (!multiselect && currentSelectionIndex >= 0) {
+            return elementsList[currentSelectionIndex];
+        }
+
+        return name;
+    }
 
     return (
         <div
@@ -60,10 +83,7 @@ const DropdownList = ({
                 className={classes.controls}
             >
                 <span className={ellipsis ? classes.overflowingSelectionText : ''}>
-                    {currentSelectionIndex >= 0
-                        ? elementsList[currentSelectionIndex]
-                        : name
-                    }
+                    {getDropdownName()}
                 </span>
                 {!disabled && (
                     <img
@@ -79,10 +99,29 @@ const DropdownList = ({
                             className={classNames(
                                 classes.listElement,
                                 ellipsis ? classes.overflowingListElement : '',
+                                multiselect && selectedIndexes.includes(i) && classes.multiselectSelection
                             )}
                             key={typeof e === 'string' ? e : i}
                             onClick={() => {
-                                if (typeof indexInput !== 'number') {
+                                if (multiselect && !Array.isArray(indexInput)) {
+                                    setSelectedIndexes(currentIndexes => {
+                                        if (currentIndexes.includes(i) && !allowDeselect) {
+                                            return currentIndexes;
+                                        }
+
+                                        const newCurrentIndexes = [...currentIndexes];
+                                        if (currentIndexes.includes(i)) {
+                                            newCurrentIndexes.splice(
+                                                newCurrentIndexes.indexOf(i),
+                                                1
+                                            );
+                                        } else {
+                                            newCurrentIndexes.push(i);
+                                        }
+
+                                        return newCurrentIndexes;
+                                    });
+                                } else if (!multiselect && typeof indexInput !== 'number') {
                                     setSelectedIndex(currentIndex => {
                                         if (i === currentIndex && allowDeselect) {
                                             return -1;

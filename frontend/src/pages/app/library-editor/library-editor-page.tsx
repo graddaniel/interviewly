@@ -219,7 +219,46 @@ const LibraryEditorPage = () => {
             question => question.code === questionCode
         );
 
-        question.correntAnswerIndex = index;
+        question.correctAnswerIndex = index;
+
+        setQuestions(newState);
+    }
+
+    const toggleCorrectAnswer = (
+        questionCode: string,
+        index: number,
+        useArray: boolean,
+    ) => {
+        const newState = JSON.parse(JSON.stringify(questions));
+
+        const question = newState.find(
+            question => question.code === questionCode
+        );
+
+        if (useArray) {
+            if (question.correctAnswerIndexes?.includes(index)) {
+                question.correctAnswerIndexes.splice(
+                    question.correctAnswerIndexes.indexOf(index),
+                    1,
+                );
+
+                if (question.correctAnswerIndexes.length < 1) {
+                    delete question.correctAnswerIndexes;
+                }
+            } else {
+                if (!question.correctAnswerIndexes) {
+                    question.correctAnswerIndexes = []
+                } 
+
+                question.correctAnswerIndexes.push(index);
+            }
+        } else {
+            if (question.correctAnswerIndex === index) {
+                delete question.correctAnswerIndex;
+            } else {
+                question.correctAnswerIndex = index;
+            }
+        }
 
         setQuestions(newState);
     }
@@ -376,11 +415,13 @@ const LibraryEditorPage = () => {
                                                     a => a[currentLanguageCode]
                                                 )    
                                         }
-                                        onChange={(i) => selectCorrectAnswer(
+                                        onChange={(i) => toggleCorrectAnswer(
                                             q.code,
                                             i,
+                                            q.type === 'M'
                                         )}
                                         ellipsis={true}
+                                        multiselect={q.type === 'M'}
                                     />
                                 </div>
                             )}

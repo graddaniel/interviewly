@@ -1,6 +1,14 @@
 
-const axios = require('axios');
+import axios from "axios";
+import config from 'config';
+import 'dotenv/config';
 
+const username = process.env.LS_USER as string;
+const password = process.env.LS_PASSWORD as string;
+
+type LimesurveyConfig = {
+    apiUrl: string;
+};
 
 export default class LimeSurveyAdapter {
     private limeSurveyAPIUrl: string;
@@ -9,9 +17,10 @@ export default class LimeSurveyAdapter {
     private sessionKey: string;
 
     constructor() {
-        this.limeSurveyAPIUrl = 'http://127.0.0.1/limesurvey/index.php/admin/remotecontrol';
-        this.username = 'admin';
-        this.password = 'admin';
+        const limesurveyConfig = config.get('limesurvey') as LimesurveyConfig;
+        this.limeSurveyAPIUrl = limesurveyConfig.apiUrl;
+        this.username = username;
+        this.password = password;
     }
 
     private _generateOptions = () => {

@@ -28,6 +28,10 @@ export default class SequelizeConnection {
             name,
         } = config.get("database") as DatabaseConfig;
 
+        if (!username || !password || !host) {
+            throw new Error('Database info is missing');
+        }
+
         SequelizeConnection._sequelize = new Sequelize(`mysql://${username}:${password}@${host}:${port}/${name}`, {
             define: {
                 underscored: true,

@@ -68,6 +68,10 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+.multiselectSelection {
+    color: var(--COLOR2);
+    font-weight: 600;
+}
 
 @media (min-width: min-large) {
 }
