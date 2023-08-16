@@ -1,4 +1,4 @@
-import NotPermittedError from './errors/not-permitted-error';
+import NotPermittedError from '../generic/not-permitted-error';
 
 import type { NextFunction, Response } from 'express';
 import type { ProfileTypes } from 'shared';

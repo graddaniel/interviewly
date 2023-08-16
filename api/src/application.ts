@@ -8,6 +8,7 @@ import { StatusCodes } from 'http-status-codes';
 import { UniqueConstraintError } from 'sequelize';
 import i18next from 'i18next';
 import { AccountTypes, ProfileTypes, ValidationSchemas } from 'shared';
+import type { Application, Request, Response, NextFunction } from 'express';
 
 import AccountsController from './controllers/accounts-controller';
 import AccountsService from './services/accounts-service/accounts-service';
@@ -22,13 +23,12 @@ import CompaniesService from './services/companies-service/companies-service';
 import IncorrectPasswordError from './services/accounts-service/errors/incorrect-password-error';
 import AccountNotFoundError from './services/accounts-service/errors/account-not-found-error';
 import BussinessLogicError from './generic/business-logic-error';
-import NotPermittedError from './middleware/errors/not-permitted-error';
+import NotPermittedError from './generic/not-permitted-error';
 import AuthorizationError from './generic/authorization-error';
 import requireAccountType from './middleware/require-account-type';
 import requireProfileRole from './middleware/require-profile-role';
 import ContactRequestController from './controllers/contact-request-controller';
 
-import type { Application, Request, Response, NextFunction } from 'express';
 import CompanyNotFound from './services/companies-service/errors/company-not-found-error';
 import ProjectNotFoundError from './services/projects-service/errors/project-not-found-error';
 import ProfileNotFoundError from './services/accounts-service/errors/profile-not-found-error';
@@ -36,6 +36,8 @@ import ProjectsService from './services/projects-service/projects-service';
 import LimeSurveyAdapter from './services/lime-survey-adapter';
 import LSQBuilder from './services/lsq-builder';
 import translations from './i18n';
+import TemplatesService from './services/templates-service/templates-service';
+import TemplatesController from './controllers/templates-controller';
 
 
 export default class Appplication {
@@ -63,6 +65,7 @@ export default class Appplication {
             limeSurveyAdapter,
             lsqBuilder,
         );
+        const templatesService = new TemplatesService(companiesService);
 
         const contactRequestController = new ContactRequestController(mailService);
 
@@ -71,8 +74,11 @@ export default class Appplication {
 
         const projectsController = new ProjectsController(projectsService);
 
+        const templatesController = new TemplatesController(templatesService);
+
         SequelizeConnection.instance().sync({
             force: config.get('database.forceSync'),
+            alter: true,
         });
 
         const uploadHandler = multer({
@@ -171,6 +177,39 @@ export default class Appplication {
             projectsController.addSurveyToProject
         );
         this.app.use('/projects', projectsRouter);
+
+        const templatesRouter = express.Router();
+
+        templatesRouter.get(
+            '/',
+            requireJWT,
+            requireAccountType(AccountTypes.Type.RECRUITER),
+            requireProfileRole(ProfileTypes.Role.Admin),
+            templatesController.getTemplates,
+        );
+        templatesRouter.post(
+            '/',
+            requireJWT,
+            requireAccountType(AccountTypes.Type.RECRUITER),
+            requireProfileRole(ProfileTypes.Role.Admin),
+            templatesController.postTemplate,
+        );
+        templatesRouter.get(
+            '/:templateId',
+            requireJWT,
+            requireAccountType(AccountTypes.Type.RECRUITER),
+            requireProfileRole(ProfileTypes.Role.Admin),
+            templatesController.getTemplate,
+        );
+        templatesRouter.patch(
+            '/:templateId',
+            requireJWT,
+            requireAccountType(AccountTypes.Type.RECRUITER),
+            requireProfileRole(ProfileTypes.Role.Admin),
+            templatesController.patchTemplate,
+        );
+
+        this.app.use('/templates', templatesRouter);
 
         this.app.use((
             err: Error,

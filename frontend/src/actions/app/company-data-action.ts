@@ -19,7 +19,6 @@ export default async function CompanyDataAction({
     try {
         await CompanyService.editCompanyData(formData);
     } catch (error) {
-        console.log("CAUGHT", error)
         return {
             success: false,
             errors: {

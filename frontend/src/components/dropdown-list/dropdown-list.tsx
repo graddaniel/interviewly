@@ -12,7 +12,7 @@ type DropdownListProps = {
     index?: number | number[];
     className?: string;
     listClassName?: string;
-    defaultIndex?: number;
+    defaultIndex?: number | number[];
     allowDeselect?: boolean;
     ellipsis?: boolean;
     disabled?: boolean;
@@ -35,7 +35,11 @@ const DropdownList = ({
 }: DropdownListProps) => {
     const [ selectedIndex, setSelectedIndex ] = useState(defaultIndex === undefined ? -1 : defaultIndex);
     // for multiselect only
-    const [ selectedIndexes, setSelectedIndexes ] = useState(defaultIndex === undefined ? [] : [defaultIndex]);
+    const [ selectedIndexes, setSelectedIndexes ] = useState(
+        defaultIndex === undefined ? [] : (
+            Array.isArray(defaultIndex) ? defaultIndex : [defaultIndex]
+        )
+    );
     const [ isOpen, setIsOpen ] = useState(false);
 
     if (multiselect && indexInput && !Array.isArray(indexInput)

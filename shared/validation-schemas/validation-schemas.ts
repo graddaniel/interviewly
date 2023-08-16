@@ -1,6 +1,8 @@
 import {
     string,
     number,
+    array,
+    object,
 } from 'yup';
 
 import { ErrorCodes } from '../errors';
@@ -55,6 +57,9 @@ export default class ValidationSchemas {
         requireCandidateRecording: Schema;
         transcriptionNeeded: Schema;
         moderatorNeeded: Schema;
+    };
+    template: {
+
     };
     contactRequestMessage: Schema;
 
@@ -189,6 +194,22 @@ export default class ValidationSchemas {
             moderatorNeeded: string()
                 .required(`${ErrorCodes.ProjectModeratorRequired}`)
                 .oneOf(Object.values(BoolStrings), `${ErrorCodes.ProjectModeratorIncorreect}`),
+        };
+
+        this.template = {
+            name: string().max(32).required(),
+            languages: array().of(string().oneOf([])).required(),
+            questions: array().of(object({
+                code: string(),
+                type: string().oneOf([]),
+                text: object(),
+                obligatory: string(),
+                answers: array().of(object({
+                    
+                })),
+                correctAnswerIndex: number(),
+                correctAnswerIndexes: array().of(number()),
+            })).required(),
         };
 
         this.contactRequestMessage = string()

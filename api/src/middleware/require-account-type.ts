@@ -1,4 +1,4 @@
-import NotPermittedError from './errors/not-permitted-error';
+import NotPermittedError from '../generic/not-permitted-error';
 
 import type { NextFunction, Response } from 'express';
 import type { AccountTypes } from 'shared';
@@ -13,7 +13,7 @@ const requireAccountType = (type: AccountTypes.Type) => (
     const {
         type: curentUserType,
     } = req.currentUser;
-    console.log(curentUserType, type)
+
     if (curentUserType !== type) {
         throw new NotPermittedError();
     }

@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState } from 'react';
-import { Form, useNavigate, useSubmit } from 'react-router-dom';
+import { Form, useLoaderData, useNavigate, useSubmit } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 
@@ -20,7 +20,8 @@ import capitalizeFirstLetter from '../../../utils/capitalize-first-letter';
 
 
 const LibraryEditorPage = () => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
+    const { resolvedLanguage } = i18n;
 
     const LANGUAGES = [{
         name: capitalizeFirstLetter(t('languages.bulgarian')),
@@ -75,20 +76,36 @@ const LibraryEditorPage = () => {
         code: 'ua',
     }];
     
-    const DEFAULT_LANGUAGE = LANGUAGES[3];
+    const DEFAULT_LANGUAGE = LANGUAGES.find(l => l.code === resolvedLanguage) as typeof LANGUAGES[number];
     const INTITIAL_AVAILABLE_LANGUAGES = LANGUAGES.filter(l => l.code !== DEFAULT_LANGUAGE.code);
     const navigate = useNavigate();
     const submit = useSubmit();
     const formRef = useRef(null);
 
+    const currentTemplate = useLoaderData() as any;
+    console.log(currentTemplate)
+
     const [ showTitleStep, setShowTitleStep ] = useState(true);
 
-    const [ surveyTitle, setSurveyTitle ] = useState('');
-    const [ questions, setQuestions ] = useState<any>([]);
+    const [ templateName, setTemplateName ] = useState(currentTemplate?.name ?? '');
+    const [ questions, setQuestions ] = useState<any>(currentTemplate?.questions ?? []);
     
-    const [ availableLanguages, setAvailableLanguages ] = useState(INTITIAL_AVAILABLE_LANGUAGES);
+    const [ availableLanguages, setAvailableLanguages ] = useState(
+        currentTemplate?.languages
+        ? INTITIAL_AVAILABLE_LANGUAGES.filter(l => !currentTemplate?.languages.includes(l.code))
+        : INTITIAL_AVAILABLE_LANGUAGES
+    );
     const [ currentAvailableLanguageIndex, setCurrentAvailableLanguageIndex ] = useState(-1);
-    const [ selectedLanguages, setSelectedLanguages ] = useState<typeof LANGUAGES>([DEFAULT_LANGUAGE]);
+    const [ selectedLanguages, setSelectedLanguages ] = useState<typeof LANGUAGES>(
+        currentTemplate?.languages
+        ? currentTemplate.languages.map(language => ({
+            code: language,
+            name: LANGUAGES.find(
+                languageDefinition => languageDefinition.code === language
+            )?.name,
+        }))
+        : [DEFAULT_LANGUAGE]
+    );
     const [ currentSelectedLanguageIndex, setCurrentSelectedLanguageIndex ] = useState(0);
     
     const currentLanguageCode = selectedLanguages[currentSelectedLanguageIndex].code;
@@ -106,18 +123,18 @@ const LibraryEditorPage = () => {
         const newSelectedLanguages = [...selectedLanguages, newLanguage];
 
         //TODO i18n
-        const newState = JSON.parse(JSON.stringify(questions));
-        newState.forEach(question => {
+        const newQuestions = JSON.parse(JSON.stringify(questions));
+        newQuestions.forEach(question => {
             question.text[newLanguage.code] = `New question (${newLanguage.code})`;
 
-            question.answers.forEach(
+            question.answers?.forEach(
                 answer => answer[newLanguage.code] = `New answer (${newLanguage.code})`
             );
         });
         
         setAvailableLanguages(newAvailableLangugages);
         setSelectedLanguages(newSelectedLanguages);
-        setQuestions(newState);
+        setQuestions(newQuestions);
         setCurrentAvailableLanguageIndex(-1);
     };
 
@@ -209,21 +226,6 @@ const LibraryEditorPage = () => {
         setQuestions(newState);
     }
 
-    const selectCorrectAnswer = (
-        questionCode: string,
-        index: number,
-    ) => {
-        const newState = JSON.parse(JSON.stringify(questions));
-
-        const question = newState.find(
-            question => question.code === questionCode
-        );
-
-        question.correctAnswerIndex = index;
-
-        setQuestions(newState);
-    }
-
     const toggleCorrectAnswer = (
         questionCode: string,
         index: number,
@@ -295,10 +297,10 @@ const LibraryEditorPage = () => {
                 <input
                     className={classes.titleStepInput}
                     type="text"
-                    name="surveyTitle"
+                    name="templateName"
                     placeholder={t('editProject.nameInputPlaceholder')}
-                    value={surveyTitle}
-                    onChange={e => setSurveyTitle(e.target.value)}
+                    value={templateName}
+                    onChange={e => setTemplateName(e.target.value)}
                 />
                 <TextButton
                     className={classes.nextButton}
@@ -422,6 +424,11 @@ const LibraryEditorPage = () => {
                                         )}
                                         ellipsis={true}
                                         multiselect={q.type === 'M'}
+                                        defaultIndex={
+                                            q.type === 'M'
+                                                ? q.correctAnswerIndexes
+                                                : q.correctAnswerIndex
+                                        }
                                     />
                                 </div>
                             )}

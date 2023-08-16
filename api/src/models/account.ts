@@ -34,12 +34,10 @@ Account.init({
     uuid: {
         type: DataTypes.STRING(UUID_V4_LENGTH),
         allowNull: false,
-        unique: true,
     },
     email: {
         type: DataTypes.STRING(EMAIL_MAX_LENGTH),
         allowNull: false,
-        unique: true,
     },
     passwordHash: {
         type: DataTypes.STRING(PASSWORD_LENGTH),
@@ -63,6 +61,9 @@ Account.init({
     indexes: [{
         unique: true,
         fields: ['uuid'],
+    }, {
+        unique: true,
+        fields: ['email'],
     }],
 });
 

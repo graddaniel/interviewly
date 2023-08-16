@@ -38,7 +38,6 @@ import MyTeamLoader from './src/loaders/app/my-team-loader';
 import MyTeamAction from './src/actions/app/my-team-action';
 import ProjectsLoader from './src/loaders/app/projects-loader';
 import LibraryPage from './src/pages/app/library/library-page';
-import LibraryEditorAction from './src/actions/app/library-editor-action';
 import TermsAndConditionsPage from './src/pages/terms-and-conditions/terms-and-conditions-page';
 import PrivacyPolicyPage from './src/pages/privacy-policy/privacy-policy-page';
 import PersonalDataProcessingAgreementPage from './src/pages/personal-data-processing-agreement/personal-data-processing-agreement-page';
@@ -56,13 +55,17 @@ import CompanyDataAction from './src/actions/app/company-data-action';
 import OnlineCommunityRoomPage from './src/pages/app/online-community-room/online-community-room-page';
 import MeetingPage from './src/pages/app/meeting/meeting-page';
 import CalendarPage from './src/pages/calendar/calendar';
+import ProjectLoader from './src/loaders/app/project-loader';
+import TemplateLibraryLoader from './src/loaders/app/template-library-loader';
+import NewTemplateAction from './src/actions/app/new-template-action';
+import EditTemplateAction from './src/actions/app/edit-template-action';
+import TemplateLoader from './src/loaders/app/template-loader';
 
 import ROUTES, { APP_FORMS_ROUTES, APP_ROUTES, FORMS_ROUTES } from './src/consts/routes';
 import { SAMPLE_VERSION } from 'config/current';
 
 import './src/consts/colors.css';
 import './i18n/i18n';
-import ProjectLoader from './src/loaders/app/project-loader';
 
 
 const router = createBrowserRouter(
@@ -199,11 +202,18 @@ const router = createBrowserRouter(
                 <Route
                     path={APP_ROUTES.LIBRARY.PATH}
                     element={<LibraryPage />}
+                    loader={TemplateLibraryLoader}
                 />
                 <Route
-                    path={APP_FORMS_ROUTES.LIBRARY_EDITOR.PATH}
+                    path={APP_FORMS_ROUTES.NEW_TEMPLATE.PATH}
                     element={<LibraryEditorPage />}
-                    action={LibraryEditorAction}
+                    action={NewTemplateAction}
+                />
+                <Route
+                    path={APP_FORMS_ROUTES.EDIT_TEMPLATE.PATH}
+                    element={<LibraryEditorPage />}
+                    loader={TemplateLoader}
+                    action={EditTemplateAction}
                 />
                 <Route
                     path={APP_FORMS_ROUTES.MEETING.PATH}

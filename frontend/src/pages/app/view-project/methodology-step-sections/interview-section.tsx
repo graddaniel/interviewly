@@ -41,7 +41,7 @@ const InterviewSection = ({
             <TextButton
                 className={classes.createSurveyButton}
                 text={t('viewProject.methodology.interview.createSurvey')}
-                onClick={() => navigate(APP_FORMS_ROUTES.LIBRARY_EDITOR.PATH)}
+                onClick={() => navigate(APP_FORMS_ROUTES.NEW_TEMPLATE.PATH)}
             />
             <h6 className={classes.instruction}>{t('viewProject.methodology.interview.instruction')}</h6>
             <div className={classes.tiles}>

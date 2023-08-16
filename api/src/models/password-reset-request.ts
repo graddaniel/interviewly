@@ -23,7 +23,6 @@ PasswordResetRequest.init({
     uuid: {
         type: DataTypes.STRING(UUID_V4_LENGTH),
         allowNull: false,
-        unique: true,
     },
 }, {
     sequelize: SequelizeConnection.instance(),

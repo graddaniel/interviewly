@@ -25,7 +25,7 @@ import type MailService from '../mail-service/mail-service';
 import type CompaniesService from '../companies-service/companies-service';
 import IncorrectAccountType from './errors/incorrect-account-type';
 import ProfileNotFoundError from './errors/profile-not-found-error';
-import NotPermittedError from '../../middleware/errors/not-permitted-error';
+import NotPermittedError from '../../generic/not-permitted-error';
 
 
 export default class AccountsService {

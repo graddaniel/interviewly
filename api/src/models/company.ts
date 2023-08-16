@@ -8,6 +8,7 @@ import SequelizeConnection from '../services/sequelize-connection';
 import AddressModel from './address';
 import RecruiterProfileModel from './recruiter-profile';
 import ProjectModel from './project';
+import TemplateModel from './template'
 
 const UUID_V4_LENGTH = 40;
 
@@ -24,7 +25,6 @@ Company.init({
     uuid: {
         type: DataTypes.STRING(UUID_V4_LENGTH),
         allowNull: false,
-        unique: true,
     },
     name: {
         type: DataTypes.STRING,
@@ -52,13 +52,19 @@ RecruiterProfileModel.associations.CompanyModel = RecruiterProfileModel.belongsT
         allowNull: false,
     }
 });
+
 Company.associations.ProjectModel = Company.hasMany(ProjectModel, {
     foreignKey: {
         allowNull: false,
-    }
+    },
+    onDelete: 'cascade'
 });
 ProjectModel.associations.CompanyModel = ProjectModel.belongsTo(Company, {
     foreignKey: {
         allowNull: false,
-    }
-})
+    },
+    onDelete: 'cascade'
+});
+
+Company.associations.TemplateModel = TemplateModel.belongsTo(Company);
+TemplateModel.associations.CompanyModel = Company.hasMany(TemplateModel);

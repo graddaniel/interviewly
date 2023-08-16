@@ -6,7 +6,7 @@ import type { AuthenticatedRequest } from '../generic/types'
 import type CompaniesService from '../services/companies-service/companies-service';
 import AccountsValidator from './validators/accounts-validator';
 import { ProfileTypes } from 'shared';
-import NotPermittedError from '../middleware/errors/not-permitted-error';
+import NotPermittedError from '../generic/not-permitted-error';
 import CompaniesValidator from './validators/comapnies-validator';
 
 

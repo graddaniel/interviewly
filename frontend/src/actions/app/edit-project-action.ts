@@ -33,8 +33,6 @@ const EditProjectAction = async ({
 
         const result = await ProjectService.updateProject(projectId, formData);
     } catch (errors) {
-        console.log("EditProjectError", errors);
-
         return {
             success: false,
             errors,

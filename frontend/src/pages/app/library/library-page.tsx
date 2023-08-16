@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { generatePath, useLoaderData, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import TextButton from '../../../components/text-button/text-button';
@@ -9,18 +9,12 @@ import { APP_FORMS_ROUTES } from '../../../consts/routes';
 import classes from './library-page.module.css';
 import FoldersIconBlack from 'images/folders-icon-black.svg';
 
-const SURVEY_NAMES = [
-    'Interviewly survey 1',
-    'Interviewly survey 2',
-    'Interviewly survey 3',
-    'Interviewly survey 4',
-    'Interviewly survey 5',
-    'Interviewly survey 6'
-];
 
 const LibraryPage = () => {
     const navigate = useNavigate();
     const { t } = useTranslation();
+    
+    const templates = useLoaderData() as any;
 
     return (
         <section className={classes.libraryPage}>
@@ -29,16 +23,20 @@ const LibraryPage = () => {
                 <h4 className={classes.title}>{t('library.title')}</h4>
             </header>
             <TextButton
-                onClick={() => navigate(APP_FORMS_ROUTES.LIBRARY_EDITOR.PATH)}
+                onClick={() => navigate(APP_FORMS_ROUTES.NEW_TEMPLATE.PATH)}
                 text={t('library.addNewTemplate')}
             />
             <div className={classes.contentSection}>
                 <span className={classes.subtitle}>{t('library.mySurveys')}</span>
                 <div className={classes.surveysList}>
-                    {SURVEY_NAMES.map(surveyName => (
+                    {templates.filter(t => t.isPrivate).map(t => (
                         <SurveyTile
-                            name={surveyName}
-                            onClick={() => console.log(surveyName)}
+                            key={t.uuid}
+                            name={t.name}
+                            onClick={() => navigate(generatePath(
+                                APP_FORMS_ROUTES.EDIT_TEMPLATE.PATH,
+                                { templateId: t.uuid }
+                            ))}
                         />
                     ))}
                 </div>
@@ -46,10 +44,14 @@ const LibraryPage = () => {
             <div className={classes.contentSection}>
                 <span className={classes.subtitle}>{t('library.publicSurveys')}</span>
                 <div className={classes.surveysList}>
-                    {SURVEY_NAMES.map(surveyName => (
+                    {templates.filter(t => !t.isPrivate).map(t => (
                         <SurveyTile
-                            name={surveyName}
-                            onClick={() => console.log(surveyName)}
+                            key={t.uuid}
+                            name={t.name}
+                            onClick={() => navigate(generatePath(
+                                APP_FORMS_ROUTES.EDIT_TEMPLATE.PATH,
+                                { templateId: t.uuid }
+                            ))}
                         />
                     ))}
                 </div>

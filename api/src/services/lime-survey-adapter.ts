@@ -19,6 +19,7 @@ export default class LimeSurveyAdapter {
     constructor() {
         const limesurveyConfig = config.get('limesurvey') as LimesurveyConfig;
         this.limeSurveyAPIUrl = limesurveyConfig.apiUrl;
+        // "http://ec2-3-127-163-15.eu-central-1.compute.amazonaws.com/limesurvey/index.php/admin/remotecontrol";
         this.username = username;
         this.password = password;
     }

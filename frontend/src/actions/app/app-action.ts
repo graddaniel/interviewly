@@ -6,8 +6,6 @@ import ProjectService from '../../services/project-service';
 export default async function AppAction({
     request,
 }) {
-    console.log("Creating project");
-
     const newProjectUuid = await ProjectService.createProject('New project'); //TODO add internationalization
 
     return redirect(generatePath(APP_FORMS_ROUTES.EDIT_PROJECT.PATH, { projectId: newProjectUuid }));
