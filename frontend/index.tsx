@@ -26,7 +26,6 @@ import LibraryEditorPage from './src/pages/app/library-editor/library-editor-pag
 import App from './src/pages/app/app';
 import MyAccountPage from './src/pages/app/my-account/my-account-page';
 import MyTeamPage from './src/pages/app/my-team/my-team-page';
-import ProfilePage from './src/pages/home/profile-page/profile-page';
 import Protected from './src/utils/protected';
 import RequireAnonymous from './src/utils/require-anonymous';
 import ProjectsPage from './src/pages/app/projects/projects-page';
@@ -121,14 +120,6 @@ const router = createBrowserRouter(
                 element={<PrivacyPolicyPage />}
             />
             <Route
-                path={ROUTES.USER_PROFILE.PATH}
-                element={
-                    <Protected>
-                        <ProfilePage />
-                    </Protected>
-                }
-            />
-            <Route
                 path={ROUTES.FORMS.PATH}
                 element={<Outlet />}
             >
@@ -146,6 +137,11 @@ const router = createBrowserRouter(
                     </Protected>
                 }
                 action={AppAction}
+                errorElement={
+                    <Protected>
+                        <App />
+                    </Protected>
+                }
             >
                 <Route
                     path={APP_ROUTES.MY_ACCOUNT.PATH}
@@ -187,6 +183,7 @@ const router = createBrowserRouter(
                     element={<EditProjectPage />}
                     loader={EditProjectLoader}
                     action={EditProjectAction}
+                    errorElement={<EditProjectPage />}
                 />
                 <Route
                     path={APP_ROUTES.MY_TEAM.PATH}

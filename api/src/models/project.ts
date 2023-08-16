@@ -43,7 +43,6 @@ Project.init({
     uuid: {
         type: DataTypes.STRING(UUID_V4_LENGTH),
         allowNull: false,
-        unique: true,
     },
     title: {
         type: DataTypes.STRING(TITLE_LENGTH),
@@ -122,4 +121,8 @@ Project.init({
     },
 }, {
     sequelize: SequelizeConnection.instance(),
+    indexes: [{
+        unique: true,
+        fields: ['uuid'],
+    }],
 });

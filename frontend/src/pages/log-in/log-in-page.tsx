@@ -6,7 +6,7 @@ import PasswordResetDialog from '../../components/password-reset-dialog/password
 import useAuth from '../../hooks/useAuth';
 
 import classes from './log-in-page.module.css';
-import ROUTES from '../../consts/routes';
+import { APP_ROUTES } from '../../consts/routes';
 
 
 const LogInPage = () => {
@@ -21,7 +21,7 @@ const LogInPage = () => {
     }, []);
 
     if (auth.currentUser) {
-        redirect(ROUTES.USER_PROFILE.PATH);
+        redirect(APP_ROUTES.MY_ACCOUNT.PATH);
     }
 
     return (

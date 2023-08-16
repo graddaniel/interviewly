@@ -17,7 +17,7 @@ const GeneralStep = ({
     const actionData = useActionData() as any;
 
     const errors = actionData?.errors || {};
-
+    console.log("RENDERING GENERAL")
     return (
         <section className={classes.step}>
             <section className={classes.section}>

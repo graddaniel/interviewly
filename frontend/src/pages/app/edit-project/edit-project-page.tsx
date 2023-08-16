@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Form, useActionData, useLoaderData, useNavigate, useSubmit } from 'react-router-dom';
+import { Form, useActionData, useLoaderData, useNavigate, useRouteError, useSubmit } from 'react-router-dom';
 import { useTranslation } from 'react-i18next'
 import { ProjectTypes } from 'shared';
 
@@ -15,9 +15,11 @@ import SummaryStep from './summary-step';
 
 import classes from './edit-project-page.module.css';
 import InterviewlyLogo from 'images/logo.svg';
+import useErrorHandler from '../../../hooks/use-error-handler';
 
 
 const EditProjectPage = () => {
+    useErrorHandler(useRouteError());
     const { t } = useTranslation();
 
     const Steps = ProjectTypes.EditSteps;
@@ -34,7 +36,7 @@ const EditProjectPage = () => {
     const navigate = useNavigate();
     const submit = useSubmit();
     const actionData = useActionData() as { [k: string]: any };
-    const project = useLoaderData() as { [k: string]: any };;
+    const project = useLoaderData() as { [k: string]: any };
 
     const goToProjects = useCallback(() => navigate(APP_ROUTES.PROJECTS.PATH), []);
 
@@ -67,13 +69,15 @@ const EditProjectPage = () => {
             <div className={classes.stepper}>
                 <ProjectStepper steps={StepsArray} currentStep={step}/>
             </div>
-            <div className={classes.content}>
-                {step === Steps.General && <GeneralStep project={project}/>}
-                {step === Steps.Methodology && <MethodologyStep  project={project}/>}
-                {step === Steps.Respondents && <RespondentsStep project={project}/>}
-                {step === Steps.Details && <DetailsStep project={project}/>}
-                {step === Steps.Summary && <SummaryStep project={project}/>}
-            </div>
+            {project && (
+                <div className={classes.content}>
+                    {step === Steps.General && <GeneralStep project={project}/>}
+                    {step === Steps.Methodology && <MethodologyStep  project={project}/>}
+                    {step === Steps.Respondents && <RespondentsStep project={project}/>}
+                    {step === Steps.Details && <DetailsStep project={project}/>}
+                    {step === Steps.Summary && <SummaryStep project={project}/>}
+                </div>
+            )}
             <nav className={classes.navigation}>
                 <TextButton
                     className={classes.backButton}

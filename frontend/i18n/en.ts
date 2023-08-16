@@ -17,6 +17,7 @@ const en = {
         },
         errors: {
             networkError: 'Cannot connect to the server',
+            tokenExpired: 'Session expired',
             ...ErrorsTranslations.en.translation,
         },
         links: {

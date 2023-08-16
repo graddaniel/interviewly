@@ -38,6 +38,7 @@ import LSQBuilder from './services/lsq-builder';
 import translations from './i18n';
 import TemplatesService from './services/templates-service/templates-service';
 import TemplatesController from './controllers/templates-controller';
+import { TokenExpiredError } from 'jsonwebtoken';
 
 
 export default class Appplication {
@@ -173,7 +174,6 @@ export default class Appplication {
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
             requireProfileRole(ProfileTypes.Role.Admin),
-            projectUpdateFilesMiddleware,
             projectsController.addSurveyToProject
         );
         this.app.use('/projects', projectsRouter);
@@ -249,9 +249,13 @@ export default class Appplication {
             } else if (err instanceof ValidationError) {
                 statusCode = StatusCodes.BAD_REQUEST;
                 response.error.message = err.message;
-                response.error.type = "validation";
+                response.error.type = 'validation';
                 response.error.path = err.path;
                 response.error.code = err.errorCode;
+            } else if (err instanceof TokenExpiredError) {
+                statusCode = StatusCodes.UNAUTHORIZED;
+                response.error.message = 'JWT expired';
+                response.error.type = 'tokenExpired';
             } else {
                 console.log(err.constructor, err);
             }

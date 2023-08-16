@@ -65,32 +65,34 @@ const ViewProject = () => {
                     defaultIndex={currentStep}
                 />
             </header>
-            <div className={classes.content}>
-                {currentStep === 0 && (
-                    <GeneralStep
-                        title={project.title}
-                        description={project.description}
-                    />
-                )}
-                {currentStep === 1 && (
-                    <MethodologyStep
-                        methodology={project.methodology}
-                    />
-                )}
-                {currentStep === 2 && (<RespondentsStep />)}
-                {currentStep === 4 && (
-                    <DetailsStep
-                        participantsCount={project.participantsCount}
-                        reserveParticipantsCount={project.reserveParticipantsCount}
-                        interviewDuration={project.meetingDuration}
-                        startDate={new Date(project.startDate)}
-                        endDate={new Date(project.endDate)}
-                        transcriptionAvailable={true}
-                        participantsPaymentValue={project.participantsPaymentValue}
-                        participantsPaymentCurrency={project.participantsPaymentCurrency}
-                    />
-                )}
-            </div>
+            {project && (
+                <div className={classes.content}>
+                    {currentStep === 0 && (
+                        <GeneralStep
+                            title={project.title}
+                            description={project.description}
+                        />
+                    )}
+                    {currentStep === 1 && (
+                        <MethodologyStep
+                            methodology={project.methodology}
+                        />
+                    )}
+                    {currentStep === 2 && (<RespondentsStep />)}
+                    {currentStep === 4 && (
+                        <DetailsStep
+                            participantsCount={project.participantsCount}
+                            reserveParticipantsCount={project.reserveParticipantsCount}
+                            interviewDuration={project.meetingDuration}
+                            startDate={new Date(project.startDate)}
+                            endDate={new Date(project.endDate)}
+                            transcriptionAvailable={true}
+                            participantsPaymentValue={project.participantsPaymentValue}
+                            participantsPaymentCurrency={project.participantsPaymentCurrency}
+                        />
+                    )}
+                </div>
+            )}
         </section>
     );
 };

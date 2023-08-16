@@ -17,6 +17,7 @@ const pl = {
         },
         errors: {
             networkError: 'Nie można połączyć z serwerem',
+            tokenExpired: 'Sesja wygasła',
             ...ErrorsTranslations.pl.translation,
         },
         links: {

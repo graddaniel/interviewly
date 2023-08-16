@@ -39,10 +39,6 @@ const ROUTES = {
         TITLE: 'Agreement on the Processing of Personal Data',
         PATH: '/personalDataProcessingAgreement',
     },
-    USER_PROFILE: {
-        TITLE: 'Profile',
-        PATH: '/profile'
-    },
     FORMS: {
         PATH: '/forms'
     },

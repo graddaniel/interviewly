@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import jwt, { TokenExpiredError } from 'jsonwebtoken';
 import config from 'config';
 import 'dotenv/config';
 
@@ -35,6 +35,10 @@ export default class JWTService {
         try {
             return jwt.verify(token, JWTService.secret) as JWTUserInfo;
         } catch (error) {
+            if (error instanceof TokenExpiredError) {
+                throw error;
+            }
+
             throw new JWTVerificationFailedError(error);
         }
     }
