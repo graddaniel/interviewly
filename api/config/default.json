@@ -23,5 +23,9 @@
     },
     "limesurvey": {
         "apiUrl": "http://127.0.0.1/limesurvey/index.php/admin/remotecontrol"
+    },
+    "fileUpload": {
+        "directory": "/uploads",
+        "sizeLimit": 1048576
     }
 }

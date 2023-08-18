@@ -62,7 +62,7 @@ export default class AccountsController {
             companyName,
         });
 
-        const newAccountData = await this.accountsService.register(
+        const newAccountData = await this.accountsService.register({
             email,
             password,
             type,
@@ -70,17 +70,17 @@ export default class AccountsController {
             surname,
             gender,
             newsletter,
-            language as string,
+            language: language as string,
             companyName,
-            !!notify,
-        );
+            notify: !!notify,
+        });
 
         //TODO validate language
 
         res.status(StatusCodes.OK).send(newAccountData);
     }
 
-    confirmAccountRegistration = async (
+    patchAccount = async (
         req: Request,
         res: Response,
     ) => {
@@ -88,9 +88,22 @@ export default class AccountsController {
             accountId,
         } = req.params;
 
-        await this.accountsService.confirmAccountRegistration(accountId);
+        const {
+            confirm,
+            password,
+        } = req.body;
 
-        res.status(StatusCodes.CREATED).send();
+        await AccountsValidator.validateNewPassword({ password });
+
+        if (confirm) { 
+            await this.accountsService.confirmAccountRegistration(accountId);
+        }
+        
+        if (password) {
+            await this.accountsService.setPassword(accountId, password);
+        }
+
+        res.status(StatusCodes.OK).send();
     }
 
     requestPasswordReset = async (

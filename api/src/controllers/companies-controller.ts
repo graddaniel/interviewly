@@ -5,7 +5,7 @@ import type AccountsService from '../services/accounts-service/accounts-service'
 import type { AuthenticatedRequest } from '../generic/types'
 import type CompaniesService from '../services/companies-service/companies-service';
 import AccountsValidator from './validators/accounts-validator';
-import { ProfileTypes } from 'shared';
+import { AccountTypes, ProfileTypes } from 'shared';
 import NotPermittedError from '../generic/not-permitted-error';
 import CompaniesValidator from './validators/comapnies-validator';
 
@@ -82,7 +82,10 @@ export default class CompaniesController {
             role,
             status,
         } = req.body;
+
+        const { language = 'en' } = req.query;
         //TODO this business logic leaks out of the services; refactor this in future
+        //TODO validate language
         if (currentUserRole !== ProfileTypes.Role.InterviewlyStaff
             && role === ProfileTypes.Role.InterviewlyStaff) {
             throw new NotPermittedError();
@@ -99,17 +102,17 @@ export default class CompaniesController {
 
         const company = await this.companiesService.getCompany({ uuid: companyUuid });
 
-        await this.accountsService.createRecruiterAccount(
+        await this.accountsService.createRecruiterAccount({
             email,
-            'asd1123', //TODO generate password reset instead
             name,
             surname,
             gender,
-            false,
-            company,
+            newsletter: false,
             role,
             status,
-        );
+            company,
+            language: language as string,
+        });
 
         res.status(StatusCodes.CREATED).send();
     }

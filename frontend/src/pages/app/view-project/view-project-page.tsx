@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { generatePath, useLoaderData, useNavigate, useParams, useRouteError } from 'react-router-dom';
-import { ProjectTypes } from 'shared';
 
 import ProjectStepper from '../../../components/project-stepper/project-stepper';
 import TextButton from '../../../components/text-button/text-button';
@@ -11,7 +10,6 @@ import MethodologyStep from './methodology-step';
 import RespondentsStep from './respondents-step';
 import { APP_FORMS_ROUTES } from '../../../consts/routes';
 import DetailsStep from './details-step';
-import useErrorHandler from '../../../hooks/use-error-handler';
 
 import classes from './view-project-page.module.css';
 import QuestionMarkIconBlack from 'images/question-mark-icon-black.svg';
@@ -22,7 +20,6 @@ const ViewProject = () => {
     const navigate = useNavigate();
     const { projectId } = useParams();
     const project = useLoaderData() as any;
-    useErrorHandler(useRouteError());
 
     const stepsNames = t('viewProject.steps', { returnObjects: true }) as string[];
 
@@ -78,7 +75,11 @@ const ViewProject = () => {
                             methodology={project.methodology}
                         />
                     )}
-                    {currentStep === 2 && (<RespondentsStep />)}
+                    {currentStep === 2 && (
+                        <RespondentsStep
+                            respondents={project.respondents}
+                        />
+                    )}
                     {currentStep === 4 && (
                         <DetailsStep
                             participantsCount={project.participantsCount}

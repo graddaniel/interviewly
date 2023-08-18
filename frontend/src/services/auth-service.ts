@@ -52,7 +52,18 @@ export default class AuthService {
     };
 
     static confirm = async (accountUuid: string) => {
-        const response = await axios.patch(`${API_HOST}/accounts/${accountUuid}/confirm`);
+        const response = await axios.patch(`${API_HOST}/accounts/${accountUuid}`, {
+            confirm: true,
+        });
+
+        return response.data;
+    }
+
+    static setPasswordAndConfirm = async (accountUuid: string, password: string) => {
+        const response = await axios.patch(`${API_HOST}/accounts/${accountUuid}`, {
+            password,
+            confirm: true,
+        });
 
         return response.data;
     }

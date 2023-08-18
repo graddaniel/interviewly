@@ -7,13 +7,19 @@ import type { Response } from 'express';
 
 import type { AuthenticatedRequest } from '../generic/types';
 import type ProjectsService from '../services/projects-service/projects-service';
+import type InputFilesService from '../services/input-files-service';
 
 
 export default class ProjectsController {
     projectsService: ProjectsService;
+    inputFilesService: InputFilesService;
 
-    constructor(projectsService: ProjectsService) {
+    constructor(
+        projectsService: ProjectsService,
+        inputFilesService: InputFilesService,
+    ) {
         this.projectsService = projectsService;
+        this.inputFilesService = inputFilesService;
     }
 
     getAllProjects = async (
@@ -60,9 +66,11 @@ export default class ProjectsController {
             projectId: projectUuid,
         } = req.params;
 
-        const allCompanysProjects = await this.projectsService.getProject(companyUuid, projectUuid);
+        const project = await this.projectsService.getProject(companyUuid, projectUuid);
 
-        res.status(StatusCodes.OK).send(allCompanysProjects);
+        res.status(StatusCodes.OK).send(
+            this.projectsService.flattenProjectDetails(project.toJSON())
+        );
     }
 
     updateProject = async (
@@ -81,7 +89,18 @@ export default class ProjectsController {
         } = req.body;
 
         //@ts-ignore
-        const file = req.file;
+        const files = req.files;
+        const {
+            respondentsFile,
+        } = files;
+
+        if (respondentsFile) {
+            const { filename } = respondentsFile[0];
+
+            formData.respondents = await this.inputFilesService.processRespondentsFile(
+                filename
+            );
+        }
 
         const step = parseInt(stepString, 10) as ProjectTypes.EditSteps;
 
@@ -123,7 +142,6 @@ export default class ProjectsController {
         req: AuthenticatedRequest,
         res: Response,
     ) => {
-        console.log("SURVEY", req.body);
         const { projectId } = req.params;
 
         await this.projectsService.addSurveyToProject(projectId, req.body);

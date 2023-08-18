@@ -20,7 +20,7 @@ const ContactPage = () => {
     useErrorHandler(useRouteError());
     useSuccessFeedback(actionData, t('contact.messageSent'));
 
-    const errors = actionData?.errors || null;
+    const errors = actionData?.errors || {};
 
     console.log("contact", errors)
 
@@ -48,13 +48,13 @@ const ContactPage = () => {
                 <TextInput
                     name="email"
                     placeholder="E-mail"
-                    error={errors?.email}
+                    error={errors.email}
                 />
                 <TextInput
                     name="message"
                     placeholder="Message"
                     multiline={true}
-                    error={errors?.message}
+                    error={errors.message}
                 />
                 <SubmitButton
                     className={classes.submitButton}

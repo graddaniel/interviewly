@@ -39,6 +39,7 @@ import translations from './i18n';
 import TemplatesService from './services/templates-service/templates-service';
 import TemplatesController from './controllers/templates-controller';
 import { TokenExpiredError } from 'jsonwebtoken';
+import InputFilesService from './services/input-files-service';
 
 
 export default class Appplication {
@@ -55,7 +56,7 @@ export default class Appplication {
         });
 
         const mailService = new MailService();
-
+        const inputFilesService = new InputFilesService();
         const limeSurveyAdapter = new LimeSurveyAdapter();
         const lsqBuilder = new LSQBuilder();
         const companiesService = new CompaniesService();
@@ -73,7 +74,7 @@ export default class Appplication {
         const companiesController = new CompaniesController(accountsService, companiesService);
         const accountsController = new AccountsController(accountsService);
 
-        const projectsController = new ProjectsController(projectsService);
+        const projectsController = new ProjectsController(projectsService, inputFilesService);
 
         const templatesController = new TemplatesController(templatesService);
 
@@ -82,10 +83,11 @@ export default class Appplication {
             alter: true,
         });
 
+        const fileUploadConfig = config.get('fileUpload') as any;
         const uploadHandler = multer({
-            dest: './uploads',
+            dest: process.cwd() + fileUploadConfig.directory,
             limits: {
-                fileSize: 1048576,
+                fileSize: fileUploadConfig.sizeLimit,
             }
         });
         const projectUpdateFilesMiddleware = uploadHandler.fields([{
@@ -108,7 +110,7 @@ export default class Appplication {
         const accountsRouter = express.Router();
         accountsRouter.get('/', extractCredentials, accountsController.login);
         accountsRouter.post('/', extractCredentials, accountsController.register);
-        accountsRouter.patch('/:accountId/confirm', accountsController.confirmAccountRegistration);
+        accountsRouter.patch('/:accountId', accountsController.patchAccount);
         accountsRouter.post('/:accountId/password/reset', accountsController.requestPasswordReset);
         accountsRouter.patch('/:accountId/password/reset/confirm', accountsController.confirmPasswordReset);
         accountsRouter.get('/:accountId/introductionVideo', requireJWT, accountsController.getIntroductionVideo);

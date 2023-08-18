@@ -1,10 +1,12 @@
 import {
     DataTypes,
+    HasManySetAssociationsMixin,
     Model,
 } from 'sequelize';
 import { ProjectTypes } from 'shared';
 
 import SequelizeConnection from '../services/sequelize-connection';
+import RespondentProfileModel from './respondent-profile';
 import { UUID_V4_LENGTH } from '../consts';
 
 
@@ -32,6 +34,8 @@ export default class Project extends Model {
     declare requireCandidateRecording: boolean;
     declare transcriptionNeeded: boolean;
     declare moderatorNeeded: boolean;
+
+    declare addRespondentProfiles: HasManySetAssociationsMixin<RespondentProfileModel, RespondentProfileModel['id']>;
 };
 
 Project.init({
@@ -126,3 +130,12 @@ Project.init({
         fields: ['uuid'],
     }],
 });
+
+Project.associations.RespondentProfileModel = Project.belongsToMany(
+    RespondentProfileModel,
+    { through: 'ProjectsRespondents' },
+);
+RespondentProfileModel.associations.ProjectModel = RespondentProfileModel.belongsToMany(
+    Project,
+    { through: 'ProjectsRespondents' },
+); 

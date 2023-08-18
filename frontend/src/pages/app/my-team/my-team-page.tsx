@@ -10,6 +10,7 @@ import PeopleIconBlack from 'images/people-icon-black.svg';
 import PlusIconBlack from 'images/plus-icon-black.svg';
 import { useTranslation } from 'react-i18next';
 import useErrorHandler from '../../../hooks/use-error-handler';
+import useSuccessFeedback from '../../../hooks/use-success-feedback';
 
 
 const MyTeamPage = () => {
@@ -17,14 +18,16 @@ const MyTeamPage = () => {
     useErrorHandler(useRouteError());
     const actionData = useActionData() as { [k: string]: any };
     const { t } = useTranslation();
+    useSuccessFeedback(actionData, t('generic.saved'));
 
     const [ popupOpen, setPopupOpen ] = useState(false);
     const [ selectedMember, setSelectedMember ] = useState(null);
     const [ errors, setErrors ] = useState<any>(null);
 
     useEffect(() => {
-        console.log("UPDATING ERRORS", actionData)
-        setErrors(actionData);
+        if (actionData?.errors) {
+            setErrors(actionData.errors);
+        }
     }, [actionData]);
 
     const membersCount = teamMembers.length;

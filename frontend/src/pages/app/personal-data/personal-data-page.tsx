@@ -145,9 +145,9 @@ const PersonalDataPage = () => {
                             placeholder={t('personalData.newPassword')}
                         />
                         <TextInput
-                            name="repeatedNewPassword"
+                            name="repeatPassword"
                             type="password"
-                            placeholder={t('personalData.repeatedNewPassword')}
+                            placeholder={t('personalData.repeatPassword')}
                         />
                     </div>
                     <SubmitButton

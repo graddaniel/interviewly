@@ -31,18 +31,28 @@ const RESPONDENTS = [{
     avatarUrl: 'https://i.pravatar.cc/101',
 }];
 
-type RespondentsStepProps = {
+type Respondent = {
+    name: string;
+    surname: string;
+    email: string;
+    gender: ProfileTypes.Gender;
+};
 
+type RespondentsStepProps = {
+    respondents: Respondent[],
 };
 
 const RespondentsStep = ({
-
+    respondents,
 }: RespondentsStepProps) => {
     return (
         <section className={classes.responsentsStep}>
-            {RESPONDENTS.map(respondent => (
+            {respondents.map(respondent => (
                 <RespondentTile
                     key={respondent.email}
+                    nationality={ProfileTypes.Nationality.Polish}
+                    avatarUrl={'https://i.pravatar.cc/100'}
+                    age={0}
                     {...respondent}
                 />
             ))}

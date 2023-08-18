@@ -11,9 +11,8 @@ import RespondentProfileModel from './respondent-profile';
 
 
 const UUID_V4_LENGTH = 40;
-const PASSWORD_LENGTH = 64; //SHA256
+const PASSWORD_LENGTH = 64; //SHA256; update this in migrations ALSO
 const EMAIL_MAX_LENGTH = 64;
-
 
 export default class Account extends Model {
     declare id: number;
@@ -41,7 +40,6 @@ Account.init({
     },
     passwordHash: {
         type: DataTypes.STRING(PASSWORD_LENGTH),
-        allowNull: false,
     },
     type: {
         type: DataTypes.ENUM(...Object.values(AccountTypes.Type)),
@@ -68,7 +66,7 @@ Account.init({
 });
 
 Account.associations.PasswordResetRequestModel = Account.hasMany(PasswordResetRequestModel, { onDelete: 'CASCADE' });
-PasswordResetRequestModel.associations.Account = PasswordResetRequestModel.belongsTo(Account, {
+PasswordResetRequestModel.associations.AccountModel = PasswordResetRequestModel.belongsTo(Account, {
     foreignKey: {
         allowNull: false,
     },
@@ -76,7 +74,7 @@ PasswordResetRequestModel.associations.Account = PasswordResetRequestModel.belon
 });
 
 Account.associations.RecruiterProfileModel = Account.hasOne(RecruiterProfileModel, { onDelete: 'CASCADE' });
-RecruiterProfileModel.associations.Account = RecruiterProfileModel.belongsTo(Account, { onDelete: 'CASCADE' });
+RecruiterProfileModel.associations.AccountModel = RecruiterProfileModel.belongsTo(Account, { onDelete: 'CASCADE' });
 
 Account.associations.RespondentProfileModel = Account.hasOne(RespondentProfileModel, { onDelete: 'CASCADE' });
-RespondentProfileModel.associations.Account = RespondentProfileModel.belongsTo(Account, { onDelete: 'CASCADE' });
+RespondentProfileModel.associations.AccountModel = RespondentProfileModel.belongsTo(Account, { onDelete: 'CASCADE' });

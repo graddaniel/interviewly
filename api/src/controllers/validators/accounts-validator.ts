@@ -35,4 +35,12 @@ export default class AccountsValidator {
 
         await validate(companyAccountSchema, companyAccount);
     }
+
+    static async validateNewPassword(newPassword) {
+        const newPasswordSchema = object({
+            password: schemas.accountPassword,
+        });
+
+        await validate(newPasswordSchema, newPassword);
+    }
 }

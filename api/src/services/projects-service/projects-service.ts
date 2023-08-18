@@ -1,12 +1,20 @@
+import { v4 as generateUuidV4 } from 'uuid';
+import { AccountTypes, ProfileTypes } from 'shared';
+
+import RespondentProfileModel from '../../models/respondent-profile';
 import ProjectModel from '../../models/project'
 import ProjectNotFoundError from './errors/project-not-found-error';
-import { v4 as generateUuidV4 } from 'uuid';
 
 import type AccountsService from '../accounts-service/accounts-service';
 import type CompaniesService from '../companies-service/companies-service';
 import type LimeSurveyAdapter from '../lime-survey-adapter';
 import type LSQBuilder from '../lsq-builder';
 
+
+type RespondentFileEntry = {
+    email: string;
+    language: string
+};
 
 export default class ProjectsService {
     accountsService: AccountsService;
@@ -54,7 +62,7 @@ export default class ProjectsService {
         const company = await this.companiesService.getCompany({ uuid: companyUuid });
 
         const project = await ProjectModel.findOne({
-            attributes: ['uuid', 'title', 'description', 'methodology',
+            attributes: ['id', 'uuid', 'title', 'description', 'methodology',
                 'participantsCount', 'reserveParticipantsCount', 'meetingDuration',
                 'participantsPaymentCurrency', 'participantsPaymentValue',
                 'startDate', 'endDate', 'otherRequirements',
@@ -65,6 +73,18 @@ export default class ProjectsService {
                 uuid: projectUuid,
                 CompanyId: company.id,
             },
+            include: [{
+                association: ProjectModel.associations.RespondentProfileModel,
+                attributes: [
+                    'name',
+                    'surname',
+                    'gender',
+                ],
+                include: [{
+                    association: RespondentProfileModel.associations.AccountModel,
+                    attributes: ['email'],
+                }],
+            }]
         });
 
         if (!project) {
@@ -74,6 +94,31 @@ export default class ProjectsService {
         //TODO check if thr user despite belonging to the company has also access to the project
 
         return project;
+    }
+
+    flattenProjectDetails = (project) => {
+        const {
+            RespondentProfiles: respondentProfiles,
+            ...projectData
+        } = project;
+
+        const flattenedRespondentProfiles = respondentProfiles.map(r => {
+            const {
+                Account: account,
+                ProjectsRespondents, //discard
+                ...respondentData
+            } = r;
+
+            return {
+                ...respondentData,
+                email: account.email,
+            };
+        });
+
+        return {
+            ...projectData,
+            respondents: flattenedRespondentProfiles,
+        };
     }
 
     //TODO no need to find the company by user when we have its uuid
@@ -100,28 +145,75 @@ export default class ProjectsService {
     updateProject = async (
         companyUuid,
         projectUuid,
-        newProjectData
+        projectData,
     ) => {
-        const company = await this.companiesService.getCompany({ uuid: companyUuid });
+        const project = await this.getProject(companyUuid, projectUuid);
 
-        const project = await ProjectModel.findOne({
-            where: {
-                uuid: projectUuid,
-                CompanyId: company.id,
-            },
-        });
+        const {
+            respondents: allRespondents,
+            ...projectDetails
+        } = projectData;
 
-        if (!project) {
-            throw new ProjectNotFoundError();
+        if (allRespondents) {
+            const newRespondents = await this.separateNewRespondentsFromExisting(allRespondents);
+            await this.registerNewRespondents(newRespondents);
+
+            //TODO assign all of the respondents to the project
+            const allRespondentsEmails = allRespondents.map(r => r.email);
+            const allRespondentsProfiles = await RespondentProfileModel.findAll({
+                include: [{
+                    association: RespondentProfileModel.associations.AccountModel,
+                    where: {
+                        email: allRespondentsEmails,
+                    }
+                }]
+            });
+
+            await project.addRespondentProfiles(allRespondentsProfiles);
         }
 
-        await project.update(newProjectData);
+        await project.update(projectDetails);
 
         await project.save();
 
         //TODO check if user belongs to the project and if has admin role
 
         //TODO check if project is in draft mode
+    }
+
+    private separateNewRespondentsFromExisting = async (
+        allRespondents: RespondentFileEntry[]
+    ) => {
+        return (await Promise.allSettled(
+            allRespondents.map(
+                async respondent => {
+                    await this.accountsService.assertAccountDoesntExist({
+                        email: respondent.email
+                    });
+
+                    return respondent;
+                }
+            )
+        )).filter(({ status }) => status === 'fulfilled')
+        .map(({ value }: PromiseFulfilledResult<any>) => value);
+    }
+
+    private registerNewRespondents = async (
+        newRespondents: RespondentFileEntry[]
+    ) => {
+        const respondentsRegistrationPromises = newRespondents.map(
+            respondent => this.accountsService.createRespondentAccount({
+                email: respondent.email,
+                name: '',
+                surname: '',
+                gender: ProfileTypes.Gender.MALE,
+                newsletter: false,
+                language: respondent.language || 'en',
+                createdFromFile: true,
+            })
+        );
+
+        await Promise.all(respondentsRegistrationPromises);
     }
 
     addSurveyToProject = async (projectId, surveyTemplate) => {

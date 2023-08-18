@@ -1,7 +1,7 @@
 import React, { useCallback, useRef, useState } from 'react';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
-import { Form, Outlet, matchPath, useLocation, useSubmit } from 'react-router-dom';
+import { Form, Outlet, matchPath, useLocation, useRouteError, useSubmit } from 'react-router-dom';
 import classNames from 'classnames';
 import { AccountTypes } from 'shared';
 
@@ -15,6 +15,7 @@ import { APP_FORMS_ROUTES } from '../../consts/routes';
 
 import classes from './app.module.css';
 import BellIconBlack from '../../../images/bell-icon-black.svg';
+import useErrorHandler from '../../hooks/use-error-handler';
 
 const USER = {
     name: 'Mateusz',
@@ -29,6 +30,7 @@ const App = () => {
     const formRef = useRef(null);
     const submit = useSubmit();
     const auth = useAuth();
+    useErrorHandler(useRouteError());
 
     const openDropdown = useCallback(() => setIsMenuOpen(true), []);
     const closeDropdown = useCallback(() => setIsMenuOpen(false), []);

@@ -27,6 +27,9 @@ const ROUTES = {
         TITLE: 'Registration confirmation',
         PATH: '/confirm/:accountId',
     },
+    SET_PASSWORD: {
+        PATH: '/setPassword/:accountId',
+    },
     PRIVACY_POLICY: {
         TITLE: 'PrivacyPolicy',
         PATH: '/privacyPolicy'

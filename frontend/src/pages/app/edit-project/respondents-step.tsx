@@ -37,7 +37,7 @@ const RespondentsStep = ({
             <div className={classes.text}>
                 <span>{t('editProject.respondentsStep.respondentsSelectionInstructionPart1')}</span>
             </div>
-            <input type="file" id="respondentsFile" name="respondentsFile" />
+            <input type="file" id="respondentsFile" name="respondentsFile" accept=".xlsx"/>
             <div className={classes.text}>
                 <span>{t('editProject.respondentsStep.respondentsSelectionInstructionPart2')}</span>
             </div>

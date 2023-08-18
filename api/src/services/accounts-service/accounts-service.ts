@@ -17,7 +17,7 @@ import AccountHasNotRequestedPasswordResetError from './errors/account-has-not-r
 import SequelizeConnection from '../sequelize-connection';
 import CompanyModel from '../../models/company';
 import PasswordResetExpired from './errors/password-reset-expired-error';
-import AccountAlreadyActive from './errors/account-already-active-error';
+import AccountAlreadyActiveError from './errors/account-already-active-error';
 import RecruiterAccountMissingCompanyNameError from './errors/recruiter-account-missing-company-name-error';
 import RecruiterAccountMissingCompanyDataError from './errors/recruiter-account-missing-company-data-error';
 
@@ -26,6 +26,7 @@ import type CompaniesService from '../companies-service/companies-service';
 import IncorrectAccountType from './errors/incorrect-account-type';
 import ProfileNotFoundError from './errors/profile-not-found-error';
 import NotPermittedError from '../../generic/not-permitted-error';
+import AccountAlreadyHasPasswordError from './errors/account-already-has-password';
 
 
 export default class AccountsService {
@@ -64,7 +65,7 @@ export default class AccountsService {
         return account;
     }
 
-    checkIfAccountExists = async (query: Partial<AccountModel>) => {
+    assertAccountDoesntExist = async (query: Partial<AccountModel>) => {
         const account = await AccountModel.findOne({
             where: {
                 ...query,
@@ -92,9 +93,21 @@ export default class AccountsService {
         return JWTService.sign(userPublicData);
     };
 
-    register = SequelizeConnection.transaction(async (
+    register = SequelizeConnection.transaction(async ({
+        email,
+        password,
+        type,
+        name,
+        surname,
+        gender,
+        newsletter,
+        language,
+        companyName,
+        notify,
+        createdFromFile = false,
+    }: {
         email: string,
-        password: string,
+        password?: string,
         type: AccountTypes.Type,
         name: string,
         surname: string,
@@ -103,10 +116,11 @@ export default class AccountsService {
         language: string,
         companyName?: string,
         notify?: boolean,
-    ): Promise<string> => {
-        await this.checkIfAccountExists({ email });
+        createdFromFile?: boolean,
+    }): Promise<string> => {
+        await this.assertAccountDoesntExist({ email });
 
-        const newAccount = await this.createAccount(
+        const newAccount = await this.createAccount({
             email,
             password,
             type,
@@ -115,9 +129,10 @@ export default class AccountsService {
             gender,
             newsletter,
             companyName,
-        );
+            createdFromFile,
+        });
 
-        this.sendConfirmationEmail(newAccount.uuid, name, email, language, notify);
+        this._sendConfirmationEmail(newAccount.uuid, name, email, language, notify);
 
         return this._getUserPublicData(newAccount);
     });
@@ -146,26 +161,38 @@ export default class AccountsService {
         return userPublicData;
     }
 
-    createAccount = async (
+    createAccount = async ({
+        email,
+        password,
+        type,
+        name,
+        surname,
+        gender,
+        newsletter,
+        companyName,
+        createdFromFile = false,
+    }: {
         email: string,
-        password: string,
+        password?: string,
         type: AccountTypes.Type,
         name: string,
         surname: string,
         gender: ProfileTypes.Gender,
         newsletter: boolean,
         companyName?: string,
-    ): Promise<AccountModel> => {
+        createdFromFile?: boolean,
+    }): Promise<AccountModel> => {
         switch (type) {
             case AccountTypes.Type.RESPONDENT:
-                return await this._createRespondentAccount(
+                return await this.createRespondentAccount({
                     email,
                     password,
                     name,
                     surname,
                     gender,
                     newsletter,
-                );
+                    createdFromFile,
+                });
 
             case AccountTypes.Type.RECRUITER:
                 if (!companyName) {
@@ -174,7 +201,7 @@ export default class AccountsService {
 
                 const company = await this.companiesService.create(companyName);
 
-                return await this.createRecruiterAccount(
+                return await this.createRecruiterAccount({
                     email,
                     password,
                     name,
@@ -182,22 +209,33 @@ export default class AccountsService {
                     gender,
                     newsletter,
                     company,
-                );
+                });
         }
     }
 
-    private _createRespondentAccount = async (
+    createRespondentAccount = async ({
+        email,
+        password,
+        name,
+        surname,
+        gender,
+        newsletter,
+        createdFromFile = false,
+        language = 'en',
+    }: {
         email: string,
-        password: string,
+        password?: string,
         name: string,
         surname: string,
         gender: ProfileTypes.Gender,
         newsletter: boolean,
-    ): Promise<AccountModel> => {
+        createdFromFile?: boolean,
+        language?: string,
+    }): Promise<AccountModel> => {
         const newAccount = await AccountModel.create({
             uuid: generateUuidV4(),
             email,
-            passwordHash: hash(password),
+            passwordHash: password ? hash(password) : null,
             type: AccountTypes.Type.RESPONDENT,
             status: AccountTypes.Status.UNCONFIRMED,
             newsletter,
@@ -206,6 +244,7 @@ export default class AccountsService {
                 surname,
                 gender,
                 role: ProfileTypes.Role.Admin,
+                createdFromFile: createdFromFile,
             }
         }, {
             include: [{
@@ -213,24 +252,46 @@ export default class AccountsService {
             }]
         });
 
+        if (!password) {
+            this._sendPasswordSetAndConfirmationEmail(
+                newAccount.uuid,
+                name,
+                email,
+                language,
+                false,
+            );
+        }
+
         return newAccount;
     }
 
-    createRecruiterAccount = async (
+    createRecruiterAccount = async ({
+        email,
+        password,
+        name,
+        surname,
+        gender,
+        newsletter,
+        company,
+        role = ProfileTypes.Role.Admin,
+        status = AccountTypes.Status.UNCONFIRMED,
+        language = 'en',
+    }: {
         email: string,
-        password: string,
+        password?: string,
         name: string,
         surname: string,
         gender: ProfileTypes.Gender,
         newsletter: boolean,
         company: CompanyModel,
-        role: ProfileTypes.Role = ProfileTypes.Role.Admin,
-        status: AccountTypes.Status = AccountTypes.Status.UNCONFIRMED,
-    ): Promise<AccountModel> => {
+        role?: ProfileTypes.Role,
+        status?: AccountTypes.Status,
+        language?: string,
+    }): Promise<AccountModel> => {
         const newAccount = await AccountModel.create({
             uuid: generateUuidV4(),
             email,
-            passwordHash: hash(password),
+            passwordHash: password ? hash(password) : null,
             type: AccountTypes.Type.RECRUITER,
             status,
             newsletter,
@@ -247,10 +308,20 @@ export default class AccountsService {
             }]
         });
 
+        if (!password) {
+            this._sendPasswordSetAndConfirmationEmail(
+                newAccount.uuid,
+                name,
+                email,
+                language,
+                false,
+            );
+        }
+
         return newAccount;
     };
 
-    sendConfirmationEmail = async (
+    private _sendConfirmationEmail = async (
         accountUuid: string,
         name: string,
         email: string,
@@ -259,16 +330,17 @@ export default class AccountsService {
     ) => {
         const { t } = i18next;
 
-        const subject = t('email.subject', { lng: language });
+        const subject = t('email.accountCreated_fakedoor.subject', { lng: language });
         const context = {
-            welcome: t('email.welcome', { lng: language }),
+            welcome: t('email.accountCreated_fakedoor.welcome', { lng: language }),
             name,
-            firstParagraph: t('email.paragraphs.first', { lng: language }),
-            secondParagraph: t('email.paragraphs.second', { lng: language }),
-            thirdParagraph: t('email.paragraphs.third', { lng: language }),
+            firstParagraph: t('email.accountCreated_fakedoor.paragraphs.first', { lng: language }),
+            secondParagraph: t('email.accountCreated_fakedoor.paragraphs.second', { lng: language }),
+            thirdParagraph: t('email.accountCreated_fakedoor.paragraphs.third', { lng: language }),
             confirmationLink: `https://interviewlyapp.com/confirm/${accountUuid}`,
-            signature: t('email.signature', { lng: language })
+            signature: t('email.accountCreated_fakedoor.signature', { lng: language })
         };
+
         await this.mailService.sendTemplate(email, subject, 'fakedoor', context);
 
 
@@ -277,6 +349,43 @@ export default class AccountsService {
                 this.additionalNotificationsTarget,
                 subject,
                 'fakedoor',
+                context,
+            );
+        }
+    };
+
+    private _sendPasswordSetAndConfirmationEmail = async (
+        accountUuid: string,
+        name: string,
+        email: string,
+        language: string,
+        notify?: boolean,
+    ) => { //TODO modify this and add form to handle the link at the frontend, then finish adding the respondents
+        const { t } = i18next;
+
+        const subject = t('email.accountCreated_setPassword.subject', { lng: language });
+        const context = {
+            welcome: t('email.accountCreated_setPassword.welcome', { lng: language }),
+            name,
+            firstParagraph: t('email.accountCreated_setPassword.paragraphs.first', { lng: language }),
+            secondParagraph: t('email.accountCreated_setPassword.paragraphs.second', { lng: language }),
+            confirmationLink: `https://interviewlyapp.com/setPassword/${accountUuid}`,
+            signature: t('email.accountCreated_setPassword.signature', { lng: language })
+        };
+
+        await this.mailService.sendTemplate(
+            email,
+            subject,
+            'set-password-and-confirm-account',
+            context
+        );
+
+
+        if (notify) {
+            await this.mailService.sendTemplate(
+                this.additionalNotificationsTarget,
+                subject,
+                'set-password-and-confirm-account',
                 context,
             );
         }
@@ -328,11 +437,24 @@ export default class AccountsService {
         const account = await this.getAccount({ uuid });
 
         if (account.status === AccountTypes.Status.ACTIVE) {
-            throw new AccountAlreadyActive();
+            throw new AccountAlreadyActiveError();
         }
 
         await account.update({ status: AccountTypes.Status.ACTIVE });
     };
+
+    setPassword = async (
+        uuid: string,
+        password: string,
+    ) => {
+        const account = await this.getAccount({ uuid });
+
+        if (account.passwordHash) {
+            throw new AccountAlreadyHasPasswordError();
+        }
+
+        await account.update({ passwordHash: hash(password) });
+    }
 
     requestPasswordReset = async (
         uuid: string,

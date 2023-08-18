@@ -39,7 +39,6 @@ const Snackbar = () => {
         return null;
     }
 
-
     return (
         <div
             className={classNames(classes.snackbar, classes[type])}

@@ -9,6 +9,7 @@ const en = {
             created: 'created',
             yes: 'yes',
             no: 'no',
+            saved: 'Saved!',
         },
         validation: {
             join: {
@@ -71,6 +72,12 @@ const en = {
         logIn: {
             rememberMe: 'Remember me',
             joinText: 'Don\'t have an account?'
+        },
+        setPassword: {
+            subtitle: 'Set password',
+            newPassword: 'New password',
+            repeatPassword: 'Repeat new password',
+            success: 'Password has been set',
         },
         join: {
             joinControl: 'Do you already have an account?',
@@ -273,7 +280,7 @@ In accordance with the provisions of the Act of 18 July 2002 on the provision of
             changePasswordSubtitle: 'Password change',
             currentPassword: 'Current password',
             newPassword: 'New password',
-            repeatedNewPassword: 'Repeat new password',
+            repeatPassword: 'Repeat new password',
             save: 'Save',
         },
         companyData: {

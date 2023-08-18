@@ -65,6 +65,8 @@ import { SAMPLE_VERSION } from 'config/current';
 
 import './src/consts/colors.css';
 import './i18n/i18n';
+import SetPasswordAction from './src/actions/set-password-action';
+import SetPasswordPage from './src/pages/set-password/set-password';
 
 
 const router = createBrowserRouter(
@@ -106,6 +108,11 @@ const router = createBrowserRouter(
                 path={ROUTES.REGISTRATION_CONFIRMATION.PATH}
                 element={<RegistrationConfirmationPage />}
                 loader={RegistrationConfirmationPageLoader}
+            />
+            <Route
+                path={ROUTES.SET_PASSWORD.PATH}
+                element={<SetPasswordPage />}
+                action={SetPasswordAction}
             />
             <Route
                 path={ROUTES.PERSONAL_DATA_PROCESSING_AGREEMENT.PATH}
@@ -167,7 +174,6 @@ const router = createBrowserRouter(
                     path={APP_ROUTES.VIEW_PROJECT.PATH}
                     element={<ViewProjectPage />}
                     loader={ProjectLoader}
-                    errorElement={<ViewProjectPage />}
                 />
                 <Route
                     path={APP_ROUTES.PROJECT_RESPONDENT.PATH}

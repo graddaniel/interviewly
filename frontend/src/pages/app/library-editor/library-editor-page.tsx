@@ -10,13 +10,14 @@ import LibraryEditorStepper from './library-editor-stepper';
 import LibraryEditorLanguageButton from './library-editor-language-button';
 import AddQuestionButton from './add-question-button';
 import languageCodeToFlagIcon from '../../../utils/language-code-to-flag-icon';
+import capitalizeFirstLetter from '../../../utils/capitalize-first-letter';
 
 import classes from './library-editor-page.module.css';
 import InterviewlyLogo from 'images/logo.svg';
 import PlusIconBlack from 'images/plus-icon-black.svg';
+import MinusIconBlack from 'images/minus-icon-black.svg';
 import ParagraphIconBlack from 'images/paragraph-icon-black.svg';
 import PlusIconPurple from 'images/plus-icon-purple.svg';
-import capitalizeFirstLetter from '../../../utils/capitalize-first-letter';
 
 
 const LibraryEditorPage = () => {
@@ -165,6 +166,14 @@ const LibraryEditorPage = () => {
         setQuestions(newState);
     }
 
+    const removeQuestion = (index: number) => {
+        const newState = JSON.parse(JSON.stringify(questions));
+
+        newState.splice(index, 1);
+
+        setQuestions(newState);
+    }
+
     const handleQuestionChange = (
         questionCode: string,
         newValue: string,
@@ -209,6 +218,18 @@ const LibraryEditorPage = () => {
 
         setQuestions(newState);
     };
+
+    const removeAnswer = (
+        questionCode: string,
+        index: number,
+    ) => {
+        const newState = JSON.parse(JSON.stringify(questions));
+        const question = newState.find(question => question.code === questionCode);
+
+        question.answers.splice(index, 1);
+
+        setQuestions(newState);
+    }
 
     const handleAnswerChange = (
         questionCode: string,
@@ -367,6 +388,15 @@ const LibraryEditorPage = () => {
                                     <span className={classes.questionNumber}>{i+1}.{q.code}</span>
                                     <span className={classes.questionType}>{questionTypeToName(q.type)}</span>
                                 </span>
+                                <div
+                                    className={classes.removeButton}
+                                    onClick={() => removeQuestion(i)}
+                                >
+                                    <img
+                                        className={classes.removeButtonIcon}
+                                        src={MinusIconBlack}
+                                    />
+                                </div>
                             </div>
                             <input
                                 className={classes.questionInput}
@@ -386,6 +416,15 @@ const LibraryEditorPage = () => {
                                                 e.target.value
                                             )}
                                         />
+                                        <div
+                                            className={classes.removeButton}
+                                            onClick={() => removeAnswer(q.code, i)}
+                                        >
+                                            <img
+                                                className={classes.removeButtonIcon}
+                                                src={MinusIconBlack}
+                                            />
+                                        </div>
                                     </li>
                                 ))}
                                 {['M', '!'].includes(q.type) && (

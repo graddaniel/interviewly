@@ -964,9 +964,9 @@ isexe@^2.0.0:
   integrity sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==
 
 jackspeak@^2.0.3:
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/jackspeak/-/jackspeak-2.2.3.tgz#ac63c57c18d254dc78a1f4ecd1cdeb4daeb6e616"
-  integrity sha512-pF0kfjmg8DJLxDrizHoCZGUFz4P4czQ3HyfW4BU0ffebYkzAVlBywp5zaxW/TM+r0sGbmrQdi8EQQVTJFxnGsQ==
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/jackspeak/-/jackspeak-2.3.0.tgz#aa228a94de830f31d4e4f0184427ce91c4ff1493"
+  integrity sha512-uKmsITSsF4rUWQHzqaRUuyAir3fZfW3f202Ee34lz/gZCi970CPZwyQXLGNgWJvvZbvFyzeyGq0+4fcG/mBKZg==
   dependencies:
     "@isaacs/cliui" "^8.0.2"
   optionalDependencies:
@@ -1228,6 +1228,13 @@ next-tick@1, next-tick@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.1.0.tgz#1836ee30ad56d67ef281b22bd199f709449b35eb"
   integrity sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==
+
+node-xlsx@^0.23.0:
+  version "0.23.0"
+  resolved "https://registry.yarnpkg.com/node-xlsx/-/node-xlsx-0.23.0.tgz#0c4b642f9457712d68f30e1e30351d640cc37e90"
+  integrity sha512-r3KaSZSsSrK92rbPXnX/vDdxURmPPik0rjJ3A+Pybzpjyrk4G6WyGfj8JIz5dMMEpCmWVpmO4qoVPBxnpLv/8Q==
+  dependencies:
+    xlsx "https://cdn.sheetjs.com/xlsx-0.19.3/xlsx-0.19.3.tgz"
 
 nodemailer-express-handlebars@^6.1.0:
   version "6.1.0"
@@ -1830,6 +1837,10 @@ wrappy@1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   integrity sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==
+
+"xlsx@https://cdn.sheetjs.com/xlsx-0.19.3/xlsx-0.19.3.tgz":
+  version "0.19.3"
+  resolved "https://cdn.sheetjs.com/xlsx-0.19.3/xlsx-0.19.3.tgz#f804c1850e2da5260165db0a059dc2a6099d55f3"
 
 xmlbuilder@^15.1.1:
   version "15.1.1"

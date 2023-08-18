@@ -12,6 +12,7 @@ const NAME_MAX_LENGTH = 32;
 const SURNAME_MAX_LENGTH = 32;
 
 export default class RespondentProfile extends Model {
+    declare id: number;
     declare name: string;
     declare surname: string;
     declare gender: ProfileTypes.Gender;
@@ -53,7 +54,12 @@ RespondentProfile.init({
     },
     bankAccountNumber: {
         type: DataTypes.BIGINT,
-    }
+    },
+    createdFromFile: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+    },
 }, {
     timestamps: false,
     sequelize: SequelizeConnection.instance(),

@@ -12,34 +12,44 @@ const MyTeamAction = async ({
         ...requestData
     } = formData;
 
-    try {
-        switch (action) {
-            case 'add':
-                await createCompanyAccount(requestData);
-                break;
-            case 'edit':
-                await editCompanyAccount(requestData);
-                break;
-            default:
-                console.error('Unrecognized MyTeam action')
-        }
-    } catch (errors) {
-        return errors;
+    switch (action) {
+        case 'add':
+            return await createCompanyAccount(requestData);
+        case 'edit':
+            return await editCompanyAccount(requestData);
+        default:
+            console.error('Unrecognized MyTeam action')
     }
-
-    return null;
 };
 
 export default MyTeamAction;
 
 const createCompanyAccount = async (teamMemberData) => {
-    await TeamMemberValidator.validateData(teamMemberData);
+    try {
+        await TeamMemberValidator.validateData(teamMemberData);
+    } catch (errors) {
+        return {
+            success: false,
+            errors,
+        };
+    }
 
-    return await CompanyService.createCompanyAccount(teamMemberData);
+    await CompanyService.createCompanyAccount(teamMemberData);    
+
+    return { success: true };
 };
 
 const editCompanyAccount = async (teamMemberData) => {
-    await TeamMemberValidator.validateData(teamMemberData);
+    try {
+        await TeamMemberValidator.validateData(teamMemberData);
+    } catch (errors) {
+        return {
+            success: false,
+            errors,
+        };
+    }
 
-    return await CompanyService.editCompanyAccount(teamMemberData);
+    await CompanyService.editCompanyAccount(teamMemberData);
+
+    return { success: true };
 };

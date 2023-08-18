@@ -42,6 +42,7 @@ Company.init({
 });
 
 Company.associations.AddressModel = Company.hasOne(AddressModel);
+
 Company.associations.RecruiterProfileModel = Company.hasMany(RecruiterProfileModel, {
     foreignKey: {
         allowNull: false,

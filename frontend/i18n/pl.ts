@@ -9,6 +9,7 @@ const pl = {
             created: 'utworzono',
             yes: 'tak',
             no: 'nie',
+            saved: 'Zapisano!',
         },
         validation: {
             join: {
@@ -71,6 +72,12 @@ const pl = {
         logIn: {
             rememberMe: 'Zapamiętaj mnie',
             joinText: 'Nie masz konta?'
+        },
+        setPassword: {
+            subtitle: 'Ustaw hasło',
+            newPassword: 'Nowe hasło',
+            repeatPassword: 'Powtórz nowe hasło',
+            success: 'Ustawiono hasło',
         },
         join: {
             joinControl: 'Masz już konto?',
@@ -269,7 +276,7 @@ Zgoda nieobowiązkowa`,
             changePasswordSubtitle: 'Zmiana hasła',
             currentPassword: 'Obecne hasło',
             newPassword: 'Nowe hasło',
-            repeatedNewPassword: 'Powtórz nowe hasło',
+            repeatPassword: 'Powtórz nowe hasło',
             save: 'Zapisz',
         },
         companyData: {
