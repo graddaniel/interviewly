@@ -40,6 +40,7 @@ import TemplatesService from './services/templates-service/templates-service';
 import TemplatesController from './controllers/templates-controller';
 import { TokenExpiredError } from 'jsonwebtoken';
 import InputFilesService from './services/input-files-service';
+import NotFoundError from './generic/not-found-error';
 
 
 export default class Appplication {
@@ -61,13 +62,14 @@ export default class Appplication {
         const lsqBuilder = new LSQBuilder();
         const companiesService = new CompaniesService();
         const accountsService = new AccountsService(mailService, companiesService);
+        const templatesService = new TemplatesService(companiesService);
         const projectsService = new ProjectsService(
             accountsService,
             companiesService,
+            templatesService,
             limeSurveyAdapter,
             lsqBuilder,
         );
-        const templatesService = new TemplatesService(companiesService);
 
         const contactRequestController = new ContactRequestController(mailService);
 
@@ -154,7 +156,7 @@ export default class Appplication {
         this.app.use('/companies', companiesRouter);
 
         const projectsRouter = express.Router();
-        projectsRouter.get('/', requireJWT, requireAccountType(AccountTypes.Type.RECRUITER), projectsController.getAllProjects);
+        projectsRouter.get('/', requireJWT, projectsController.getAllProjects);
         projectsRouter.post(
             '/',
             requireJWT,
@@ -162,7 +164,7 @@ export default class Appplication {
             requireProfileRole(ProfileTypes.Role.Admin),
             projectsController.createProject
         );
-        projectsRouter.get('/:projectId', requireJWT, requireAccountType(AccountTypes.Type.RECRUITER), projectsController.getOneProject);
+        projectsRouter.get('/:projectId', requireJWT, projectsController.getOneProject);
         projectsRouter.patch(
             '/:projectId',
             requireJWT,
@@ -242,6 +244,7 @@ export default class Appplication {
                 || err instanceof ProfileNotFoundError
                 || err instanceof ProjectNotFoundError
                 || err instanceof NotPermittedError
+                || err instanceof NotFoundError
                 || err instanceof AuthorizationError) {
                     statusCode = (err as any).statusCode;
                     response.error.message = err.message;

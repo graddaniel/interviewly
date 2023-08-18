@@ -132,13 +132,20 @@ export default class ProjectService {
         });
     }
 
-    //TODO temp implementation; ultimately it will use a template obtained from the DB
-    static addSurvey = async (projectId, surveyData) => {
+    static addSurvey = async (
+        projectUuid: string,
+        templateUuid: string,
+        startDate: Date,
+        endDate: Date,
+    ) => {
         const accessToken = sessionStorage.getItem('accessToken') || localStorage.getItem('accessToken');
 
-        return axios.post(`${API_HOST}/projects/${projectId}/survey`, surveyData, {
+        return axios.post(`${API_HOST}/projects/${projectUuid}/survey`, {
+            templateUuid,
+            startDate,
+            endDate,
+        }, {
             headers: {
-                'content-type': 'multipart/form-data',
                 'authorization': `bearer ${accessToken}`
             },
         });

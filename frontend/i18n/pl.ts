@@ -9,7 +9,7 @@ const pl = {
             created: 'utworzono',
             yes: 'tak',
             no: 'nie',
-            saved: 'Zapisano!',
+            saved: 'Zapisano',
         },
         validation: {
             join: {
@@ -270,6 +270,11 @@ Zgoda nieobowiązkowa`,
             swedish: 'szwedzki',
             ukrainian: 'ukraiński',
         },
+        surveyTypes: {
+            regular: 'Zwykła',
+            screening: 'Przesiewowa',
+            language: 'Językowa',
+        },
         personalData: {
             title: 'Dane osobiste',
             marketingConsentsSubtitle: 'Zgody marketingowe',
@@ -345,7 +350,9 @@ Over the years, I’ve come to learn that designing collaboratively means puttin
                         commentSingularLabel: 'komentarz',
                         commentPluralLabel: 'komentarze',
                     },
-                }
+                },
+                sessionStartDateLabel: 'Data początku sesji',
+                sessionEndDateLabel: 'Data końca sesji',
             },
             respondents: {
                 seeDetailsLabel: 'Szczegóły',
@@ -362,6 +369,14 @@ Over the years, I’ve come to learn that designing collaboratively means puttin
                 transcriptionSubtitle: 'Transkrypcja',
                 respondentFeeSubtitle: 'Wynagrodzenie respondenta',
                 currencyLabel: 'Waluta',
+            },
+            respondentPage: {
+                surveysSubtitle: 'Ankiety',
+                surveysStatuses: {
+                    filled: 'wypełniona',
+                    ended: 'zakończona',
+                    pending: 'oczekująca'
+                },
             }
         },
         editProject: {

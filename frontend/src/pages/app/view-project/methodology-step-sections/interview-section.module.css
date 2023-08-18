@@ -30,6 +30,47 @@
     flex-wrap: wrap;
 }
 
+.dateLabel {
+    margin: 0;
+    font-size: 1.75vw;
+    line-height: 1.75vw;
+    font-weight: 400;
+}
+
+.dateSelectorWrapper {
+    display: flex;
+    align-items: center;
+}
+
+.datePickerInput {
+    padding: 0.6vw 1vw;
+    border-radius: 2vw;
+    border: 1px solid var(--BLACK);
+    font-size: 1vw;
+    text-align: center;
+    background-color: var(--COLOR3);
+}
+.withMargin {
+    margin-right: 1.2vw;
+}
+
+.dropdown {
+    height: 2.5vw;
+}
+.error {
+    border-color: var(--RED) !important;
+}
+.errorText {
+    color: var(--RED);
+}
+.startTimeDropdown {
+    z-index: 4;
+
+}
+.endTimeDropdown {
+    z-index: 3;
+}
+
 @media (min-width: min-large) {
 }
 

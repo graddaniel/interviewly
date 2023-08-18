@@ -41,10 +41,11 @@
 
 .titleStep {
     display: grid;
-    grid-template-rows: min-content auto min-content;
+    grid-template-rows: min-content min-content auto min-content;
     grid-template-areas: 
     "titleStepWrapper"
     "titleStepInput"
+    "surveyTypeDropdown"
     "nextButton";
     row-gap: 2vw;
 }
@@ -72,6 +73,13 @@
     border: none;
     outline: none;
     border-bottom: 1px dashed var(--BLACK);
+}
+.surveyTypeDropdown {
+    grid-area: "surveyTypeDropdown";
+    height: 4vw;
+}
+.surveyTypeDropdownList {
+    padding-top: 4vw;
 }
 .nextButton {
     grid-area: nextButton;

@@ -53,6 +53,22 @@
     padding-top: 5vw;
 }
 
+.viewProjectRespondent {
+    display: flex;
+    flex-direction: column;
+    gap: 3vw;
+}
+
+.methodologyTile {
+    align-self: flex-start;
+}
+
+.surveys {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vw;
+}
+
 @media (min-width: min-large) {
     .dropdown {
         display: none;
@@ -95,6 +111,14 @@
 
     .content {
         padding-bottom: 40vw;
+    }
+
+    .viewProjectRespondent {
+        gap: 10vw;
+    }
+    
+    .surveys {
+        gap: 4vw;
     }
 }
 
@@ -140,5 +164,13 @@
     .content {
         padding-top: 10vw;
         padding-bottom: 50vw;
+    }
+
+    .viewProjectRespondent {
+        gap: 16vw;
+    }
+    
+    .surveys {
+        gap: 7vw;
     }
 }

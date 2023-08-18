@@ -7,6 +7,7 @@ import { ProjectTypes } from 'shared';
 
 import SequelizeConnection from '../services/sequelize-connection';
 import RespondentProfileModel from './respondent-profile';
+import SurveyModel from './survey';
 import { UUID_V4_LENGTH } from '../consts';
 
 
@@ -138,4 +139,11 @@ Project.associations.RespondentProfileModel = Project.belongsToMany(
 RespondentProfileModel.associations.ProjectModel = RespondentProfileModel.belongsToMany(
     Project,
     { through: 'ProjectsRespondents' },
-); 
+);
+
+Project.associations.SurveyModel = Project.hasMany(SurveyModel, {
+    foreignKey: {
+        allowNull: false,
+    },
+});
+SurveyModel.associations.ProjectModel = SurveyModel.belongsTo(Project);

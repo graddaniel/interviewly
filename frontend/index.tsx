@@ -54,7 +54,7 @@ import CompanyDataAction from './src/actions/app/company-data-action';
 import OnlineCommunityRoomPage from './src/pages/app/online-community-room/online-community-room-page';
 import MeetingPage from './src/pages/app/meeting/meeting-page';
 import CalendarPage from './src/pages/calendar/calendar';
-import ProjectLoader from './src/loaders/app/project-loader';
+import ViewProjectLoader from './src/loaders/app/view-project-loader';
 import TemplateLibraryLoader from './src/loaders/app/template-library-loader';
 import NewTemplateAction from './src/actions/app/new-template-action';
 import EditTemplateAction from './src/actions/app/edit-template-action';
@@ -67,6 +67,7 @@ import './src/consts/colors.css';
 import './i18n/i18n';
 import SetPasswordAction from './src/actions/set-password-action';
 import SetPasswordPage from './src/pages/set-password/set-password';
+import ViewProjectAction from './src/actions/app/view-project-action';
 
 
 const router = createBrowserRouter(
@@ -173,7 +174,8 @@ const router = createBrowserRouter(
                 <Route
                     path={APP_ROUTES.VIEW_PROJECT.PATH}
                     element={<ViewProjectPage />}
-                    loader={ProjectLoader}
+                    loader={ViewProjectLoader}
+                    action={ViewProjectAction}
                 />
                 <Route
                     path={APP_ROUTES.PROJECT_RESPONDENT.PATH}

@@ -15,6 +15,18 @@ export default class TemplatesService {
         this.companiesService = companiesService;
     }
 
+    getTemplate = async (query: any) => {
+        const template = await TemplateModel.findOne({
+            where: query,
+        });
+
+        if (!template) { //TODO replace with TemplateNotFoundError
+            throw new NotFoundError('Template not found.');
+        }
+
+        return template;
+    }
+
     getCompanyAndPublicTemplates = async (
         companyUuid: string,
     ) => {
@@ -45,15 +57,21 @@ export default class TemplatesService {
     }
 
     createNewTemplate = async (
-        template: any,
+        templateData: any,
         companyUuid: string,
     ) => {
         const company = await this.companiesService.getCompany({ uuid: companyUuid });
+
+        const {
+            surveyType,
+            ...template
+        } = templateData;
 
         await TemplateModel.create({
             uuid: generateUuidV4(),
             name: template.name,
             templateJson: template,
+            surveyType,
             CompanyId: company.id,
         });
     }
@@ -62,25 +80,17 @@ export default class TemplatesService {
         templateUuid: string,
         companyUuid: string,
     ) => {
-        const template = await TemplateModel.findOne({
-            attributes: [
-                'templateJson',
-            ],
-            where: {
-                uuid: templateUuid,
-            },
-        });
-
-        if (!template) {
-            throw new NotFoundError('Template not found.');
-        }
+        const template = await this.getTemplate({ uuid: templateUuid });
 
         const templatesCompany = await template.getCompany();
         if (templatesCompany && templatesCompany.uuid !== companyUuid) {
             throw new NotPermittedError('Not permitted to access this template.');
         }
 
-        return template.templateJson;
+        return {
+            template: template.templateJson,
+            surveyType: template.surveyType,
+        };
     }
 
     editTemplate = async (
@@ -110,6 +120,7 @@ export default class TemplatesService {
 
         template.name = templateData.name;
         template.templateJson = templateData;
+        template.surveyType = templateData.surveyType;
         await template.save();
     }
 }

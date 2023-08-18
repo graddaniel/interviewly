@@ -7,26 +7,25 @@ const username = process.env.LS_USER as string;
 const password = process.env.LS_PASSWORD as string;
 
 type LimesurveyConfig = {
-    apiUrl: string;
+    url: string;
 };
 
 export default class LimeSurveyAdapter {
-    private limeSurveyAPIUrl: string;
+    private limeSurveyUrl: string;
     private username: string;
     private password: string;
     private sessionKey: string;
 
     constructor() {
         const limesurveyConfig = config.get('limesurvey') as LimesurveyConfig;
-        this.limeSurveyAPIUrl = limesurveyConfig.apiUrl;
-        // "http://ec2-3-127-163-15.eu-central-1.compute.amazonaws.com/limesurvey/index.php/admin/remotecontrol";
+        this.limeSurveyUrl = limesurveyConfig.url;
         this.username = username;
         this.password = password;
     }
 
     private _generateOptions = () => {
         return {
-            url: this.limeSurveyAPIUrl,
+            url: `${this.limeSurveyUrl}/admin/remotecontrol`,
             method: "POST",
             headers: {
                 'content-type': 'application/json',
@@ -67,6 +66,18 @@ export default class LimeSurveyAdapter {
         return this._sendRequest('add_survey', [this.sessionKey, desiredId, title, language]);
     }
 
+    activateSurvey = async (
+        surveyId: string
+    ) => {
+        return this._sendRequest('activate_survey', [this.sessionKey, surveyId]);
+    }
+
+    activateTokens = async (
+        surveyId: string
+    ) => {
+        return this._sendRequest('activate_tokens', [this.sessionKey, surveyId]);
+    }
+
     addLanguage = async (
         surveyId: number,
         languageCode: string,
@@ -79,6 +90,13 @@ export default class LimeSurveyAdapter {
         groupName: string,
     ) => {
         return this._sendRequest('add_group', [this.sessionKey, surveyId, groupName]);
+    }
+
+    addParticipant = async (surveyId, email) => {
+        return this._sendRequest(
+            'add_participants',
+            [this.sessionKey, surveyId, [{"email": email}], true]
+        );
     }
 
     questionImport = async (

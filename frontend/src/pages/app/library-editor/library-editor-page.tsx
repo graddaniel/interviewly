@@ -2,6 +2,7 @@ import React, { useCallback, useRef, useState } from 'react';
 import { Form, useLoaderData, useNavigate, useSubmit } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
+import { TemplateTypes } from 'shared';
 
 import CloseControls from '../../../components/close-controls/close-controls';
 import TextButton from '../../../components/text-button/text-button';
@@ -29,7 +30,7 @@ const LibraryEditorPage = () => {
         code: 'bg',
     }, {
         name: capitalizeFirstLetter(t('languages.czech')),
-        code: 'cz',
+        code: 'cs',
     }, {
         name: capitalizeFirstLetter(t('languages.dutch')),
         code: 'nl',
@@ -44,7 +45,7 @@ const LibraryEditorPage = () => {
         code: 'de',
     }, {
         name: capitalizeFirstLetter(t('languages.greek')),
-        code: 'gr',
+        code: 'el',
     }, {
         name: capitalizeFirstLetter(t('languages.hungarian')),
         code: 'hu',
@@ -71,11 +72,16 @@ const LibraryEditorPage = () => {
         code: 'es',
     }, {
         name: capitalizeFirstLetter(t('languages.swedish')),
-        code: 'se',
+        code: 'sv',
     }, {
         name: capitalizeFirstLetter(t('languages.ukrainian')),
-        code: 'ua',
+        code: 'uk',
     }];
+
+    const SURVEY_TYPES_ARRAY = Object.values(TemplateTypes.SurveyType).map(type => ({
+        code: type,
+        text: t(`surveyTypes.${type}`),
+    }));
     
     const DEFAULT_LANGUAGE = LANGUAGES.find(l => l.code === resolvedLanguage) as typeof LANGUAGES[number];
     const INTITIAL_AVAILABLE_LANGUAGES = LANGUAGES.filter(l => l.code !== DEFAULT_LANGUAGE.code);
@@ -83,12 +89,16 @@ const LibraryEditorPage = () => {
     const submit = useSubmit();
     const formRef = useRef(null);
 
-    const currentTemplate = useLoaderData() as any;
+    const {
+        template: currentTemplate,
+        surveyType: currentSurveyType,
+    } = useLoaderData() as any || {};
     console.log(currentTemplate)
 
     const [ showTitleStep, setShowTitleStep ] = useState(true);
 
     const [ templateName, setTemplateName ] = useState(currentTemplate?.name ?? '');
+    const [ surveyType, setSurveyType ] = useState(currentSurveyType ?? TemplateTypes.SurveyType.Regular);
     const [ questions, setQuestions ] = useState<any>(currentTemplate?.questions ?? []);
     
     const [ availableLanguages, setAvailableLanguages ] = useState(
@@ -323,6 +333,15 @@ const LibraryEditorPage = () => {
                     value={templateName}
                     onChange={e => setTemplateName(e.target.value)}
                 />
+                <DropdownList
+                    className={classes.surveyTypeDropdown}
+                    listClassName={classes.surveyTypeDropdownList}
+                    name="surveyType"
+                    elementsList={SURVEY_TYPES_ARRAY.map(t => t.text)}
+                    onChange={i => setSurveyType(SURVEY_TYPES_ARRAY[i].code)}
+                    defaultIndex={SURVEY_TYPES_ARRAY.findIndex(type => type.code === surveyType)}
+                />
+                <input type="hidden" value={surveyType} name="surveyType" />
                 <TextButton
                     className={classes.nextButton}
                     text={t('buttons.next')}
@@ -440,7 +459,9 @@ const LibraryEditorPage = () => {
                                     </li>
                                 )}
                             </ul>
-                            {['Y', 'M', '!'].includes(q.type) && (
+                            {['Y', 'M', '!'].includes(q.type)
+                                && surveyType === TemplateTypes.SurveyType.Screening
+                                && (
                                 <div className={classes.correctAnswerWrapper}>
                                     {t('editProject.correctAnswerLabel')}:
                                     <DropdownList

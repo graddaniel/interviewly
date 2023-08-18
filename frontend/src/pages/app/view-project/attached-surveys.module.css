@@ -1,0 +1,27 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.surveysStep {
+    display: flex;
+    gap: 1.75vw;
+    overflow-x: auto;
+}
+
+.regularCursor {
+    cursor: default;
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .surveysStep {
+        gap: 5vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .surveysStep {
+        gap: 9vw;
+    }
+}

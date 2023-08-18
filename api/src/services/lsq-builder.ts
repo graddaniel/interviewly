@@ -101,8 +101,9 @@ export default class LSQBuilder {
         this.root = xmlbuilder.create('document');
         this.root.e('LimeSurveyDocType', {}, 'Question');
         this.root.e('DBVersion', {}, '606');
+        const languagesElement = this.root.e('languages');
         for (const language of languages) {
-            this.root.e('languages').e('language', {}, language);
+            languagesElement.e('language', {}, language);
         }
     };
 

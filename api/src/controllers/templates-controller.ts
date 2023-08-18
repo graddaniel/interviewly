@@ -37,7 +37,6 @@ export default class TemplatesController {
         res: Response,
     ) => {
         const {
-            uuid: currentUserUuid,
             companyUuid,
         } = req.currentUser;
 
@@ -45,7 +44,7 @@ export default class TemplatesController {
 
         console.log(template)
 
-        //await TemplatesValidator.validateNewTemplate
+        //TODO await TemplatesValidator.validateNewTemplate
 
         await this.templatesService.createNewTemplate(
             template,
@@ -67,12 +66,12 @@ export default class TemplatesController {
 
         //await TemplatesValidator.validateNewTemplate
 
-        const template = await this.templatesService.getOneTemplate(
+        const templateData = await this.templatesService.getOneTemplate(
             templateId,
             companyUuid,
         );
 
-        res.status(StatusCodes.OK).send(template);
+        res.status(StatusCodes.OK).send(templateData);
     };
 
     patchTemplate = async (

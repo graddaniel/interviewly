@@ -1,5 +1,5 @@
 import { StatusCodes } from 'http-status-codes';
-import { ProjectTypes } from 'shared';
+import { AccountTypes, ProjectTypes } from 'shared';
 
 import ProjectValidator from './validators/project-validator';
 
@@ -60,16 +60,22 @@ export default class ProjectsController {
     ) => {
         const {
             companyUuid,
+            type,
+            uuid,
         } = req.currentUser;
 
         const {
             projectId: projectUuid,
         } = req.params;
 
-        const project = await this.projectsService.getProject(companyUuid, projectUuid);
+        const project = type === AccountTypes.Type.RECRUITER
+            ? await this.projectsService.getOneCompanyProject(companyUuid, projectUuid)
+            : await this.projectsService.getOneRespondentProject(uuid, projectUuid)
 
         res.status(StatusCodes.OK).send(
-            this.projectsService.flattenProjectDetails(project.toJSON())
+            type === AccountTypes.Type.RECRUITER
+            ? this.projectsService.flattenCompanyProjectDetails(project)
+            : this.projectsService.flattenRespondentProjectDetails(project),
         );
     }
 
@@ -143,8 +149,20 @@ export default class ProjectsController {
         res: Response,
     ) => {
         const { projectId } = req.params;
+        const {
+            templateUuid,
+            startDate: startDateString,
+            endDate: endDateString,
+         } = req.body;
 
-        await this.projectsService.addSurveyToProject(projectId, req.body);
+        //TODO validate both uuids
+
+        await this.projectsService.addSurveyToProject(
+            templateUuid,
+            new Date(parseInt(startDateString, 10)),
+            new Date(parseInt(endDateString, 10)),
+            projectId
+        );
 
         res.status(StatusCodes.OK).send();
     }

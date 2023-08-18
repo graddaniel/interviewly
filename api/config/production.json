@@ -3,6 +3,6 @@
         "additionalNotificationsTarget": "contact@interviewlyapp.com"
     },
     "limesurvey": {
-        "apiUrl": "http://ec2-3-127-163-15.eu-central-1.compute.amazonaws.com/limesurvey/index.php/admin/remotecontrol"
+        "url": "http://ec2-3-127-163-15.eu-central-1.compute.amazonaws.com/limesurvey/index.php"
     }
 }

@@ -11,24 +11,39 @@ import capitalizeFirstLetter from '../../utils/capitalize-first-letter';
 
 
 type SurveyTileProps = {
+    className?: string;
     name: string;
     onClick: () => void;
     status?: string;
+    selected?: boolean;
+    disabled?: boolean;
 };
 
 const SurveyTile = ({
+    className,
     name,
     onClick,
     status,
+    selected,
+    disabled,
 }: SurveyTileProps) => {
     const { t } = useTranslation();
 
     return (
-        <div className={classes.tile} onClick={onClick}>
+        <div className={
+            classNames(
+                classes.tile,
+                selected && classes.selectedTile,
+                disabled && classes.disabledTile,
+                className,
+            )}
+            onClick={onClick}
+        >
             <IconButton
                 className={classes.icon}
                 icon={FoldersIconBlack}
                 onClick={() => {}}
+                disabled={disabled}
             />
             <span className={classes.name}>{name}</span>
             {status && (

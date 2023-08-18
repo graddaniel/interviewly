@@ -9,9 +9,17 @@
     gap: 0.5vw;
     flex-shrink: 0;
     padding: 1.5vw 2vw;
+    border: 1px solid var(--COLOR8);
     border-radius: 1.5vw;
     background-color: var(--COLOR8);
     cursor: pointer;
+}
+.selectedTile {
+    border: 1px solid var(--COLOR1)
+}
+.disabledTile {
+    background-color: var(--GRAY);
+    color: var(--GRAY2)
 }
 
 .icon {

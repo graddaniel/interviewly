@@ -9,6 +9,12 @@ import type AccountsService from '../accounts-service/accounts-service';
 import type CompaniesService from '../companies-service/companies-service';
 import type LimeSurveyAdapter from '../lime-survey-adapter';
 import type LSQBuilder from '../lsq-builder';
+import TemplatesService from '../templates-service/templates-service';
+import SurveyModel from '../../models/survey';
+import SurveyParticipantModel from '../../models/surveyParticipant';
+
+import type AccountModel from '../../models/account';
+import moment from 'moment';
 
 
 type RespondentFileEntry = {
@@ -19,17 +25,20 @@ type RespondentFileEntry = {
 export default class ProjectsService {
     accountsService: AccountsService;
     companiesService: CompaniesService;
+    templatesService: TemplatesService;
     limeSurveyAdapter: LimeSurveyAdapter;
     lsqBuilder: LSQBuilder;
 
     constructor (
         accountsService: AccountsService,
         companiesService: CompaniesService,
+        templatesService: TemplatesService,
         limeSurveyAdapter: LimeSurveyAdapter,
         lsqBuilder: LSQBuilder,
     ) {
         this.accountsService = accountsService;
         this.companiesService = companiesService;
+        this.templatesService = templatesService;
         this.limeSurveyAdapter = limeSurveyAdapter;
         this.lsqBuilder = lsqBuilder;
     }
@@ -55,7 +64,25 @@ export default class ProjectsService {
         return project;
     }
 
-    getProject = async (
+    getProject = async (query: any) => {
+        const project = await ProjectModel.findOne({
+            where: query,
+            include: [{
+                association: ProjectModel.associations.RespondentProfileModel,
+                include: [{
+                    association: RespondentProfileModel.associations.AccountModel,
+                }],
+            }]
+        });
+
+        if (!project) {
+            throw new ProjectNotFoundError();
+        }
+
+        return project;
+    }
+
+    getOneCompanyProject = async (
         companyUuid: string,
         projectUuid: string,
     ) => {
@@ -84,6 +111,14 @@ export default class ProjectsService {
                     association: RespondentProfileModel.associations.AccountModel,
                     attributes: ['email'],
                 }],
+            }, {
+                association: ProjectModel.associations.SurveyModel,
+                attributes: [
+                    'uuid',
+                    'name',
+                    'startDate',
+                    'endDate',
+                ],
             }]
         });
 
@@ -96,9 +131,73 @@ export default class ProjectsService {
         return project;
     }
 
-    flattenProjectDetails = (project) => {
+    getOneRespondentProject = async (
+        uuid: string,
+        projectUuid: string,
+    ) => {
+        const account = await this.accountsService.getAccount({ uuid });
+        //@ts-ignore
+        const respondentProfile = await account.getRespondentProfile();
+
+        const project = await ProjectModel.findOne({
+            attributes: [
+                'id', 'uuid', 'title', 'description', 'methodology',   
+                'startDate', 'endDate',
+            ],
+            where: {
+                uuid: projectUuid,
+            },
+            include: [{
+                association: ProjectModel.associations.RespondentProfileModel,
+                attributes: ['id'],
+                where: {
+                    id: respondentProfile.id,
+                },
+            }]
+        });
+
+        if (!project) {
+            throw new ProjectNotFoundError();
+        }
+        //TODO exclude inactive surveys
+        const surveys = await SurveyModel.findAll({
+            attributes: [
+                'uuid',
+                'name',
+                'startDate',
+                'endDate',
+            ],
+            include: [{
+                association: SurveyModel.associations.ProjectModel,
+                attributes: ['id'],
+                where: {
+                    id: project.id,
+                }
+            }, {
+                association: SurveyModel.associations.SurveyParticipantModel,
+                attributes: ['hasFinished', 'token', 'SurveyId'],
+                where: {
+                    RespondentProfileId: respondentProfile.id,
+                }
+            }]
+        });
+
+        const projectInfo = {
+            ...project.toJSON(),
+            surveys,
+        }
+
+        //TODO check if thr user has access to the project
+
+        return projectInfo;
+    }
+
+    flattenCompanyProjectDetails = (projectModel) => {
+        const project = projectModel.toJSON();
+
         const {
             RespondentProfiles: respondentProfiles,
+            Surveys: surveys,
             ...projectData
         } = project;
 
@@ -108,16 +207,48 @@ export default class ProjectsService {
                 ProjectsRespondents, //discard
                 ...respondentData
             } = r;
-
+            
             return {
                 ...respondentData,
                 email: account.email,
             };
         });
-
+        
         return {
             ...projectData,
             respondents: flattenedRespondentProfiles,
+            surveys,
+        };
+    }
+    
+    flattenRespondentProjectDetails = (project) => {
+        const {
+            RespondentProfiles: respondentProfiles,
+            surveys,
+            ...projectData
+        } = project;
+
+        return {
+            ...projectData,
+            surveys: surveys.map(s => {
+                const {
+                    Project,
+                    SurveyParticipants,
+                    ...rest
+                } = s.toJSON();
+
+                const participantInfo = {
+                    hasFinished: SurveyParticipants[0].hasFinished,
+                    token: SurveyParticipants[0].token,
+                    id: SurveyParticipants[0].SurveyId,
+                    url: `http://127.0.0.1/limesurvey/index.php/${SurveyParticipants[0].SurveyId}?token=${SurveyParticipants[0].token}`
+                };
+
+                return {
+                    ...rest,
+                    ...participantInfo,
+                };
+            }).filter(survey => moment().isAfter(survey.startDate)),
         };
     }
 
@@ -127,19 +258,42 @@ export default class ProjectsService {
     ): Promise<ProjectModel[]> => {
         const account = await this.accountsService.getAccount({ uuid: currentUserUuid });
 
+        switch (account.type) {
+            case AccountTypes.Type.RECRUITER:
+                return this.getAllProjectsOfRecruiter(account);
+            case AccountTypes.Type.RESPONDENT:
+                return this.getAllProjectsOfRespondent(account);
+        }        
+    }
+
+    private getAllProjectsOfRecruiter = async (account: AccountModel) => {
         //@ts-ignore
         const company = await account.RecruiterProfile.getCompany();
 
-        const allProjects = await ProjectModel.findAll({
-            attributes: ['uuid', 'title', 'methodology'],
+        return ProjectModel.findAll({
+            attributes: ['uuid', 'title', 'methodology', 'startDate', 'endDate'],
             where: {
                 CompanyId: company.id,
             },
         });
+    }
 
-        //TODO check also if the user when not an admin, can access this project
+    private getAllProjectsOfRespondent = async (account: AccountModel) => {
+        //@ts-ignore
+        const respondentProfile = await account.getRespondentProfile();
 
-        return allProjects;
+        //const respondentsProjects = await respondentProfile.getProjects();
+
+        return ProjectModel.findAll({
+            attributes: ['uuid', 'title', 'methodology', 'startDate', 'endDate'],
+            include: [{
+                association: ProjectModel.associations.RespondentProfileModel,
+                attributes: [],
+                where: {
+                    id: respondentProfile.id,
+                }
+            }],
+        });
     }
 
     updateProject = async (
@@ -147,7 +301,7 @@ export default class ProjectsService {
         projectUuid,
         projectData,
     ) => {
-        const project = await this.getProject(companyUuid, projectUuid);
+        const project = await this.getOneCompanyProject(companyUuid, projectUuid);
 
         const {
             respondents: allRespondents,
@@ -216,19 +370,76 @@ export default class ProjectsService {
         await Promise.all(respondentsRegistrationPromises);
     }
 
-    addSurveyToProject = async (projectId, surveyTemplate) => {
+    //TODO add transaction
+    addSurveyToProject = async (
+        templateUuid: string,
+        startDate: Date,
+        endDate: Date,
+        projectUuid: string,
+    ) => {
+        const surveyTemplate = await this.templatesService.getTemplate({ uuid: templateUuid });
+
+        const project = await this.getProject({ uuid: projectUuid });
+        const projectsRespondents = await this.getProjectsRespondents(projectUuid);
+
+        const surveyInfo = await this.generateSurveyFromTemplateAndAddRespondents(
+            surveyTemplate.templateJson,
+            projectsRespondents,
+        );
+
+        const survey = await SurveyModel.create({
+            id: surveyInfo.surveyId,
+            uuid: generateUuidV4(),
+            name: surveyTemplate.name,
+            templateJson: surveyTemplate.templateJson,
+            TemplateId: surveyTemplate.id,
+            ProjectId: project.id,
+            startDate,
+            endDate,
+        });
+
+        await SurveyParticipantModel.bulkCreate(
+            surveyInfo.respondents.map(respondent => ({
+                RespondentProfileId: respondent.id,
+                token: respondent.token,
+                hasFinished: false,
+                SurveyId: survey.id,
+            }), {
+                include: SurveyParticipantModel.associations.SurveyModel,
+            })
+        );
+    }
+
+    getProjectsRespondents = async (projectUuid: string) => {
+        const project = await this.getProject({ uuid: projectUuid });
+
+        return project
+            .toJSON()
+            .RespondentProfiles
+            .map(r => ({
+                ...r,
+                email: r.Account.email,
+            }));
+    }
+
+    generateSurveyFromTemplateAndAddRespondents = async (template: {
+        name: string,
+        languages: string[],
+        questions: any[],
+    }, respondents: {
+        id: number,
+        email: string,
+    }[]) => {
         const {
             name,
             languages,
             questions,
-        } = surveyTemplate;
-
-        const firstLanguage = languages.splice(0, 1)[0];
+        } = template;
 
         await this.limeSurveyAdapter.createSessionKey();
 
+        const firstLanguage = languages.splice(0, 1)[0];
         const surveyId = await this.limeSurveyAdapter.addSurvey(0, name, firstLanguage);
-
         for (const language of languages) {
             await this.limeSurveyAdapter.addLanguage(surveyId, language);
         }
@@ -267,7 +478,7 @@ export default class ProjectsService {
 
                 const encodedLsqCode = Buffer.from(lsqCode, 'utf8').toString('base64');
 
-                console.log(lsqCode)
+                //console.log(lsqCode)
     
                 await this.limeSurveyAdapter.questionImport(
                     surveyId,
@@ -278,6 +489,33 @@ export default class ProjectsService {
             }
         }
 
+
+        await this.limeSurveyAdapter.activateTokens(surveyId);
+
+        const respondentsWithTokens = await Promise.all(
+            respondents.map(
+                async respondent => {
+                    const result = await this.limeSurveyAdapter.addParticipant(
+                        surveyId,
+                        respondent.email
+                    );
+
+                    return {
+                        id: respondent.id,
+                        email: respondent.email,
+                        token: result[0].token,
+                    }
+                }
+            )
+        )
+
+        await this.limeSurveyAdapter.activateSurvey(surveyId);
+
         await this.limeSurveyAdapter.releaseSessionKey();
+
+        return {
+            surveyId,
+            respondents: respondentsWithTokens,
+        }
     }
 }

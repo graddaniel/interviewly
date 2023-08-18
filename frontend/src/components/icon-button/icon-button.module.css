@@ -20,6 +20,10 @@
     width: 1vw;
     height: 1vw;
 }
+.disabled {
+    border-color: var(--GRAY2) !important;
+    background-color: var(--GRAY) !important;
+}
 
 @media (min-width: min-medium) and (max-width: max-medium) {
     .button {

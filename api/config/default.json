@@ -22,7 +22,7 @@
         "port": 587
     },
     "limesurvey": {
-        "apiUrl": "http://127.0.0.1/limesurvey/index.php/admin/remotecontrol"
+        "url": "http://127.0.0.1/limesurvey/index.php"
     },
     "fileUpload": {
         "directory": "/uploads",

@@ -10,7 +10,7 @@ const languagesDefinitions = {
         language: 'български',
         icon: FlagIcons.BulgarianFlagIcon,
     },
-    cz: {
+    cs: {
         language: 'Čeština',
         icon: FlagIcons.CzechFlagIcon,
     },
@@ -26,7 +26,7 @@ const languagesDefinitions = {
         language: 'Deutsch',
         icon: FlagIcons.GermanFlagIcon,
     },
-    plgr: {
+    el: {
         language: 'Ελληνικά',
         icon: FlagIcons.GreekFlagIcon,
     },
@@ -62,11 +62,11 @@ const languagesDefinitions = {
         language: 'Español',
         icon: FlagIcons.SpanishFlagIcon,
     },
-    se: {
+    sv: {
         language: 'Svenska',
         icon: FlagIcons.SwedishFlagIcon,
     },
-    ua: {
+    uk: {
         language: 'Українська',
         icon: FlagIcons.UkrainianFlagIcon,
     },

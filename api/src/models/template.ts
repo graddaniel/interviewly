@@ -3,10 +3,11 @@ import {
     DataTypes,
     Model,
 } from 'sequelize';
-import { ProjectTypes } from 'shared';
+import { TemplateTypes } from 'shared';
 
 import SequelizeConnection from '../services/sequelize-connection';
 import { UUID_V4_LENGTH } from '../consts';
+import SurveyModel from './survey';
 
 import type CompanyModel from './company';
 
@@ -17,6 +18,7 @@ export default class Template extends Model {
     declare uuid: string;
     name: string;
     templateJson: any;
+    surveyType: TemplateTypes.SurveyType;
 
     declare getCompany: BelongsToCreateAssociationMixin<CompanyModel>;
 };
@@ -39,6 +41,10 @@ Template.init({
         type: DataTypes.JSON,
         allowNull: false,
     },
+    surveyType: {
+        type: DataTypes.ENUM(...Object.values(TemplateTypes.SurveyType)),
+        allowNull: false,
+    },
     isPrivate: {
         type: DataTypes.VIRTUAL,
         get() {
@@ -56,3 +62,6 @@ Template.init({
         fields: ['uuid'],
     }],
 });
+
+Template.associations.SurveyModel = Template.hasMany(SurveyModel);
+SurveyModel.associations.TemplateModel = SurveyModel.belongsTo(Template);

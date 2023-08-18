@@ -9,7 +9,7 @@ const en = {
             created: 'created',
             yes: 'yes',
             no: 'no',
-            saved: 'Saved!',
+            saved: 'Saved',
         },
         validation: {
             join: {
@@ -274,6 +274,11 @@ In accordance with the provisions of the Act of 18 July 2002 on the provision of
             swedish: 'swedish',
             ukrainian: 'ukrainian',
         },
+        surveyTypes: {
+            regular: 'Regular',
+            screening: 'Screening',
+            language: 'Language',
+        },
         personalData: {
             title: 'Personal data',
             marketingConsentsSubtitle: 'Marketing consents',
@@ -349,7 +354,9 @@ Over the years, I’ve come to learn that designing collaboratively means puttin
                         commentSingularLabel: 'comment',
                         commentPluralLabel: 'comments',
                     },
-                }
+                },
+                sessionStartDateLabel: 'Session start date',
+                sessionEndDateLabel: 'Session end date',
             },
             respondents: {
                 seeDetailsLabel: 'See details',
@@ -361,12 +368,20 @@ Over the years, I’ve come to learn that designing collaboratively means puttin
                 participantsCountInputLabel: 'Participants Count',
                 reserveParticipantsCountInputLabel: 'Reserve Participants Count',
                 interviewDurationLabel: 'Interview duration',
-                startDatelabel: 'Start date',
+                startDateLabel: 'Start date',
                 endDateLabel: 'End date',
                 transcriptionSubtitle: 'Transcription',
                 respondentFeeSubtitle: 'Payment for the respondent',
                 respondentFeeLabel: 'Respondent fee',
                 currencyLabel: 'Currency',
+            },
+            respondentPage: {
+                surveysSubtitle: 'Surveys',
+                surveysStatuses: {
+                    filled: 'filled',
+                    ended: 'ended',
+                    pending: 'pending'
+                },
             }
         },
         editProject: {
