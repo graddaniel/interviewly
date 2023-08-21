@@ -10,7 +10,7 @@
         "header"
         "stepper"
         "content";
-    row-gap: 4.5vw;
+    row-gap: 2vw;
     padding: 3.5vw 6vw 5vw;
 }
 
@@ -89,7 +89,7 @@
 .questionsStep {
     display: flex;
     flex-direction: column;
-    gap: 5vw;
+    gap: 2vw;
     min-height: 0;
 }
 
