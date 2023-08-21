@@ -7,19 +7,15 @@ import type { Response } from 'express';
 
 import type { AuthenticatedRequest } from '../generic/types';
 import type ProjectsService from '../services/projects-service/projects-service';
-import type InputFilesService from '../services/input-files-service';
 
 
 export default class ProjectsController {
     projectsService: ProjectsService;
-    inputFilesService: InputFilesService;
 
     constructor(
         projectsService: ProjectsService,
-        inputFilesService: InputFilesService,
     ) {
         this.projectsService = projectsService;
-        this.inputFilesService = inputFilesService;
     }
 
     getAllProjects = async (
@@ -94,20 +90,6 @@ export default class ProjectsController {
             ...formData
         } = req.body;
 
-        //@ts-ignore
-        const files = req.files;
-        const {
-            respondentsFile,
-        } = files;
-
-        if (respondentsFile) {
-            const { filename } = respondentsFile[0];
-
-            formData.respondents = await this.inputFilesService.processRespondentsFile(
-                filename
-            );
-        }
-
         const step = parseInt(stepString, 10) as ProjectTypes.EditSteps;
 
         await ProjectValidator.validateEditProjectStep(step);
@@ -120,6 +102,10 @@ export default class ProjectsController {
                 'requireCandidateRecording'
             ]) {
                 formData[param] = formData[param] === 'true' ? true : false;
+            }
+
+            if (formData.respondents) {
+                formData.respondents = JSON.parse(formData.respondents);
             }
         } else if (step === ProjectTypes.EditSteps.Details) {
             for (const param of [

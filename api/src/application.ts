@@ -39,7 +39,6 @@ import translations from './i18n';
 import TemplatesService from './services/templates-service/templates-service';
 import TemplatesController from './controllers/templates-controller';
 import { TokenExpiredError } from 'jsonwebtoken';
-import InputFilesService from './services/input-files-service';
 import NotFoundError from './generic/not-found-error';
 
 
@@ -57,7 +56,6 @@ export default class Appplication {
         });
 
         const mailService = new MailService();
-        const inputFilesService = new InputFilesService();
         const limeSurveyAdapter = new LimeSurveyAdapter();
         const lsqBuilder = new LSQBuilder();
         const companiesService = new CompaniesService();
@@ -76,7 +74,7 @@ export default class Appplication {
         const companiesController = new CompaniesController(accountsService, companiesService);
         const accountsController = new AccountsController(accountsService);
 
-        const projectsController = new ProjectsController(projectsService, inputFilesService);
+        const projectsController = new ProjectsController(projectsService);
 
         const templatesController = new TemplatesController(templatesService);
 
@@ -94,9 +92,6 @@ export default class Appplication {
         });
         const projectUpdateFilesMiddleware = uploadHandler.fields([{
             name: 'avatarFile',
-            maxCount: 1,
-        }, {
-            name: 'respondentsFile',
             maxCount: 1,
         }]);
 

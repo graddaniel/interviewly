@@ -1,4 +1,5 @@
 import axios from 'axios';
+import readXlsxFile from 'read-excel-file'
 import { ProjectTypes } from 'shared';
 
 import { API_HOST } from 'config/current';
@@ -54,7 +55,7 @@ export default class ProjectService {
         formData
     ) => {
         const bodyFormData = new FormData();
-
+        
         const formDataObject = Object.entries(formData);
 
         const step = parseInt(formData.step, 10);
@@ -75,14 +76,30 @@ export default class ProjectService {
                     bodyFormData.append(key, value as string);
                     break;
                 case 'avatarFile':
-                case 'respondentsFile':
-                    const files = (document.getElementById(key) as HTMLInputElement).files;
-                    if (!files) {
+                    const avatarFiles = (document.getElementById(key) as HTMLInputElement).files;
+                    if (!avatarFiles) {
                         console.error(`${key} is missing the file data`)
                         break;
                     }
 
-                    bodyFormData.append(key, files[0]);
+                    bodyFormData.append(key, avatarFiles[0]);
+                    break;
+                case 'respondentsFile':
+                    const respondentsFiles = (document.getElementById(key) as HTMLInputElement).files;
+
+                    console.log("files", respondentsFiles)
+                    if (!respondentsFiles) {
+                        console.error(`${key} is missing the file data`)
+                        break;
+                    }
+                    const fileData = await readXlsxFile(respondentsFiles[0]) as any;
+
+                    const respondents = fileData.slice(1).map(row => ({
+                        email: row[0],
+                        language: row[1],
+                    }));
+
+                    bodyFormData.append('respondents', JSON.stringify(respondents));
                     break;
                 case 'addLanguageTest':
                 case 'addScreeningSurvey':
