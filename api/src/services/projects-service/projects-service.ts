@@ -15,7 +15,11 @@ import SurveyParticipantModel from '../../models/surveyParticipant';
 
 import type AccountModel from '../../models/account';
 import moment from 'moment';
+import config from 'config';
 
+type LimesurveyConfig = {
+    url: string;
+};
 
 type RespondentFileEntry = {
     email: string;
@@ -28,6 +32,7 @@ export default class ProjectsService {
     templatesService: TemplatesService;
     limeSurveyAdapter: LimeSurveyAdapter;
     lsqBuilder: LSQBuilder;
+    limeSurveyUrl: string;
 
     constructor (
         accountsService: AccountsService,
@@ -41,6 +46,9 @@ export default class ProjectsService {
         this.templatesService = templatesService;
         this.limeSurveyAdapter = limeSurveyAdapter;
         this.lsqBuilder = lsqBuilder;
+
+        const limesurveyConfig = config.get('limesurvey') as LimesurveyConfig;
+        this.limeSurveyUrl = limesurveyConfig.url;
     }
 
     //TODO no need to find the company by user when we have its uuid
@@ -241,7 +249,7 @@ export default class ProjectsService {
                     hasFinished: SurveyParticipants[0].hasFinished,
                     token: SurveyParticipants[0].token,
                     id: SurveyParticipants[0].SurveyId,
-                    url: `http://127.0.0.1/limesurvey/index.php/${SurveyParticipants[0].SurveyId}?token=${SurveyParticipants[0].token}`
+                    url: `${this.limeSurveyUrl}/${SurveyParticipants[0].SurveyId}?token=${SurveyParticipants[0].token}`
                 };
 
                 return {
