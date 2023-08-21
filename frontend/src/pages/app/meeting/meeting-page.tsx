@@ -24,9 +24,9 @@ const USER_PARAM_TO_TYPE_MAP = {
 
 const USERNAME = 'testUser';
 
-const server = 'https://id8d03szbk.execute-api.eu-central-1.amazonaws.com/prod/janus'; //JANUS_HOST;
+const server = JANUS_HOST;
 
-//JANUS_HOST; //'http://3.127.163.15:8088/janus'
+
 const MeetingPage = () => {
     const params = useParams();
     const meetingId = params.meetingId as string;
