@@ -93,13 +93,13 @@ export default class AccountsController {
             password,
         } = req.body;
 
-        await AccountsValidator.validateNewPassword({ password });
-
         if (confirm) { 
             await this.accountsService.confirmAccountRegistration(accountId);
         }
         
         if (password) {
+            await AccountsValidator.validateNewPassword({ password });
+
             await this.accountsService.setPassword(accountId, password);
         }
 

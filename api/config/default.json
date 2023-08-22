@@ -6,7 +6,8 @@
         "host": "localhost",
         "port": 3306,
         "name": "interviewly",
-        "forceSync": false
+        "forceSync": false,
+        "alterSync": false
     },
     "registration": {
         "additionalNotificationsTarget": "yyyeey@gmail.com"

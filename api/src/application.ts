@@ -82,7 +82,7 @@ export default class Appplication {
 
         SequelizeConnection.instance().sync({
             force: config.get('database.forceSync'),
-            alter: true,
+            alter: config.get('database.alterSync'),
         });
 
         const fileUploadConfig = config.get('fileUpload') as any;
