@@ -12,6 +12,7 @@ export default async function NewTemplateAction ({
         name: formData.templateName,
         languages: JSON.parse(formData.languages),
         questions: JSON.parse(formData.questions),
+        surveyType: formData.surveyType,
     };
 
     try {

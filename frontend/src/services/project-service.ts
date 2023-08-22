@@ -140,7 +140,7 @@ export default class ProjectService {
     ) => {
         const accessToken = sessionStorage.getItem('accessToken') || localStorage.getItem('accessToken');
 
-        return axios.post(`${API_HOST}/projects/${projectUuid}/survey`, {
+        return axios.post(`${API_HOST}/projects/${projectUuid}/surveys`, {
             templateUuid,
             startDate,
             endDate,

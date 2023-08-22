@@ -174,7 +174,7 @@ export default class Appplication {
             projectsController.updateProject
         );
         projectsRouter.post(
-            '/:projectId/survey',
+            '/:projectId/surveys',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
             requireProfileRole(ProfileTypes.Role.Admin),
