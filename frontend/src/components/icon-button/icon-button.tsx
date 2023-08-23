@@ -8,6 +8,7 @@ type IconButtonProps = {
     onClick: () => void,
     className?: string,
     disabled?: boolean,
+    disableClick?: boolean,
 };
 
 const IconButton = ({
@@ -15,12 +16,14 @@ const IconButton = ({
     onClick,
     className,
     disabled,
+    disableClick,
 }: IconButtonProps) => {
     return (
         <button
             className={classNames(
                 classes.button,
                 disabled && classes.disabled,
+                disableClick && classes.disableClick,
                 className,
             )}
             onClick={(e) => {

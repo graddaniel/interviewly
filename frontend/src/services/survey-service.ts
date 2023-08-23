@@ -20,6 +20,23 @@ export default class SurveyService {
         return data;
     };
 
+    static getRespondentsSurveyResponse = async (
+        surveyUuid: string,
+        respondentUuid: string,
+    ) => {
+        const accessToken = sessionStorage.getItem('accessToken') || localStorage.getItem('accessToken');
+
+        const response = await axios.get(`${API_HOST}/surveys/${surveyUuid}/responses/${respondentUuid}`, {
+            headers: {
+                'authorization': `bearer ${accessToken}`
+            },
+        });
+
+        const { data } = response;
+
+        return data;
+    };
+
     static completeSurvey = async (
         surveyUuid: string,
     ) => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ProfileTypes } from 'shared';
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { generatePath, useLoaderData, useNavigate, useParams } from 'react-router-dom';
 
 import IconButton from '../../../components/icon-button/icon-button';
 import genderToIcon from '../../../utils/gender-to-icon';
@@ -14,7 +14,14 @@ import ArrowLeftIconPurple from 'images/arrow-left-icon-purple.svg';
 import CalendarIconBlack from 'images/calendar-icon-black.svg';
 import MetricsIconBlack from 'images/metrics-icon-black.svg';
 import { useTranslation } from 'react-i18next';
+import { APP_ROUTES } from '../../../consts/routes';
 
+
+type Survey = {
+    uuid: string;
+    name: string;
+    hasFinished: boolean;
+};
 
 type Respondent = {
     avatarUrl: string;
@@ -24,6 +31,7 @@ type Respondent = {
     nationality: ProfileTypes.Nationality,
     email: string;
     age: number;
+    surveys: Survey[];
 };
 
 const upcomingInterview = {
@@ -31,36 +39,26 @@ const upcomingInterview = {
     date: Date.now(),
 };
 
-const surveys = [{
-    name: 'Interviewly survey 1',
-    status: 'pending'
-}, {
-    name: 'Interviewly survey 2',
-    status: 'pending'
-}, {
-    name: 'Interviewly survey 3',
-    status: 'finished'
-}, {
-    name: 'Interviewly survey 4',
-    status: 'finished'
-}, {
-    name: 'Interviewly survey 5',
-    status: 'finished'
-}];
-
 const ProjectRespondentPage = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
+    const params = useParams();
     const respondent = useLoaderData() as Respondent;
 
     const {
-        avatarUrl,
+        projectId,
+        respondentId,
+    } = params;
+
+    const {
         name,
         surname,
         gender,
-        nationality,
+        avatarUrl,
         email,
+        nationality,
         age,
+        surveys,
     } = respondent;
 
     return (
@@ -104,8 +102,15 @@ const ProjectRespondentPage = () => {
                         <SurveyTile
                             key={survey.name}
                             name={survey.name}
-                            status={survey.status}
-                            onClick={() => console.log("TODO display survey")}
+                            status={survey.hasFinished ? 'filled' : 'pending'}
+                            onClick={() => navigate(generatePath(
+                                APP_ROUTES.PROJECT_RESPONDENT_SURVEY_RESPONSES.PATH,
+                                {
+                                    projectId,
+                                    respondentId,
+                                    surveyId: survey.uuid,
+                                }
+                            ))}
                         />
                     ))}
                 </div>

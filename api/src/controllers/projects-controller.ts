@@ -152,4 +152,20 @@ export default class ProjectsController {
 
         res.status(StatusCodes.OK).send();
     }
+
+    getProjectRespondent = async (
+        req: AuthenticatedRequest,
+        res: Response,
+    ) => {
+        const { projectId, respondentId } = req.params;
+
+        //TODO validate both uuids
+
+        const projectRespondent = await this.projectsService.getProjectRespondent(
+            projectId,
+            respondentId,
+        );
+
+        res.status(StatusCodes.OK).send(projectRespondent);
+    }
 }

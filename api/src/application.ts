@@ -185,6 +185,13 @@ export default class Appplication {
             requireProfileRole(ProfileTypes.Role.Admin),
             projectsController.addSurveyToProject
         );
+        projectsRouter.get(
+            '/:projectId/respondents/:respondentId',
+            requireJWT,
+            requireAccountType(AccountTypes.Type.RECRUITER),
+            requireProfileRole(ProfileTypes.Role.Admin),
+            projectsController.getProjectRespondent
+        );
         this.app.use('/projects', projectsRouter);
 
         const surveysRouter = express.Router();
@@ -193,6 +200,12 @@ export default class Appplication {
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
             surveysController.getSurveyResponses,
+        );
+        surveysRouter.get(
+            '/:surveyId/responses/:respondentId',
+            requireJWT,
+            requireAccountType(AccountTypes.Type.RECRUITER),
+            surveysController.getRespondentsSurveyResponses,
         );
         surveysRouter.patch(
             '/:surveyId/complete',

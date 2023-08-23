@@ -1,4 +1,5 @@
 import {
+    BelongsToManyGetAssociationsMixin,
     DataTypes,
     Model
 } from 'sequelize';
@@ -6,7 +7,7 @@ import { ProfileTypes } from 'shared';
 
 import SequelizeConnection from '../services/sequelize-connection';
 import AddressModel from './address';
-import type { AccountModel, SurveyParticipantModel } from '.';
+import type { AccountModel, RespondentProfileModel, SurveyParticipantModel } from '.';
 
 
 const NAME_MAX_LENGTH = 32;
@@ -32,6 +33,7 @@ export default class RespondentProfile extends Model {
 
     declare Account: AccountModel;
     declare SurveyParticipant: SurveyParticipantModel;
+    declare getSurveys: BelongsToManyGetAssociationsMixin<RespondentProfileModel>;
 };
 
 RespondentProfile.init({

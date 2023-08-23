@@ -247,11 +247,6 @@ Zgoda nieobowiązkowa`,
             canceled: 'wycofany',
             finished: 'zakończony',
         },
-        surveyStatuses: {
-            pending: 'oczekująca',
-            finished: 'zakończona',
-            seeResultsLabel: 'Wyniki'
-        },
         languages: {
             bulgarian: 'bułgarski',
             czech: 'czeski',
@@ -381,6 +376,7 @@ Over the years, I’ve come to learn that designing collaboratively means puttin
                     ended: 'zakończona',
                     pending: 'oczekująca'
                 },
+                noResponsesMessage: 'Brak odpowiedzi',
             }
         },
         editProject: {

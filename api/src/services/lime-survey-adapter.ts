@@ -121,4 +121,21 @@ export default class LimeSurveyAdapter {
             'long',
         ]);
     }
+
+    exportResponsesByToken = async (
+        surveyId: number,
+        token: string,
+        language: string,
+    ) => {
+        return this._sendRequest('export_responses_by_token', [
+            this.sessionKey,
+            surveyId,
+            'json',
+            token,
+            language,
+            'complete',
+            'full',
+            'long',
+        ]);
+    }
 }

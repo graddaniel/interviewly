@@ -72,6 +72,8 @@ import CompleteSurvey from './src/pages/app/complete-survey/complete-survey';
 import CompleteSurveyLoader from './src/loaders/app/complete-survey-loader';
 import ProjectSurveyPage from './src/pages/app/project-survey/project-survey';
 import ProjectSurveyLoader from './src/loaders/app/project-survey-loader';
+import ProjectRespondentSurveyResponsesPage from './src/pages/app/project-respondent-survey-responses/project-respondent-survey-responses-page';
+import ProjectRespondentSurveyResponsesLoader from './src/loaders/app/project-respondent-survey-responses-loader';
 
 
 const router = createBrowserRouter(
@@ -185,6 +187,11 @@ const router = createBrowserRouter(
                     path={APP_ROUTES.PROJECT_RESPONDENT.PATH}
                     element={<ProjectRespondentPage />}
                     loader={ProjectRespondentLoader}
+                />
+                <Route
+                    path={APP_ROUTES.PROJECT_RESPONDENT_SURVEY_RESPONSES.PATH}
+                    element={<ProjectRespondentSurveyResponsesPage />}
+                    loader={ProjectRespondentSurveyResponsesLoader}
                 />
                 <Route
                     path={APP_ROUTES.PROJECT_SURVEY.PATH}

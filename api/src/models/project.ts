@@ -1,6 +1,7 @@
 import {
     DataTypes,
-    HasManySetAssociationsMixin,
+    HasManyAddAssociationsMixin,
+    HasManyGetAssociationsMixin,
     Model,
 } from 'sequelize';
 import { ProjectTypes } from 'shared';
@@ -37,8 +38,9 @@ export default class Project extends Model {
     declare transcriptionNeeded: boolean;
     declare moderatorNeeded: boolean;
 
-    declare addRespondentProfiles: HasManySetAssociationsMixin<RespondentProfileModel, RespondentProfileModel['id']>;
     declare Company: CompanyModel;
+    declare addRespondentProfiles: HasManyAddAssociationsMixin<RespondentProfileModel, RespondentProfileModel['id']>;
+    declare getRespondentProfiles: HasManyGetAssociationsMixin<RespondentProfileModel>;
 };
 
 Project.init({

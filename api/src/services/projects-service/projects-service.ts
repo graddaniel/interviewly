@@ -118,7 +118,7 @@ export default class ProjectsService {
                 ],
                 include: [{
                     association: RespondentProfileModel.associations.AccountModel,
-                    attributes: ['email'],
+                    attributes: ['email', 'uuid'],
                 }],
             }, {
                 association: ProjectModel.associations.SurveyModel,
@@ -219,7 +219,7 @@ export default class ProjectsService {
             
             return {
                 ...respondentData,
-                email: account.email,
+                ...account,
             };
         });
         
@@ -532,4 +532,75 @@ export default class ProjectsService {
             respondents: respondentsWithTokens,
         }
     }
+
+    getProjectRespondent = async (
+        projectUuid: string,
+        respondentUuid: string,
+    ) => {
+        const project = await this.getProject({ uuid: projectUuid });
+
+        const respondents = await project.getRespondentProfiles({
+            attributes: [
+                'name',
+                'surname',
+                'gender',
+                'avatarUrl',
+                'AccountId',
+            ],
+            include: [{
+                association: RespondentProfileModel.associations.AccountModel,
+                attributes: [
+                    'uuid',
+                    'email',
+                ],
+                where: {
+                    uuid: respondentUuid,
+                }
+            }, {
+                association: RespondentProfileModel.associations.SurveyModel,
+                through: {
+                    attributes: [
+                        'hasFinished',
+                    'SurveyId',
+                    ]
+                },
+                attributes: [
+                    'uuid',
+                    'name',
+                ],
+            }],
+        })
+
+        const respondentProfile = respondents[0].toJSON();
+
+        return this.flattenRespondentProfile(respondentProfile);
+    }
+
+    private flattenRespondentProfile = (respondentProfile: any) => {
+        const {
+            AccountId,
+            Account,
+            Surveys,
+            ProjectsRespondents,
+            ...repondentProfileAttributes
+        } = respondentProfile;
+
+        const flattenedSurveys = Surveys.map(survey => {
+            const {
+                SurveyParticipant,
+                ...surveyAttributes
+            } = survey;
+
+            return {
+                ...surveyAttributes,
+                ...SurveyParticipant,
+            };
+        });
+
+        return {
+            ...repondentProfileAttributes,
+            ...Account,
+            surveys: flattenedSurveys,
+        };
+    };
 }

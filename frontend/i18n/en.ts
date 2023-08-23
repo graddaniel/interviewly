@@ -251,11 +251,6 @@ In accordance with the provisions of the Act of 18 July 2002 on the provision of
             canceled: 'canceled',
             finished: 'finished',
         },
-        surveyStatuses: {
-            pending: 'pending',
-            finished: 'finished',
-            seeResultsLabel: 'See results'
-        },
         languages: {
             bulgarian: 'bulgarian',
             czech: 'czech',
@@ -386,6 +381,7 @@ Over the years, I’ve come to learn that designing collaboratively means puttin
                     ended: 'ended',
                     pending: 'pending'
                 },
+                noResponsesMessage: 'No responses',
             }
         },
         editProject: {

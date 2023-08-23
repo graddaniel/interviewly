@@ -21,6 +21,9 @@
     background-color: var(--GRAY);
     color: var(--GRAY2)
 }
+.disableClick {
+    cursor: not-allowed;
+}
 
 .icon {
     background-color: var(--COLOR8);
@@ -33,7 +36,7 @@
 .pending {
     background-color: var(--WHITE);
 }
-.finished {
+.filled {
     color: var(--COLOR5);
     background-color: var(--COLOR2);
 }

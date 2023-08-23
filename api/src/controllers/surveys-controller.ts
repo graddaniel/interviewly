@@ -31,9 +31,31 @@ export default class SurveysController {
             surveyId,
         } = req.params;
 
-        const surveyResponses = await this.surveysService.getSurveyResponses(
+        const surveyResponses = await this.surveysService.getAllRespondentsSurveyResponses(
             surveyId,
             currentUserUuid
+        );
+
+        res.status(StatusCodes.OK).send(surveyResponses);
+    }
+
+    getRespondentsSurveyResponses = async (
+        req: AuthenticatedRequest,
+        res: Response,
+    ) => {
+        const {
+            uuid: currentUserUuid,
+        } = req.currentUser;
+
+        const {
+            surveyId,
+            respondentId,
+        } = req.params;
+
+        const surveyResponses = await this.surveysService.getOneRespondentSurveyResponses(
+            surveyId,
+            respondentId,
+            currentUserUuid,
         );
 
         res.status(StatusCodes.OK).send(surveyResponses);

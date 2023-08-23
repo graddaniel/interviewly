@@ -74,7 +74,10 @@ const APP_ROUTES = {
         PATH: '/app/projects/:projectId',
     },
     PROJECT_RESPONDENT: {
-        PATH: '/app/projects/:projectId/:respondentId',
+        PATH: '/app/projects/:projectId/respondents/:respondentId',
+    },
+    PROJECT_RESPONDENT_SURVEY_RESPONSES: {
+        PATH: '/app/projects/:projectId/respondents/:respondentId/surveys/:surveyId',
     },
     PROJECT_SURVEY: {
         PATH: '/app/projects/:projectId/surveys/:surveyId',

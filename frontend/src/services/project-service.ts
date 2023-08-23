@@ -167,4 +167,22 @@ export default class ProjectService {
             },
         });
     }
+
+    static getProjectRespondent = async (
+        projectUuid: string,
+        respondentUuid: string,    
+    ) => {
+        const accessToken = sessionStorage.getItem('accessToken') || localStorage.getItem('accessToken');
+
+        const response = await axios.get(
+            `${API_HOST}/projects/${projectUuid}/respondents/${respondentUuid}`, {
+            headers: {
+                'authorization': `bearer ${accessToken}`
+            },
+        });
+
+        const { data } = response;
+
+        return data;
+    }
 }

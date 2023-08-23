@@ -16,6 +16,7 @@ import { useTranslation } from 'react-i18next';
 
 type RespondentTileProps = {
     className?: string;
+    uuid: string;
     name: string;
     surname: string;
     age: number;
@@ -28,6 +29,7 @@ type RespondentTileProps = {
 
 const RespondentTile = ({
     className,
+    uuid,
     name,
     surname,
     age,
@@ -44,7 +46,7 @@ const RespondentTile = ({
 
     const goToProjectRespondentPage = () => navigate(generatePath(
         APP_ROUTES.PROJECT_RESPONDENT.PATH,
-        { projectId, respondentId: 123 }
+        { projectId, respondentId: uuid }
     ));
 
     return (

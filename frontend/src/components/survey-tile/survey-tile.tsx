@@ -29,30 +29,31 @@ const SurveyTile = ({
 }: SurveyTileProps) => {
     const { t } = useTranslation();
 
+    const disableClick = status === 'pending';
+
     return (
         <div className={
             classNames(
                 classes.tile,
                 selected && classes.selectedTile,
                 disabled && classes.disabledTile,
+                disableClick && classes.disableClick,
                 className,
             )}
-            onClick={onClick}
+            onClick={disableClick ? () => {} : onClick}
         >
             <IconButton
                 className={classes.icon}
                 icon={FoldersIconBlack}
                 onClick={() => {}}
                 disabled={disabled}
+                disableClick={disableClick}
             />
             <span className={classes.name}>{name}</span>
             {status && (
                 <Pill
                     className={classNames(classes.pill, classes[status.toLowerCase()])}
-                    text={status === 'finished'
-                        ? t('surveyStatuses.seeResultsLabel')
-                        : capitalizeFirstLetter(t(`surveyStatuses.${status}`))
-                    }
+                    text={capitalizeFirstLetter(t(`viewProject.respondentPage.surveysStatuses.${status}`))}
                 />
             )}
         </div>
