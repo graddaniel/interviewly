@@ -9,7 +9,7 @@ import SequelizeConnection from '../services/sequelize-connection';
 export default class SurveyParticipant extends Model {
     declare id: number;
     declare hasFinished: boolean;
-    templateJson: any;
+    declare token: any;
 };
 
 SurveyParticipant.init({

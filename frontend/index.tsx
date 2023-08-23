@@ -68,6 +68,10 @@ import './i18n/i18n';
 import SetPasswordAction from './src/actions/set-password-action';
 import SetPasswordPage from './src/pages/set-password/set-password';
 import ViewProjectAction from './src/actions/app/view-project-action';
+import CompleteSurvey from './src/pages/app/complete-survey/complete-survey';
+import CompleteSurveyLoader from './src/loaders/app/complete-survey-loader';
+import ProjectSurveyPage from './src/pages/app/project-survey/project-survey';
+import ProjectSurveyLoader from './src/loaders/app/project-survey-loader';
 
 
 const router = createBrowserRouter(
@@ -183,6 +187,11 @@ const router = createBrowserRouter(
                     loader={ProjectRespondentLoader}
                 />
                 <Route
+                    path={APP_ROUTES.PROJECT_SURVEY.PATH}
+                    element={<ProjectSurveyPage />}
+                    loader={ProjectSurveyLoader}
+                />
+                <Route
                     path={APP_ROUTES.ONLINE_COMMUNITY_ROOM.PATH}
                     element={<OnlineCommunityRoomPage />}
                 />
@@ -208,6 +217,11 @@ const router = createBrowserRouter(
                     path={APP_ROUTES.LIBRARY.PATH}
                     element={<LibraryPage />}
                     loader={TemplateLibraryLoader}
+                />
+                <Route
+                    path={APP_ROUTES.COMPLETE_SURVEY.PATH}
+                    element={<CompleteSurvey />}
+                    loader={CompleteSurveyLoader}
                 />
                 <Route
                     path={APP_FORMS_ROUTES.NEW_TEMPLATE.PATH}

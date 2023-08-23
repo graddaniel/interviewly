@@ -142,7 +142,8 @@ const ViewProject = () => {
             <div className={classes.surveys}>
                 {surveys.map(survey => (
                     <SurveyBar
-                        key={survey.id}
+                        key={survey.uuid}
+                        uuid={survey.uuid}
                         startDate={survey.startDate}
                         endDate={survey.endDate}
                         url={survey.url}

@@ -9,6 +9,7 @@ import SequelizeConnection from '../services/sequelize-connection';
 import RespondentProfileModel from './respondent-profile';
 import SurveyModel from './survey';
 import { UUID_V4_LENGTH } from '../consts';
+import type { CompanyModel } from '.';
 
 
 const TITLE_LENGTH = 64;
@@ -37,6 +38,7 @@ export default class Project extends Model {
     declare moderatorNeeded: boolean;
 
     declare addRespondentProfiles: HasManySetAssociationsMixin<RespondentProfileModel, RespondentProfileModel['id']>;
+    declare Company: CompanyModel;
 };
 
 Project.init({

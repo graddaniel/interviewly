@@ -39,6 +39,7 @@ const en = {
             next: 'Next',
             back: 'Back',
             add: 'Add',
+            download: 'Download',
         },
         menu: {
             home: 'Home',
@@ -363,6 +364,9 @@ Over the years, I’ve come to learn that designing collaboratively means puttin
                 respondentVideoSubtitle: 'Respondent Video',
                 upcomingInterviewsSubtitle: 'Upcoming interviews',
                 respondentSurveysSubtitle: 'Respondent\'s surveys',
+            },
+            screeningSurveys: {
+                resultsTitle: 'Results',
             },
             details: {
                 participantsCountInputLabel: 'Participants Count',

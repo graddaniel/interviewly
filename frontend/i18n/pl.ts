@@ -39,6 +39,7 @@ const pl = {
             next: 'Dalej',
             back: 'Wstecz',
             add: 'Dodaj',
+            download: 'Pobierz',
         },
         menu: {
             home: 'Główna',
@@ -359,6 +360,9 @@ Over the years, I’ve come to learn that designing collaboratively means puttin
                 respondentVideoSubtitle: 'Nagranie respondenta',
                 upcomingInterviewsSubtitle: 'Nadchodzące spotkania',
                 respondentSurveysSubtitle: 'Ankiety respondenta',
+            },
+            screeningSurveys: {
+                resultsTitle: 'Wyniki',
             },
             details: {
                 participantsCountInputLabel: 'Liczba uczestników',

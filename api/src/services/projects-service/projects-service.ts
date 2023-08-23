@@ -16,6 +16,7 @@ import SurveyParticipantModel from '../../models/surveyParticipant';
 import type AccountModel from '../../models/account';
 import moment from 'moment';
 import config from 'config';
+import SequelizeConnection from '../sequelize-connection';
 
 type LimesurveyConfig = {
     url: string;
@@ -238,18 +239,23 @@ export default class ProjectsService {
 
         return {
             ...projectData,
-            surveys: surveys.map(s => {
+            surveys: surveys.map(survey => {
                 const {
                     Project,
                     SurveyParticipants,
                     ...rest
-                } = s.toJSON();
+                } = survey.toJSON();
+
+                const allowToTakeSurvey = moment().isBefore(rest.endDate)
+                    && !SurveyParticipants[0].hasFinished;
 
                 const participantInfo = {
                     hasFinished: SurveyParticipants[0].hasFinished,
                     token: SurveyParticipants[0].token,
                     id: SurveyParticipants[0].SurveyId,
-                    url: `${this.limeSurveyUrl}/${SurveyParticipants[0].SurveyId}?token=${SurveyParticipants[0].token}`
+                    url: allowToTakeSurvey
+                        ? `${this.limeSurveyUrl}/${SurveyParticipants[0].SurveyId}?token=${SurveyParticipants[0].token}`
+                        : null,
                 };
 
                 return {
@@ -378,8 +384,7 @@ export default class ProjectsService {
         await Promise.all(respondentsRegistrationPromises);
     }
 
-    //TODO add transaction
-    addSurveyToProject = async (
+    addSurveyToProject = SequelizeConnection.transaction(async (
         templateUuid: string,
         startDate: Date,
         endDate: Date,
@@ -416,7 +421,7 @@ export default class ProjectsService {
                 include: SurveyParticipantModel.associations.SurveyModel,
             })
         );
-    }
+    })
 
     getProjectsRespondents = async (projectUuid: string) => {
         const project = await this.getProject({ uuid: projectUuid });
@@ -440,9 +445,10 @@ export default class ProjectsService {
     }[]) => {
         const {
             name,
-            languages,
+            languages: inputLanguages,
             questions,
         } = template;
+        const languages = [...inputLanguages];
 
         await this.limeSurveyAdapter.createSessionKey();
 
@@ -486,7 +492,7 @@ export default class ProjectsService {
 
                 const encodedLsqCode = Buffer.from(lsqCode, 'utf8').toString('base64');
 
-                //console.log(lsqCode)
+                console.log(lsqCode)
     
                 await this.limeSurveyAdapter.questionImport(
                     surveyId,

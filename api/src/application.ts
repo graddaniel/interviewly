@@ -40,6 +40,9 @@ import TemplatesService from './services/templates-service/templates-service';
 import TemplatesController from './controllers/templates-controller';
 import { TokenExpiredError } from 'jsonwebtoken';
 import NotFoundError from './generic/not-found-error';
+import SurveysController from './controllers/surveys-controller';
+import SurveysService from './services/surveys-service/surveys-service';
+import SurveyNotFoundError from './services/surveys-service/errors/survey-not-found-error';
 
 
 export default class Appplication {
@@ -68,6 +71,7 @@ export default class Appplication {
             limeSurveyAdapter,
             lsqBuilder,
         );
+        const surveysService = new SurveysService(accountsService, limeSurveyAdapter);
 
         const contactRequestController = new ContactRequestController(mailService);
 
@@ -75,6 +79,8 @@ export default class Appplication {
         const accountsController = new AccountsController(accountsService);
 
         const projectsController = new ProjectsController(projectsService);
+
+        const surveysController = new SurveysController(surveysService);
 
         const templatesController = new TemplatesController(templatesService);
 
@@ -159,7 +165,11 @@ export default class Appplication {
             requireProfileRole(ProfileTypes.Role.Admin),
             projectsController.createProject
         );
-        projectsRouter.get('/:projectId', requireJWT, projectsController.getOneProject);
+        projectsRouter.get(
+            '/:projectId',
+            requireJWT,
+            projectsController.getOneProject
+        );
         projectsRouter.patch(
             '/:projectId',
             requireJWT,
@@ -176,6 +186,21 @@ export default class Appplication {
             projectsController.addSurveyToProject
         );
         this.app.use('/projects', projectsRouter);
+
+        const surveysRouter = express.Router();
+        surveysRouter.get(
+            '/:surveyId/responses',
+            requireJWT,
+            requireAccountType(AccountTypes.Type.RECRUITER),
+            surveysController.getSurveyResponses,
+        );
+        surveysRouter.patch(
+            '/:surveyId/complete',
+            requireJWT,
+            requireAccountType(AccountTypes.Type.RESPONDENT),
+            surveysController.patchSurveyComplete,
+        );
+        this.app.use('/surveys', surveysRouter);
 
         const templatesRouter = express.Router();
 
@@ -238,6 +263,7 @@ export default class Appplication {
                 || err instanceof CompanyNotFound
                 || err instanceof ProfileNotFoundError
                 || err instanceof ProjectNotFoundError
+                || err instanceof SurveyNotFoundError
                 || err instanceof NotPermittedError
                 || err instanceof NotFoundError
                 || err instanceof AuthorizationError) {

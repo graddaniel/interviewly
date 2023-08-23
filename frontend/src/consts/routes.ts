@@ -76,6 +76,9 @@ const APP_ROUTES = {
     PROJECT_RESPONDENT: {
         PATH: '/app/projects/:projectId/:respondentId',
     },
+    PROJECT_SURVEY: {
+        PATH: '/app/projects/:projectId/surveys/:surveyId',
+    },
     ONLINE_COMMUNITY_ROOM: {
         PATH: '/app/projects/:projectId/rooms/:roomId',
     },
@@ -87,6 +90,9 @@ const APP_ROUTES = {
     },
     LIBRARY: {
         PATH: '/app/library',
+    },
+    COMPLETE_SURVEY: {
+        PATH: '/app/completeSurvey'
     },
 };
 

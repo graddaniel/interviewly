@@ -15,6 +15,9 @@
 .iconButton {
     grid-area: iconButton;
 }
+.disableClick {
+    cursor: not-allowed;
+}
 
 .startDate {
     grid-area: startDate;

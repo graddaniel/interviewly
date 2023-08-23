@@ -41,7 +41,6 @@ export default class LimeSurveyAdapter {
         options.data = JSON.stringify({ method, params, id:1} );
 
         const result = await axios(options);
-        console.log(JSON.stringify(result.data.result))
     
         return result.data.result;
     }
@@ -106,5 +105,20 @@ export default class LimeSurveyAdapter {
         mandatory: string,
     ) => {
         return this._sendRequest('import_question', [this.sessionKey, surveyId, groupId, base64lsqQuestion, 'lsq', mandatory]);
+    }
+
+    exportResponses = async (
+        surveyId: number,
+        language: string,
+    ) => {
+        return this._sendRequest('export_responses', [
+            this.sessionKey,
+            surveyId,
+            'json',
+            language,
+            'complete',
+            'full',
+            'long',
+        ]);
     }
 }
