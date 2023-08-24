@@ -9,8 +9,8 @@ import AddressModel from './address';
 import RecruiterProfileModel from './recruiter-profile';
 import ProjectModel from './project';
 import TemplateModel from './template'
+import { UUID_V4_LENGTH } from '../consts';
 
-const UUID_V4_LENGTH = 40;
 
 export default class Company extends Model {
     declare id: number | null;

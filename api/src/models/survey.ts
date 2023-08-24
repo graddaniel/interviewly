@@ -6,7 +6,7 @@ import {
 import { UUID_V4_LENGTH } from '../consts';
 import SequelizeConnection from '../services/sequelize-connection';
 import RespondentProfileModel from './respondent-profile';
-import SurveyParticipantModel from './surveyParticipant';
+import SurveyParticipantModel from './survey-participant';
 import type { ProjectModel } from '.';
 
 const SURVEY_NAME_LENGTH = 64;

@@ -17,29 +17,9 @@ import QuestionMarkIconBlack from 'images/question-mark-icon-black.svg';
 import LanguagesIconBlack from 'images/languages-icon-black.svg';
 import DollarSignIconBlack from 'images/dollar-sign-icon-black.svg';
 
-import { registerLocale } from  "react-datepicker";
-import { bg, cs, nl, enGB, fr, de, el, hu, it, pl, pt, ro, ru, sk, es, sv, uk  } from 'date-fns/locale';
 import { useTranslation } from 'react-i18next';
 import capitalizeFirstLetter from '../../../utils/capitalize-first-letter';
 import HOURS from '../../../consts/hours';
-
-registerLocale('bg', bg);
-registerLocale('cs', cs);
-registerLocale('nl', nl);
-registerLocale('en', enGB);
-registerLocale('fr', fr);
-registerLocale('de', de);
-registerLocale('el', el);
-registerLocale('hu', hu);
-registerLocale('it', it);
-registerLocale('pl', pl);
-registerLocale('pt', pt);
-registerLocale('ro', ro);
-registerLocale('ru', ru);
-registerLocale('sk', sk);
-registerLocale('es', es);
-registerLocale('sv', sv);
-registerLocale('uk', uk);
 
 const DURATIONS = Object.values(ProjectTypes.Duration);
 const CURRENCIES = Object.values(ProjectTypes.PaymentCurrency);

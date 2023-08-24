@@ -35,7 +35,7 @@ const teamMembers = [{
 
 const upcomingInterview = {
     duration: '30min',
-    date: Date.now(),
+    date: new Date(),
 };
 
 const projects = [{

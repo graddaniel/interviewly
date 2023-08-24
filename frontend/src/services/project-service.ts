@@ -76,6 +76,10 @@ export default class ProjectService {
                     bodyFormData.append(key, value as string);
                     break;
                 case 'avatarFile':
+                    if (!value) {
+                        break;
+                    }
+
                     const avatarFiles = (document.getElementById(key) as HTMLInputElement).files;
                     if (!avatarFiles) {
                         console.error(`${key} is missing the file data`)
@@ -85,6 +89,10 @@ export default class ProjectService {
                     bodyFormData.append(key, avatarFiles[0]);
                     break;
                 case 'respondentsFile':
+                    if (!value) {
+                        break;
+                    }
+
                     const respondentsFiles = (document.getElementById(key) as HTMLInputElement).files;
 
                     console.log("files", respondentsFiles)
@@ -176,6 +184,26 @@ export default class ProjectService {
 
         const response = await axios.get(
             `${API_HOST}/projects/${projectUuid}/respondents/${respondentUuid}`, {
+            headers: {
+                'authorization': `bearer ${accessToken}`
+            },
+        });
+
+        const { data } = response;
+
+        return data;
+    }
+
+    static scheduleProjectMeeting = async (
+        projectUuid: string,
+        respondentUuid: string,
+        meetingDate: number,
+    ) => {
+        const accessToken = sessionStorage.getItem('accessToken') || localStorage.getItem('accessToken');
+
+        const response = await axios.put(
+            `${API_HOST}/projects/${projectUuid}/respondents/${respondentUuid}/meetings`,
+            { meetingDate }, {
             headers: {
                 'authorization': `bearer ${accessToken}`
             },

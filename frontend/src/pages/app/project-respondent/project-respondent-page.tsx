@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import DatePicker from 'react-datepicker';
 import { ProfileTypes } from 'shared';
-import { generatePath, useLoaderData, useNavigate, useParams } from 'react-router-dom';
+import { Form, generatePath, useActionData, useLoaderData, useNavigate, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import IconButton from '../../../components/icon-button/icon-button';
 import genderToIcon from '../../../utils/gender-to-icon';
@@ -8,19 +10,29 @@ import nationalityToFlagIcon from '../../../utils/nationality-to-flag-icon';
 import SurveyTile from '../../../components/survey-tile/survey-tile';
 import RespondentVideoTile from '../../../components/respondent-video-tile/respondent-video-tile';
 import InterviewTile from '../my-account/interview-tile';
+import { APP_ROUTES } from '../../../consts/routes';
 
 import classes from './project-respondent-page.module.css';
 import ArrowLeftIconPurple from 'images/arrow-left-icon-purple.svg';
 import CalendarIconBlack from 'images/calendar-icon-black.svg';
 import MetricsIconBlack from 'images/metrics-icon-black.svg';
-import { useTranslation } from 'react-i18next';
-import { APP_ROUTES } from '../../../consts/routes';
+import classNames from 'classnames';
+import moment from 'moment';
+import SubmitButton from '../../../components/submit-button/submit-button';
+import useSuccessFeedback from '../../../hooks/use-success-feedback';
+import TimeInput from '../../../components/time-input/time-input';
 
 
 type Survey = {
     uuid: string;
     name: string;
     hasFinished: boolean;
+};
+
+type Meeting = {
+    uuid: string;
+    date: Date;
+    duration: string;
 };
 
 type Respondent = {
@@ -32,11 +44,7 @@ type Respondent = {
     email: string;
     age: number;
     surveys: Survey[];
-};
-
-const upcomingInterview = {
-    duration: '30min',
-    date: Date.now(),
+    meeting: Meeting;
 };
 
 const ProjectRespondentPage = () => {
@@ -44,6 +52,26 @@ const ProjectRespondentPage = () => {
     const navigate = useNavigate();
     const params = useParams();
     const respondent = useLoaderData() as Respondent;
+    const actionData = useActionData() as any;
+    useSuccessFeedback(actionData, t('viewProject.respondents.scheduledSuccessMessage'));
+    const { i18n } = useTranslation();
+
+    const [ meetingDateAndTime, setMeetingDateAndTime ] = useState<Date>(new Date());
+    const [ meetingDate, setMeetingtDate] = useState(Date.now());
+    const [ meetingTime, setMeetingTime ] = useState('');
+
+    useEffect(() => {
+        const [hoursString, minutesString] = meetingTime.split(":");
+
+        setMeetingDateAndTime(
+            moment(meetingDate)
+                .hour(parseInt(hoursString, 10))
+                .minute(parseInt(minutesString, 10))
+                .toDate()
+        );
+    }, [meetingDate, meetingTime]);
+    
+    const { resolvedLanguage } = i18n;
 
     const {
         projectId,
@@ -59,7 +87,10 @@ const ProjectRespondentPage = () => {
         nationality,
         age,
         surveys,
+        meeting,
     } = respondent;
+
+    const errors = actionData?.errors || {};
 
     return (
         <section className={classes.projectRespondent}>
@@ -84,19 +115,60 @@ const ProjectRespondentPage = () => {
                     coverUrl="https://picsum.photos/600/400"
                 />
                 <div className={classes.upcomingInterview}>
-                    <div className={classes.sectionHeaderTitle}>
+                    <div className={classNames(classes.sectionHeaderTitle)}>
                         <img className={classes.sectionHeaderIcon} src={CalendarIconBlack} />
                         {t('viewProject.respondents.upcomingInterviewsSubtitle')}
                     </div>
-                    <InterviewTile
-                        duration={upcomingInterview.duration}
-                        date={upcomingInterview.date}
-                    />
+                    {meeting && (
+                        <InterviewTile
+                            duration={meeting.duration}
+                            date={meeting.date}
+                        />
+                    )}
                 </div>
-                <span className={classes.sectionHeaderTitle}>
+                <span className={classNames(classes.sectionHeaderTitle, classes.schedulerTitle)}>
+                    <img className={classes.sectionHeaderIcon} src={CalendarIconBlack} />
+                    {t('viewProject.respondents.meetingSchedulerSubtitle')}
+                </span>
+                <Form className={classes.meetingScheduler} method="post">
+                    <div className={classes.dateWrappers}>
+                        <DatePicker
+                            className={classNames(
+                                classes.datePickerInput,
+                                errors.meetingDate && classes.error,
+                            )}
+                            wrapperClassName={classes.withMargin}
+                            selected={meetingDate}
+                            onChange={(date) => setMeetingtDate(date)}
+                            locale={resolvedLanguage}
+                            dateFormat="dd.MM.yyyy"
+                        />
+                        <TimeInput
+                            className={classNames(
+                                classes.timeInput,
+                                classes.withMargin,
+                            )}
+                            name="startTime"
+                            defaultValue={meetingTime}
+                            onChange={setMeetingTime}
+                            error={!!errors.meetingDate}
+                        />
+                        <span className={classes.errorText}>{errors.meetingDate}</span>
+                    </div>
+                    <SubmitButton
+                        className={classes.scheduleButton}
+                        text={t('viewProject.respondents.scheduleButtonText')}
+                    />
+                    <input
+                        type="hidden"
+                        value={meetingDateAndTime.getTime()}
+                        name="meetingDateAndTime"
+                    />
+                </Form>
+                <div className={classNames(classes.sectionHeaderTitle, classes.surveysTitle)}>
                     <img className={classes.sectionHeaderIcon} src={MetricsIconBlack} />
                     {t('viewProject.respondents.respondentSurveysSubtitle')}
-                </span>
+                </div>
                 <div className={classes.surveysList}>
                     {surveys.map(survey => (
                         <SurveyTile

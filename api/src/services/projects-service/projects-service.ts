@@ -11,12 +11,16 @@ import type LimeSurveyAdapter from '../lime-survey-adapter';
 import type LSQBuilder from '../lsq-builder';
 import TemplatesService from '../templates-service/templates-service';
 import SurveyModel from '../../models/survey';
-import SurveyParticipantModel from '../../models/surveyParticipant';
+import SurveyParticipantModel from '../../models/survey-participant';
 
 import type AccountModel from '../../models/account';
 import moment from 'moment';
 import config from 'config';
 import SequelizeConnection from '../sequelize-connection';
+import { MeetingModel } from '../../models';
+import RespondentDoesNotBelongToProjectError from './errors/respondent-does-not-belong-to-project-error';
+import NoDurationError from './errors/no-duration-error';
+import NotPermittedError from '../../generic/not-permitted-error';
 
 type LimesurveyConfig = {
     url: string;
@@ -537,6 +541,7 @@ export default class ProjectsService {
         projectUuid: string,
         respondentUuid: string,
     ) => {
+        //TODO check access to the project
         const project = await this.getProject({ uuid: projectUuid });
 
         const respondents = await project.getRespondentProfiles({
@@ -561,30 +566,50 @@ export default class ProjectsService {
                 through: {
                     attributes: [
                         'hasFinished',
-                    'SurveyId',
+                        'SurveyId',
                     ]
                 },
                 attributes: [
                     'uuid',
                     'name',
                 ],
+            }, {
+                association: RespondentProfileModel.associations.MeetingModel,
+                where: {
+                    ProjectId: project.id,
+                },
+                required: false,
+                attributes: [
+                    'uuid',
+                    'date',
+                ],
             }],
-        })
+        });
 
         const respondentProfile = respondents[0].toJSON();
 
-        return this.flattenRespondentProfile(respondentProfile);
+        return this.flattenRespondentProfile(respondentProfile, project.toJSON());
     }
 
-    private flattenRespondentProfile = (respondentProfile: any) => {
+    private flattenRespondentProfile = (respondentProfile: any, project: any) => {
         const {
             AccountId,
             Account,
             Surveys,
             ProjectsRespondents,
+            Meetings: meetingsArray,
             ...repondentProfileAttributes
         } = respondentProfile;
 
+        const { meetingDuration: duration } = project;
+        
+        let meeting: any = null;
+        if (meetingsArray.length > 0) {
+            meeting = meetingsArray[0];
+            delete meeting.RespondentMeeting;
+            meeting.duration = duration;
+        }
+        
         const flattenedSurveys = Surveys.map(survey => {
             const {
                 SurveyParticipant,
@@ -601,6 +626,127 @@ export default class ProjectsService {
             ...repondentProfileAttributes,
             ...Account,
             surveys: flattenedSurveys,
+            meeting,
         };
     };
+
+    createOrUpdateMeeting = async (
+        currentUserUuid: string,
+        projectUuid: string,
+        respondentAccountUuid: string,
+        meetingDate: Date,
+    ) => {
+        const account = await this.accountsService.getAccount({ uuid: currentUserUuid });
+        //@ts-ignore
+        const companyUuid = account.RecruiterProfile.Company.uuid as string;
+
+        const project = await this.getOneCompanyProject(
+            companyUuid,
+            projectUuid,
+        );
+
+        //TODO Check if this particular user has access to the project
+        //should be one once accounts get assigned to projects
+
+        //TODO errros and attributes
+        const respondents = await project.getRespondentProfiles({
+            attributes: ['id', 'AccountId'],
+            include: [{
+                association: RespondentProfileModel.associations.AccountModel,
+                attributes: ['uuid'],
+                where: {
+                    uuid: respondentAccountUuid,
+                }
+            }],
+        })
+        if(!respondents || respondents.length < 1) {
+            throw new RespondentDoesNotBelongToProjectError();
+        }
+
+        const respondent = respondents[0];
+        const meetingDuration = project.meetingDuration;
+        if (!meetingDuration) {
+            throw new NoDurationError()
+        }
+        
+        const meeting = await MeetingModel.findOne({
+            include: [{
+                association: MeetingModel.associations.ProjectModel,
+                attributes: ['uuid'],
+                where: {
+                    uuid: projectUuid,
+                },
+            }, {
+                association: MeetingModel.associations.RespondentProfileModel,
+                attributes: ['id', 'AccountId'],
+                include: [{
+                    association: RespondentProfileModel.associations.AccountModel,
+                    attributes: ['uuid'],
+                    where: {
+                        uuid: respondentAccountUuid,
+                    }
+                }]
+            }],
+        });
+
+        if (!meeting) {
+            const meeting = await MeetingModel.create({
+                uuid: generateUuidV4(),
+                date: new Date(meetingDate),
+                ProjectId: project.id,
+            });
+
+            await meeting.addRespondentProfile(respondent);
+        } else {
+            meeting.date = meetingDate;
+
+            await meeting.save();
+        }
+    }
+
+    getOneMeeting = async (
+        respondentUuid: string,
+        projectUuid: string,
+        companyUuid?: string,
+    ) => {
+        // TODO room url will be generated when meeting is fetched
+
+        if (companyUuid) {
+            await this.getOneCompanyProject(
+                companyUuid,
+                projectUuid,
+            );
+        }
+        //TODO check access by this prticular recruiter account also
+
+        const project = await this.getProject({ uuid: projectUuid });
+        const respondents = await project.getRespondentProfiles({
+            include: [{
+                association: RespondentProfileModel.associations.AccountModel,
+                where: {
+                    uuid: respondentUuid,
+                }
+            }],
+        });
+        if(!respondents || respondents.length < 1) {
+            throw new RespondentDoesNotBelongToProjectError();
+        }
+
+        const respondent = respondents[0];
+        if (!respondent) {
+            throw new NotPermittedError();
+        }
+
+        //@ts-ignore
+        const meeting = await project.getMeeting({
+            include: [{
+                association: MeetingModel.associations.RespondentProfileId,
+                where: {
+                    id: respondent.id,
+                }
+            }],
+        })
+
+        return meeting;
+    }
 }

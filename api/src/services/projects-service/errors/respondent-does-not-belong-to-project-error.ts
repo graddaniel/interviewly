@@ -1,11 +1,12 @@
 import { StatusCodes } from 'http-status-codes';
+
 import BussinessLogicError from '../../../generic/business-logic-error';
 
 
-export default class RespondentDoesNotParticipateInSurveyError extends BussinessLogicError {
+export default class RespondentDoesNotBelongToProjectError extends BussinessLogicError {
     statusCode: StatusCodes;
 
     constructor() {
-        super('The respondent does not participate in the survey.');
+        super('Respondent does not belong to the project.');
     }
 }

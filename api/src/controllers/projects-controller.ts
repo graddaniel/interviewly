@@ -168,4 +168,31 @@ export default class ProjectsController {
 
         res.status(StatusCodes.OK).send(projectRespondent);
     }
+
+    putProjectRespondentMeeting = async (
+        req: AuthenticatedRequest,
+        res: Response,
+    ) => {
+        const {
+            uuid: currentUserUuid,
+        } = req.currentUser;
+
+        const {
+            projectId: projectUuid,
+            respondentId: respondentAccountUuid,
+        } = req.params;
+
+        const {
+            meetingDate,
+        } = req.body;
+
+        const surveyResponses = await this.projectsService.createOrUpdateMeeting(
+            currentUserUuid,
+            projectUuid,
+            respondentAccountUuid,
+            new Date(parseInt(meetingDate, 10)),
+        );
+
+        res.status(StatusCodes.OK).send(surveyResponses);
+    }
 }

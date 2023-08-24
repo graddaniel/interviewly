@@ -73,8 +73,13 @@
     border-radius: 1.5rem;
 }
 
+.schedulerTitle{
+    grid-area: schedulerTitle;
+}
+.surveysTitle {
+    grid-area: surveysTitle;
+}
 .sectionHeaderTitle {
-    grid-area: sectionTitle;
     display: flex;
     align-items: center;
     gap: 0.75vw;
@@ -93,8 +98,41 @@
     row-gap: 3vw;
     grid-template-areas: 
     "videoTile upcomingInterview"
-    "sectionTitle sectionTitle"
+    "schedulerTitle schedulerTitle"
+    "meetingScheduler meetingScheduler"
+    "surveysTitle surveysTitle"
     "surveysList surveysList";
+}
+
+.meetingScheduler {
+    grid-area: meetingScheduler;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2vw;
+}
+.dateWrappers {
+    display: flex;
+}
+.datePickerInput {
+    padding: 0.6vw 1vw;
+    border-radius: 2vw;
+    border: 1px solid var(--BLACK);
+    font-size: 1vw;
+    text-align: center;
+    background-color: var(--COLOR3);
+}
+.withMargin {
+    margin-right: 1.2vw;
+}
+.error {
+    border-color: var(--RED) !important;
+}
+.errorText {
+    grid-area: error;
+    align-self: center;
+    font-size: 1vw;
+    color: var(--RED);
 }
 
 .surveysList {
@@ -103,6 +141,7 @@
     flex-wrap: wrap;
     gap: 1.8vw;
 }
+
 
 @media (min-width: min-large) {
 }
@@ -167,10 +206,40 @@
         grid-template-areas: 
         "videoTile"
         "upcomingInterview"
-        "sectionTitle"
+        "schedulerTitle"
+        "meetingScheduler"
+        "surveysTitle"
         "surveysList";
     }
-    
+
+    .meetingScheduler {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 5vw;
+    }
+    .dateWrappers {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: min-content 2vw;
+        row-gap: 5vw;
+        grid-template-areas: 
+        "dateInput timeInput"
+        "error error";
+    }
+    .datePickerInput {
+        grid-area: dateInput;
+        padding: 2vw 3vw;
+        border-radius: 8vw;
+        font-size: 3vw;
+    }
+    .timeInput {
+        grid-area: timeInput;
+    }
+    .errorText {
+        font-size: 3vw;
+    }
+
     .surveysList {
         flex-wrap: nowrap;
         overflow-x: auto;
@@ -243,8 +312,39 @@
         grid-template-areas: 
         "videoTile"
         "upcomingInterview"
-        "sectionTitle"
+        "schedulerTitle"
+        "meetingScheduler"
+        "surveysTitle"
         "surveysList";
+    }
+
+    .datePickerInput {
+        padding: 3.5vw 5vw;
+        border-radius: 15vw;
+        font-size: 4vw;
+    }
+    .withMargin {
+        margin-bottom: 10vw;
+    }
+
+    .meetingScheduler {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10vw;
+    }
+    .dateWrappers {
+        display: flex;
+        flex-direction: column;
+    }
+    .timeInput {
+        grid-area: timeInput;
+    }
+    .errorText {
+        font-size: 4vw;
+    }
+    .scheduleButton {
+        align-self: stretch;
     }
     
     .surveysList {

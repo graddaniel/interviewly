@@ -15,6 +15,9 @@ const pl = {
             join: {
                 repeatPasswordError: 'Hasła się różnią',
             },
+            projectRespondent: {
+                meetingDateError: 'Wybierz przyszłą datę',
+            },
         },
         errors: {
             networkError: 'Nie można połączyć z serwerem',
@@ -354,7 +357,10 @@ Over the years, I’ve come to learn that designing collaboratively means puttin
                 seeDetailsLabel: 'Szczegóły',
                 respondentVideoSubtitle: 'Nagranie respondenta',
                 upcomingInterviewsSubtitle: 'Nadchodzące spotkania',
+                meetingSchedulerSubtitle: 'Umów spotkanie',
+                scheduleButtonText: 'Umów',
                 respondentSurveysSubtitle: 'Ankiety respondenta',
+                scheduledSuccessMessage: 'Umówiono',
             },
             screeningSurveys: {
                 resultsTitle: 'Wyniki',

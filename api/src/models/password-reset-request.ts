@@ -4,9 +4,8 @@ import {
 } from 'sequelize';
 
 import SequelizeConnection from '../services/sequelize-connection';
+import { UUID_V4_LENGTH } from '../consts';
 
-
-const UUID_V4_LENGTH = 40;
 
 export default class PasswordResetRequest extends Model {
     declare id: number;

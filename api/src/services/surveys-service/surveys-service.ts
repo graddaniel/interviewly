@@ -1,9 +1,9 @@
 import AccountsService from "../accounts-service/accounts-service";
 import SurveyModel from "../../models/survey";
 import ProjectModel from '../../models/project';
-import SurveyParticipantModel from "../../models/surveyParticipant";
+import SurveyParticipantModel from "../../models/survey-participant";
 import SurveyNotFoundError from "./errors/survey-not-found-error";
-import RespondentDoesNotParticipateinSurveyError from "./errors/respondent-does-not-participate-in-survey-error.ts";
+import RespondentDoesNotParticipateInSurveyError from "./errors/respondent-does-not-participate-in-survey-error.ts";
 import NotPermittedError from "../../generic/not-permitted-error";
 import LimeSurveyAdapter from "../lime-survey-adapter";
 import { RespondentProfileModel } from "../../models";
@@ -47,7 +47,7 @@ export default class SurveysService {
             },
         });
         if (!surveyParticipant) {
-            throw new RespondentDoesNotParticipateinSurveyError();
+            throw new RespondentDoesNotParticipateInSurveyError();
         }
 
         surveyParticipant.hasFinished = true;

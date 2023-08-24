@@ -7,5 +7,9 @@ export default async function ProjectRespondentLoader({
 
     const respondent = await ProjectService.getProjectRespondent(projectId, respondentId);
 
+    if (respondent.meeting) {
+        respondent.meeting.date = new Date(respondent.meeting.date);
+    }
+
     return respondent;
 }

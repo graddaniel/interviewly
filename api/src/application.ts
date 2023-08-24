@@ -74,14 +74,10 @@ export default class Appplication {
         const surveysService = new SurveysService(accountsService, limeSurveyAdapter);
 
         const contactRequestController = new ContactRequestController(mailService);
-
         const companiesController = new CompaniesController(accountsService, companiesService);
         const accountsController = new AccountsController(accountsService);
-
         const projectsController = new ProjectsController(projectsService);
-
         const surveysController = new SurveysController(surveysService);
-
         const templatesController = new TemplatesController(templatesService);
 
         SequelizeConnection.instance().sync({
@@ -192,6 +188,13 @@ export default class Appplication {
             requireProfileRole(ProfileTypes.Role.Admin),
             projectsController.getProjectRespondent
         );
+        projectsRouter.put(
+            '/:projectId/respondents/:respondentId/meetings',
+            requireJWT,
+            requireAccountType(AccountTypes.Type.RECRUITER),
+            requireProfileRole(ProfileTypes.Role.Admin),
+            projectsController.putProjectRespondentMeeting,
+        );
         this.app.use('/projects', projectsRouter);
 
         const surveysRouter = express.Router();
@@ -216,7 +219,6 @@ export default class Appplication {
         this.app.use('/surveys', surveysRouter);
 
         const templatesRouter = express.Router();
-
         templatesRouter.get(
             '/',
             requireJWT,
@@ -245,7 +247,6 @@ export default class Appplication {
             requireProfileRole(ProfileTypes.Role.Admin),
             templatesController.patchTemplate,
         );
-
         this.app.use('/templates', templatesRouter);
 
         this.app.use((

@@ -2,19 +2,29 @@ import React from 'react';
 import moment from 'moment';
 
 import classes from './interview-tile.module.css';
+import { useTranslation } from 'react-i18next';
 
+
+type InterviewTileProps = {
+    duration: string;
+    date: Date;
+};
 
 const InterviewTile = ({
     duration,
     date,
-}) => {
-    const day = moment(date).format('dddd D MMMM');;
-    const time = moment(date).format('LT');
+}: InterviewTileProps) => {
+    const { i18n } = useTranslation();
+    const { resolvedLanguage } = i18n;
+
+    const momentDate = moment(date).locale(resolvedLanguage as string);
+    const day = momentDate.format('dddd D MMMM');;
+    const time = momentDate.format('LT');
 
     return (
         <section className={classes.interviewTile}>
             <div className={classes.duration}>
-                {duration}
+                {duration} min
             </div>
             <div className={classes.date}>
                 <span>{day}</span>

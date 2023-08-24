@@ -8,9 +8,9 @@ import SequelizeConnection from '../services/sequelize-connection';
 import PasswordResetRequestModel from './password-reset-request';
 import RecruiterProfileModel from './recruiter-profile';
 import RespondentProfileModel from './respondent-profile';
+import { UUID_V4_LENGTH } from '../consts';
 
 
-const UUID_V4_LENGTH = 40;
 const PASSWORD_LENGTH = 64; //SHA256; update this in migrations ALSO
 const EMAIL_MAX_LENGTH = 64;
 

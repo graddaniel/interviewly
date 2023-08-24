@@ -62,9 +62,6 @@ import TemplateLoader from './src/loaders/app/template-loader';
 
 import ROUTES, { APP_FORMS_ROUTES, APP_ROUTES, FORMS_ROUTES } from './src/consts/routes';
 import { SAMPLE_VERSION } from 'config/current';
-
-import './src/consts/colors.css';
-import './i18n/i18n';
 import SetPasswordAction from './src/actions/set-password-action';
 import SetPasswordPage from './src/pages/set-password/set-password';
 import ViewProjectAction from './src/actions/app/view-project-action';
@@ -74,6 +71,11 @@ import ProjectSurveyPage from './src/pages/app/project-survey/project-survey';
 import ProjectSurveyLoader from './src/loaders/app/project-survey-loader';
 import ProjectRespondentSurveyResponsesPage from './src/pages/app/project-respondent-survey-responses/project-respondent-survey-responses-page';
 import ProjectRespondentSurveyResponsesLoader from './src/loaders/app/project-respondent-survey-responses-loader';
+import ProjectRespondentAction from './src/actions/app/project-respondent-action';
+
+import './src/consts/colors.css';
+import './i18n/i18n';
+import './i18n/locale';
 
 
 const router = createBrowserRouter(
@@ -187,6 +189,7 @@ const router = createBrowserRouter(
                     path={APP_ROUTES.PROJECT_RESPONDENT.PATH}
                     element={<ProjectRespondentPage />}
                     loader={ProjectRespondentLoader}
+                    action={ProjectRespondentAction}
                 />
                 <Route
                     path={APP_ROUTES.PROJECT_RESPONDENT_SURVEY_RESPONSES.PATH}

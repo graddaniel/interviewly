@@ -1,0 +1,34 @@
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.input {
+    padding: 0.5vw 1vw;
+    border: 1px solid var(--BLACK);
+    outline: none;
+    border-radius: 3vw;
+    font-size: 1vw;
+    background-color: var(--COLOR3);
+}
+
+.error {
+    border-color: var(--RED);
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .input {
+        padding: 1.5vw 3.5vw;
+        border-radius: 8vw;
+        font-size: 3vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .input {
+        padding: 3.5vw 5vw;
+        border-radius: 15vw;
+        font-size: 4vw;
+    }
+}

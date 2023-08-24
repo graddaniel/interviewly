@@ -22,7 +22,7 @@
 .title {
     grid-area: title;
     margin: 0;
-    font-size: 6vw;
+    font-size: 4vw;
     font-weight: 400;
     line-height: 6vw;
 }
