@@ -43,6 +43,8 @@ import NotFoundError from './generic/not-found-error';
 import SurveysController from './controllers/surveys-controller';
 import SurveysService from './services/surveys-service/surveys-service';
 import SurveyNotFoundError from './services/surveys-service/errors/survey-not-found-error';
+import MeetingsService from './services/meetings-service/meetings-service';
+import MeetingsController from './controllers/meetings-controller';
 
 
 export default class Appplication {
@@ -72,6 +74,7 @@ export default class Appplication {
             lsqBuilder,
         );
         const surveysService = new SurveysService(accountsService, limeSurveyAdapter);
+        const meetingsService = new MeetingsService()
 
         const contactRequestController = new ContactRequestController(mailService);
         const companiesController = new CompaniesController(accountsService, companiesService);
@@ -79,6 +82,7 @@ export default class Appplication {
         const projectsController = new ProjectsController(projectsService);
         const surveysController = new SurveysController(surveysService);
         const templatesController = new TemplatesController(templatesService);
+        const meetingsController = new MeetingsController(meetingsService);
 
         SequelizeConnection.instance().sync({
             force: config.get('database.forceSync'),
@@ -248,6 +252,14 @@ export default class Appplication {
             templatesController.patchTemplate,
         );
         this.app.use('/templates', templatesRouter);
+
+        const meetingsRouter = express.Router();
+        meetingsRouter.get(
+            '/',
+            requireJWT,
+            meetingsController.getMeetings,
+        );
+        this.app.use('/meetings', meetingsRouter);
 
         this.app.use((
             err: Error,

@@ -5,7 +5,7 @@ import type AccountsService from '../services/accounts-service/accounts-service'
 import type { AuthenticatedRequest } from '../generic/types'
 import type CompaniesService from '../services/companies-service/companies-service';
 import AccountsValidator from './validators/accounts-validator';
-import { AccountTypes, ProfileTypes } from 'shared';
+import { ProfileTypes } from 'shared';
 import NotPermittedError from '../generic/not-permitted-error';
 import CompaniesValidator from './validators/comapnies-validator';
 

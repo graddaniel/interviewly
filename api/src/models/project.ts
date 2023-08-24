@@ -10,7 +10,8 @@ import SequelizeConnection from '../services/sequelize-connection';
 import RespondentProfileModel from './respondent-profile';
 import SurveyModel from './survey';
 import { UUID_V4_LENGTH } from '../consts';
-import type { CompanyModel } from '.';
+import CompanyModel from './company';
+import MeetingModel from './meeting';
 
 
 const TITLE_LENGTH = 64;
@@ -41,6 +42,7 @@ export default class Project extends Model {
     declare Company: CompanyModel;
     declare addRespondentProfiles: HasManyAddAssociationsMixin<RespondentProfileModel, RespondentProfileModel['id']>;
     declare getRespondentProfiles: HasManyGetAssociationsMixin<RespondentProfileModel>;
+    declare getMeetings: HasManyGetAssociationsMixin<MeetingModel>;
 };
 
 Project.init({
@@ -134,6 +136,19 @@ Project.init({
         unique: true,
         fields: ['uuid'],
     }],
+});
+
+Project.associations.MeetingModel = Project.hasMany(MeetingModel, {
+    foreignKey: {
+        allowNull: false,
+    },
+    onDelete: 'cascade'
+});
+MeetingModel.associations.ProjectModel = MeetingModel.belongsTo(Project, {
+    foreignKey: {
+        allowNull: false,
+    },
+    onDelete: 'cascade'
 });
 
 Project.associations.RespondentProfileModel = Project.belongsToMany(

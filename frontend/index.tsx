@@ -76,6 +76,7 @@ import ProjectRespondentAction from './src/actions/app/project-respondent-action
 import './src/consts/colors.css';
 import './i18n/i18n';
 import './i18n/locale';
+import CalendarLoader from './src/loaders/app/calendar-loader';
 
 
 const router = createBrowserRouter(
@@ -222,6 +223,7 @@ const router = createBrowserRouter(
                 <Route
                     path={APP_ROUTES.CALENDAR.PATH}
                     element={<CalendarPage />}
+                    loader={CalendarLoader}
                 />
                 <Route
                     path={APP_ROUTES.LIBRARY.PATH}

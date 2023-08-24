@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import moment from 'moment';
-
-import classes from './calendar.module.css';
-import CalendarIconBlack from 'images/calendar-icon-black.svg';
+import { useLoaderData } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+
 import DateTile from './date-tile';
 import InterviewTile from '../app/my-account/interview-tile';
 import DropdownList from '../../components/dropdown-list/dropdown-list';
+
+import classes from './calendar.module.css';
+import CalendarIconBlack from 'images/calendar-icon-black.svg';
+
 
 type CalendarDate = {
     year: number;
@@ -79,6 +82,8 @@ const INTERVIEWS = [{
 }];
 
 const CalendarPage = () => {
+    const meetings = useLoaderData() as any;
+    console.log(meetings);
     const { t, i18n } = useTranslation();
     const { resolvedLanguage } = i18n;
 
@@ -95,7 +100,7 @@ const CalendarPage = () => {
     const [ selectedYear, setSelectedYear ] = useState(YEARS[YEARS.indexOf(today.year())]);
 
     const monthPage = generateMonthPage(selectedMonthNumber, selectedYear, resolvedLanguage);
-    INTERVIEWS.forEach(interview => {
+    meetings.forEach(interview => {
         const relevantDay = monthPage.find(d => moment(interview.date).isSame(moment(d.date), 'day'));
         relevantDay?.interviews.push(interview);
     })
@@ -142,9 +147,9 @@ const CalendarPage = () => {
                 </div>
             </div>
             <div className={classes.interviews}>
-                {monthPage[selectedIndex].interviews.map(({ duration, date }, i) => (
+                {monthPage[selectedIndex].interviews.map(({ duration, date, uuid }) => (
                     <InterviewTile
-                        key={i}
+                        key={uuid}
                         duration={duration}
                         date={date}
                     />

@@ -41,19 +41,6 @@ Meeting.init({
     }],
 });
 
-ProjectModel.associations.MeetingModel = ProjectModel.hasMany(Meeting, {
-    foreignKey: {
-        allowNull: false,
-    },
-    onDelete: 'cascade'
-});
-Meeting.associations.ProjectModel = Meeting.belongsTo(ProjectModel, {
-    foreignKey: {
-        allowNull: false,
-    },
-    onDelete: 'cascade'
-});
-
 Meeting.associations.RespondentProfileModel = Meeting.belongsToMany(
     RespondentProfileModel,
     {
