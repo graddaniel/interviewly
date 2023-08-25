@@ -15,11 +15,13 @@ import AttachedSurveysStep from './attached-surveys-step';
 import useAuth from '../../../hooks/useAuth';
 import MethodologyTile from '../../../components/methodology-tile/methodology-tile';
 import StepTitle from '../edit-project/step-title';
+import SurveyBar from './survey-bar';
+import MeetingBar from './meeting-bar';
 
 import classes from './view-project-page.module.css';
 import QuestionMarkIconBlack from 'images/question-mark-icon-black.svg';
 import FoldersIconBlack from 'images/folders-icon-black.svg';
-import SurveyBar from './survey-bar';
+import FeatureChatIcon from 'images/feature-chat-icon.svg';
 
 
 const ViewProject = () => {
@@ -29,13 +31,17 @@ const ViewProject = () => {
     const submit = useSubmit();
     const { projectId } = useParams();
     const formRef = useRef(null);
+    const loaderData = useLoaderData() as {
+        project: any;
+        respondent: any;
+    };
     const {
         project,
-    } = useLoaderData() as {
-        project: any;
-    };
+        respondent,
+    } = loaderData;
 
     const surveys = project.surveys || [];
+    const { meeting } = respondent || {};
 
     const stepsNames = t('viewProject.steps', { returnObjects: true }) as string[];
 
@@ -134,6 +140,15 @@ const ViewProject = () => {
                 mini={true}
                 selected={false}
                 methodology={project.methodology}
+            />
+            <StepTitle
+                icon={FeatureChatIcon}
+                title={t('viewProject.respondentPage.interviewsSubtitle')}
+            />
+            <MeetingBar
+                uuid={meeting.uuid}
+                date={meeting.date}
+                duration={meeting.duration}
             />
             <StepTitle
                 icon={FoldersIconBlack}

@@ -376,6 +376,7 @@ Over the years, I’ve come to learn that designing collaboratively means puttin
                 currencyLabel: 'Waluta',
             },
             respondentPage: {
+                interviewsSubtitle: 'Wywiady',
                 surveysSubtitle: 'Ankiety',
                 surveysStatuses: {
                     filled: 'wypełniona',

@@ -13,15 +13,21 @@ export default async function ViewProjectLoader ({
     const project = await ProjectService.getProject(projectId);
 
     if (auth.type === AccountTypes.Type.RESPONDENT) {
+        const respondent = await ProjectService.getProjectRespondent(
+            projectId,
+            auth.currentUser?.uuid as string,
+        );
+
         return {
             project,
+            respondent,
+        };
+    } else {
+        const templates = await TemplateService.getAllTemplates();
+
+        return {
+            project,
+            templates,
         };
     }
-
-    const templates = await TemplateService.getAllTemplates();
-
-    return {
-        project,
-        templates,
-    };
 }

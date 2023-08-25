@@ -1,0 +1,135 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.meetingBar {
+    display: grid;
+    grid-template-columns: min-content auto auto min-content;
+    grid-template-areas: "iconButton date duration status";
+    justify-items: center;
+    align-items: center;
+    padding: 0.5vw 1vw;
+    border-radius: 1.5vw;
+    background-color: var(--WHITE);
+}
+
+.iconButton {
+    grid-area: iconButton;
+}
+.disableClick {
+    cursor: not-allowed;
+}
+
+.date {
+    grid-area: date;
+    display: flex;
+    gap: 2vw;
+    font-size: 1.2vw;
+}
+.duration {
+    grid-area: duration;
+    display: flex;
+    gap: 2vw;
+    font-size: 1.2vw;
+}
+
+.status {
+    grid-area: status;
+    width: 10vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5vw 0;
+    font-size: 0.75vw;
+    border: 1px solid;
+    border-radius: 3vw;
+}
+.filled {
+    color: var(--COLOR1);
+    background-color: var(--GREEN1);
+    border-color: var(--GREEN1);
+}
+.ended {
+    color: var(--WHITE);
+    background-color: var(--BLACK);
+    border-color: var(--BLACK);
+}
+.pending {
+    color: var(--COLOR1);
+    background-color: var(--WHITE);
+    border-color: var(--COLOR1);
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .meetingBar {
+        grid-template-columns: min-content auto min-content;
+        grid-template-rows: auto auto;
+        grid-template-areas:
+            "iconButton date status"
+            "iconButton duration status";
+        padding: 1.5vw 3vw;
+        border-radius: 4.5vw;
+    }
+    
+    .iconButton {
+        width: 10vw;
+        height: 10vw;
+    }
+    
+    .date {
+        gap: 6vw;
+        font-size: 3.5vw;
+    }
+    .duration {
+        gap: 6vw;
+        font-size: 3.5vw;
+    }
+    
+    .status {
+        width: 12vw;
+        padding: 1vw 0;
+        font-size: 2vw;
+        border-radius: 8vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .meetingBar {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: min-content auto auto min-content;
+        row-gap: 4vw;
+        grid-template-areas:
+            "iconButton"
+            "date"
+            "duration"
+            "status";
+        justify-items: start;
+        align-items: center;
+        padding: 4vw 4vw;
+        border-radius: 4.5vw;
+    }
+    
+    .iconButton {
+        width: 10vw;
+        height: 10vw;
+    }
+    
+    .date {
+        gap: 6vw;
+        font-size: 6vw;
+    }
+    .duration {
+        gap: 6vw;
+        font-size: 6vw;
+    }
+    
+    .status {
+        width: 23vw;
+        padding: 2vw 0;
+        font-size: 4vw;
+        border-radius: 15vw;
+    }
+}

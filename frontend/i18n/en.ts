@@ -381,6 +381,7 @@ Over the years, I’ve come to learn that designing collaboratively means puttin
                 currencyLabel: 'Currency',
             },
             respondentPage: {
+                interviewsSubtitle: 'Interviews',
                 surveysSubtitle: 'Surveys',
                 surveysStatuses: {
                     filled: 'filled',

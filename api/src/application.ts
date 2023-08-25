@@ -188,8 +188,6 @@ export default class Appplication {
         projectsRouter.get(
             '/:projectId/respondents/:respondentId',
             requireJWT,
-            requireAccountType(AccountTypes.Type.RECRUITER),
-            requireProfileRole(ProfileTypes.Role.Admin),
             projectsController.getProjectRespondent
         );
         projectsRouter.put(
