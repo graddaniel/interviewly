@@ -476,6 +476,9 @@ Please enter gross amount. The currency should match the currency used for the i
                 saveButtonText: 'Save'
             }
         },
+        meeting: {
+            finishedMessage: 'The meeting has finished',
+        },
         library: {
             title: 'Library',
             mySurveys: 'My surveys',

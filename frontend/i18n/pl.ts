@@ -471,6 +471,9 @@ Proszę podać wartość brutto. Waluta powinna być zgodna z walutą faktury.`,
                 saveButtonText: 'Zapisz'
             }
         },
+        meeting: {
+            finishedMessage: 'Spotkanie zostało zakończone',
+        },
         library: {
             title: 'Biblioteka',
             mySurveys: 'Moje ankiety',

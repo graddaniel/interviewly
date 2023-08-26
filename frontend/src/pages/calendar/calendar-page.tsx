@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import { useLoaderData } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -7,7 +7,7 @@ import DateTile from './date-tile';
 import InterviewTile from '../app/my-account/interview-tile';
 import DropdownList from '../../components/dropdown-list/dropdown-list';
 
-import classes from './calendar.module.css';
+import classes from './calendar-page.module.css';
 import CalendarIconBlack from 'images/calendar-icon-black.svg';
 
 
@@ -57,29 +57,6 @@ function generateMonthPage(month, year, resolvedLanguage) {
 
     return calendarPage;
 }
-
-const INTERVIEWS = [{
-    date: moment().year(2023).month(7).day(1).toDate(),
-    duration: 30,
-}, {
-    date: moment().year(2023).month(7).day(1).toDate(),
-    duration: 90,
-}, {
-    date: moment().year(2023).month(7).day(1).toDate(),
-    duration: 90,
-}, {
-    date: moment().year(2023).month(7).day(12).toDate(),
-    duration: 30,
-}, {
-    date: moment().year(2023).month(7).day(13).toDate(),
-    duration: 90,
-}, {
-    date: moment().year(2023).month(7).day(22).toDate(),
-    duration: 30,
-}, {
-    date: moment().year(2023).month(7).day(22).toDate(),
-    duration: 60,
-}];
 
 const CalendarPage = () => {
     const meetings = useLoaderData() as any;
@@ -150,6 +127,7 @@ const CalendarPage = () => {
                 {monthPage[selectedIndex].interviews.map(({ duration, date, uuid }) => (
                     <InterviewTile
                         key={uuid}
+                        uuid={uuid}
                         duration={duration}
                         date={date}
                     />

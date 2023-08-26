@@ -3,6 +3,7 @@ enum Role {
     Admin = 'admin',
     Moderator = 'moderator',
     Observer = 'observer',
+    Translator = 'translator',
 };
 
 enum Gender {

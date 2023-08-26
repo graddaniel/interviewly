@@ -9,6 +9,7 @@
     border-radius: 1.5vw;
     color: var(--COLOR5);
     background-color: var(--COLOR8);
+    cursor: pointer;
 }
 .duration {
     padding: 1vw 0;

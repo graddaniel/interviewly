@@ -5,7 +5,7 @@ import type { ProfileTypes } from 'shared';
 
 import type { AuthenticatedRequest } from '../generic/types';
 
-const requireProfileRole = (role: ProfileTypes.Role) => (
+const requireProfileRoles = (role: ProfileTypes.Role | ProfileTypes.Role[]) => (
     req: AuthenticatedRequest,
     res: Response,
     next: NextFunction,
@@ -14,11 +14,13 @@ const requireProfileRole = (role: ProfileTypes.Role) => (
         role: currentUserRole,
     } = req.currentUser;
 
-    if (currentUserRole !== role) {
+    if (Array.isArray(role) && !role.includes(currentUserRole)) {
+        throw new NotPermittedError();
+    } else if (!Array.isArray(role) && role !== currentUserRole) {
         throw new NotPermittedError();
     }
 
     next();
 };
 
-export default requireProfileRole;
+export default requireProfileRoles;

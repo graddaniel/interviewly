@@ -16,28 +16,45 @@
 }
 .meetingDetails {
     display: grid;
-    grid-template-areas: "meetingName meetingDate meetingHour";
+    grid-template-areas: "meetingName meetingDate meetingHour audioDropdown videoDropdown deviceSelectionButton";
     font-size: 1vw;
 }
 .meetingDate {
     grid-area: meetingDate;
+    align-self: center;
 }
 .meetingHour {
     grid-area: meetingHour;
+    align-self: center;
 }
 .meetingName {
     grid-area: meetingName;
+    align-self: center;
+}
+.audioDropdown {
+    grid-area: audioDropdown;
+    width: 20vw;
+    z-index: 1;
+}
+.audioDropdownList, .videoDropdownList {
+    padding-top: 4vw;
+}
+.videoDropdown {
+    grid-area: videoDropdown;
+    width: 20vw;
+    z-index: 1;
+}
+
+.deviceSelectionButton {
+    grid-area: deviceSelectionButton;
 }
 
 .content {
     display: flex;
     flex-grow: 1;
-    gap: 1vw;
 }
 
 .localVideoWrapper {
-    width: 50%;
-    position: relative;
     border-radius: 1.5vw;
 }
 .localVideo {
@@ -48,8 +65,10 @@
 }
 
 .remoteVideoWrapper {
-    width: 50%;
     border-radius: 1.5vw;
+}
+.withLeftMargin {
+    margin-left: 1vw;
 }
 .remoteVideo {
     width: 100%;
@@ -69,6 +88,18 @@
     margin: auto;
 }
 
+.controlButton {
+    border-color: var(--COLOR2);
+    background-color: var(--COLOR2);
+}
+.controlButton > img {
+    width: 2vw;
+    height: 2vw;
+}
+.buttonOn {
+    border-color: var(--COLOR1);
+}
+
 .recordButton {
     border-color: var(--COLOR2);
     background-color: var(--COLOR2);
@@ -85,6 +116,18 @@
 .finishButton > img {
     width: 1.25vw;
     height: 1.25vw;
+}
+
+.popupText {
+    font-size: 1.75vw;
+    line-height: 1.75vw;
+    font-weight: 400;
+}
+.meetingFinishedPopup {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    align-items: center;
 }
 
 @media (min-width: min-large) {
@@ -113,7 +156,7 @@
         width: 100%;
         display: grid;
         grid-template-columns: 50% 25% 25%;
-        grid-template-areas: "meetingName meetingDate meetingHour";
+        grid-template-areas: "meetingName meetingDate meetingHour audioDropdown videoDropdown deviceSelectionButton";
         font-size: 3.5vw;
         font-weight: 400;
     }

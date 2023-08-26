@@ -1,0 +1,28 @@
+{
+  "name": "recordings-processor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "install": "yarn run build",
+    "start": "tsc && node dist/index.js",
+    "start:dev": "tsc && NODE_ENV=development node dist/index.js",
+    "start:nodemon": "NODE_ENV=development nodemon ./index.ts"
+  },
+  "author": "Daniel Grad",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.10.3",
+    "aws-sdk": "^2.1446.0",
+    "config": "^3.3.9",
+    "dotenv": "^16.3.1",
+    "fluent-ffmpeg": "^2.1.2"
+  },
+  "devDependencies": {
+    "@types/amqplib": "^0.10.1",
+    "@types/fluent-ffmpeg": "^2.1.21",
+    "@types/node": "^20.5.7"
+  }
+}

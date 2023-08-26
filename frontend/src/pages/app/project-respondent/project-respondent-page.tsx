@@ -121,6 +121,7 @@ const ProjectRespondentPage = () => {
                     </div>
                     {meeting && (
                         <InterviewTile
+                            uuid={meeting.uuid}
                             duration={meeting.duration}
                             date={meeting.date}
                         />

@@ -1,0 +1,14 @@
+{
+    "rabbitMq": {
+        "queueAddress": "amqp://localhost",
+        "incomingMessagesQueue": "finishedMeeting",
+        "outcomingMessagesQueue": "readyRecordings"
+    },
+    "recordings": {
+        "inputPath": "/opt/janus/share/janus/recordings",
+        "outputPath": "./output"
+    },
+    "s3": {
+        "recordingsBucket": "meetings-recordings-dev"
+    }
+}

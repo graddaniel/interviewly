@@ -15,8 +15,11 @@ export default class Meeting extends Model {
     declare id: number;
     declare uuid: string;
     declare date: Date;
+    declare recordingAvailable: boolean;
 
     declare addRespondentProfile: HasManyAddAssociationMixin<RespondentProfileModel, RespondentProfileModel['id']>;
+    declare RespondentProfiles: RespondentProfileModel[];
+    declare Project: ProjectModel;
 };
 
 Meeting.init({
@@ -32,6 +35,10 @@ Meeting.init({
     date: {
         type: DataTypes.DATE,
     },
+    recordingAvailable: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+    }
 }, {
     timestamps: false,
     sequelize: SequelizeConnection.instance(),

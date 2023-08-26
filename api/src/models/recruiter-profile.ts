@@ -19,6 +19,8 @@ export default class RecruiterProfile extends Model {
     declare sector: ProfileTypes.Sector;
     declare avatarUrl: string;
     declare phoneNumber: string;
+
+    declare CompanyId?: number;
 };
 
 RecruiterProfile.init({

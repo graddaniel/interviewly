@@ -1,0 +1,12 @@
+{
+    "rabbitMq": {
+        "queueAddress": "amqp://3.127.163.15"
+    },
+    "recordings": {
+        "inputPath": "/home/ubuntu/efs/recordings",
+        "outputPath": "./output"
+    },
+    "s3": {
+        "recordingsBucket": "meetings-recordings-prod"
+    }
+}

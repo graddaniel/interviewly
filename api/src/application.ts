@@ -26,7 +26,7 @@ import BussinessLogicError from './generic/business-logic-error';
 import NotPermittedError from './generic/not-permitted-error';
 import AuthorizationError from './generic/authorization-error';
 import requireAccountType from './middleware/require-account-type';
-import requireProfileRole from './middleware/require-profile-role';
+import requireProfileRoles from './middleware/require-profile-roles';
 import ContactRequestController from './controllers/contact-request-controller';
 
 import CompanyNotFound from './services/companies-service/errors/company-not-found-error';
@@ -45,6 +45,11 @@ import SurveysService from './services/surveys-service/surveys-service';
 import SurveyNotFoundError from './services/surveys-service/errors/survey-not-found-error';
 import MeetingsService from './services/meetings-service/meetings-service';
 import MeetingsController from './controllers/meetings-controller';
+import JanusService from './services/janus-service/janus-service';
+import JanusRestApiAdapter from './services/janus-service/janus-rest-api-adapter';
+import JanusAdminRestApiAdapter from './services/janus-service/janus-admin-rest-api-adapter';
+import MQAdapter from './services/mq-adapter';
+import S3Adapter from './services/s3-adapter';
 
 
 export default class Appplication {
@@ -63,6 +68,22 @@ export default class Appplication {
         const mailService = new MailService();
         const limeSurveyAdapter = new LimeSurveyAdapter();
         const lsqBuilder = new LSQBuilder();
+        const janusRestApiAdapter = new JanusRestApiAdapter();
+        const mqAdapter = new MQAdapter();
+        mqAdapter.init().then(() => {
+            const readyRecordingsQueueName = config.get('rabbitMq.readyRecordingsQueueName') as string;
+          
+            mqAdapter.listen(
+                readyRecordingsQueueName,
+                meetingsService.addRecording,
+            );
+        });
+        const s3Adapter = new S3Adapter();
+        const janusAdminRestApiAdapter = new JanusAdminRestApiAdapter();
+        const janusService = new JanusService(
+            janusRestApiAdapter,
+            janusAdminRestApiAdapter,
+        );
         const companiesService = new CompaniesService();
         const accountsService = new AccountsService(mailService, companiesService);
         const templatesService = new TemplatesService(companiesService);
@@ -74,7 +95,12 @@ export default class Appplication {
             lsqBuilder,
         );
         const surveysService = new SurveysService(accountsService, limeSurveyAdapter);
-        const meetingsService = new MeetingsService()
+        const meetingsService = new MeetingsService(
+            accountsService,
+            janusService,
+            mqAdapter,
+            s3Adapter,
+        );
 
         const contactRequestController = new ContactRequestController(mailService);
         const companiesController = new CompaniesController(accountsService, companiesService);
@@ -131,14 +157,14 @@ export default class Appplication {
             '/accounts',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
-            requireProfileRole(ProfileTypes.Role.Admin),
+            requireProfileRoles(ProfileTypes.Role.Admin),
             companiesController.createCompanysAccount
         );
         companiesRouter.patch(
             '/accounts/:accountId',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
-            requireProfileRole(ProfileTypes.Role.Admin),
+            requireProfileRoles(ProfileTypes.Role.Admin),
             companiesController.editCompanysAccount
         );
         companiesRouter.get(
@@ -151,7 +177,7 @@ export default class Appplication {
             '/current',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
-            requireProfileRole(ProfileTypes.Role.Admin),
+            requireProfileRoles(ProfileTypes.Role.Admin),
             companiesController.editCompany
         );
         this.app.use('/companies', companiesRouter);
@@ -162,7 +188,7 @@ export default class Appplication {
             '/',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
-            requireProfileRole(ProfileTypes.Role.Admin),
+            requireProfileRoles(ProfileTypes.Role.Admin),
             projectsController.createProject
         );
         projectsRouter.get(
@@ -174,7 +200,7 @@ export default class Appplication {
             '/:projectId',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
-            requireProfileRole(ProfileTypes.Role.Admin),
+            requireProfileRoles(ProfileTypes.Role.Admin),
             projectUpdateFilesMiddleware,
             projectsController.updateProject
         );
@@ -182,7 +208,7 @@ export default class Appplication {
             '/:projectId/surveys',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
-            requireProfileRole(ProfileTypes.Role.Admin),
+            requireProfileRoles(ProfileTypes.Role.Admin),
             projectsController.addSurveyToProject
         );
         projectsRouter.get(
@@ -194,7 +220,7 @@ export default class Appplication {
             '/:projectId/respondents/:respondentId/meetings',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
-            requireProfileRole(ProfileTypes.Role.Admin),
+            requireProfileRoles(ProfileTypes.Role.Admin),
             projectsController.putProjectRespondentMeeting,
         );
         this.app.use('/projects', projectsRouter);
@@ -225,28 +251,28 @@ export default class Appplication {
             '/',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
-            requireProfileRole(ProfileTypes.Role.Admin),
+            requireProfileRoles(ProfileTypes.Role.Admin),
             templatesController.getTemplates,
         );
         templatesRouter.post(
             '/',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
-            requireProfileRole(ProfileTypes.Role.Admin),
+            requireProfileRoles(ProfileTypes.Role.Admin),
             templatesController.postTemplate,
         );
         templatesRouter.get(
             '/:templateId',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
-            requireProfileRole(ProfileTypes.Role.Admin),
+            requireProfileRoles(ProfileTypes.Role.Admin),
             templatesController.getTemplate,
         );
         templatesRouter.patch(
             '/:templateId',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
-            requireProfileRole(ProfileTypes.Role.Admin),
+            requireProfileRoles(ProfileTypes.Role.Admin),
             templatesController.patchTemplate,
         );
         this.app.use('/templates', templatesRouter);
@@ -256,6 +282,21 @@ export default class Appplication {
             '/',
             requireJWT,
             meetingsController.getMeetings,
+        );
+        meetingsRouter.get(
+            '/:meetingId/room',
+            requireJWT,
+            meetingsController.getMeetingRoom,
+        );
+        meetingsRouter.delete(
+            '/:meetingId/room',
+            requireJWT,
+            requireAccountType(AccountTypes.Type.RECRUITER),
+            requireProfileRoles([
+                ProfileTypes.Role.Admin,
+                ProfileTypes.Role.Moderator,
+            ]),
+            meetingsController.deleteMeetingRoom,
         );
         this.app.use('/meetings', meetingsRouter);
 

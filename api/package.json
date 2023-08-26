@@ -16,6 +16,8 @@
   "author": "Daniel Grad",
   "license": "ISC",
   "dependencies": {
+    "amqplib": "^0.10.3",
+    "aws-sdk": "^2.1446.0",
     "axios": "^1.4.0",
     "cls-hooked": "^4.2.2",
     "config": "^3.3.9",

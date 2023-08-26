@@ -28,5 +28,20 @@
     "fileUpload": {
         "directory": "/uploads",
         "sizeLimit": 1048576
+    },
+    "janus": {
+        "apiUrl": "http://localhost:8088/janus",
+        "adminApiUrl": "http://localhost:7088/admin",
+        "adminSecret": "janusoverlord",
+        "maxInterviewPublishers": 4,
+        "recordingsDirectory": "/opt/janus/share/janus/recordings"
+    },
+    "rabbitMq": {
+        "queueAddress": "amqp://localhost",
+        "readyRecordingsQueueName": "readyRecordings",
+        "finishedMeetingsQueue": "finishedMeeting"
+    },
+    "s3": {
+        "recordingsBucket": "meetings-recordings-dev"
     }
 }

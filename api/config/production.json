@@ -4,5 +4,14 @@
     },
     "limesurvey": {
         "url": "http://ec2-3-127-163-15.eu-central-1.compute.amazonaws.com/limesurvey/index.php"
+    },
+    "janus": {
+        "apiUrl": "https://id8d03szbk.execute-api.eu-central-1.amazonaws.com/prod/janus",
+        "recordingsDirectory": "/home/ubuntu/efs/recordings"
+    },
+    "rabbitMq": {
+        "queueAddress": "amqp://3.127.163.15",
+        "readyRecordingsQueueName": "readyRecordings",
+        "finishedMeetingsQueue": "finishedMeeting"
     }
 }

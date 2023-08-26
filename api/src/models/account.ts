@@ -22,6 +22,9 @@ export default class Account extends Model {
     declare type: AccountTypes.Type;
     declare status: AccountTypes.Status;
     declare newsletter: boolean;
+
+    declare RespondentProfile: RespondentProfileModel;
+    declare RecruiterProfile: RecruiterProfileModel;
 }
 
 Account.init({

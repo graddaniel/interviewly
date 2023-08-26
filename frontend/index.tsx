@@ -53,7 +53,7 @@ import CompanyDataLoader from './src/loaders/app/company-data-loader';
 import CompanyDataAction from './src/actions/app/company-data-action';
 import OnlineCommunityRoomPage from './src/pages/app/online-community-room/online-community-room-page';
 import MeetingPage from './src/pages/app/meeting/meeting-page';
-import CalendarPage from './src/pages/calendar/calendar';
+import CalendarPage from './src/pages/calendar/calendar-page';
 import ViewProjectLoader from './src/loaders/app/view-project-loader';
 import TemplateLibraryLoader from './src/loaders/app/template-library-loader';
 import NewTemplateAction from './src/actions/app/new-template-action';
@@ -77,6 +77,8 @@ import './src/consts/colors.css';
 import './i18n/i18n';
 import './i18n/locale';
 import CalendarLoader from './src/loaders/app/calendar-loader';
+import MeetingLoader from './src/loaders/app/meeting-loader';
+import MeetingAction from './src/actions/app/meeting-action';
 
 
 const router = createBrowserRouter(
@@ -249,6 +251,8 @@ const router = createBrowserRouter(
                 <Route
                     path={APP_FORMS_ROUTES.MEETING.PATH}
                     element={<MeetingPage />}
+                    loader={MeetingLoader}
+                    action={MeetingAction}
                 />
             </Route>
             <Route

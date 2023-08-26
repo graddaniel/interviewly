@@ -243,7 +243,6 @@ export default class AccountsService {
                 name,
                 surname,
                 gender,
-                role: ProfileTypes.Role.Admin,
                 createdFromFile: createdFromFile,
             }
         }, {

@@ -30,4 +30,46 @@ export default class MeetingsController {
 
         res.status(StatusCodes.OK).send(meetings);
     }
+
+    getMeetingRoom = async (
+        req: AuthenticatedRequest,
+        res: Response,
+    ) => {
+        const {
+            uuid: userUuid,
+            type: accountType,
+        } = req.currentUser;
+
+        const {
+            meetingId: meetingUuid,
+        } = req.params;
+
+        const meeting = await this.meetingsService.getMeetingRoom(
+            meetingUuid,
+            userUuid,
+            accountType,
+        );
+
+        res.status(StatusCodes.OK).send(meeting);
+    }
+
+    deleteMeetingRoom = async (
+        req: AuthenticatedRequest,
+        res: Response,
+    ) => {
+        const {
+            uuid: userUuid,
+        } = req.currentUser;
+
+        const {
+            meetingId: meetingUuid,
+        } = req.params;
+
+        const meeting = await this.meetingsService.closeMeetingRoom(
+            meetingUuid,
+            userUuid,
+        );
+
+        res.status(StatusCodes.OK).send(meeting);
+    }
 }

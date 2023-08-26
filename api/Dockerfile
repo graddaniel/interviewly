@@ -3,6 +3,7 @@ WORKDIR /app
 COPY api /app/api
 COPY shared /app/shared
 WORKDIR /app/api
+RUN rm -rf .env
 RUN yarn global add typescript
 RUN yarn install --production
 RUN tsc

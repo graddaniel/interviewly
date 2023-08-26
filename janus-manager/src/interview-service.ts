@@ -1,6 +1,7 @@
 import type JanusRestApiAdapter from './janus-rest-api-adapter';
 import type JanusAdminRestApiAdapter from './janus-admin-rest-api-adapter';
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as generateUuidV4 } from 'uuid';
+
 
 export default class InterviewService {
     private adminApiAdapter: JanusAdminRestApiAdapter;
@@ -18,7 +19,7 @@ export default class InterviewService {
     }
 
     createInterview = async () => {
-        const authToken = `auth-${uuidv4()}`;
+        const authToken = `auth-${generateUuidV4()}`;
 
         await this.adminApiAdapter.addToken(authToken);
         const tokensList = await this.adminApiAdapter.listTokens();
@@ -26,7 +27,7 @@ export default class InterviewService {
             throw new Error('Failed to create Auth token.');
         }
 
-        const entryToken = `token-${uuidv4()}`;
+        const entryToken = `token-${generateUuidV4()}`;
 
         const createdRoom = await this.restApiAdapter.createRoom({
             allowedEntryTokens: [ entryToken ],

@@ -38,6 +38,9 @@ var localTracks = {}, localVideos = 0, remoteTracks = {};
 
 const DEFAULT_CALLBACKS = {
     janusStarting: () => {}, // disable start button
+    sessionCreated: () => {},
+    sessionDestroyed: () => {}, //default was: window?.location.reload();
+    roomDestroyed: () => {}, //show a message that the meeting is finished
     muteStateChanged: (muted) => {}, //handle mute state change
     unpublishingOwnFeed: () => {}, //disable unpublish button
     publishingOwnFeed: () => {}, //disable publish button
@@ -64,6 +67,7 @@ const DEFAULT_CALLBACKS = {
     remoteVideoTrackAdded: (slot, mid, callback) => {}, //get element where the remote video will be played
     getRemoteAudioElement: (slot, mid) => null, //get one particular audio element
     getRemoteVideoElement: (slot, mid) => null, //get one particular video element
+    devicesListReceived: (devices) => {}, //render the devices list
 };
 
 class JanusConfig {
@@ -71,8 +75,13 @@ class JanusConfig {
         this.server = janusVideoRoomAdapter.serverConfig.host;
         this.iceServers = janusVideoRoomAdapter.serverConfig.iceServers;
 
-        this.success = () => janusVideoRoomAdapter.janus.attach(janusVideoRoomAdapter._generateJanusCallbacks());
-        this.destroyed = () => window?.location.reload();
+        this.success = () => {
+            janusVideoRoomAdapter.callbacks.sessionCreated();
+            janusVideoRoomAdapter.janus.attach(janusVideoRoomAdapter._generateJanusCallbacks())
+        };
+        this.destroyed = () => {
+            janusVideoRoomAdapter.callbacks.sessionDestroyed();
+        }
         this.token = janusVideoRoomAdapter.token,
         this.error = (error) => {
             Janus.error(error);
@@ -83,25 +92,30 @@ class JanusConfig {
 export class JanusVideoRoomAdapter {
     constructor({
         roomName,
-        userType,
+        subscriptionType,
         use_msid,
         token,
         roomToken,
         serverConfig,
     }, callbacks) {
+        
         this.serverConfig = serverConfig;
         this.token = token;
         if (roomToken) {
             this.roomToken = roomToken;
         }
-
+        
         this.janus = null;
         this.creatingSubscription = false;
+        //devices
+        this.firstDevicesOffer = true;
+        this.audioDeviceId = null;
+        this.videoDeviceId = null;
 
         this.opaqueId = "videoroomtest-" + Janus.randomString(12);
 
         this.username = null;
-        this.userType = userType;
+        this.subscriptionType = subscriptionType;
         this.id = null;
         // We use this other ID just to map our subscriptions to us
         this.privateId = null;
@@ -139,7 +153,7 @@ export class JanusVideoRoomAdapter {
         });
     }
 
-    setUserType = (userType) => this.userType = userType; 
+    setSubscriptionType = (subscriptionType) => this.subscriptionType = subscriptionType; 
 
     startJanus = () => {
         this.callbacks.janusStarting();
@@ -154,6 +168,7 @@ export class JanusVideoRoomAdapter {
 
     stopJanus = () => {
         Janus.debug("Stopping Janus");
+        subscriptions = {};
         this.janus.destroy();
     }
 
@@ -169,7 +184,7 @@ export class JanusVideoRoomAdapter {
         this.callbacks.muteStateChanged(muted);
     }
 
-    registerUsername = () => {
+    registerUsername = (subscribeOnly = false) => {
         const username = this.callbacks.getUsername();
 
         if(username === "") {
@@ -185,7 +200,7 @@ export class JanusVideoRoomAdapter {
         const register = {
             request: "join",
             room: this.roomName,
-            ptype: "publisher",
+            ptype: subscribeOnly ? "subscriber" : "publisher",
             display: username
         };
 
@@ -224,12 +239,79 @@ export class JanusVideoRoomAdapter {
         });
     }
 
+    initDevices = (devices) => {
+        this.callbacks.devicesListReceived(devices);
+    }
+    
+    restartCapture = (
+        newVideoDeviceId,
+        newAudioDeviceId,
+    ) => {
+        const replaceAudio = newAudioDeviceId !== this.audioDeviceId;
+        this.audioDeviceId = newAudioDeviceId;
+
+        const replaceVideo = newVideoDeviceId !== this.videoDeviceId;
+        this.videoDeviceId = newVideoDeviceId;
+
+        if (!this.firstDevicesOffer) {
+            if (!replaceAudio && !replaceVideo) {
+                return;
+            }
+            // Just replacing tracks, no need for a renegotiation
+            let tracks = [];
+            if (replaceAudio) {
+                tracks.push({
+                    type: 'audio',
+                    mid: '0',	// We assume mid 0 is audio
+                    capture: { deviceId: { exact: newAudioDeviceId } }
+                });
+            }
+            if (replaceVideo) {
+                tracks.push({
+                    type: 'video',
+                    mid: '1',	// We assume mid 1 is video
+                    capture: { deviceId: { exact: newVideoDeviceId } }
+                });
+            }
+            // We use the replaceTracks helper function, that will in turn
+            // call the WebRTC replaceTrack API with the info we requested,
+            // without the need to do any renegotiation on the PeerConnection
+            sfutest.replaceTracks({
+                tracks: tracks,
+                error: (err) => {
+                    Janus.error("WebRTC error:", err);
+                }
+            });
+
+            return;
+        }
+        // We're only now starting, create a new PeerConnection
+        this.firstDevicesOffer = false;
+        const body = { audio: true, video: true };
+
+        Janus.debug("Trying a createOffer too (audio/video sendrecv)");
+        sfutest.createOffer({
+            tracks: [
+                { type: 'audio', capture: { deviceId: { exact: this.audioDeviceId }}, recv: true },
+                { type: 'video', capture: { deviceId: { exact: this.videoDeviceId }}, recv: true },
+            ],
+            success: (jsep) => {
+                Janus.debug("Got SDP!", jsep);
+                sfutest.send({ message: body, jsep: jsep });
+            },
+            error: (error) => {
+                Janus.error("WebRTC error:", error);
+            }
+        });
+    }
+
     _generateJanusCallbacks = () => ({
         plugin: "janus.plugin.videoroom",
         opaqueId: this.opaqueId,
         success: (pluginHandle) => {
             sfutest = pluginHandle;
     
+            Janus.listDevices(this.initDevices);
             Janus.log("Plugin attached! (" + sfutest.getPlugin() + ", id=" + sfutest.getId() + ")");
             Janus.log("  -- This is a publisher/manager");
     
@@ -326,7 +408,7 @@ export class JanusVideoRoomAdapter {
         }
     });
 
-    _publishOwnFeed = (useAudio, useVideo = true) => {
+    publishOwnFeed = (useAudio, useVideo = true) => {
         this.callbacks.publishingOwnFeed();
     
         let tracks = [];
@@ -363,7 +445,7 @@ export class JanusVideoRoomAdapter {
             error: (error) => {
                 Janus.error("WebRTC error:", error);
                 if (useAudio) {
-                    this._publishOwnFeed(false);
+                    this.publishOwnFeed(false);
                 } else {
                     this.callbacks.createOfferFailed();
                 }
@@ -734,18 +816,21 @@ export class JanusVideoRoomAdapter {
 
                 Janus.log(`Successfully joined room ${msg.room} with ID ${this.id}`);
 
-                switch(this.userType) {
-                    case "translator":
-                        this._publishOwnFeed(true, false);
+                switch(this.subscriptionType) {
+                    case "all":
+                        this.publishOwnFeed(true);
                         break;
-                    case "respondee":
-                        this._publishOwnFeed(false);
+                    case "video":
+                        this.publishOwnFeed(false);
                         break;
-                    case "recorder":
-                        this.callbacks.joinedAsSubscriber();
+                    case "audio":
+                        this.publishOwnFeed(true, false);
+                        break;
+                    case "none":
+                        this.publishOwnFeed(false, false);
                         break;
                     default:
-                        this._publishOwnFeed(true);
+                        this.publishOwnFeed(true);
                 }
 
                 // Any new feed to attach to?
@@ -756,6 +841,7 @@ export class JanusVideoRoomAdapter {
 
             case 'destroyed':
                 Janus.warn("The room has been destroyed!");
+                this.callbacks.roomDestroyed();
                 break;
 
             case 'event':
@@ -817,7 +903,7 @@ const janusVideoRoomAdapter = new JanusVideoRoomAdapter({
     muteStateChanged: (muted) => $('#mute').html(muted ? "Unmute" : "Mute"),
     unpublishingOwnFeed: () => $('#unpublish').attr('disabled', true).unbind('click'),
     publishingOwnFeed: () => $('#publish').attr('disabled', true).unbind('click'),
-    createOfferFailed: () => $('#publish').removeAttr('disabled').click(() => janusVideoRoomAdapter._publishOwnFeed(true)),
+    createOfferFailed: () => $('#publish').removeAttr('disabled').click(() => janusVideoRoomAdapter.publishOwnFeed(true)),
     getUsername: () => $('#username').val(),
     videoStreamRejected: () => {
         $('#myvideo').hide();
@@ -850,7 +936,7 @@ const janusVideoRoomAdapter = new JanusVideoRoomAdapter({
     },
     localStreamUnpublished: () => {
         $('#videolocal').html('<button id="publish" class="btn btn-primary">Publish</button>');
-        $('#publish').click(() => janusVideoRoomAdapter._publishOwnFeed(true));
+        $('#publish').click(() => janusVideoRoomAdapter.publishOwnFeed(true));
         $("#videolocal").parent().parent().unblock();
     },
     unpublished: (slot) => {

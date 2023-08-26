@@ -34,6 +34,7 @@ const teamMembers = [{
 }];
 
 const upcomingInterview = {
+    uuid: '1234',
     duration: '30min',
     date: new Date(),
 };
@@ -91,6 +92,7 @@ const MyAccountPage = () => {
                 {t('myAccount.upcomingInterviewsLabel')}
             </div>
             <InterviewTile
+                uuid={upcomingInterview.uuid}
                 duration={upcomingInterview.duration}
                 date={upcomingInterview.date}
             />
