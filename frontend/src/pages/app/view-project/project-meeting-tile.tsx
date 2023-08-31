@@ -107,7 +107,7 @@ const ProjectMeetingTile = ({
             <section className={classes.header}>
                 <span className={classes.respondentDetails}>
                     {(name && surname)
-                        ? `${name} ${surname.slice(0, 1).toUpperCase}.`
+                        ? `${name} ${surname.slice(0, 1).toUpperCase()}.`
                         : email
                     }
                 </span>
