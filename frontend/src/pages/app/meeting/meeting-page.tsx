@@ -107,7 +107,7 @@ const MeetingPage = () => {
     }
 
     useEffect(() => {
-        const adminTrack = remoteTracks.find(t => t.name.startsWith("admin_"));
+        const adminTrack = remoteTracks.find(t => t.name?.startsWith("admin_"));
         if (adminTrack) {
             const audioElement = document.getElementById(
                 `remoteaudio-${adminTrack.slot}-${adminTrack.audio}`
@@ -119,7 +119,7 @@ const MeetingPage = () => {
         }
         
         const translatorTrack = remoteTracks.find(
-            t => t.name.startsWith("translator_")
+            t => t.name?.startsWith("translator_")
         );
         if (translatorTrack) {
             const audioElement = document.getElementById(
@@ -189,6 +189,8 @@ const MeetingPage = () => {
                             name: streamName,
                         };
                         newTracks.push(trackToEdit);
+                    } else {
+                        trackToEdit.name = streamName;
                     }
 
                     return newTracks;
@@ -400,7 +402,7 @@ const MeetingPage = () => {
                         icon={LanguagesIconPurple}
                         onClick={switchLanguage}
                     />
-                    <IconButton
+                    {false && <IconButton
                         className={classes.controlButton}
                         icon={CameraIconPurple}
                         onClick={() => {
@@ -412,12 +414,15 @@ const MeetingPage = () => {
                                 });
                             setPublishing(state => !state);
                         }}
-                    />
-                    <IconButton
-                        className={classes.recordButton}
-                        icon={DotIconRed}
-                        onClick={() => janusAdapter.recordRoom('adminpwd')}
-                    />
+                    />}
+                    {(auth.currentUser?.role === ProfileTypes.Role.Admin
+                        || auth.currentUser?.role === ProfileTypes.Role.Moderator) && (
+                        <IconButton
+                            className={classes.recordButton}
+                            icon={DotIconRed}
+                            onClick={() => janusAdapter.recordRoom('adminpwd')}
+                        />
+                    )}
                     <IconButton
                         className={classes.controlButton}
                         icon={ScreenShareIconPurple}

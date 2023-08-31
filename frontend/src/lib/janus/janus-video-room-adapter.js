@@ -85,6 +85,15 @@ class JanusConfig {
         };
         this.destroyed = () => {
             janusVideoRoomAdapter.callbacks.sessionDestroyed();
+            feeds = {};
+            feedStreams = {};
+            subStreams = {};
+            slots = {};
+            mids = {};
+            subscriptions = {};
+            localTracks = {};
+            localVideos = 0;
+            remoteTracks = {};
         }
         this.token = janusVideoRoomAdapter.token,
         this.error = (error) => {
