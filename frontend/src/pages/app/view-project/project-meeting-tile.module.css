@@ -1,0 +1,316 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.projectMeetingTile {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    padding: 1.5vw 1vw;
+    border-radius: 1.5vw;
+    background-color: var(--COLOR8);
+}
+.whiteBackground {
+    background-color: var(--WHITE);
+}
+
+.header {
+    display: flex;
+    gap: 1.5vw;
+    font-size: 1.2vw;
+}
+.date {
+    display: flex;
+    gap: 1.5vw;
+}
+.greyText {
+    color: var(--GRAY3);
+}
+
+.finishedContent {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+}
+
+.videoDetails {
+    display: flex;
+    gap: 2vw;
+}
+.cover {
+    width: 9vw;
+    height: 5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.5vw;
+    background-color: var(--GRAY);
+    cursor: pointer;
+}
+.playButton {
+    width: 2vw;
+    height: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2vw;
+    background-color: var(--COLOR2);
+}
+.playIcon {
+    width: 0.75vw;
+    height: 0.75vw;
+}
+
+.surveys {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    padding: 2vw 0;
+    border-top: 1px dashed var(--BLACK);
+    border-bottom: 1px dashed var(--BLACK);
+}
+.surveyTitle {
+    display: flex;
+    align-items: center;
+    gap: 0.75vw;
+    font-size: 1.2vw;
+}
+.surveyTitleIcon {
+    width: 1vw;
+    height: 1.25vw;
+}
+
+.survey {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.surveyIconWrapper {
+    width: 3.5vw;
+    height: 3.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2vw;
+    background-color: var(--COLOR8);
+}
+.surveyIcon {
+    width: 0.75vw;
+    height: 0.75vw;
+}
+.greenBackground {
+    background-color: var(--GREEN1);
+}
+.dates {
+    display: flex;
+    flex-direction: column;
+}
+
+.joinButton {
+    height: 2vw;
+    width: 12.5vw;
+    padding: 0.75vw;
+}
+
+@media (min-width: min-large) {
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .projectMeetingTile {
+        gap: 4vw;
+        padding: 4vw 3vw;
+        border-radius: 4.5vw;
+    }
+    
+    .header {
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-template-columns: auto auto auto;
+        grid-template-areas: 
+        "respondentDetails respondentDetails respondentDetails"
+        "dateLabel date date";
+        row-gap: 4vw;
+        font-size: 4vw;
+    }
+    .respondentDetails {
+        grid-area: respondentDetails;
+    }
+    .dateLabel {
+        grid-area: dateLabel;
+    }
+    .date {
+        grid-area: date;
+        display: flex;
+        gap: 2vw;
+    }
+
+    .joinButton {
+        height: 6.5vw;
+        width: 35vw;
+        padding: 2vw;
+    }
+    
+    .finishedContent {
+        gap: 11vw;
+    }
+    
+    .videoDetails {
+        display: grid;
+        grid-template-columns: min-content auto;
+        column-gap: 7vw;
+        grid-template-rows: auto auto;
+        row-gap: 4.5vw;
+    }
+    .cover {
+        width: 30vw;
+        height: 18vw;
+        border-radius: 2vw;
+    }
+    .playButton {
+        width: 5vw;
+        height: 5vw;
+        border-radius: 10vw;
+    }
+    .playIcon {
+        width: 0.75vw;
+        height: 0.75vw;
+    }
+    .scriptDownloadButton {
+        grid-area: scriptDownloadButton;
+    }
+    .recruitmentVideoButton {
+        grid-area: recruitmentVideoButton;
+    }
+    
+    .surveys {
+        gap: 6.5vw;
+        padding: 6.5vw 0;
+    }
+    .surveyTitle {
+        gap: 2vw;
+        font-size: 3.5vw;
+    }
+    .surveyTitleIcon {
+        width: 3vw;
+        height: 4vw;
+    }
+    
+    .survey {
+        display: grid;
+        grid-template-rows: auto min-content;
+        row-gap: 4vw;
+        grid-template-columns: min-content auto auto;
+        grid-template-areas: 
+        "surveyIconWrapper surveyName dates"
+        "surveyResultsButton surveyResultsButton .";
+    }
+    .surveyIconWrapper {
+        grid-area: surveyIconWrapper;
+        width: 10vw;
+        height: 10vw;
+        border-radius: 5vw;
+    }
+    .surveyIcon {
+        width: 2vw;
+        height: 2vw;
+    }
+    .surveyName {
+        grid-area: surveyName;
+    }
+    .dates {
+        grid-area: dates;
+        display: flex;
+        flex-direction: column;
+    }
+    .surveyResultsButton {
+        grid-area: surveyResultsButton;
+        height: 7vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .projectMeetingTile {
+        gap: 10vw;
+        padding: 7vw 5vw;
+        border-radius: 8vw;
+    }
+    
+    .header {
+        display: flex;
+        flex-direction: column;
+        gap: 6vw;
+        font-size: 6vw;
+    }
+    .date {
+        display: flex;
+        gap: 6vw;
+    }
+
+    .joinButton {
+        width: 100%;
+        height: 11vw;
+        padding: 4vw;
+    }
+    
+    .finishedContent {
+        gap: 11vw;
+    }
+    
+    .videoDetails {
+        display: flex;
+        flex-direction: column;
+        gap: 7.5vw;
+    }
+    .cover {
+        width: 100%;
+        height: 50vw;
+        border-radius: 4vw;
+    }
+    .playButton {
+        width: 12vw;
+        height: 12vw;
+        border-radius: 6vw;
+    }
+    .playIcon {
+        width: 2.5vw;
+        height: 2.5vw;
+    }
+    
+    .surveys {
+        gap: 11vw;
+        padding: 11vw 0;
+    }
+    .surveyTitle {
+        gap: 3vw;
+        font-size: 6vw;
+    }
+    .surveyTitleIcon {
+        width: 5vw;
+        height: 6vw;
+    }
+    
+    .survey {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5vw;
+    }
+    .surveyIconWrapper {
+        grid-area: surveyIconWrapper;
+        width: 15vw;
+        height: 15vw;
+        border-radius: 7.5vw;
+    }
+    .surveyIcon {
+        width: 4vw;
+        height: 4vw;
+    }
+    .dates {
+        grid-area: dates;
+        display: flex;
+        flex-direction: column;
+    }
+    .surveyResultsButton {
+        width: 100%;
+        height: 12.5vw;
+    }
+}

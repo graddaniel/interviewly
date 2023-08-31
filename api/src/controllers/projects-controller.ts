@@ -195,4 +195,19 @@ export default class ProjectsController {
 
         res.status(StatusCodes.OK).send(surveyResponses);
     }
+
+    getProjectMeetings = async (
+        req: AuthenticatedRequest,
+        res: Response,
+    ) => {
+        const { uuid: currentUserUuid } = req.currentUser;
+        const { projectId } = req.params;
+
+        const projectMeetings = await this.projectsService.getProjectMeetings(
+            projectId,
+            currentUserUuid,
+        );
+
+        res.status(StatusCodes.OK).send(projectMeetings);
+    }
 }

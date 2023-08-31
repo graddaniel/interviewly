@@ -9,7 +9,7 @@ import TextButton from '../../components/text-button/text-button';
 import { FORMS_ROUTES } from '../../consts/routes';
 
 import classes from './tutorials-page.module.css';
-import TutorialVideoDialog from './tutorial-video-dialog';
+import VideoDialog from '../../components/video-dialog/video-dialog';
 
 
 const TUTORIALS = [{
@@ -95,10 +95,11 @@ const TutorialsPage = () => {
                     ))}
                 </div>
             </section>
-            <TutorialVideoDialog
+            <VideoDialog
                 isOpen={!!openedVideo}
                 onClose={() => setOpenedVideo('')}
                 videoUrl={openedVideo}
+                useIframe={true}
             />
         </article>
     );

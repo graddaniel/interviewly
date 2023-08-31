@@ -199,7 +199,7 @@ export default class MeetingsService {
         console.log("DIFF", now.diff(startDate, "minutes"), now.diff(startDate, "hours"))
         if (now.diff(startDate, "minutes") < -15) {
             throw new MeetingNotReadyError();
-        } else if (now.diff(startDate, "hours") > 6) {
+        } else if (now.diff(startDate, "hours") > 6 || meeting.hasFinished) {
             throw new MeetingFinishedError();
         }
         // 12h after the meeting close it if it's still open
@@ -218,7 +218,6 @@ export default class MeetingsService {
         meetingUuid: string,
         userUuid: string,
     ) => {
-        console.log("CLOSING")
         const account = await this.accountsService.getAccount({ uuid: userUuid });
         const meeting = await MeetingModel.findOne({
             where: {
@@ -246,6 +245,9 @@ export default class MeetingsService {
         const destroyedRoomId = await this.janusService.destroyRoom(meetingUuid);
 
         this.mqAdapter.send(this.finishedMeetingsQueue, meetingUuid);
+
+        meeting.hasFinished = true;
+        await meeting.save();
 
         return destroyedRoomId;
     }

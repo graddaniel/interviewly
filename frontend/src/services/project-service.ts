@@ -213,4 +213,21 @@ export default class ProjectService {
 
         return data;
     }
+
+    static getProjectMeetings = async (
+        projectUuid: string,
+    ) => {
+        const accessToken = sessionStorage.getItem('accessToken') || localStorage.getItem('accessToken');
+
+        const response = await axios.get(
+            `${API_HOST}/projects/${projectUuid}/meetings`, {
+            headers: {
+                'authorization': `bearer ${accessToken}`
+            },
+        });
+
+        const { data } = response;
+
+        return data;
+    }
 }

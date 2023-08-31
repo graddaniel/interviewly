@@ -4,20 +4,25 @@ import { Form, useActionData, useLoaderData, useNavigate } from 'react-router-do
 import { useTranslation } from 'react-i18next';
 import { ProjectTypes } from 'shared';
 import DatePicker from 'react-datepicker';
+import classNames from 'classnames';
+import moment from 'moment';
 
+import { APP_FORMS_ROUTES } from '../../../../consts/routes';
 import MethodologyTile from '../../../../components/methodology-tile/methodology-tile';
 import TextButton from '../../../../components/text-button/text-button';
 import SurveyTile from '../../../../components/survey-tile/survey-tile';
-import { APP_FORMS_ROUTES } from '../../../../consts/routes';
-
-import classes from './interview-section.module.css';
 import SubmitButton from '../../../../components/submit-button/submit-button';
 import useSuccessFeedback from '../../../../hooks/use-success-feedback';
-import classNames from 'classnames';
-import moment from 'moment';
 import DropdownList from '../../../../components/dropdown-list/dropdown-list';
 import HOURS from '../../../../consts/hours';
 import useErrorHandler from '../../../../hooks/use-error-handler';
+import StepTitle from '../../edit-project/step-title';
+
+import classes from './interview-section.module.css';
+import ChatIcon from 'images/feature-chat-icon.svg';
+import FinishedMeetingIconBlack from 'images/finished-meeting-icon-black.svg';
+import ProjectMeetingTile from '../project-meeting-tile';
+
 
 const InterviewSection = () => {
     const navigate = useNavigate();
@@ -26,9 +31,14 @@ const InterviewSection = () => {
 
     const {
         templates,
+        meetings,
     } = useLoaderData() as {
         templates: any[];
+        meetings: any[];
     };
+
+    const upcomingInterviews = meetings.filter(m => !m.hasFinished);
+    const finishedInterviews = meetings.filter(m => m.hasFinished);
     
     const actionData = useActionData() as any;
     useSuccessFeedback(actionData, t('generic.saved'));
@@ -66,6 +76,30 @@ const InterviewSection = () => {
                 selected={false}
                 methodology={ProjectTypes.Methodology.Interview}
             />
+            <StepTitle
+                title={"Upcoming interviews"}
+                icon={ChatIcon}
+            />
+            <div className={classes.upcomingInterviews}>
+                {upcomingInterviews.map(interview => (
+                    <ProjectMeetingTile
+                        key={interview.uuid}
+                        meeting={interview}
+                    />
+                ))}
+            </div>
+            <StepTitle
+                title={"Finished interviews"}
+                icon={FinishedMeetingIconBlack}
+            />
+            <div className={classes.finishedInterviews}>
+                {finishedInterviews.map(interview => (
+                    <ProjectMeetingTile
+                        key={interview.uuid}
+                        meeting={interview}
+                    />
+                ))}
+            </div>
             <TextButton
                 className={classes.createSurveyButton}
                 text={t('viewProject.methodology.interview.createSurvey')}

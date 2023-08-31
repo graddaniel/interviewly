@@ -164,7 +164,7 @@ export default class SurveysService {
 
     getOneRespondentSurveyResponses = async (
         surveyUuid: string,
-        respondentId: string,
+        respondentUuid: string,
         currentUserUuid: string,
     ) => {
         const account = await this.accountsService.getAccount({ uuid: currentUserUuid });
@@ -191,7 +191,7 @@ export default class SurveysService {
                     association: RespondentProfileModel.associations.AccountModel,
                     attributes: ['email'],
                     where: {
-                        uuid: respondentId,
+                        uuid: respondentUuid,
                     }
                 }],
             }],

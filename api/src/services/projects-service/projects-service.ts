@@ -21,6 +21,9 @@ import { MeetingModel } from '../../models';
 import RespondentDoesNotBelongToProjectError from './errors/respondent-does-not-belong-to-project-error';
 import NoDurationError from './errors/no-duration-error';
 import NotPermittedError from '../../generic/not-permitted-error';
+import S3Adapter from '../s3-adapter';
+import SurveysService from '../surveys-service/surveys-service';
+import MeetingFinishedError from '../meetings-service/errors/meeting-finished-error';
 
 type LimesurveyConfig = {
     url: string;
@@ -35,25 +38,35 @@ export default class ProjectsService {
     accountsService: AccountsService;
     companiesService: CompaniesService;
     templatesService: TemplatesService;
+    surveysService: SurveysService;
     limeSurveyAdapter: LimeSurveyAdapter;
     lsqBuilder: LSQBuilder;
     limeSurveyUrl: string;
+    s3Adapter: S3Adapter;
+
+    recordingsBucketName: string;
 
     constructor (
         accountsService: AccountsService,
         companiesService: CompaniesService,
         templatesService: TemplatesService,
+        surveysService: SurveysService,
         limeSurveyAdapter: LimeSurveyAdapter,
         lsqBuilder: LSQBuilder,
+        s3Adapter: S3Adapter,
     ) {
         this.accountsService = accountsService;
         this.companiesService = companiesService;
         this.templatesService = templatesService;
+        this.surveysService = surveysService;
         this.limeSurveyAdapter = limeSurveyAdapter;
         this.lsqBuilder = lsqBuilder;
+        this.s3Adapter = s3Adapter;
 
         const limesurveyConfig = config.get('limesurvey') as LimesurveyConfig;
         this.limeSurveyUrl = limesurveyConfig.url;
+
+        this.recordingsBucketName = config.get('s3.recordingsBucket');
     }
 
     //TODO no need to find the company by user when we have its uuid
@@ -689,6 +702,10 @@ export default class ProjectsService {
             }],
         });
 
+        if (meeting?.hasFinished) {
+            throw new MeetingFinishedError();
+        }
+
         if (!meeting) {
             const meeting = await MeetingModel.create({
                 uuid: generateUuidV4(),
@@ -748,5 +765,109 @@ export default class ProjectsService {
         })
 
         return meeting;
+    }
+
+    getProjectMeetings = async (
+        projectUuid: string,
+        currentUserUuid: string,
+    ) => {
+        const account = await this.accountsService.getAccount({ uuid: currentUserUuid });
+        const company = await account.RecruiterProfile.getCompany();
+
+        const project = await ProjectModel.findOne({
+            attributes: ['CompanyId'],
+            where: {
+                uuid: projectUuid,
+            },
+            include: [{
+                association: ProjectModel.associations.MeetingModel,
+                include: [{
+                    attributes: ['name', 'surname', 'AccountId'],
+                    association: MeetingModel.associations.RespondentProfileModel,
+                    include: [{
+                        attributes: ['uuid', 'startDate', 'endDate', 'name'],
+                        association: RespondentProfileModel.associations.SurveyModel,
+                    }, {
+                        attributes: ['email', 'uuid'],
+                        association: RespondentProfileModel.associations.AccountModel,
+                    }],
+                }],
+            }, {
+                association: ProjectModel.associations.CompanyModel,
+                where: {
+                    uuid: company.uuid,
+                },
+            }],
+        });
+        if (!project) {
+            throw new ProjectNotFoundError();
+        }
+
+        const projectMeetings = await this.mapProjectToProjectMeetings(project);
+    
+        return projectMeetings;
+    }
+
+    mapProjectToProjectMeetings = async (project: ProjectModel) => {
+        const projectJson = project.toJSON();
+        const {
+            Meetings: meetings,
+        } = projectJson;
+
+        const flattenedMeetings = meetings.map(meeting => {
+            const {
+                uuid,
+                date,
+                hasFinished,
+                recordingAvailable,
+                RespondentProfiles,
+            } = meeting;
+
+            let respondent: any = null;
+            if (RespondentProfiles.length > 0) {
+                const respondentData = RespondentProfiles[0];
+
+                const {
+                    name,
+                    surname,
+                    Surveys: surveys,
+                    Account: account,
+                } = respondentData;
+
+                respondent = {
+                    uuid: account.uuid,
+                    name,
+                    surname,
+                    email: account.email,
+                    surveys: surveys.map(survey => {
+                        const {
+                            SurveyParticipant,
+                            ...surveyData
+                        } = survey;
+
+                        return {
+                            ...surveyData,
+                            hasFinished: SurveyParticipant.hasFinished,
+                        };
+                    }),
+                };
+            }
+            
+
+            return {
+                uuid,
+                date,
+                hasFinished,
+                recordingUrl: recordingAvailable
+                    ? this.s3Adapter.getPresignedS3Url(
+                        this.recordingsBucketName,
+                        `${uuid}.mp4`,
+                    )
+                    : null,
+                respondent,
+            };
+        });
+
+        return flattenedMeetings;
     }
 }

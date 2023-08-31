@@ -13,6 +13,12 @@
     text-wrap: nowrap;
 }
 
+.upcomingInterviews, .finishedInterviews {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+
 .createSurveyButton, .saveSurveySelectionButton {
     width: 14vw;
 }
@@ -87,6 +93,10 @@
         width: min-content;
     }
 
+    .upcomingInterviews, .finishedInterviews {
+        gap: 4vw;
+    }
+
     .createSurveyButton, .saveSurveySelectionButton {
         width: 40vw;
     }
@@ -111,6 +121,10 @@
 
     .methodologyTile {
         width: 100%;
+    }
+
+    .upcomingInterviews, .finishedInterviews {
+        gap: 7vw;
     }
 
     .createSurveyButton, .saveSurveySelectionButton {

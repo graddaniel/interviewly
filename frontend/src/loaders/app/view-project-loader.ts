@@ -25,9 +25,14 @@ export default async function ViewProjectLoader ({
     } else {
         const templates = await TemplateService.getAllTemplates();
 
+        const projectMeetings = await ProjectService.getProjectMeetings(
+            projectId,
+        );
+
         return {
             project,
             templates,
+            meetings: projectMeetings,
         };
     }
 }

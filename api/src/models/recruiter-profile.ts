@@ -1,10 +1,12 @@
 import {
+    BelongsToGetAssociationMixin,
     DataTypes,
     Model
 } from 'sequelize';
 import { ProfileTypes } from 'shared';
 
 import SequelizeConnection from '../services/sequelize-connection';
+import type CompanyModel from './company';
 
 
 const NAME_MAX_LENGTH = 32;
@@ -21,6 +23,8 @@ export default class RecruiterProfile extends Model {
     declare phoneNumber: string;
 
     declare CompanyId?: number;
+
+    declare getCompany: BelongsToGetAssociationMixin<CompanyModel>;
 };
 
 RecruiterProfile.init({

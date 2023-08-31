@@ -17,6 +17,7 @@ export default async function ViewProjectAction({
         endDate,
     } = Object.fromEntries(await request.formData());
 
+    // workaround to hide past results
     if (type === "reset") {
         return null;
     }

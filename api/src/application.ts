@@ -87,14 +87,16 @@ export default class Appplication {
         const companiesService = new CompaniesService();
         const accountsService = new AccountsService(mailService, companiesService);
         const templatesService = new TemplatesService(companiesService);
+        const surveysService = new SurveysService(accountsService, limeSurveyAdapter);
         const projectsService = new ProjectsService(
             accountsService,
             companiesService,
             templatesService,
+            surveysService,
             limeSurveyAdapter,
             lsqBuilder,
+            s3Adapter,
         );
-        const surveysService = new SurveysService(accountsService, limeSurveyAdapter);
         const meetingsService = new MeetingsService(
             accountsService,
             janusService,
@@ -215,6 +217,12 @@ export default class Appplication {
             '/:projectId/respondents/:respondentId',
             requireJWT,
             projectsController.getProjectRespondent
+        );
+        projectsRouter.get(
+            '/:projectId/meetings',
+            requireJWT,
+            requireAccountType(AccountTypes.Type.RECRUITER),
+            projectsController.getProjectMeetings,
         );
         projectsRouter.put(
             '/:projectId/respondents/:respondentId/meetings',

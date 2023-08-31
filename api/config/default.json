@@ -7,7 +7,7 @@
         "port": 3306,
         "name": "interviewly",
         "forceSync": false,
-        "alterSync": false
+        "alterSync": true
     },
     "registration": {
         "additionalNotificationsTarget": "yyyeey@gmail.com"
