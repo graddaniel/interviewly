@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { ProfileTypes } from 'shared';
 import { useActionData, useLoaderData, useRouteError } from 'react-router-dom';
 
-import TeamMemberPopup from './team-member-popup';
+import AddTeamMemberPopup from './add-team-member-popup';
+import EditTeamMemberPopup from './edit-team-member-popup';
 import TeamMemberTile from '../../../components/team-member-tile/team-member-tile';
 
 import classes from './my-team-page.module.css'
@@ -20,7 +21,7 @@ const MyTeamPage = () => {
     const { t } = useTranslation();
     useSuccessFeedback(actionData, t('generic.saved'));
 
-    const [ popupOpen, setPopupOpen ] = useState(false);
+    const [ addMemberPopupOpen, setAddMemberPopupOpen ] = useState(false);
     const [ selectedMember, setSelectedMember ] = useState(null);
     const [ errors, setErrors ] = useState<any>(null);
 
@@ -45,7 +46,7 @@ const MyTeamPage = () => {
                 </div>
                 <button
                     className={classes.addMembersButton}
-                    onClick={() => setPopupOpen(true)}
+                    onClick={() => setAddMemberPopupOpen(true)}
                 >
                     <img className={classes.addMembersButtonIcon} src={PlusIconBlack}/>
                     {t('myTeam.inviteTeamMemberButton')}
@@ -73,20 +74,27 @@ const MyTeamPage = () => {
                         {...m}
                         onEdit={() => {
                             setSelectedMember(m);
-                            setPopupOpen(true);
                         }}
                     />
                 ))}
             </div>
-            {popupOpen && (
-                <TeamMemberPopup
+            {addMemberPopupOpen && (
+                <AddTeamMemberPopup
                     onClose={() => {
                         setSelectedMember(null);
-                        setPopupOpen(false);
+                        setAddMemberPopupOpen(false);
+                        setErrors(null);
+                    }}
+                    errors={errors}
+                />
+            )}
+            {!!selectedMember && (
+                <EditTeamMemberPopup
+                    onClose={() => {
+                        setSelectedMember(null);
                         setErrors(null);
                     }}
                     defaultValues={selectedMember}
-                    edit={!!selectedMember}
                     errors={errors}
                 />
             )}

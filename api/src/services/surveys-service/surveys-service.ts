@@ -113,7 +113,6 @@ export default class SurveysService {
 
         const responsesData = await this.getSurveyResponsesForAllUsersFromLimeSurvey(survey.id, languages);
         const mappedResponses = this.mapLimeSurveyResponses(responsesData, tokenToEmailMap);
-
         return mappedResponses;
     };
 
@@ -142,7 +141,8 @@ export default class SurveysService {
         const mappedResponsesData = {};
 
         Object.keys(responsesData).forEach(language => {
-            mappedResponsesData[language] = responsesData[language].responses.map(response => {
+            mappedResponsesData[language] = responsesData[language].responses
+            ? responsesData[language].responses.map(response => {
                 const responsesDataEntries = Object.entries(response);
                 const token = responsesDataEntries.slice(5, 6)[0][1] as string;
                 const responses = responsesDataEntries.slice(6);
@@ -156,7 +156,8 @@ export default class SurveysService {
                 }
 
                 return mappedResponse;
-            });
+            })
+            : [];
         });
 
         return mappedResponsesData;

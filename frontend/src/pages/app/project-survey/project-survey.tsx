@@ -17,6 +17,11 @@ const ProjectSurveyPage = () => {
     const navigate = useNavigate();
     const surveyResponses = useLoaderData() as any;
 
+    const emptyResponsesCount = Object.values(surveyResponses).reduce(
+        (counter: number, currentResponses: any[]) => currentResponses.length > 0 ? 0 : counter + 1,
+        0,
+    ) as number;
+
     const downloadResults = () => {
         const data = Object.keys(surveyResponses).map(language => {
             const {
@@ -62,10 +67,20 @@ const ProjectSurveyPage = () => {
                 title={t('viewProject.screeningSurveys.resultsTitle')}
                 icon={MetricsIconBlack}
             />
-            <TextButton
-                text={t('buttons.download')}
-                onClick={downloadResults}
-            />
+            {emptyResponsesCount === 0
+                ? (
+                    <TextButton
+                        text={t('buttons.download')}
+                        onClick={downloadResults}
+                    />
+                )
+                : (
+                    <span className={classes.noResultsMessage}>
+                        {t('viewProject.screeningSurveys.noResultsMessage')}
+                    </span>
+                )
+            }
+
         </section>
     );
 };

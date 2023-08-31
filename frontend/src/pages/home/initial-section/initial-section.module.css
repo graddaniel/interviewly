@@ -72,7 +72,8 @@
 
 .photoBox {
     grid-area: photoBox;
-    aspect-ratio: 2;
+    width: 32.5vw;
+    height: 13vw;
     justify-self: end;
     border-radius: 1.5rem;
     background-position: center;

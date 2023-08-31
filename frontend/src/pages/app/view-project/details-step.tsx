@@ -45,11 +45,13 @@ const DetailsStep = ({
                name="participantsCount"
                label={t('viewProject.details.participantsCountInputLabel')}
                defaultValue={participantsCount}
+               immutable={true}
             />
             <NumericalInput
                name="reserveParticipantsCount"
                label={t('viewProject.details.reserveParticipantsCountInputLabel')}
                defaultValue={reserveParticipantsCount}
+               immutable={true}
             />
             <div className={classes.interviewDurationWrapper}>
                 <label className={classes.interviewDurationLabel}>
@@ -62,6 +64,7 @@ const DetailsStep = ({
                     onChange={() => {}}
                     defaultIndex={0}
                     allowDeselect={false}
+                    immutable={true}
                 />
             </div>
             <div className={classes.dateTimePickers}>
@@ -75,6 +78,7 @@ const DetailsStep = ({
                     onChange={(date) => {}}
                     locale={resolvedLanguage}
                     dateFormat="dd.MM.yyyy"
+                    disabled={true}
                 />
                 <DropdownList
                     className={classNames(
@@ -88,6 +92,7 @@ const DetailsStep = ({
                     ]}
                     defaultIndex={0}
                     allowDeselect={false}
+                    immutable={true}
                 />
             </div>
             <div className={classes.dateTimePickers}>
@@ -101,6 +106,7 @@ const DetailsStep = ({
                     onChange={(date) => {}}
                     locale={resolvedLanguage}
                     dateFormat="dd.MM.yyyy"
+                    disabled={true}
                 />
                 <DropdownList
                     className={classNames(
@@ -114,6 +120,7 @@ const DetailsStep = ({
                     ]}
                     defaultIndex={0}
                     allowDeselect={false}
+                    immutable={true}
                 />
             </div>
             <StepTitle
@@ -141,6 +148,7 @@ const DetailsStep = ({
                     allowDeselect={false}
                     onChange={() => {}}
                     defaultIndex={0}
+                    immutable={true}
                 />
             </div>
         </section>

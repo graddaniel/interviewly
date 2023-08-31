@@ -442,6 +442,36 @@ export default class AccountsService {
         await account.update({ status: AccountTypes.Status.ACTIVE });
     };
 
+    getProfile = async (
+        accountUuid: string,
+    ) => {
+        const account = await this.getAccount({
+            uuid: accountUuid,
+        });
+
+        const {
+            RecruiterProfile,
+            RespondentProfile,
+        } = account;
+        const profileData = RecruiterProfile || RespondentProfile;
+
+        const profile: any = {
+            name: profileData.name,
+            surname: profileData.surname,
+            gender: profileData.gender,
+            avatarUrl: profileData.avatarUrl,
+            phoneNumber: profileData.phoneNumber,
+        }
+
+        if (RecruiterProfile) {
+            const company = await RecruiterProfile.getCompany();
+
+            profile.companyName = company.name;
+        }
+
+        return profile;
+    }
+
     setPassword = async (
         uuid: string,
         password: string,

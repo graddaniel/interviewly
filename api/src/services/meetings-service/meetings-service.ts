@@ -48,12 +48,30 @@ export default class MeetingsService {
     getMeetings = async (
         userUuid: string,
         accountType: AccountTypes.Type,
+        query: {
+            sort: string;
+            limit: number;
+        },
     ) => {
+        const {
+            sort,
+            limit,
+        } = query || {};
+
         const meetings = accountType === AccountTypes.Type.RECRUITER
             ? await this.getAllRecruiterMeetings(userUuid)
             : await this.getAllRespondentMeetings(userUuid);
-        console.log(meetings)
-        return meetings.sort((a, b) => a.date - b.date);
+
+        // TODO do this in sequelize later on
+        const sortedMeetings = (sort && meetings.every(m => m[sort]))
+            ?  meetings.sort((a, b) => a.date - b.date)
+            :  meetings.sort((a, b) => a[sort] - b[sort]);
+
+        const limitedResults = limit
+            ? sortedMeetings.slice(0, limit)
+            : sortedMeetings;
+
+        return limitedResults;
     }
 
     getAllRecruiterMeetings = async (

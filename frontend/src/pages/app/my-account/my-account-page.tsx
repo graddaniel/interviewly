@@ -12,13 +12,8 @@ import TeamMemberTile from '../../../components/team-member-tile/team-member-til
 import useAuth from '../../../hooks/useAuth';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
+import { useLoaderData } from 'react-router-dom';
 
-
-const user = {
-    name: 'Mateusz',
-    surname: 'Kowalski',
-    company: 'Samsung Electronics Co., Ltd.',
-};
 
 const teamMembers = [{
     name: 'Ewelina',
@@ -32,12 +27,6 @@ const teamMembers = [{
     email: 'dsad@32.pl',
     status: AccountTypes.Status.UNCONFIRMED,
 }];
-
-const upcomingInterview = {
-    uuid: '1234',
-    duration: '30min',
-    date: new Date(),
-};
 
 const projects = [{
     avatarUrl: 'https://i.pravatar.cc/101',
@@ -65,8 +54,12 @@ const projects = [{
 const MyAccountPage = () => {
     const auth = useAuth();
     const { t } = useTranslation();
+    const {
+        upcomingMeeting,
+        profile,
+    } = useLoaderData() as any;
 
-    const latestTeamMembersSection = (
+        const latestTeamMembersSection = (
         <div className={classes.latestTeamMembers}>
             <div className={classes.header}>
                 <img className={classes.headerIcon} src={PeopleIconBlack} />
@@ -92,9 +85,9 @@ const MyAccountPage = () => {
                 {t('myAccount.upcomingInterviewsLabel')}
             </div>
             <InterviewTile
-                uuid={upcomingInterview.uuid}
-                duration={upcomingInterview.duration}
-                date={upcomingInterview.date}
+                uuid={upcomingMeeting.uuid}
+                duration={upcomingMeeting.duration}
+                date={upcomingMeeting.date}
             />
         </div>
     );
@@ -122,14 +115,14 @@ const MyAccountPage = () => {
             auth.type === AccountTypes.Type.RESPONDENT && classes.myRespondentAccount,
         )}>
             <h4 className={classes.welcomeMessage}>
-                {t('myAccount.greeting')} {user.name}!
+                {t('myAccount.greeting')} {profile.name}!
             </h4>
             <div className={classes.details}>
                 <span className={classes.userText}>
-                    {user.name} {user.surname}
+                    {profile.name} {profile.surname}
                 </span>
                 <span className={classes.companyText}>
-                    {user.company}
+                    {profile.companyName}
                 </span>
             </div>
             {auth.type === AccountTypes.Type.RECRUITER && latestTeamMembersSection}

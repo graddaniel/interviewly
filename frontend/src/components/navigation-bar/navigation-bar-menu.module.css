@@ -1,0 +1,74 @@
+@value breakpoints: "../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.link {
+    text-decoration: none;
+    color: var(--BLACK);
+}
+
+.loginButton {
+    border: 1px solid var(--BLACK);
+    color: var(--BLACK);
+    background-color: var(--WHITE);
+}
+
+@media (min-width: min-large) {
+    .navigationBarMenu {
+        display: none;
+    }
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .navigationBarMenu {
+        position: fixed;
+        width: calc(100% - (2 * 1.5rem));
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10vw;
+        background-color: var(--WHITE);
+    }
+    .links {
+        display: flex;
+        justify-content: space-between;
+    }
+    .link {
+        font-size: 3.5vw;
+    }
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 3vw;
+    }
+}
+
+@media (max-width: max-small) {
+    .navigationBarMenu {
+        position: fixed;
+        width: calc(100% - (2 * 6vw));
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10vw;
+        background-color: var(--WHITE);
+    }
+    .links {
+        display: flex;
+        flex-direction: column;
+        gap: 12vw;
+    }
+    .link {
+        font-size: 6vw;
+    }
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 6vw;
+    }
+}

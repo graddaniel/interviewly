@@ -364,6 +364,7 @@ Over the years, I’ve come to learn that designing collaboratively means puttin
             },
             screeningSurveys: {
                 resultsTitle: 'Wyniki',
+                noResultsMessage: 'Brak wyników',
             },
             details: {
                 participantsCountInputLabel: 'Liczba uczestników',

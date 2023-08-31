@@ -7,7 +7,7 @@ import { FORMS_ROUTES } from '../../../consts/routes';
 
 import classes from './initial-section.module.css';
 import ClockDashedIcon from '../../../../images/clock-dashed-icon.svg';
-import Photo from '../../../../images/home-initial-section-photo.png';
+import Photo from '../../../../images/TEMP/home-initial-section-photo.png';
 import DecoratorImage from '../../../../images/decorator.svg';
 import HomeInterviewDecorator from '../../../../images/home-interview-decorator-icon.svg';
 

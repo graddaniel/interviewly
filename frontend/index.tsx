@@ -79,6 +79,7 @@ import './i18n/locale';
 import CalendarLoader from './src/loaders/app/calendar-loader';
 import MeetingLoader from './src/loaders/app/meeting-loader';
 import MeetingAction from './src/actions/app/meeting-action';
+import MyAccountLoader from './src/loaders/app/my-account-loader';
 
 
 const router = createBrowserRouter(
@@ -165,6 +166,7 @@ const router = createBrowserRouter(
                 <Route
                     path={APP_ROUTES.MY_ACCOUNT.PATH}
                     element={<MyAccountPage />}
+                    loader={MyAccountLoader}
                 />
                 <Route
                     path={APP_ROUTES.PERSONAL_DATA.PATH}

@@ -1,0 +1,171 @@
+@value breakpoints: "../../../consts/breakpoints.css";
+@value min-large, max-medium, min-medium, max-small from breakpoints;
+
+.popup {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5vw;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.title {
+    margin: 0;
+    font-size: 3.5vw;
+    line-height: 3.5vw;
+    font-weight: 400;
+}
+.closeButton {
+    width: 2.5vw;
+    height: 2.5vw;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 3vw 3vw 3vw 3vw;
+    grid-template-areas: 
+    "username roleDropdown"
+    "email statusDropdown"
+    "projectDropdown projectDropdown"
+    ". saveButton";
+    column-gap: 3vw;
+    row-gap: 2.5vw;
+}
+.username {
+    grid-area: username;
+}
+.email {
+    grid-area: email;
+}
+.roleDropdown {
+    grid-area: roleDropdown;
+    justify-self: end;
+    z-index: 4;
+}
+.statusDropdown {
+    grid-area: statusDropdown;
+    justify-self: end;
+    z-index: 3;
+}
+.projectDropdown {
+    grid-area: projectDropdown;
+}
+.saveButton {
+    grid-area: saveButton;
+    height: 100%;
+    justify-self: end;
+}
+
+.active {
+    color: var(--GREEN2);
+    background-color: var(--GREEN1);
+}
+.unconfirmed {
+    color: var(--YELLOW2);
+    background-color: var(--YELLOW1);
+}
+.inactive {
+    color: var(--WHITE);
+    background-color: var(--BLACK);
+}
+
+.dropdownError {
+    border-color: var(--RED);
+}
+
+@media (min-width: min-medium) and (max-width: max-medium) {
+    .popup {
+        width: 90vw;
+        gap: 10vw;
+    }
+    .title {
+        font-size: 10vw;
+        line-height: 10vw;
+    }
+    .closeButton {
+        width: 7vw;
+        height: 7vw;
+    }
+    .closeButton > img {
+        width: 2vw;
+        height: 2vw;
+    }
+    
+    .content {
+        display: grid;
+        grid-template-columns: 47.5% 47.5%;
+        grid-template-rows: auto auto auto auto;
+        grid-template-areas: 
+        "username  email"
+        "roleDropdown statusDropdown"
+        "projectDropdown projectDropdown"
+        ". saveButton";
+        column-gap: 3.5vw;
+        row-gap: 7vw;
+    }
+    .roleDropdown {
+        height: 7.5vw;
+        width: 30vw;
+        justify-self: start;
+    }
+    .statusDropdown {
+        height: 7.5vw;
+        width: 30vw;
+        justify-self: end;
+    }
+    .projectDropdown {
+        height: 7.5vw;
+        width: 100%;
+    }
+    .email {
+        justify-self: end;
+    }
+
+    .saveButton {
+        grid-area: saveButton;
+        height: 100%;
+        justify-self: stretch;
+    }
+}
+
+@media (max-width: max-small) {
+    .popup {
+        width: 90vw;
+        gap: 10vw;
+    }
+    .title {
+        font-size: 9vw;
+        line-height: 9vw;
+    }
+    .closeButton {
+        width: 9vw;
+        height: 9vw;
+    }
+    .closeButton > img {
+        width: 3vw;
+        height: 3vw;
+    }
+    
+    .content {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto auto auto auto;
+        grid-template-areas: 
+        "username"
+        "email"
+        "projectDropdown"
+        "roleDropdown"
+        "statusDropdown"
+        "saveButton";
+        column-gap: 3.5vw;
+        row-gap: 7vw;
+    }
+    .roleDropdown, .statusDropdown, .saveButton {
+        height: 12.5vw;
+        width: 100%;
+    }
+}

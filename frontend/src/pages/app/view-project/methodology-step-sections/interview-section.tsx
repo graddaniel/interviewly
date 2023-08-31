@@ -76,46 +76,52 @@ const InterviewSection = () => {
                 selected={false}
                 methodology={ProjectTypes.Methodology.Interview}
             />
-            <StepTitle
-                title={"Upcoming interviews"}
-                icon={ChatIcon}
-            />
-            <div className={classes.upcomingInterviews}>
-                {upcomingInterviews.map(interview => (
-                    <ProjectMeetingTile
-                        key={interview.uuid}
-                        meeting={interview}
-                    />
-                ))}
-            </div>
-            <StepTitle
-                title={"Finished interviews"}
-                icon={FinishedMeetingIconBlack}
-            />
-            <div className={classes.finishedInterviews}>
-                {finishedInterviews.map(interview => (
-                    <ProjectMeetingTile
-                        key={interview.uuid}
-                        meeting={interview}
-                    />
-                ))}
-            </div>
+            {upcomingInterviews.length > 0 && (<>
+                <StepTitle
+                    title={"Upcoming interviews"}
+                    icon={ChatIcon}
+                />
+                <div className={classes.upcomingInterviews}>
+                    {upcomingInterviews.map(interview => (
+                        <ProjectMeetingTile
+                            key={interview.uuid}
+                            meeting={interview}
+                        />
+                    ))}
+                </div>
+            </>)}
+            {finishedInterviews.length > 0 && (<>
+                <StepTitle
+                    title={"Finished interviews"}
+                    icon={FinishedMeetingIconBlack}
+                />
+                <div className={classes.finishedInterviews}>
+                    {finishedInterviews.map(interview => (
+                        <ProjectMeetingTile
+                            key={interview.uuid}
+                            meeting={interview}
+                        />
+                    ))}
+                </div>
+            </>)}
             <TextButton
                 className={classes.createSurveyButton}
                 text={t('viewProject.methodology.interview.createSurvey')}
                 onClick={() => navigate(APP_FORMS_ROUTES.NEW_TEMPLATE.PATH)}
             />
-            <h6 className={classes.instruction}>{t('viewProject.methodology.interview.instruction')}</h6>
-            <div className={classes.tiles}>
-                {templates.map(template => (
-                    <SurveyTile
-                        key={template.uuid}
-                        name={template.name}
-                        onClick={() => setSelectedTemplateUuid(template.uuid)}
-                        selected={template.uuid === selectedTemplateUuid}
-                    />
-                ))}
-            </div>
+            {templates.length > 0 && (<>
+                <h6 className={classes.instruction}>{t('viewProject.methodology.interview.instruction')}</h6>
+                <div className={classes.tiles}>
+                    {templates.map(template => (
+                        <SurveyTile
+                            key={template.uuid}
+                            name={template.name}
+                            onClick={() => setSelectedTemplateUuid(template.uuid)}
+                            selected={template.uuid === selectedTemplateUuid}
+                        />
+                    ))}
+                </div>
+            </>)}
             <input type="hidden" name="selectedTemplateUuid" value={selectedTemplateUuid} />
             <h6 className={classes.dateLabel}>
                 {t('viewProject.methodology.sessionStartDateLabel')}

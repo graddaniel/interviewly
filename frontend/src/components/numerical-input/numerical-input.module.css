@@ -7,6 +7,9 @@
     border-bottom: 0.075vw solid var(--BLACK);
     cursor: text;
 }
+.notEditable {
+    cursor: default;
+}
 
 .label {
     font-size: 1vw;

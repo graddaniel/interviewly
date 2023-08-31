@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,6 +13,7 @@ import ROUTES, { FORMS_ROUTES } from '../../consts/routes';
 
 import classes from './navigation-bar.module.css';
 import { SAMPLE_VERSION } from 'config/current';
+import NavigationBarMenu from './navigation-bar-menu';
 
 
 const LINKS: {
@@ -35,6 +36,7 @@ const LINKS: {
 const NavigationBar = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
+    const [ showMenu, setShowMenu ] = useState(false);
 
     const goToAccount = useCallback(() => navigate(ROUTES.LOG_IN.PATH), []);
     const goToJoin = useCallback(() => navigate(FORMS_ROUTES.JOIN.PATH), []);
@@ -71,9 +73,14 @@ const NavigationBar = () => {
                 <IconButton
                     className={classes.menuButton}
                     icon={MenuIcon}
-                    onClick={() => console.log("TODO implement menu")}
+                    onClick={() => setShowMenu(true)}
                 />
             </section>
+            {showMenu && (
+                <NavigationBarMenu
+                    onClose={() => setShowMenu(false)}
+                />
+            )}
         </nav>
     );
 };

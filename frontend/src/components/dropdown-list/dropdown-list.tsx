@@ -17,6 +17,7 @@ type DropdownListProps = {
     ellipsis?: boolean;
     disabled?: boolean;
     multiselect?: boolean;
+    immutable?: boolean; //basically the same as disabled, but regular colors
 };
 
 // if we pass index, then the dropdown is controlled from the outside
@@ -32,6 +33,7 @@ const DropdownList = ({
     ellipsis = false,
     disabled = false,
     multiselect = false,
+    immutable = false,
 }: DropdownListProps) => {
     const [ selectedIndex, setSelectedIndex ] = useState(defaultIndex === undefined ? -1 : defaultIndex);
     // for multiselect only
@@ -77,10 +79,12 @@ const DropdownList = ({
                 classNames(
                     classes.dropdownList,
                     disabled && classes.disabled,
+                    (disabled || immutable) && classes.notClickable,
                     className,
             )}
             onClick={() => elementsList.length > 0
                 && !disabled
+                && !immutable
                 && setIsOpen(state => !state)}
         >
             <div
@@ -89,7 +93,7 @@ const DropdownList = ({
                 <span className={ellipsis ? classes.overflowingSelectionText : ''}>
                     {getDropdownName()}
                 </span>
-                {!disabled && (
+                {!disabled && !immutable && (
                     <img
                         className={classes.icon}
                         src={ArrowDownIconBlack}

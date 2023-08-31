@@ -22,6 +22,8 @@ const InterviewTile = ({
     const { resolvedLanguage } = i18n;
     const navigate = useNavigate();
 
+    console.log(uuid, duration, date)
+
     //TODO use standardizeDate
     const momentDate = moment(date).locale(resolvedLanguage as string);
     const day = momentDate.format('dddd D MMMM');;

@@ -23,9 +23,27 @@ export default class MeetingsController {
             type: accountType,
         } = req.currentUser;
 
+        const {
+            sort,
+            limit,
+        } = req.query;
+
+        let query: any = null;
+        if (sort) {
+            query
+            ? query.sort = sort
+            : query = { sort }; 
+        }
+        if (limit) {
+            query
+            ? query.limit = parseInt(limit as string, 10)
+            : query = { limit: parseInt(limit as string, 10) }; 
+        }
+
         const meetings = await this.meetingsService.getMeetings(
             userUuid,
             accountType,
+            query,
         );
 
         res.status(StatusCodes.OK).send(meetings);

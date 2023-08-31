@@ -19,7 +19,8 @@ type NumericalInputProps = {
     };
     centerText?: boolean;
     error?: string;
-    onChange?: (value: number) => void
+    onChange?: (value: number) => void;
+    immutable?: boolean; // same as disabled, but without style change
 };
 
 const NumericalInput = ({
@@ -31,6 +32,7 @@ const NumericalInput = ({
     centerText = false,
     error,
     onChange,
+    immutable = false,
 }: NumericalInputProps) => {
     const [ value, setValue ] = useState<number>(defaultValue);
     const inputRef = useRef<HTMLInputElement>(null);
@@ -54,6 +56,7 @@ const NumericalInput = ({
                 className={classNames(
                     classes.inputWrapper,
                     error && classes.error || '',
+                    immutable && classes.notEditable,
                     inputProps?.wrapper?.className
                 )}
                 onClick={focusInput}
@@ -73,6 +76,7 @@ const NumericalInput = ({
                     name={name}
                     value={value}
                     onChange={handleNumberChange}
+                    disabled={immutable}
                 />
             </div>
             <p className={classes.errorMessage}>{error}</p>

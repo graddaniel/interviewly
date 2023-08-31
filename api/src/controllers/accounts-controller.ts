@@ -80,6 +80,19 @@ export default class AccountsController {
         res.status(StatusCodes.OK).send(newAccountData);
     }
 
+    getAccountProfile = async (
+        req: AuthenticatedRequest,
+        res: Response,
+    ) => {
+        const {
+            uuid,
+        } = req.currentUser;
+
+        const profile = await this.accountsService.getProfile(uuid);
+
+        res.status(StatusCodes.OK).send(profile);
+    }
+
     patchAccount = async (
         req: Request,
         res: Response,

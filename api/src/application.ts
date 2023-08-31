@@ -142,6 +142,11 @@ export default class Appplication {
         accountsRouter.get('/', extractCredentials, accountsController.login);
         accountsRouter.post('/', extractCredentials, accountsController.register);
         accountsRouter.patch('/:accountId', accountsController.patchAccount);
+        accountsRouter.get(
+            '/:accountId/profile',
+            requireJWT,
+            accountsController.getAccountProfile,
+        );
         accountsRouter.post('/:accountId/password/reset', accountsController.requestPasswordReset);
         accountsRouter.patch('/:accountId/password/reset/confirm', accountsController.confirmPasswordReset);
         accountsRouter.get('/:accountId/introductionVideo', requireJWT, accountsController.getIntroductionVideo);

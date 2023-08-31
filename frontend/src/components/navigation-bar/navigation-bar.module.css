@@ -6,6 +6,7 @@
     flex-direction: row;
     justify-content: space-between;
     font-family: 'Plus Jakarta Sans', sans-serif;
+    box-sizing: border-box;
 }
 
 .leftGroup {
@@ -22,12 +23,16 @@
     width: 35%;
 }
 
+.link {
+    text-decoration: none;
+    color: var(--BLACK);
+    font-size: 1rem;
+}
 
 @media (min-width: min-large) {
     .navigationBar {
-        --side-margin: 8.5vw;
-        width: calc(100% - 2 * var(--side-margin));
-        margin: 2rem var(--side-margin);
+        width: 100%;
+        padding: 2rem 8.5vw;
     }
     .links {
         display: flex;
@@ -44,9 +49,8 @@
 
 @media (min-width: min-medium) and (max-width: max-medium) {
     .navigationBar {
-        --side-margin: 1.5rem;
-        width: calc(100% - 2 * var(--side-margin));
-        margin: 1.5rem var(--side-margin);
+        width: 100%;
+        padding: 1.5rem 1.5rem;
     }
     .leftGroup {
         width: auto;
@@ -67,9 +71,14 @@
 
 @media (max-width: max-small) {
     .navigationBar {
-        --side-margin: 1.5rem;
-        width: calc(100% - 2 * var(--side-margin));
-        margin: 1.5rem var(--side-margin);
+        width: 100%;
+        padding: 6vw;
+    }
+    .leftGroup {
+        width: auto;
+    }
+    .rightGroup {
+        width: auto;
     }
     .links {
         display: none;
@@ -85,10 +94,4 @@
         height: 10vw;
         padding: 0;
     }
-}
-
-.link {
-    text-decoration: none;
-    color: var(--BLACK);
-    font-size: 1rem;
 }
