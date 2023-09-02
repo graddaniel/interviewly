@@ -1,5 +1,7 @@
 import {
     BelongsToGetAssociationMixin,
+    BelongsToManyGetAssociationsMixin,
+    BelongsToManySetAssociationsMixin,
     DataTypes,
     Model
 } from 'sequelize';
@@ -7,12 +9,14 @@ import { ProfileTypes } from 'shared';
 
 import SequelizeConnection from '../services/sequelize-connection';
 import type CompanyModel from './company';
+import type ProjectModel from './project';
 
 
 const NAME_MAX_LENGTH = 32;
 const SURNAME_MAX_LENGTH = 32;
 
 export default class RecruiterProfile extends Model {
+    declare id: number;
     declare role: ProfileTypes.Role;
     declare name: string;
     declare surname: string;
@@ -24,7 +28,10 @@ export default class RecruiterProfile extends Model {
 
     declare CompanyId?: number;
 
+    declare Company: CompanyModel;
     declare getCompany: BelongsToGetAssociationMixin<CompanyModel>;
+    declare setProjects: BelongsToManySetAssociationsMixin<ProjectModel, ProjectModel['id']>;
+    declare getProjects: BelongsToManyGetAssociationsMixin<ProjectModel>;
 };
 
 RecruiterProfile.init({

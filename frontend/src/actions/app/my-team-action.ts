@@ -24,9 +24,9 @@ const MyTeamAction = async ({
 
 export default MyTeamAction;
 
-const createCompanyAccount = async (teamMemberData) => {
+const createCompanyAccount = async (newTeamMemberData) => {
     try {
-        await TeamMemberValidator.validateData(teamMemberData);
+        await TeamMemberValidator.validateNewAccount(newTeamMemberData);
     } catch (errors) {
         return {
             success: false,
@@ -34,14 +34,16 @@ const createCompanyAccount = async (teamMemberData) => {
         };
     }
 
-    await CompanyService.createCompanyAccount(teamMemberData);    
+    await CompanyService.createCompanyAccount(newTeamMemberData);    
 
     return { success: true };
 };
 
-const editCompanyAccount = async (teamMemberData) => {
+const editCompanyAccount = async (editedTeamMemberData) => {
+    editedTeamMemberData.projects = editedTeamMemberData.projects.split(',');
+
     try {
-        await TeamMemberValidator.validateData(teamMemberData);
+        await TeamMemberValidator.validateEditedAccount(editedTeamMemberData);
     } catch (errors) {
         return {
             success: false,
@@ -49,7 +51,7 @@ const editCompanyAccount = async (teamMemberData) => {
         };
     }
 
-    await CompanyService.editCompanyAccount(teamMemberData);
+    await CompanyService.editCompanyAccount(editedTeamMemberData);
 
     return { success: true };
 };

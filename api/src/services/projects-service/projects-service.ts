@@ -157,6 +157,38 @@ export default class ProjectsService {
         return project;
     }
 
+    getOneRecruiterProject = async (
+        recruiterUuid: string,
+        recruiterRole: ProfileTypes.Role,
+        companyUuid: string,
+        projectUuid: string,
+    ) => {
+        if ([ProfileTypes.Role.Moderator,
+            ProfileTypes.Role.Observer,
+            ProfileTypes.Role.Translator,
+        ].includes(recruiterRole)) {
+            const recruiterAccount = await this.accountsService.getAccount({
+                uuid: recruiterUuid,
+            });
+    
+            const projects = await recruiterAccount.RecruiterProfile.getProjects({
+                where: {
+                    uuid: projectUuid,
+                }
+            });
+
+            const userHasAccess = projects.length > 0;
+            if (!userHasAccess) {
+                throw new NotPermittedError();
+            }
+        }
+
+        return this.getOneCompanyProject(
+            companyUuid,
+            projectUuid,
+        );
+    }
+
     getOneRespondentProject = async (
         uuid: string,
         projectUuid: string,
@@ -297,16 +329,43 @@ export default class ProjectsService {
         }        
     }
 
+    getAllProjectsOfCompany = async (
+        companyUuid: string,
+    ) => {
+        return ProjectModel.findAll({
+            attributes: ['uuid', 'title', 'methodology', 'startDate', 'endDate'],
+            include: [{
+                association: ProjectModel.associations.CompanyModel,
+                where: {
+                    uuid: companyUuid,
+                }
+            }],
+        });
+    }
+
     private getAllProjectsOfRecruiter = async (account: AccountModel) => {
         //@ts-ignore
         const company = await account.RecruiterProfile.getCompany();
-
-        return ProjectModel.findAll({
+        //check user access
+        const searchCriteria: any = {
             attributes: ['uuid', 'title', 'methodology', 'startDate', 'endDate'],
             where: {
                 CompanyId: company.id,
             },
-        });
+        };
+
+        if ([
+            ProfileTypes.Role.Moderator,
+            ProfileTypes.Role.Observer,
+            ProfileTypes.Role.Translator,
+        ].includes(account.RecruiterProfile.role)) {
+            searchCriteria.include = [{
+                association: ProjectModel.associations.RecruiterProfileModel,
+                where: { id: account.RecruiterProfile.id }
+            }];
+        }
+
+        return ProjectModel.findAll(searchCriteria);
     }
 
     private getAllProjectsOfRespondent = async (account: AccountModel) => {
@@ -650,7 +709,6 @@ export default class ProjectsService {
         meetingDate: Date,
     ) => {
         const account = await this.accountsService.getAccount({ uuid: currentUserUuid });
-        //@ts-ignore
         const companyUuid = account.RecruiterProfile.Company.uuid as string;
 
         const project = await this.getOneCompanyProject(

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Form, useActionData, useLoaderData, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ProjectTypes } from 'shared';
+import { ProfileTypes, ProjectTypes } from 'shared';
 import DatePicker from 'react-datepicker';
 import classNames from 'classnames';
 import moment from 'moment';
@@ -22,12 +22,14 @@ import classes from './interview-section.module.css';
 import ChatIcon from 'images/feature-chat-icon.svg';
 import FinishedMeetingIconBlack from 'images/finished-meeting-icon-black.svg';
 import ProjectMeetingTile from '../project-meeting-tile';
+import useAuth from '../../../../hooks/useAuth';
 
 
 const InterviewSection = () => {
     const navigate = useNavigate();
     const { t, i18n } = useTranslation();
     const { resolvedLanguage } = i18n;
+    const auth = useAuth();
 
     const {
         templates,
@@ -109,7 +111,11 @@ const InterviewSection = () => {
                 text={t('viewProject.methodology.interview.createSurvey')}
                 onClick={() => navigate(APP_FORMS_ROUTES.NEW_TEMPLATE.PATH)}
             />
-            {templates.length > 0 && (<>
+            {templates.length > 0 && auth.currentUserHasRole([
+                ProfileTypes.Role.Admin,
+                ProfileTypes.Role.InterviewlyStaff,
+                ProfileTypes.Role.Moderator,
+            ]) && (<>
                 <h6 className={classes.instruction}>{t('viewProject.methodology.interview.instruction')}</h6>
                 <div className={classes.tiles}>
                     {templates.map(template => (

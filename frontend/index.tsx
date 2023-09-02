@@ -26,7 +26,6 @@ import LibraryEditorPage from './src/pages/app/library-editor/library-editor-pag
 import App from './src/pages/app/app';
 import MyAccountPage from './src/pages/app/my-account/my-account-page';
 import MyTeamPage from './src/pages/app/my-team/my-team-page';
-import Protected from './src/utils/protected';
 import RequireAnonymous from './src/utils/require-anonymous';
 import ProjectsPage from './src/pages/app/projects/projects-page';
 import AppAction from './src/actions/app/app-action';
@@ -80,7 +79,11 @@ import CalendarLoader from './src/loaders/app/calendar-loader';
 import MeetingLoader from './src/loaders/app/meeting-loader';
 import MeetingAction from './src/actions/app/meeting-action';
 import MyAccountLoader from './src/loaders/app/my-account-loader';
+import { ProfileTypes } from 'shared';
+import PermissionsCheckLoader from './src/loaders/permissions-check-loader';
+import LoginCheckLoader from './src/loaders/login-check-loader';
 
+const { Role } = ProfileTypes;
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -150,112 +153,134 @@ const router = createBrowserRouter(
                 />
             </Route>
             <Route
-                path={ROUTES.APP.PATH}
-                element={
-                    <Protected>
-                        <App />
-                    </Protected>
-                }
-                action={AppAction}
-                errorElement={
-                    <Protected>
-                        <App />
-                    </Protected>
-                }
+                loader={LoginCheckLoader}
             >
                 <Route
-                    path={APP_ROUTES.MY_ACCOUNT.PATH}
-                    element={<MyAccountPage />}
-                    loader={MyAccountLoader}
-                />
-                <Route
-                    path={APP_ROUTES.PERSONAL_DATA.PATH}
-                    element={<PersonalDataPage />}
-                />
-                <Route
-                    path={APP_ROUTES.COMPANY_DATA.PATH}
-                    element={<CompanyDataPage />}
-                    loader={CompanyDataLoader}
-                    action={CompanyDataAction}
-                />
-                <Route
-                    path={APP_ROUTES.PROJECTS.PATH}
-                    element={<ProjectsPage />}
-                    loader={ProjectsLoader}
-                    errorElement={<ProjectsPage />}
-                />
-                <Route
-                    path={APP_ROUTES.VIEW_PROJECT.PATH}
-                    element={<ViewProjectPage />}
-                    loader={ViewProjectLoader}
-                    action={ViewProjectAction}
-                />
-                <Route
-                    path={APP_ROUTES.PROJECT_RESPONDENT.PATH}
-                    element={<ProjectRespondentPage />}
-                    loader={ProjectRespondentLoader}
-                    action={ProjectRespondentAction}
-                />
-                <Route
-                    path={APP_ROUTES.PROJECT_RESPONDENT_SURVEY_RESPONSES.PATH}
-                    element={<ProjectRespondentSurveyResponsesPage />}
-                    loader={ProjectRespondentSurveyResponsesLoader}
-                />
-                <Route
-                    path={APP_ROUTES.PROJECT_SURVEY.PATH}
-                    element={<ProjectSurveyPage />}
-                    loader={ProjectSurveyLoader}
-                />
-                <Route
-                    path={APP_ROUTES.ONLINE_COMMUNITY_ROOM.PATH}
-                    element={<OnlineCommunityRoomPage />}
-                />
-                <Route
-                    path={APP_FORMS_ROUTES.EDIT_PROJECT.PATH}
-                    element={<EditProjectPage />}
-                    loader={EditProjectLoader}
-                    action={EditProjectAction}
-                    errorElement={<EditProjectPage />}
-                />
-                <Route
-                    path={APP_ROUTES.MY_TEAM.PATH}
-                    element={<MyTeamPage />}
-                    errorElement={<MyTeamPage />}
-                    loader={MyTeamLoader}
-                    action={MyTeamAction}
-                />
-                <Route
-                    path={APP_ROUTES.CALENDAR.PATH}
-                    element={<CalendarPage />}
-                    loader={CalendarLoader}
-                />
-                <Route
-                    path={APP_ROUTES.LIBRARY.PATH}
-                    element={<LibraryPage />}
-                    loader={TemplateLibraryLoader}
-                />
-                <Route
-                    path={APP_ROUTES.COMPLETE_SURVEY.PATH}
-                    element={<CompleteSurvey />}
-                    loader={CompleteSurveyLoader}
-                />
-                <Route
-                    path={APP_FORMS_ROUTES.NEW_TEMPLATE.PATH}
-                    element={<LibraryEditorPage />}
-                    action={NewTemplateAction}
-                />
-                <Route
-                    path={APP_FORMS_ROUTES.EDIT_TEMPLATE.PATH}
-                    element={<LibraryEditorPage />}
-                    loader={TemplateLoader}
-                    action={EditTemplateAction}
-                />
-                <Route
-                    path={APP_FORMS_ROUTES.MEETING.PATH}
-                    element={<MeetingPage />}
-                    loader={MeetingLoader}
-                    action={MeetingAction}
-                />
+                    path={ROUTES.APP.PATH}
+                    element={<App />}
+                    action={AppAction}
+                    errorElement={<App />}
+                >
+                    <Route
+                        path={APP_ROUTES.MY_ACCOUNT.PATH}
+                        element={<MyAccountPage />}
+                        loader={MyAccountLoader}
+                    />
+                    <Route
+                        path={APP_ROUTES.PERSONAL_DATA.PATH}
+                        element={<PersonalDataPage />}
+                    />
+                    <Route
+                        path={APP_ROUTES.COMPANY_DATA.PATH}
+                        element={<CompanyDataPage />}
+                        loader={CompanyDataLoader}
+                        action={CompanyDataAction}
+                    />
+                    <Route 
+                        loader={PermissionsCheckLoader([
+                            Role.Admin,
+                            Role.InterviewlyStaff,
+                            Role.Moderator,
+                            Role.Observer,
+                        ])}>
+                        <Route
+                        path={APP_ROUTES.PROJECTS.PATH}
+                        element={<ProjectsPage />}
+                        loader={ProjectsLoader}
+                        errorElement={<ProjectsPage />}
+                    />
+                    </Route>
+                    <Route
+                        path={APP_ROUTES.VIEW_PROJECT.PATH}
+                        element={<ViewProjectPage />}
+                        loader={ViewProjectLoader}
+                        action={ViewProjectAction}
+                    />
+                    <Route
+                        path={APP_ROUTES.PROJECT_RESPONDENT.PATH}
+                        element={<ProjectRespondentPage />}
+                        loader={ProjectRespondentLoader}
+                        action={ProjectRespondentAction}
+                    />
+                    <Route
+                        path={APP_ROUTES.PROJECT_RESPONDENT_SURVEY_RESPONSES.PATH}
+                        element={<ProjectRespondentSurveyResponsesPage />}
+                        loader={ProjectRespondentSurveyResponsesLoader}
+                    />
+                    <Route
+                        path={APP_ROUTES.PROJECT_SURVEY.PATH}
+                        element={<ProjectSurveyPage />}
+                        loader={ProjectSurveyLoader}
+                    />
+                    <Route
+                        path={APP_ROUTES.ONLINE_COMMUNITY_ROOM.PATH}
+                        element={<OnlineCommunityRoomPage />}
+                    />
+                    <Route
+                        path={APP_FORMS_ROUTES.EDIT_PROJECT.PATH}
+                        element={<EditProjectPage />}
+                        loader={EditProjectLoader}
+                        action={EditProjectAction}
+                        errorElement={<EditProjectPage />}
+                    />
+                    <Route
+                        path={APP_ROUTES.CALENDAR.PATH}
+                        element={<CalendarPage />}
+                        loader={CalendarLoader}
+                    />
+                    <Route
+                        element={<Outlet />}
+                        loader={PermissionsCheckLoader([
+                            Role.Admin,
+                            Role.InterviewlyStaff,
+                            Role.Moderator,
+                        ])}
+                    >
+                        <Route
+                            path={APP_ROUTES.LIBRARY.PATH}
+                            element={<LibraryPage />}                        
+                            errorElement={<LibraryPage />}
+                            loader={TemplateLibraryLoader}
+                        />
+                    </Route>
+                    <Route
+                        element={<Outlet />}
+                        loader={PermissionsCheckLoader([
+                            Role.Admin,
+                            Role.InterviewlyStaff,
+                        ])}
+                    >
+                        <Route
+                            path={APP_ROUTES.MY_TEAM.PATH}
+                            element={<MyTeamPage />}
+                            errorElement={<MyTeamPage />}
+                            loader={MyTeamLoader}
+                            action={MyTeamAction}
+                        />
+                    </Route>
+                    <Route
+                        path={APP_ROUTES.COMPLETE_SURVEY.PATH}
+                        element={<CompleteSurvey />}
+                        loader={CompleteSurveyLoader}
+                    />
+                    <Route
+                        path={APP_FORMS_ROUTES.NEW_TEMPLATE.PATH}
+                        element={<LibraryEditorPage />}
+                        action={NewTemplateAction}
+                    />
+                    <Route
+                        path={APP_FORMS_ROUTES.EDIT_TEMPLATE.PATH}
+                        element={<LibraryEditorPage />}
+                        loader={TemplateLoader}
+                        action={EditTemplateAction}
+                    />
+                    <Route
+                        path={APP_FORMS_ROUTES.MEETING.PATH}
+                        element={<MeetingPage />}
+                        loader={MeetingLoader}
+                        action={MeetingAction}
+                    />
+                </Route>
             </Route>
             <Route
                 path={'*'}

@@ -53,6 +53,7 @@
 }
 .projectDropdown {
     grid-area: projectDropdown;
+    width: 100%;
 }
 .saveButton {
     grid-area: saveButton;

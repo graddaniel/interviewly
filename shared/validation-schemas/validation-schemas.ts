@@ -196,6 +196,7 @@ export default class ValidationSchemas {
                 .oneOf(Object.values(BoolStrings), `${ErrorCodes.ProjectModeratorIncorreect}`),
         };
 
+        //TODO finish this
         this.template = {
             name: string().max(32).required(),
             languages: array().of(string().oneOf([])).required(),

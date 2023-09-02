@@ -23,12 +23,21 @@ export default class AccountsValidator {
         await validate(newAccountSchema, newAccount);
     }
 
-    static async validateCompanyAccount(companyAccount) {
+    static async validateNewCompanyAccount(companyAccount) {
         const companyAccountSchema = object({
             name: schemas.accountName,
             surname: schemas.accountSurname,
             email: schemas.email,
             gender: schemas.gender,
+            role: schemas.accountRole,
+            status: schemas.accountStatus,
+        });
+
+        await validate(companyAccountSchema, companyAccount);
+    }
+
+    static async validateEditedCompanyAccount(companyAccount) {
+        const companyAccountSchema = object({
             role: schemas.accountRole,
             status: schemas.accountStatus,
         });

@@ -1,5 +1,6 @@
 import {
     DataTypes,
+    HasManyGetAssociationsMixin,
     HasOneGetAssociationMixin,
     Model
 } from 'sequelize';
@@ -18,7 +19,9 @@ export default class Company extends Model {
     declare name: string;
     declare taxIdNumber: string;
 
+    declare Projects: ProjectModel[];
     declare getAddress: HasOneGetAssociationMixin<AddressModel>;
+    declare getProjects: HasManyGetAssociationsMixin<ProjectModel>;
 };
 
 Company.init({

@@ -15,9 +15,10 @@ import CalendarIconBlack from '../../../images/calendar-icon-black.svg';
 import CalendarIconWhite from '../../../images/calendar-icon-white.svg';
 import FoldersIconBlack from '../../../images/folders-icon-black.svg';
 import FoldersIconWhite from '../../../images/folders-icon-white.svg';
-import { AccountTypes } from 'shared';
+import { AccountTypes, ProfileTypes } from 'shared';
 import { useTranslation } from 'react-i18next';
 
+const { Role } = ProfileTypes;
 
 const Menu = () => {
     const auth = useAuth();
@@ -33,15 +34,25 @@ const Menu = () => {
                             regular: HomeIconWhite,
                         }}
                     />
-                    <MenuButton
-                        path={APP_ROUTES.PROJECTS.PATH}
-                        text={t('menu.projects')}
-                        icon={{
-                            highlighted: MetricsIconBlack,
-                            regular: MetricsIconWhite,
-                        }}
-                    />
-                    {auth.type === AccountTypes.Type.RECRUITER && (
+                    {auth.currentUserHasRole([
+                        Role.Admin,
+                        Role.InterviewlyStaff,
+                        Role.Moderator,
+                        Role.Observer,
+                    ]) && (
+                        <MenuButton
+                            path={APP_ROUTES.PROJECTS.PATH}
+                            text={t('menu.projects')}
+                            icon={{
+                                highlighted: MetricsIconBlack,
+                                regular: MetricsIconWhite,
+                            }}
+                        />
+                    )}
+                    {auth.currentUserHasRole([
+                        Role.Admin,
+                        Role.InterviewlyStaff,
+                    ]) && (
                         <MenuButton
                             path={APP_ROUTES.MY_TEAM.PATH}
                             text={t('menu.myTeam')}
@@ -59,7 +70,11 @@ const Menu = () => {
                             regular: CalendarIconWhite,
                         }}
                     />
-                    {auth.type === AccountTypes.Type.RECRUITER && (
+                    {auth.currentUserHasRole([
+                        Role.Admin,
+                        Role.Moderator,
+                        Role.InterviewlyStaff,
+                    ]) && (
                         <MenuButton
                             path={APP_ROUTES.LIBRARY.PATH}
                             text={t('menu.library')}

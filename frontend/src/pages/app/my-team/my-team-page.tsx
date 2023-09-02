@@ -94,7 +94,7 @@ const MyTeamPage = () => {
                         setSelectedMember(null);
                         setErrors(null);
                     }}
-                    defaultValues={selectedMember}
+                    memberData={selectedMember}
                     errors={errors}
                 />
             )}

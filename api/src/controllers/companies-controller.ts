@@ -91,7 +91,7 @@ export default class CompaniesController {
             throw new NotPermittedError();
         }
 
-        await AccountsValidator.validateCompanyAccount({
+        await AccountsValidator.validateNewCompanyAccount({
             name,
             surname,
             email,
@@ -125,19 +125,12 @@ export default class CompaniesController {
 
         const {
             uuid,
-            name,
-            surname,
-            email,
-            gender,
             role,
             status,
+            projects,
         } = req.body;
 
-        await AccountsValidator.validateCompanyAccount({
-            name,
-            surname,
-            email,
-            gender,
+        await AccountsValidator.validateEditedCompanyAccount({
             role,
             status,
         });
@@ -145,12 +138,9 @@ export default class CompaniesController {
         await this.accountsService.editRecruiterAccount(
             currentUserRole,
             uuid,
-            email,
-            name,
-            surname,
-            gender,
             role,
             status,
+            projects,
         );
 
         res.status(StatusCodes.OK).send();

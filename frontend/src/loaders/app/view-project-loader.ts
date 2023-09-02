@@ -1,4 +1,4 @@
-import { AccountTypes } from "shared";
+import { AccountTypes, ProfileTypes } from "shared";
 import { getAuth } from "../../hooks/useAuth";
 import ProjectService from "../../services/project-service";
 import TemplateService from "../../services/template-service";
@@ -23,7 +23,9 @@ export default async function ViewProjectLoader ({
             respondent,
         };
     } else {
-        const templates = await TemplateService.getAllTemplates();
+        const templates = auth.currentUserHasRole([ProfileTypes.Role.Observer])
+            ? []
+            : await TemplateService.getAllTemplates();
 
         const projectMeetings = await ProjectService.getProjectMeetings(
             projectId,

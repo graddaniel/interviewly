@@ -247,6 +247,7 @@ In accordance with the provisions of the Act of 18 July 2002 on the provision of
             admin: 'admin',
             moderator: 'moderator',
             observer: 'observer',
+            translator: 'translator',
             interviewlyStaff: 'Interviewly staff',
         },
         projectStatuses: {
@@ -473,6 +474,7 @@ Please enter gross amount. The currency should match the currency used for the i
                 emailInputPlaceholder: 'E-mail',
                 roleDropdownName: 'Role',
                 statusDropdownName: 'Status',
+                projectsDropdownName: 'Projects',
                 genderDropdownName: 'Gender',
                 saveButtonText: 'Save'
             }

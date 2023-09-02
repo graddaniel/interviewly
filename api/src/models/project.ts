@@ -7,6 +7,7 @@ import {
 import { ProjectTypes } from 'shared';
 
 import SequelizeConnection from '../services/sequelize-connection';
+import RecruiterProfileModel from './recruiter-profile';
 import RespondentProfileModel from './respondent-profile';
 import SurveyModel from './survey';
 import { UUID_V4_LENGTH } from '../consts';
@@ -42,6 +43,7 @@ export default class Project extends Model {
     declare Company: CompanyModel;
     declare addRespondentProfiles: HasManyAddAssociationsMixin<RespondentProfileModel, RespondentProfileModel['id']>;
     declare getRespondentProfiles: HasManyGetAssociationsMixin<RespondentProfileModel>;
+    declare getRecruiterProfiles: HasManyGetAssociationsMixin<RecruiterProfileModel>;
     declare getMeetings: HasManyGetAssociationsMixin<MeetingModel>;
 };
 
@@ -158,6 +160,15 @@ Project.associations.RespondentProfileModel = Project.belongsToMany(
 RespondentProfileModel.associations.ProjectModel = RespondentProfileModel.belongsToMany(
     Project,
     { through: 'ProjectsRespondents' },
+);
+
+Project.associations.RecruiterProfileModel = Project.belongsToMany(
+    RecruiterProfileModel,
+    { through: 'ProjectsRecruiters' },
+);
+RecruiterProfileModel.associations.ProjectModel = RecruiterProfileModel.belongsToMany(
+    Project,
+    { through: 'ProjectsRecruiters' },
 );
 
 Project.associations.SurveyModel = Project.hasMany(SurveyModel, {

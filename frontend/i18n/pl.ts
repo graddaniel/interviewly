@@ -243,6 +243,7 @@ Zgoda nieobowiązkowa`,
             admin: 'admin',
             moderator: 'moderator',
             observer: 'obserwator',
+            translator: 'tłumacz',
             interviewlyStaff: 'obługa Interviewly',
         },
         projectStatuses: {
@@ -468,6 +469,7 @@ Proszę podać wartość brutto. Waluta powinna być zgodna z walutą faktury.`,
                 emailInputPlaceholder: 'E-mail',
                 roleDropdownName: 'Rola',
                 statusDropdownName: 'Status',
+                projectsDropdownName: 'Projekty',
                 genderDropdownName: 'Płeć',
                 saveButtonText: 'Zapisz'
             }

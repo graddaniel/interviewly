@@ -42,11 +42,12 @@ const DropdownList = ({
             Array.isArray(defaultIndex) ? defaultIndex : [defaultIndex]
         )
     );
+
     const [ isOpen, setIsOpen ] = useState(false);
 
     if (multiselect && indexInput && !Array.isArray(indexInput)
         || !multiselect && indexInput && Array.isArray(indexInput)) {
-        console.error("Multiselect and array of input indexes must be used together, when the dropdown is uncontrolled");
+        console.error("Multiselect and array of input indexes must be used together, when the dropdown is uncontrolled!");
         return null;
     }
 
@@ -109,7 +110,7 @@ const DropdownList = ({
                                 ellipsis ? classes.overflowingListElement : '',
                                 multiselect && selectedIndexes.includes(i) && classes.multiselectSelection
                             )}
-                            key={typeof e === 'string' ? e : i}
+                            key={typeof e === 'string' ? e+i : i}
                             onClick={() => {
                                 if (multiselect && !Array.isArray(indexInput)) {
                                     setSelectedIndexes(currentIndexes => {

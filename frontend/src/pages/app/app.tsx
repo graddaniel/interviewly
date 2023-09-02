@@ -3,7 +3,7 @@ import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 import { Form, Outlet, matchPath, useLocation, useRouteError, useSubmit } from 'react-router-dom';
 import classNames from 'classnames';
-import { AccountTypes } from 'shared';
+import { AccountTypes, ProfileTypes } from 'shared';
 
 import Logo from '../../components/logo/logo';
 import IconButton from '../../components/icon-button/icon-button';
@@ -98,7 +98,10 @@ const App = () => {
                 </header>
                 <nav className={classes.navigation}>
                     <Menu />
-                    {auth.type === AccountTypes.Type.RECRUITER && (
+                    {auth.currentUserHasRole([
+                        ProfileTypes.Role.Admin,
+                        ProfileTypes.Role.InterviewlyStaff,
+                    ]) && (
                         <Form method="post" ref={formRef}>
                             <TextButton
                                 className={classes.createProjectButton}

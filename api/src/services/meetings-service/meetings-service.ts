@@ -1,4 +1,4 @@
-import { AccountTypes } from "shared";
+import { AccountTypes, ProfileTypes } from "shared";
 import moment from "moment";
 import config from 'config';
 
@@ -19,6 +19,7 @@ import MeetingNotFoundError from "./errors/meeting-not-found-error";
 import type JanusService from "../janus-service/janus-service";
 import type MQAdapter from "../mq-adapter";
 import S3Adapter from "../s3-adapter";
+import AccountNotFoundError from "../accounts-service/errors/account-not-found-error";
 
 
 export default class MeetingsService {
@@ -77,32 +78,40 @@ export default class MeetingsService {
     getAllRecruiterMeetings = async (
         userUuid: string,
     ) => {
-        const accounts = await AccountModel.findAll({
+        const account = await AccountModel.findOne({
             attributes: ['uuid'],
             where: {
                 uuid: userUuid,
             },
             include: [{
-                attributes: ['CompanyId'],
+                attributes: ['CompanyId', 'role', 'id'],
                 association: AccountModel.associations.RecruiterProfileModel,
                 include: [{
                     attributes: ['id'],
                     association: RecruiterProfileModel.associations.CompanyModel,
-                    include: [{
-                        attributes: ['id', 'meetingDuration'],
-                        association: CompanyModel.associations.ProjectModel,
-                        include: [{
-                            attributes: ['uuid', 'date', 'recordingAvailable'],
-                            association: ProjectModel.associations.MeetingModel,
-                        }],
-                    }],
-                }]
+                }],
             }],
         });
 
-        //@ts-ignore
-        const projectsModels = accounts[0].RecruiterProfile.Company.Projects;
-        const nestedMeetings = projectsModels.map(projectModel => {
+        if (!account) {
+            throw new AccountNotFoundError();
+        }
+
+        const projectCriteria = {
+            attributes: ['id', 'meetingDuration'],
+            include: ([{
+                attributes: ['uuid', 'date', 'recordingAvailable'],
+                association: ProjectModel.associations.MeetingModel,
+            }] as any),
+        };
+
+        const projectsModels = account.RecruiterProfile.role === ProfileTypes.Role.Moderator
+            || account.RecruiterProfile.role === ProfileTypes.Role.Observer
+            || account.RecruiterProfile.role === ProfileTypes.Role.Translator
+            ? await account.RecruiterProfile.getProjects(projectCriteria)
+            : await account.RecruiterProfile.Company.getProjects(projectCriteria);
+
+            const nestedMeetings = projectsModels.map(projectModel => {
             const project = projectModel.toJSON();
 
             const {
@@ -188,6 +197,11 @@ export default class MeetingsService {
                 include: [{
                     attributes: ['id', 'uuid'],
                     association: ProjectModel.associations.CompanyModel,
+                }, {
+                    association: ProjectModel.associations.RecruiterProfileModel,
+                    include: [{
+                        association: RecruiterProfileModel.associations.AccountModel,
+                    }]
                 }],
             }],
         });
@@ -196,20 +210,25 @@ export default class MeetingsService {
         if (!meeting) {
             throw new MeetingNotFoundError();
         }
-        console.log(account.toJSON())
-        console.log(meeting.toJSON())
         
         const meetingRespondents = meeting.RespondentProfiles;
         if (
-            accountType === AccountTypes.Type.RECRUITER
-            && account.RecruiterProfile.CompanyId !== meeting.Project.Company.id
-        ) {
-            throw new NotPermittedError();
-        } else if (
             accountType === AccountTypes.Type.RESPONDENT
             && !meetingRespondents.find(r => r.id === account.RespondentProfile.id)
         ) {
             throw new NotPermittedError();
+        } else if (
+            accountType === AccountTypes.Type.RECRUITER
+            && account.RecruiterProfile.CompanyId !== meeting.Project.Company.id
+        ) {
+            throw new NotPermittedError();
+        } else if (accountType === AccountTypes.Type.RECRUITER
+            && account.RecruiterProfile.CompanyId === meeting.Project.Company.id) {
+                const recruiterHasAccess = await this.recruiterAccountCanAccessMeeting(account, meeting);
+
+                if (!recruiterHasAccess) {
+                    throw new NotPermittedError();
+                }
         }
 
         const startDate = moment(meeting.date);
@@ -260,6 +279,11 @@ export default class MeetingsService {
             throw new NotPermittedError();
         }
 
+        const userHasAccess = await this.recruiterAccountCanAccessMeeting(account, meeting);
+        if (!userHasAccess) {
+            throw new NotPermittedError();
+        }
+
         const destroyedRoomId = await this.janusService.destroyRoom(meetingUuid);
 
         this.mqAdapter.send(this.finishedMeetingsQueue, meetingUuid);
@@ -268,6 +292,35 @@ export default class MeetingsService {
         await meeting.save();
 
         return destroyedRoomId;
+    }
+
+    private recruiterAccountCanAccessMeeting = async (
+        account: AccountModel,
+        meeting: MeetingModel,
+    ) => {
+        const usersWithAccessToTheProject = await meeting.Project.getRecruiterProfiles({
+            attributes: ['AccountId'],
+            include: [{
+                attributes: ['uuid'],
+                association: RecruiterProfileModel.associations.AccountModel,
+                where: {
+                    uuid: account.uuid,
+                }
+            }],
+        });
+
+        const currentUserHasAccessToTheProject = usersWithAccessToTheProject.length > 0;
+        const currentUserRole = account.RecruiterProfile.role;
+
+        if (!currentUserHasAccessToTheProject && (
+            currentUserRole === ProfileTypes.Role.Moderator
+            || currentUserRole === ProfileTypes.Role.Observer
+            || currentUserRole === ProfileTypes.Role.Translator
+        )) {
+            return false;
+        }
+
+        return true;
     }
 
     addRecording = async (

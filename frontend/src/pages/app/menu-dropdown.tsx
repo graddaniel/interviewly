@@ -6,7 +6,7 @@ import ROUTES, { APP_ROUTES } from '../../consts/routes';
 
 import classes from './menu-dropdown.module.css';
 import classNames from 'classnames';
-import { AccountTypes } from 'shared';
+import { AccountTypes, ProfileTypes } from 'shared';
 import { useTranslation } from 'react-i18next';
 
 
@@ -39,7 +39,7 @@ const MenuDropdown = ({
         route: APP_ROUTES.PERSONAL_DATA.PATH,
     }];
 
-    if (auth.type === AccountTypes.Type.RECRUITER) {
+    if (auth.currentUserHasRole([ProfileTypes.Role.Admin, ProfileTypes.Role.InterviewlyStaff])) {
         menuItems.push({
             text: t('dropdownMenu.companyData'),
             route: APP_ROUTES.COMPANY_DATA.PATH,

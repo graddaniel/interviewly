@@ -97,6 +97,7 @@ export default class Appplication {
             lsqBuilder,
             s3Adapter,
         );
+
         const meetingsService = new MeetingsService(
             accountsService,
             janusService,
@@ -233,7 +234,7 @@ export default class Appplication {
             '/:projectId/respondents/:respondentId/meetings',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
-            requireProfileRoles(ProfileTypes.Role.Admin),
+            requireProfileRoles([ProfileTypes.Role.Admin, ProfileTypes.Role.Moderator]),
             projectsController.putProjectRespondentMeeting,
         );
         this.app.use('/projects', projectsRouter);
@@ -251,6 +252,7 @@ export default class Appplication {
             requireAccountType(AccountTypes.Type.RECRUITER),
             surveysController.getRespondentsSurveyResponses,
         );
+        // webhook executed by lime survey
         surveysRouter.patch(
             '/:surveyId/complete',
             requireJWT,
@@ -264,28 +266,28 @@ export default class Appplication {
             '/',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
-            requireProfileRoles(ProfileTypes.Role.Admin),
+            requireProfileRoles([ProfileTypes.Role.Admin, ProfileTypes.Role.Moderator]),
             templatesController.getTemplates,
         );
         templatesRouter.post(
             '/',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
-            requireProfileRoles(ProfileTypes.Role.Admin),
+            requireProfileRoles([ProfileTypes.Role.Admin, ProfileTypes.Role.Moderator]),
             templatesController.postTemplate,
         );
         templatesRouter.get(
             '/:templateId',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
-            requireProfileRoles(ProfileTypes.Role.Admin),
+            requireProfileRoles([ProfileTypes.Role.Admin, ProfileTypes.Role.Moderator]),
             templatesController.getTemplate,
         );
         templatesRouter.patch(
             '/:templateId',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
-            requireProfileRoles(ProfileTypes.Role.Admin),
+            requireProfileRoles([ProfileTypes.Role.Admin, ProfileTypes.Role.Moderator]),
             templatesController.patchTemplate,
         );
         this.app.use('/templates', templatesRouter);

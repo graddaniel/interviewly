@@ -10,9 +10,7 @@ import AddressModel from '../../models/address';
 
 
 export default class CompaniesService {
-    constructor () {
-
-    }
+    constructor () {}
 
     create = async (
         companyName: string,

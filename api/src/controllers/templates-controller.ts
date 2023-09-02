@@ -64,8 +64,6 @@ export default class TemplatesController {
 
         const { templateId } = req.params;
 
-        //await TemplatesValidator.validateNewTemplate
-
         const templateData = await this.templatesService.getOneTemplate(
             templateId,
             companyUuid,
@@ -85,8 +83,6 @@ export default class TemplatesController {
         const { templateId } = req.params;
 
         const template = req.body;
-
-        console.log(template)
 
         //await TemplatesValidator.validateEditTemplate
 

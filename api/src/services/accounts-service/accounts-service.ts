@@ -20,13 +20,14 @@ import PasswordResetExpired from './errors/password-reset-expired-error';
 import AccountAlreadyActiveError from './errors/account-already-active-error';
 import RecruiterAccountMissingCompanyNameError from './errors/recruiter-account-missing-company-name-error';
 import RecruiterAccountMissingCompanyDataError from './errors/recruiter-account-missing-company-data-error';
-
-import type MailService from '../mail-service/mail-service';
-import type CompaniesService from '../companies-service/companies-service';
 import IncorrectAccountType from './errors/incorrect-account-type';
 import ProfileNotFoundError from './errors/profile-not-found-error';
 import NotPermittedError from '../../generic/not-permitted-error';
 import AccountAlreadyHasPasswordError from './errors/account-already-has-password';
+import ProjectModel from '../../models/project';
+
+import type MailService from '../mail-service/mail-service';
+import type CompaniesService from '../companies-service/companies-service';
 
 
 export default class AccountsService {
@@ -393,12 +394,9 @@ export default class AccountsService {
     editRecruiterAccount = SequelizeConnection.transaction(async (
         currentUserRole: ProfileTypes.Role,
         uuid: string,
-        email: string,
-        name: string,
-        surname: string,
-        gender: ProfileTypes.Gender,
         role: ProfileTypes.Role = ProfileTypes.Role.Admin,
         status: AccountTypes.Status = AccountTypes.Status.UNCONFIRMED,
+        projectsUuids: string[],
     ) => {
         if (role === ProfileTypes.Role.InterviewlyStaff
             && currentUserRole !== ProfileTypes.Role.InterviewlyStaff) {
@@ -410,19 +408,35 @@ export default class AccountsService {
             throw new IncorrectAccountType(account.type);
         }
 
-        const recruiterProfile = await RecruiterProfileModel.findOne({ where: { account_id: account.id }});
+        const recruiterProfile = await RecruiterProfileModel.findOne({
+            where: {
+                account_id: account.id,
+            },
+        });
         if (!recruiterProfile) {
             throw new ProfileNotFoundError();
         }
 
+        if ([
+            ProfileTypes.Role.Moderator,
+            ProfileTypes.Role.Observer,
+            ProfileTypes.Role.Translator,
+        ].includes(recruiterProfile.role)) {
+
+            const projects = await ProjectModel.findAll({
+                attributes: ['id', 'uuid'],
+                where: {
+                    uuid: projectsUuids,
+                },
+            });
+
+            await recruiterProfile.setProjects(projects);
+        }
+
         await account.update({
-            email,
             status,
         });
         await recruiterProfile.update({
-            name,
-            surname,
-            gender,
             role,
         });
 

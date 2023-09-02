@@ -36,10 +36,16 @@ export default class ProjectService {
         return data;
     }
 
-    static getAllProjects = async () => {
+    static getProjects = async (userUuid?: string) => {
         const accessToken = sessionStorage.getItem('accessToken') || localStorage.getItem('accessToken');
 
-        const response = await axios.get(`${API_HOST}/projects`, {
+        const searchParams = new URLSearchParams();
+        if (userUuid) {
+            searchParams.set('userUuid', userUuid);
+        }
+        const queryString = searchParams.toString();
+
+        const response = await axios.get(`${API_HOST}/projects${queryString ? '?'+queryString : ''}`, {
             headers: {
                 'authorization': `bearer ${accessToken}`
             },

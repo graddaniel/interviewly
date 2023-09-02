@@ -1,5 +1,5 @@
 import { StatusCodes } from 'http-status-codes';
-import { AccountTypes, ProjectTypes } from 'shared';
+import { AccountTypes, ProfileTypes, ProjectTypes } from 'shared';
 
 import ProjectValidator from './validators/project-validator';
 
@@ -24,11 +24,29 @@ export default class ProjectsController {
     ) => {
         const {
             uuid: currentUserUuid,
+            type: currentUserType,
+            role: currentUserRole,
+            companyUuid: currentuserCompanyUuid,
         } = req.currentUser;
 
-        const allCompanysProjects = await this.projectsService.getAllProjectsOfUser(currentUserUuid);
+        const {
+            userUuid,
+        } = req.query;
 
-        res.status(StatusCodes.OK).send(allCompanysProjects);
+        let projects: any[] = [];
+        if (currentUserType === AccountTypes.Type.RESPONDENT) {
+            projects = await this.projectsService.getAllProjectsOfUser(currentUserUuid);
+        } else if (currentUserRole === ProfileTypes.Role.Admin && !userUuid) {
+            projects = await this.projectsService.getAllProjectsOfCompany(currentuserCompanyUuid);
+        } else if (currentUserRole === ProfileTypes.Role.Admin && userUuid) {
+            //TODO check if userUuid belongs to admin's companys
+            projects = await this.projectsService.getAllProjectsOfUser(userUuid as string);
+        } else if (currentUserRole === ProfileTypes.Role.Observer
+            || currentUserRole === ProfileTypes.Role.Moderator) {
+            projects = await this.projectsService.getAllProjectsOfUser(currentUserUuid); 
+        }
+
+        res.status(StatusCodes.OK).send(projects);
     }
 
     createProject = async (
@@ -57,6 +75,7 @@ export default class ProjectsController {
         const {
             companyUuid,
             type,
+            role,
             uuid,
         } = req.currentUser;
 
@@ -64,9 +83,12 @@ export default class ProjectsController {
             projectId: projectUuid,
         } = req.params;
 
-        const project = type === AccountTypes.Type.RECRUITER
-            ? await this.projectsService.getOneCompanyProject(companyUuid, projectUuid)
-            : await this.projectsService.getOneRespondentProject(uuid, projectUuid)
+        let project: any = null;
+        if (type === AccountTypes.Type.RESPONDENT) {
+            project = await this.projectsService.getOneRespondentProject(uuid, projectUuid);
+        } else {
+            project = await this.projectsService.getOneRecruiterProject(uuid, role, companyUuid, projectUuid);
+        }
 
         res.status(StatusCodes.OK).send(
             type === AccountTypes.Type.RECRUITER

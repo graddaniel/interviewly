@@ -23,7 +23,7 @@ const STATUSES = Object.values(AccountTypes.Status);
 const GENDERS = Object.values(ProfileTypes.Gender);
 
 
-type TeamMemberPopupProps = {
+type AddTeamMemberPopupProps = {
     onClose: () => void;
     defaultValues?: {
         uuid: string;
@@ -37,11 +37,11 @@ type TeamMemberPopupProps = {
     errors,
 };
 
-const TeamMemberPopup = ({
+const AddTeamMemberPopup = ({
     onClose,
     defaultValues,
     errors,
-}: TeamMemberPopupProps) => {  
+}: AddTeamMemberPopupProps) => {  
     const formRef = useRef(null);
     const submit = useSubmit();
     const { t } = useTranslation();
@@ -136,4 +136,4 @@ const TeamMemberPopup = ({
     );
 };
 
-export default TeamMemberPopup;
+export default AddTeamMemberPopup;

@@ -13,19 +13,20 @@ import classes from './edit-team-member-popup.module.css';
 import CrossIcon from 'images/cross-icon.svg';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
+import ProjectService from '../../../services/project-service';
 
 const ROLES = [
     ProfileTypes.Role.Admin,
     ProfileTypes.Role.Moderator,
     ProfileTypes.Role.Observer,
+    ProfileTypes.Role.Translator,
 ];
 const STATUSES = Object.values(AccountTypes.Status);
-const GENDERS = Object.values(ProfileTypes.Gender);
 
 
-type TeamMemberPopupProps = {
+type EditTeamMemberPopupProps = {
     onClose: () => void;
-    defaultValues?: {
+    memberData: {
         uuid: string;
         name: string;
         surname: string;
@@ -33,21 +34,51 @@ type TeamMemberPopupProps = {
         status: AccountTypes.Status;
         role: ProfileTypes.Role;
         gender: ProfileTypes.Gender;
-    } | null;
-    errors,
+    };
+    errors?: any;
 };
 
-const TeamMemberPopup = ({
+const EditTeamMemberPopup = ({
     onClose,
-    defaultValues,
+    memberData,
     errors,
-}: TeamMemberPopupProps) => {  
+}: EditTeamMemberPopupProps) => {
     const formRef = useRef(null);
     const submit = useSubmit();
     const { t } = useTranslation();
-    const [ role, setRole ] = useState(defaultValues?.role || '');
-    const [ status, setStatus ] = useState(defaultValues?.status || '');
-    const [ projects, setProjects ] = useState([]);
+    const [ role, setRole ] = useState(memberData.role || '');
+    const [ status, setStatus ] = useState(memberData.status || '');
+    const [ userProjects, setUserProjects ] = useState<any[]>([]);
+    const [ companyProjects, setCompanyProjects ] = useState<any[]>([]);
+    const [ newUserProjects, setNewUserProjects ] = useState<any[]>([]);
+
+    const getProjects = async () => {
+        const userProjects = await ProjectService.getProjects(memberData.uuid);
+        const companyProjects = await ProjectService.getProjects();
+
+        setUserProjects(userProjects);
+        setCompanyProjects(companyProjects);
+        setNewUserProjects(userProjects);
+    }
+
+    const toggleProject = (i: number) => {
+        const toggledProject = companyProjects[i];
+
+        const newerUserProjects = [...newUserProjects];
+        const projectToToggleIndex = newerUserProjects.findIndex(p => p.uuid === toggledProject.uuid);
+
+        if (projectToToggleIndex < 0) {
+            newerUserProjects.push(toggledProject);
+        } else {
+            newerUserProjects.splice(projectToToggleIndex, 1);
+        }
+
+        setNewUserProjects(newerUserProjects);
+    }
+
+    useEffect(() => {
+        getProjects();
+    }, []);
 
     return (
         <Popup className={classes.popup}>
@@ -63,12 +94,12 @@ const TeamMemberPopup = ({
             </div>
             <Form className={classes.content} ref={formRef} method="post">
                 <input type="hidden" name="action" value={"edit"} />
-                <input type="hidden" name="uuid" value={defaultValues?.uuid} />
+                <input type="hidden" name="uuid" value={memberData?.uuid} />
                 <span className={classes.username}>
-                    {defaultValues?.name} {defaultValues?.surname}
+                    {memberData?.name} {memberData?.surname}
                 </span>
                 <span className={classes.email}>
-                    {defaultValues?.email}
+                    {memberData?.email}
                 </span>
                 <DropdownList
                     className={classNames(
@@ -78,7 +109,7 @@ const TeamMemberPopup = ({
                     name={t('myTeam.popup.roleDropdownName')}
                     elementsList={ROLES.map(r => t(`profileRoles.${r}`))}
                     onChange={i => setRole(ROLES[i])}
-                    defaultIndex={defaultValues?.role ? ROLES.indexOf(defaultValues.role) : -1}
+                    defaultIndex={memberData.role ? ROLES.indexOf(memberData.role) : -1}
                 />
                 <input type="hidden" name="role" value={role} />
                 <DropdownList
@@ -95,26 +126,28 @@ const TeamMemberPopup = ({
                         />
                     ))}
                     onChange={i => setStatus(STATUSES[i])}
-                    defaultIndex={defaultValues?.status ? STATUSES.indexOf(defaultValues.status) : -1}
+                    defaultIndex={memberData.status ? STATUSES.indexOf(memberData.status) : -1}
                 />
                 <input type="hidden" name="status" value={status} />
-                <DropdownList
-                    className={classNames(
-                        classes.projectDropdown,
-                        errors?.status && classes.dropdownError,
-                    )}
-                    name={t('myTeam.popup.statusDropdownName')}
-                    elementsList={STATUSES.map(status => (
-                        <Pill
-                            key={status}
-                            className={classes[status]}
-                            text={t(`accountStatuses.${status}`)}
-                        />
-                    ))}
-                    onChange={i => setStatus(STATUSES[i])}
-                    defaultIndex={defaultValues?.status ? STATUSES.indexOf(defaultValues.status) : -1}
-                />
-                <input type="hidden" name="projects" value={projects} />
+                {companyProjects.length > 0
+                && (role === ProfileTypes.Role.Moderator
+                    || role === ProfileTypes.Role.Observer 
+                    || role === ProfileTypes.Role.Translator
+                ) && (
+                    <DropdownList
+                        className={classNames(
+                            classes.projectDropdown,
+                            errors?.status && classes.dropdownError,
+                        )}
+                        name={t('myTeam.popup.projectsDropdownName')}
+                        elementsList={companyProjects.map(p => p.title)}
+                        onChange={i => toggleProject(i)}
+                        defaultIndex={userProjects.map(p => companyProjects.findIndex(cp => cp.uuid === p.uuid))}
+                        multiselect={true}
+                        allowDeselect={true}
+                    />
+                )}
+                <input type="hidden" name="projects" value={newUserProjects.map(p => p.uuid)} />
                 <TextButton
                     className={classes.saveButton}
                     text={t('myTeam.popup.saveButtonText')}
@@ -127,4 +160,4 @@ const TeamMemberPopup = ({
     );
 };
 
-export default TeamMemberPopup;
+export default EditTeamMemberPopup;
