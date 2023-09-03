@@ -11,6 +11,7 @@ type CheckboxProps = {
     labelElement?: ReactNode,
     defaultValue?: boolean,
     onChange?: () => void,
+    disabled?: boolean,
 };
 
 const Checkbox = ({
@@ -21,6 +22,7 @@ const Checkbox = ({
     labelElement,
     defaultValue,
     onChange,
+    disabled,
 }: CheckboxProps) => {
     const [ checked, setChecked ] = useState(defaultValue ?? false);
 
@@ -50,6 +52,7 @@ const Checkbox = ({
                     }
                 }}
                 value={name}
+                disabled={disabled}
             />
             {labelElement || label}
         </label>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ProfileTypes } from 'shared';
-import { Form } from 'react-router-dom';
+import { Form, useActionData, useLoaderData } from 'react-router-dom';
 
 import SubmitButton from '../../../components/submit-button/submit-button';
 import IconButton from '../../../components/icon-button/icon-button';
@@ -13,23 +13,21 @@ import nationalityToFlagIcon from '../../../utils/nationality-to-flag-icon';
 import classes from './personal-data-page.module.css';
 import PencilIconBlack from 'images/pencil-icon-black.svg';
 import Avatar from '../../../components/avatar/avatar';
+import useSuccessFeedback from '../../../hooks/use-success-feedback';
 
 
 const NATIONALITIES = [...Object.values(ProfileTypes.Nationality)] as ProfileTypes.Nationality[];
 
 const PersonalDataPage = () => {
     const { t } = useTranslation();
-    const personalData = {
-        avatarUrl: 'https://i.pravatar.cc/200',
-        name: 'Joe',
-        surname: 'Doe',
-        email: 'joe@doe.com',
-        companyName: 'Joedoes',
-        phoneNumber: '+123456789',
-        nationality: NATIONALITIES[1],
-        termsAndPrivacyPolicyAgreement: true,
-        newsletterAgreement: false,
-    };
+    const profileData = useLoaderData() as any;
+    const actionData = useActionData() as any;
+    useSuccessFeedback(actionData, {
+        passwordChange: t('personalData.passwordChangeSuccessMessage'),
+    })
+
+    const errors = actionData?.errors ?? {};
+
     const {
         avatarUrl,
         name,
@@ -37,11 +35,11 @@ const PersonalDataPage = () => {
         email,
         companyName,
         phoneNumber,
-        termsAndPrivacyPolicyAgreement,
-        newsletterAgreement,
-    } = personalData;
+        //termsAndPrivacyPolicyAgreement,
+        newsletter,
+    } = profileData;
     
-    const [ nationality, setNationality ] = useState(personalData.nationality);
+    const [ nationality, setNationality ] = useState(ProfileTypes.Nationality.British);
 
     return (
         <section className={classes.personalDataPage}>
@@ -121,15 +119,19 @@ const PersonalDataPage = () => {
                     <Checkbox
                         name="termsAndPrivacyPolicyAgreement"
                         label={t('join.page3.rulesAgreement.text')}
-                        defaultValue={termsAndPrivacyPolicyAgreement}
+                        defaultValue={true}
+                        disabled={true}
                     />
                     <Checkbox
-                        name="newsletterAgreement"
+                        name="newsletter"
                         label={t('join.page3.inputs.newsletter')}
-                        defaultValue={newsletterAgreement}
+                        defaultValue={newsletter}
                     />
                 </Form>
-                <Form className={classes.changePassword}>
+                <Form
+                    method="post"
+                    className={classes.changePassword}
+                >
                     <h6 className={classes.subtitle}>
                         {t('personalData.changePasswordSubtitle')}
                     </h6>
@@ -138,18 +140,22 @@ const PersonalDataPage = () => {
                             name="currentPassword"
                             type="password"
                             placeholder={t('personalData.currentPassword')}
+                            error={errors.currentPassword}
                         />
                         <TextInput
                             name="newPassword"
                             type="password"
                             placeholder={t('personalData.newPassword')}
+                            error={errors.newPassword}
                         />
                         <TextInput
                             name="repeatPassword"
                             type="password"
                             placeholder={t('personalData.repeatPassword')}
+                            error={errors.repeatPassword}
                         />
                     </div>
+                    <input type="hidden" name="type" value="changePassword" />
                     <SubmitButton
                         className={classes.changePasswordButton}
                         text={t('personalData.save')}

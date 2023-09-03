@@ -82,6 +82,8 @@ import MyAccountLoader from './src/loaders/app/my-account-loader';
 import { ProfileTypes } from 'shared';
 import PermissionsCheckLoader from './src/loaders/permissions-check-loader';
 import LoginCheckLoader from './src/loaders/login-check-loader';
+import PersonalDataLoader from './src/loaders/app/personal-data-loader';
+import PersonalDataAction from './src/actions/app/personal-data-action';
 
 const { Role } = ProfileTypes;
 
@@ -169,6 +171,8 @@ const router = createBrowserRouter(
                     <Route
                         path={APP_ROUTES.PERSONAL_DATA.PATH}
                         element={<PersonalDataPage />}
+                        loader={PersonalDataLoader}
+                        action={PersonalDataAction}
                     />
                     <Route
                         path={APP_ROUTES.COMPANY_DATA.PATH}

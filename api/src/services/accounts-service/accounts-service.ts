@@ -475,6 +475,8 @@ export default class AccountsService {
             gender: profileData.gender,
             avatarUrl: profileData.avatarUrl,
             phoneNumber: profileData.phoneNumber,
+            email: account.email,
+            newsletter: account.newsletter,
         }
 
         if (RecruiterProfile) {
@@ -497,6 +499,20 @@ export default class AccountsService {
         }
 
         await account.update({ passwordHash: hash(password) });
+    }
+
+    changePassword = async (
+        uuid: string,
+        oldPassword: string,
+        newPassword: string,
+    ) => {
+        const account = await this.getAccount({ uuid });
+
+        if (account.passwordHash !== hash(oldPassword)) {
+            throw new IncorrectPasswordError();
+        }
+
+        await account.update({ passwordHash: hash(newPassword) });
     }
 
     requestPasswordReset = async (

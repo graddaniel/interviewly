@@ -15,6 +15,10 @@ const pl = {
             join: {
                 repeatPasswordError: 'Hasła się różnią',
             },
+            changePassword: {
+                repeatPasswordError: 'Hasła się różnią',
+                newPasswordSameAsOld: 'Nowe hasło jest takie samo jak poprzednie',
+            },
             projectRespondent: {
                 meetingDateError: 'Wybierz przyszłą datę',
             },
@@ -283,6 +287,7 @@ Zgoda nieobowiązkowa`,
             newPassword: 'Nowe hasło',
             repeatPassword: 'Powtórz nowe hasło',
             save: 'Zapisz',
+            passwordChangeSuccessMessage: 'Hasło zostało zmienione',
         },
         companyData: {
             title: 'Dane firmy',

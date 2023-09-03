@@ -93,7 +93,7 @@ export default class AccountsController {
         res.status(StatusCodes.OK).send(profile);
     }
 
-    patchAccount = async (
+    patchAccountConfirmed = async (
         req: Request,
         res: Response,
     ) => {
@@ -101,20 +101,54 @@ export default class AccountsController {
             accountId,
         } = req.params;
 
+        await this.accountsService.confirmAccountRegistration(accountId);
+
+        res.status(StatusCodes.OK).send();
+    }
+
+    patchAccountPassword = async (
+        req: Request,
+        res: Response,
+    ) => {
         const {
-            confirm,
+            accountId: accountUuid,
+        } = req.params;
+
+        const {
             password,
         } = req.body;
 
-        if (confirm) { 
-            await this.accountsService.confirmAccountRegistration(accountId);
-        }
-        
-        if (password) {
-            await AccountsValidator.validateNewPassword({ password });
+        await AccountsValidator.validateNewPassword(password);
 
-            await this.accountsService.setPassword(accountId, password);
-        }
+        await this.accountsService.setPassword(accountUuid, password);
+        await this.accountsService.confirmAccountRegistration(accountUuid);
+
+        res.status(StatusCodes.OK).send();
+    }
+
+    patchCurrentAccountPassword = async (
+        req: AuthenticatedRequest,
+        res: Response,
+    ) => {
+        const {
+            uuid,
+        } = req.currentUser;
+
+        const {
+            newPassword,
+            oldPassword,
+        } = req.body;
+
+        await AccountsValidator.validatePasswordChange(
+            oldPassword,
+            newPassword,
+        );
+
+        await this.accountsService.changePassword(
+            uuid,
+            oldPassword,
+            newPassword,
+        );
 
         res.status(StatusCodes.OK).send();
     }

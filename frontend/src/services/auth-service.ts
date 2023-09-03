@@ -52,7 +52,7 @@ export default class AuthService {
     };
 
     static confirm = async (accountUuid: string) => {
-        const response = await axios.patch(`${API_HOST}/accounts/${accountUuid}`, {
+        const response = await axios.patch(`${API_HOST}/accounts/${accountUuid}/confirm`, {
             confirm: true,
         });
 
@@ -60,9 +60,26 @@ export default class AuthService {
     }
 
     static setPasswordAndConfirm = async (accountUuid: string, password: string) => {
-        const response = await axios.patch(`${API_HOST}/accounts/${accountUuid}`, {
+        const response = await axios.patch(`${API_HOST}/accounts/${accountUuid}/password`, {
             password,
-            confirm: true,
+        });
+
+        return response.data;
+    }
+
+    static changePassword = async (
+        oldPassword: string,
+        newPassword: string,
+    ) => {
+        const accessToken = sessionStorage.getItem('accessToken') || localStorage.getItem('accessToken');
+
+        const response = await axios.patch(`${API_HOST}/accounts/password`, {
+            oldPassword,
+            newPassword,
+        }, {
+            headers: {
+                'authorization': `bearer ${accessToken}`
+            },
         });
 
         return response.data;

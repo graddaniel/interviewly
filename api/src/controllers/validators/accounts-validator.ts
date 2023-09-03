@@ -4,6 +4,7 @@ import {
 import { ValidationSchemas } from 'shared';
 
 import validate from './validate';
+import ValidationError from './validation-error';
 
 
 const schemas = ValidationSchemas.instance();
@@ -45,11 +46,37 @@ export default class AccountsValidator {
         await validate(companyAccountSchema, companyAccount);
     }
 
-    static async validateNewPassword(newPassword) {
+    static async validateNewPassword(
+        newPassword: string,
+    ) {
         const newPasswordSchema = object({
             password: schemas.accountPassword,
         });
 
-        await validate(newPasswordSchema, newPassword);
+        await validate(newPasswordSchema, {
+            password: newPassword,
+        });
+    }
+
+    static async validatePasswordChange(
+        newPassword: string,
+        oldPassword: string,
+    ) {
+        const newPasswordSchema = object({
+            newPassword: schemas.accountPassword,
+            oldPassword: schemas.accountPassword,
+        });
+
+        await validate(newPasswordSchema, {
+            newPassword,
+            oldPassword,
+        });
+
+        if (oldPassword === newPassword) {
+            throw new ValidationError(
+                'newPassword',
+                'New password is the same as old one'
+            );
+        }
     }
 }

@@ -142,7 +142,14 @@ export default class Appplication {
         const accountsRouter = express.Router();
         accountsRouter.get('/', extractCredentials, accountsController.login);
         accountsRouter.post('/', extractCredentials, accountsController.register);
-        accountsRouter.patch('/:accountId', accountsController.patchAccount);
+        accountsRouter.patch('/:accountId/confirm', accountsController.patchAccountConfirmed);
+        accountsRouter.patch('/:accountId/password', accountsController.patchAccountPassword);
+        accountsRouter.patch(
+            '/password',
+            requireJWT,
+            accountsController.patchCurrentAccountPassword
+        );
+
         accountsRouter.get(
             '/:accountId/profile',
             requireJWT,
