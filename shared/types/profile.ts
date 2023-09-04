@@ -31,13 +31,22 @@ enum Nationality {
     Ukrainian = 'ukrainian',
 };
 
-enum Sector {
-    Education = 'education',
-};
+enum MartialStatus {
+    SingleMan = 'singleMan',
+    SingleWoman = 'singleWoman',
+    MarriedMan = 'marriedMan',
+    MarriedWoman = 'marriedWoman',
+    Widower = 'widower',
+    Widow = 'widow',
+    DivorcedMan = 'divorcedMan',
+    DivorcedWoman = 'divorcedWoman',
+    SeparatedMan = 'separatedMan',
+    SeparatedWoman = 'separatedWoman',
+}
 
 export {
     Role,
     Gender,
     Nationality,
-    Sector,
+    MartialStatus,
 };

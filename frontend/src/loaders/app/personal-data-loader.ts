@@ -7,7 +7,7 @@ export default async function PersonalDataLoader() {
         return null;
     }
 
-    const profileData = await ProfileService.getProfile(auth.currentUser.uuid);
+    const profileData = await ProfileService.getProfile();
 
     return profileData;
 }

@@ -6,6 +6,7 @@ import type { Request, Response } from 'express';
 
 import type AccountsService from '../services/accounts-service/accounts-service';
 import type { AuthenticatedRequest, AuthenticationRequest } from '../generic/types';
+import { AccountTypes } from 'shared';
 
 
 export default class AccountsController {
@@ -89,6 +90,26 @@ export default class AccountsController {
         } = req.currentUser;
 
         const profile = await this.accountsService.getProfile(uuid);
+
+        res.status(StatusCodes.OK).send(profile);
+    }
+
+    updateAccountProfile = async (
+        req: AuthenticatedRequest,
+        res: Response,
+    ) => {
+        const {
+            uuid,
+            type,
+        } = req.currentUser;
+
+        const profileData = req.body;
+
+        type === AccountTypes.Type.RECRUITER
+            ? await AccountsValidator.validateRecruiterProfileData(profileData)
+            : await AccountsValidator.validateRespondentProfileData(profileData);
+
+        const profile = await this.accountsService.updateProfile(uuid, profileData);
 
         res.status(StatusCodes.OK).send(profile);
     }

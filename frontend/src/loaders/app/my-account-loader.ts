@@ -15,7 +15,7 @@ export default async function MyAccountLoader({
         limit: 1,
     });
 
-    const profile = await ProfileService.getProfile(auth.currentUser?.uuid);
+    const profile = await ProfileService.getProfile();
 
     return {
         upcomingMeeting: upcomingMeeting.length > 0 ? upcomingMeeting[0] : {},

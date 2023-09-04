@@ -79,4 +79,44 @@ export default class AccountsValidator {
             );
         }
     }
+
+    static async validateRecruiterProfileData(
+        profileData: any,
+    ) {
+        const newPasswordSchema = object({
+            name: schemas.accountName,
+            surname: schemas.accountSurname,
+            gender: schemas.gender,
+            phoneNumber: schemas.accountPhoneNumber,
+            newsletter: schemas.accountNewsletter,
+            sector: schemas.recruiterProfile.sector,
+        });
+
+        await validate(newPasswordSchema, profileData);
+    }
+
+    static async validateRespondentProfileData(
+        profileData: any,
+    ) {
+        const newPasswordSchema = object({
+            name: schemas.accountName,
+            surname: schemas.accountSurname,
+            gender: schemas.gender,
+            phoneNumber: schemas.accountPhoneNumber,
+            newsletter: schemas.accountNewsletter,
+            bankAccountNumber: schemas.respondentProfile.bankAccountNumber,
+            birthYear: schemas.respondentProfile.birthYear,
+            province: schemas.respondentProfile.province,
+            city: schemas.respondentProfile.city,
+            zipCode: schemas.respondentProfile.zipCode,
+            street: schemas.respondentProfile.street,
+            profession: schemas.respondentProfile.profession,
+            specialization: schemas.respondentProfile.specialization,
+            martialStatus: schemas.respondentProfile.martialStatus,
+            hasChildren: schemas.respondentProfile.hasChildren,
+            childrenCount: schemas.respondentProfile.childrenCount,
+        });
+
+        await validate(newPasswordSchema, profileData);
+    }
 }

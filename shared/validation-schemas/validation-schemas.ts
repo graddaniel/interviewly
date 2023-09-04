@@ -3,6 +3,7 @@ import {
     number,
     array,
     object,
+    boolean,
 } from 'yup';
 
 import { ErrorCodes } from '../errors';
@@ -12,6 +13,7 @@ import { BoolStrings } from '../types/generic';
 import config from '../config'; 
 
 import type { Schema } from 'yup'; 
+import { MartialStatus } from '../types/profile';
 
 
 const validationConfig = config.validation;
@@ -26,6 +28,8 @@ export default class ValidationSchemas {
     accountPassword: Schema;
     accountRole: Schema;
     accountStatus: Schema;
+    accountPhoneNumber: Schema;
+    accountNewsletter: Schema;
     gender: Schema;
     companyName: Schema;
     address: {
@@ -35,6 +39,22 @@ export default class ValidationSchemas {
         buildingNumber: Schema;
         unitNumber: Schema;
         postalCode: Schema;
+    };
+    recruiterProfile: {
+        sector: Schema;
+    };
+    respondentProfile: {
+        bankAccountNumber: Schema;
+        birthYear: Schema;
+        province: Schema;
+        city: Schema;
+        zipCode: Schema;
+        street: Schema;
+        profession: Schema;
+        specialization: Schema;
+        martialStatus: Schema;
+        hasChildren: Schema;
+        childrenCount: Schema;
     };
     company: {
         name: Schema;
@@ -114,6 +134,10 @@ export default class ValidationSchemas {
             .required(`${ErrorCodes.AccountStatusRequired}`)
             .oneOf(Object.values(AccountTypes.Status), `${ErrorCodes.AccountStatusIncorrect}`);
 
+        this.accountPhoneNumber = string()
+            .max(validationConfig.phoneNumber.maxLength, `${ErrorCodes.AccountPhoneNumberTooLong}`);
+        this.accountNewsletter = boolean();
+
         this.address = {
             country: string()
                 .min(validationConfig.address.country.minLength, `${ErrorCodes.AddressCountryTooShort}`)
@@ -131,6 +155,36 @@ export default class ValidationSchemas {
             postalCode: string()
                 .min(validationConfig.address.postalCode.minLength, `${ErrorCodes.AddressPostalCodeTooShort}`)
                 .max(validationConfig.address.postalCode.maxLength, `${ErrorCodes.AddressCountryTooLong}`),
+        };
+
+        this.recruiterProfile = {
+            sector: string()
+                .max(validationConfig.profile.mediumString.maxLength, `${ErrorCodes.ProfileMediumStringTooLong}`),
+        };
+
+        this.respondentProfile = {
+            bankAccountNumber: string()
+                .max(validationConfig.profile.mediumString.maxLength, `${ErrorCodes.ProfileMediumStringTooLong}`),
+            birthYear: number()
+                .min(validationConfig.profile.birthYear.min, `${ErrorCodes.RecruiterProfileBirthYearTooLow}`)
+                .max(validationConfig.profile.birthYear.max, `${ErrorCodes.RecruiterProfileBirthYearTooHigh}`),
+            province: string()
+                .max(validationConfig.profile.mediumString.maxLength, `${ErrorCodes.ProfileMediumStringTooLong}`),
+            city: string()
+                .max(validationConfig.profile.mediumString.maxLength, `${ErrorCodes.ProfileMediumStringTooLong}`),
+            zipCode: string()
+                .max(validationConfig.profile.mediumString.maxLength, `${ErrorCodes.ProfileMediumStringTooLong}`),
+            street: string()
+                .max(validationConfig.profile.mediumString.maxLength, `${ErrorCodes.ProfileMediumStringTooLong}`),
+            profession: string()
+                .max(validationConfig.profile.mediumString.maxLength, `${ErrorCodes.ProfileMediumStringTooLong}`),
+            specialization: string()
+                .max(validationConfig.profile.mediumString.maxLength, `${ErrorCodes.ProfileMediumStringTooLong}`),
+            martialStatus: string()
+                .oneOf(Object.values(MartialStatus), `${ErrorCodes.RecruiterProfileMartialStatusIncorrect}`),
+            hasChildren: boolean(),
+            childrenCount: number()
+                .max(validationConfig.profile.birthYear.max, `${ErrorCodes.RecruiterProfileChildrenCountTooHigh}`),
         };
             
         this.company = {

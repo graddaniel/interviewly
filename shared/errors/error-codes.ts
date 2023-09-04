@@ -41,6 +41,7 @@ enum ErrorCodes {
     AccountRoleIncorrect = 30071,
     AccountStatusRequired = 30080,
     AccountStatusIncorrect = 30081,
+    AccountPhoneNumberTooLong = 30093,
 
     ProjectTitleRequired = 30100,
     ProjectTitleIncorrect = 30101,
@@ -97,6 +98,12 @@ enum ErrorCodes {
     AddressUnitNumberTooLong = 30743,
     AddressPostalCodeTooShort = 30752,
     AddressPostalCodeTooLong = 30753,
+
+    ProfileMediumStringTooLong = 30803,
+    RecruiterProfileMartialStatusIncorrect = 30811,
+    RecruiterProfileChildrenCountTooHigh = 30822,
+    RecruiterProfileBirthYearTooLow = 30931,
+    RecruiterProfileBirthYearTooHigh = 30932,
 };
 
 export default ErrorCodes;

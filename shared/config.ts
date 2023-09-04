@@ -21,6 +21,21 @@ const config = {
             "maxLength": 32,
             "regexp": "^[A-Za-z ]+$"
         },
+        "phoneNumber": {
+            "maxLength": 15,
+        },
+        "profile": {
+            "mediumString": {
+                "maxLength": 64,
+            },
+            "birthYear": {
+                "min": 1900,
+                "max": 2023,
+            },
+            "childrenCount": {
+                "max": 999,
+            },
+        },
         "address": {
             "country": {
                 "minLength": 2,

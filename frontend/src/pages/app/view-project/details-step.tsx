@@ -140,6 +140,7 @@ const DetailsStep = ({
                     name="respondentFee"
                     label=""
                     defaultValue={participantsPaymentValue}
+                    immutable={true}
                 />
                 <DropdownList
                     className={classes.feeCurrencyDropdown}

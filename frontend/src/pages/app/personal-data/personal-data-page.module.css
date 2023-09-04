@@ -28,15 +28,6 @@
 .avatarEditor {
     position: relative;
 }
-.avatar {
-    height: 9vw !important;
-    width: 9vw  !important;
-    border-radius: 4.5vw !important;
-}
-.avatarPlaceholderIcon {
-    width: 2.5vw !important;
-    height: 2.5vw !important;
-}
 .editAvatarButton {
     position: absolute;
     top: 0;
@@ -60,6 +51,34 @@
 }
 .input {
     width: 19vw;
+}
+.checkbox {
+    width: 19vw;
+    display: flex;
+    align-items: center;
+}
+.bankInputWrapper {
+    height: 4vw;
+    display: flex;
+    align-items: flex-end;
+}
+.inputPlaceholder {
+    width: 19vw;
+    height: 5vw;
+}
+.dropdown {
+    width: 19vw;
+    height: 4vw;
+    z-index: 1;
+}
+.dropdownList {
+    padding-top: 4vw;
+}
+.childrenWrapper {
+    width: 100%;
+    height: 6vw;
+    display: flex;
+    justify-content: space-between;
 }
 
 .submitButton {
@@ -98,6 +117,15 @@
 }
 
 @media (min-width: min-large) {
+    .avatar {
+        height: 9vw !important;
+        width: 9vw  !important;
+        border-radius: 4.5vw !important;
+    }
+    .avatarPlaceholderIcon {
+        width: 2.5vw !important;
+        height: 2.5vw !important;
+    }
 }
 
 @media (min-width: min-medium) and (max-width: max-medium) {

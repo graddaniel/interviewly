@@ -151,9 +151,14 @@ export default class Appplication {
         );
 
         accountsRouter.get(
-            '/:accountId/profile',
+            '/profile',
             requireJWT,
             accountsController.getAccountProfile,
+        );
+        accountsRouter.post(
+            '/profile',
+            requireJWT,
+            accountsController.updateAccountProfile,
         );
         accountsRouter.post('/:accountId/password/reset', accountsController.requestPasswordReset);
         accountsRouter.patch('/:accountId/password/reset/confirm', accountsController.confirmPasswordReset);

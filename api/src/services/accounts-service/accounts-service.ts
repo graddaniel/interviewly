@@ -464,10 +464,10 @@ export default class AccountsService {
         });
 
         const {
-            RecruiterProfile,
-            RespondentProfile,
+            RecruiterProfile: recruiterProfile,
+            RespondentProfile: respondentProfile,
         } = account;
-        const profileData = RecruiterProfile || RespondentProfile;
+        const profileData = (recruiterProfile || respondentProfile);
 
         const profile: any = {
             name: profileData.name,
@@ -479,13 +479,85 @@ export default class AccountsService {
             newsletter: account.newsletter,
         }
 
-        if (RecruiterProfile) {
-            const company = await RecruiterProfile.getCompany();
+        if (recruiterProfile) {
+            const company = await recruiterProfile.getCompany();
 
             profile.companyName = company.name;
+            profile.sector = recruiterProfile.sector;
+        } else if (respondentProfile) {
+            profile.introductionVideoUrl = respondentProfile.introductionVideoUrl;
+            profile.bankAccountNumber = respondentProfile.bankAccountNumber;
+            profile.createdFromFile = respondentProfile.createdFromFile;
+            profile.birthYear = respondentProfile.birthYear;
+            profile.province = respondentProfile.province;
+            profile.city = respondentProfile.city;
+            profile.zipCode = respondentProfile.zipCode;
+            profile.street = respondentProfile.street;
+            profile.profession = respondentProfile.profession;
+            profile.specialization = respondentProfile.specialization;
+            profile.martialStatus = respondentProfile.martialStatus;
+            profile.hasChildren = respondentProfile.hasChildren;
+            profile.childrenCount = respondentProfile.childrenCount;
         }
 
         return profile;
+    }
+
+    updateProfile = async (
+        accountUuid: string,
+        profileData: any,
+    ) => {
+        const account = await this.getAccount({ uuid: accountUuid});
+
+        if (account.type === AccountTypes.Type.RECRUITER) {
+            const { RecruiterProfile: profile } = account;
+
+            profile.name = profileData.name;
+            profile.surname = profileData.surname;
+            profile.gender = profileData.gender;
+            profile.phoneNumber = profileData.phoneNumber;
+            account.newsletter = profileData.newsletter;
+        
+            profile.sector = profileData.sector;
+
+            if (profile.changed()) {
+                await profile.save();
+            }
+            if (account.changed()) {
+                await account.save();
+            }
+            //TODO profile.nationality
+        } else {
+            const { RespondentProfile: profile } = account;
+
+            profile.name = profileData.name;
+            profile.surname = profileData.surname;
+            profile.gender = profileData.gender;
+            profile.phoneNumber = profileData.phoneNumber;
+            account.newsletter = profileData.newsletter;
+
+            profile.bankAccountNumber = profileData.bankAccountNumber;
+            if (profileData.birthYear) {
+                profile.birthYear = profileData.birthYear;
+            }
+            profile.province = profileData.province;
+            profile.city = profileData.city;
+            profile.zipCode = profileData.zipCode;
+            profile.street = profileData.street;
+            profile.profession = profileData.profession;
+            profile.specialization = profileData.specialization;
+            profile.martialStatus = profileData.martialStatus;
+            profile.hasChildren = profileData.hasChildren;
+            profile.childrenCount = profileData.childrenCount;
+            console.log(profile.changed(), account.changed())
+            if (profile.changed()) {
+                await profile.save();
+            }
+            if (account.changed()) {
+                await account.save();
+            }
+            //TODO profile.nationality
+        }
     }
 
     setPassword = async (

@@ -45,6 +45,7 @@ const ErrorsTranslations = {
             [ErrorCodes.AccountRoleIncorrect]: 'Role value is incorrect',
             [ErrorCodes.AccountStatusRequired]: 'Status is required',
             [ErrorCodes.AccountStatusIncorrect]: 'Status is incorrect',
+            [ErrorCodes.AccountPhoneNumberTooLong]: 'Number is too long',
 
             [ErrorCodes.ProjectTitleRequired]: 'Title is required',
             [ErrorCodes.ProjectTitleIncorrect]: 'Title contains disallowed characters',
@@ -101,6 +102,12 @@ const ErrorsTranslations = {
             [ErrorCodes.AddressUnitNumberTooLong]: 'Building\'s unit number is too long',
             [ErrorCodes.AddressPostalCodeTooShort]: 'Postal code is too short',
             [ErrorCodes.AddressPostalCodeTooLong]: 'Postal code is too long',
+
+            [ErrorCodes.ProfileMediumStringTooLong]: 'Value is too long',
+            [ErrorCodes.RecruiterProfileMartialStatusIncorrect]: 'Incorrect value',
+            [ErrorCodes.RecruiterProfileChildrenCountTooHigh]: 'Value is too high',
+            [ErrorCodes.RecruiterProfileBirthYearTooLow]: 'Value is too low',
+            [ErrorCodes.RecruiterProfileBirthYearTooHigh]: 'Value is too high',
         },
     },
     pl: {
@@ -147,6 +154,7 @@ const ErrorsTranslations = {
             [ErrorCodes.AccountRoleIncorrect]: 'Wartość Roli jest niepoprawna',
             [ErrorCodes.AccountStatusRequired]: 'Status jest wymagany',
             [ErrorCodes.AccountStatusIncorrect]: 'Status jest niepoprawny',
+            [ErrorCodes.AccountPhoneNumberTooLong]: 'Numer jest zbyt długi',
 
             [ErrorCodes.ProjectTitleRequired]: 'Tytuł jest wymagany',
             [ErrorCodes.ProjectTitleIncorrect]: 'Tytuł zawiera nieodpowiednie znaki',
@@ -203,6 +211,12 @@ const ErrorsTranslations = {
             [ErrorCodes.AddressUnitNumberTooLong]: 'Numer lokalu jest zbyt długi',
             [ErrorCodes.AddressPostalCodeTooShort]: 'Kod pocztowy jest zbyt krótki',
             [ErrorCodes.AddressPostalCodeTooLong]: 'Kod pocztowy jest zbyt długi',
+
+            [ErrorCodes.ProfileMediumStringTooLong]: 'Wartość jest zbyt długa',
+            [ErrorCodes.RecruiterProfileMartialStatusIncorrect]: 'Nieodpowiednia wartość',
+            [ErrorCodes.RecruiterProfileChildrenCountTooHigh]: 'Wartość jest zbyt wysoka',
+            [ErrorCodes.RecruiterProfileBirthYearTooLow]: 'Wartość jest zbyt niska',
+            [ErrorCodes.RecruiterProfileBirthYearTooHigh]: 'Wartość jest zbyt wysoka',
         },
     },
 };

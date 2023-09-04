@@ -20,16 +20,19 @@ export default class RespondentProfile extends Model {
     declare gender: ProfileTypes.Gender;
     declare avatarUrl: string;
     declare phoneNumber: string;
-    declare bankAccountNumber: number;
-    /**
--zgody - FK
--?rok urodzenia - enum
--?zawód - enum
--?specjalizacja - enum
--?martial status - enum
--?children - bool
--?children count
-     */
+    declare introductionVideoUrl: string;
+    declare bankAccountNumber: string;
+    declare createdFromFile: boolean;
+    declare birthYear: number;
+    declare province: string;
+    declare city: string;
+    declare zipCode: string;
+    declare street: string;
+    declare profession: string;
+    declare specialization: string;
+    declare martialStatus: ProfileTypes.MartialStatus;
+    declare hasChildren: boolean;
+    declare childrenCount: number;
 
     declare Account: AccountModel;
     declare SurveyParticipant: SurveyParticipantModel;
@@ -52,19 +55,49 @@ RespondentProfile.init({
     avatarUrl: {
         type: DataTypes.STRING,
     },
-    phoneNumber: {
-        type: DataTypes.STRING,
-    },
     introductionVideoUrl: {
         type: DataTypes.STRING,
     },
+    phoneNumber: {
+        type: DataTypes.STRING,
+    },
     bankAccountNumber: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.STRING,
     },
     createdFromFile: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: false,
+    },
+    birthYear: {
+        type: DataTypes.SMALLINT,
+    },
+    province: {
+        type: DataTypes.STRING,
+    },
+    city: {
+        type: DataTypes.STRING,
+    },
+    zipCode: {
+        type: DataTypes.STRING,
+    },
+    street: {
+        type: DataTypes.STRING,
+    },
+    profession: {
+        type: DataTypes.STRING,
+    },
+    specialization: {
+        type: DataTypes.STRING,
+    },
+    martialStatus: {
+        type: DataTypes.ENUM(...Object.values(ProfileTypes.MartialStatus)),
+    },
+    hasChildren: {
+        type: DataTypes.BOOLEAN,
+    },
+    childrenCount: {
+        type: DataTypes.SMALLINT,
     },
 }, {
     timestamps: false,

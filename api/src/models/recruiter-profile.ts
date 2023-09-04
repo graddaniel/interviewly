@@ -22,7 +22,7 @@ export default class RecruiterProfile extends Model {
     declare surname: string;
     declare gender: ProfileTypes.Gender;
     declare nationality: ProfileTypes.Nationality;
-    declare sector: ProfileTypes.Sector;
+    declare sector: string;
     declare avatarUrl: string;
     declare phoneNumber: string;
 
@@ -55,7 +55,7 @@ RecruiterProfile.init({
         type: DataTypes.ENUM(...Object.values(ProfileTypes.Nationality)),
     },
     sector: {
-        type: DataTypes.ENUM(...Object.values(ProfileTypes.Sector)),
+        type: DataTypes.STRING,
     },
     avatarUrl: {
         type: DataTypes.STRING,
