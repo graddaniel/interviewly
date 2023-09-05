@@ -40,17 +40,25 @@
     display: flex;
     gap: 2vw;
 }
-.pending {
-    background-color: var(--YELLOW1);
-    color: var(--YELLOW2);
+.draft {
+    color: var(--GRAY2);
+    background-color: var(--GRAY1);
 }
-.canceled {
-    background-color: var(--RED1);
-    color: var(--RED2);
+.awaitingPayment {
+    color: var(--YELLOW2);
+    background-color: var(--YELLOW1);
+}
+.new {
+    color: var(--BLUE2);
+    background-color: var(--BLUE1);
+}
+.inProgress {
+    color: var(--GREEN2);
+    background-color: var(--GREEN1);
 }
 .finished {
-    background-color: var(--GREEN1);
-    color: var(--GREEN2);
+    color: var(--BLACK);
+    background-color: var(--WHITE);
 }
 
 .content {

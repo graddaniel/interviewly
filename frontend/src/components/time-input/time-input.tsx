@@ -20,7 +20,7 @@ const TimeInput = ({
     error,
 }: TimeInputProps) => {
     const [ time, setTime ] = useState(defaultValue ?? '');
-
+    console.log(time)
     useEffect(() => {
         onChange(time);
     }, [time]);

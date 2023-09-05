@@ -22,7 +22,7 @@
 }
 .disabled {
     border-color: var(--GRAY2) !important;
-    background-color: var(--GRAY) !important;
+    background-color: var(--GRAY1) !important;
 }
 .disableClick {
     cursor: not-allowed;

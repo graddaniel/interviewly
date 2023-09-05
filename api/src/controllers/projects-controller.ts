@@ -36,9 +36,16 @@ export default class ProjectsController {
         let projects: any[] = [];
         if (currentUserType === AccountTypes.Type.RESPONDENT) {
             projects = await this.projectsService.getAllProjectsOfUser(currentUserUuid);
-        } else if (currentUserRole === ProfileTypes.Role.Admin && !userUuid) {
+        } else if (
+            (currentUserRole === ProfileTypes.Role.Admin
+                || currentUserRole === ProfileTypes.Role.InterviewlyStaff)
+            && !userUuid
+        ) {
             projects = await this.projectsService.getAllProjectsOfCompany(currentuserCompanyUuid);
-        } else if (currentUserRole === ProfileTypes.Role.Admin && userUuid) {
+        } else if (
+            (currentUserRole === ProfileTypes.Role.Admin
+                || currentUserRole === ProfileTypes.Role.InterviewlyStaff)
+            && userUuid) {
             //TODO check if userUuid belongs to admin's companys
             projects = await this.projectsService.getAllProjectsOfUser(userUuid as string);
         } else if (currentUserRole === ProfileTypes.Role.Observer
@@ -146,8 +153,34 @@ export default class ProjectsController {
         }
 
         console.log("FORM DATA", formData, step)
+        if (step === ProjectTypes.EditSteps.Summary) {
+            await this.projectsService.setProjectStatus(
+                companyUuid,
+                projectId,
+                ProjectTypes.Status.AwaitingPayment,
+            );
+        } else {
+            await this.projectsService.updateProject(companyUuid, projectId, formData);
+        }
 
-        await this.projectsService.updateProject(companyUuid, projectId, formData);
+        res.status(StatusCodes.OK).send();
+    }
+
+    markProjectAsPaid = async (
+        req: AuthenticatedRequest,
+        res: Response,
+    ) => {
+        const { projectId } = req.params;
+
+        const {
+            companyUuid,
+        } = req.currentUser;
+
+        await this.projectsService.setProjectStatus(
+            companyUuid,
+            projectId,
+            ProjectTypes.Status.New,
+        );
 
         res.status(StatusCodes.OK).send();
     }
@@ -161,15 +194,19 @@ export default class ProjectsController {
             templateUuid,
             startDate: startDateString,
             endDate: endDateString,
-         } = req.body;
+        } = req.body;
+        const {
+            uuid: currentUserUuid,
+        } = req.currentUser;
 
         //TODO validate both uuids
 
         await this.projectsService.addSurveyToProject(
+            currentUserUuid,
             templateUuid,
             new Date(parseInt(startDateString, 10)),
             new Date(parseInt(endDateString, 10)),
-            projectId
+            projectId,
         );
 
         res.status(StatusCodes.OK).send();

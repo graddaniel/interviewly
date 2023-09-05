@@ -58,8 +58,8 @@
 }
 
 .disabled {
-    color: var(--GRAY);
-    border-color: var(--GRAY);
+    color: var(--GRAY1);
+    border-color: var(--GRAY1);
 }
 
 .listElement {

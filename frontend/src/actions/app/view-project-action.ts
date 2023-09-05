@@ -10,18 +10,57 @@ export default async function ViewProjectAction({
     params,
 }) {
     const { projectId } = params;
+    const formData = Object.fromEntries(await request.formData());
     const {
-        selectedTemplateUuid,
         type,
-        startDate,
-        endDate,
-    } = Object.fromEntries(await request.formData());
+    } = formData;
 
     // workaround to hide past results
     if (type === "reset") {
         return null;
     }
 
+    if (type === "markAsPaid") {
+        return markProjectAsPaid(projectId);
+    }
+
+    const {
+        selectedTemplateUuid,
+        startDate,
+        endDate,
+    } = formData;
+
+    return addSurvey(
+        projectId,
+        selectedTemplateUuid,
+        startDate,
+        endDate,
+    );
+}
+
+async function markProjectAsPaid(projectId: string) {
+    try {
+        await ProjectService.markProjectAsPaid(projectId);
+    } catch (error) {
+        return {
+            success: false,
+            errors: {
+                generic: error,
+            },
+        };
+    }
+
+    return {
+        success: true,
+    };
+}
+
+async function addSurvey(
+    projectId: string,
+    selectedTemplateUuid: string,
+    startDate,
+    endDate,
+) {
     if (startDate >= endDate) {
         return {
             success: false,

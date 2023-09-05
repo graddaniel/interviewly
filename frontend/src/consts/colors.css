@@ -2,7 +2,7 @@
     --BLACK: black;
     --WHITE: white;
     --RED: #FF0000;
-    --GRAY: lightgray;
+    --GRAY1: lightgray;
     --GRAY2: gray;
     --GRAY3: #B4B4B4;
     --COLOR1: #6B26A1;
@@ -21,5 +21,7 @@
     --YELLOW2: #B27821;
     --RED1: #F8DADA;
     --RED2: #B22121;
-    --BLUE1: #F3F5FF;
+    --BLUE1: #E4E8FF;
+    --BLUE2: #2274A5;
+    --BLUE3: #F3F5FF;
 }

@@ -263,8 +263,10 @@ Zgoda nieobowiązkowa`,
             interviewlyStaff: 'obługa Interviewly',
         },
         projectStatuses: {
-            pending: 'oczekujący',
-            canceled: 'wycofany',
+            draft: 'szkic',
+            awaitingPayment: 'do opłacenia',
+            new: 'nowy',
+            inProgress: 'w trakcie',
             finished: 'zakończony',
         },
         languages: {
@@ -346,6 +348,7 @@ Zgoda nieobowiązkowa`,
         viewProject: {
             title: 'Szczegóły projektu',
             edit: 'Edytuj',
+            markAsPaid: 'Oznacz jako zapłacony',
             steps: [
                 'Ogólne',
                 'Metodologia',

@@ -31,7 +31,7 @@
 }
 .errorText {
     color: var(--RED);
-};
+}
 .meetingDurationDropdown {
     z-index: 5;
 }

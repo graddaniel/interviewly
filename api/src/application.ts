@@ -177,14 +177,20 @@ export default class Appplication {
             '/accounts',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
-            requireProfileRoles(ProfileTypes.Role.Admin),
+            requireProfileRoles([
+                ProfileTypes.Role.Admin,
+                ProfileTypes.Role.InterviewlyStaff,
+            ]),
             companiesController.createCompanysAccount
         );
         companiesRouter.patch(
             '/accounts/:accountId',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
-            requireProfileRoles(ProfileTypes.Role.Admin),
+            requireProfileRoles([
+                ProfileTypes.Role.Admin,
+                ProfileTypes.Role.InterviewlyStaff,
+            ]),
             companiesController.editCompanysAccount
         );
         companiesRouter.get(
@@ -197,7 +203,10 @@ export default class Appplication {
             '/current',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
-            requireProfileRoles(ProfileTypes.Role.Admin),
+            requireProfileRoles([
+                ProfileTypes.Role.Admin,
+                ProfileTypes.Role.InterviewlyStaff,
+            ]),
             companiesController.editCompany
         );
         this.app.use('/companies', companiesRouter);
@@ -208,7 +217,10 @@ export default class Appplication {
             '/',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
-            requireProfileRoles(ProfileTypes.Role.Admin),
+            requireProfileRoles([
+                ProfileTypes.Role.Admin,
+                ProfileTypes.Role.InterviewlyStaff,
+            ]),
             projectsController.createProject
         );
         projectsRouter.get(
@@ -220,15 +232,31 @@ export default class Appplication {
             '/:projectId',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
-            requireProfileRoles(ProfileTypes.Role.Admin),
+            requireProfileRoles([
+                ProfileTypes.Role.Admin,
+                ProfileTypes.Role.InterviewlyStaff,
+            ]),
             projectUpdateFilesMiddleware,
             projectsController.updateProject
+        );
+        projectsRouter.patch(
+            '/:projectId/status',
+            requireJWT,
+            requireAccountType(AccountTypes.Type.RECRUITER),
+            requireProfileRoles([
+                ProfileTypes.Role.InterviewlyStaff,
+            ]),
+            projectsController.markProjectAsPaid
         );
         projectsRouter.post(
             '/:projectId/surveys',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
-            requireProfileRoles(ProfileTypes.Role.Admin),
+            requireProfileRoles([
+                ProfileTypes.Role.Admin,
+                ProfileTypes.Role.InterviewlyStaff,
+                ProfileTypes.Role.Moderator,
+            ]),
             projectsController.addSurveyToProject
         );
         projectsRouter.get(
@@ -246,7 +274,11 @@ export default class Appplication {
             '/:projectId/respondents/:respondentId/meetings',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
-            requireProfileRoles([ProfileTypes.Role.Admin, ProfileTypes.Role.Moderator]),
+            requireProfileRoles([
+                ProfileTypes.Role.InterviewlyStaff,
+                ProfileTypes.Role.Admin,
+                ProfileTypes.Role.Moderator,
+            ]),
             projectsController.putProjectRespondentMeeting,
         );
         this.app.use('/projects', projectsRouter);
@@ -278,28 +310,44 @@ export default class Appplication {
             '/',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
-            requireProfileRoles([ProfileTypes.Role.Admin, ProfileTypes.Role.Moderator]),
+            requireProfileRoles([
+                ProfileTypes.Role.InterviewlyStaff,
+                ProfileTypes.Role.Admin,
+                ProfileTypes.Role.Moderator,
+            ]),
             templatesController.getTemplates,
         );
         templatesRouter.post(
             '/',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
-            requireProfileRoles([ProfileTypes.Role.Admin, ProfileTypes.Role.Moderator]),
+            requireProfileRoles([
+                ProfileTypes.Role.InterviewlyStaff,
+                ProfileTypes.Role.Admin,
+                ProfileTypes.Role.Moderator,
+            ]),
             templatesController.postTemplate,
         );
         templatesRouter.get(
             '/:templateId',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
-            requireProfileRoles([ProfileTypes.Role.Admin, ProfileTypes.Role.Moderator]),
+            requireProfileRoles([
+                ProfileTypes.Role.InterviewlyStaff,
+                ProfileTypes.Role.Admin,
+                ProfileTypes.Role.Moderator,
+            ]),
             templatesController.getTemplate,
         );
         templatesRouter.patch(
             '/:templateId',
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
-            requireProfileRoles([ProfileTypes.Role.Admin, ProfileTypes.Role.Moderator]),
+            requireProfileRoles([
+                ProfileTypes.Role.InterviewlyStaff,
+                ProfileTypes.Role.Admin,
+                ProfileTypes.Role.Moderator,
+            ]),
             templatesController.patchTemplate,
         );
         this.app.use('/templates', templatesRouter);
@@ -320,6 +368,7 @@ export default class Appplication {
             requireJWT,
             requireAccountType(AccountTypes.Type.RECRUITER),
             requireProfileRoles([
+                ProfileTypes.Role.InterviewlyStaff,
                 ProfileTypes.Role.Admin,
                 ProfileTypes.Role.Moderator,
             ]),

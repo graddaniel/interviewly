@@ -43,7 +43,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 1.5vw;
-    background-color: var(--GRAY);
+    background-color: var(--GRAY1);
     cursor: pointer;
 }
 .playButton {

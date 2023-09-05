@@ -6,6 +6,7 @@ import { ProjectTypes, ValidationSchemas, Errors } from 'shared';
 
 import validate from './validate';
 import ValidationError from './validation-error';
+import moment from 'moment';
 
 const { ErrorCodes } = Errors;
 
@@ -81,5 +82,37 @@ export default class ProjectValidator {
         });
 
         await validate(newProjectSchema, newProject);
+    }
+
+    static validateCompleteProjectDraft = async (
+        projectDraft,
+    ) => {
+        const editProjectSchemas = object({
+            title: schemas.project.title,
+            description: schemas.project.description,
+            methodology: schemas.project.methodology,
+            otherRequirements: schemas.project.otherRequirements,
+            addLanguageTest: schemas.project.addLanguageTest,
+            addScreeningSurvey: schemas.project.addScreeningSurvey,
+            requireCandidateRecording: schemas.project.requireCandidateRecording,
+            participantsCount: schemas.project.participantsCount,
+            reserveParticipantsCount: schemas.project.reserveParticipantsCount,
+            meetingDuration: schemas.project.meetingDuration,
+            transcriptionNeeded: schemas.project.transcriptionNeeded,
+            moderatorNeeded: schemas.project.moderatorNeeded,
+            participantsPaymentCurrency: schemas.project.participantsPaymentCurrency,
+            participantsPaymentValue: schemas.project.participantsPaymentValue,
+        });
+
+        await validate(editProjectSchemas, projectDraft);
+
+        const {
+            startDate,
+            endDate,
+        } = projectDraft;
+
+        if (!startDate || !endDate || moment(endDate).isBefore(moment(startDate))) {
+            throw new Error('we dont care about the error type here');
+        }
     }
 }

@@ -34,9 +34,11 @@ const InterviewSection = () => {
     const {
         templates,
         meetings,
+        project,
     } = useLoaderData() as {
         templates: any[];
         meetings: any[];
+        project: any;
     };
 
     const upcomingInterviews = meetings.filter(m => !m.hasFinished);
@@ -200,6 +202,10 @@ const InterviewSection = () => {
             <SubmitButton
                 className={classes.saveSurveySelectionButton}
                 text={t('viewProject.methodology.interview.save')}
+                disabled={![
+                    ProjectTypes.Status.New,
+                    ProjectTypes.Status.InProgress,
+                ].includes(project.status)}
             />
         </Form>
     );

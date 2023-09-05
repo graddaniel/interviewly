@@ -1,5 +1,5 @@
 import { v4 as generateUuidV4 } from 'uuid';
-import { AccountTypes, ProfileTypes } from 'shared';
+import { AccountTypes, ProfileTypes, ProjectTypes } from 'shared';
 
 import RespondentProfileModel from '../../models/respondent-profile';
 import ProjectModel from '../../models/project'
@@ -24,6 +24,10 @@ import NotPermittedError from '../../generic/not-permitted-error';
 import S3Adapter from '../s3-adapter';
 import SurveysService from '../surveys-service/surveys-service';
 import MeetingFinishedError from '../meetings-service/errors/meeting-finished-error';
+import ProjectNoLongerEditableError from './errors/project-no-longer-editable';
+import ProjectValidator from '../../controllers/validators/project-validator';
+import IncompleteProjectDraftError from './errors/incomplete-project-draft-error';
+import IncorrectProjectStatusError from './errors/incorrect-proejct-status-error';
 
 type LimesurveyConfig = {
     url: string;
@@ -115,7 +119,7 @@ export default class ProjectsService {
         const company = await this.companiesService.getCompany({ uuid: companyUuid });
 
         const project = await ProjectModel.findOne({
-            attributes: ['id', 'uuid', 'title', 'description', 'methodology',
+            attributes: ['id', 'uuid', 'title', 'description', 'methodology', 'status',
                 'participantsCount', 'reserveParticipantsCount', 'meetingDuration',
                 'participantsPaymentCurrency', 'participantsPaymentValue',
                 'startDate', 'endDate', 'otherRequirements',
@@ -183,10 +187,14 @@ export default class ProjectsService {
             }
         }
 
-        return this.getOneCompanyProject(
+        const project = await this.getOneCompanyProject(
             companyUuid,
             projectUuid,
         );
+
+        await this.checkAndUpdateProjectStatus(project);
+
+        return project;
     }
 
     getOneRespondentProject = async (
@@ -199,8 +207,8 @@ export default class ProjectsService {
 
         const project = await ProjectModel.findOne({
             attributes: [
-                'id', 'uuid', 'title', 'description', 'methodology',   
-                'startDate', 'endDate',
+                'id', 'uuid', 'title', 'description', 'methodology',
+                'startDate', 'endDate', 'status',
             ],
             where: {
                 uuid: projectUuid,
@@ -217,6 +225,9 @@ export default class ProjectsService {
         if (!project) {
             throw new ProjectNotFoundError();
         }
+
+        await this.checkAndUpdateProjectStatus(project);
+
         //TODO exclude inactive surveys
         const surveys = await SurveyModel.findAll({
             attributes: [
@@ -318,22 +329,29 @@ export default class ProjectsService {
     //TODO no need to find the company by user when we have its uuid
     getAllProjectsOfUser = async (
         currentUserUuid: string,
-    ): Promise<ProjectModel[]> => {
+    ) => {
         const account = await this.accountsService.getAccount({ uuid: currentUserUuid });
 
+        let projects: ProjectModel[] = [];
         switch (account.type) {
             case AccountTypes.Type.RECRUITER:
-                return this.getAllProjectsOfRecruiter(account);
+                projects = await this.getAllProjectsOfRecruiter(account);
             case AccountTypes.Type.RESPONDENT:
-                return this.getAllProjectsOfRespondent(account);
+                projects = await this.getAllProjectsOfRespondent(account);
         }        
+
+        const mappedProjects = projects
+            .map(p => p.toJSON())
+            .map(({ id, ...project }) => ({ ...project }));
+
+        return mappedProjects;
     }
 
     getAllProjectsOfCompany = async (
         companyUuid: string,
     ) => {
-        return ProjectModel.findAll({
-            attributes: ['uuid', 'title', 'methodology', 'startDate', 'endDate'],
+        const projects = await ProjectModel.findAll({
+            attributes: ['id', 'uuid', 'title', 'methodology', 'startDate', 'endDate', 'status'],
             include: [{
                 association: ProjectModel.associations.CompanyModel,
                 where: {
@@ -341,6 +359,16 @@ export default class ProjectsService {
                 }
             }],
         });
+
+        const checkedProjects = await Promise.all(projects.map(
+            this.checkAndUpdateProjectStatus
+        ));
+
+        const mappedProjects = checkedProjects
+            .map(p => p.toJSON())
+            .map(({ Company, id, ...project }) => ({ ...project }));
+
+        return mappedProjects;
     }
 
     private getAllProjectsOfRecruiter = async (account: AccountModel) => {
@@ -348,7 +376,7 @@ export default class ProjectsService {
         const company = await account.RecruiterProfile.getCompany();
         //check user access
         const searchCriteria: any = {
-            attributes: ['uuid', 'title', 'methodology', 'startDate', 'endDate'],
+            attributes: ['id', 'uuid', 'title', 'methodology', 'startDate', 'endDate', 'status'],
             where: {
                 CompanyId: company.id,
             },
@@ -365,7 +393,9 @@ export default class ProjectsService {
             }];
         }
 
-        return ProjectModel.findAll(searchCriteria);
+        const projects = await ProjectModel.findAll(searchCriteria);
+
+        return Promise.all(projects.map(this.checkAndUpdateProjectStatus));
     }
 
     private getAllProjectsOfRespondent = async (account: AccountModel) => {
@@ -374,8 +404,8 @@ export default class ProjectsService {
 
         //const respondentsProjects = await respondentProfile.getProjects();
 
-        return ProjectModel.findAll({
-            attributes: ['uuid', 'title', 'methodology', 'startDate', 'endDate'],
+        const projects = await ProjectModel.findAll({
+            attributes: ['id', 'uuid', 'title', 'methodology', 'startDate', 'endDate', 'status'],
             include: [{
                 association: ProjectModel.associations.RespondentProfileModel,
                 attributes: [],
@@ -384,6 +414,38 @@ export default class ProjectsService {
                 }
             }],
         });
+
+        return Promise.all(projects.map(this.checkAndUpdateProjectStatus));
+    }
+
+    checkAndUpdateProjectStatus = async (
+        project: ProjectModel,
+    ) => {
+        const {
+            startDate,
+            endDate,
+        } = project;
+
+        // status reference may change below, thus we access it through project object
+        if (
+            project.status === ProjectTypes.Status.New
+            && moment().isAfter(moment(startDate))
+        ) {
+            project.status = ProjectTypes.Status.InProgress;
+        }
+        
+        if (
+            project.status === ProjectTypes.Status.InProgress
+            && moment().isAfter(moment(endDate))
+        ) {
+            project.status = ProjectTypes.Status.Finished;
+        }
+
+        if (project.changed()) {
+            await project.save();
+        }
+
+        return project;
     }
 
     updateProject = async (
@@ -392,6 +454,10 @@ export default class ProjectsService {
         projectData,
     ) => {
         const project = await this.getOneCompanyProject(companyUuid, projectUuid);
+
+        if (project.status !== ProjectTypes.Status.Draft) {
+            throw new ProjectNoLongerEditableError();
+        }
 
         const {
             respondents: allRespondents,
@@ -402,7 +468,6 @@ export default class ProjectsService {
             const newRespondents = await this.separateNewRespondentsFromExisting(allRespondents);
             await this.registerNewRespondents(newRespondents);
 
-            //TODO assign all of the respondents to the project
             const allRespondentsEmails = allRespondents.map(r => r.email);
             const allRespondentsProfiles = await RespondentProfileModel.findAll({
                 include: [{
@@ -421,8 +486,6 @@ export default class ProjectsService {
         await project.save();
 
         //TODO check if user belongs to the project and if has admin role
-
-        //TODO check if project is in draft mode
     }
 
     private separateNewRespondentsFromExisting = async (
@@ -460,15 +523,60 @@ export default class ProjectsService {
         await Promise.all(respondentsRegistrationPromises);
     }
 
+    setProjectStatus = async (
+        companyUuid: string,
+        projectUuid: string,
+        status: ProjectTypes.Status,
+    ) => {
+        const project = await this.getOneCompanyProject(
+            companyUuid,
+            projectUuid,
+        );
+
+        try {
+            await ProjectValidator.validateCompleteProjectDraft(project);
+        } catch (error) {
+            throw new IncompleteProjectDraftError();
+        }
+
+        project.status = status;
+
+        await project.save();
+    }
+
+
     addSurveyToProject = SequelizeConnection.transaction(async (
+        currentUserUuid: string,
         templateUuid: string,
         startDate: Date,
         endDate: Date,
         projectUuid: string,
     ) => {
         const surveyTemplate = await this.templatesService.getTemplate({ uuid: templateUuid });
-
         const project = await this.getProject({ uuid: projectUuid });
+
+        const currentAccount = await this.accountsService.getAccount({
+            uuid: currentUserUuid,
+        });
+        if (ProfileTypes.Role.Moderator === currentAccount.RecruiterProfile.role) {
+            const currentUsersInTheProject = await project.getRecruiterProfiles({
+                where: {
+                    id: currentAccount.RecruiterProfile.id,
+                }
+            });
+
+            if (currentUsersInTheProject.length < 1) {
+                throw new NotPermittedError();
+            }
+        }
+
+        if (![
+            ProjectTypes.Status.New,
+            ProjectTypes.Status.InProgress,
+        ].includes(project.status)) {
+            throw new IncorrectProjectStatusError();
+        }
+
         const projectsRespondents = await this.getProjectsRespondents(projectUuid);
 
         const surveyInfo = await this.generateSurveyFromTemplateAndAddRespondents(
@@ -716,10 +824,32 @@ export default class ProjectsService {
             projectUuid,
         );
 
-        //TODO Check if this particular user has access to the project
-        //should be one once accounts get assigned to projects
+        const { RecruiterProfile: recruiterProfile } = account;
+        if (![
+            ProfileTypes.Role.InterviewlyStaff,
+            ProfileTypes.Role.Admin,
+        ].includes(recruiterProfile.role)) {
+            const currentUsersInTheProject = await project.getRecruiterProfiles({
+                where: {
+                    id: account.RecruiterProfile.id,
+                }
+            });
+    
+            if (currentUsersInTheProject.length < 1) {
+                throw new NotPermittedError();
+            }
+        }
 
-        //TODO errros and attributes
+        if (![
+            ProjectTypes.Status.New,
+            ProjectTypes.Status.InProgress,
+        ].includes(project.status)) {
+            throw new IncorrectProjectStatusError();
+        }
+
+        //TODO Check if this particular user has access to the project
+        //should be done once accounts get assigned to projects
+
         const respondents = await project.getRespondentProfiles({
             attributes: ['id', 'AccountId'],
             include: [{

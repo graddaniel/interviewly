@@ -1,4 +1,4 @@
-import { AccountTypes, ProfileTypes } from "shared";
+import { AccountTypes, ProfileTypes, ProjectTypes } from "shared";
 import moment from "moment";
 import config from 'config';
 
@@ -20,6 +20,7 @@ import type JanusService from "../janus-service/janus-service";
 import type MQAdapter from "../mq-adapter";
 import S3Adapter from "../s3-adapter";
 import AccountNotFoundError from "../accounts-service/errors/account-not-found-error";
+import IncorrectProjectStatusError from "../projects-service/errors/incorrect-proejct-status-error";
 
 
 export default class MeetingsService {
@@ -111,7 +112,7 @@ export default class MeetingsService {
             ? await account.RecruiterProfile.getProjects(projectCriteria)
             : await account.RecruiterProfile.Company.getProjects(projectCriteria);
 
-            const nestedMeetings = projectsModels.map(projectModel => {
+        const nestedMeetings = projectsModels.map(projectModel => {
             const project = projectModel.toJSON();
 
             const {
@@ -193,7 +194,7 @@ export default class MeetingsService {
                 attributes: ['id'],
             }, {
                 association: MeetingModel.associations.ProjectModel,
-                attributes: ['id', 'meetingDuration'],
+                attributes: ['id', 'meetingDuration', 'status'],
                 include: [{
                     attributes: ['id', 'uuid'],
                     association: ProjectModel.associations.CompanyModel,
@@ -209,6 +210,10 @@ export default class MeetingsService {
         
         if (!meeting) {
             throw new MeetingNotFoundError();
+        }
+
+        if (ProjectTypes.Status.InProgress !== meeting.Project.status) {
+            throw new IncorrectProjectStatusError();
         }
         
         const meetingRespondents = meeting.RespondentProfiles;

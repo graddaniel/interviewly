@@ -163,6 +163,17 @@ export default class ProjectService {
         });
     }
 
+    static markProjectAsPaid = async (projectUuid: string) => {
+        const accessToken = sessionStorage.getItem('accessToken') || localStorage.getItem('accessToken');
+
+        return axios.patch(`${API_HOST}/projects/${projectUuid}/status`, {
+        }, {
+            headers: {
+                'authorization': `bearer ${accessToken}`
+            },
+        });
+    }
+
     static addSurvey = async (
         projectUuid: string,
         templateUuid: string,

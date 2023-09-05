@@ -8,8 +8,11 @@ enum Methodology {
 
 enum Status {
     Draft = 'draft',
+    AwaitingPayment = 'awaitingPayment',
     New = 'new',
-}
+    InProgress = 'inProgress',
+    Finished = 'finished',
+};
 
 enum EditSteps {
     General = 0,
@@ -24,14 +27,14 @@ enum RespondentsAges {
     Age26_32 = '26-32',
     Age33_39 = '33-39',
     Age40_46 = '40-46',
-}
+};
 
 enum RespondentsInterests {
     automotive ='automotive',
     music = 'music',
     painting = 'painting',
     sports = 'sports',
-}
+};
 
 enum Duration {
     m0_30 = '0-30',
@@ -43,16 +46,16 @@ enum Duration {
     m180_210 = '180-210',
     m210_240 = '210-240',
     m240_270 = '240-270',
-}
+};
 
 enum PaymentCurrency {
     EUR = 'EUR',
-}
+};
 
 enum Gender {
     Male = 'male',
     Female = 'female',
-}
+};
 
 export {
     Methodology,

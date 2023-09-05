@@ -10,9 +10,10 @@ import useErrorHandler from '../../../hooks/use-error-handler';
 import classes from './projects-page.module.css';
 import MetricsIconBlack from 'images/metrics-icon-black.svg';
 import { useTranslation } from 'react-i18next';
+import { ProjectTypes } from 'shared';
 
 
-const STATUSES = ['pending', 'canceled', 'finished'];
+const STATUSES = [...Object.values(ProjectTypes.Status)];
 
 const ProjectsPage = () => {
     const projects = useLoaderData() as any[] || [];

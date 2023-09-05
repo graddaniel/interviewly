@@ -267,8 +267,10 @@ In accordance with the provisions of the Act of 18 July 2002 on the provision of
             interviewlyStaff: 'Interviewly staff',
         },
         projectStatuses: {
-            pending: 'pending',
-            canceled: 'canceled',
+            draft: 'draft',
+            awaitingPayment: 'awaiting payment',
+            new: 'new',
+            inProgress: 'in progress',
             finished: 'finished',
         },
         languages: {
@@ -350,6 +352,7 @@ In accordance with the provisions of the Act of 18 July 2002 on the provision of
         viewProject: {
             title: 'Project details',
             edit: 'Edit',
+            markAsPaid: 'Mark as paid',
             steps: [
                 'General',
                 'Methodology',

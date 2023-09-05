@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Form, generatePath, useLoaderData, useNavigate, useParams, useRouteError, useSubmit } from 'react-router-dom';
-import { AccountTypes } from 'shared';
+import { AccountTypes, ProfileTypes, ProjectTypes } from 'shared';
 
 import ProjectStepper from '../../../components/project-stepper/project-stepper';
 import TextButton from '../../../components/text-button/text-button';
@@ -22,6 +22,8 @@ import classes from './view-project-page.module.css';
 import QuestionMarkIconBlack from 'images/question-mark-icon-black.svg';
 import FoldersIconBlack from 'images/folders-icon-black.svg';
 import FeatureChatIcon from 'images/feature-chat-icon.svg';
+import SubmitButton from '../../../components/submit-button/submit-button';
+import classNames from 'classnames';
 
 
 const ViewProject = () => {
@@ -74,12 +76,29 @@ const ViewProject = () => {
                     currentStep={currentStep}
                     markCurrentStepOnly={true}
                 />
-                <div className={classes.statusLabel}>Status</div>
-                <TextButton
-                    className={classes.actionButton}
-                    text={t('viewProject.edit')}
-                    onClick={editProject}
-                />
+                <div className={classNames(
+                    classes.statusLabel,
+                    classes[project.status]
+                )}>
+                    {t(`projectStatuses.${project.status}`)}
+                </div>
+                {project.status === ProjectTypes.Status.Draft && (
+                    <TextButton
+                        className={classes.actionButton}
+                        text={t('viewProject.edit')}
+                        onClick={editProject}
+                    />
+                )}
+                {project.status === ProjectTypes.Status.AwaitingPayment
+                && auth.currentUserHasRole([ProfileTypes.Role.InterviewlyStaff])
+                && (
+                    <Form className={classes.actionButton} method="post">
+                        <SubmitButton
+                            text={t('viewProject.markAsPaid')}
+                        />
+                        <input type="hidden" value="markAsPaid" name="type" />
+                    </Form>
+                )}
                 <DropdownList
                     className={classes.dropdown}
                     name="viewStep"
@@ -133,7 +152,7 @@ const ViewProject = () => {
                     <img src={QuestionMarkIconBlack} className={classes.headerIcon} />
                     {t('viewProject.title')}
                 </h4>
-                <div className={classes.statusLabel}>Status</div>
+                <div className={classes.statusLabel}>{t(`projectStatuses.${project.status}`)}</div>
             </header>
             <MethodologyTile
                 className={classes.methodologyTile}

@@ -21,7 +21,7 @@
     border: 0.075rem solid var(--BLACK);
 }
 .button:disabled {
-    background-color: var(--GRAY);
+    background-color: var(--GRAY1);
     color: var(--WHITE);
     border: 0.075rem solid var(--WHITE);
     cursor: not-allowed;

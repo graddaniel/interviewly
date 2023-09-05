@@ -12,6 +12,12 @@
     font-size: 1vw;
 }
 
+.disabled {
+    cursor: not-allowed;
+    color: var(--GRAY2);
+    background-color: var(--GRAY1);
+}
+
 @media (min-width: min-medium) and (max-width: max-medium) {
     .submitButton {
         height: 10vw;
