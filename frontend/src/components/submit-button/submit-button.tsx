@@ -15,7 +15,6 @@ const SubmitButton = ({
     text,
     disabled,
 }: SubmitButtonProps) => {
-    console.log(disabled)
     return (
         <input
             className={classNames(

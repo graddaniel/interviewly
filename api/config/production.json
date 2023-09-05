@@ -15,6 +15,7 @@
         "finishedMeetingsQueue": "finishedMeeting"
     },
     "s3": {
-        "recordingsBucket": "meetings-recordings-prod"
+        "recordingsBucket": "meetings-recordings-prod",
+        "cvBucket": "respondent-cvs-prod"
     }
 }

@@ -85,7 +85,11 @@ export default class Appplication {
             janusAdminRestApiAdapter,
         );
         const companiesService = new CompaniesService();
-        const accountsService = new AccountsService(mailService, companiesService);
+        const accountsService = new AccountsService(
+            mailService,
+            companiesService,
+            s3Adapter,
+        );
         const templatesService = new TemplatesService(companiesService);
         const surveysService = new SurveysService(accountsService, limeSurveyAdapter);
         const projectsService = new ProjectsService(
@@ -129,6 +133,10 @@ export default class Appplication {
             name: 'avatarFile',
             maxCount: 1,
         }]);
+        const cvUploadFilesMiddleware = uploadHandler.fields([{
+            name: 'cvFile',
+            maxCount: 1,
+        }]);
 
         this.app = express();
 
@@ -155,10 +163,17 @@ export default class Appplication {
             requireJWT,
             accountsController.getAccountProfile,
         );
-        accountsRouter.post(
+        accountsRouter.patch(
             '/profile',
             requireJWT,
             accountsController.updateAccountProfile,
+        );
+        accountsRouter.put(
+            '/profile/cv',
+            requireJWT,
+            requireAccountType(AccountTypes.Type.RESPONDENT),
+            cvUploadFilesMiddleware,
+            accountsController.uploadCVFile,
         );
         accountsRouter.post('/:accountId/password/reset', accountsController.requestPasswordReset);
         accountsRouter.patch('/:accountId/password/reset/confirm', accountsController.confirmPasswordReset);

@@ -19,6 +19,7 @@ export default class RespondentProfile extends Model {
     declare surname: string;
     declare gender: ProfileTypes.Gender;
     declare avatarUrl: string;
+    declare hasUploadedCV: boolean;
     declare phoneNumber: string;
     declare introductionVideoUrl: string;
     declare bankAccountNumber: string;
@@ -54,6 +55,10 @@ RespondentProfile.init({
     },
     avatarUrl: {
         type: DataTypes.STRING,
+    },
+    hasUploadedCV: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
     },
     introductionVideoUrl: {
         type: DataTypes.STRING,

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AccountTypes, ProfileTypes } from 'shared';
-import { Form, useActionData, useLoaderData } from 'react-router-dom';
+import { Form, useActionData, useLoaderData, useSubmit } from 'react-router-dom';
 
 import SubmitButton from '../../../components/submit-button/submit-button';
 import IconButton from '../../../components/icon-button/icon-button';
@@ -27,7 +27,9 @@ const PersonalDataPage = () => {
     const auth = useAuth();
     const profileData = useLoaderData() as any;
     const actionData = useActionData() as any;
+    const submit = useSubmit();
     const [ newsletter, setNewsletter ] = useState(profileData.newsletter);
+    const cvFormRef = useRef(null);
 
     useSuccessFeedback(actionData, {
         passwordChange: t('personalData.passwordChangeSuccessMessage'),
@@ -136,6 +138,7 @@ const PersonalDataPage = () => {
                                 defaultValue={sector}
                                 error={errors?.sector}
                             />
+                            <div className={classes.inputPlaceholder}></div>
                         </>)}
                         {auth.type === AccountTypes.Type.RESPONDENT && (<>
                             <TextInput
@@ -236,7 +239,7 @@ const PersonalDataPage = () => {
                         <DropdownList
                             className={classes.dropdown}
                             listClassName={classes.dropdownList}
-                            name={t('personalData.genders')}
+                            name={t('personalData.selectGender')}
                             elementsList={GENDERS.map(s => t(`genders.${s}`))}
                             onChange={(i) => setGender(GENDERS[i])}
                             defaultIndex={profileData.gender
@@ -272,40 +275,73 @@ const PersonalDataPage = () => {
                         defaultValue={newsletter}
                         onChange={() => setNewsletter(state => !state)}
                     />
+                    <span className={classes.text}>
+                        {t('join.page3.inputs.newsletterDetails')}
+                    </span>
                 </Form>
-                <Form
-                    method="post"
-                    className={classes.changePassword}
-                >
-                    <h6 className={classes.subtitle}>
-                        {t('personalData.changePasswordSubtitle')}
-                    </h6>
-                    <div>
-                        <TextInput
-                            name="currentPassword"
-                            type="password"
-                            placeholder={t('personalData.currentPassword')}
-                            error={errors.currentPassword}
+                <div className={classes.subformsWrapper}>
+                    {auth.type === AccountTypes.Type.RESPONDENT && (
+                        <Form
+                            ref={cvFormRef}
+                            method="post"
+                            className={classes.cvUploader}
+                        >
+                            <h6 className={classes.subtitle}>
+                                Manage your CV
+                            </h6>
+                            {profileData.cvUrl && (
+                                <a
+                                    className={classes.cvLink}
+                                    href={profileData.cvUrl}
+                                >
+                                    Download current
+                                </a>
+                            )}
+                            or upload new
+                            <input 
+                                id="cvFile"
+                                type="file"
+                                name="cvFile"
+                                accept=".pdf"
+                                onChange={() => submit(cvFormRef.current)}
+                            />
+                            <input type="hidden" name="type" value="cvUpload" />
+                        </Form>
+                    )}
+                    <Form
+                        method="post"
+                        className={classes.changePassword}
+                    >
+                        <h6 className={classes.subtitle}>
+                            {t('personalData.changePasswordSubtitle')}
+                        </h6>
+                        <div>
+                            <TextInput
+                                name="currentPassword"
+                                type="password"
+                                placeholder={t('personalData.currentPassword')}
+                                error={errors.currentPassword}
+                            />
+                            <TextInput
+                                name="newPassword"
+                                type="password"
+                                placeholder={t('personalData.newPassword')}
+                                error={errors.newPassword}
+                            />
+                            <TextInput
+                                name="repeatPassword"
+                                type="password"
+                                placeholder={t('personalData.repeatPassword')}
+                                error={errors.repeatPassword}
+                            />
+                        </div>
+                        <input type="hidden" name="type" value="changePassword" />
+                        <SubmitButton
+                            className={classes.changePasswordButton}
+                            text={t('personalData.save')}
                         />
-                        <TextInput
-                            name="newPassword"
-                            type="password"
-                            placeholder={t('personalData.newPassword')}
-                            error={errors.newPassword}
-                        />
-                        <TextInput
-                            name="repeatPassword"
-                            type="password"
-                            placeholder={t('personalData.repeatPassword')}
-                            error={errors.repeatPassword}
-                        />
-                    </div>
-                    <input type="hidden" name="type" value="changePassword" />
-                    <SubmitButton
-                        className={classes.changePasswordButton}
-                        text={t('personalData.save')}
-                    />
-                </Form>
+                    </Form>
+                </div>
             </div>
         </section>
     );

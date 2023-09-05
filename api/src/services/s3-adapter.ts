@@ -12,6 +12,7 @@ export default class S3Adapter {
             region: 'eu-central-1'
         });
     }
+
     getPresignedS3Url = (
         bucketName: string,
         bucketKey: string,
@@ -24,5 +25,27 @@ export default class S3Adapter {
         });
 
         return url;
+    }
+
+    upload = async (
+        bucketName: string,
+        bucketKey: string,
+        fileData: any,
+    ) => {
+        return new Promise<void>((resolve, reject) => {                     
+            this.s3.upload({
+                Bucket: bucketName,
+                Key: bucketKey,
+                Body: fileData
+              }, (err, data) => {
+                if (err) {
+                    console.error(err);
+                    reject(err);
+                } else {
+                    console.log(`File uploaded successfully. ${data.Location}`);
+                    resolve();
+                }
+            });
+        });
     }
 }

@@ -319,6 +319,7 @@ Zgoda nieobowiązkowa`,
             hasChildren: 'Dzieci',
             childrenCount: 'Liczba dzieci',
             martialStatus: 'Stan cywilny',
+            selectGender: 'Wybierz płeć',
         },
         companyData: {
             title: 'Dane firmy',

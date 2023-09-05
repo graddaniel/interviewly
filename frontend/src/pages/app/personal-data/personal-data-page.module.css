@@ -58,7 +58,7 @@
     align-items: center;
 }
 .bankInputWrapper {
-    height: 4vw;
+    height: calc(2.25rem + 0.5vw);
     display: flex;
     align-items: flex-end;
 }
@@ -102,8 +102,31 @@
     flex-direction: column;
     gap: 3vw;
 }
-.changePassword {
+.text {
+    font-size: 1vw;
+}
+.subformsWrapper {
     width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    flex-shrink: 0;
+}
+.cvUploader {
+    height: min-content;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    padding: 2vw;
+    flex-shrink: 0;
+    border-radius: 1.5vw;
+    background-color: var(--COLOR8);
+}
+.cvLink {
+    color: var(--BLACK);
+}
+.changePassword {
+    height: min-content;
     display: flex;
     flex-direction: column;
     gap: 3vw;

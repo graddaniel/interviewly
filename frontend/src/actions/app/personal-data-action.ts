@@ -17,6 +17,8 @@ export default async function PersonalDataAction({
             return changePassword(formData);
         case 'personalData':
             return updatePersonalData(formData);
+        case 'cvUpload':
+            return uploadCV();
         default:
             console.error('Unrecognized action type.');
     }
@@ -142,4 +144,27 @@ async function updatePersonalData(formData: any) {
         success: true,
         path: 'personalData'
     }
+}
+
+async function uploadCV() {
+    console.log("uploading CV")
+
+    const bodyFormData = new FormData();
+
+    const cvFiles = (document.getElementById("cvFile") as HTMLInputElement).files;
+    if (!cvFiles || cvFiles.length < 1) {
+        console.error('CV file not found')
+        return {
+            success: false,
+        }
+    }
+
+    bodyFormData.append("cvFile", cvFiles[0]);
+
+    ProfileService.uploadCV(bodyFormData);
+
+    return {
+        success: true,
+        path: 'cvUpload'
+    };
 }

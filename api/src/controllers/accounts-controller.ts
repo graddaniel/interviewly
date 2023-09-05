@@ -7,6 +7,7 @@ import type { Request, Response } from 'express';
 import type AccountsService from '../services/accounts-service/accounts-service';
 import type { AuthenticatedRequest, AuthenticationRequest } from '../generic/types';
 import { AccountTypes } from 'shared';
+import ValidationError from './validators/validation-error';
 
 
 export default class AccountsController {
@@ -112,6 +113,34 @@ export default class AccountsController {
         const profile = await this.accountsService.updateProfile(uuid, profileData);
 
         res.status(StatusCodes.OK).send(profile);
+    }
+
+    uploadCVFile = async (
+        req: AuthenticatedRequest,
+        res: Response,
+    ) => {
+        const {
+            uuid,
+        } = req.currentUser;
+
+        //@ts-ignore
+        const { cvFile } = req.files;
+
+        if (cvFile.length < 1) {
+            throw new ValidationError(
+                'cvFile',
+                'Missing CV file'
+            );
+        }
+
+        console.log(cvFile, cvFile[0])
+
+        await this.accountsService.uploadCVFile(
+            uuid,
+            cvFile[0],
+        );
+
+        res.status(StatusCodes.OK).send();
     }
 
     patchAccountConfirmed = async (

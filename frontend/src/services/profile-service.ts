@@ -21,7 +21,7 @@ export default class ProfileService {
     static updateProfile = async (profileData) => {
         const accessToken = sessionStorage.getItem('accessToken') || localStorage.getItem('accessToken');
 
-        const response = await axios.post(`${API_HOST}/accounts/profile`, profileData, {
+        const response = await axios.patch(`${API_HOST}/accounts/profile`, profileData, {
             headers: {
                 'authorization': `bearer ${accessToken}`
             },
@@ -30,5 +30,16 @@ export default class ProfileService {
         const { data } = response;
 
         return data;
+    }
+
+    static uploadCV = async (bodyFormData) => {
+        const accessToken = sessionStorage.getItem('accessToken') || localStorage.getItem('accessToken');
+
+        return axios.put(`${API_HOST}/accounts/profile/cv`, bodyFormData, {
+            headers: {
+                'content-type': 'multipart/form-data',
+                'authorization': `bearer ${accessToken}`
+            },
+        });
     }
 }

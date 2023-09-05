@@ -3,6 +3,7 @@ import moment from 'moment';
 import { AccountTypes, ProfileTypes } from 'shared';
 import i18next from 'i18next';
 import config from 'config';
+import { readFile, unlink } from 'node:fs/promises';
 
 import AccountModel from '../../models/account';
 import ResetRequestModel from '../../models/password-reset-request';
@@ -25,6 +26,7 @@ import ProfileNotFoundError from './errors/profile-not-found-error';
 import NotPermittedError from '../../generic/not-permitted-error';
 import AccountAlreadyHasPasswordError from './errors/account-already-has-password';
 import ProjectModel from '../../models/project';
+import S3Adapter from '../s3-adapter';
 
 import type MailService from '../mail-service/mail-service';
 import type CompaniesService from '../companies-service/companies-service';
@@ -33,16 +35,21 @@ import type CompaniesService from '../companies-service/companies-service';
 export default class AccountsService {
     private mailService: MailService;
     private companiesService: CompaniesService;
+    private s3Adapter: S3Adapter;
+
+    private cvBucketName: string;
     private additionalNotificationsTarget: string;
 
     constructor(
         mailService: MailService,
-        companiesService: CompaniesService
+        companiesService: CompaniesService,
+        s3Adapter: S3Adapter,
     ) {
         this.mailService = mailService;
-
         this.companiesService = companiesService;
+        this.s3Adapter = s3Adapter;
 
+        this.cvBucketName = config.get('s3.cvBucket');
         this.additionalNotificationsTarget = config.get('registration.additionalNotificationsTarget');
     }
 
@@ -498,6 +505,12 @@ export default class AccountsService {
             profile.martialStatus = respondentProfile.martialStatus;
             profile.hasChildren = respondentProfile.hasChildren;
             profile.childrenCount = respondentProfile.childrenCount;
+            if (respondentProfile.hasUploadedCV) {
+                profile.cvUrl = this.s3Adapter.getPresignedS3Url(
+                    this.cvBucketName,
+                    this.getCVBucketKeyByEmail(account.email)
+                );
+            }
         }
 
         return profile;
@@ -654,4 +667,31 @@ export default class AccountsService {
             `Your new password: ${newPassword}`
         );
     });
+
+    uploadCVFile = async (
+        currentUserUuid: string,
+        cvFileInfo: any,
+    ) => {
+        const fileData = await readFile(cvFileInfo.path);
+
+        const currentAccount = await this.getAccount({ uuid: currentUserUuid });
+        const { RespondentProfile: currentProfile } = currentAccount;
+
+        const fileBucketKey = this.getCVBucketKeyByEmail(currentAccount.email);
+
+        await this.s3Adapter.upload(
+            this.cvBucketName,
+            fileBucketKey,
+            fileData,
+        );
+
+        await unlink(cvFileInfo.path);
+
+        currentProfile.hasUploadedCV = true;
+        if (currentProfile.changed()) {
+            await currentProfile.save();
+        }
+    }
+
+    private getCVBucketKeyByEmail = (email: string) => `cv_${email.replace('@', '_').replace('.', '_')}`;
 }

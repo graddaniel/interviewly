@@ -42,6 +42,7 @@
         "finishedMeetingsQueue": "finishedMeeting"
     },
     "s3": {
-        "recordingsBucket": "meetings-recordings-dev"
+        "recordingsBucket": "meetings-recordings-dev",
+        "cvBucket": "respondent-cvs-dev"
     }
 }

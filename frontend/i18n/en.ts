@@ -323,6 +323,7 @@ In accordance with the provisions of the Act of 18 July 2002 on the provision of
             hasChildren: 'Has children',
             childrenCount: 'Children count',
             martialStatus: 'Martial status',
+            selectGender: 'Select gender',
         },
         companyData: {
             title: 'Company data',
