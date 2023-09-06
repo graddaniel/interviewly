@@ -336,8 +336,10 @@ export default class ProjectsService {
         switch (account.type) {
             case AccountTypes.Type.RECRUITER:
                 projects = await this.getAllProjectsOfRecruiter(account);
+                break;
             case AccountTypes.Type.RESPONDENT:
                 projects = await this.getAllProjectsOfRespondent(account);
+                break;
         }        
 
         const mappedProjects = projects
@@ -403,8 +405,6 @@ export default class ProjectsService {
     private getAllProjectsOfRespondent = async (account: AccountModel) => {
         //@ts-ignore
         const respondentProfile = await account.getRespondentProfile();
-
-        //const respondentsProjects = await respondentProfile.getProjects();
 
         const projects = await ProjectModel.findAll({
             order: [['startDate', 'DESC']],
