@@ -3,10 +3,11 @@ import { v4 as generateUuidV4 } from 'uuid';
 import CompanyModel from '../../models/company';
 import CompanyAlreadyExistsError from './errors/company-already-exists-error';
 import AccountModel from '../../models/account';
-import RecruiterProfile from '../../models/recruiter-profile';
+import RecruiterProfileModel from '../../models/recruiter-profile';
 import CompanyNotFound from './errors/company-not-found-error';
 import SequelizeConnection from '../sequelize-connection';
 import AddressModel from '../../models/address';
+import moment from 'moment';
 
 
 export default class CompaniesService {
@@ -91,16 +92,18 @@ export default class CompaniesService {
                 uuid: companyUuid,
             },
             include: [{
-                model: RecruiterProfile,
-                attributes: ['name', 'surname', 'role', 'gender'],
+                association: CompanyModel.associations.RecruiterProfileModel,
+                attributes: ['name', 'surname', 'role', 'gender', 'createdAt'],
                 include: [{
                     attributes: ['uuid', 'email', 'status'],
-                    model: AccountModel,
+                    association: RecruiterProfileModel.associations.AccountModel,
                 }],
             }],
         });
 
-        return CompanyMapper.flattenDBCompanyAccounts(companyAccounts);
+        return CompanyMapper
+            .flattenDBCompanyAccounts(companyAccounts)
+            .sort((a, b) => moment(b.createdAt).diff(moment(a.createdAt)));
     }
 
     getCompanyOfAccount = async (
@@ -108,7 +111,7 @@ export default class CompaniesService {
     ): Promise<CompanyModel | null> => {
         return CompanyModel.findOne({
             include: [{
-                model: RecruiterProfile,
+                association: CompanyModel.associations.RecruiterProfileModel,
                 include: [{
                     model: AccountModel,
                     where: {
@@ -132,6 +135,7 @@ class CompanyMapper {
             gender: a.gender,
             email: a.Account.email,
             status: a.Account.status,
+            createdAt: a.createdAt,
         }));
     }
 

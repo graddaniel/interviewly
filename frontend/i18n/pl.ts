@@ -393,6 +393,7 @@ Over the years, I’ve come to learn that designing collaboratively means puttin
                 sessionEndDateLabel: 'Data końca sesji',
             },
             respondents: {
+                personalDataSubtitle: 'Dane osobiste',
                 seeDetailsLabel: 'Szczegóły',
                 respondentVideoSubtitle: 'Nagranie respondenta',
                 upcomingInterviewsSubtitle: 'Nadchodzące spotkania',

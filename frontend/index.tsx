@@ -84,6 +84,7 @@ import PermissionsCheckLoader from './src/loaders/permissions-check-loader';
 import LoginCheckLoader from './src/loaders/login-check-loader';
 import PersonalDataLoader from './src/loaders/app/personal-data-loader';
 import PersonalDataAction from './src/actions/app/personal-data-action';
+import AppLoader from './src/loaders/app/app-loader';
 
 const { Role } = ProfileTypes;
 
@@ -161,11 +162,12 @@ const router = createBrowserRouter(
                     path={ROUTES.APP.PATH}
                     element={<App />}
                     action={AppAction}
-                    errorElement={<App />}
+                    loader={AppLoader}
                 >
                     <Route
                         path={APP_ROUTES.MY_ACCOUNT.PATH}
                         element={<MyAccountPage />}
+                        errorElement={<MyAccountPage />}
                         loader={MyAccountLoader}
                     />
                     <Route

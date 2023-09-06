@@ -16,6 +16,8 @@ const NAME_MAX_LENGTH = 32;
 const SURNAME_MAX_LENGTH = 32;
 
 export default class RecruiterProfile extends Model {
+    declare createdAd: Date;
+    declare updatedAt: Date;
     declare id: number;
     declare role: ProfileTypes.Role;
     declare name: string;
@@ -35,6 +37,16 @@ export default class RecruiterProfile extends Model {
 };
 
 RecruiterProfile.init({
+    createdAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: new Date(),
+    },
+    updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: new Date(),
+    },
     role: {
         type: DataTypes.ENUM(...Object.values(ProfileTypes.Role)),
         allowNull: false,

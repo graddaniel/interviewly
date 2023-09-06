@@ -351,6 +351,7 @@ export default class ProjectsService {
         companyUuid: string,
     ) => {
         const projects = await ProjectModel.findAll({
+            order: [['startDate', 'DESC']],
             attributes: ['id', 'uuid', 'title', 'methodology', 'startDate', 'endDate', 'status'],
             include: [{
                 association: ProjectModel.associations.CompanyModel,
@@ -376,6 +377,7 @@ export default class ProjectsService {
         const company = await account.RecruiterProfile.getCompany();
         //check user access
         const searchCriteria: any = {
+            order: [['startDate', 'DESC']],
             attributes: ['id', 'uuid', 'title', 'methodology', 'startDate', 'endDate', 'status'],
             where: {
                 CompanyId: company.id,
@@ -405,6 +407,7 @@ export default class ProjectsService {
         //const respondentsProjects = await respondentProfile.getProjects();
 
         const projects = await ProjectModel.findAll({
+            order: [['startDate', 'DESC']],
             attributes: ['id', 'uuid', 'title', 'methodology', 'startDate', 'endDate', 'status'],
             include: [{
                 association: ProjectModel.associations.RespondentProfileModel,
@@ -731,6 +734,16 @@ export default class ProjectsService {
                 'gender',
                 'avatarUrl',
                 'AccountId',
+                'phoneNumber',
+                'profession',
+                'province',
+                'specialization',
+                'city',
+                'martialStatus',
+                'zipCode',
+                'hasChildren',
+                'street',
+                'childrenCount',
             ],
             include: [{
                 association: RespondentProfileModel.associations.AccountModel,

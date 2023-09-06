@@ -12,54 +12,31 @@ import TeamMemberTile from '../../../components/team-member-tile/team-member-til
 import useAuth from '../../../hooks/useAuth';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate, useRouteError } from 'react-router-dom';
+import { APP_ROUTES } from '../../../consts/routes';
+import useErrorHandler from '../../../hooks/use-error-handler';
+import useLoaderDataWithSnackbar from '../../../hooks/use-loader-data-with-snackbar';
 
-
-const teamMembers = [{
-    name: 'Ewelina',
-    surname: 'Izbicka',
-    email: 'asd@asd.pl',
-    status: AccountTypes.Status.ACTIVE,
-}, {
-    avatarUrl: 'https://i.pravatar.cc/100',
-    name: 'Karol',
-    surname: 'Walewski',
-    email: 'dsad@32.pl',
-    status: AccountTypes.Status.UNCONFIRMED,
-}];
-
-const projects = [{
-    avatarUrl: 'https://i.pravatar.cc/101',
-    title: 'Interviewly  usability tests',
-    type: 'Product tests',
-    startDate: Date.now(),
-    endDate: Date.now(),
-    status: 'finished'
-}, {
-    avatarUrl: 'https://i.pravatar.cc/101',
-    title: 'Focus groups tests',
-    type: 'Focus Groups',
-    startDate: Date.now(),
-    endDate: Date.now(),
-    status: 'canceled'
-}, {
-    avatarUrl: 'https://i.pravatar.cc/101',
-    title: 'User experience woda.pl',
-    type: 'UX Interviews',
-    startDate: Date.now(),
-    endDate: Date.now(),
-    status: 'in_progress'
-}];
 
 const MyAccountPage = () => {
     const auth = useAuth();
     const { t } = useTranslation();
+    const navigate = useNavigate();
+    const loaderData = useLoaderDataWithSnackbar() as any;
+    useErrorHandler(useRouteError());
+
+    if (!loaderData) {
+        return null;
+    }
+
     const {
         upcomingMeeting,
         profile,
-    } = useLoaderData() as any;
+        teamMembers,
+        projects,
+    } = loaderData;
 
-        const latestTeamMembersSection = (
+    const latestTeamMembersSection = (
         <div className={classes.latestTeamMembers}>
             <div className={classes.header}>
                 <img className={classes.headerIcon} src={PeopleIconBlack} />
@@ -71,7 +48,7 @@ const MyAccountPage = () => {
                         small={true}
                         key={member.email}
                         {...member}
-                        onEdit={() => console.log(`Editing ${member.name} ${member.surname}`)}
+                        onEdit={() => navigate(APP_ROUTES.MY_TEAM.PATH)}
                     />
                 ))}
             </div>
@@ -101,7 +78,7 @@ const MyAccountPage = () => {
             <div className={classes.projectsContent}>
                 {projects.map(project => (
                     <ProjectBar
-                        key={project.title}
+                        key={project.uuid}
                         {...project}
                     />
                 ))}

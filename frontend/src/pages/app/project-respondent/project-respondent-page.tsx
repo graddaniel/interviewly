@@ -21,6 +21,10 @@ import moment from 'moment';
 import SubmitButton from '../../../components/submit-button/submit-button';
 import useSuccessFeedback from '../../../hooks/use-success-feedback';
 import TimeInput from '../../../components/time-input/time-input';
+import TextInput from '../../../components/text-input/text-input';
+import Checkbox from '../../../components/checkbox/checkbox';
+import NumericalInput from '../../../components/numerical-input/numerical-input';
+import PeopleIconBlack from 'images/people-icon-black.svg';
 
 
 type Survey = {
@@ -45,6 +49,16 @@ type Respondent = {
     age: number;
     surveys: Survey[];
     meeting: Meeting;
+    phoneNumber: string;
+    profession: string;
+    province: string;
+    specialization: string;
+    city: string;
+    martialStatus: ProfileTypes.MartialStatus;
+    zipCode: string;
+    hasChildren: boolean;
+    street: string;
+    childrenCount: number;
 };
 
 const ProjectRespondentPage = () => {
@@ -88,6 +102,16 @@ const ProjectRespondentPage = () => {
         age,
         surveys,
         meeting,
+        phoneNumber,
+        profession,
+        province,
+        specialization,
+        city,
+        martialStatus,
+        zipCode,
+        hasChildren,
+        street,
+        childrenCount,
     } = respondent;
 
     const errors = actionData?.errors || {};
@@ -110,6 +134,74 @@ const ProjectRespondentPage = () => {
                 <img className={classes.flagIcon} src={nationalityToFlagIcon(nationality)} />
             </header>
             <div className={classes.content}>
+                <span className={classNames(classes.sectionHeaderTitle, classes.personalDataTitle)}>
+                    <img className={classes.sectionHeaderIcon} src={PeopleIconBlack} />
+                    {t('viewProject.respondents.personalDataSubtitle')}
+                </span>
+                <div className={classes.personalData}>
+                    <TextInput
+                        className={classes.input}
+                        name="phoneNumber"
+                        placeholder={t('personalData.phoneNumber')}
+                        defaultValue={phoneNumber}
+                    />
+                    <TextInput
+                        className={classes.input}
+                        name="martialStatus"
+                        placeholder={t('personalData.martialStatus')}
+                        defaultValue={martialStatus}
+                    />
+                    <TextInput
+                        className={classes.input}
+                        name="profession"
+                        placeholder={t('personalData.profession')}
+                        defaultValue={profession}
+                    />
+                    <TextInput
+                        className={classes.input}
+                        name="specialization"
+                        placeholder={t('personalData.specialization')}
+                        defaultValue={specialization}
+                    />
+                    <TextInput
+                        className={classes.input}
+                        name="street"
+                        placeholder={t('personalData.street')}
+                        defaultValue={street}
+                    />
+                    <TextInput
+                        className={classes.input}
+                        name="province"
+                        placeholder={t('personalData.province')}
+                        defaultValue={province}
+                    />
+                    <TextInput
+                        className={classes.input}
+                        name="zipCode"
+                        placeholder={t('personalData.zipCode')}
+                        defaultValue={zipCode}
+                    />
+                    <TextInput
+                        className={classes.input}
+                        name="city"
+                        placeholder={t('personalData.city')}
+                        defaultValue={city}
+                    />
+                    <NumericalInput
+                        className={classes.input}
+                        name="childrenCount"
+                        label={t('personalData.childrenCount')}
+                        defaultValue={childrenCount}
+                        immutable={true}
+                    />
+                    <Checkbox
+                        className={classes.checkbox}
+                        name="hasChildren"
+                        label={t('personalData.hasChildren')}
+                        defaultValue={hasChildren}
+                        disabled={true}
+                    />
+                </div>
                 <RespondentVideoTile
                     className={classes.videoTile}
                     coverUrl="https://picsum.photos/600/400"

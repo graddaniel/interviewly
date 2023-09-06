@@ -1,7 +1,7 @@
 import React, { useCallback, useRef, useState } from 'react';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
-import { Form, Outlet, matchPath, useLocation, useRouteError, useSubmit } from 'react-router-dom';
+import { Form, Outlet, matchPath, useLoaderData, useLocation, useRouteError, useSubmit } from 'react-router-dom';
 import classNames from 'classnames';
 import { AccountTypes, ProfileTypes } from 'shared';
 
@@ -16,11 +16,8 @@ import { APP_FORMS_ROUTES } from '../../consts/routes';
 import classes from './app.module.css';
 import BellIconBlack from '../../../images/bell-icon-black.svg';
 import useErrorHandler from '../../hooks/use-error-handler';
+import useLoaderDataWithSnackbar from '../../hooks/use-loader-data-with-snackbar';
 
-const USER = {
-    name: 'Mateusz',
-    avatarUrl: 'https://i.pravatar.cc/99',
-};
 
 const App = () => {
     const [ isMenuOpen, setIsMenuOpen ] = useState(false);
@@ -30,6 +27,7 @@ const App = () => {
     const formRef = useRef(null);
     const submit = useSubmit();
     const auth = useAuth();
+    const profile = useLoaderDataWithSnackbar() as any;
     useErrorHandler(useRouteError());
 
     const openDropdown = useCallback(() => setIsMenuOpen(true), []);
@@ -75,25 +73,27 @@ const App = () => {
                             onClick={() => console.log("notifications clicked")}
                             icon={BellIconBlack}
                         />
-                        <nav
-                            className={classes.dropdown}
-                            onClick={openDropdown}
-                            onBlur={handleDropdownBlur}
-                            tabIndex={-1}
-                        >
-                            <div
-                                className={classes.userButton}
+                        {profile && (
+                            <nav
+                                className={classes.dropdown}
+                                onClick={openDropdown}
+                                onBlur={handleDropdownBlur}
+                                tabIndex={-1}
                             >
-                                <span className={classes.userName}>{USER.name}</span>
-                                <img className={classes.avatar} src={USER.avatarUrl} />
-                            </div>
-                            <MenuDropdown
-                                isOpen={isMenuOpen}
-                                onClose={closeDropdown}
-                                avatarUrl={USER.avatarUrl}
-                                username={USER.name}
-                            />
-                        </nav>
+                                <div
+                                    className={classes.userButton}
+                                >
+                                    <span className={classes.userName}>{profile.name}</span>
+                                    <img className={classes.avatar} src={profile.avatarUrl} />
+                                </div>
+                                <MenuDropdown
+                                    isOpen={isMenuOpen}
+                                    onClose={closeDropdown}
+                                    avatarUrl={profile.avatarUrl}
+                                    username={profile.name}
+                                />
+                            </nav>
+                        )}
                     </div>
                 </header>
                 <nav className={classes.navigation}>

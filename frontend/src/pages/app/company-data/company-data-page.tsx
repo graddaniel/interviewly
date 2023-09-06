@@ -46,7 +46,6 @@ const CompanyDataPage = ({
     return (
         <Form className={classes.companyDataPage} method="post">
             <h4 className={classes.title}>{t('companyData.title')}</h4>
-            <input type="hidden" value="asd" name="test" />
             <div className={classes.content}>
                 {dataFields.map(field => (
                     <TextInput

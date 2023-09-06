@@ -54,17 +54,24 @@
     font-size: 0.75vw;
     text-align: center;
 }
-.finished {
+.draft {
+    color: var(--GRAY2);
+    background-color: var(--GRAY1);
+}
+.awaitingPayment {
+    color: var(--YELLOW2);
+    background-color: var(--YELLOW1);
+}
+.new {
+    color: var(--BLUE2);
+    background-color: var(--BLUE1);
+}
+.inProgress {
     color: var(--GREEN2);
     background-color: var(--GREEN1);
 }
-.canceled {
-    color: var(--RED2);
-    background-color: var(--RED1);
-}
-.in_progress {
-    color: var(--YELLOW2);
-    background-color: var(--YELLOW1);
+.finished {
+    color: var(--BLACK);
 }
 
 @media (min-width: min-large) {

@@ -8,9 +8,13 @@ import classes from './project-bar.module.css'
 import PaperSheetsIconBlack from 'images/paper-sheets-icon-black.svg';
 import MetricsIconBlack from 'images/metrics-icon-black.svg';
 import capitalizeFirstLetter from '../../../utils/capitalize-first-letter';
+import { generatePath, useNavigate } from 'react-router-dom';
+import { APP_ROUTES } from '../../../consts/routes';
+import { useTranslation } from 'react-i18next';
 
 
 const ProjectBar = ({
+    uuid,
     avatarUrl,
     title,
     type,
@@ -18,6 +22,8 @@ const ProjectBar = ({
     endDate,
     status,
 }) => {
+    const navigate = useNavigate();
+    const { t } = useTranslation();
     const formattedStartDate = moment(startDate).format('l');
     const formattedEndDate = moment(endDate).format('l');
 
@@ -32,7 +38,10 @@ const ProjectBar = ({
             <IconButton
                 className={classes.projectButton}
                 icon={MetricsIconBlack}
-                onClick={() => console.log("TODO idk what does this do")}
+                onClick={() => navigate(generatePath(
+                    APP_ROUTES.VIEW_PROJECT.PATH,
+                    { projectId: uuid }
+                ))}
             />
             <span className={classes.title}>
                 {title}
@@ -46,7 +55,7 @@ const ProjectBar = ({
                 <span>{formattedEndDate}</span>
             </div>
             <div className={classNames(classes.status, classes[status])}>
-                {capitalizeFirstLetter(status).replace('_', ' ')}
+                {capitalizeFirstLetter(t(`projectStatuses.${status}`))}
             </div>
         </section>
     );

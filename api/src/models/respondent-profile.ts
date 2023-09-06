@@ -14,6 +14,8 @@ const NAME_MAX_LENGTH = 32;
 const SURNAME_MAX_LENGTH = 32;
 
 export default class RespondentProfile extends Model {
+    declare createdAd: Date;
+    declare updatedAt: Date;
     declare id: number;
     declare name: string;
     declare surname: string;
@@ -41,6 +43,16 @@ export default class RespondentProfile extends Model {
 };
 
 RespondentProfile.init({
+    createdAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: new Date(),
+    },
+    updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: new Date(),
+    },
     name: {
         type: DataTypes.STRING(NAME_MAX_LENGTH),
         allowNull: false,

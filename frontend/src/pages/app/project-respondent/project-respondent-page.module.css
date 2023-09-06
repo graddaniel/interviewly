@@ -56,6 +56,23 @@
     height: 5vw;
 }
 
+.personalDataTitle {
+    grid-area: personalDataTitle;
+}
+.personalData {
+    grid-area: personalData;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3.5vw;
+}
+.input {
+    width: 23.5vw;
+}
+.checkbox {
+    display: flex;
+    align-items: center;
+}
+
 .videoTile {
     grid-area: videoTile;
 }
@@ -97,6 +114,8 @@
     grid-template-rows: auto auto auto;
     row-gap: 3vw;
     grid-template-areas: 
+    "personalDataTitle personalDataTitle"
+    "personalData personalData"
     "videoTile upcomingInterview"
     "schedulerTitle schedulerTitle"
     "meetingScheduler meetingScheduler"
