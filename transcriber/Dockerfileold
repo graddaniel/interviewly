@@ -1,0 +1,26 @@
+FROM python:3.8-alpine
+WORKDIR /app
+COPY transcoder /app/transcoder
+WORKDIR /app/transcoder
+RUN apk add libressl-dev
+RUN apk add build-base
+#RUN apk add git
+RUN apk add pkgconfig
+RUN apk add curl
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+RUN source $HOME/.cargo/env
+ENV PATH="/root/.cargo/bin:${PATH}"
+#RUN rustc --version
+#RUN cargo --version
+RUN pip3 install pika
+
+##RUN pip3 install torch
+##RUN pip3 install triton
+##RUN pip install -U openai-whisper
+
+RUN pip3 install torch===2.0.1+cpu -f https://download.pytorch.org/whl/torch_stable.html
+RUN pip install -vv "openai-whisper==20230124"
+
+#RUN pip install git+https://github.com/openai/whisper.git 
+ENTRYPOINT ["python", "transcoder.py"]
+#   CMD find ./ -name "*cargo" -type d

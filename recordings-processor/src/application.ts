@@ -29,15 +29,22 @@ export default class Application {
             this.incomingMessagesQueue,
             async (message: string) => {
                 try {
-                    const meetingUuid = message;
+                    const {
+                        meetingUuid,
+                        deleteRecording,
+                    } = JSON.parse(message);
+
                     const mergedFileName = await this.filesProcessor.process(meetingUuid);
                     
                     await this.s3Adapter.upload(mergedFileName, meetingUuid);
                     
-                    fs.rmSync(
-                        `${this.processedRecordingsDirectory}/${meetingUuid}`,
-                        { recursive: true, force: true }
-                    );
+                    // delete it if there's no transcribing later on
+                    if (deleteRecording) {
+                        fs.rmSync(
+                            `${this.processedRecordingsDirectory}/${meetingUuid}`,
+                            { recursive: true, force: true }
+                        );
+                    }
 
                     this.mqAdapter.send(
                         this.outcomingMessagesQueue,

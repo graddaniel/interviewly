@@ -1,0 +1,4 @@
+flask run
+curl -i -X POST -H "Content-Type: multipart/form-data" -F "data=@output.wav" http://127.0.0.1:5000
+
+INPUT_QUEUE=hello OUTPUT_QUEUE=hello2 QUEUE_HOST=localhost AWS_SERVER_PUBLIC_KEY=AKIAUFI7HMFV7Y6MRGP4 AWS_SERVER_SECRET_KEY=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 TRANSCRIPTIONS_BUCKET=meetings-transcriptions-dev python3 transcriber.py

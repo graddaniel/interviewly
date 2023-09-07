@@ -8,8 +8,6 @@ export default async function promisesMap (
             return [mapEntry[0], await mapEntry[1]];
         });
 
-        console.log(promisesEntries);
-
         try {
             const resolvedEntries = await Promise.all(promisesEntries);
 

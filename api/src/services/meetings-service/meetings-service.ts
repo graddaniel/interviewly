@@ -28,6 +28,7 @@ export default class MeetingsService {
     janusService: JanusService;
     mqAdapter: MQAdapter;
     finishedMeetingsQueue: string;
+    recordingsToTranscribeQueue: string;
     s3Adapter: S3Adapter;
 
     recordingsBucketName: string;
@@ -42,6 +43,7 @@ export default class MeetingsService {
         this.janusService = janusService;
         this.mqAdapter = mqAdapter;
         this.finishedMeetingsQueue = config.get('rabbitMq.finishedMeetingsQueue');
+        this.recordingsToTranscribeQueue = config.get('rabbitMq.recordingsToTranscribeQueue');
         this.s3Adapter = s3Adapter;
 
         this.recordingsBucketName = config.get('s3.recordingsBucket');
@@ -291,7 +293,10 @@ export default class MeetingsService {
 
         const destroyedRoomId = await this.janusService.destroyRoom(meetingUuid);
 
-        this.mqAdapter.send(this.finishedMeetingsQueue, meetingUuid);
+        this.mqAdapter.send(this.finishedMeetingsQueue, JSON.stringify({
+            meetingUuid,
+            deleteRecording: false, //TODO fetch this from the DB
+        }));
 
         meeting.hasFinished = true;
         await meeting.save();
@@ -333,6 +338,21 @@ export default class MeetingsService {
     ) => {
         await MeetingModel.update({
             recordingAvailable: true,
+        }, {
+            where: {
+                uuid: meetingUuid,
+            },
+        });
+
+        //if project needs transcription then
+        this.mqAdapter.send(this.recordingsToTranscribeQueue, meetingUuid);
+    }
+
+    addTranscription = async (
+        meetingUuid: string,
+    ) => {
+        await MeetingModel.update({
+            transcriptionAvailable: true,
         }, {
             where: {
                 uuid: meetingUuid,

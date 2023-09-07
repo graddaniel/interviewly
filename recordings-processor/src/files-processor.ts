@@ -309,45 +309,4 @@ ${this.outputPath}/${meetingUuid}/${file.participantUuid}.${file.fileType === 'a
                 });
         })
     }
-
-    // mergeVideosIntoTiles = (grouppedFilesInfo) => {
-    //     let pipeline = ffmpeg();
-        
-    //     grouppedFilesInfo.forEach(
-    //         fileInfo => pipeline = pipeline.input(`./temp/processed/scaled_${fileInfo.participantUuid}.webm`)
-    //     );
-
-    //     const complexFilter = []
-
-    //     if (file.audio) {
-    //         pipeline = pipeline.input(
-    //             `./temp/processed/${file.participantUuid}.opus`
-    //         );
-    //     }
-    //     if (file.video) {
-    //         pipeline = pipeline.input(
-    //             `./temp/processed/${file.participantUuid}.webm`
-    //         );
-    //     }
-    //     pipeline
-    //         .outputOptions([
-    //             '-c:v', 'copy',
-    //             '-c:a', 'opus',
-    //             '-strict',
-    //             '-2'
-    //         ])
-    //         .saveToFile(`./temp/processed/merged_${file.participantUuid}.webm`)
-    //         .on('progress', (progress) => {
-    //             if (progress.percent) {
-    //               console.log(`Processing: ${Math.floor(progress.percent)}% done`);
-    //             }
-    //         })
-    //         .on('end', () => {
-    //             console.log(`Finished processing ${file.participantUuid}`);
-    //             this.mergeVideosIntoTiles(grouppedFilesInfo);
-    //         })
-    //         .on('error', (error) => {
-    //             console.error(`Failed to process ${file.participantUuid}. ${error}`);
-    //         });
-    // }
 };

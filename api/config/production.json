@@ -10,12 +10,11 @@
         "recordingsDirectory": "/home/ubuntu/efs/recordings"
     },
     "rabbitMq": {
-        "queueAddress": "amqp://3.127.163.15",
-        "readyRecordingsQueueName": "readyRecordings",
-        "finishedMeetingsQueue": "finishedMeeting"
+        "queueAddress": "amqp://3.127.163.15"
     },
     "s3": {
         "recordingsBucket": "meetings-recordings-prod",
-        "cvBucket": "respondent-cvs-prod"
+        "cvBucket": "respondent-cvs-prod",
+        "transcriptionsBucket": "meetings-transcriptions-prod"
     }
 }

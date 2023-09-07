@@ -21,6 +21,7 @@ export default class Survey extends Model {
 
     declare RespondentProfiles: RespondentProfileModel[];
     declare Project: ProjectModel;
+    declare SurveyParticipant: SurveyParticipantModel;
 };
 
 Survey.init({

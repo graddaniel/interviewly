@@ -49,6 +49,7 @@ export default class ProjectsService {
     s3Adapter: S3Adapter;
 
     recordingsBucketName: string;
+    transcriptionsBucketName: string;
 
     constructor (
         accountsService: AccountsService,
@@ -71,6 +72,7 @@ export default class ProjectsService {
         this.limeSurveyUrl = limesurveyConfig.url;
 
         this.recordingsBucketName = config.get('s3.recordingsBucket');
+        this.transcriptionsBucketName = config.get('s3.transcriptionsBucket');
     }
 
     //TODO no need to find the company by user when we have its uuid
@@ -976,24 +978,11 @@ export default class ProjectsService {
         const company = await account.RecruiterProfile.getCompany();
 
         const project = await ProjectModel.findOne({
-            attributes: ['CompanyId'],
+            attributes: ['id', 'CompanyId'],
             where: {
                 uuid: projectUuid,
             },
             include: [{
-                association: ProjectModel.associations.MeetingModel,
-                include: [{
-                    attributes: ['name', 'surname', 'AccountId'],
-                    association: MeetingModel.associations.RespondentProfileModel,
-                    include: [{
-                        attributes: ['uuid', 'startDate', 'endDate', 'name'],
-                        association: RespondentProfileModel.associations.SurveyModel,
-                    }, {
-                        attributes: ['email', 'uuid'],
-                        association: RespondentProfileModel.associations.AccountModel,
-                    }],
-                }],
-            }, {
                 association: ProjectModel.associations.CompanyModel,
                 where: {
                     uuid: company.uuid,
@@ -1004,23 +993,38 @@ export default class ProjectsService {
             throw new ProjectNotFoundError();
         }
 
-        const projectMeetings = await this.mapProjectToProjectMeetings(project);
+        const meetings = await project.getMeetings({
+            include: [{
+                attributes: ['name', 'surname', 'AccountId'],
+                association: MeetingModel.associations.RespondentProfileModel,
+                include: [{
+                    attributes: ['uuid', 'startDate', 'endDate', 'name', 'ProjectId'],
+                    association: RespondentProfileModel.associations.SurveyModel,
+                    where: {
+                        ProjectId: project.id
+                    },
+                    required: false,
+                }, {
+                    attributes: ['email', 'uuid'],
+                    association: RespondentProfileModel.associations.AccountModel,
+                }],
+            }]
+        });
+        //console.log(meetings.map(m => m.RespondentProfiles[0].Surveys))
+
+        const projectMeetings = await this.flattenProjectMeetings(meetings);
     
         return projectMeetings;
     }
 
-    mapProjectToProjectMeetings = async (project: ProjectModel) => {
-        const projectJson = project.toJSON();
-        const {
-            Meetings: meetings,
-        } = projectJson;
-
+    flattenProjectMeetings = async (meetings: MeetingModel[]) => {
         const flattenedMeetings = meetings.map(meeting => {
             const {
                 uuid,
                 date,
                 hasFinished,
                 recordingAvailable,
+                transcriptionAvailable,
                 RespondentProfiles,
             } = meeting;
 
@@ -1044,7 +1048,7 @@ export default class ProjectsService {
                         const {
                             SurveyParticipant,
                             ...surveyData
-                        } = survey;
+                        } = survey.toJSON();
 
                         return {
                             ...surveyData,
@@ -1065,6 +1069,12 @@ export default class ProjectsService {
                         `${uuid}.mp4`,
                     )
                     : null,
+                transcriptUrl: transcriptionAvailable
+                ? this.s3Adapter.getPresignedS3Url(
+                    this.transcriptionsBucketName,
+                    `${uuid}.txt`,
+                )
+                : null,
                 respondent,
             };
         });

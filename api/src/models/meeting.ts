@@ -16,6 +16,7 @@ export default class Meeting extends Model {
     declare uuid: string;
     declare date: Date;
     declare recordingAvailable: boolean;
+    declare transcriptionAvailable: boolean;
     declare hasFinished: boolean;
 
     declare addRespondentProfile: HasManyAddAssociationMixin<RespondentProfileModel, RespondentProfileModel['id']>;
@@ -37,6 +38,10 @@ Meeting.init({
         type: DataTypes.DATE,
     },
     recordingAvailable: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+    },
+    transcriptionAvailable: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
     },

@@ -48,6 +48,7 @@ const ProjectMeetingTile = ({
 }: ProjectMeetingTileProps) => {
     const navigate = useNavigate();
     const [ displayedVideoUrl, setDisplayedVideoUrl] = useState('');
+
     const {
         uuid,
         date,
@@ -64,6 +65,7 @@ const ProjectMeetingTile = ({
         surname,
         email,
     } = respondent;
+
 
     const {
         date: formattedDate,
@@ -142,11 +144,12 @@ const ProjectMeetingTile = ({
                             </div>
                         )}
                         {transcriptUrl && (
-                            <TextButton
+                            <a
                                 className={classes.scriptDownloadButton}
-                                text="Download transcript"
-                                onClick={() => console.log('Download transcript')}
-                            />
+                                href={transcriptUrl}
+                            >
+                                Download transcript
+                            </a>
                         )}
                         {recruitmentVideoUrl && (
                             <TextButton
@@ -156,7 +159,7 @@ const ProjectMeetingTile = ({
                             />
                         )}
                     </div>
-                    {surveys && (
+                    {surveys && surveys.length > 0 && (
                         <div className={classes.surveys}>
                             <span className={classes.surveyTitle}>
                                 <img
@@ -204,6 +207,7 @@ const ProjectMeetingTile = ({
                                             className={classes.surveyResultsButton}
                                             text={"Download results"}
                                             onClick={() => downloadSurveyResults(survey.uuid, respondentUuid)}
+                                            disabled={!survey.hasFinished}
                                         />
                                     </div>
                                 );

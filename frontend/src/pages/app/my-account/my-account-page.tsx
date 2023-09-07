@@ -35,7 +35,8 @@ const MyAccountPage = () => {
         teamMembers,
         projects,
     } = loaderData;
-
+    
+    console.log(loaderData)
     const latestTeamMembersSection = (
         <div className={classes.latestTeamMembers}>
             <div className={classes.header}>
@@ -43,7 +44,7 @@ const MyAccountPage = () => {
                 {t('myAccount.latestTeamMembersLabel')}
             </div>
             <div className={classes.latestTeamMembersTiles}>
-                {teamMembers.map(member => (
+                {teamMembers && teamMembers.map(member => (
                     <TeamMemberTile
                         small={true}
                         key={member.email}
@@ -70,20 +71,22 @@ const MyAccountPage = () => {
     );
 
     const projectsSection = (
-        <div className={classes.projects}>
-            <div className={classes.header}>
-                <img className={classes.headerIcon} src={MetricsIconBlack} />
-                {t('myAccount.projectsLabel')}
+        projects ? (
+            <div className={classes.projects}>
+                <div className={classes.header}>
+                    <img className={classes.headerIcon} src={MetricsIconBlack} />
+                    {t('myAccount.projectsLabel')}
+                </div>
+                <div className={classes.projectsContent}>
+                    {projects.map(project => (
+                        <ProjectBar
+                            key={project.uuid}
+                            {...project}
+                        />
+                    ))}
+                </div>
             </div>
-            <div className={classes.projectsContent}>
-                {projects.map(project => (
-                    <ProjectBar
-                        key={project.uuid}
-                        {...project}
-                    />
-                ))}
-            </div>
-        </div>
+        ) : null
     );
 
     return (

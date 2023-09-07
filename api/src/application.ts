@@ -72,10 +72,15 @@ export default class Appplication {
         const mqAdapter = new MQAdapter();
         mqAdapter.init().then(() => {
             const readyRecordingsQueueName = config.get('rabbitMq.readyRecordingsQueueName') as string;
-          
+            const readyTranscriptionsQueue = config.get('rabbitMq.readyTranscriptionsQueue') as string;
+
             mqAdapter.listen(
                 readyRecordingsQueueName,
                 meetingsService.addRecording,
+            );
+            mqAdapter.listen(
+                readyTranscriptionsQueue,
+                meetingsService.addTranscription,
             );
         });
         const s3Adapter = new S3Adapter();

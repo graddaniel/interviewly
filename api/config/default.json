@@ -38,11 +38,14 @@
     },
     "rabbitMq": {
         "queueAddress": "amqp://localhost",
+        "finishedMeetingsQueue": "finishedMeeting",
         "readyRecordingsQueueName": "readyRecordings",
-        "finishedMeetingsQueue": "finishedMeeting"
+        "recordingsToTranscribeQueue": "recordingsToTranscribe",
+        "readyTranscriptionsQueue": "readyTranscriptions"
     },
     "s3": {
         "recordingsBucket": "meetings-recordings-dev",
-        "cvBucket": "respondent-cvs-dev"
+        "cvBucket": "respondent-cvs-dev",
+        "transcriptionsBucket": "meetings-transcriptions-dev"
     }
 }
