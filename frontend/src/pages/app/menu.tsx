@@ -34,12 +34,13 @@ const Menu = () => {
                             regular: HomeIconWhite,
                         }}
                     />
-                    {auth.currentUserHasRole([
+                    {(auth.type === AccountTypes.Type.RESPONDENT
+                     || auth.currentUserHasRole([
                         Role.Admin,
                         Role.InterviewlyStaff,
                         Role.Moderator,
                         Role.Observer,
-                    ]) && (
+                    ])) && (
                         <MenuButton
                             path={APP_ROUTES.PROJECTS.PATH}
                             text={t('menu.projects')}

@@ -79,7 +79,7 @@ import CalendarLoader from './src/loaders/app/calendar-loader';
 import MeetingLoader from './src/loaders/app/meeting-loader';
 import MeetingAction from './src/actions/app/meeting-action';
 import MyAccountLoader from './src/loaders/app/my-account-loader';
-import { ProfileTypes } from 'shared';
+import { AccountTypes, ProfileTypes } from 'shared';
 import PermissionsCheckLoader from './src/loaders/permissions-check-loader';
 import LoginCheckLoader from './src/loaders/login-check-loader';
 import PersonalDataLoader from './src/loaders/app/personal-data-loader';
@@ -188,7 +188,7 @@ const router = createBrowserRouter(
                             Role.InterviewlyStaff,
                             Role.Moderator,
                             Role.Observer,
-                        ])}>
+                        ], AccountTypes.Type.RESPONDENT)}>
                         <Route
                         path={APP_ROUTES.PROJECTS.PATH}
                         element={<ProjectsPage />}
