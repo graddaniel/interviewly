@@ -1,0 +1,1073 @@
+{
+    "translation": {
+        "currentLanguage": "Český",
+        "generic": {
+            "loading": "načítání",
+            "created": "vytvořené",
+            "yes": "Ano",
+            "no": "Ne",
+            "saved": "Saved"
+        },
+        "validation": {
+            "join": {
+                "repeatPasswordError": "Hesla se neshodují."
+            },
+            "changePassword": {
+                "repeatPasswordError": "Passwords do not match",
+                "newPasswordSameAsOld": "New password is the same as previous one"
+            },
+            "projectRespondent": {
+                "meetingDateError": "Pick a future date"
+            }
+        },
+        "errors": {
+            "10000": "Neznámá chyba.",
+            "10010": "Ověření se nezdařilo.",
+            "10011": "Chybějící přihlašovací údaje.",
+            "10012": "Neplatný formát hlavičky autorizace.",
+            "10013": "Chybí hlavička autorizace.",
+            "10014": "Neplatný typ oprávnění.",
+            "10015": "Operace není povolena.",
+            "10016": "Chybí token.",
+            "20000": "Účet je již aktivní.",
+            "20001": "V účtu náboráře chybí informace o společnosti.",
+            "20002": "V účtu náboráře chybí název společnosti.",
+            "20003": "Účet nenalezen.",
+            "20004": "Platnost požadavku na resetování hesla vypršela. Použijte prosím znovu formulář pro připomenutí hesla.",
+            "20005": "Účet nepožádal o reset hesla.",
+            "20006": "Účet již existuje.",
+            "20007": "Nesprávné heslo.",
+            "20100": "Společnost nenalezena.",
+            "20101": "Společnost již existuje.",
+            "20200": "Výzkum nenalezen.",
+            "30000": "E-mail je povinný.",
+            "30001": "Prosím zadejte platnou emailovou adresu. Příklad: johndoe@domain.pl.",
+            "30010": "Pole jména je povinné.",
+            "30011": "Jméno je příliš krátké.",
+            "30012": "Název je příliš dlouhý.",
+            "30020": "Pole příjmení je povinné.",
+            "30021": "Příjmení je příliš krátké.",
+            "30022": "Příjmení je příliš dlouhé.",
+            "30030": "Vyplnění typu je povinné.",
+            "30031": "Hodnota typu je nesprávná.",
+            "30040": "Pole pohlaví je povinné.",
+            "30041": "Hodnota pohlaví je nesprávná.",
+            "30050": "Je vyžadováno heslo.",
+            "30051": "Heslo musí obsahovat malá písmena, velká písmena, číslice, speciální znaky.",
+            "30052": "Heslo je příliš krátké.",
+            "30053": "Heslo je příliš dlouhé.",
+            "30070": "Pole role je povinné.",
+            "30071": "Hodnota role je nesprávná.",
+            "30080": "Pole stavu je povinné.",
+            "30081": "Stav je nesprávný.",
+            "30093": "Number is too long",
+            "30100": "Pole názvu je povinné.",
+            "30101": "Název obsahuje nepovolené znaky.",
+            "30102": "Název je příliš krátký.",
+            "30103": "Název je příliš dlouhý.",
+            "30112": "Popis je příliš krátký.",
+            "30113": "Popis je příliš dlouhý.",
+            "30120": "Vyžaduje se pole metodologie.",
+            "30121": "Metodologická hodnota je nesprávná.",
+            "30130": "Pole Počet účastníků je povinné.",
+            "30131": "Počet účastníků je příliš nízký.",
+            "30132": "Počet účastníků je příliš vysoký.",
+            "30140": "Pole Počet rezervovaných účastníků je povinné.",
+            "30141": "Počet rezervních účastníků je příliš nízký.",
+            "30142": "Počet rezervních účastníků je příliš vysoký.",
+            "30150": "Je nutné zadat délku schůzky.",
+            "30151": "Hodnota trvání schůzky je nesprávná.",
+            "30160": "Pole Měna je vyžadováno.",
+            "30161": "Hodnota měny je nesprávná.",
+            "30170": "Pole platby je povinné.",
+            "30171": "Hodnota platby je nesprávná.",
+            "30183": "Requirements are too long",
+            "30190": "Project languages value is requried",
+            "30191": "Project languages value must be a string encoded boolean",
+            "30200": "Screening survey value is required",
+            "30201": "Screening survey value must be a string encoded boolean",
+            "30210": "Recordings value is requried",
+            "30211": "Recordings value must be a string encoded boolean",
+            "30220": "Start date is required",
+            "30221": "Start date must be, positive string encoded number",
+            "30230": "End date is required",
+            "30231": "End date must be positive, string encoded number",
+            "30235": "Start date must be earlier than end date",
+            "30240": "Transcription needed value is required",
+            "30241": "Transcription needed value must be a string encoded boolean",
+            "30250": "Moderator needed value is required",
+            "30251": "Moderator needed value must be a string encoded boolean",
+            "30500": "Pole zprávy je povinné.",
+            "30502": "Zpráva je příliš krátká.",
+            "30503": "Zpráva je příliš dlouhá.",
+            "30602": "Název společnosti je příliš krátký.",
+            "30603": "Název společnosti je příliš dlouhý.",
+            "30613": "DIČ je příliš dlouhé.",
+            "30702": "Název země je příliš krátký.",
+            "30703": "Název země je příliš dlouhý.",
+            "30712": "Název města je příliš krátký.",
+            "30713": "Název města je příliš dlouhý.",
+            "30723": "Název ulice je příliš dlouhý.",
+            "30732": "Číslo budovy je příliš krátké.",
+            "30733": "Číslo budovy je příliš dlouhé.",
+            "30743": "Číslo jednotky budovy je příliš dlouhé.",
+            "30752": "PSČ je příliš krátké.",
+            "30753": "PSČ je příliš dlouhé.",
+            "30803": "Value is too long",
+            "30811": "Incorrect value",
+            "30822": "Value is too high",
+            "30931": "Value is too low",
+            "30932": "Value is too high",
+            "networkError": "Nelze se připojit k serveru.",
+            "tokenExpired": "Session expired"
+        },
+        "links": {
+            "priceCalculator": "Cenová kalkulačka",
+            "tutorials": "Tutoriály",
+            "blog": "Blog",
+            "contact": "Kontakt",
+            "forgotPassword": "Zapomenuté heslo?",
+            "termsAndConditions": "Pravidla a podmínky",
+            "privacyPolicy": "Zásady ochrany osobních údajů",
+            "personalDataProcessingAgreement": "Smlouva o zpracování osobních údajů"
+        },
+        "buttons": {
+            "signUp": "Připojte se k rozhovoru",
+            "resign": "Odstoupit",
+            "logIn": "Přihlásit se",
+            "save": "Uložit",
+            "next": "další",
+            "back": "Zadní",
+            "add": "Přidat",
+            "download": "Download"
+        },
+        "menu": {
+            "home": "Domov",
+            "projects": "Projekty",
+            "myTeam": "Můj tým",
+            "calendar": "Kalendář",
+            "library": "Knihovna",
+            "createProject": "Vytvořit projekt"
+        },
+        "dropdownMenu": {
+            "openUserPanel": "Otevřete uživatelský panel",
+            "personalData": "Osobní data",
+            "companyData": "Firemní údaje",
+            "myTeam": "Můj tým",
+            "logout": "Odhlásit se"
+        },
+        "inputs": {
+            "email": "E-mailem",
+            "password": "Heslo"
+        },
+        "sorting": {
+            "newest": "nejnovější",
+            "oldest": "nejstarší"
+        },
+        "dialogs": {
+            "languageSelection": "Vyberte jazyk"
+        },
+        "pages": {
+            "notFound": "Stránka nenalezena"
+        },
+        "logIn": {
+            "rememberMe": "Zapamatuj si mě",
+            "joinText": "Nemáte účet?"
+        },
+        "setPassword": {
+            "subtitle": "Set password",
+            "newPassword": "New password",
+            "repeatPassword": "Repeat new password",
+            "success": "Password has been set"
+        },
+        "join": {
+            "joinControl": "Máte již účet?",
+            "back": "Zadní",
+            "next": "další",
+            "skip": "Přeskočit",
+            "page1": {
+                "title": "Připojte se k rozhovoru",
+                "respondentTitle": "Jsem respondent",
+                "respondentSubtitle": "Chci se zúčastnit přijímacích pohovorů.",
+                "recruiterTitle": "Jsem náborář",
+                "recruiterSubtitle": "Chci se dostat do databáze respondentů."
+            },
+            "page2": {
+                "title": "Vyberte si pohlaví",
+                "maleTitle": "jsem muž",
+                "femaleTitle": "Jsem žena",
+                "maleTitleShort": "Muž",
+                "femaleTitleShort": "Žena"
+            },
+            "page3": {
+                "title": "Osobní data",
+                "inputs": {
+                    "name": "Název*",
+                    "surname": "Příjmení*",
+                    "email": "E-mailem*",
+                    "password": "Heslo*",
+                    "repeatPassword": "Zopakovat heslo*",
+                    "companyName": "Jméno společnosti*",
+                    "passwordConstraints": "(minimálně: 8 znaků, jedno velké písmeno, jedno číslo a jeden speciální znak)",
+                    "newsletter": "Souhlasím se zasíláním newsletteru.",
+                    "newsletterDetails": "V souladu s ustanoveními zákona ze dne 18. července 2002 o poskytování elektronických služeb (d. 2020.344) souhlasím s přijetím od STRATEGA CEE, SPOLEČNOSTI S OMEZENOU ODPOVĚDNOSTÍ se sídlem v Lodži, ul. Wólczańska 125, 90-521 Łódź, obchodní informace o produktech a službách Service Interviewlyapp.com ve formě newsletteru. Tento souhlas je dobrovolný a lze jej kdykoli odvolat. Odvoláním souhlasu není dotčena zákonnost zpracování před odvoláním souhlasu."
+                },
+                "rulesAgreement": {
+                    "text": "Spolu se smlouvou o pověření zpracováním osobních údajů přijímám předpisy služby.*",
+                    "termsAndConditionsKeyword": "předpisy",
+                    "privacyPolicyKeyword": "smlouva"
+                }
+            },
+            "page4": {
+                "title": "Natočte o sobě video",
+                "text": "(max. 10 minut)",
+                "submissionText": "Odeslání formuláře"
+            },
+            "page5": {
+                "title": "Jste téměř součástí naší rodiny!",
+                "text": "Poslali jsme vám e-mail s odkazem na potvrzení.",
+                "homeButton": "Domov"
+            },
+            "interviewDialog": {
+                "record": "Záznam",
+                "stop": "Stop",
+                "finish": "Dokončit"
+            },
+            "fakedoor": {
+                "title": "Váš účet byl vytvořen.",
+                "text1": {
+                    "regular": "Náš web bude plně funkční",
+                    "strong": "během pár dnů"
+                },
+                "subtitle": {
+                    "regular1": "Vy budete",
+                    "strong": "První",
+                    "regular2": "být informován"
+                },
+                "text2": {
+                    "regular": "Budete také první, kdo plně využije našich výhod",
+                    "strong": "inovativní řešení"
+                },
+                "text3": "Zůstaňme v kontaktu!"
+            }
+        },
+        "home": {
+            "initialSection": {
+                "title": "Nábor a pohovory využívající umělou inteligenci",
+                "timeBoxText": "Maximalizujte svůj čas"
+            },
+            "stepsSection": {
+                "header": {
+                    "firstPart": "Pouze",
+                    "secondPart": "3 kroky",
+                    "thirdPart": "na",
+                    "fourthPart": "najít",
+                    "fifthPart": "nejlepší",
+                    "sixthPart": "zaměstnanec"
+                },
+                "content": {
+                    "firstStep": {
+                        "title": "nahrát",
+                        "text": "databázi kandidátů"
+                    },
+                    "secondStep": {
+                        "title": "Chování",
+                        "text1": "videohovory, programové průzkumy",
+                        "text2": "zkontrolovat jazykové znalosti"
+                    },
+                    "thirdStep": {
+                        "title": "Dostávat",
+                        "text": "hodnocení kandidáta"
+                    }
+                }
+            },
+            "worldSection": {
+                "firstLine": "Nábor lidí z",
+                "secondLine": "po celém světě"
+            },
+            "openAISection": {
+                "subtitle": "Nahrajte brief a získejte cenovou nabídku",
+                "title": "za 1 minutu!",
+                "dashedLabelText": "Umělá inteligence",
+                "buttonText": "Přejděte na cenovou kalkulačku"
+            },
+            "subscriptionSection": {
+                "subtitle": "Nabízíme",
+                "title": "4 plány předplatného",
+                "labelText1": "Žádné smlouvy.",
+                "labelText2": "Žádné překvapivé poplatky.",
+                "subscriptionButtonText": "Začít"
+            },
+            "tutorialsSection": {
+                "title": "Tutoriály",
+                "subscriptionsText": "Počet odběrů: {{subscriptionsCount, number}}",
+                "subscribeButtonText": "předplatit"
+            },
+            "blogSection": {
+                "title": "Blog",
+                "blogLinkText": "Přečtěte si více"
+            }
+        },
+        "methodologies": {
+            "interviews": {
+                "title": "Rozhovory",
+                "text": "Konverzace 1:1 s účastníkem."
+            },
+            "focusGroups": {
+                "title": "Zaměřit se na skupiny",
+                "text": "Skupinová diskuse s moderátorem."
+            },
+            "onlineCommunities": {
+                "title": "Online komunity",
+                "text": "Online komunita pomocí Bulletin Board."
+            },
+            "uxInterviews": {
+                "title": "UX rozhovory",
+                "text": "Rozhovor s účastníkem se sdílením obrazovky."
+            },
+            "productTests": {
+                "title": "Testy produktů",
+                "text": "Testování produktů s potenciálními zákazníky."
+            }
+        },
+        "accountStatuses": {
+            "active": "aktivní",
+            "unconfirmed": "nepotvrzený",
+            "inactive": "neaktivní"
+        },
+        "genders": {
+            "male": "mužský",
+            "female": "ženský"
+        },
+        "martialStatuses": {
+            "singleMan": "Single man",
+            "singleWoman": "Single woman",
+            "marriedMan": "Married man",
+            "marriedWoman": "Married woman",
+            "widower": "Widower",
+            "widow": "Widow",
+            "divorcedMan": "Divorced man",
+            "divorcedWoman": "Divorced woman",
+            "separatedMan": "Separated man",
+            "separatedWoman": "Separated woman"
+        },
+        "profileRoles": {
+            "admin": "admin",
+            "moderator": "moderátor",
+            "observer": "pozorovatel",
+            "translator": "translator",
+            "interviewlyStaff": "Personál pohovoru"
+        },
+        "projectStatuses": {
+            "draft": "draft",
+            "awaitingPayment": "awaiting payment",
+            "new": "new",
+            "inProgress": "in progress",
+            "finished": "hotovo",
+            "pending": "čekající",
+            "canceled": "zrušeno"
+        },
+        "languages": {
+            "bulgarian": "bulharský",
+            "czech": "čeština",
+            "dutch": "holandský",
+            "english": "Angličtina",
+            "french": "francouzština",
+            "german": "Němec",
+            "greek": "řecký",
+            "hungarian": "maďarský",
+            "italian": "italština",
+            "polish": "polština",
+            "portuguese": "portugalština",
+            "romanian": "rumunština",
+            "russian": "ruština",
+            "slovak": "Slovák",
+            "spanish": "španělština",
+            "swedish": "švédský",
+            "ukrainian": "ukrajinština"
+        },
+        "surveyTypes": {
+            "regular": "Regular",
+            "screening": "Screening",
+            "language": "Language"
+        },
+        "personalData": {
+            "title": "Osobní data",
+            "marketingConsentsSubtitle": "Marketingové souhlasy",
+            "changePasswordSubtitle": "Změna hesla",
+            "currentPassword": "Aktuální heslo",
+            "newPassword": "Nové heslo",
+            "repeatPassword": "Repeat new password",
+            "save": "Uložit",
+            "passwordChangeSuccessMessage": "Password changed",
+            "name": "Name",
+            "surname": "Surname",
+            "email": "E-mail",
+            "phoneNumber": "Phone number",
+            "companyName": "Company name",
+            "sector": "Sector",
+            "bankAccountNumber": "Bank account number",
+            "birthYear": "Birth year",
+            "province": "Province",
+            "city": "City",
+            "zipCode": "Zip code",
+            "street": "Street",
+            "profession": "Profession",
+            "specialization": "Specialization",
+            "hasChildren": "Has children",
+            "childrenCount": "Children count",
+            "martialStatus": "Martial status",
+            "selectGender": "Select gender",
+            "repeatedNewPassword": "opakujte nové heslo"
+        },
+        "companyData": {
+            "title": "Firemní údaje",
+            "name": "Jméno společnosti",
+            "taxIdNumber": "DIČ",
+            "country": "Země",
+            "city": "Město",
+            "street": "ulice",
+            "buildingNumber": "Číslo budovy",
+            "unitNumber": "Číslo jednotky",
+            "postalCode": "Poštovní směrovací číslo",
+            "save": "Uložit",
+            "success": "Úspěšně uloženo"
+        },
+        "myAccount": {
+            "greeting": "Ahoj",
+            "latestTeamMembersLabel": "Nejnovější členové týmu",
+            "upcomingInterviewsLabel": "Nadcházející rozhovory",
+            "projectsLabel": "Projekty"
+        },
+        "projects": {
+            "title": "Projekty",
+            "projectsCounterText": "projekty",
+            "searchInputPlaceholder": "Hledejte podle názvu projektu",
+            "statusLabel": "Postavení"
+        },
+        "viewProject": {
+            "title": "Detaily projektu",
+            "edit": "Upravit",
+            "markAsPaid": "Mark as paid",
+            "steps": [
+                "Všeobecné",
+                "Metodologie",
+                "Respondenti",
+                "Screeningový průzkum",
+                "Podrobnosti"
+            ],
+            "general": {
+                "title": "User Experience in Samsung company",
+                "description": "„Někdy to může být nervy drásající, zranitelné a náročné, ale vymanit se z vlastní hlavy a začlenit spolupráci do našich návrhových procesů z nás může udělat lepší designéry.\n\n\n\nV průběhu let jsem se naučil, že navrhování ve spolupráci znamená odložit svá ega a vytvořit něco, co přesahuje součet jeho tvůrců.\""
+            },
+            "methodology": {
+                "interview": {
+                    "createSurvey": "Vytvořit průzkum",
+                    "instruction": "nebo si vyberte anketu z knihovny",
+                    "save": "Uložit"
+                },
+                "onlineCommunity": {
+                    "createBulletinBoardButtonText": "Vytvořit nástěnku",
+                    "membersLabel": "členů",
+                    "createRoomButtonText": "Vytvořte místnost",
+                    "roomName": "Název místnosti",
+                    "addMembersLabel": "Přidat členy",
+                    "surveySubtitle": "nebo si vyberte průzkum z knihovny",
+                    "room": {
+                        "addTopicLabel": "Přidat téma",
+                        "visibilityLabel": "Viditelnost",
+                        "publicVisibility": "Veřejnost",
+                        "specificMembersVisibility": "Konkrétní členové",
+                        "topicInputPlaceholder": "Téma",
+                        "addCommentLabel": "Přidat komentář",
+                        "noCommentsCabel": "Bez komentáře",
+                        "commentSingularLabel": "komentář",
+                        "commentPluralLabel": "komentáře"
+                    }
+                },
+                "sessionStartDateLabel": "Session start date",
+                "sessionEndDateLabel": "Session end date"
+            },
+            "respondents": {
+                "personalDataSubtitle": "Personal data",
+                "seeDetailsLabel": "Prohlednout detaily",
+                "respondentVideoSubtitle": "Video respondenta",
+                "upcomingInterviewsSubtitle": "Nadcházející rozhovory",
+                "meetingSchedulerSubtitle": "Schedule the meeting",
+                "scheduleButtonText": "Schedule",
+                "respondentSurveysSubtitle": "Průzkumy respondentů",
+                "scheduledSuccessMessage": "Scheduled"
+            },
+            "screeningSurveys": {
+                "resultsTitle": "Results",
+                "noResultsMessage": "No results"
+            },
+            "details": {
+                "participantsCountInputLabel": "Participants Count",
+                "reserveParticipantsCountInputLabel": "Reserve Participants Count",
+                "interviewDurationLabel": "Interview duration",
+                "startDateLabel": "Start date",
+                "endDateLabel": "End date",
+                "transcriptionSubtitle": "Transcription",
+                "respondentFeeSubtitle": "Payment for the respondent",
+                "respondentFeeLabel": "Respondent fee",
+                "currencyLabel": "Currency"
+            },
+            "respondentPage": {
+                "interviewsSubtitle": "Interviews",
+                "surveysSubtitle": "Surveys",
+                "surveysStatuses": {
+                    "filled": "filled",
+                    "ended": "ended",
+                    "pending": "pending"
+                },
+                "noResponsesMessage": "No responses"
+            }
+        },
+        "editProject": {
+            "title": "Nový tvůrce výzkumu",
+            "aboutStepTitle": "O projektu",
+            "methodologyStepTitle": "Metodologie výzkumu",
+            "respondentsStepTitle": "Výběr respondentů",
+            "detailsStepTitle": "Detaily projektu",
+            "summaryStepTitle": "souhrn",
+            "aboutStep": {
+                "title": "O projektu",
+                "projectNameSubtitle": "Uveďte prosím název projektu",
+                "projectNameInputPlaceholder": "Název projektu",
+                "descriptionInputPlaceholder": "popis (Dobrovolný)",
+                "avatarSubtitle": "Nahrajte avatara"
+            },
+            "methodologyStep": {
+                "title": "Metodologie výzkumu",
+                "methodologySubtitle": "Vyberte metodologii výzkumu."
+            },
+            "respondentsStep": {
+                "title": "Výběr respondentů",
+                "respondentsSelectionSubtitle": "Vyberte respondenty pro tento výzkum",
+                "respondentsSelectionInstructionPart1": "Pokud si nejste jisti, jak by měl soubor respondentů vypadat, stáhněte si náš vzorový soubor, kde najdete všechny potřebné informace.",
+                "respondentsSelectionInstructionPart2": "nebo pomocí níže uvedených filtrů zadejte požadovaný profil respondentů",
+                "genderLabel": "Rod",
+                "otherRequirementsInputPlaceholder": "Další požadavky",
+                "languageTestSubtitle": "Jazykový test pro respondenta",
+                "screeningSurveySubtitle": "Potřebujete screeningový průzkum?",
+                "screeningSurveyDescription": "Po zaplacení průzkumu budete mít možnost využít již připravenou knihovnu průzkumů nebo si vytvořit vlastní.",
+                "recordingSubtitle": "Potřebujete předběžný záznam náboru respondentů?"
+            },
+            "detailsStep": {
+                "title": "Detaily projektu",
+                "participantsCountInputLabel": "Počet zúčastněných",
+                "reserveParticipantsCountInputLabel": "Počet rezervních účastníků",
+                "interviewDurationDropdownName": "Délka rozhovoru",
+                "startDateLabel": "Datum zahájení",
+                "endDateLabel": "Datum ukončení",
+                "transcriptionSubtitle": "Potřebujete přepis?",
+                "moderatorSubtitle": "Potřebujete moderátora?",
+                "paymentSubtitle": "Platba za odpůrce",
+                "paymentInstruction": "Zadejte prosím hrubou částku. Měna by měla odpovídat měně použité pro platbu faktury."
+            },
+            "summaryStep": {
+                "title": "souhrn"
+            },
+            "nameStepTitle": "Pojmenujte průzkum",
+            "questionStepTitle": "Přidejte otázky",
+            "nameInputLabel": "Uveďte prosím",
+            "nameInputPlaceholder": "název průzkumu",
+            "availableLanguagesDropdownName": "Dostupné jazyky",
+            "addLanguageButtonText": "Přidat jazyk",
+            "addLabel": "Přidat",
+            "openQuestionName": "otevřená otázka",
+            "closedQuestionName": "uzavřená otázka",
+            "multipleChoiceQuestionName": "otázka s více možnostmi",
+            "singleChoiceQuestionName": "otázka s jednou volbou",
+            "newQuestionText": "Nová otázka",
+            "addAnswerButtonText": "Přidat odpověď",
+            "newAnswerText": "Nová odpověď",
+            "correctAnswerLabel": "Správná odpověď",
+            "correctAnswerDropdownName": "Správná odpověď"
+        },
+        "myTeam": {
+            "title": "Můj tým",
+            "membersLabel": "členů",
+            "inviteTeamMemberButton": "Pozvat člena týmu",
+            "administratorsLabel": "Správci",
+            "moderatorsLabel": "Moderátoři",
+            "observersLabel": "Pozorovatelé",
+            "popup": {
+                "addLabel": "Přidat",
+                "editLabel": "Upravit",
+                "memberText": "člen",
+                "nameInputPlaceholder": "název",
+                "surnameInputPlaceholder": "Příjmení",
+                "emailInputPlaceholder": "E-mailem",
+                "roleDropdownName": "Role",
+                "statusDropdownName": "Postavení",
+                "projectsDropdownName": "Projects",
+                "genderDropdownName": "Rod",
+                "saveButtonText": "Uložit"
+            }
+        },
+        "meeting": {
+            "finishedMessage": "The meeting has finished"
+        },
+        "library": {
+            "title": "Knihovna",
+            "mySurveys": "Moje průzkumy",
+            "publicSurveys": "Veřejné průzkumy",
+            "addNewTemplate": "Přidat novou šablonu"
+        },
+        "calendar": {
+            "title": "Calendar"
+        },
+        "passwordReset": {
+            "request": {
+                "header": "Vytvořte nové heslo",
+                "subheader": "Zadejte svou e-mailovou adresu a my vám zašleme zprávu s pokyny, jak vytvořit nové heslo.",
+                "submitButton": "Poslat"
+            },
+            "confirmation": {
+                "header": "Máme to!",
+                "subheader": "Poslali jsme vám zprávu s novým heslem.",
+                "submitButton": "Zpět na domovskou stránku"
+            }
+        },
+        "contact": {
+            "getInTouch": "Být v kontaktu",
+            "sendUsAMessage": "Pošlete nám zprávu",
+            "quote": "Interviewly má vše, co potřebujeme, na jediné platformě.",
+            "messageSent": "Zpráva odeslána!"
+        },
+        "registrationConfirmation": {
+            "header": "Je to připravené!",
+            "subheader": "Nyní se můžete přihlásit."
+        },
+        "termsAndConditions": {
+            "header": "Podmínky služby",
+            "generalProvisions": {
+                "header": "Obecná ustanovení",
+                "main": "„Poskytovatelem služby přístupu ke službě Interview, dále jen „Služba“, je\n\nSPOLEČNOST STRATEGA CEE SPOLEČNOST S OMEZENÝM RUČENÍM se sídlem v Lodži, ul. Wólczańska 125,\n\n90-521 Łódź, zapsaná v národním soudním rejstříku – rejstříku podnikatelů pod KRS\n\nčíslo: 0000541582, jehož registrační záznamy jsou vedeny Okresním soudem pro ŁÓDŹ-Śródmieście\n\nIN ŁÓDŹ, XX Ekonomická divize KRS, NIP: 7692223109, REGON: 360412382, dále jen jako\n\n„Poskytovatel služeb“ nebo „Administrátor“.",
+                "listHeader": "Toto nařízení (také označované jako „Dohoda“) stanoví:",
+                "list": [
+                    "druh, rozsah a pravidla služeb poskytovaných elektronicky Poskytovatelem služby prostřednictvím Služby,",
+                    "Odpovědnosti příjemců služeb a poskytovatelů služeb,",
+                    "uzavírání a ukončování smluv o poskytování elektronických služeb,",
+                    "Povinnosti a odpovědnosti poskytovatele služeb,",
+                    "způsob reklamy,",
+                    "Zpracování osobních údajů."
+                ]
+            },
+            "definitions": {
+                "header": "Definice",
+                "list": [
+                    {
+                        "phrase": "Poskytovatel služeb",
+                        "definition": "podnikatel, který uzavře s Poskytovatelem smlouvu o poskytování Elektronické služby ve formě dostupnosti Služby ve smyslu tohoto Nařízení,"
+                    },
+                    {
+                        "phrase": "Servis",
+                        "definition": "software zpřístupněný Příjemci služby elektronicky prostřednictvím webového prohlížeče, umožňující zejména službu náboru lidských zdrojů,"
+                    },
+                    {
+                        "phrase": "Účet",
+                        "definition": "označený individuálním názvem organizace (organizace) poskytované Příjemcem služby, soubor zdrojů v IT systému Poskytovatele služby, ve kterém jsou shromažďovány Údaje, díky nimž může Uživatel Služby využívat Službu,"
+                    },
+                    {
+                        "phrase": "Správce účtu",
+                        "definition": "tím je třeba rozumět Uživatel, který má práva spravovat Účet. Ve výchozím nastavení je správcem účtu osoba, která vytvořila účet. V rámci Služby může Příjemce Služby změnit Správce účtu samostatně pomocí funkcí dostupných na Službě."
+                    },
+                    {
+                        "phrase": "Uživatel",
+                        "definition": "jakákoli osoba, která někdy používala nebo používá Službu"
+                    },
+                    {
+                        "phrase": "Předplatné",
+                        "definition": "prohlášení o vůli Příjemce služby uzavřít smlouvu o poskytování elektronické služby ve formě vedení Účtu ke Službě a užívání Služby. Podání se provádí vytvořením Účtu prostřednictvím webové stránky provozované na adrese www.interviewlyapp.com nebo prodloužením smlouvy o poskytování elektronické služby formou provozování Účtu na Službě a používání Služby,"
+                    },
+                    {
+                        "phrase": "Poplatek",
+                        "definition": "odměna Poskytovatele služby za Službu splatná od Příjemce služby. Poplatek\r\nse platí jako poplatek za předplatné služby během zvoleného období předplatného nebo prodlouženého předplatného\r\nběhem Vybraného předplatitelského období."
+                    },
+                    {
+                        "phrase": "Období předplatného",
+                        "definition": "„Tím je třeba rozumět dobu provozu Účtu, pro"
+                    }
+                ]
+            },
+            "obligationsOfServiceProvider": {
+                "header": "za kterou se platí poplatek a v rámci kterých jsou Poskytovatelem služby ke Službě poskytovány služby",
+                "list": [
+                    "Příjemce elektronicky formou dostupnosti Služby. Období předplatného jsou",
+                    "přijato: jeden měsíc, šest měsíců, dvanáct měsíců.\"",
+                    "Povinnosti poskytovatele služeb",
+                    "Poskytovatel služby deklaruje dostupnost Služby (SLA) v 80 % období roku.",
+                    {
+                        "text": "Nedostupnost Služby nebude zahrnuta do vyúčtování dostupnosti v případě, že Příjemce Služby nezaplatí v době Nedostupné Aplikace jakékoli Poplatky.",
+                        "sublist": [
+                            "Ukazatel se týká dostupnosti webové stránky, s vyloučením problémů vyplývajících z IT infrastruktury poskytovatele služeb nebo společností třetích stran, informační infrastruktury nebo vyšší moci.",
+                            "Technická přestávka je čas potřebný pro údržbu Služby a/nebo infrastruktury používané Poskytovatelem služby."
+                        ]
+                    },
+                    "Technické přerušení a aktualizace služby",
+                    {
+                        "text": "„Poskytovatel služby bude provádět aktualizace služby od 19:00 do 7:00 v časovém pásmu",
+                        "sublist": [
+                            "Poskytovatel služeb nebo během technických přestávek.\"",
+                            "„Poskytovatel služby je oprávněn kdykoli provést technické přerušení přístupu ke Službě",
+                            "od 19:00 do 7:00 v časovém pásmu poskytovatele služby.\"",
+                            "Poskytovatel služby si vyhrazuje právo službu upravit, zejména rozšířit její rozsah.",
+                            "Poskytovatel služeb není odpovědný za:",
+                            "důsledky nesprávného zadání údajů nebo zpracování údajů ve Službě Příjemcem služby;",
+                            "nesprávným používáním Služby www.interviewlyapp.com;"
+                        ]
+                    },
+                    "Poskytovatel služeb ani jeho právně přidružené subjekty nenesou za žádných okolností odpovědnost za ztrátu zisku nebo příjmu (ušlý zisk), úspory, ztrátu nebo zničení dat, hodnotu společnosti nebo pověsti, nepřesnost jakýchkoli údajů, jsou zodpovědní za jakékoli materiální/nehmotné škody nebo nepřímé, náhodné ztráty, vzniklé bez ohledu na teorii zdrojů odpovědnosti, i když byli informováni o možnosti takové škody nebo ztráty.",
+                    "Odpovědnost poskytovatele služeb podle Smlouvy je omezena částkou rovnající se hodnotě poslední platby zaplacené Příjemcem služby, nejvýše však částkou Platby za dané Období předplatného."
+                ]
+            },
+            "principlesOfApplicationUse": {
+                "header": "Zásady použití aplikace",
+                "list": [
+                    "Pro využívání Služby je nutné mít zařízení s přístupem k internetu, webový prohlížeč a zřídit si Účet – kromě in/in – také e-mailový účet.",
+                    "Přístup na webovou stránku je možný prostřednictvím jednoho z obecně dostupných webových prohlížečů: Google Chrome, Mozilla Firefox, Opera, Edge, Safari, v nejnovějších verzích. Z dostupných verzí, se zapnutou, ve webovém prohlížeči podpora souborů cookie a Javascript.",
+                    "Poskytovatel služby poskytuje IT služby související s přístupem a obsluhou Služby pouze prostřednictvím internetu.",
+                    "Uživatel bere na vědomí, že pravidelná aktualizace jeho zařízení a softwaru na podporu moderních šifrovacích mechanismů při komunikaci z Webu umožňuje jejich používání. Dostupnost uvedených aktualizací může záviset na hardwaru a/nebo softwaru vlastněném Uživatelem, a proto Poskytovatel služby nenese odpovědnost za případnou absenci uvedených aktualizací a následně nemožnost používat Službu z tohoto důvodu.",
+                    "„Uživatel, který používá Službu, nezíská žádná autorská práva ke Službě",
+                    {
+                        "text": "Příjemci a Uživatelům je udělována pouze – za podmínek uvedených v Pravidlech – placená, nepřenosná a nevýhradní licence opravňující k užívání Služby v rozsahu jejího účelu.“",
+                        "sublist": [
+                            "Abyste se vyhnuli jakýmkoliv pochybnostem, sami o sobě nedovolíte ani nezmocníte nikoho, aby:",
+                            "Distribuce, převod, půjčování, sdílení, prodej, přenos, licencování, pronájem nebo jiné zpřístupňování Služby.",
+                            "kopírování, dekompilace, překreslování, zpětné inženýrství nebo jiná extrakce nebo reprodukce zdrojového kódu nebo jiných metod, algoritmů nebo procesů z webové stránky.",
+                            "Odstraňte veškeré informace o autorských právech, ochranné známky s výjimkou upravitelných prvků na úrovni funkčnosti Webu."
+                        ]
+                    },
+                    "Poskytovatel služby nenese žádnou odpovědnost za porušení práv třetích osob a za způsobení jakékoli škody třetím osobám v důsledku a v souvislosti s činnostmi prováděnými Příjemcem služby, jeho Uživateli nebo Zaměstnanci při používání Servis.",
+                    "Pokud uživatel služby informuje poskytovatele služeb o nápadech a návrzích souvisejících se službou, příjemce služby souhlasí s použitím takových nápadů a návrhů poskytovatelem služby pro jakýkoli účel, bez omezení, zejména vývoj, úpravy, opravy s vyloučením odpovědnosti i odměny Uživateli.",
+                    "Uživatel bere na vědomí a souhlasí s tím, že služby poskytované Poskytovatelem služby jsou založeny na jediné základní verzi aplikace, hardwaru a infrastruktury a jsou určeny k poskytování služby více zákazníkům škálovatelným způsobem. Služba nebude přizpůsobena a/nebo přizpůsobena Příjemci služby, ledaže by se strany výslovně dohodly."
+                ]
+            },
+            "feesAndPayments": {
+                "header": "Poplatky a platby",
+                "list": [
+                    "Cena předplatného je zveřejněna na webových stránkách poskytovatele služeb: www.interviewlyapp.com.",
+                    "Uvedené ceny jsou ceny netto (tj. bez DPH). Ceny jsou vyjádřeny v polských zlotých, amerických dolarech.",
+                    "Poplatek se platí předem a vypočítává se podle zvoleného modelu předplatného.",
+                    "Platby jsou prováděny kreditní kartou (Visa, MasterCard, American Express) nebo bankovním převodem na základě faktury vystavené Poskytovatelem služeb.",
+                    "Poplatek bude uhrazen bankovním převodem na bankovní účet Poskytovatele služeb uvedený na faktuře s DPH. Zákazník se zavazuje uhradit poplatek do 7 dnů ode dne doručení faktury s DPH na zadanou emailovou adresu. V rámci individuálního ujednání s Příjemcem služby je možné dobu převodu prodloužit. Konečné rozhodnutí činí poskytovatel.",
+                    "Poskytovatel služby může odmítnout platbu bankovním převodem, pokud Příjemce služby nedodrží platební lhůtu.",
+                    "Uhrazené faktury jsou doručovány e-mailem.",
+                    "Doručení faktury zaslané ve formě souboru nastane, jakmile Poskytovatel služby odešle e-mail obsahující soubor fakturace z e-mailové adresy na adresu uvedenou Příjemcem služby. V případě, že e-mail obsahující fakturu nebude Příjemci služby doručen z důvodů nezávislých na Poskytovateli služby, bude na žádost Objednatele vystaven duplikát této fakturace.",
+                    "Za den úhrady částek na základě faktur vystavených Poskytovatelem služeb akceptují Smluvní strany datum uznání bankovního účtu poskytovatele služeb.",
+                    "Smluvní strany se dohodly, že Poskytovatel služeb bude platby pocházející od Příjemce služby účtovat v první řadě na základě dříve splatných dluhů, bez ohledu na obsah Výpisů přiložených k platbě.",
+                    "Pokud zvolíte jako způsob platby poplatku za předplatné kreditní nebo debetní kartu, bude poplatek za každé následující období předplatného účtován automaticky, dokud příjemce služby neprohlásí, že si přeje odstoupit. Takové odstoupení by mělo být oznámeno e-mailem na adresu contact@interviewlyapp.com nejpozději 7 dní před začátkem nového Předplatitelského období.",
+                    "Příjemce služby je povinen uhradit Poplatek za vybrané Předplatné nejpozději do 7 pracovních dnů ode dne podání Předplatného. Za den úhrady se považuje den zaúčtování požadovaného dluhu na bankovní účet Poskytovatele služeb. Nezaplacení ve stanoveném časovém rámci se rovná zrušení předplatného.",
+                    "Změnu Parametrů Předplatného provádí Správce Účtu přímo na Účtu ve Službě a může ji kdykoliv zrušit nebo na příkaz správce Účtu zaslaný na emailovou adresu uvedenou v odstavci. 2 Poskytovatele služeb.",
+                    "Správce účtu má ve Službě přístup k",
+                    "Příjemce služby souhlasí se zasíláním faktur s DPH Poskytovatelem služeb v elektronické podobě v souladu s právním základem pro vystavování a zasílání faktur v elektronické podobě. Zákon ze dne 11. března 2004 o dani ze zboží a služeb (Dz.U. kapitola 54 , poz. a 535. Faktura zaslaná v elektronické podobě v souladu se zákonem (Dz.U. č. 144 pol. 1204, v platném znění) je rovnocenná zaslání faktury vystavené v listinné podobě a je účetním dokladem.\r\n\r\nOpravné faktury a duplikáty faktur zaslané elektronicky budou rovněž zasílány v elektronické podobě.“",
+                    "Faktura s DPH v papírové podobě bude vystavena a doručena pouze na výslovnou žádost Příjemce služby vyjádřenou v elektronické podobě na kontaktní emailovou adresu Poskytovatele. Poplatek za tisk a dodání DPH v papírové podobě hradí Poskytovatel služby a je připočten k faktuře, ve výši 59 PLN netto + DPH.",
+                    "Poskytovatel služeb může kdykoli po informování Příjemců služeb, nejméně 60 dnů před změnou, pokud to vyžadují platné právní předpisy, změnit Ceník nebo jeho část nebo stanovit nové poplatky. Změny cen a stanovení nových poplatků vstoupí v platnost pro následující předplatitelská období a pro všechny nové příjemce služeb po datu vstupu změny v platnost. Nesouhlasí-li Příjemce služby se změnami cen v Sazebníku, může zrušit Předplatné a přestat používat Službu před začátkem dalšího Období, od kterého budou změněné ceny platit."
+                ]
+            },
+            "support": {
+                "header": "Podpěra, podpora",
+                "list": [
+                    "Technická podpora je k dispozici každý den. 9:00 – 15:00 (CET) pro Příjemce služeb s Poplatkem zaplaceným za Platné období předplatného pro vybrané modely předplatného.",
+                    "Kontakt na technickou podporu má správce účtu k dispozici e-mailem na adrese contact@interviewlyapp.com",
+                    "Poskytovatel služeb vynaloží veškeré úsilí, aby odpověděl na e-maily do 72 hodin během pracovních dnů platných pro poskytovatele služeb."
+                ]
+            },
+            "compliants": {
+                "header": "Vyhovující",
+                "list": [
+                    "Poskytovatel služby se zavazuje neprodleně odstranit závady bránící přístupu k užívání Služby.",
+                    "Stížnosti související s poskytováním služby přístupu ke Službě může Příjemce služby podávat e-mailem na adresu contact@interviewlyapp.com",
+                    {
+                        "text": "Zpráva by měla uvádět:",
+                        "sublist": [
+                            "název organizace (údaje uvedené při vytváření účtu) a její e-mailovou adresu",
+                            "informace o dotčeném uživateli,",
+                            "čas a okolnosti vzniku problému s provozem Služby, URL nebo název stránky,",
+                            "Obrazovka s viditelnou adresou URL a problémem"
+                        ]
+                    },
+                    "Pokud jsou pro posouzení stížnosti nutné další informace, poskytovatel služeb vás požádá o poskytnutí těchto informací před posouzením stížnosti a doba pro posouzení reklamace se počítá ode dne doručení požadovaných informací.",
+                    "Ve výše uvedeném e-mailu je doporučeno uvést co nejvíce informací a okolností týkajících se předmětu reklamace, zejména druh a datum vzniku nesrovnalosti a kontaktní údaje – usnadní a urychlí vyřízení reklamace ze strany Poskytovatele služeb.",
+                    "Reklamaci vyřizuje Poskytovatel služby neprodleně, nejpozději do 14 pracovních dnů.",
+                    "Posouzení stížnosti Poskytovatelem služby je konečné.",
+                    "Odpověď poskytovatele služby na reklamaci je zaslána na e-mailovou adresu příjemce služby uvedenou v oznámení o reklamaci,"
+                ]
+            },
+            "serviceData": {
+                "header": "Servisní údaje",
+                "list": [
+                    "Údaje zadané Příjemcem Služby do Servisního účtu jsou majetkem Příjemce Služby.",
+                    "Veškeré údaje vložené do Servisního účtu budou Poskytovatelem služby uloženy v souladu s Nařízením Evropského parlamentu a Rady (EU) 2016/679 ze dne 27. dubna 2016 o ochraně fyzických osob v souvislosti se zpracováním osobních údajů a o volném pohybu těchto údajů ao zrušení směrnice 95/46/ES. (dalej RODO).",
+                    "Poskytovatel služeb uchovává a zpracovává údaje, které mu zpřístupnil Příjemce služby v souladu s platnými právními ustanoveními a v souladu se Smlouvou o důvěře o zpracování osobních údajů, která tvoří přílohu č. 1 Pravidel.",
+                    "Přijetím těchto podmínek služby souhlasí příjemce služby se svěřením údajů poskytovateli služeb v souladu se smlouvou o důvěře o zpracování osobních údajů."
+                ]
+            },
+            "conditionsOfCeasementOfContract": {
+                "header": "Podmínky ukončení smlouvy",
+                "list": [
+                    "Zákazník může smlouvu vypovědět s jednoměsíční výpovědní lhůtou a bez udání důvodů zasláním příslušného prohlášení e-mailem na adresu contact@interviewlyapp.com.",
+                    "Příjemce služby může smlouvu okamžitě ukončit, pokud poskytovatel služby neudrží dostupnost služby v rozsahu uvedeném ve SLA v odstavci III.1, zasláním příslušného prohlášení e-mailem na adresu contact@interviewlyapp.com.",
+                    {
+                        "text": "Poskytovatel služby může dočasně nebo trvale zablokovat Účet Příjemce služby nebo ukončit Smlouvu v případě, že Uživatel:",
+                        "sublist": [
+                            "porušuje Pravidla,",
+                            "poskytuje obsah protiprávní povahy po neúčinné předchozí výzvě k zastavení porušování s pevně stanovenou lhůtou;",
+                            "poškodí Poskytovatele služby nebo uvede při registraci nepravdivé údaje nebo nebude neprodleně aktualizovat změny poskytnutých údajů podle skutečného stavu,",
+                            "neplatí včas.",
+                            "se dopouští jednání směřujícího k narušení bezpečnosti údajů zpracovávaných ve Službě a užívání Služby nebo se neoprávněně pokouší o přístup ke Službě, případně provádí jiné jednání směřující k narušení řádného fungování Služby."
+                        ]
+                    },
+                    "Poskytovatel služeb je oprávněn vypovědět Smlouvu s okamžitou výpovědní účinností, pokud nastane některý z důvodů uvedených v odstavci 3 této kapitoly.",
+                    "Poskytovatel služeb může Smlouvu kdykoli vypovědět s tříměsíční výpovědní lhůtou.",
+                    "Prohlášení vůle poskytovatele služeb ohledně ukončení smlouvy pro její platnost vyžaduje listinnou formu a mělo by být zasláno na e-mailovou adresu aktuálního správce účtu příjemce služby. Lhůta pro ukončení Smlouvy začíná běžet ode Dne doručení prohlášení o vůli Poskytovatele služeb ukončit Smlouvu.",
+                    "Tímto zánikem dochází k zániku právního vztahu s účinkem do budoucna."
+                ]
+            },
+            "finalProvisions": {
+                "header": "Závěrečná ustanovení",
+                "list": [
+                    "Smlouvy uzavírané Poskytovatelem služeb v rámci činností Aplikace jsou uzavírány v polštině v souladu s právními předpisy platnými na území Polska.",
+                    "Poskytovatel služeb si vyhrazuje právo na změny Pravidel. Změny provedené v Podmínkách použití zavazují Příjemce služby, pokud byl o změnách řádně informován a neukončil Smlouvu do 14 dnů ode dne oznámení změny Poskytovatelem služby.",
+                    "V případě nesouladu kterékoli části nařízení s platným právem se místo napadeného ustanovení nařízení použijí příslušná ustanovení polského práva.",
+                    "Případné spory vzniklé mezi Poskytovatelem služby a Příjemcem služby budou předány soudu příslušnému podle sídla Poskytovatele služby."
+                ]
+            }
+        },
+        "personalDataProcessingAgreement": {
+            "header": "Smlouva o zpracování osobních údajů",
+            "text": "„Smlouva o zpracování osobních údajů je nedílnou součástí Nařízení a stanoví pravidla pro zpracování osobních údajů Uživatele Poskytovatelem služby jménem Příjemce služby prostřednictvím Služby na www.interviewlyapp.com.",
+            "rules": [
+                {
+                    "title": "Definice",
+                    "list": [
+                        "Správce – znamená Příjemce služby, který sám nebo společně s jinými subjekty určuje účely a způsoby zpracování Osobních údajů;",
+                        "Procesor – znamená Poskytovatel služeb"
+                    ]
+                },
+                {
+                    "title": "Předmět zpracování osobních údajů",
+                    "list": [
+                        "Správce v souvislosti s realizací smlouvy o poskytování služeb elektronickými prostředky pro službu SaaS upravenou v Pravidlech (dále jen „Hlavní smlouva“ uzavřená mezi Smluvními stranami pověřuje Zpracovatele v souladu s čl. 28 Nařízení osobní údaje zpracovávané jménem Správce, za podmínek a pro účely uvedené ve Smlouvě.",
+                        "Uzavření Smlouvy představuje zdokumentovaný pokyn Správce ke zpracování Osobních údajů ze strany Poskytovatele služeb, včetně předávání osobních údajů do třetích zemí, jak je uvedeno v čl. 28 odst. 3 písm. a) GDPR.",
+                        "Správce prohlašuje, že je správcem osobních údajů ve smyslu ustanovení Nařízení Evropského parlamentu a Rady (EU) 2016/679 ze dne 27. dubna 2016 o ochraně fyzických osob v souvislosti se zpracováním osobních údajů údajů a o volném pohybu těchto údajů a o zrušení směrnice 95/46/ES (obecné nařízení o ochraně osobních údajů), (dále jen „nařízení“), kterou pověřuje zpracovatele."
+                    ]
+                },
+                {
+                    "title": "Rozsah a účel zpracování údajů",
+                    "list": [
+                        "Osobní údaje svěřené Správci budou Zpracovatelem zpracovávány pouze za účelem plnění služeb podrobně popsaných v Hlavní smlouvě uvedené v § 2 odst. 1 a způsobem v souladu s těmito smlouvami a příslušnými, obecně platnými právními ustanoveními.",
+                        "Kategorie osob: zaměstnanci a spolupracovníci Správce, uchazeči o zaměstnání, uživatelé Služby.",
+                        {
+                            "text": "Zpracovatel se zavazuje zpracovávat svěřené osobní údaje v následujícím rozsahu:",
+                            "sublist": [
+                                "Jméno a příjmení",
+                                "Obrázek – fotografie a nahrávky nahrané do Služby",
+                                "Rod",
+                                "Adresa",
+                                "Kontaktní Telefon",
+                                "Emailová adresa",
+                                "Datum narození",
+                                "Číslo bankovního účtu",
+                                "Profese",
+                                "Průmysl",
+                                "Civilní stát",
+                                "Informace o tom mít děti",
+                                "Další údaje obsažené v uložených souborech nebo zadané jinde."
+                            ]
+                        },
+                        "Činnosti zpracování: Shromažďování, záznam, organizování, uspořádání, ukládání, prohlížení, přenos, úprava, mazání.",
+                        "Forma zpracování: Elektronická"
+                    ]
+                },
+                {
+                    "title": "Povinnosti zpracovatele",
+                    "list": [
+                        "Zpracovatel prohlašuje, že zajišťuje vhodná technická a organizační opatření, aby zpracování bylo v souladu s požadavky stanovenými Nařízením a chránilo práva subjektů údajů, což zejména znamená, že Zpracovatel přijme vhodná opatření vyžadovaná čl. 32 Nařízení a jedná se o náležitou péči při zpracování svěřených osobních údajů.",
+                        "Zpracovatel se zavazuje pověřit zpracováním osobních údajů všechny osoby, které budou zpracovávat svěřené údaje pro účely této Smlouvy.",
+                        "S přihlédnutím k povaze zpracování je Zpracovatel v rámci možností prostřednictvím vhodných technických a organizačních opatření správci nápomocný při plnění povinnosti odpovídat na žádosti subjektu údajů při výkonu jeho popř. její práva, specifikovaná v kapitole III nařízení.",
+                        "S přihlédnutím k povaze zpracování a informacím, které má k dispozici, bude zpracovatel nápomocen správci při plnění povinností uvedených v čl. 32 až 36 Řádu.",
+                        "Zpracovatel se zavazuje zajistit důvěrnost zpracovávaných údajů (jak je uvedeno v čl. 28 odst. 3 písm. b) Nařízení) osobami, které pověří zpracovávat osobní údaje za účelem plnění této smlouvy, a to jak po dobu jejich trvání pracovní poměr u zpracovatele a po jeho skončení.",
+                        "Zpracovatel po ukončení poskytování služeb souvisejících se zpracováním údajů vymaže všechny údaje svěřené Správcem po uplynutí doby uvedené v hlavní smlouvě.",
+                        "Zpracovatel po zjištění porušení ochrany osobních údajů bez zbytečného odkladu toto oznámí Správci.",
+                        "Zpracovatel po zjištění porušení ochrany osobních údajů bez zbytečného odkladu, nejpozději do 36 hodin od porušení, oznámí toto porušení Správci. Přihlášku je třeba odeslat e-mailem na e-mailovou adresu, kterou Správce zadal do údajů při registraci (adresa je zároveň přihlašovacím údajem správce)."
+                    ]
+                },
+                {
+                    "title": "Technická a organizační opatření",
+                    "list": [
+                        "S přihlédnutím ke stavu technických znalostí, nákladům na implementaci a povaze, rozsahu, kontextu a účelům zpracování Osobních údajů a riziku porušení práv osob, jejichž osobních údajů se týká, Poskytovatel služeb poskytne technická a organizační opatření přiměřená druhu osobních údajů a riziku porušení práv fyzických osob, kterých se Osobní údaje týkají."
+                    ]
+                },
+                {
+                    "title": "Právo na kontrolu zpracování",
+                    "list": [
+                        "V souladu s čl. 28 odst. 3 písm. h) Nařízení má Správce právo kontrolovat, zda opatření uplatněná zpracovatelem při zpracování a zabezpečení svěřených osobních údajů jsou v souladu s ustanoveními smlouvy.",
+                        "Oznámení o záměru provést kontrolu nebo audit by mělo být zasláno zpracovateli nejméně 14 kalendářních dnů před zahájením činnosti. Náklady na audit hradí správce.",
+                        "Auditorem jmenovaným Správcem nesmí být subjekt provozující konkurenční činnost se Zpracovatelem, ani subjekty s ním propojené, zaměstnanec nebo spolupracující subjekt, a to bez ohledu na základ pracovního poměru nebo spolupráce. Před prováděním auditorské činnosti je auditor povinen zajistit důvěrnost získaných informací.",
+                        "Kontrola zpracování, pokud se týká oblastí zpracování osobních údajů, nesmí trvat déle než 3 pracovní dny.",
+                        "Kontrola zpracování bude ukončena podpisem protokolu o kontrole zpracování oběma Smluvními stranami. Protokol bude obsahovat závěry z Kontroly zpracování a rozsah odsouhlasený oběma Smluvními stranami případných změn ve zpracování Osobních údajů zpracovatelem.",
+                        "Zpracovatel se zavazuje dodržovat doporučení Správce nebo jím pověřeného subjektu ohledně zlepšení kvality zabezpečení osobních údajů a způsobu jejich zpracování nebo odstranění závad zjištěných při kontrole nebo auditu ve lhůtě stanovené správcem ne déle než 28 dnů."
+                    ]
+                },
+                {
+                    "title": "Předání dat ke zpracování",
+                    "list": [
+                        "Zpracovatel může zadat zpracování jím zpracovávaných osobních údajů v souvislosti s poskytováním služby, na kterou se vztahuje smlouva uvedená v § 2 odst. 1 smlouvy s dalšími zpracovateli (dále jen „Subdodavatelé“), v souladu s podmínkami užívání služeb Subdodavatele uvedenými v Nařízení.",
+                        "Správce souhlasí se zpracováním údajů podřízeným, pověřeným Zpracovatelem na základě Smlouvy uvedené v Příloze č. 1 Smlouvy.",
+                        "Subjekty, které zpracovatel pověřil dalším zpracováním osobních údajů, jsou uvedeny v příloze č. 1 Smlouvy.",
+                        "Zpracovatel může provádět změny u stávajících subdodavatelů a přidávat další, bez předchozího upozornění Správce."
+                    ]
+                },
+                {
+                    "title": "Upozornění na porušení",
+                    "list": [
+                        {
+                            "text": "Zpracovatel v případě zjištění porušení ochrany osobních údajů, které mu správce svěřil, bez zbytečného odkladu od zjištění porušení oznámí správci. Zpráva musí obsahovat alespoň informace o:",
+                            "sublist": [
+                                "datum, dobu trvání a místo porušení zabezpečení osobních údajů;",
+                                "povaha a rozsah porušení, tj. zejména kategorie a přibližný počet subjektů údajů a typy a přibližný počet záznamů osobních údajů dotčených porušením, a pokud je to možné, také identifikace dotčených osob;",
+                                "očekávanou dobu potřebnou k nápravě škody způsobené protiprávním jednáním;",
+                                "povaha a rozsah osobních údajů, kterých se porušení týká;",
+                                "možné důsledky porušení, včetně důsledků pro subjekty údajů;",
+                                "přijatá opatření k minimalizaci následků protiprávního jednání a navrhovaná preventivní a nápravná opatření;",
+                                "kontaktní údaje osoby, která může poskytnout další informace o porušení."
+                            ]
+                        },
+                        "Pokud zpracovatel není schopen poskytnout správci všechny informace uvedené v odstavci 1 současně, poskytne je bez zbytečného odkladu postupně.",
+                        "Do obdržení pokynů od správce přijme Zpracovatel veškerá přiměřená opatření k omezení a nápravě negativních dopadů porušení."
+                    ]
+                },
+                {
+                    "title": "Odpovědnost zpracovatele",
+                    "list": [
+                        "Zpracovatel odpovídá za škodu vzniklou Správci nebo třetím osobám způsobenou zpracováním osobních údajů pouze v případě, že (i) zpracovával osobní údaje v rozporu s touto Smlouvou, (ii) neplní povinnosti, které Nařízení nebo jiné ustanovení o ochraně Osobních údajů ukládá zpracovatelům nebo (iii) jedná v rozporu se zákonnými písemnými pokyny Správce nebo nad rámec těchto pokynů.",
+                        "V souladu s přísně platnými ustanoveními zákona odpovídá Zpracovatel Správci za neplnění nebo nesprávné plnění této Smlouvy pouze za doloženou skutečnou škodu (damnum emergens) Správce, omezenou do výše poslední platby za Předplatné Aplikace jako odměna zpracovatele od Správce v souladu s ust.",
+                        "Omezení odpovědnosti uvedené v odstavci 2 se nevztahuje na odpovědnost vůči subjektům údajů a v případě, kdy škoda je způsobena úmyslným jednáním zpracovatele.",
+                        "Strana, která zaplatila náhradu za celou způsobenou škodu, má právo požadovat, aby druhá strana, která se též účastnila zpracování, uhrazení části náhrady odpovídající části škody, za kterou je druhá strana odpovědná, na základě práva regrese uvedeného v článku 82 odst. 5 nařízení. Omezení odpovědnosti uvedené v odstavci 2 se nevztahuje na regresní nároky uvedené v tomto odstavci 4.",
+                        "Zpracovatel nenese odpovědnost za činy nebo opomenutí subdodavatele v souvislosti se zpracováním svěřených osobních údajů."
+                    ]
+                },
+                {
+                    "title": "Trvání smlouvy",
+                    "list": [
+                        "Tato smlouva bude platit od data jejího uzavření po stanovenou dobu související s platností dohody uvedené v § 2 odst. 1.",
+                        "Zpracovatel může zpracovávat osobní údaje svěřené touto smlouvou pouze po dobu platnosti Hlavní smlouvy, pokud řadič a zpracovatel neurčí odlišné období pro zpracování osobních údajů prostřednictvím samostatné dohody za samostatnou odměnu, nebo tato smlouva bude ukončena v případech uvedených v § 10 této smlouvy.",
+                        "Smlouva také zaniká, když zpracování osobních údajů poskytnutých Zpracovatelem řadiči již není nezbytné pro plnění Hlavní smlouvy.",
+                        "Strany mohou ukončit tuto smlouvu tříměsíční výpovědní lhůtou nebo uzavřením odpovídající dohody, s tím, že ukončení této smlouvy může znemožnit provedení Hlavní smlouvy a tím pádem vést k jejímu ukončení."
+                    ]
+                },
+                {
+                    "title": "Ukončení smlouvy",
+                    "list": [
+                        "Zpracovatel uznává, že ukončení této smlouvy může ovlivnit nemožnost pokračování dohody uvedené v § 2 odst. 1."
+                    ]
+                },
+                {
+                    "title": "Pravidla důvěrnosti",
+                    "list": [
+                        "Veškeré informace získané stranami během trvání smlouvy, které tvoří obchodní tajemství ve smyslu zákona ze dne 16. dubna 1993 o boji proti nekalé soutěži (Sbírka zákonů z roku 1993, číslo 47, položka 211), mohou být použity pouze pro správné provedení smlouvy jednou ze stran, pokud druhá strana neosvobodí z povinnosti zachovávat důvěrnost nebo povinnost je zveřejnit vyplyne z platných právních předpisů."
+                    ]
+                },
+                {
+                    "title": "Závěrečná ustanovení",
+                    "list": [
+                        "Odměna za poskytnutí Zpracovatelem služeb v rámci této smlouvy zahrnuje také odměnu za provedení této smlouvy.",
+                        "V neupravených otázkách se použijí ustanovení občanského zákoníku a nařízení."
+                    ]
+                }
+            ],
+            "annex": {
+                "title": "Příloha 1 – Seznam subdodavatelů",
+                "table": [
+                    [
+                        "Předmět",
+                        "Kraj",
+                        "Rozsah zpracování dat"
+                    ],
+                    [
+                        "Amazon, Lucembursko",
+                        "EU",
+                        "Serverové prostředí, na kterém je Aplikace spuštěna, databáze, zálohy jsou uloženy."
+                    ],
+                    [
+                        "OVH S.A., Polsko",
+                        "EU",
+                        "Prostředí serveru se používá k vytváření záložních kopií."
+                    ]
+                ]
+            }
+        },
+        "privacyPolicy": {
+            "header": "Zásady ochrany osobních údajů a soubory cookie",
+            "chapterOne": "Předběžná ustanovení",
+            "paragraphOne": "1 zákona ze dne 18. července 2002 o poskytování elektronických služeb (Dz. V souladu s § 173 zákona ze dne 16. července 2004 Zákon o telekomunikacích (Dz. U. 2014.243 tj. z pozdější doby. Společnost je společností s ručením omezeným se sídlem v Łódź, ul. Wólczańska 125, 90-521 Łódź, zapsaná v Národním soudním rejstříku – rejstříku podnikatelů pod číslem KRS: 0000541582, jejíž registrační záznamy jsou vedeny Okresním soudem pro Łódź-Śródmieście, RS Ekonomické oddělení ŁódźXX : 7692223109, REGON: 360412382 základní kapitál: 5 000,00 PLN předloženo v plném rozsahu, e-mail: info@strategaresearch.com, dále jen „Dodavatel“, uvádí tyto Zásady ochrany osobních údajů a soubory cookie, dále jen „Zásady“.",
+            "paragraphTwo": [
+                "Pojmy psané v Zásadách s velkým písmenem, pokud není v obsahu Zásad uvedeno jinak, mají význam uvedený v Pravidlech webové stránky. (www.interviewlyapp.com).",
+                "Pojem „Uživatel“ znamená v závislosti na kontextu Zákazníka nebo osoby, která se chce stát Zákazníkem, Kandidáta nebo osobu, která si přeje být Kandidátem, nebo uživatele internetu navštěvujícího Webové stránky."
+            ],
+            "chapterTwo": "Osobní data",
+            "paragraphThree": [
+                "Uživatel je povinen pro využívání služeb nabízených Zhotovitelem prostřednictvím Webu vyplnit příslušný registrační formulář, do kterého je nutné zadat konkrétní osobní údaje.",
+                "Poskytnutí osobních údajů v registračním formuláři je dobrovolné, avšak nezbytné pro poskytování služeb Poskytovatelem Uživateli prostřednictvím Webu.",
+                "Veškeré osobní údaje, které Uživatel zadá do registračního formuláře nebo zadá v korespondenci se Zhotovitelem, jsou zpracovávány způsobem, který je v souladu s požadavky stanovenými Nařízením Evropského parlamentu a Rady (EU) 2016/679 ze dne 27. dubna 2016 o ochraně fyzických osob v souvislosti se zpracováním osobních údajů a o volném pohybu těchto údajů a o zrušení směrnice 95/46/ES, dále jen GDPR a zákona ze dne 18. července 2002 o poskytování elektronických služeb ( Věstník zákonů Ruské federace). 2013 – 1422 – tedy z pozdější doby."
+            ],
+            "paragraphFour": [
+                "Správcem osobních údajů shromážděných prostřednictvím registračního formuláře Webové stránky je Dodavatel. Ve společnosti byl jmenován inspektor ochrany osobních údajů, se kterým je možný kontakt na e-mailové adrese: inspektor@stratega.pl",
+                "Zpracováním shromážděných osobních údajů Uživatelů může Zhotovitel pověřit jiný subjekt na základě s ním uzavřeném dle čl. 28 GDPR.",
+                {
+                    "text": "Za účelem plnění kupních smluv a smluv o poskytování služeb uzavřených Prodávajícím s Uživateli prostřednictvím Služby budou data Uživatelů svěřena zejména těmto subjektům:",
+                    "sublist": [
+                        "poskytovatelé poštovních nebo kurýrních služeb, kteří budou Uživateli poskytovat testované zboží,",
+                        "správa online transakcí."
+                    ]
+                }
+            ],
+            "paragraphFive": "Uživatel má právo na přístup ke svým osobním údajům a může si je ověřit nebo opravit, jakož i svůj souhlas kdykoli odvolat, a to zasláním příslušné žádosti zhotoviteli.",
+            "paragraphSix": {
+                "text": "Poskytovatel služby zpracovává osobní údaje Uživatele a používá je v rozsahu a pro následující účely:",
+                "sublist": [
+                    "nezbytné pro výkon služeb nabízených prostřednictvím Služby podle čl. 6 odst. 1 písm. b) GDPR,",
+                    "na základě dodatečného a nepovinného souhlasu, který může uživatel vyjádřit v samostatném prohlášení, může zhotovitel zpracovávat osobní údaje uživatele pro marketingové účely podle čl. 6 odst. 1 písm. f) GDPR. Pokud Uživatel takový souhlas udělí, může jej poté kdykoli odvolat.",
+                    "na základě dodatečného a nepovinného souhlasu uděleného Uživatelem má právo zasílat mu na uvedené e-mailové adresy nebo telefonní čísla obchodní informace dle čl. 6 odst. 1 písm. a) GDPR. Souhlas uvedený v předchozí větě může Uživatel kdykoliv odvolat."
+                ]
+            },
+            "paragraphSeven": "Osobní údaje shromážděné Dodavatelem mohou být předány oprávněným, na základě platné legislativy, státním orgánům.",
+            "chapterThree": "Sušenky",
+            "paragraphEight": [
+                "Poskytovatel používá cookies, tedy drobné textové informace, uložené na koncovém zařízení Uživatele. (tedy počítač, tablet, smartphone). Cookies mohou být čteny IT systémem Poskytovatele.",
+                "Poskytovatel ukládá soubory cookie na koncovém zařízení Uživatele a následně získává přístup k informacím v nich obsaženým pro statistické účely a pro zajištění správného fungování webu, a zejména pro udržení relace po přihlášení."
+            ],
+            "paragraphNine": [
+                "Poskytovatel rovněž informuje Uživatele, že existuje možnost takové konfigurace webového prohlížeče, která zabrání ukládání cookies na koncovém zařízení Uživatele.",
+                "Poskytovatel dále uvádí, že cookies mohou být Uživatelem smazány po jejich uložení Poskytovatelem, a to prostřednictvím: vhodných funkcí webového prohlížeče, programů k tomuto účelu sloužících nebo použitím vhodných nástrojů dostupných v rámci operačního systému, který Uživatel používá. .",
+                {
+                    "text": "Následující odkazy poskytují informace o tom, jak odstranit soubory cookie v nejoblíbenějších webových prohlížečích:",
+                    "sublist": [
+                        "Firefox: http://support.mozilla.org/pl/kb/delete-cookies",
+                        "Opera: http://help.opera.com/Linux/9.60/pl/cookies.html",
+                        "Internet Explorer: http://support.microsoft.com/kb/278835/pl",
+                        "Chrome: https://support.google.comhl=pl&amp;answer=95647"
+                    ]
+                }
+            ],
+            "paragraphTen": "Zhotovitel dále informuje Uživatele, že změna nastavení internetového prohlížeče pro zakázání nebo omezení ukládání cookies na koncovém zařízení Uživatele může mít za následek omezení funkčnosti poskytovaných služeb. Podobné důsledky mohou nastat, pokud jsou soubory cookie během poskytování služby smazány. To může mít za následek nemožnost přihlášení ke Službě nebo přerušení relace po přihlášení.",
+            "chapterFour": "Data obsažená v systémových protokolech",
+            "paragraphEleven": "Informace obsažené v systémových protokolech v souvislosti s obecnými pravidly pro realizaci připojení k internetu používá hostitelská společnost provozující Službu pouze pro technické a statistické účely.",
+            "chapterFive": "Technická opatření používaná zhotovitelem",
+            "paragraphTwelve": "Zhotovitel uplatní technická opatření vyžadovaná platnou legislativou o ochraně osobních údajů k zamezení získávání a pozměňování elektronicky přenášených osobních údajů neoprávněnými osobami.",
+            "paragraphThirteen": [
+                "V případě dotazů a názorů na Zásady uplatňované zhotovitelem je prosím zasílejte na e-mailovou adresu: inspektor@stratega.pl",
+                "Zásady lze nalézt na www.interviewlyapp.com"
+            ]
+        },
+        "surveyStatuses": {
+            "pending": "čekající",
+            "finished": "hotovo",
+            "seeResultsLabel": "Zobrazit výsledky"
+        }
+    }
+}

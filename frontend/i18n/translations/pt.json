@@ -1,0 +1,1073 @@
+{
+    "translation": {
+        "currentLanguage": "Portuguese",
+        "generic": {
+            "loading": "carregando",
+            "created": "criada",
+            "yes": "sim",
+            "no": "não",
+            "saved": "Saved"
+        },
+        "validation": {
+            "join": {
+                "repeatPasswordError": "As senhas não coincidem."
+            },
+            "changePassword": {
+                "repeatPasswordError": "Passwords do not match",
+                "newPasswordSameAsOld": "New password is the same as previous one"
+            },
+            "projectRespondent": {
+                "meetingDateError": "Pick a future date"
+            }
+        },
+        "errors": {
+            "10000": "Erro desconhecido.",
+            "10010": "Falha na verificação.",
+            "10011": "Credenciais ausentes.",
+            "10012": "Formato de cabeçalho de autorização inválido.",
+            "10013": "O cabeçalho de autorização está ausente.",
+            "10014": "Tipo de autorização inválido.",
+            "10015": "Operação não permitida.",
+            "10016": "O token está faltando.",
+            "20000": "A conta já está ativa.",
+            "20001": "A conta do recrutador não contém informações da empresa.",
+            "20002": "A conta do recrutador não contém o nome da empresa.",
+            "20003": "Conta não encontrada.",
+            "20004": "A solicitação de redefinição de senha expirou. Por favor, use o formulário de lembrete de senha novamente.",
+            "20005": "A conta não solicitou uma redefinição de senha.",
+            "20006": "Essa conta já existe.",
+            "20007": "Senha incorreta.",
+            "20100": "Empresa não encontrada.",
+            "20101": "A empresa já existe.",
+            "20200": "Pesquisa não encontrada.",
+            "30000": "O e-mail é obrigatório.",
+            "30001": "Por favor insira um endereço de e-mail válido. Exemplo: johndoe@domain.pl.",
+            "30010": "O campo Nome é obrigatório.",
+            "30011": "Nome muito curto.",
+            "30012": "O nome é muito longo.",
+            "30020": "O campo sobrenome é obrigatório.",
+            "30021": "O sobrenome é muito curto.",
+            "30022": "O sobrenome é muito longo.",
+            "30030": "O tipo arquivado é obrigatório.",
+            "30031": "O valor do tipo está incorreto.",
+            "30040": "O campo gênero é obrigatório.",
+            "30041": "O valor do gênero está incorreto.",
+            "30050": "Senha requerida.",
+            "30051": "A senha deve conter letras minúsculas, maiúsculas, dígitos e caracteres especiais.",
+            "30052": "A senha é muito curta.",
+            "30053": "A senha é muito longa.",
+            "30070": "O campo Função é obrigatório.",
+            "30071": "O valor da função está incorreto.",
+            "30080": "O campo Status é obrigatório.",
+            "30081": "O status está incorreto.",
+            "30093": "Number is too long",
+            "30100": "O campo título é obrigatório.",
+            "30101": "O título contém caracteres não permitidos.",
+            "30102": "O título é muito curto.",
+            "30103": "O título é muito longo.",
+            "30112": "A descrição é muito curta.",
+            "30113": "A descrição é muito longa.",
+            "30120": "O campo Metodologia é obrigatório.",
+            "30121": "O valor da metodologia está incorreto.",
+            "30130": "O campo Número de participantes é obrigatório.",
+            "30131": "O número de participantes é muito baixo.",
+            "30132": "O número de participantes é muito alto.",
+            "30140": "O campo Número de participantes reservas é obrigatório.",
+            "30141": "O número de participantes da reserva é muito baixo.",
+            "30142": "O número de participantes reservas é muito alto.",
+            "30150": "A duração da reunião registrada é obrigatória.",
+            "30151": "O valor da duração da reunião está incorreto.",
+            "30160": "O campo Moeda é obrigatório.",
+            "30161": "O valor da moeda está incorreto.",
+            "30170": "O campo Pagamento é obrigatório.",
+            "30171": "O valor do pagamento está incorreto.",
+            "30183": "Requirements are too long",
+            "30190": "Project languages value is requried",
+            "30191": "Project languages value must be a string encoded boolean",
+            "30200": "Screening survey value is required",
+            "30201": "Screening survey value must be a string encoded boolean",
+            "30210": "Recordings value is requried",
+            "30211": "Recordings value must be a string encoded boolean",
+            "30220": "Start date is required",
+            "30221": "Start date must be, positive string encoded number",
+            "30230": "End date is required",
+            "30231": "End date must be positive, string encoded number",
+            "30235": "Start date must be earlier than end date",
+            "30240": "Transcription needed value is required",
+            "30241": "Transcription needed value must be a string encoded boolean",
+            "30250": "Moderator needed value is required",
+            "30251": "Moderator needed value must be a string encoded boolean",
+            "30500": "O campo mensagem é obrigatório.",
+            "30502": "A mensagem é muito curta.",
+            "30503": "A mensagem é muito longa.",
+            "30602": "O nome da empresa é muito curto.",
+            "30603": "O nome da empresa é muito longo.",
+            "30613": "O número de identificação fiscal é muito longo.",
+            "30702": "O nome do país é muito curto.",
+            "30703": "O nome do país é muito longo.",
+            "30712": "O nome da cidade é muito curto.",
+            "30713": "O nome da cidade é muito longo.",
+            "30723": "O nome da rua é muito longo.",
+            "30732": "O número do prédio é muito curto.",
+            "30733": "O número do prédio é muito longo.",
+            "30743": "O número da unidade do edifício é muito longo.",
+            "30752": "O código postal é muito curto.",
+            "30753": "O código postal é muito longo.",
+            "30803": "Value is too long",
+            "30811": "Incorrect value",
+            "30822": "Value is too high",
+            "30931": "Value is too low",
+            "30932": "Value is too high",
+            "networkError": "Não é possível conectar-se ao servidor.",
+            "tokenExpired": "Session expired"
+        },
+        "links": {
+            "priceCalculator": "Calculadora de preços",
+            "tutorials": "Tutoriais",
+            "blog": "Blogue",
+            "contact": "Contato",
+            "forgotPassword": "Esqueceu sua senha?",
+            "termsAndConditions": "Termos e Condições",
+            "privacyPolicy": "política de Privacidade",
+            "personalDataProcessingAgreement": "Acordo sobre o Tratamento de Dados Pessoais"
+        },
+        "buttons": {
+            "signUp": "Participe entrevistadamente",
+            "resign": "Demitir-se",
+            "logIn": "Conecte-se",
+            "save": "Salvar",
+            "next": "Próximo",
+            "back": "Voltar",
+            "add": "Adicionar",
+            "download": "Download"
+        },
+        "menu": {
+            "home": "Lar",
+            "projects": "Projetos",
+            "myTeam": "Meu time",
+            "calendar": "Calendário",
+            "library": "Biblioteca",
+            "createProject": "Criar projeto"
+        },
+        "dropdownMenu": {
+            "openUserPanel": "Abra o painel do usuário",
+            "personalData": "Dados pessoais",
+            "companyData": "Dados da empresa",
+            "myTeam": "Meu time",
+            "logout": "Sair"
+        },
+        "inputs": {
+            "email": "E-mail",
+            "password": "Senha"
+        },
+        "sorting": {
+            "newest": "o mais novo",
+            "oldest": "mais antigo"
+        },
+        "dialogs": {
+            "languageSelection": "Selecione o idioma"
+        },
+        "pages": {
+            "notFound": "Página não encontrada"
+        },
+        "logIn": {
+            "rememberMe": "Lembre de mim",
+            "joinText": "Não tem uma conta?"
+        },
+        "setPassword": {
+            "subtitle": "Set password",
+            "newPassword": "New password",
+            "repeatPassword": "Repeat new password",
+            "success": "Password has been set"
+        },
+        "join": {
+            "joinControl": "Você já tem uma conta?",
+            "back": "Voltar",
+            "next": "Próximo",
+            "skip": "Pular",
+            "page1": {
+                "title": "Participe entrevistadamente",
+                "respondentTitle": "Eu sou um respondente",
+                "respondentSubtitle": "Quero participar de entrevistas de recrutamento.",
+                "recruiterTitle": "Eu sou um recrutador",
+                "recruiterSubtitle": "Quero acessar o banco de dados de respondentes."
+            },
+            "page2": {
+                "title": "Escolha seu gênero",
+                "maleTitle": "eu sou um homem",
+                "femaleTitle": "Eu sou uma mulher",
+                "maleTitleShort": "Homem",
+                "femaleTitleShort": "Mulher"
+            },
+            "page3": {
+                "title": "Dados pessoais",
+                "inputs": {
+                    "name": "Nome*",
+                    "surname": "Sobrenome*",
+                    "email": "E-mail*",
+                    "password": "Senha*",
+                    "repeatPassword": "Repita a senha*",
+                    "companyName": "Nome da empresa*",
+                    "passwordConstraints": "(mínimo: 8 caracteres, uma letra maiúscula, um número e um carácter especial)",
+                    "newsletter": "Aceito envio de newsletter.",
+                    "newsletterDetails": "De acordo com as disposições da Lei de 18 de julho de 2002 sobre a prestação de serviços eletrónicos (d. 2020.344), concordo em receber da STRATEGA CEE, EMPRESA DE RESPONSABILIDADE LIMITADA com sede em Łódź, ul. Wólczańska 125, 90-521 Łódź, informações comerciais sobre produtos e serviços do Serviço Interviewlyapp.com na forma de boletim informativo. Este consentimento é voluntário e pode ser revogado a qualquer momento. A retirada do consentimento não afeta a legalidade do processamento antes da retirada do consentimento."
+                },
+                "rulesAgreement": {
+                    "text": "Aceito o regulamento do serviço juntamente com o contrato de confiança no tratamento de dados pessoais.*",
+                    "termsAndConditionsKeyword": "regulamentos",
+                    "privacyPolicyKeyword": "contrato"
+                }
+            },
+            "page4": {
+                "title": "Grave um vídeo sobre você",
+                "text": "(máx. 10 minutos)",
+                "submissionText": "Enviando o formulário"
+            },
+            "page5": {
+                "title": "Você é quase parte da nossa família!",
+                "text": "Enviamos um e-mail para você com um link de confirmação.",
+                "homeButton": "Lar"
+            },
+            "interviewDialog": {
+                "record": "Registro",
+                "stop": "Parar",
+                "finish": "Terminar"
+            },
+            "fakedoor": {
+                "title": "Sua conta foi criada.",
+                "text1": {
+                    "regular": "Nosso site estará totalmente operacional",
+                    "strong": "em alguns dias"
+                },
+                "subtitle": {
+                    "regular1": "Você será o",
+                    "strong": "primeiro",
+                    "regular2": "estar informado"
+                },
+                "text2": {
+                    "regular": "Você também será o primeiro a aproveitar ao máximo nosso",
+                    "strong": "soluções inovadoras"
+                },
+                "text3": "Vamos ficar em contato!"
+            }
+        },
+        "home": {
+            "initialSection": {
+                "title": "Recrutamento e entrevistas com tecnologia de IA",
+                "timeBoxText": "Maximize seu tempo"
+            },
+            "stepsSection": {
+                "header": {
+                    "firstPart": "Apenas",
+                    "secondPart": "3 etapas",
+                    "thirdPart": "para",
+                    "fourthPart": "encontre o",
+                    "fifthPart": "melhor",
+                    "sixthPart": "funcionário"
+                },
+                "content": {
+                    "firstStep": {
+                        "title": "Carregar",
+                        "text": "banco de dados de candidatos"
+                    },
+                    "secondStep": {
+                        "title": "Conduta",
+                        "text1": "videochamada, pesquisas de programa",
+                        "text2": "verificar habilidades linguísticas"
+                    },
+                    "thirdStep": {
+                        "title": "Receber",
+                        "text": "avaliação do candidato"
+                    }
+                }
+            },
+            "worldSection": {
+                "firstLine": "Recrute pessoas de",
+                "secondLine": "No mundo todo"
+            },
+            "openAISection": {
+                "subtitle": "Faça upload do briefing e obtenha um orçamento",
+                "title": "em 1 minuto!",
+                "dashedLabelText": "Inteligência artificial",
+                "buttonText": "Ir para a calculadora de preços"
+            },
+            "subscriptionSection": {
+                "subtitle": "Nós oferecemos",
+                "title": "4 planos de assinatura",
+                "labelText1": "Sem contratos.",
+                "labelText2": "Sem taxas surpresa.",
+                "subscriptionButtonText": "iniciar"
+            },
+            "tutorialsSection": {
+                "title": "Tutoriais",
+                "subscriptionsText": "Contagem de assinaturas: {{subscriptionsCount, number}}",
+                "subscribeButtonText": "Se inscrever"
+            },
+            "blogSection": {
+                "title": "Blogue",
+                "blogLinkText": "Consulte Mais informação"
+            }
+        },
+        "methodologies": {
+            "interviews": {
+                "title": "Entrevistas",
+                "text": "Conversa 1:1 com o participante."
+            },
+            "focusGroups": {
+                "title": "Grupos de foco",
+                "text": "Discussão em grupo com um moderador."
+            },
+            "onlineCommunities": {
+                "title": "Comunidades on-line",
+                "text": "Comunidade online usando Bulletin Board."
+            },
+            "uxInterviews": {
+                "title": "Entrevistas de experiência do usuário",
+                "text": "Entrevista do participante com compartilhamento de tela."
+            },
+            "productTests": {
+                "title": "Testes de produto",
+                "text": "Testando produtos com clientes em potencial."
+            }
+        },
+        "accountStatuses": {
+            "active": "ativo",
+            "unconfirmed": "não confirmado",
+            "inactive": "inativo"
+        },
+        "genders": {
+            "male": "macho",
+            "female": "fêmea"
+        },
+        "martialStatuses": {
+            "singleMan": "Single man",
+            "singleWoman": "Single woman",
+            "marriedMan": "Married man",
+            "marriedWoman": "Married woman",
+            "widower": "Widower",
+            "widow": "Widow",
+            "divorcedMan": "Divorced man",
+            "divorcedWoman": "Divorced woman",
+            "separatedMan": "Separated man",
+            "separatedWoman": "Separated woman"
+        },
+        "profileRoles": {
+            "admin": "administrador",
+            "moderator": "moderador",
+            "observer": "observador",
+            "translator": "translator",
+            "interviewlyStaff": "Equipe entrevistada"
+        },
+        "projectStatuses": {
+            "draft": "draft",
+            "awaitingPayment": "awaiting payment",
+            "new": "new",
+            "inProgress": "in progress",
+            "finished": "finalizado",
+            "pending": "pendente",
+            "canceled": "cancelado"
+        },
+        "languages": {
+            "bulgarian": "búlgaro",
+            "czech": "tcheco",
+            "dutch": "holandês",
+            "english": "inglês",
+            "french": "francês",
+            "german": "alemão",
+            "greek": "grego",
+            "hungarian": "húngaro",
+            "italian": "italiano",
+            "polish": "polonês",
+            "portuguese": "português",
+            "romanian": "romena",
+            "russian": "russo",
+            "slovak": "eslovaco",
+            "spanish": "espanhol",
+            "swedish": "sueco",
+            "ukrainian": "ucraniano"
+        },
+        "surveyTypes": {
+            "regular": "Regular",
+            "screening": "Screening",
+            "language": "Language"
+        },
+        "personalData": {
+            "title": "Dados pessoais",
+            "marketingConsentsSubtitle": "Consentimentos de marketing",
+            "changePasswordSubtitle": "Mudança de senha",
+            "currentPassword": "Senha atual",
+            "newPassword": "Nova Senha",
+            "repeatPassword": "Repeat new password",
+            "save": "Salvar",
+            "passwordChangeSuccessMessage": "Password changed",
+            "name": "Name",
+            "surname": "Surname",
+            "email": "E-mail",
+            "phoneNumber": "Phone number",
+            "companyName": "Company name",
+            "sector": "Sector",
+            "bankAccountNumber": "Bank account number",
+            "birthYear": "Birth year",
+            "province": "Province",
+            "city": "City",
+            "zipCode": "Zip code",
+            "street": "Street",
+            "profession": "Profession",
+            "specialization": "Specialization",
+            "hasChildren": "Has children",
+            "childrenCount": "Children count",
+            "martialStatus": "Martial status",
+            "selectGender": "Select gender",
+            "repeatedNewPassword": "Repita a nova senha"
+        },
+        "companyData": {
+            "title": "Dados da empresa",
+            "name": "Nome da empresa",
+            "taxIdNumber": "Número de identificação fiscal",
+            "country": "País",
+            "city": "Cidade",
+            "street": "Rua",
+            "buildingNumber": "Número do edifício",
+            "unitNumber": "Número de unidade",
+            "postalCode": "Código postal",
+            "save": "Salvar",
+            "success": "Salvo com sucesso"
+        },
+        "myAccount": {
+            "greeting": "Oi",
+            "latestTeamMembersLabel": "Últimos membros da equipe",
+            "upcomingInterviewsLabel": "Próximas entrevistas",
+            "projectsLabel": "Projetos"
+        },
+        "projects": {
+            "title": "Projetos",
+            "projectsCounterText": "projetos",
+            "searchInputPlaceholder": "Pesquise por nome do projeto",
+            "statusLabel": "Status"
+        },
+        "viewProject": {
+            "title": "Detalhes do Projeto",
+            "edit": "Editar",
+            "markAsPaid": "Mark as paid",
+            "steps": [
+                "Em geral",
+                "Metodologia",
+                "Respondentes",
+                "Pesquisa de triagem",
+                "Detalhes"
+            ],
+            "general": {
+                "title": "User Experience in Samsung company",
+                "description": "“Às vezes pode ser estressante, vulnerável e desafiador, mas sair da cabeça e incorporar a colaboração em nossos processos de design pode nos tornar melhores designers.\n\n\n\nAo longo dos anos, aprendi que projetar de forma colaborativa significa deixar seus egos de lado para fazer algo que transcenda a soma de seus criadores.\""
+            },
+            "methodology": {
+                "interview": {
+                    "createSurvey": "Criar pesquisa",
+                    "instruction": "ou escolha uma pesquisa da biblioteca",
+                    "save": "Salvar"
+                },
+                "onlineCommunity": {
+                    "createBulletinBoardButtonText": "Criar quadro de avisos",
+                    "membersLabel": "membros",
+                    "createRoomButtonText": "Criar quarto",
+                    "roomName": "Nome da sala",
+                    "addMembersLabel": "Adicionar membros",
+                    "surveySubtitle": "ou escolha pesquisa da biblioteca",
+                    "room": {
+                        "addTopicLabel": "Adicionar tópico",
+                        "visibilityLabel": "Visibilidade",
+                        "publicVisibility": "Público",
+                        "specificMembersVisibility": "Membros específicos",
+                        "topicInputPlaceholder": "Tema",
+                        "addCommentLabel": "Adicionar comentário",
+                        "noCommentsCabel": "Sem comentários",
+                        "commentSingularLabel": "Comente",
+                        "commentPluralLabel": "comentários"
+                    }
+                },
+                "sessionStartDateLabel": "Session start date",
+                "sessionEndDateLabel": "Session end date"
+            },
+            "respondents": {
+                "personalDataSubtitle": "Personal data",
+                "seeDetailsLabel": "Veja detalhes",
+                "respondentVideoSubtitle": "Vídeo do entrevistado",
+                "upcomingInterviewsSubtitle": "Próximas entrevistas",
+                "meetingSchedulerSubtitle": "Schedule the meeting",
+                "scheduleButtonText": "Schedule",
+                "respondentSurveysSubtitle": "Pesquisas do entrevistado",
+                "scheduledSuccessMessage": "Scheduled"
+            },
+            "screeningSurveys": {
+                "resultsTitle": "Results",
+                "noResultsMessage": "No results"
+            },
+            "details": {
+                "participantsCountInputLabel": "Participants Count",
+                "reserveParticipantsCountInputLabel": "Reserve Participants Count",
+                "interviewDurationLabel": "Interview duration",
+                "startDateLabel": "Start date",
+                "endDateLabel": "End date",
+                "transcriptionSubtitle": "Transcription",
+                "respondentFeeSubtitle": "Payment for the respondent",
+                "respondentFeeLabel": "Respondent fee",
+                "currencyLabel": "Currency"
+            },
+            "respondentPage": {
+                "interviewsSubtitle": "Interviews",
+                "surveysSubtitle": "Surveys",
+                "surveysStatuses": {
+                    "filled": "filled",
+                    "ended": "ended",
+                    "pending": "pending"
+                },
+                "noResponsesMessage": "No responses"
+            }
+        },
+        "editProject": {
+            "title": "Novo criador de pesquisa",
+            "aboutStepTitle": "Sobre o projeto",
+            "methodologyStepTitle": "Metodologia de Pesquisa",
+            "respondentsStepTitle": "Seleção dos entrevistados",
+            "detailsStepTitle": "Detalhes do Projeto",
+            "summaryStepTitle": "Resumo",
+            "aboutStep": {
+                "title": "Sobre o projeto",
+                "projectNameSubtitle": "Forneça o nome do projeto",
+                "projectNameInputPlaceholder": "Nome do Projeto",
+                "descriptionInputPlaceholder": "Descrição (opcional)",
+                "avatarSubtitle": "Carregar o Avatar"
+            },
+            "methodologyStep": {
+                "title": "Metodologia de Pesquisa",
+                "methodologySubtitle": "Escolha a metodologia de pesquisa."
+            },
+            "respondentsStep": {
+                "title": "Seleção dos entrevistados",
+                "respondentsSelectionSubtitle": "Selecione os entrevistados para esta pesquisa",
+                "respondentsSelectionInstructionPart1": "Se você não tiver certeza de como deve ser o arquivo de respondentes, baixe nosso arquivo de amostra, onde encontrará todas as informações necessárias.",
+                "respondentsSelectionInstructionPart2": "ou especifique o perfil de respondente desejado com os filtros abaixo",
+                "genderLabel": "Gênero",
+                "otherRequirementsInputPlaceholder": "Outros requerimentos",
+                "languageTestSubtitle": "Teste de idioma para o entrevistado",
+                "screeningSurveySubtitle": "Você precisa de uma pesquisa de triagem?",
+                "screeningSurveyDescription": "Depois de pagar pela pesquisa, você terá a opção de usar uma biblioteca de pesquisas pronta ou criar a sua própria.",
+                "recordingSubtitle": "Você precisa de uma gravação preliminar de recrutamento de respondentes?"
+            },
+            "detailsStep": {
+                "title": "Detalhes do Projeto",
+                "participantsCountInputLabel": "Número de participantes",
+                "reserveParticipantsCountInputLabel": "Número de participantes reservas",
+                "interviewDurationDropdownName": "Duração da entrevista",
+                "startDateLabel": "Data de início",
+                "endDateLabel": "Data final",
+                "transcriptionSubtitle": "Você precisa de transcrição?",
+                "moderatorSubtitle": "Você precisa de um moderador?",
+                "paymentSubtitle": "Pagamento para o entrevistado",
+                "paymentInstruction": "Insira o valor bruto. A moeda deve corresponder à moeda utilizada para o pagamento da fatura."
+            },
+            "summaryStep": {
+                "title": "Resumo"
+            },
+            "nameStepTitle": "Nomeie a pesquisa",
+            "questionStepTitle": "Adicionar perguntas",
+            "nameInputLabel": "Por favor, forneça o",
+            "nameInputPlaceholder": "título da pesquisa",
+            "availableLanguagesDropdownName": "idiomas disponíveis",
+            "addLanguageButtonText": "Adicionar idioma",
+            "addLabel": "Adicionar",
+            "openQuestionName": "questão aberta",
+            "closedQuestionName": "pergunta fechada",
+            "multipleChoiceQuestionName": "questão de múltipla escolha",
+            "singleChoiceQuestionName": "pergunta de escolha única",
+            "newQuestionText": "Nova pergunta",
+            "addAnswerButtonText": "Adicionar resposta",
+            "newAnswerText": "Nova resposta",
+            "correctAnswerLabel": "Resposta correta",
+            "correctAnswerDropdownName": "Resposta correta"
+        },
+        "myTeam": {
+            "title": "Meu time",
+            "membersLabel": "membros",
+            "inviteTeamMemberButton": "Convidar membro da equipe",
+            "administratorsLabel": "Administradores",
+            "moderatorsLabel": "Moderadores",
+            "observersLabel": "Observadores",
+            "popup": {
+                "addLabel": "Adicionar",
+                "editLabel": "Editar",
+                "memberText": "membro",
+                "nameInputPlaceholder": "Nome",
+                "surnameInputPlaceholder": "Sobrenome",
+                "emailInputPlaceholder": "E-mail",
+                "roleDropdownName": "Papel",
+                "statusDropdownName": "Status",
+                "projectsDropdownName": "Projects",
+                "genderDropdownName": "Gênero",
+                "saveButtonText": "Salvar"
+            }
+        },
+        "meeting": {
+            "finishedMessage": "The meeting has finished"
+        },
+        "library": {
+            "title": "Biblioteca",
+            "mySurveys": "Minhas pesquisas",
+            "publicSurveys": "Pesquisas públicas",
+            "addNewTemplate": "Adicionar novo modelo"
+        },
+        "calendar": {
+            "title": "Calendar"
+        },
+        "passwordReset": {
+            "request": {
+                "header": "Criar nova senha",
+                "subheader": "Digite seu endereço de e-mail e enviaremos uma mensagem com instruções sobre como criar uma nova senha.",
+                "submitButton": "Enviar"
+            },
+            "confirmation": {
+                "header": "Nós temos isso!",
+                "subheader": "Enviamos uma mensagem para você com uma nova senha.",
+                "submitButton": "Voltar à página inicial"
+            }
+        },
+        "contact": {
+            "getInTouch": "Entrar em contato",
+            "sendUsAMessage": "Envie-nos uma mensagem",
+            "quote": "O Interviewly tem tudo o que precisamos em uma única plataforma.",
+            "messageSent": "Mensagem enviada!"
+        },
+        "registrationConfirmation": {
+            "header": "Está pronto!",
+            "subheader": "Agora você pode fazer login."
+        },
+        "termsAndConditions": {
+            "header": "Termos de serviço",
+            "generalProvisions": {
+                "header": "Disposições gerais",
+                "main": "“O prestador do serviço de acesso ao Serviço Interviewly, doravante denominado “Serviço”, é\n\nEMPRESA STRATEGA CEE DE RESPONSABILIDADE LIMITADA com sede em Łódź, ul. Wólczańska 125,\n\n90-521 Łódź, inscrita no Registo do Tribunal Nacional – Registo de Empresários sob KRS\n\nnúmero: 0000541582, cujos registros de registro foram arquivados pelo Tribunal Distrital de ŁÓDŹ-Śródmieście\n\nIN ŁÓDŹ, XX Divisão Económica KRS, NIP: 7692223109, REGON: 360412382, doravante designada por\n\n“Provedor de Serviços” ou “Administrador”.\"",
+                "listHeader": "Este Regulamento (também denominado “Contrato”) estipula:",
+                "list": [
+                    "o tipo, escopo e regras dos serviços prestados eletronicamente pelo Provedor de Serviços que usa o Serviço,",
+                    "Responsabilidades dos destinatários e prestadores de serviços,",
+                    "a celebração e rescisão de contratos de prestação de serviços eletrónicos,",
+                    "Responsabilidades e responsabilidades do Provedor de Serviços,",
+                    "método de publicidade,",
+                    "Tratamento de dados pessoais."
+                ]
+            },
+            "definitions": {
+                "header": "Definições",
+                "list": [
+                    {
+                        "phrase": "Provedor de serviço",
+                        "definition": "um empresário que celebre um acordo com o Prestador para a prestação do Serviço Electrónico sob a forma de disponibilização do Serviço conforme definido neste Regulamento,"
+                    },
+                    {
+                        "phrase": "Serviço",
+                        "definition": "software disponibilizado ao Destinatário do Serviço, eletronicamente através do navegador web, permitindo nomeadamente o serviço de recrutamento de RH,"
+                    },
+                    {
+                        "phrase": "Conta",
+                        "definition": "marcado pelo nome individual da organização (organização) fornecida pelo Destinatário do Serviço, um conjunto de recursos no sistema de TI do Prestador de Serviços, no qual os Dados são coletados, graças aos quais o Usuário do Serviço pode utilizar o Serviço,"
+                    },
+                    {
+                        "phrase": "Administrador da conta",
+                        "definition": "este deve ser entendido como o Usuário que tem os direitos de administrar a Conta. Por padrão, o administrador da conta é a pessoa que criou a conta. Como parte do Serviço, o Destinatário do Serviço pode alterar o Administrador da Conta de forma independente, utilizando a funcionalidade disponível no Serviço."
+                    },
+                    {
+                        "phrase": "Do utilizador",
+                        "definition": "qualquer pessoa que já usou ou usa o Serviço"
+                    },
+                    {
+                        "phrase": "Inscrição",
+                        "definition": "uma declaração da vontade do Destinatário do Serviço de celebrar um acordo sobre a prestação de um serviço eletrônico na forma de abertura de uma Conta no Serviço e utilização do Serviço. O envio é feito através da criação de uma Conta através do site www.interviewlyapp.com ou da extensão do contrato de prestação de um serviço eletrônico na forma de abertura de uma Conta no Serviço e utilização do Serviço,"
+                    },
+                    {
+                        "phrase": "Taxa",
+                        "definition": "remuneração do Prestador de Serviços pelo Serviço devido pelo Destinatário do Serviço. A taxa\r\né pago como uma taxa de Assinatura de Serviço durante o Período de Assinatura selecionado ou Assinatura Estendida\r\ndurante o Período de Assinatura Selecionado."
+                    },
+                    {
+                        "phrase": "Período de Inscrição",
+                        "definition": "este deve ser entendido como o período de funcionamento da Conta, por\r\nqual uma taxa é paga e dentro da qual os serviços são fornecidos pelo Provedor de Serviços ao Serviço\r\nDestinatário eletronicamente na forma de disponibilidade do Serviço. Os períodos de assinatura são\r\naceito: um mês, seis meses, doze meses."
+                    }
+                ]
+            },
+            "obligationsOfServiceProvider": {
+                "header": "Obrigações do prestador de serviço",
+                "list": [
+                    "O Prestador de Serviços declara disponibilidade do Serviço (SLA) em 80% do período do ano.",
+                    "A indisponibilidade do Serviço não será incluída na cobrança de disponibilidade quando quaisquer Taxas não forem pagas pelo Destinatário do Serviço no momento da Aplicação Indisponível.",
+                    "O indicador refere-se à disponibilidade do Site, excluindo problemas decorrentes da infraestrutura de TI da Prestadora de Serviços ou de empresas terceirizadas, infraestrutura de informação ou motivos de força maior.",
+                    "Pausa técnica é o tempo necessário para manutenção do Serviço e/ou da infraestrutura utilizada pela Prestadora do Serviço.",
+                    {
+                        "text": "Interrupção técnica e atualizações de serviço",
+                        "sublist": [
+                            "A Prestadora de Serviços realizará atualizações do Serviço das 19h00 às 7h00 no Fuso Horário do\r\nPrestador de Serviços ou durante pausas técnicas.",
+                            "O Provedor de Serviços tem o direito de fazer uma interrupção técnica no acesso ao Serviço a qualquer momento\r\ndas 19h00 às 7h00 no fuso horário do prestador de serviço."
+                        ]
+                    },
+                    "O Provedor de Serviços reserva-se o direito de modificar o Serviço, em particular para ampliar seu escopo.",
+                    {
+                        "text": "O Provedor de Serviços não é responsável por:",
+                        "sublist": [
+                            "as consequências da entrada incorreta de dados ou processamento de dados no Serviço pelo Recipiente do Serviço;",
+                            "uso inadequado do Serviço www.interviewlyapp.com;",
+                            "falta de acesso à Internet por parte do Recipiente do Serviço ou limitação em sua disponibilidade;",
+                            "operação incorreta de software ou dispositivos pertencentes ao Recipiente do Serviço ou seus funcionários que eles usam e que impedem o uso do Serviço;",
+                            "danos incorridos, incluindo lucros perdidos, causados pelo Recipiente do Serviço devido à segurança inadequada, fornecimento a pessoas não autorizadas de dados de autenticação para acesso ao Serviço;",
+                            "danos incorridos, incluindo lucros perdidos, causados por ações ou omissões do Recipiente do Serviço, em particular pelo uso do Serviço de maneira inconsistente com as disposições da lei ou dos Regulamentos;",
+                            "danos, incluindo lucros perdidos, causados por eventos de força maior."
+                        ]
+                    },
+                    "Sob nenhuma circunstância o Provedor de Serviços ou suas entidades legalmente afiliadas serão responsáveis por qualquer perda de lucros ou renda (lucros cessantes), economias, perda ou destruição de dados, valor da empresa ou reputação, imprecisão de qualquer dado, nem serão responsáveis por qualquer dano material / imaterial ou perda indireta, acidental, incorrida independentemente da teoria das fontes de responsabilidade, mesmo se tiverem sido informados da possibilidade de tais danos ou perdas.",
+                    "A responsabilidade do Provedor de Serviços nos termos do Contrato é limitada ao valor igual ao valor do último Pagamento feito pelo Recipiente do Serviço, mas não superior ao valor do Pagamento para o respectivo Período de Assinatura."
+                ]
+            },
+            "principlesOfApplicationUse": {
+                "header": "Princípios de uso do aplicativo",
+                "list": [
+                    "Para usar o Serviço, é necessário ter um dispositivo com acesso à Internet, um navegador da web e estabelecer uma Conta - além de em/em - também uma conta de e-mail.",
+                    "O acesso ao Website é possível por meio de um dos navegadores da web geralmente disponíveis: Google Chrome, Mozilla Firefox, Opera, Edge, Safari, nas versões mais recentes. A partir das versões disponíveis, com suporte ativado, no navegador da web, para Cookies e Javascript.",
+                    "O Provedor de Serviços fornece serviços de TI relacionados ao acesso e serviço do Serviço apenas via Internet.",
+                    "O Usuário reconhece que a atualização regular de seus dispositivos e software para suportar mecanismos de criptografia modernos durante a comunicação a partir do Website torna possível o uso deles. A disponibilidade dessas atualizações pode depender do hardware e / ou software de propriedade do Usuário e, portanto, o Provedor de Serviços não é responsável pela possível ausência das referidas atualizações e, consequentemente, pela incapacidade de usar o Serviço por esse motivo.",
+                    "O Usuário que usa o Serviço não recebe nenhum direito autoral sobre o Serviço. O\r\nRecipiente do Serviço e os Usuários recebem apenas - sob as condições indicadas nos Regulamentos - uma licença paga, não transferível e não exclusiva que lhes permite usar o Serviço no âmbito de seu propósito.",
+                    {
+                        "text": "Para evitar qualquer dúvida, você não irá, por si mesmo, nem permitirá ou autorizará a ninguém:",
+                        "sublist": [
+                            "Distribuir, transferir, emprestar, compartilhar, vender, transmitir, licenciar, alugar ou de qualquer outra forma disponibilizar o Serviço.",
+                            "copiar, descompilar, redesenhar, engenharia reversa ou outra extração ou reprodução de código-fonte ou outros métodos, algoritmos ou processos do Website.",
+                            "oferecer ou operar o Serviço de qualquer outra forma comercial lucrativa que agregue valor a produtos ou serviços a qualquer terceiro, incluindo a prestação de serviços de hospedagem, serviços de compartilhamento de tempo, serviços SaaS (Software como Serviço) ou serviços de gerenciamento, mesmo se oferecidos juntos ou como parte de outros produtos e serviços;",
+                            "Remover todas as informações de direitos autorais, marcas registradas com exceção dos elementos editáveis ​​ao nível da funcionalidade do Site."
+                        ]
+                    },
+                    "O Prestador de Serviços não assumirá qualquer responsabilidade pela violação dos direitos de terceiros e por causar qualquer dano a terceiros como resultado e em conexão com as atividades realizadas pelo Destinatário do Serviço, seus Usuários ou Funcionários no uso do Serviço.",
+                    "Se o Usuário do Serviço informar ao Provedor de Serviços sobre ideias e sugestões relacionadas ao Serviço, o Destinatário do Serviço concorda com o uso de tais idéias e sugestões pelo Provedor de Serviços para qualquer finalidade, sem limitação, em particular, desenvolvimento, modificação, correção com exclusão de responsabilidade, bem como remuneração ao Usuário.",
+                    "O Usuário entende e concorda que os serviços prestados pelo Provedor de Serviços são baseados em uma versão única e básica do aplicativo, hardware e infraestrutura e têm como objetivo fornecer o serviço a múltiplos clientes de forma escalável. O Serviço não será adaptado e/ou adaptado ao Destinatário do Serviço, a menos que na medida expressamente acordada pelas Partes."
+                ]
+            },
+            "feesAndPayments": {
+                "header": "Taxas e pagamentos",
+                "list": [
+                    "O preço da assinatura é publicado no site do Provedor de Serviços: www.interviewlyapp.com.",
+                    "Os preços indicados são preços líquidos (ou seja, não incluem IVA). Os preços são expressos em zloty polaco, dólares americanos.",
+                    "A taxa é paga antecipadamente e calculada de acordo com o modelo de assinatura selecionado.",
+                    "Os pagamentos são efetuados por cartão de crédito (Visa, MasterCard, American Express) ou transferência bancária mediante fatura emitida pelo Prestador de Serviços.",
+                    "A taxa por transferência bancária será paga na conta bancária do Prestador de Serviços indicada na fatura de IVA. O Cliente compromete-se a pagar a taxa no prazo de 7 dias a contar da data de entrega da fatura de IVA para o endereço de e-mail especificado. Existe a possibilidade de prolongar o período de transferência como parte de acordos individuais com o Destinatário do Serviço. A decisão final é tomada pelo fornecedor.",
+                    "O Prestador de Serviços poderá recusar o pagamento por transferência bancária se o Destinatário do Serviço não cumprir o prazo de pagamento.",
+                    "As faturas pagas são entregues por e-mail.",
+                    "A entrega da fatura enviada em forma de arquivo ocorre assim que o Prestador de Serviços envia um e-mail contendo um arquivo de faturamento do endereço de e-mail para o endereço indicado pelo Destinatário do Serviço. Caso o e-mail contendo a fatura não seja entregue ao Destinatário do Serviço, por motivos alheios ao Prestador do Serviço, será emitida uma segunda via desta fatura a pedido do Cliente.",
+                    "Para o dia do pagamento dos valores com base nas faturas emitidas pela Prestadora de Serviços, as Partes aceitam a data de reconhecimento da conta bancária da Prestadora de Serviços.",
+                    "As Partes concordam que a Prestadora de Serviços contabilizará os pagamentos originados do Destinatário do Serviço em primeiro lugar por conta das dívidas anteriormente devidas, independentemente do conteúdo das Demonstrações que acompanham o pagamento.",
+                    "Se você escolher um cartão de crédito ou débito como forma de pagamento da Taxa de Assinatura, a taxa de cada Período de Assinatura subsequente será cobrada automaticamente até que o Destinatário do Serviço declare o desejo de cancelar. Tal renúncia deverá ser comunicada por e-mail para o endereço contact@interviewlyapp.com até 7 dias antes do início do novo Período de Assinatura.",
+                    "O Destinatário do Serviço é obrigado a pagar a Taxa da Assinatura selecionada no prazo máximo de 7 dias úteis a partir da data de envio da Assinatura. O dia do pagamento é considerado o dia da contabilização da dívida exigida na conta bancária do Prestador de Serviços. O não pagamento no prazo especificado equivale ao cancelamento da assinatura.",
+                    "A alteração dos Parâmetros da Assinatura é feita pelo Administrador da Conta diretamente na Conta no Serviço e pode ser cancelada por ele a qualquer momento ou por ordem do Administrador da Conta enviada para o endereço de e-mail especificado no parágrafo. 2º do Prestador de Serviços.",
+                    "O Administrador da Conta tem acesso no Serviço para",
+                    "O Destinatário do Serviço concorda em enviar faturas de IVA pelo Prestador de Serviços em formato eletrónico, de acordo com a base legal para a emissão e envio de faturas em formato eletrónico. Lei de 11 de março de 2004 sobre o imposto sobre bens e serviços (Dz.U. Capítulo 54 , Pos. e 535).A fatura enviada em formato eletrónico nos termos da Lei (Dz.U. n.º 144 item 1204, conforme alterada) equivale ao envio de uma fatura emitida em papel e constitui um documento contabilístico.\r\n\r\nFaturas corretivas e duplicatas de faturas enviadas eletronicamente também serão enviadas em formato eletrônico.",
+                    "A fatura de IVA em papel será emitida e entregue apenas mediante solicitação expressa do Destinatário do Serviço, expressa em formato eletrónico, para o endereço de correio eletrónico de contacto do Prestador. A taxa de impressão e entrega do IVA em papel é paga pelo Prestador de Serviços e adicionada à fatura, no valor de 59 PLN líquidos + IVA.",
+                    "O Prestador de Serviços poderá a qualquer momento, após informar os Destinatários dos Serviços, pelo menos 60 dias antes da alteração, se tal for exigido pela lei aplicável, alterar a Tabela de Preços ou parte dela ou estabelecer novas taxas. As alterações nos preços e o estabelecimento de novas taxas entrarão em vigor para os períodos de assinatura subsequentes e para todos os novos Destinatários do Serviço após a data de entrada em vigor da alteração. Se o Destinatário do Serviço não concordar com as alterações de preços na Tarifa, poderá cancelar a Assinatura e deixar de utilizar o Serviço antes do início do próximo Período, a partir do qual os preços alterados serão aplicáveis."
+                ]
+            },
+            "support": {
+                "header": "Apoiar",
+                "list": [
+                    "O suporte técnico está disponível todos os dias. 9h00 – 15h00 (CET) para Destinatários do Serviço com uma Taxa paga pelo Período de Assinatura Aplicável para modelos de assinatura selecionados.",
+                    "O contato para suporte técnico está disponível para o administrador da conta por e-mail em contact@interviewlyapp.com",
+                    "O Provedor de Serviços fará todos os esforços para responder aos e-mails dentro de 72 horas dentro dos dias úteis aplicáveis ​​ao Provedor de Serviços."
+                ]
+            },
+            "compliants": {
+                "header": "Conformidades",
+                "list": [
+                    "O Prestador de Serviços compromete-se a remover imediatamente os defeitos que impeçam o acesso à utilização do Serviço.",
+                    "Reclamações relacionadas à prestação do serviço de acesso ao Serviço, o Destinatário do Serviço poderá enviar por e-mail para contact@interviewlyapp.com",
+                    {
+                        "text": "O relatório deve indicar:",
+                        "sublist": [
+                            "o nome da organização (informações fornecidas ao criar a conta) e seu endereço de e-mail",
+                            "informações sobre o usuário em questão,",
+                            "a hora e as circunstâncias da ocorrência do problema com o funcionamento do Serviço, o URL ou o nome da página,",
+                            "Tela com URL visível e problema"
+                        ]
+                    },
+                    "Caso sejam necessárias informações adicionais para o exame da reclamação, o Prestador de Serviços solicita que você forneça essas informações antes de considerar o reclamante, sendo o tempo para análise da reclamação contado a partir da data de entrega das informações solicitadas.",
+                    "Recomenda-se fornecer no e-mail acima o máximo de informações e circunstâncias possíveis sobre o objeto da reclamação, nomeadamente o tipo e data de ocorrência da irregularidade e dados de contacto – isto facilitará e agilizará o tratamento das reclamações pelo Prestador de Serviços.",
+                    "A reclamação é tratada pelo Prestador de Serviços imediatamente, no prazo máximo de 14 dias úteis.",
+                    "A consideração da reclamação pelo Prestador de Serviços é final.",
+                    "A resposta do Prestador de Serviços à reclamação é enviada para o endereço de e-mail do Destinatário do Serviço indicado na notificação de reclamação,"
+                ]
+            },
+            "serviceData": {
+                "header": "Dados de serviço",
+                "list": [
+                    "Os dados inseridos pelo Destinatário do Serviço na Conta do Serviço são propriedade do Destinatário do Serviço.",
+                    "Todos os dados introduzidos na Conta de Serviço serão armazenados pelo Prestador de Serviços de acordo com o Regulamento (UE) 2016/679 do Parlamento Europeu e do Conselho, de 27 de abril de 2016, relativo à proteção das pessoas singulares no que diz respeito ao tratamento de dados pessoais e sobre a livre circulação desses dados e que revoga a Diretiva 95/46/CE. (dalej RODO).",
+                    "O Prestador de Serviços armazena e processa os dados que lhe são disponibilizados pelo Destinatário do Serviço de acordo com as disposições legais aplicáveis ​​e de acordo com o Contrato de Confiança de Processamento de Dados Pessoais, que constitui o Anexo nº 1 do Regulamento.",
+                    "Ao aceitar estes Termos de Serviço, o Destinatário do Serviço concorda em confiar os dados ao Provedor de Serviços de acordo com o Contrato de Confiança de Processamento de Dados Pessoais."
+                ]
+            },
+            "conditionsOfCeasementOfContract": {
+                "header": "Condições de cessação do contrato",
+                "list": [
+                    "O Cliente poderá rescindir o contrato com pré-aviso de um mês e sem fundamentação, enviando a respectiva declaração por e-mail para contact@interviewlyapp.com.",
+                    "O Destinatário do Serviço poderá rescindir o contrato imediatamente caso o Prestador do Serviço não mantenha a disponibilidade do Serviço no âmbito especificado no SLA no parágrafo III.1, enviando uma declaração relevante por e-mail para contact@interviewlyapp.com.",
+                    {
+                        "text": "O Provedor de Serviços poderá bloquear temporária ou permanentemente a Conta do Destinatário do Serviço ou rescindir o Contrato no caso de o Usuário:",
+                        "sublist": [
+                            "viola as regras,",
+                            "disponibiliza conteúdo de natureza ilícita, após convocação prévia ineficaz para cessação das violações com prazo determinado;",
+                            "seja prejudicial ao Provedor de Serviços ou fornecerá dados falsos durante o processo de registro ou não atualizará imediatamente as alterações nos dados fornecidos de acordo com o estado real,",
+                            "não paga na hora.",
+                            "está cometendo ações destinadas a violar a segurança dos dados processados ​​no Serviço e usando o Serviço ou faz uma tentativa não autorizada de acessar o Serviço, ou realiza outras ações destinadas a interferir no bom funcionamento do Serviço."
+                        ]
+                    },
+                    "A Prestadora de Serviços tem o direito de rescindir o Contrato com efeito de rescisão imediata quando ocorrer um dos motivos especificados no parágrafo 3 deste capítulo.",
+                    "O Prestador de Serviços poderá rescindir o Contrato a qualquer momento, mediante aviso prévio de três meses.",
+                    "A declaração de vontade do Prestador de Serviços relativamente à rescisão do contrato para a sua validade requer um formulário documental e deverá ser enviada respetivamente para o endereço de correio eletrónico do atual Administrador de Conta do Destinatário do Serviço. O período de rescisão do Contrato começa a partir do Dia da Entrega da declaração de vontade do Prestador de Serviços para rescindir o Contrato.",
+                    "Esta rescisão conduz à extinção da relação jurídica com efeitos para o futuro."
+                ]
+            },
+            "finalProvisions": {
+                "header": "Disposições finais",
+                "list": [
+                    "Os contratos celebrados pelo Prestador de Serviços no âmbito das atividades da Aplicação são celebrados em polaco, de acordo com a lei em vigor no território da Polónia.",
+                    "O Prestador de Serviços reserva-se o direito de fazer alterações no Regulamento. As alterações feitas nos Termos de Uso vincularão o Destinatário do Serviço, desde que ele tenha sido devidamente informado das alterações e não tenha rescindido o Contrato no prazo de 14 dias a partir da data de notificação da alteração pelo Prestador de Serviços.",
+                    "Em caso de incumprimento de qualquer parte dos Regulamentos com a lei aplicável, as disposições relevantes da lei polaca serão aplicadas em vez da disposição contestada dos regulamentos.",
+                    "Quaisquer disputas que surjam entre o Prestador de Serviços e o Destinatário do Serviço serão submetidas ao tribunal competente com base na sede do Prestador de Serviços."
+                ]
+            }
+        },
+        "personalDataProcessingAgreement": {
+            "header": "Acordo sobre o Tratamento de Dados Pessoais",
+            "text": "O Acordo sobre o Processamento de Dados Pessoais é parte integrante do Regulamento e estabelece as regras para o processamento pelo Prestador de Serviços em nome do Destinatário do Serviço dos dados pessoais do Usuário através do Serviço em www.interviewlyapp.com.\r\nO Contrato para o Processamento de Dados Pessoais constitui o conjunto das obrigações e condições de processamento de dados do Usuário entre o Provedor de Serviços e o Destinatário do Serviço em conexão com o Serviço SaaS e substitui todos os acordos, acordos e acordos anteriores entre o Provedor de Serviços e o destinatário do serviço a este respeito.",
+            "rules": [
+                {
+                    "title": "Definições",
+                    "list": [
+                        "Administrador – significa o Destinatário do Serviço, que, sozinho ou em conjunto com outras entidades, determina as finalidades e métodos de processamento de Dados Pessoais;",
+                        "Processador – significa Provedor de Serviços"
+                    ]
+                },
+                {
+                    "title": "Assunto do tratamento de dados pessoais",
+                    "list": [
+                        "Em conexão com a implementação do contrato de prestação de serviços por meio eletrônico para o serviço SaaS regulamentado no Regulamento (doravante denominado \"Acordo Principal\" celebrado entre as Partes, o Controlador confia ao Processador de acordo com o Artigo 28 do Regulamento, os dados pessoais serão tratados por conta do Administrador, nos termos e para os fins especificados no Contrato.",
+                        "A celebração do Contrato constitui uma instrução documentada do Administrador para processar Dados Pessoais pelo Prestador de Serviços, incluindo a Transferência de Dados Pessoais para Países Terceiros, conforme referido no Artigo 28 (3) (a) do GDPR.",
+                        "O Controlador declara que é o responsável pelo tratamento de dados pessoais na acepção das disposições do Regulamento (UE) 2016/679 do Parlamento Europeu e do Conselho, de 27 de abril de 2016, relativo à proteção das pessoas singulares no que diz respeito ao tratamento de dados pessoais. Dados e sobre a livre circulação desses dados e que revoga a Diretiva 95/46/CE (Regulamento Geral de Proteção de Dados), (doravante o “Regulamento”), que ele confia ao Processador."
+                    ]
+                },
+                {
+                    "title": "Âmbito e finalidade do tratamento de dados",
+                    "list": [
+                        "Os dados pessoais confiados ao Controlador serão processados ​​pelo Processador apenas para a finalidade de executar os serviços descritos detalhadamente no Contrato Principal referido no § 2 parágrafo 1 e de maneira consistente com este Contrato e com as disposições legais relevantes e geralmente aplicáveis.",
+                        "Categoria de pessoas: funcionários e colegas de trabalho do Administrador, candidatos a emprego, utilizadores do Serviço.",
+                        {
+                            "text": "O processador compromete-se a processar os dados pessoais confiados na seguinte medida:",
+                            "sublist": [
+                                "Nome e sobrenome",
+                                "Imagem – fotos e gravações enviadas para o Serviço",
+                                "Gênero",
+                                "Endereço",
+                                "telefone de contato",
+                                "Endereço de email",
+                                "Data de nascimento",
+                                "Número da conta de banco",
+                                "Profissões",
+                                "Indústria",
+                                "Estado civil",
+                                "Informações sobre ter filhos",
+                                "Outros dados contidos em arquivos armazenados ou inseridos em outro lugar."
+                            ]
+                        },
+                        "Atividades de processamento: Coletar, gravar, organizar, organizar, armazenar, visualizar, transferir, modificar, excluir.",
+                        "Forma de processamento: Eletrônico"
+                    ]
+                },
+                {
+                    "title": "Obrigações do Processador",
+                    "list": [
+                        "O Subcontratante declara que fornece medidas técnicas e organizacionais adequadas para garantir que o tratamento cumpre os requisitos estabelecidos no Regulamento e protege os direitos dos titulares dos dados, o que significa, em particular, que o Subcontratante toma as medidas adequadas exigidas pelo art. 32 do Regulamento e é a devida diligência no tratamento dos dados pessoais confiados.",
+                        "O processador compromete-se a autorizar o processamento de dados pessoais a todas as pessoas que processarão os dados confiados para os fins deste Contrato.",
+                        "Tendo em conta a natureza do tratamento, o Subcontratante deverá, na medida do possível, ajudar o Responsável pelo Tratamento, através de medidas técnicas e organizativas adequadas, a cumprir a obrigação de responder aos pedidos do titular dos dados no exercício da sua ou os seus direitos, especificados no Capítulo III do Regulamento.",
+                        "Levando em consideração a natureza do tratamento e as informações de que dispõe, o processador auxiliará o controlador no cumprimento das obrigações especificadas no art. 32 a 36 do Regulamento.",
+                        "O subcontratante compromete-se a garantir a confidencialidade dos dados tratados (conforme referido no artigo 28.º, n.º 3, alínea b), do Regulamento) pelas pessoas que autoriza a tratar dados pessoais para efeitos de execução do presente contrato, tanto durante o seu emprego com o processador e após sua rescisão.",
+                        "O processador, após a conclusão da prestação dos serviços relacionados ao processamento de dados, excluirá todos os dados confiados pelo Controlador após o término do prazo especificado no contrato principal.",
+                        "O processador, após constatar uma violação da proteção de dados pessoais, sem demora injustificada, reporta-a ao Controlador.",
+                        "O processador, após constatar uma violação da proteção de dados pessoais sem demora injustificada, no prazo máximo de 36 horas após a violação, deverá reportá-la ao Controlador. A candidatura deverá ser submetida por e-mail para o endereço de e-mail inserido pelo Administrador nos dados durante o registo (o endereço é também o login do administrador)."
+                    ]
+                },
+                {
+                    "title": "Medidas técnicas e organizacionais",
+                    "list": [
+                        "Levando em consideração o estado do conhecimento técnico, o custo de implementação e a natureza, o alcance, o contexto e os propósitos do processamento de Dados Pessoais, bem como o risco de violação dos direitos das pessoas cujos dados pessoais estão envolvidos, o Provedor de Serviços deve fornecer medidas técnicas e organizacionais apropriadas ao tipo de dados pessoais e ao risco de violação dos direitos das pessoas cujos Dados Pessoais estão envolvidos."
+                    ]
+                },
+                {
+                    "title": "Direito de controle do processamento",
+                    "list": [
+                        "De acordo com o Artigo 28(3)(h) do Regulamento, o Controlador tem o direito de controlar se as medidas aplicadas pelo Processador no processamento e segurança dos dados pessoais confiados estão em conformidade com as disposições do contrato.",
+                        "A notificação da intenção de realizar a inspeção ou auditoria deve ser enviada ao processador pelo menos 14 dias corridos antes do início da atividade. Os custos da auditoria são cobertos pelo administrador.",
+                        "O auditor nomeado pelo Controlador não pode ser uma entidade que conduza atividades concorrenciais com o Processador, nem entidades relacionadas a ele, um funcionário ou uma entidade cooperadora, independentemente da base de emprego ou cooperação. Antes de realizar as atividades de auditoria, o auditor é obrigado a garantir que as informações obtidas sejam mantidas confidenciais.",
+                        "O controle do processamento, na medida em que se refere às áreas de processamento de dados pessoais, não pode durar mais do que 3 dias úteis.",
+                        "O controle do processamento será concluído pela assinatura do protocolo de Controle de Processamento por ambas as Partes. O protocolo conterá conclusões do Controle de Processamento e o escopo acordado por ambas as Partes das possíveis alterações no processamento de Dados Pessoais pelo Processador.",
+                        "O processador se compromete a cumprir as recomendações do Controlador ou da entidade autorizada por ele, referentes à melhoria da qualidade da segurança dos dados pessoais e ao método de processamento ou à correção de defeitos encontrados durante a inspeção ou auditoria em um prazo especificado pelo controlador, não superior a 28 dias."
+                    ]
+                },
+                {
+                    "title": "Entrega de dados para processamento",
+                    "list": [
+                        "O processador pode subcontratar o processamento de dados pessoais processados por ele em conexão com a prestação do serviço abrangido pelo contrato mencionado na seção 2, parágrafo 1, a outros processadores (doravante referidos como \"Subcontratados\"), de acordo com os termos de uso dos serviços do Subcontratado especificados no Regulamento.",
+                        "O Controlador concorda em subordinar os dados confiados ao Processador para processamento com base no Acordo especificado no Apêndice nº 1 do Contrato.",
+                        "As entidades às quais o processador confiou o processamento adicional de dados pessoais são especificadas no Anexo 1 do Contrato.",
+                        "O processador pode fazer alterações nos subcontratados atuais e adicionar novos sem aviso prévio ao Controlador."
+                    ]
+                },
+                {
+                    "title": "Notificação de violações",
+                    "list": [
+                        {
+                            "text": "Ao constatar uma violação da proteção dos dados pessoais confiados a ele pelo Controlador, o Processador, sem demora indevida, a partir da detecção da violação, a comunica ao Administrador. O relatório deve conter pelo menos informações sobre:",
+                            "sublist": [
+                                "a data, duração e local da violação dos dados pessoais;",
+                                "a natureza e a escala da infração, ou seja, em particular as categorias e o número aproximado de titulares de dados e os tipos e o número aproximado de entradas de dados pessoais afetadas pela violação, e, quando possível, também a identificação das pessoas envolvidas;",
+                                "o tempo esperado necessário para reparar o dano causado pela infração;",
+                                "a natureza e o alcance dos dados pessoais sujeitos à violação;",
+                                "as possíveis consequências da violação, incluindo as consequências para os titulares de dados;",
+                                "as medidas tomadas para minimizar as consequências da infração e as medidas preventivas e corretivas propostas;",
+                                "os detalhes de contato da pessoa que pode fornecer informações adicionais sobre a violação."
+                            ]
+                        },
+                        "Se o processador não for capaz de fornecer ao controlador todas as informações mencionadas no parágrafo 1 ao mesmo tempo, deverá fornecê-las sucessivamente, sem demora indevida.",
+                        "Até o recebimento de instruções do Controlador, o Processador deverá tomar todas as medidas razoáveis para limitar e remediar os efeitos negativos da infração."
+                    ]
+                },
+                {
+                    "title": "Responsabilidade do Processador",
+                    "list": [
+                        "O processador é responsável por danos incorridos ao Controlador ou a terceiros causados pelo processamento de dados pessoais somente se (i) tiver processado dados pessoais em contravenção a este Contrato, (ii) não cumprir as obrigações impostas pelo Regulamento ou outras disposições sobre a proteção de Dados Pessoais aos processadores ou (iii) agir em violação das instruções escritas legais do Administrador ou além dessas instruções.",
+                        "Sujeito às disposições estritamente aplicáveis da lei, o Processador será responsável perante o Controlador por não cumprimento ou cumprimento inadequado deste Contrato apenas por danos efetivos documentados (damnum emergens) do Administrador, limitados ao valor do último pagamento pela Assinatura da Aplicação como remuneração devida à Entidade de Processamento pelo Gerente, de acordo com as disposições.",
+                        "A limitação de responsabilidade mencionada no parágrafo 2 não se aplica à responsabilidade perante os titulares de dados e quando o dano é causado por ação intencional do processador.",
+                        "A Parte que pagou a indenização por todo o dano causado terá o direito de solicitar que a outra Parte que participou do mesmo processamento reembolse a parte da indenização correspondente à porção do dano pela qual a outra parte é responsável, com base no direito de regresso descrito no Artigo 82(2). 5 do Regulamento. A limitação de responsabilidade mencionada no parágrafo 2 não se aplica a reivindicações regressivas descritas neste parágrafo 4.",
+                        "O processador não é responsável pelas ações ou omissões do subcontratado em relação ao processamento dos dados pessoais confiados."
+                    ]
+                },
+                {
+                    "title": "Duração do contrato",
+                    "list": [
+                        "Este Contrato entrará em vigor a partir da data de sua conclusão por um período específico relacionado à validade do acordo mencionado na seção 2, parágrafo 1.",
+                        "O Processador pode processar os dados pessoais confiados sob este Contrato apenas pelo período de validade do Contrato Principal, a menos que o Controlador e o Processador determinem um período diferente para o processamento de dados pessoais por meio de um acordo separado, por uma remuneração separada, ou este Contrato será encerrado nos casos especificados na seção 10 deste contrato.",
+                        "O contrato também é encerrado quando o processamento de dados pessoais fornecidos ao Processador pelo Controlador não for mais necessário para a execução do Contrato Principal.",
+                        "As Partes podem rescindir este Contrato com um período de aviso prévio de três meses ou por meio da celebração de um acordo correspondente, considerando que o término deste contrato pode impedir a execução do contrato principal e, assim, resultar em sua rescisão."
+                    ]
+                },
+                {
+                    "title": "Rescisão do contrato",
+                    "list": [
+                        "O processador reconhece que o término deste Contrato pode afetar a impossibilidade de continuar o contrato mencionado na seção 2, parágrafo. 1."
+                    ]
+                },
+                {
+                    "title": "Regras de Confidencialidade",
+                    "list": [
+                        "Todas as informações obtidas pelas partes durante a duração do Contrato que constituam segredo comercial nos termos da Lei de 16 de abril de 1993 sobre a luta contra a concorrência desleal (Diário Oficial de 1993, nº 47, item 211), só podem ser usadas para a execução adequada do Contrato por ambas as partes, a menos que a outra parte esteja isenta da obrigação de manter a confidencialidade ou o dever de divulgá-las surja de disposições legais aplicáveis."
+                    ]
+                },
+                {
+                    "title": "Disposições Finais",
+                    "list": [
+                        "A remuneração pela prestação pelo Processador dos Serviços do Contrato também inclui a recompensa pela execução deste contrato.",
+                        "Em questões não regulamentadas, aplicam-se as disposições do Código Civil e dos Regulamentos."
+                    ]
+                }
+            ],
+            "annex": {
+                "title": "Anexo 1 - Lista de subcontratados",
+                "table": [
+                    [
+                        "Assunto",
+                        "Região",
+                        "Âmbito do processamento de dados"
+                    ],
+                    [
+                        "Amazon, Luxemburgo",
+                        "UE",
+                        "O ambiente do servidor em que a Aplicação é executada, bancos de dados, cópias de segurança são armazenados."
+                    ],
+                    [
+                        "OVH S.A., Polônia",
+                        "UE",
+                        "O ambiente do servidor é usado para criar cópias de segurança."
+                    ]
+                ]
+            }
+        },
+        "privacyPolicy": {
+            "header": "Política de Privacidade e Cookies",
+            "chapterOne": "Disposições preliminares",
+            "paragraphOne": "1 da Lei de 18 de julho de 2002 sobre a prestação de serviços eletrônicos (Dz. De acordo com o Artigo 173 da Lei de Telecomunicações de 16 de julho de 2004 (Dz. U. 2014.243, ou seja, posteriormente. A empresa é uma sociedade de responsabilidade limitada, com sede em Łódź, ul. Wólczańska 125, 90-521 Łódź, registrada no Registro Nacional de Empreendedores sob o número KRS: 0000541582, cujos registros de registro são mantidos pelo Tribunal Distrital de Łódź-Śródmieście em Łódź, XX Departamento Econômico KRS, NIP: 7692223109, REGON: 360412382, capital social: 5 000,00 PLN integralmente pago, e-mail: info@strategaresearch.com, doravante referida como \"a Contratante\", apresenta esta Política de Privacidade e Cookies, aqui denominada \"Política\".",
+            "paragraphTwo": [
+                "Os termos escritos na Política com letra maiúscula, salvo disposição em contrário no conteúdo da Política, têm o significado especificado nos Regulamentos do Site. (www.interviewlyapp.com).",
+                "O termo \"Usuário\" significa, dependendo do contexto, o Cliente ou a pessoa que deseja se tornar um Cliente, um Candidato ou uma pessoa que deseja se tornar um Candidato, ou um usuário da Internet que visita o Site."
+            ],
+            "chapterTwo": "Dados pessoais",
+            "paragraphThree": [
+                "O Usuário, para utilizar os serviços oferecidos pela Contratante por meio do Site, é obrigado a preencher o formulário de registro apropriado, no qual dados pessoais específicos devem ser inseridos.",
+                "O fornecimento de dados pessoais no formulário de registro é voluntário, mas necessário para a prestação de serviços pela Provedora ao Usuário por meio do Site.",
+                "Todos os dados pessoais que o Usuário insere no formulário de registro ou envia em correspondência com o Contratante são processados de acordo com os requisitos estabelecidos no Regulamento (UE) 2016/679 do Parlamento Europeu e do Conselho, de 27 de abril de 2016, relativo à proteção das pessoas singulares no que diz respeito ao tratamento de dados pessoais e à livre circulação desses dados e que revoga a Diretiva 95/46/CE, doravante referido como GDPR, e a Lei de 18 de julho de 2002 sobre a prestação de serviços eletrônicos (Diário da República). 2013 - 1422 - ou seja, posteriormente."
+            ],
+            "paragraphFour": [
+                "O controlador dos dados pessoais coletados por meio do formulário de registro do Site é o Contratante. Na empresa, foi nomeado um Inspetor de Proteção de Dados, com quem é possível entrar em contato pelo endereço de e-mail: inspektor@stratega.pl",
+                "O Contratante pode confiar o processamento dos dados pessoais coletados dos Usuários a outra entidade com base em acordo concluído com ele, nos termos do art. 28 do GDPR.",
+                {
+                    "text": "Para executar contratos de venda e serviço celebrados pelo Vendedor com os Usuários por meio do Serviço, os dados do Usuário serão confiados, em particular, às seguintes entidades:",
+                    "sublist": [
+                        "fornecedores de serviços postais ou de entrega, que fornecerão ao Usuário os produtos testados,",
+                        "gerenciamento de transações online."
+                    ]
+                }
+            ],
+            "paragraphFive": "O usuário tem o direito de acessar seus dados pessoais e pode verificá-los ou corrigi-los, bem como retirar seu consentimento a qualquer momento, dirigindo o pedido apropriado ao Contratante.",
+            "paragraphSix": {
+                "text": "O Provedor de Serviços processa os dados pessoais do Usuário e os utiliza na medida e para os seguintes fins:",
+                "sublist": [
+                    "necessários para a execução dos serviços oferecidos por meio do Serviço, de acordo com o Artigo 6 (1) (b) do GDPR,",
+                    "com base em consentimento adicional e opcional, que o Usuário pode expressar em uma declaração separada, o Contratante pode processar os dados pessoais do Usuário para fins de marketing de acordo com o Artigo 6 (1) (f) do GDPR. Se o Usuário der tal consentimento, ele poderá revogá-lo a qualquer momento.",
+                    "com base no consentimento adicional e opcional dado pelo Usuário, tem o direito de enviar a ele para os endereços de e-mail ou números de telefone fornecidos informações comerciais de acordo com o Artigo 6 (1) (a) do GDPR. O consentimento mencionado na frase anterior pode ser revogado pelo Usuário a qualquer momento."
+                ]
+            },
+            "paragraphSeven": "Os dados pessoais coletados pelo Contratante podem ser transferidos para autoridades estatais autorizadas, com base na legislação aplicável.",
+            "chapterThree": "Os cookies",
+            "paragraphEight": [
+                "O Provedor utiliza cookies, ou seja, informações de texto pequenas, armazenadas no dispositivo terminal do Usuário (ou seja, computador, tablet, smartphone). Os cookies podem ser lidos pelo sistema de TI do Provedor.",
+                "O Provedor armazena cookies no dispositivo terminal do Usuário e, em seguida, obtém acesso às informações contidas neles para fins estatísticos e para garantir o correto funcionamento do site, em particular para manter a sessão após o login."
+            ],
+            "paragraphNine": [
+                "O Provedor também informa aos Usuários que há a possibilidade de configurar o navegador da web de forma a evitar o armazenamento de cookies no dispositivo terminal do Usuário.",
+                "O Provedor também indica que os cookies podem ser excluídos pelo Usuário depois de serem salvos pelo Provedor, por meio: de funções apropriadas do navegador da web, programas que servem para esse fim ou uso de ferramentas apropriadas disponíveis no sistema operacional que o Usuário utiliza.",
+                {
+                    "text": "Os seguintes links fornecem informações sobre como excluir cookies nos navegadores da web mais populares:",
+                    "sublist": [
+                        "Firefox: http://support.mozilla.org/pl/kb/delete-cookies",
+                        "Opera: http://help.opera.com/Linux/9.60/pl/cookies.html",
+                        "Internet Explorer: http://support.microsoft.com / kb/278835/pl",
+                        "Chrome: https://suport.google.comhl=pl&amp;answer=95647"
+                    ]
+                }
+            ],
+            "paragraphTen": "O contratante também informa aos Usuários que alterar as configurações do navegador da Internet para desativar ou limitar o armazenamento de cookies no dispositivo final do Usuário pode resultar em limitação da funcionalidade dos serviços fornecidos. Consequências semelhantes podem ocorrer se os cookies forem excluídos durante a prestação do serviço. Isso pode resultar na incapacidade de fazer login no Serviço ou na interrupção de uma sessão após o login.",
+            "chapterFour": "Dados contidos nos registros do sistema",
+            "paragraphEleven": "As informações contidas nos registros do sistema, relacionadas às regras gerais para a implementação de conexões de Internet, são usadas pela empresa de hospedagem que opera o Serviço apenas para fins técnicos e estatísticos.",
+            "chapterFive": "Medidas técnicas utilizadas pelo contratante",
+            "paragraphTwelve": "O Contratante aplicará as medidas técnicas exigidas pela legislação vigente sobre a proteção de dados pessoais para prevenir a aquisição e modificação por pessoas não autorizadas dos dados pessoais transmitidos eletronicamente.",
+            "paragraphThirteen": [
+                "Em caso de dúvidas e opiniões sobre a Política aplicada pelo Contratante, envie-as para o endereço de e-mail: inspektor@stratega.pl",
+                "A política pode ser encontrada em www.interviewlyapp.com"
+            ]
+        },
+        "surveyStatuses": {
+            "pending": "pendente",
+            "finished": "finalizado",
+            "seeResultsLabel": "Ver resultados"
+        }
+    }
+}

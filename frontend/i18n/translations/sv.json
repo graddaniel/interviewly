@@ -1,0 +1,1073 @@
+{
+    "translation": {
+        "currentLanguage": "Українська",
+        "generic": {
+            "loading": "läser in",
+            "created": "skapas",
+            "yes": "ja",
+            "no": "Nej",
+            "saved": "Saved"
+        },
+        "validation": {
+            "join": {
+                "repeatPasswordError": "Lösenorden matchar inte."
+            },
+            "changePassword": {
+                "repeatPasswordError": "Passwords do not match",
+                "newPasswordSameAsOld": "New password is the same as previous one"
+            },
+            "projectRespondent": {
+                "meetingDateError": "Pick a future date"
+            }
+        },
+        "errors": {
+            "10000": "Okänt fel.",
+            "10010": "Verifieringen misslyckades.",
+            "10011": "Saknar autentiseringsuppgifter.",
+            "10012": "Ogiltigt format för auktoriseringsrubrik.",
+            "10013": "Auktoriseringshuvud saknas.",
+            "10014": "Ogiltig auktoriseringstyp.",
+            "10015": "Åtgärden inte tillåten.",
+            "10016": "Token saknas.",
+            "20000": "Kontot är redan aktivt.",
+            "20001": "Rekryterarkontot saknar företagsinformation.",
+            "20002": "Rekryterarkontot saknar företagsnamn.",
+            "20003": "Konto inte funnet.",
+            "20004": "Begäran om lösenordsåterställning har löpt ut. Använd formuläret för påminnelse om lösenord igen.",
+            "20005": "Kontot har inte begärt en lösenordsåterställning.",
+            "20006": "Kontot finns redan.",
+            "20007": "Fel lösenord.",
+            "20100": "Företaget hittades inte.",
+            "20101": "Företaget finns redan.",
+            "20200": "Forskningen hittades inte.",
+            "30000": "E-post krävs.",
+            "30001": "Vänligen ange en giltig e-postadress. Exempel: johndoe@domain.pl.",
+            "30010": "Namnfält är obligatoriskt.",
+            "30011": "Namnet är för kort.",
+            "30012": "Namnet är för långt.",
+            "30020": "Efternamnsfält är obligatoriskt.",
+            "30021": "Efternamnet är för kort.",
+            "30022": "Efternamnet är för långt.",
+            "30030": "Typ arkiverad krävs.",
+            "30031": "Typvärdet är felaktigt.",
+            "30040": "Könsfält är obligatoriskt.",
+            "30041": "Könsvärdet är felaktigt.",
+            "30050": "Lösenord krävs.",
+            "30051": "Lösenordet måste innehålla små bokstäver, versaler, siffror, specialtecken.",
+            "30052": "Lösenordet är för kort.",
+            "30053": "Lösenordet är för långt.",
+            "30070": "Rollfält är obligatoriskt.",
+            "30071": "Rollvärdet är felaktigt.",
+            "30080": "Statusfält är obligatoriskt.",
+            "30081": "Status är felaktig.",
+            "30093": "Number is too long",
+            "30100": "Titelfält är obligatoriskt.",
+            "30101": "Titeln innehåller otillåtna tecken.",
+            "30102": "Titeln är för kort.",
+            "30103": "Rubriken är för lång.",
+            "30112": "Beskrivningen är för kort.",
+            "30113": "Beskrivningen är för lång.",
+            "30120": "Metodfält krävs.",
+            "30121": "Metodvärdet är felaktigt.",
+            "30130": "Fält för antal deltagare är obligatoriskt.",
+            "30131": "Antalet deltagare är för lågt.",
+            "30132": "Antalet deltagare är för högt.",
+            "30140": "Fält för antal reservdeltagare krävs.",
+            "30141": "Antalet reservdeltagare är för lågt.",
+            "30142": "Antalet reservdeltagare är för högt.",
+            "30150": "Angiven möteslängd krävs.",
+            "30151": "Värdet för möteslängden är felaktigt.",
+            "30160": "Valutafält är obligatoriskt.",
+            "30161": "Valutavärdet är felaktigt.",
+            "30170": "Betalningsfält är obligatoriskt.",
+            "30171": "Betalningsvärdet är felaktigt.",
+            "30183": "Requirements are too long",
+            "30190": "Project languages value is requried",
+            "30191": "Project languages value must be a string encoded boolean",
+            "30200": "Screening survey value is required",
+            "30201": "Screening survey value must be a string encoded boolean",
+            "30210": "Recordings value is requried",
+            "30211": "Recordings value must be a string encoded boolean",
+            "30220": "Start date is required",
+            "30221": "Start date must be, positive string encoded number",
+            "30230": "End date is required",
+            "30231": "End date must be positive, string encoded number",
+            "30235": "Start date must be earlier than end date",
+            "30240": "Transcription needed value is required",
+            "30241": "Transcription needed value must be a string encoded boolean",
+            "30250": "Moderator needed value is required",
+            "30251": "Moderator needed value must be a string encoded boolean",
+            "30500": "Meddelandefält är obligatoriskt.",
+            "30502": "Meddelandet är för kort.",
+            "30503": "Meddelandet är för långt.",
+            "30602": "Företagsnamnet är för kort.",
+            "30603": "Företagsnamnet är för långt.",
+            "30613": "Skatte-ID är för långt.",
+            "30702": "Landsnamnet är för kort.",
+            "30703": "Landsnamnet är för långt.",
+            "30712": "Stadsnamnet är för kort.",
+            "30713": "Stadsnamnet är för långt.",
+            "30723": "Gatunamnet är för långt.",
+            "30732": "Byggnadsnumret är för kort.",
+            "30733": "Byggnadsnumret är för långt.",
+            "30743": "Byggnadens enhetsnummer är för långt.",
+            "30752": "Postnummer är för kort.",
+            "30753": "Postnummer är för långt.",
+            "30803": "Value is too long",
+            "30811": "Incorrect value",
+            "30822": "Value is too high",
+            "30931": "Value is too low",
+            "30932": "Value is too high",
+            "networkError": "Kan inte ansluta till servern.",
+            "tokenExpired": "Session expired"
+        },
+        "links": {
+            "priceCalculator": "Priskalkylator",
+            "tutorials": "Handledningar",
+            "blog": "Blogg",
+            "contact": "Kontakt",
+            "forgotPassword": "Glömt ditt lösenord?",
+            "termsAndConditions": "Villkor",
+            "privacyPolicy": "Integritetspolicy",
+            "personalDataProcessingAgreement": "Avtal om behandling av personuppgifter"
+        },
+        "buttons": {
+            "signUp": "Gå med i Intervju",
+            "resign": "Avgå",
+            "logIn": "Logga in",
+            "save": "Spara",
+            "next": "Nästa",
+            "back": "Tillbaka",
+            "add": "Lägg till",
+            "download": "Download"
+        },
+        "menu": {
+            "home": "Hem",
+            "projects": "Projekt",
+            "myTeam": "Mitt lag",
+            "calendar": "Kalender",
+            "library": "Bibliotek",
+            "createProject": "Skapa projekt"
+        },
+        "dropdownMenu": {
+            "openUserPanel": "Öppna användarpanelen",
+            "personalData": "Personlig information",
+            "companyData": "Företagsdata",
+            "myTeam": "Mitt lag",
+            "logout": "Logga ut"
+        },
+        "inputs": {
+            "email": "E-post",
+            "password": "Lösenord"
+        },
+        "sorting": {
+            "newest": "nyaste",
+            "oldest": "äldst"
+        },
+        "dialogs": {
+            "languageSelection": "Välj språk"
+        },
+        "pages": {
+            "notFound": "Sidan hittas inte"
+        },
+        "logIn": {
+            "rememberMe": "Kom ihåg mig",
+            "joinText": "Har du inget konto?"
+        },
+        "setPassword": {
+            "subtitle": "Set password",
+            "newPassword": "New password",
+            "repeatPassword": "Repeat new password",
+            "success": "Password has been set"
+        },
+        "join": {
+            "joinControl": "Har du redan ett konto?",
+            "back": "Tillbaka",
+            "next": "Nästa",
+            "skip": "Hoppa",
+            "page1": {
+                "title": "Gå med i Intervju",
+                "respondentTitle": "Jag är en respondent",
+                "respondentSubtitle": "Jag vill delta i rekryteringsintervjuer.",
+                "recruiterTitle": "Jag är rekryterare",
+                "recruiterSubtitle": "Jag vill ha tillgång till respondentdatabasen."
+            },
+            "page2": {
+                "title": "Välj ditt kön",
+                "maleTitle": "jag är en man",
+                "femaleTitle": "jag är en kvinna",
+                "maleTitleShort": "Man",
+                "femaleTitleShort": "Kvinna"
+            },
+            "page3": {
+                "title": "Personlig information",
+                "inputs": {
+                    "name": "Namn*",
+                    "surname": "Efternamn*",
+                    "email": "E-post*",
+                    "password": "Lösenord*",
+                    "repeatPassword": "Repetera lösenord*",
+                    "companyName": "Företagsnamn*",
+                    "passwordConstraints": "(minst 8 tecken, en stor bokstav, en siffra och ett specialtecken)",
+                    "newsletter": "Jag accepterar att skicka nyhetsbrev.",
+                    "newsletterDetails": "I enlighet med bestämmelserna i lagen av den 18 juli 2002 om tillhandahållande av elektroniska tjänster (d. 2020.344) samtycker jag till att ta emot från STRATEGA CEE, FÖRETAG MED BEGRÄNSAT ANSVAR med huvudkontor i Łódź, ul. Wólczańska 125, 90-521 Łódź, kommersiell information om produkter och tjänster från tjänsten Interviewlyapp.com i form av ett nyhetsbrev. Detta samtycke är frivilligt och kan återkallas när som helst. Återkallande av samtycke påverkar inte lagenligheten av behandlingen innan samtycke återkallas."
+                },
+                "rulesAgreement": {
+                    "text": "Jag accepterar tjänstens regler tillsammans med avtalet för att anförtro behandlingen av personuppgifter.*",
+                    "termsAndConditionsKeyword": "föreskrifter",
+                    "privacyPolicyKeyword": "avtal"
+                }
+            },
+            "page4": {
+                "title": "Spela in en video om dig själv",
+                "text": "(max. 10 minuter)",
+                "submissionText": "Skicka in formuläret"
+            },
+            "page5": {
+                "title": "Du är nästan en del av din familj!",
+                "text": "Vi har skickat ett mail till dig med en bekräftelselänk.",
+                "homeButton": "Hem"
+            },
+            "interviewDialog": {
+                "record": "Spela in",
+                "stop": "Sluta",
+                "finish": "Avsluta"
+            },
+            "fakedoor": {
+                "title": "Ditt konto har skapats.",
+                "text1": {
+                    "regular": "Vår hemsida kommer att vara i full drift",
+                    "strong": "inom några dagar"
+                },
+                "subtitle": {
+                    "regular1": "Du kommer att vara",
+                    "strong": "först",
+                    "regular2": "att bli informerad"
+                },
+                "text2": {
+                    "regular": "Du kommer också att vara den första att dra full nytta av vår",
+                    "strong": "innovativa lösningar"
+                },
+                "text3": "Låt oss hålla kontakten!"
+            }
+        },
+        "home": {
+            "initialSection": {
+                "title": "AI-driven rekrytering och intervjuer",
+                "timeBoxText": "Maximera din tid"
+            },
+            "stepsSection": {
+                "header": {
+                    "firstPart": "Endast",
+                    "secondPart": "3 steg",
+                    "thirdPart": "till",
+                    "fourthPart": "hitta",
+                    "fifthPart": "bäst",
+                    "sixthPart": "anställd"
+                },
+                "content": {
+                    "firstStep": {
+                        "title": "Ladda upp",
+                        "text": "kandidatdatabasen"
+                    },
+                    "secondStep": {
+                        "title": "Uppträdande",
+                        "text1": "videosamtal, programundersökningar",
+                        "text2": "kontrollera språkkunskaper"
+                    },
+                    "thirdStep": {
+                        "title": "Motta",
+                        "text": "kandidatens bedömning"
+                    }
+                }
+            },
+            "worldSection": {
+                "firstLine": "Rekrytera folk från",
+                "secondLine": "över hela världen"
+            },
+            "openAISection": {
+                "subtitle": "Ladda upp briefen och få en offert",
+                "title": "på 1 minut!",
+                "dashedLabelText": "Artificiell intelligens",
+                "buttonText": "Gå till priskalkylatorn"
+            },
+            "subscriptionSection": {
+                "subtitle": "Vi erbjuder",
+                "title": "4 abonnemangsplaner",
+                "labelText1": "Inga kontrakt.",
+                "labelText2": "Inga överraskningsavgifter.",
+                "subscriptionButtonText": "Komma igång"
+            },
+            "tutorialsSection": {
+                "title": "Handledningar",
+                "subscriptionsText": "Antal prenumerationer: {{subscriptionsCount, number}}",
+                "subscribeButtonText": "Prenumerera"
+            },
+            "blogSection": {
+                "title": "Blogg",
+                "blogLinkText": "Läs mer"
+            }
+        },
+        "methodologies": {
+            "interviews": {
+                "title": "Intervjuer",
+                "text": "1:1 samtal med deltagaren."
+            },
+            "focusGroups": {
+                "title": "Fokusgrupper",
+                "text": "Gruppdiskussion med en moderator."
+            },
+            "onlineCommunities": {
+                "title": "Onlinegemenskaper",
+                "text": "Onlinegemenskap med anslagstavla."
+            },
+            "uxInterviews": {
+                "title": "UX-intervjuer",
+                "text": "Deltagarintervju med skärmdelning."
+            },
+            "productTests": {
+                "title": "Produkttester",
+                "text": "Testa produkter med potentiella kunder."
+            }
+        },
+        "accountStatuses": {
+            "active": "aktiva",
+            "unconfirmed": "obekräftad",
+            "inactive": "inaktiv"
+        },
+        "genders": {
+            "male": "manlig",
+            "female": "kvinna"
+        },
+        "martialStatuses": {
+            "singleMan": "Single man",
+            "singleWoman": "Single woman",
+            "marriedMan": "Married man",
+            "marriedWoman": "Married woman",
+            "widower": "Widower",
+            "widow": "Widow",
+            "divorcedMan": "Divorced man",
+            "divorcedWoman": "Divorced woman",
+            "separatedMan": "Separated man",
+            "separatedWoman": "Separated woman"
+        },
+        "profileRoles": {
+            "admin": "administration",
+            "moderator": "moderator",
+            "observer": "observatör",
+            "translator": "translator",
+            "interviewlyStaff": "Intervju personal"
+        },
+        "projectStatuses": {
+            "draft": "draft",
+            "awaitingPayment": "awaiting payment",
+            "new": "new",
+            "inProgress": "in progress",
+            "finished": "färdiga",
+            "pending": "i väntan på",
+            "canceled": "inställt"
+        },
+        "languages": {
+            "bulgarian": "bulgariska",
+            "czech": "tjeckiska",
+            "dutch": "holländska",
+            "english": "engelsk",
+            "french": "franska",
+            "german": "tysk",
+            "greek": "grekisk",
+            "hungarian": "ungerska",
+            "italian": "italienska",
+            "polish": "putsa",
+            "portuguese": "portugisiska",
+            "romanian": "rumänska",
+            "russian": "ryska",
+            "slovak": "slovakiska",
+            "spanish": "spanska",
+            "swedish": "svenska",
+            "ukrainian": "ukrainska"
+        },
+        "surveyTypes": {
+            "regular": "Regular",
+            "screening": "Screening",
+            "language": "Language"
+        },
+        "personalData": {
+            "title": "Personlig information",
+            "marketingConsentsSubtitle": "Marknadsföringsmedgivanden",
+            "changePasswordSubtitle": "Lösenordsändring",
+            "currentPassword": "Nuvarande lösenord",
+            "newPassword": "Nytt lösenord",
+            "repeatPassword": "Repeat new password",
+            "save": "Spara",
+            "passwordChangeSuccessMessage": "Password changed",
+            "name": "Name",
+            "surname": "Surname",
+            "email": "E-mail",
+            "phoneNumber": "Phone number",
+            "companyName": "Company name",
+            "sector": "Sector",
+            "bankAccountNumber": "Bank account number",
+            "birthYear": "Birth year",
+            "province": "Province",
+            "city": "City",
+            "zipCode": "Zip code",
+            "street": "Street",
+            "profession": "Profession",
+            "specialization": "Specialization",
+            "hasChildren": "Has children",
+            "childrenCount": "Children count",
+            "martialStatus": "Martial status",
+            "selectGender": "Select gender",
+            "repeatedNewPassword": "upprepa nya lösenordet"
+        },
+        "companyData": {
+            "title": "Företagsdata",
+            "name": "Företagsnamn",
+            "taxIdNumber": "Skatte-ID-nummer",
+            "country": "Land",
+            "city": "Stad",
+            "street": "Gata",
+            "buildingNumber": "Husnummer",
+            "unitNumber": "Enhetsnummer",
+            "postalCode": "Postnummer",
+            "save": "Spara",
+            "success": "Sparad framgångsrikt"
+        },
+        "myAccount": {
+            "greeting": "Hej",
+            "latestTeamMembersLabel": "Senaste lagmedlemmarna",
+            "upcomingInterviewsLabel": "Kommande intervjuer",
+            "projectsLabel": "Projekt"
+        },
+        "projects": {
+            "title": "Projekt",
+            "projectsCounterText": "projekt",
+            "searchInputPlaceholder": "Sök efter projektnamn",
+            "statusLabel": "Status"
+        },
+        "viewProject": {
+            "title": "Projekt detaljer",
+            "edit": "Redigera",
+            "markAsPaid": "Mark as paid",
+            "steps": [
+                "Allmän",
+                "Metodik",
+                "Respondenter",
+                "Screeningundersökning",
+                "Detaljer"
+            ],
+            "general": {
+                "title": "User Experience in Samsung company",
+                "description": "\"Det kan ibland vara nervkittlande, sårbart och utmanande, men att ta oss ur våra egna huvuden och införliva samarbete i våra designprocesser kan göra oss alla till bättre designers.\n\n\n\nUnder årens lopp har jag lärt mig att designa tillsammans innebär att lägga dina egon åt sidan för att göra något som överskrider summan av dess skapare.\""
+            },
+            "methodology": {
+                "interview": {
+                    "createSurvey": "Skapa enkät",
+                    "instruction": "eller välj en undersökning från biblioteket",
+                    "save": "Spara"
+                },
+                "onlineCommunity": {
+                    "createBulletinBoardButtonText": "Skapa anslagstavla",
+                    "membersLabel": "medlemmar",
+                    "createRoomButtonText": "Skapa rum",
+                    "roomName": "Rumsnamn",
+                    "addMembersLabel": "Lägg till medlemmar",
+                    "surveySubtitle": "eller välj enkät från biblioteket",
+                    "room": {
+                        "addTopicLabel": "Lägg till ämne",
+                        "visibilityLabel": "Synlighet",
+                        "publicVisibility": "offentlig",
+                        "specificMembersVisibility": "Specifika medlemmar",
+                        "topicInputPlaceholder": "Ämne",
+                        "addCommentLabel": "Lägg till kommentar",
+                        "noCommentsCabel": "Inga kommentarer",
+                        "commentSingularLabel": "kommentar",
+                        "commentPluralLabel": "kommentarer"
+                    }
+                },
+                "sessionStartDateLabel": "Session start date",
+                "sessionEndDateLabel": "Session end date"
+            },
+            "respondents": {
+                "personalDataSubtitle": "Personal data",
+                "seeDetailsLabel": "Se detaljer",
+                "respondentVideoSubtitle": "Respondents video",
+                "upcomingInterviewsSubtitle": "Kommande intervjuer",
+                "meetingSchedulerSubtitle": "Schedule the meeting",
+                "scheduleButtonText": "Schedule",
+                "respondentSurveysSubtitle": "Respondentens undersökningar",
+                "scheduledSuccessMessage": "Scheduled"
+            },
+            "screeningSurveys": {
+                "resultsTitle": "Results",
+                "noResultsMessage": "No results"
+            },
+            "details": {
+                "participantsCountInputLabel": "Participants Count",
+                "reserveParticipantsCountInputLabel": "Reserve Participants Count",
+                "interviewDurationLabel": "Interview duration",
+                "startDateLabel": "Start date",
+                "endDateLabel": "End date",
+                "transcriptionSubtitle": "Transcription",
+                "respondentFeeSubtitle": "Payment for the respondent",
+                "respondentFeeLabel": "Respondent fee",
+                "currencyLabel": "Currency"
+            },
+            "respondentPage": {
+                "interviewsSubtitle": "Interviews",
+                "surveysSubtitle": "Surveys",
+                "surveysStatuses": {
+                    "filled": "filled",
+                    "ended": "ended",
+                    "pending": "pending"
+                },
+                "noResponsesMessage": "No responses"
+            }
+        },
+        "editProject": {
+            "title": "Ny forskningsskapare",
+            "aboutStepTitle": "Om projektet",
+            "methodologyStepTitle": "Forskningsmetodik",
+            "respondentsStepTitle": "Urval av respondenter",
+            "detailsStepTitle": "Projekt detaljer",
+            "summaryStepTitle": "Sammanfattning",
+            "aboutStep": {
+                "title": "Om projektet",
+                "projectNameSubtitle": "Ange projektets namn",
+                "projectNameInputPlaceholder": "Projektnamn",
+                "descriptionInputPlaceholder": "Beskrivning (valfritt)",
+                "avatarSubtitle": "Ladda upp Avatar"
+            },
+            "methodologyStep": {
+                "title": "Forskningsmetodik",
+                "methodologySubtitle": "Välj forskningsmetod."
+            },
+            "respondentsStep": {
+                "title": "Urval av respondenter",
+                "respondentsSelectionSubtitle": "Välj respondenter för denna forskning",
+                "respondentsSelectionInstructionPart1": "Om du är osäker på hur respondentfilen ska se ut, ladda ner vår exempelfil, där du hittar all nödvändig information.",
+                "respondentsSelectionInstructionPart2": "eller ange önskad respondentprofil med filtren nedan",
+                "genderLabel": "Kön",
+                "otherRequirementsInputPlaceholder": "Andra krav",
+                "languageTestSubtitle": "Språktest för respondenten",
+                "screeningSurveySubtitle": "Behöver du en screeningundersökning?",
+                "screeningSurveyDescription": "Efter att ha betalat för undersökningen har du möjlighet att använda ett färdigt undersökningsbibliotek eller skapa ett eget.",
+                "recordingSubtitle": "Behöver du en preliminär rekryteringsinspelning av respondenter?"
+            },
+            "detailsStep": {
+                "title": "Projekt detaljer",
+                "participantsCountInputLabel": "Antal deltagare",
+                "reserveParticipantsCountInputLabel": "Antal reservdeltagare",
+                "interviewDurationDropdownName": "Intervjuns längd",
+                "startDateLabel": "Start datum",
+                "endDateLabel": "Slutdatum",
+                "transcriptionSubtitle": "Behöver du transkription?",
+                "moderatorSubtitle": "Behöver du en moderator?",
+                "paymentSubtitle": "Betalning för svaranden",
+                "paymentInstruction": "Ange bruttobelopp. Valutan ska matcha den valuta som används för fakturabetalningen."
+            },
+            "summaryStep": {
+                "title": "Sammanfattning"
+            },
+            "nameStepTitle": "Namnge undersökningen",
+            "questionStepTitle": "Lägg till frågor",
+            "nameInputLabel": "Vänligen ange",
+            "nameInputPlaceholder": "undersökningens titel",
+            "availableLanguagesDropdownName": "Tillgängliga språk",
+            "addLanguageButtonText": "Lägg till språk",
+            "addLabel": "Lägg till",
+            "openQuestionName": "öppen fråga",
+            "closedQuestionName": "stängd fråga",
+            "multipleChoiceQuestionName": "flervalsfråga",
+            "singleChoiceQuestionName": "envalsfråga",
+            "newQuestionText": "Ny fråga",
+            "addAnswerButtonText": "Lägg till svar",
+            "newAnswerText": "Nytt svar",
+            "correctAnswerLabel": "Rätt svar",
+            "correctAnswerDropdownName": "Rätt svar"
+        },
+        "myTeam": {
+            "title": "Mitt lag",
+            "membersLabel": "medlemmar",
+            "inviteTeamMemberButton": "Bjud in en gruppmedlem",
+            "administratorsLabel": "Administratörer",
+            "moderatorsLabel": "Moderatorer",
+            "observersLabel": "Observatörer",
+            "popup": {
+                "addLabel": "Lägg till",
+                "editLabel": "Redigera",
+                "memberText": "medlem",
+                "nameInputPlaceholder": "namn",
+                "surnameInputPlaceholder": "Efternamn",
+                "emailInputPlaceholder": "E-post",
+                "roleDropdownName": "Roll",
+                "statusDropdownName": "Status",
+                "projectsDropdownName": "Projects",
+                "genderDropdownName": "Kön",
+                "saveButtonText": "Spara"
+            }
+        },
+        "meeting": {
+            "finishedMessage": "The meeting has finished"
+        },
+        "library": {
+            "title": "Bibliotek",
+            "mySurveys": "Mina undersökningar",
+            "publicSurveys": "Offentliga undersökningar",
+            "addNewTemplate": "Lägg till ny mall"
+        },
+        "calendar": {
+            "title": "Calendar"
+        },
+        "passwordReset": {
+            "request": {
+                "header": "Skapa nytt lösenord",
+                "subheader": "Ange din e-postadress, så skickar vi ett meddelande till dig med instruktioner om hur du skapar ett nytt lösenord.",
+                "submitButton": "Skicka"
+            },
+            "confirmation": {
+                "header": "Vi har det!",
+                "subheader": "Vi har skickat ett meddelande till dig med ett nytt lösenord.",
+                "submitButton": "Tillbaka till startsidan"
+            }
+        },
+        "contact": {
+            "getInTouch": "Komma i kontakt",
+            "sendUsAMessage": "skicka oss ett meddelande",
+            "quote": "Interviewly har allt vi behöver på en enda plattform.",
+            "messageSent": "Meddelande skickat!"
+        },
+        "registrationConfirmation": {
+            "header": "Det är klart!",
+            "subheader": "Du kan nu logga in."
+        },
+        "termsAndConditions": {
+            "header": "Användarvillkor",
+            "generalProvisions": {
+                "header": "Allmänna bestämmelser",
+                "main": "\"Tjänsteleverantören för åtkomst till Intervjutjänsten, nedan kallad \"Tjänsten\", är\n\nSTRATEGA CEE FÖRETAG MED BEGRÄNSAT ANSVAR med huvudkontor i Łódź, ul. Wólczańska 125,\n\n90-521 Łódź, registrerad i National Court Register – Register of Entrepreneurs under KRS\n\nnummer: 0000541582, vars registreringsregister tas upp av tingsrätten för ŁÓDŹ-Śródmieście\n\nIN ŁÓDŹ, XX Economic Division KRS, NIP: 7692223109, REGON: 360412382, nedan kallad\n\n\"Tjänsteleverantör\" eller \"Administratör\".\"",
+                "listHeader": "Denna förordning (även kallad \"avtalet\") stadgar:",
+                "list": [
+                    "typen, omfattningen och reglerna för tjänster som tillhandahålls elektroniskt av tjänsteleverantören som använder tjänsten,",
+                    "Ansvar för tjänstemottagare och tjänsteleverantörer,",
+                    "ingående och uppsägning av avtal om tillhandahållande av elektroniska tjänster,",
+                    "Tjänsteleverantörens ansvar och ansvar,",
+                    "metod för reklam,",
+                    "Behandling av personuppgifter."
+                ]
+            },
+            "definitions": {
+                "header": "Definitioner",
+                "list": [
+                    {
+                        "phrase": "Tjänsteleverantör",
+                        "definition": "en företagare som ingår ett avtal med leverantören om tillhandahållande av den elektroniska tjänsten i form av tillgängligheten av tjänsten enligt definitionen i denna förordning,"
+                    },
+                    {
+                        "phrase": "Service",
+                        "definition": "programvara som görs tillgänglig för tjänstemottagaren, elektroniskt via webbläsaren, som i synnerhet möjliggör HR-rekrytering,"
+                    },
+                    {
+                        "phrase": "konto",
+                        "definition": "markerad med det individuella namnet på organisationen (organisationen) som tillhandahålls av Tjänstemottagaren, en samling av resurser i Tjänsteleverantörens IT-system, i vilken Data samlas in, tack vare vilken Tjänstanvändaren kan använda Tjänsten,"
+                    },
+                    {
+                        "phrase": "Kontoadministratör",
+                        "definition": "detta ska förstås som den Användare som har rättigheterna att administrera Kontot. Som standard är kontoadministratören den person som skapade kontot. Som en del av tjänsten kan tjänstemottagaren självständigt byta kontoadministratör, med hjälp av den funktionalitet som finns tillgänglig på tjänsten."
+                    },
+                    {
+                        "phrase": "Användare",
+                        "definition": "någon person som någonsin har använt eller använder tjänsten"
+                    },
+                    {
+                        "phrase": "Prenumeration",
+                        "definition": "en förklaring om tjänstemottagarens vilja att ingå ett avtal om tillhandahållande av en elektronisk tjänst i form av att driva ett konto på tjänsten och använda tjänsten. Anmälan görs genom att skapa ett konto via webbplatsen på www.interviewlyapp.com eller genom att förlänga avtalet för tillhandahållande av en elektronisk tjänst i form av att driva ett konto på tjänsten och använda tjänsten,"
+                    },
+                    {
+                        "phrase": "Avgift",
+                        "definition": "ersättning till Tjänsteleverantören för Tjänsten som betalas från Tjänstemottagaren. Avgiften\r\nbetalas som en tjänsteabonnemangsavgift under den valda prenumerationsperioden eller förlängd prenumeration\r\nunder den valda prenumerationsperioden."
+                    },
+                    {
+                        "phrase": "Prenumerationsperiod",
+                        "definition": "detta ska förstås som den period då Kontot är i drift, för\r\nvilken avgift betalas och inom vilka tjänster tillhandahålls av Tjänsteleverantören till Tjänsten\r\nMottagare elektroniskt i form av tjänstens tillgänglighet. Prenumerationsperioder är\r\naccepterat: en månad, sex månader, tolv månader."
+                    }
+                ]
+            },
+            "obligationsOfServiceProvider": {
+                "header": "Tjänsteleverantörens skyldigheter",
+                "list": [
+                    "Tjänsteleverantören förklarar tillgängligheten för tjänsten (SLA) vid 80 % av tiden på året.",
+                    "Att tjänsten inte är tillgänglig ska inte inkluderas i tillgänglighetsfaktureringen när några avgifter inte betalas av tjänstemottagaren vid tidpunkten för den icke-tillgängliga ansökan.",
+                    "Indikatorn hänvisar till webbplatsens tillgänglighet, exklusive problem som härrör från Tjänsteleverantörens eller tredje parts IT-infrastruktur, informationsinfrastruktur eller force majeure.",
+                    "Tekniskt avbrott är den tid som krävs för underhåll av Tjänsten och/eller den infrastruktur som används av Tjänsteleverantören.",
+                    {
+                        "text": "Tekniska avbrott och serviceuppdateringar",
+                        "sublist": [
+                            "Tjänsteleverantören kommer att utföra uppdateringar av tjänsten från 19:00 till 7:00 i tidszonen för\r\nTjänsteleverantör eller under tekniska pauser.",
+                            "Tjänsteleverantören har rätt att göra ett tekniskt avbrott i åtkomsten till Tjänsten när som helst\r\nfrån 19:00 till 7:00 i tjänsteleverantörens tidszon."
+                        ]
+                    },
+                    "Tjänsteleverantören förbehåller sig rätten att ändra Tjänsten, i synnerhet för att utöka dess omfattning.",
+                    {
+                        "text": "Tjänsteleverantören ansvarar inte för:",
+                        "sublist": [
+                            "konsekvenserna av felaktig inmatning av uppgifter eller behandling av uppgifter i Tjänsten av Tjänstemottagaren;",
+                            "felaktig användning av tjänsten www.interviewlyapp.com;",
+                            "brist på tillgång till Internet av tjänstemottagaren eller begränsning i dess tillgänglighet;",
+                            "felaktig användning av programvara eller enheter som tillhör Tjänstemottagaren eller dess anställda som de använder och som förhindrar användningen av Tjänsten,",
+                            "skador som uppstått, inklusive förlorade förmåner, orsakade av tjänstemottagaren genom felaktig säkerhet, tillhandahållande av autentiseringsdata till obehöriga personer för åtkomst till tjänsten;",
+                            "skador som uppstått, inklusive förlorade förmåner, orsakade av tjänstemottagarens handlingar eller försummelser, särskilt genom att använda tjänsten på ett sätt som är oförenligt med bestämmelserna i lagen eller bestämmelserna,",
+                            "skador, inklusive förlorade förmåner, orsakade av force majeure-händelser."
+                        ]
+                    },
+                    "Under inga omständigheter kommer Tjänsteleverantören eller dess juridiskt anslutna enheter att hållas ansvariga för någon förlust av vinst eller inkomst (förlorad vinst), besparingar, förlust eller förstörelse av data, företagets värde eller rykte, felaktigheten i någon data, och kommer inte heller att de är ansvariga för alla materiella/immateriella skador eller indirekta, oavsiktliga förluster, alla som uppstått oavsett teorin om ansvarskällorna, även om de har informerats om möjligheten till sådan skada eller förlust.",
+                    "Tjänsteleverantörens ansvar enligt Avtalet är begränsat till det belopp som motsvarar värdet av den senaste Betalningen som betalades av Tjänstemottagaren, men högst beloppet för Betalningen för den givna Abonnemangsperioden."
+                ]
+            },
+            "principlesOfApplicationUse": {
+                "header": "Principer för applikationsanvändning",
+                "list": [
+                    "För att använda Tjänsten är det nödvändigt att ha en enhet med tillgång till Internet, en webbläsare och att upprätta ett Konto – förutom in/i – även ett e-postkonto.",
+                    "Åtkomst till webbplatsen är möjlig genom en av de allmänt tillgängliga webbläsarna: Google Chrome, Mozilla Firefox, Opera, Edge, Safari, i de senaste versionerna. Från de tillgängliga versionerna, med aktiverad, i webbläsaren, stödet för cookies och Javascript.",
+                    "Tjänsteleverantören tillhandahåller IT-tjänster relaterade till åtkomst och service av Tjänsten endast via Internet.",
+                    "Användaren erkänner att regelbunden uppdatering av sina enheter och mjukvara för att stödja moderna krypteringsmekanismer under kommunikation från webbplatsen gör det möjligt att använda dem. Tillgängligheten av nämnda uppdateringar kan bero på den hårdvara och/eller programvara som ägs av Användaren och därför ansvarar inte tjänsteleverantören för eventuell frånvaro av nämnda uppdateringar och följaktligen oförmågan att använda tjänsten av denna anledning.",
+                    "Användaren som använder Tjänsten får ingen upphovsrätt till Tjänsten. Tjänsten\r\nMottagare och användare beviljas endast – under de villkor som anges i bestämmelserna – en betald, icke-överlåtbar och icke-exklusiv licens som ger honom rätt att använda Tjänsten inom ramen för dess syfte.",
+                    {
+                        "text": "För att undvika alla tvivel kommer du inte på egen hand, inte heller tillåta eller tillåta någon att:",
+                        "sublist": [
+                            "Distribuera, överföra, låna, dela, sälja, överföra, licensiera, hyra eller på annat sätt göra tjänsten tillgänglig.",
+                            "kopiering, dekompilering, omritning, reverse engineering eller annan extraktion eller reproduktion av källkod eller andra metoder, algoritmer eller processer från webbplatsen.",
+                            "att erbjuda eller driva Tjänsten på något annat lönsamt kommersiellt sätt som lägger till värde till produkter eller tjänster till någon tredje part, inklusive att tillhandahålla hostingtjänster, tidsdelningstjänster, SaaS (Software as a Service) tjänster eller hanteringstjänster, även om de erbjuds tillsammans eller som en del av andra produkter och tjänster;",
+                            "ta bort all upphovsrättsinformation, varumärken med undantag för redigerbara element på funktionsnivån för Webbplatsen."
+                        ]
+                    },
+                    "Tjänsteleverantören ska inte bära något ansvar för överträdelse av tredje parts rättigheter och för att orsaka skada på tredje parter som en följd av och i samband med de aktiviteter som utförs av Tjänstemottagaren, dess Användare eller Anställda vid användningen av Tjänsten.",
+                    "Om Tjänsteanvändaren informerar Tjänsteleverantören om idéer och förslag relaterade till Tjänsten, samtycker Tjänstemottagaren till att Tjänsteleverantören använder sådana idéer och förslag för alla ändamål, utan begränsning, särskilt utveckling, modifiering, rättelse med uteslutande av ansvar samt ersättning till Användaren.",
+                    "Användaren förstår och samtycker till att de tjänster som tillhandahålls av Tjänsteleverantören baseras på en enda grundversion av applikationen, hårdvaran och infrastrukturen och är avsedda att tillhandahålla tjänsten till flera kunder på ett skalbart sätt. Tjänsten kommer inte att anpassas eller/eller anpassas till Tjänstemottagaren, om inte i den utsträckning som uttryckligen avtalats mellan Parterna."
+                ]
+            },
+            "feesAndPayments": {
+                "header": "Avgifter och betalningar",
+                "list": [
+                    "Prenumerationspriset publiceras på Tjänsteleverantörens webbplats: www.interviewlyapp.com.",
+                    "De angivna priserna är nettopriser (dvs inkluderar inte moms). Priserna anges i polska zloty, amerikanska dollar.",
+                    "Avgiften betalas i förskott och beräknas enligt den valda prenumerationsmodellen.",
+                    "Betalningar görs med kreditkort (Visa, MasterCard, American Express) eller banköverföring på grundval av en faktura utfärdad av Tjänsteleverantören.",
+                    "Avgiften via banköverföring betalas till Tjänsteleverantörens bankkonto som anges på momsavdraget. Kunden åtar sig att betala avgiften inom 7 dagar från dagen för leverans av momsavdraget till den angivna e-postadressen. Det finns möjlighet att förlänga överföringsperioden som en del av individuella överenskommelser med Tjänstemottagaren. Det slutliga beslutet fattas av leverantören.",
+                    "Tjänsteleverantören kan vägra betalning via banköverföring om Tjänstemottagaren inte uppfyller betalningsfristen.",
+                    "Betald faktura levereras via e-post.",
+                    "Leverans av fakturan som skickas som en fil sker så snart Tjänsteleverantören skickar ett e-postmeddelande med en faktureringsfil från e-postadressen till den adress som anges av Tjänstemottagaren. Om e-postmeddelandet med fakturan inte levereras till Tjänstemottagaren, av skäl oberoende av Tjänsteleverantören, kommer en duplicerad fakturering att utfärdas på begäran av Kunden.",
+                    "För dagen för betalning av belopp på grundval av fakturor som utfärdats av Tjänsteleverantören accepterar Parterna datumet för erkännande av Tjänsteleverantörens bankkonto.",
+                    "Parterna är överens om att Tjänsteleverantören kommer att bokföra betalningar som härstammar från Tjänstemottagaren i första hand på grund av tidigare förfallna skulder, oberoende av innehållet i uttalandena som följer med betalningen.",
+                    "Om du väljer kredit- eller betalkort som betalningsmetod för Prenumerationsavgiften kommer avgiften för varje efterföljande Prenumerationsperiod att debiteras automatiskt tills Tjänstemottagaren meddelar önskan att avbryta. Sådan avsägelse bör meddelas via e-post till adressen contact@interviewlyapp.com upp till 7 dagar före början av den nya Prenumerationsperioden.",
+                    "Tjänstemottagaren är skyldig att betala avgiften för den valda Prenumerationen senast inom 7 arbetsdagar från datumet för inlämnande av Prenumerationen. Betalningsdagen anses vara dagen för redovisning av den nödvändiga skulden på Tjänsteleverantörens bankkonto. Att inte betala inom den angivna tidsramen motsvarar en uppsägning av prenumerationen.",
+                    "Ändring av Parametrar för Prenumerationen görs av Kontoadministratören direkt på Kontot i Tjänsten och kan avbrytas av denne när som helst eller på order av kontoadministratören som skickas till den e-postadress som anges i punkt 2 av Tjänsteleverantören.",
+                    "Kontoadministratören har tillgång i Tjänsten till",
+                    "Tjänstemottagaren samtycker till att skicka momsfakturor av Tjänsteleverantören i elektronisk form i enlighet med den rättsliga grunden för att utfärda och skicka faktura i elektroniskt format. Lag av den 11 mars 2004 om skatt på varor och tjänster (Dz.U. 54 kap. , Pos. och 535. Faktura skickad i elektronisk form enligt lagen (Dz.U. nr 144 punkt 1204, i ändrad lydelse) är likvärdig med sändning av en faktura utfärdad i pappersform och utgör ett bokföringsdokument.\r\n\r\nKorrigerande fakturor och dubbletter för faktura som skickas elektroniskt kommer också att skickas i elektronisk form.",
+                    "Momsfakturan i pappersform kommer att utfärdas och levereras endast på uttrycklig begäran från tjänstemottagaren uttryckt i elektronisk form till leverantörens kontaktadress. Avgiften för utskrift och leverans av moms i pappersform betalas av Tjänsteleverantören och läggs till fakturan, med ett belopp av 59 PLN netto + moms.",
+                    "Tjänsteleverantören kan när som helst, efter att ha informerat Tjänstemottagarna, minst 60 dagar före ändringen, om detta krävs enligt gällande lag, ändra Prislistan eller del därav eller fastställa nya avgifter. Ändringar i priser och fastställande av nya avgifter träder i kraft för efterföljande abonnemangsperioder och för alla nya Tjänstemottagare efter datumet för ikraftträdandet av ändringen. Om Tjänstemottagaren inte samtycker till prisändringarna i Tariffen kan han/hon säga upp Abonnemanget och sluta använda Tjänsten före början av nästa Period, från vilken de ändrade priserna kommer att gälla."
+                ]
+            },
+            "support": {
+                "header": "Stöd",
+                "list": [
+                    "Teknisk support finns tillgänglig varje dag. 9:00 – 15:00 (CET) för tjänstemottagare med en avgift betald för den tillämpliga prenumerationsperioden för utvalda prenumerationsmodeller.",
+                    "Kontakt för teknisk support är tillgänglig för kontoadministratören via e-post på contact@interviewlyapp.com",
+                    "Tjänsteleverantören kommer att göra allt för att svara på e-postmeddelanden inom 72 timmar inom de arbetsdagar som gäller för Tjänsteleverantören."
+                ]
+            },
+            "compliants": {
+                "header": "Kompatibla",
+                "list": [
+                    "Tjänsteleverantören åtar sig att omedelbart avlägsna defekter som hindrar åtkomst till användningen av Tjänsten.",
+                    "Klagomål relaterade till tillhandahållandet av tjänsten för tillgång till tjänsten kan tjänstemottagaren lämna in via e-post på contact@interviewlyapp.com",
+                    {
+                        "text": "Rapporten bör ange:",
+                        "sublist": [
+                            "organisationens namn (information som ges när kontot skapades) och dess e-postadress",
+                            "information om den berörda användaren,",
+                            "tidpunkten och omständigheterna för uppkomsten av problemet med driften av tjänsten, webbadressen eller namnet på sidan,",
+                            "Skärm med synlig URL och problem"
+                        ]
+                    },
+                    "Om ytterligare information är nödvändig för prövningen av klagomålet, begär Tjänsteleverantören att du lämnar denna information innan klaganden behandlas, och tiden för prövning av reklamationen räknas från dagen för leverans av den begärda informationen.",
+                    "Det rekommenderas att i ovanstående e-postmeddelande tillhandahålla så mycket information och omständigheter som möjligt angående föremålet för klagomålet, i synnerhet typen och datumet då oegentligheten inträffade och kontaktuppgifter – detta kommer att underlätta och påskynda behandlingen av klagomål av tjänsteleverantören.",
+                    "Klagomålet hanteras av Tjänsteleverantören omedelbart, senast inom 14 arbetsdagar.",
+                    "Tjänsteleverantörens behandling av klagomålet är slutgiltigt.",
+                    "Tjänsteleverantörens svar på klagomålet skickas till Tjänstemottagarens e-postadress som anges i reklamationsmeddelandet,"
+                ]
+            },
+            "serviceData": {
+                "header": "Servicedata",
+                "list": [
+                    "De uppgifter som Tjänstemottagaren anger på Tjänstkontot är Tjänstemottagarens egendom.",
+                    "Alla uppgifter som läggs in på Tjänstekontot kommer att lagras av Tjänsteleverantören i enlighet med Europaparlamentets och rådets förordning (EU) 2016/679 av den 27 april 2016 om skydd för individer med avseende på behandling av personuppgifter och om fri rörlighet för sådana uppgifter och om upphävande av direktiv 95/46/EG. (dalej RODO).",
+                    "Tjänsteleverantören lagrar och behandlar de uppgifter som tillhandahålls honom av Tjänstemottagaren i enlighet med tillämpliga rättsliga bestämmelser och enligt Förtroendeavtalet för personuppgiftsbehandling, som utgör Bilaga nr 1 till Regelverket.",
+                    "Genom att acceptera dessa användarvillkor samtycker tjänstemottagaren till att anförtro uppgifterna till tjänsteleverantören i enlighet med avtalet om förtroende för behandling av personuppgifter."
+                ]
+            },
+            "conditionsOfCeasementOfContract": {
+                "header": "Villkor för avtalsupphörande",
+                "list": [
+                    "Kunden kan säga upp avtalet med en månads uppsägningstid och utan att ange skäl genom att skicka ett relevant uttalande per e-post till contact@interviewlyapp.com.",
+                    "Tjänstemottagaren kan säga upp avtalet omedelbart om Tjänsteleverantören inte upprätthåller tillgängligheten för Tjänsten inom den omfattning som anges i SLA i punkt III.1, genom att skicka ett relevant uttalande via e-post till contact@interviewlyapp.com.",
+                    {
+                        "text": "Tjänsteleverantören kan tillfälligt eller permanent spärra tjänstemottagarens konto eller säga upp avtalet i händelse av att användaren:",
+                        "sublist": [
+                            "bryter mot reglerna,",
+                            "tillhandahåller innehåll av olaglig karaktär, efter ett ineffektivt föregående uppmaning att upphöra med kränkningarna med en bestämd tidsgräns;",
+                            "är skadligt för tjänsteleverantören eller kommer att tillhandahålla falska uppgifter under registreringsprocessen eller kommer inte omedelbart att uppdatera ändringar av uppgifterna i enlighet med det faktiska tillståndet,",
+                            "betalar inte i tid.",
+                            "begår åtgärder som syftar till att bryta mot säkerheten för data som behandlas i Tjänsten och använda Tjänsten eller gör ett obehörigt försök att komma åt Tjänsten, eller utför andra åtgärder som är utformade för att störa Tjänstens korrekta funktion."
+                        ]
+                    },
+                    "Tjänsteleverantören har rätt att säga upp Avtalet med omedelbar uppsägningsverkan när något av skälen som anges i punkt 3 i detta kapitel inträffar.",
+                    "Tjänsteleverantören kan säga upp avtalet när som helst med en uppsägningstid på tre månader.",
+                    "Tjänsteleverantörens viljeförklaring om uppsägning av avtalet för dess giltighet kräver ett dokumentformulär och ska skickas till e-postadressen för tjänstemottagarens nuvarande kontoadministratör. Perioden för uppsägning av avtalet börjar från den dag då tjänsteleverantörens viljeförklaring levereras att säga upp avtalet.",
+                    "Denna uppsägning leder till att rättsförhållandet upphör med verkan för framtiden."
+                ]
+            },
+            "finalProvisions": {
+                "header": "Slutbestämmelser",
+                "list": [
+                    "Kontrakt som ingås av tjänsteleverantören inom ramen för applikationens verksamhet ingås på polska, i enlighet med gällande lag på Polens territorium.",
+                    "Tjänsteleverantören förbehåller sig rätten att göra ändringar i bestämmelserna. Ändringar som görs i Användarvillkoren ska binda Tjänstemottagaren, under förutsättning att denne har blivit korrekt informerad om ändringarna och inte har sagt upp Avtalet inom 14 dagar från dagen för meddelande om ändringen från Tjänsteleverantören.",
+                    "I händelse av bristande efterlevnad av någon del av förordningarna med tillämplig lag, ska relevanta bestämmelser i polsk lag tillämpas i stället för den omtvistade bestämmelsen i förordningarna.",
+                    "Eventuella tvister som uppstår mellan Tjänsteleverantören och Tjänstemottagaren ska överlämnas till den domstol som är behörig på grundval av Tjänsteleverantörens säte."
+                ]
+            }
+        },
+        "personalDataProcessingAgreement": {
+            "header": "Avtal om behandling av personuppgifter",
+            "text": "Avtalet om behandling av personuppgifter är en integrerad del av bestämmelserna och anger reglerna för Tjänsteleverantörens behandling på uppdrag av Tjänstemottagaren av Användarens personuppgifter genom Tjänsten på www.interviewlyapp.com.\r\nAvtalet för behandling av personuppgifter utgör helheten av skyldigheterna och villkoren för Användarens databehandling mellan Tjänsteleverantören och Tjänstemottagaren i samband med SaaS-tjänsten och ersätter alla tidigare avtal, överenskommelser och arrangemang mellan Tjänsteleverantören och Tjänsteleverantören. tjänstemottagare i detta avseende.",
+            "rules": [
+                {
+                    "title": "Definitioner",
+                    "list": [
+                        "Administratör – betyder tjänstemottagaren, som ensam eller tillsammans med andra enheter bestämmer ändamålen och metoderna för behandling av personuppgifter;",
+                        "Processor – betyder tjänsteleverantör"
+                    ]
+                },
+                {
+                    "title": "Föremål för behandling av personuppgifter",
+                    "list": [
+                        "I samband med genomförandet av avtalet om tillhandahållande av tjänster på elektronisk väg för SaaS-tjänsten som regleras i bestämmelserna (nedan kallat &quot;Huvudavtal&quot; som ingåtts mellan parterna, anförtror den personuppgiftsansvarige till processorn i enlighet med artikel 28 i förordningen ska personuppgifter behandlas på uppdrag av administratören, på de villkor och för de ändamål som anges i avtalet.",
+                        "Ingåendet av avtalet utgör en dokumenterad instruktion från Administratören att behandla personuppgifter från Tjänsteleverantören, inklusive överföring av personuppgifter till tredjeländer, enligt artikel 28 (3) (a) i GDPR.",
+                        "Den registeransvarige förklarar att han är personuppgiftsansvarig i den mening som avses i bestämmelserna i Europaparlamentets och rådets förordning (EU) 2016/679 av den 27 april 2016 om skydd för fysiska personer med avseende på behandling av personuppgifter. Data och om fri rörlighet för sådana uppgifter och upphävande av direktiv 95/46/EG (allmän dataskyddsförordning), (nedan kallad \"förordningen\"), som han anförtror databehandlaren."
+                    ]
+                },
+                {
+                    "title": "Databehandlingens omfattning och syfte",
+                    "list": [
+                        "Personuppgifter som anförtros den personuppgiftsansvarige kommer att behandlas av Databehandlaren endast i syfte att utföra de tjänster som beskrivs i detalj i Huvudavtalet som avses i § 2 punkt 1 och på ett sätt som överensstämmer med dessa Avtal och relevanta, allmänt tillämpliga lagbestämmelser.",
+                        "Personkategori: Administratörens anställda och medarbetare, anställningskandidater, användare av Tjänsten.",
+                        {
+                            "text": "Databehandlaren förbinder sig att behandla de anförtrodda personuppgifterna i följande utsträckning:",
+                            "sublist": [
+                                "Namn och efternamn",
+                                "Bild – foto och inspelningar laddade upp till tjänsten",
+                                "Kön",
+                                "Adress",
+                                "Kontakt Telefon",
+                                "E-postadress",
+                                "Födelsedatum",
+                                "Bankkontonummer",
+                                "Yrken",
+                                "Industri",
+                                "Civilstat",
+                                "Information om att skaffa barn",
+                                "Övriga data som finns i lagrade filer eller matas in på annat håll."
+                            ]
+                        },
+                        "Bearbetningsaktiviteter: Samla, spela in, organisera, ordna, lagra, visa, överföra, ändra, ta bort.",
+                        "Behandlingsform: Elektronisk"
+                    ]
+                },
+                {
+                    "title": "Bearbetarens skyldigheter",
+                    "list": [
+                        "Personuppgiftsbehandlaren förklarar att den tillhandahåller lämpliga tekniska och organisatoriska åtgärder för att säkerställa att behandlingen följer kraven som anges i Förordningen och skyddar de registrerades rättigheter, vilket särskilt innebär att Personuppgiftsbehandlaren vidtar de lämpliga åtgärder som krävs enligt artikel 32 i Förordningen och agerar omsorgsfullt vid behandlingen av anförtrodda personuppgifter.",
+                        "Personuppgiftsbehandlaren åtar sig att ge behörighet att behandla personuppgifter till alla personer som kommer att behandla de anförtrodda uppgifterna för ändamålen enligt detta Avtal.",
+                        "Med beaktande av behandlingens art ska Personuppgiftsbehandlaren, i den mån det är möjligt, bistå Personuppgiftsansvarig genom lämpliga tekniska och organisatoriska åtgärder att uppfylla skyldigheten att svara på begäran från den registrerade gällande utövande av hans eller hennes rättigheter, som specificeras i Kapitel III i Förordningen.",
+                        "Med beaktande av behandlingens art och den information som är tillgänglig för den, ska Personuppgiftsbehandlaren bistå kontrollanten i att uppfylla skyldigheterna som specificeras i artikel 32 till 36 i Förordningen.",
+                        "Personuppgiftsbehandlaren åtar sig att säkerställa konfidentialiteten för de behandlade uppgifterna (som avses i artikel 28(3)(b) i Förordningen) av de personer som den ger behörighet att behandla personuppgifter i syfte att genomföra detta avtal, både under deras anställning hos behandlaren och efter dess upphörande.",
+                        "Personuppgiftsbehandlaren ska efter avslutad tillhandahållande av tjänster relaterade till databehandling radera alla uppgifter som anförtrotts av Personuppgiftsansvarig efter utgången av den tid som anges i huvudavtalet.",
+                        "Personuppgiftsbehandlaren ska efter att ha identifierat ett brott mot skyddet av personuppgifter utan dröjsmål rapportera det till Personuppgiftsansvarig.",
+                        "Personuppgiftsbehandlaren ska efter att ha identifierat ett brott mot skyddet av personuppgifter utan dröjsmål, senast inom 36 timmar efter brottet, rapportera det till Personuppgiftsansvarig. Ansökan ska lämnas in via e-post till den e-postadress som angavs av Administratören vid registreringen (adressen är också administratörens inloggning)."
+                    ]
+                },
+                {
+                    "title": "Tekniska och organisatoriska åtgärder",
+                    "list": [
+                        "Med hänsyn till läget för den tekniska kunskapen, kostnaden för genomförandet och arten, omfattningen, sammanhanget och syftena med behandlingen av personuppgifter och risken för intrång i rättigheterna för personer vars personuppgifter berörs, ska Tjänsteleverantören tillhandahålla tekniska och organisatoriska åtgärder som är lämpliga för typen av personuppgifter och risk för kränkning av rättigheter för individer som personuppgifterna berörs."
+                    ]
+                },
+                {
+                    "title": "Rätt till kontroll över behandlingen",
+                    "list": [
+                        "I enlighet med artikel 28.3 h i förordningen har den personuppgiftsansvarige rätt att kontrollera om de åtgärder som Behandlaren tillämpar vid behandling och säkrande av de anförtrodda personuppgifterna är förenliga med bestämmelserna i avtalet.",
+                        "Meddelandet om avsikten att genomföra inspektionen eller revisionen ska skickas till handläggaren minst 14 kalenderdagar innan aktiviteten påbörjas. Kostnaderna för revisionen bekostas av handläggaren.",
+                        "Den revisor som utsetts av den personuppgiftsansvarige får inte vara en enhet som bedriver konkurrensutsatt verksamhet med Databehandlaren, inte heller en enhet som är relaterade till den, en anställd eller en samarbetsenhet, oavsett grunden för anställning eller samarbete. Innan revisionsverksamheten utförs är revisorn skyldig att se till att den inhämtade informationen hålls konfidentiell.",
+                        "Kontrollen av behandlingen, i den mån den avser områdena för behandling av personuppgifter, får inte pågå mer än 3 arbetsdagar.",
+                        "Kontrollen av behandlingen kommer att slutföras genom undertecknandet av protokollet för kontroll av behandlingen av båda parter. Protokollet kommer att innehålla slutsatser från Behandlingskontrollen och omfattningen som båda parter kommit överens om om eventuella ändringar i Bearbetarens behandling av Personuppgifter.",
+                        "Databehandlaren förbinder sig att följa rekommendationerna från den personuppgiftsansvarige eller den enhet som auktoriserats av honom om förbättring av kvaliteten på säkerheten för personuppgifter och metoden för deras behandling eller avlägsnande av defekter som upptäckts under inspektionen eller revisionen inom en period som anges av den registeransvarige inte längre än 28 dagar."
+                    ]
+                },
+                {
+                    "title": "Leverans av data för behandling",
+                    "list": [
+                        "Databehandlaren får lägga ut behandlingen av personuppgifter som behandlas av honom i samband med tillhandahållandet av den tjänst som omfattas av det avtal som avses i 2 § stycket på entreprenad. 1 avtal med andra processorer (nedan kallade \"Underleverantörer\") i enlighet med villkoren för användning av Underleverantörstjänster som anges i förordningen.",
+                        "Den personuppgiftsansvarige samtycker till att underordna, anförtrotts Databehandlaren att behandla uppgifter på grundval av Avtalet som anges i Bilaga nr 1 till Avtalet.",
+                        "De enheter till vilka registerföraren har anförtrott den fortsatta behandlingen av personuppgifter anges i bilaga 1 till avtalet.",
+                        "Databehandlaren kan göra ändringar hos nuvarande underleverantörer och lägga till ytterligare, utan föregående meddelande till den registeransvarige."
+                    ]
+                },
+                {
+                    "title": "Anmälan om överträdelser",
+                    "list": [
+                        {
+                            "text": "Vid upptäckt av en överträdelse av skyddet av personuppgifter som anförtrotts den av den personuppgiftsansvarige, rapporterar databehandlaren, utan onödigt dröjsmål, från upptäckten av överträdelsen, det till administratören. Rapporten ska innehålla minst information om:",
+                            "sublist": [
+                                "datum, varaktighet och plats för personuppgiftsintrånget;",
+                                "arten och omfattningen av överträdelsen, det vill säga i synnerhet kategorierna och det ungefärliga antalet registrerade och de typer och ungefärliga antalet inmatningar av personuppgifter som berörs av överträdelsen, och, om möjligt, även identifieringen av de berörda personerna;",
+                                "den förväntade tiden som behövs för att reparera skadan som orsakats av överträdelsen;",
+                                "arten och omfattningen av de personuppgifter som är föremål för intrånget;",
+                                "de möjliga konsekvenserna av överträdelsen, inklusive konsekvenserna för de registrerade;",
+                                "de åtgärder som vidtagits för att minimera konsekvenserna av överträdelsen och de föreslagna förebyggande och korrigerande åtgärderna;",
+                                "kontaktuppgifter till den person som kan ge ytterligare information om intrånget."
+                            ]
+                        },
+                        "Om registerföraren inte kan förse den registeransvarige med all information som avses i punkt 1 samtidigt, ska den tillhandahålla den successivt utan onödigt dröjsmål.",
+                        "Fram till mottagandet av instruktioner från den personuppgiftsansvarige ska Databehandlaren vidta alla rimliga åtgärder för att begränsa och avhjälpa de negativa effekterna av intrånget."
+                    ]
+                },
+                {
+                    "title": "Processorns ansvar",
+                    "list": [
+                        "Databehandlaren är ansvarig för skador som åsamkas den personuppgiftsansvarige eller tredje part som orsakas av behandlingen av personuppgifter endast om (i) den har behandlat personuppgifter i strid med detta avtal, (ii) den inte uppfyller de skyldigheter som förordningen eller annan bestämmelser om skydd av personuppgifter ålägger processorerna eller (iii) den agerar i strid med Administratörens lagliga skriftliga instruktioner eller utöver dessa instruktioner.",
+                        "Med förbehåll för de strikt tillämpliga bestämmelserna i lagen, ska databehandlaren vara ansvarig gentemot den personuppgiftsansvarige för bristande eller felaktigt utförande av detta avtal endast för dokumenterad faktisk skada (damnum emergens) av administratören, begränsad till beloppet för den senaste betalningen för Teckning av applikationen som en ersättning till Behandlingsenheten från Förvaltaren, i enlighet med bestämmelserna.",
+                        "Den ansvarsbegränsning som avses i punkt 2 gäller inte ansvar gentemot registrerade och om skadan orsakas av databehandlarens avsiktliga handlande.",
+                        "Den Part som har betalat ersättning för hela den orsakade skadan har rätt att begära att den andra Parten som deltagit i samma bearbetning återbetalar den del av ersättningen som motsvarar den del av skadan som motparten svarar för. grund av den regressionsrätt som beskrivs i artikel 82.2. 5 i förordningen. Den ansvarsbegränsning som avses i punkt 2 ska inte gälla regressiva anspråk som beskrivs i denna punkt. 4.",
+                        "Databehandlaren ansvarar inte för underleverantörens handlingar eller försummelser när det gäller behandlingen av de anförtrodda personuppgifterna."
+                    ]
+                },
+                {
+                    "title": "Avtalets varaktighet",
+                    "list": [
+                        "Detta avtal ska vara i kraft från dagen för dess ingående under en viss tidsperiod relaterad till giltigheten av det avtal som avses i § 2 punkt 1.",
+                        "Databehandlaren får behandla de personuppgifter som anförtros enligt detta avtal endast under huvudavtalets giltighetstid, såvida inte den personuppgiftsansvarige och databehandlaren bestämmer en annan period för behandling av personuppgifter genom ett separat avtal, mot en separat ersättning, eller så kommer detta kontrakt att sägas upp i de fall som anges i § 10 i detta avtal.",
+                        "Avtalet upphör också när behandlingen av personuppgifter som lämnats till Databehandlaren av den personuppgiftsansvarige inte längre är nödvändig för fullgörandet av Huvudavtalet.",
+                        "Parterna kan säga upp detta avtal med tre månaders uppsägningstid eller genom att ingå ett motsvarande avtal, med hänsyn till att uppsägning av detta avtal kan förhindra genomförandet av Huvudavtalet och därmed leda till att det sägs upp."
+                    ]
+                },
+                {
+                    "title": "Uppsägning av avtal",
+                    "list": [
+                        "Databehandlaren medger att uppsägningen av detta avtal kan påverka omöjligheten att fortsätta det avtal som avses i 2 § stycket. 1."
+                    ]
+                },
+                {
+                    "title": "Regler för sekretess",
+                    "list": [
+                        "All information som parterna har erhållit under avtalets varaktighet som utgör affärshemlighet i den mening som avses i lagen av den 16 april 1993 om bekämpning av illojal konkurrens (Journal of Laws of 1993r. No. 47, punkt 211), får endast användas för korrekt utförande av avtalet av endera parten, såvida inte den andra parten befriar den från skyldigheten att upprätthålla konfidentialitet eller skyldigheten att avslöja dem härrör från tillämpliga rättsliga bestämmelser."
+                    ]
+                },
+                {
+                    "title": "Slutbestämmelser",
+                    "list": [
+                        "Ersättningen för tillhandahållandet av processorn av tjänsterna i avtalet inkluderar även belöningen för genomförandet av detta avtal.",
+                        "I oreglerade ärenden ska bestämmelserna i civillagen och föreskrifterna tillämpas."
+                    ]
+                }
+            ],
+            "annex": {
+                "title": "Bilaga 1 – Förteckning över underleverantörer",
+                "table": [
+                    [
+                        "Ämne",
+                        "Område",
+                        "Omfattning av databehandling"
+                    ],
+                    [
+                        "Amazon, Luxemburg",
+                        "EU",
+                        "Servermiljön där applikationen körs, databaser, säkerhetskopior lagras."
+                    ],
+                    [
+                        "OVH S.A., Polska",
+                        "EU",
+                        "Servermiljön används för att skapa säkerhetskopior."
+                    ]
+                ]
+            }
+        },
+        "privacyPolicy": {
+            "header": "Sekretesspolicy och cookies",
+            "chapterOne": "Preliminära bestämmelser",
+            "paragraphOne": "1 i lagen av den 18 juli 2002 om tillhandahållande av elektroniska tjänster (Dz. I enlighet med artikel 173 i lagen av den 16 juli 2004 om telekommunikation (Dz. U. 2014.243 d.v.s. från senare. Bolaget är ett aktiebolag med huvudkontor) i Łódź, ul. Wólczańska 125, 90-521 Łódź, registrerad i det nationella domstolsregistret – register över företagare under KRS-nummer: 0000541582, vars registreringsregister tas upp av distriktsdomstolen för Łódź-ŚŚź-Śź-Śźdmie, Łści Economic Department, Łódź-ŚŚźdmie, Łści Department. : 7692223109, REGON: 360412382 aktiekapital: 5 000,00 PLN inlämnat i sin helhet, e-post: info@strategaresearch.com, nedan kallad \"leverantören\", introducerar denna integritetspolicy och cookies, häri kallad \"policy\".",
+            "paragraphTwo": [
+                "De villkor som är skrivna i policyn med versaler, om inte annat anges i innehållet i policyn, har den innebörd som anges i reglerna för webbplatsen. (www.interviewlyapp.com).",
+                "Termen \"Användare\" betyder, beroende på kundens eller den person som vill bli en kund, en kandidat eller en person som vill bli en kandidat, eller en internetanvändare som besöker webbplatsen."
+            ],
+            "chapterTwo": "Personlig information",
+            "paragraphThree": [
+                "Användaren är, för att kunna använda de tjänster som leverantören erbjuder via webbplatsen, skyldig att fylla i lämpligt registreringsformulär, där specifika personuppgifter måste anges.",
+                "Att tillhandahålla personuppgifter i registreringsformuläret är frivilligt, men nödvändigt för tillhandahållandet av tjänster från leverantören till användaren via webbplatsen.",
+                "Alla personuppgifter som Användaren anger i registreringsformuläret eller lämnar i korrespondens med Uppdragstagaren behandlas på ett sätt som överensstämmer med kraven i Europaparlamentets och rådets förordning (EU) 2016/679 av den 27 april 2016 om skydd för enskilda med avseende på behandling av personuppgifter och om fri rörlighet för sådana uppgifter och om upphävande av direktiv 95/46/EG, nedan kallat GDPR och lagen av den 18 juli 2002 om tillhandahållande av elektroniska tjänster ( Journal of Laws of the Russian Federation). 2013 – 1422 – d.v.s. från senare."
+            ],
+            "paragraphFour": [
+                "Den personuppgiftsansvarige för de personuppgifter som samlas in genom registreringsformuläret för webbplatsen är entreprenören. I företaget har en dataskyddsinspektör utsetts, med vilken kontakt är möjlig på e-postadressen: inspektor@stratega.pl",
+                "Entreprenören kan anförtro behandlingen av användarnas insamlade personuppgifter till en annan enhet på grundval av avtal med honom, i enlighet med art. 28 GDPR.",
+                {
+                    "text": "För att utföra försäljnings- och serviceavtal som Säljaren ingått med Användare genom Tjänsten, kommer Användardata att anförtros särskilt till följande enheter:",
+                    "sublist": [
+                        "leverantörer av post- eller budtjänster, som kommer att förse användaren med de testade varorna,",
+                        "hantera onlinetransaktioner."
+                    ]
+                }
+            ],
+            "paragraphFive": "Användaren har rätt att få tillgång till sina personuppgifter och kan verifiera eller korrigera dem, samt att när som helst återkalla sitt samtycke, genom att ställa lämplig begäran till Leverantören.",
+            "paragraphSix": {
+                "text": "Tjänsteleverantören behandlar Användarens personuppgifter och använder dem i den utsträckning och för följande ändamål:",
+                "sublist": [
+                    "nödvändiga för att utföra tjänster som erbjuds genom Tjänsten i enlighet med artikel 6 (1) (b) GDPR,",
+                    "på grundval av ytterligare och valfritt samtycke, som Användaren kan uttrycka i ett separat uttalande, kan Leverantören behandla Användarens personuppgifter för marknadsföringsändamål enligt artikel 6 (1) (f) GDPR. Om Användaren ger sådant samtycke kan han när som helst återkalla det.",
+                    "på grundval av det ytterligare och valfria samtycke som ges av Användaren har rätt att skicka till honom till de angivna e-postadresser eller telefonnummer kommersiell information enligt art. 6 (1) (a) GDPR. Det samtycke som avses i föregående mening kan när som helst återkallas av Användaren."
+                ]
+            },
+            "paragraphSeven": "Personuppgifter som samlas in av Uppdragstagaren kan komma att överföras till auktoriserade, på grundval av tillämplig lagstiftning, statliga myndigheter.",
+            "chapterThree": "Kakorna",
+            "paragraphEight": [
+                "Leverantören använder cookies, det vill säga liten textinformation, lagrad på Användarens terminalenhet. (dvs dator, surfplatta, smartphone). Cookies kan läsas av Leverantörens IT-system.",
+                "Leverantören lagrar cookies på Användarens terminalenhet och får sedan tillgång till informationen däri för statistiska ändamål och för att säkerställa att webbplatsen fungerar korrekt, och i synnerhet för att upprätthålla sessionen efter inloggning."
+            ],
+            "paragraphNine": [
+                "Leverantören informerar också Användare om att det finns en möjlighet till en sådan konfiguration av webbläsaren som förhindrar lagring av cookies på Användarens terminalenhet.",
+                "Leverantören anger också att cookies kan raderas av Användaren efter att de har sparats av Leverantören, genom: lämpliga funktioner i webbläsaren, program som tjänar för detta ändamål eller användning av lämpliga verktyg tillgängliga i operativsystemet som Användaren använder .",
+                {
+                    "text": "Följande länkar ger information om hur du tar bort cookies i de mest populära webbläsarna:",
+                    "sublist": [
+                        "Firefox: http://support.mozilla.org/pl/kb/delete-cookies",
+                        "Opera: http://help.opera.com/Linux/9.60/pl/cookies.html",
+                        "Internet Explorer: http://support.microsoft.com / kb/278835/pl",
+                        "Chrome: https://suport.google.comhl=pl&amp;answer=95647"
+                    ]
+                }
+            ],
+            "paragraphTen": "Entreprenören informerar också användarna om att ändring av webbläsarinställningarna för att inaktivera eller begränsa lagringen av cookies på användarens slutenhet kan leda till en begränsning av funktionaliteten hos de tillhandahållna tjänsterna. Liknande konsekvenser kan uppstå om cookies raderas under tjänstetillhandahållandet. Detta kan resultera i oförmåga att logga in på tjänsten eller avbrott i en session efter inloggning.",
+            "chapterFour": "Data som finns i systemloggar",
+            "paragraphEleven": "Informationen som finns i systemloggarna i samband med de allmänna reglerna för implementering av Internetanslutningar används av värdföretaget som driver Tjänsten endast för tekniska och statistiska ändamål.",
+            "chapterFive": "Tekniska åtgärder som används av entreprenören",
+            "paragraphTwelve": "Uppdragstagaren ska tillämpa de tekniska åtgärder som krävs enligt gällande lagstiftning om skydd av personuppgifter för att förhindra att obehöriga förvärvar och ändrar de personuppgifter som överförs elektroniskt.",
+            "paragraphThirteen": [
+                "Vid frågor och åsikter om den policy som tillämpas av entreprenören, vänligen skicka dem till e-postadressen: inspektor@stratega.pl",
+                "Policyn finns på www.interviewlyapp.com"
+            ]
+        },
+        "surveyStatuses": {
+            "pending": "i väntan på",
+            "finished": "färdiga",
+            "seeResultsLabel": "Se resultat"
+        }
+    }
+}

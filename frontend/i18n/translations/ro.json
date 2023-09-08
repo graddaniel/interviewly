@@ -1,0 +1,1073 @@
+{
+    "translation": {
+        "currentLanguage": "Română",
+        "generic": {
+            "loading": "Se încarcă",
+            "created": "creată",
+            "yes": "da",
+            "no": "Nu",
+            "saved": "Saved"
+        },
+        "validation": {
+            "join": {
+                "repeatPasswordError": "Parolele nu se potrivesc."
+            },
+            "changePassword": {
+                "repeatPasswordError": "Passwords do not match",
+                "newPasswordSameAsOld": "New password is the same as previous one"
+            },
+            "projectRespondent": {
+                "meetingDateError": "Pick a future date"
+            }
+        },
+        "errors": {
+            "10000": "Eroare necunoscută.",
+            "10010": "Verificare esuata.",
+            "10011": "Lipsesc acreditări.",
+            "10012": "Format de antet de autorizare nevalid.",
+            "10013": "Lipsește antetul de autorizare.",
+            "10014": "Tip de autorizare nevalid.",
+            "10015": "Operatie nepermisa.",
+            "10016": "Tokenul lipsește.",
+            "20000": "Contul este deja activ.",
+            "20001": "Contului de recrutor lipsesc informații despre companie.",
+            "20002": "În contul de recrutor lipsește numele companiei.",
+            "20003": "Contul nu a fost găsit.",
+            "20004": "Solicitarea de resetare a parolei a expirat. Vă rugăm să utilizați din nou formularul de reamintire a parolei.",
+            "20005": "Contul nu a solicitat resetarea parolei.",
+            "20006": "Contul Există deja.",
+            "20007": "Parola incorecta.",
+            "20100": "Compania nu a fost găsită.",
+            "20101": "Compania există deja.",
+            "20200": "Cercetarea nu a fost găsită.",
+            "30000": "E-mailul este obligatoriu.",
+            "30001": "Vă rugăm să introduceți o adresă de email validă. Exemplu: johndoe@domain.pl.",
+            "30010": "Câmpul de nume este obligatoriu.",
+            "30011": "Numele este prea scurt.",
+            "30012": "Numele este prea lung.",
+            "30020": "Câmpul numelui este obligatoriu.",
+            "30021": "Numele de familie este prea scurt.",
+            "30022": "Numele de familie este prea lung.",
+            "30030": "Tipul depus este obligatoriu.",
+            "30031": "Valoarea tipului este incorectă.",
+            "30040": "Câmpul de gen este obligatoriu.",
+            "30041": "Valoarea sexului este incorectă.",
+            "30050": "Parola este necesara.",
+            "30051": "Parola trebuie să conțină litere mici, majuscule, cifre, caractere speciale.",
+            "30052": "Parola este prea scurtă.",
+            "30053": "Parola este prea lungă.",
+            "30070": "Câmpul de rol este obligatoriu.",
+            "30071": "Valoarea rolului este incorectă.",
+            "30080": "Câmpul de stare este obligatoriu.",
+            "30081": "Starea este incorectă.",
+            "30093": "Number is too long",
+            "30100": "Câmpul pentru titlu este obligatoriu.",
+            "30101": "Titlul conține caractere interzise.",
+            "30102": "Titlul este prea scurt.",
+            "30103": "Titlul este prea lung.",
+            "30112": "Descrierea este prea scurtă.",
+            "30113": "Descrierea este prea lungă.",
+            "30120": "Câmpul de metodologie este obligatoriu.",
+            "30121": "Valoarea metodologiei este incorectă.",
+            "30130": "Câmpul pentru numărul de participanți este obligatoriu.",
+            "30131": "Numărul de participanți este prea mic.",
+            "30132": "Numărul de participanți este prea mare.",
+            "30140": "Câmpul Număr de participanți în rezervă este obligatoriu.",
+            "30141": "Numărul de participanți în rezervă este prea mic.",
+            "30142": "Numărul de participanți în rezervă este prea mare.",
+            "30150": "Durata ședinței înregistrată este necesară.",
+            "30151": "Valoarea duratei întâlnirii este incorectă.",
+            "30160": "Câmpul pentru monedă este obligatoriu.",
+            "30161": "Valoarea monedei este incorectă.",
+            "30170": "Câmpul de plată este obligatoriu.",
+            "30171": "Valoarea plății este incorectă.",
+            "30183": "Requirements are too long",
+            "30190": "Project languages value is requried",
+            "30191": "Project languages value must be a string encoded boolean",
+            "30200": "Screening survey value is required",
+            "30201": "Screening survey value must be a string encoded boolean",
+            "30210": "Recordings value is requried",
+            "30211": "Recordings value must be a string encoded boolean",
+            "30220": "Start date is required",
+            "30221": "Start date must be, positive string encoded number",
+            "30230": "End date is required",
+            "30231": "End date must be positive, string encoded number",
+            "30235": "Start date must be earlier than end date",
+            "30240": "Transcription needed value is required",
+            "30241": "Transcription needed value must be a string encoded boolean",
+            "30250": "Moderator needed value is required",
+            "30251": "Moderator needed value must be a string encoded boolean",
+            "30500": "Câmpul de mesaj este obligatoriu.",
+            "30502": "Mesajul este prea scurt.",
+            "30503": "Mesajul este prea lung.",
+            "30602": "Numele companiei este prea scurt.",
+            "30603": "Numele companiei este prea lung.",
+            "30613": "Codul fiscal este prea lung.",
+            "30702": "Numele țării este prea scurt.",
+            "30703": "Numele țării este prea lung.",
+            "30712": "Numele orașului este prea scurt.",
+            "30713": "Numele orașului este prea lung.",
+            "30723": "Numele străzii este prea lung.",
+            "30732": "Numărul clădirii este prea scurt.",
+            "30733": "Numărul clădirii este prea lung.",
+            "30743": "Numărul unității clădirii este prea lung.",
+            "30752": "Codul poștal este prea scurt.",
+            "30753": "Codul poștal este prea lung.",
+            "30803": "Value is too long",
+            "30811": "Incorrect value",
+            "30822": "Value is too high",
+            "30931": "Value is too low",
+            "30932": "Value is too high",
+            "networkError": "Nu se poate conecta la server.",
+            "tokenExpired": "Session expired"
+        },
+        "links": {
+            "priceCalculator": "Calculator de preț",
+            "tutorials": "Tutoriale",
+            "blog": "Blog",
+            "contact": "a lua legatura",
+            "forgotPassword": "Aţi uitat parola?",
+            "termsAndConditions": "Termeni și condiții",
+            "privacyPolicy": "Politica de confidențialitate",
+            "personalDataProcessingAgreement": "Acord privind prelucrarea datelor cu caracter personal"
+        },
+        "buttons": {
+            "signUp": "Alăturați-vă interviului",
+            "resign": "Demisiona",
+            "logIn": "Log in",
+            "save": "Salvați",
+            "next": "Următorul",
+            "back": "Înapoi",
+            "add": "Adăuga",
+            "download": "Download"
+        },
+        "menu": {
+            "home": "Acasă",
+            "projects": "Proiecte",
+            "myTeam": "Echipa mea",
+            "calendar": "Calendar",
+            "library": "Bibliotecă",
+            "createProject": "Creați proiect"
+        },
+        "dropdownMenu": {
+            "openUserPanel": "Deschideți panoul de utilizator",
+            "personalData": "Date personale",
+            "companyData": "Datele companiei",
+            "myTeam": "Echipa mea",
+            "logout": "Deconectare"
+        },
+        "inputs": {
+            "email": "E-mail",
+            "password": "Parola"
+        },
+        "sorting": {
+            "newest": "cel mai nou",
+            "oldest": "cel mai vechi"
+        },
+        "dialogs": {
+            "languageSelection": "Selectați limba"
+        },
+        "pages": {
+            "notFound": "Pagina nu a fost gasita"
+        },
+        "logIn": {
+            "rememberMe": "Ține-mă minte",
+            "joinText": "Nu ai un cont?"
+        },
+        "setPassword": {
+            "subtitle": "Set password",
+            "newPassword": "New password",
+            "repeatPassword": "Repeat new password",
+            "success": "Password has been set"
+        },
+        "join": {
+            "joinControl": "Ai deja un cont?",
+            "back": "Înapoi",
+            "next": "Următorul",
+            "skip": "Ocolire",
+            "page1": {
+                "title": "Alăturați-vă interviului",
+                "respondentTitle": "Sunt respondent",
+                "respondentSubtitle": "Vreau să particip la interviurile de recrutare.",
+                "recruiterTitle": "Sunt un recrutor",
+                "recruiterSubtitle": "Doresc să accesez baza de date a respondenților."
+            },
+            "page2": {
+                "title": "Alegeți-vă sexul",
+                "maleTitle": "sunt bărbat",
+                "femaleTitle": "sunt o femeie",
+                "maleTitleShort": "Om",
+                "femaleTitleShort": "Femeie"
+            },
+            "page3": {
+                "title": "Date personale",
+                "inputs": {
+                    "name": "Nume*",
+                    "surname": "Nume de familie*",
+                    "email": "E-mail*",
+                    "password": "Parola*",
+                    "repeatPassword": "Repetați parola*",
+                    "companyName": "Numele companiei*",
+                    "passwordConstraints": "(minim: 8 caractere, o literă mare, un număr și un caracter special)",
+                    "newsletter": "Accept trimiterea newsletter-ului.",
+                    "newsletterDetails": "În conformitate cu prevederile Legii din 18 iulie 2002 privind furnizarea de servicii electronice (d. 2020.344) sunt de acord să primesc de la STRATEGA CEE, SOCIETATE CU RESPONSABILITATE LIMITĂ cu sediul în Łódź, ul. Wólczańska 125, 90-521 Łódź, informații comerciale despre produsele și serviciile Serviciului Interviewlyapp.com sub forma unui buletin informativ. Acest consimțământ este voluntar și poate fi revocat în orice moment. Retragerea consimțământului nu afectează legalitatea prelucrării înainte de retragerea consimțământului."
+                },
+                "rulesAgreement": {
+                    "text": "Accept regulamentul serviciului împreună cu contractul de încredințare a prelucrării datelor cu caracter personal.*",
+                    "termsAndConditionsKeyword": "reguli",
+                    "privacyPolicyKeyword": "contracta"
+                }
+            },
+            "page4": {
+                "title": "Înregistrează un videoclip despre tine",
+                "text": "(max. 10 minute)",
+                "submissionText": "Trimiterea formularului"
+            },
+            "page5": {
+                "title": "Ești aproape parte din familia noastră!",
+                "text": "V-am trimis un e-mail cu un link de confirmare.",
+                "homeButton": "Acasă"
+            },
+            "interviewDialog": {
+                "record": "Record",
+                "stop": "Stop",
+                "finish": "finalizarea"
+            },
+            "fakedoor": {
+                "title": "Contul dvs. a fost creat.",
+                "text1": {
+                    "regular": "Site-ul nostru web va fi pe deplin operațional",
+                    "strong": "în câteva zile"
+                },
+                "subtitle": {
+                    "regular1": "Tu vei fi cel",
+                    "strong": "primul",
+                    "regular2": "a fi informat"
+                },
+                "text2": {
+                    "regular": "De asemenea, vei fi primul care va profita din plin de serviciile noastre",
+                    "strong": "soluții inovative"
+                },
+                "text3": "Să rămânem în legătură!"
+            }
+        },
+        "home": {
+            "initialSection": {
+                "title": "Recrutare și interviuri bazate pe AI",
+                "timeBoxText": "Maximizați-vă timpul"
+            },
+            "stepsSection": {
+                "header": {
+                    "firstPart": "Numai",
+                    "secondPart": "3 pași",
+                    "thirdPart": "la",
+                    "fourthPart": "găsi",
+                    "fifthPart": "Cel mai bun",
+                    "sixthPart": "angajat"
+                },
+                "content": {
+                    "firstStep": {
+                        "title": "Încărcați",
+                        "text": "baza de date a candidaților"
+                    },
+                    "secondStep": {
+                        "title": "Conduce",
+                        "text1": "apel video, sondaje program",
+                        "text2": "verifica abilitățile lingvistice"
+                    },
+                    "thirdStep": {
+                        "title": "A primi",
+                        "text": "evaluarea candidatului"
+                    }
+                }
+            },
+            "worldSection": {
+                "firstLine": "Recrutați oameni din",
+                "secondLine": "în toată lumea"
+            },
+            "openAISection": {
+                "subtitle": "Încărcați rezumatul și obțineți o ofertă",
+                "title": "in 1 minut!",
+                "dashedLabelText": "Inteligenţă artificială",
+                "buttonText": "Accesați calculatorul de preț"
+            },
+            "subscriptionSection": {
+                "subtitle": "Noi oferim",
+                "title": "4 planuri de abonament",
+                "labelText1": "Fără contracte.",
+                "labelText2": "Fără taxe surpriză.",
+                "subscriptionButtonText": "Incepe"
+            },
+            "tutorialsSection": {
+                "title": "Tutoriale",
+                "subscriptionsText": "Număr de abonamente: {{subscriptionsCount, number}}",
+                "subscribeButtonText": "Abonati-va"
+            },
+            "blogSection": {
+                "title": "Blog",
+                "blogLinkText": "Citeşte mai mult"
+            }
+        },
+        "methodologies": {
+            "interviews": {
+                "title": "Interviuri",
+                "text": "Conversație 1:1 cu participantul."
+            },
+            "focusGroups": {
+                "title": "Focus grup",
+                "text": "Discuție de grup cu un moderator."
+            },
+            "onlineCommunities": {
+                "title": "Comunități online",
+                "text": "Comunitatea online folosind Bulletin Board."
+            },
+            "uxInterviews": {
+                "title": "Interviuri UX",
+                "text": "Interviu cu participanții cu partajarea ecranului."
+            },
+            "productTests": {
+                "title": "Teste de produs",
+                "text": "Testarea produselor cu potențiali clienți."
+            }
+        },
+        "accountStatuses": {
+            "active": "activ",
+            "unconfirmed": "neconfirmat",
+            "inactive": "inactiv"
+        },
+        "genders": {
+            "male": "masculin",
+            "female": "Femeie"
+        },
+        "martialStatuses": {
+            "singleMan": "Single man",
+            "singleWoman": "Single woman",
+            "marriedMan": "Married man",
+            "marriedWoman": "Married woman",
+            "widower": "Widower",
+            "widow": "Widow",
+            "divorcedMan": "Divorced man",
+            "divorcedWoman": "Divorced woman",
+            "separatedMan": "Separated man",
+            "separatedWoman": "Separated woman"
+        },
+        "profileRoles": {
+            "admin": "admin",
+            "moderator": "moderator",
+            "observer": "observator",
+            "translator": "translator",
+            "interviewlyStaff": "Personal cu interviuri"
+        },
+        "projectStatuses": {
+            "draft": "draft",
+            "awaitingPayment": "awaiting payment",
+            "new": "new",
+            "inProgress": "in progress",
+            "finished": "terminat",
+            "pending": "in asteptarea",
+            "canceled": "anulat"
+        },
+        "languages": {
+            "bulgarian": "bulgară",
+            "czech": "ceh",
+            "dutch": "olandeză",
+            "english": "Engleză",
+            "french": "limba franceza",
+            "german": "limba germana",
+            "greek": "grecesc",
+            "hungarian": "maghiară",
+            "italian": "Italiană",
+            "polish": "lustrui",
+            "portuguese": "portugheză",
+            "romanian": "Română",
+            "russian": "Rusă",
+            "slovak": "slovacă",
+            "spanish": "Spaniolă",
+            "swedish": "suedez",
+            "ukrainian": "ucrainean"
+        },
+        "surveyTypes": {
+            "regular": "Regular",
+            "screening": "Screening",
+            "language": "Language"
+        },
+        "personalData": {
+            "title": "Date personale",
+            "marketingConsentsSubtitle": "Consimțământul de marketing",
+            "changePasswordSubtitle": "Schimbarea parolei",
+            "currentPassword": "Parola actuală",
+            "newPassword": "Parolă Nouă",
+            "repeatPassword": "Repeat new password",
+            "save": "Salvați",
+            "passwordChangeSuccessMessage": "Password changed",
+            "name": "Name",
+            "surname": "Surname",
+            "email": "E-mail",
+            "phoneNumber": "Phone number",
+            "companyName": "Company name",
+            "sector": "Sector",
+            "bankAccountNumber": "Bank account number",
+            "birthYear": "Birth year",
+            "province": "Province",
+            "city": "City",
+            "zipCode": "Zip code",
+            "street": "Street",
+            "profession": "Profession",
+            "specialization": "Specialization",
+            "hasChildren": "Has children",
+            "childrenCount": "Children count",
+            "martialStatus": "Martial status",
+            "selectGender": "Select gender",
+            "repeatedNewPassword": "repeta noua parola"
+        },
+        "companyData": {
+            "title": "Datele companiei",
+            "name": "Numele companiei",
+            "taxIdNumber": "Număr de identificare fiscală",
+            "country": "Țară",
+            "city": "Oraș",
+            "street": "Stradă",
+            "buildingNumber": "Numarul cladirii",
+            "unitNumber": "Numărul de unitate",
+            "postalCode": "Cod poștal",
+            "save": "Salvați",
+            "success": "Salvat cu succes"
+        },
+        "myAccount": {
+            "greeting": "Bună",
+            "latestTeamMembersLabel": "Ultimii membri ai echipei",
+            "upcomingInterviewsLabel": "Interviuri viitoare",
+            "projectsLabel": "Proiecte"
+        },
+        "projects": {
+            "title": "Proiecte",
+            "projectsCounterText": "proiecte",
+            "searchInputPlaceholder": "Căutați după numele proiectului",
+            "statusLabel": "stare"
+        },
+        "viewProject": {
+            "title": "Detaliile proiectului",
+            "edit": "Editați | ×",
+            "markAsPaid": "Mark as paid",
+            "steps": [
+                "General",
+                "Metodologie",
+                "Respondenții",
+                "Sondaj de screening",
+                "Detalii"
+            ],
+            "general": {
+                "title": "User Experience in Samsung company",
+                "description": "„Poate fi deranjant, vulnerabil și provocator uneori, dar să ieșim din cap și să încorporăm colaborarea în procesele noastre de proiectare ne poate face pe toți designeri mai buni.\n\n\n\nDe-a lungul anilor, am ajuns să învăț că proiectarea în colaborare înseamnă să-ți lași ego-urile deoparte pentru a face ceva care să transcende suma creatorilor săi.”"
+            },
+            "methodology": {
+                "interview": {
+                    "createSurvey": "Creați sondaj",
+                    "instruction": "sau alegeți un sondaj din bibliotecă",
+                    "save": "Salvați"
+                },
+                "onlineCommunity": {
+                    "createBulletinBoardButtonText": "Creați un buletin",
+                    "membersLabel": "membrii",
+                    "createRoomButtonText": "Creați o cameră",
+                    "roomName": "Numele Camerei",
+                    "addMembersLabel": "Adăugați membri",
+                    "surveySubtitle": "sau alegeți sondaj din bibliotecă",
+                    "room": {
+                        "addTopicLabel": "Adăugați subiect",
+                        "visibilityLabel": "Vizibilitate",
+                        "publicVisibility": "Public",
+                        "specificMembersVisibility": "Membri specifici",
+                        "topicInputPlaceholder": "Subiect",
+                        "addCommentLabel": "Adauga comentariu",
+                        "noCommentsCabel": "Fara comentarii",
+                        "commentSingularLabel": "cometariu",
+                        "commentPluralLabel": "comentarii"
+                    }
+                },
+                "sessionStartDateLabel": "Session start date",
+                "sessionEndDateLabel": "Session end date"
+            },
+            "respondents": {
+                "personalDataSubtitle": "Personal data",
+                "seeDetailsLabel": "Vezi detalii",
+                "respondentVideoSubtitle": "Video-ul respondentului",
+                "upcomingInterviewsSubtitle": "Interviuri viitoare",
+                "meetingSchedulerSubtitle": "Schedule the meeting",
+                "scheduleButtonText": "Schedule",
+                "respondentSurveysSubtitle": "Sondajele respondentului",
+                "scheduledSuccessMessage": "Scheduled"
+            },
+            "screeningSurveys": {
+                "resultsTitle": "Results",
+                "noResultsMessage": "No results"
+            },
+            "details": {
+                "participantsCountInputLabel": "Participants Count",
+                "reserveParticipantsCountInputLabel": "Reserve Participants Count",
+                "interviewDurationLabel": "Interview duration",
+                "startDateLabel": "Start date",
+                "endDateLabel": "End date",
+                "transcriptionSubtitle": "Transcription",
+                "respondentFeeSubtitle": "Payment for the respondent",
+                "respondentFeeLabel": "Respondent fee",
+                "currencyLabel": "Currency"
+            },
+            "respondentPage": {
+                "interviewsSubtitle": "Interviews",
+                "surveysSubtitle": "Surveys",
+                "surveysStatuses": {
+                    "filled": "filled",
+                    "ended": "ended",
+                    "pending": "pending"
+                },
+                "noResponsesMessage": "No responses"
+            }
+        },
+        "editProject": {
+            "title": "Nou creator de cercetare",
+            "aboutStepTitle": "Despre proiect",
+            "methodologyStepTitle": "Metodologia de cercetare",
+            "respondentsStepTitle": "Selectarea respondenților",
+            "detailsStepTitle": "Detaliile proiectului",
+            "summaryStepTitle": "rezumat",
+            "aboutStep": {
+                "title": "Despre proiect",
+                "projectNameSubtitle": "Vă rugăm să furnizați numele proiectului",
+                "projectNameInputPlaceholder": "Denumirea proiectului",
+                "descriptionInputPlaceholder": "Descriere (optional)",
+                "avatarSubtitle": "Încărcați avatarul"
+            },
+            "methodologyStep": {
+                "title": "Metodologia de cercetare",
+                "methodologySubtitle": "Alegeți metodologia de cercetare."
+            },
+            "respondentsStep": {
+                "title": "Selectarea respondenților",
+                "respondentsSelectionSubtitle": "Selectați respondenți pentru această cercetare",
+                "respondentsSelectionInstructionPart1": "Dacă nu sunteți sigur cum ar trebui să arate fișierul respondenților, descărcați fișierul nostru exemplu, unde veți găsi toate informațiile necesare.",
+                "respondentsSelectionInstructionPart2": "sau specificați profilul de respondenți dorit cu filtrele de mai jos",
+                "genderLabel": "Gen",
+                "otherRequirementsInputPlaceholder": "Alte cerinte",
+                "languageTestSubtitle": "Test de limbă pentru respondent",
+                "screeningSurveySubtitle": "Aveți nevoie de un sondaj de screening?",
+                "screeningSurveyDescription": "După ce plătiți pentru sondaj, veți avea opțiunea de a utiliza o bibliotecă de sondaje gata făcută sau de a vă crea propria.",
+                "recordingSubtitle": "Aveți nevoie de o înregistrare preliminară a recrutării respondenților?"
+            },
+            "detailsStep": {
+                "title": "Detaliile proiectului",
+                "participantsCountInputLabel": "Numărul de participanți",
+                "reserveParticipantsCountInputLabel": "Numărul de participanți în rezervă",
+                "interviewDurationDropdownName": "Durata interviului",
+                "startDateLabel": "Data de început",
+                "endDateLabel": "Data de încheiere",
+                "transcriptionSubtitle": "Ai nevoie de transcriere?",
+                "moderatorSubtitle": "Ai nevoie de un moderator?",
+                "paymentSubtitle": "Plata pentru intimat",
+                "paymentInstruction": "Vă rugăm să introduceți suma brută. Moneda trebuie să se potrivească cu moneda utilizată pentru plata facturii."
+            },
+            "summaryStep": {
+                "title": "rezumat"
+            },
+            "nameStepTitle": "Denumiți sondajul",
+            "questionStepTitle": "Adăugați întrebări",
+            "nameInputLabel": "Vă rugăm să furnizați",
+            "nameInputPlaceholder": "titlul sondajului",
+            "availableLanguagesDropdownName": "Limbi disponibile",
+            "addLanguageButtonText": "Adăugați limba",
+            "addLabel": "Adăuga",
+            "openQuestionName": "intrebare deschisa",
+            "closedQuestionName": "întrebare închisă",
+            "multipleChoiceQuestionName": "întrebare cu răspunsuri multiple",
+            "singleChoiceQuestionName": "întrebare cu alegere unică",
+            "newQuestionText": "Întrebare nouă",
+            "addAnswerButtonText": "Adăugați răspuns",
+            "newAnswerText": "Răspuns nou",
+            "correctAnswerLabel": "Răspuns corect",
+            "correctAnswerDropdownName": "Răspuns corect"
+        },
+        "myTeam": {
+            "title": "Echipa mea",
+            "membersLabel": "membrii",
+            "inviteTeamMemberButton": "Invitați un membru al echipei",
+            "administratorsLabel": "Administratorii",
+            "moderatorsLabel": "Moderatori",
+            "observersLabel": "Observatori",
+            "popup": {
+                "addLabel": "Adăuga",
+                "editLabel": "Editați | ×",
+                "memberText": "membru",
+                "nameInputPlaceholder": "Nume",
+                "surnameInputPlaceholder": "Nume de familie",
+                "emailInputPlaceholder": "E-mail",
+                "roleDropdownName": "Rol",
+                "statusDropdownName": "stare",
+                "projectsDropdownName": "Projects",
+                "genderDropdownName": "Gen",
+                "saveButtonText": "Salvați"
+            }
+        },
+        "meeting": {
+            "finishedMessage": "The meeting has finished"
+        },
+        "library": {
+            "title": "Bibliotecă",
+            "mySurveys": "Sondajele mele",
+            "publicSurveys": "Sondajele publice",
+            "addNewTemplate": "Adăugați un șablon nou"
+        },
+        "calendar": {
+            "title": "Calendar"
+        },
+        "passwordReset": {
+            "request": {
+                "header": "Creați o nouă parolă",
+                "subheader": "Introdu adresa ta de e-mail și îți vom trimite un mesaj cu instrucțiuni despre cum să creezi o nouă parolă.",
+                "submitButton": "Trimite"
+            },
+            "confirmation": {
+                "header": "Il avem!",
+                "subheader": "V-am trimis un mesaj cu o nouă parolă.",
+                "submitButton": "Înapoi la pagina de start"
+            }
+        },
+        "contact": {
+            "getInTouch": "Intrați în legătură",
+            "sendUsAMessage": "Trimite-ne un mesaj",
+            "quote": "„Interviewly are tot ce ne trebuie pe o singură platformă”.",
+            "messageSent": "Mesaj trimis!"
+        },
+        "registrationConfirmation": {
+            "header": "E gata!",
+            "subheader": "Acum vă puteți autentifica."
+        },
+        "termsAndConditions": {
+            "header": "Termenii serviciului",
+            "generalProvisions": {
+                "header": "Dispoziții generale",
+                "main": "„Furnizorul de servicii de acces la Serviciul de interviuri, denumit în continuare „Serviciul”, este\n\nCOMPANIE STRATEGA CEE CU RĂSPUNDERE LIMITĂ, cu sediul în Łódź, ul. Wólczańska 125,\n\n90-521 Łódź, înregistrată în Registrul Curții Naționale – Registrul antreprenorilor sub KRS\n\nnumărul: 0000541582, ale cărui dosare de înregistrare sunt întocmite de Judecătoria pentru ŁÓDŹ-Śródmieście\n\nÎN ŁÓDŹ, Divizia Economică XX KRS, NIP: 7692223109, REGON: 360412382, denumită în continuare\n\n„Furnizor de servicii” sau „Administrator”.”",
+                "listHeader": "Prezentul regulament (numit și „Acordul”) prevede:",
+                "list": [
+                    "tipul, domeniul de aplicare și regulile serviciilor furnizate electronic de către Furnizorul de servicii care utilizează Serviciul,",
+                    "Responsabilitățile destinatarilor și furnizorilor de servicii,",
+                    "încheierea și rezilierea contractelor de furnizare de servicii electronice,",
+                    "Responsabilitățile și responsabilitățile Furnizorului de servicii,",
+                    "metoda de publicitate,",
+                    "Prelucrarea datelor cu caracter personal."
+                ]
+            },
+            "definitions": {
+                "header": "Definiții",
+                "list": [
+                    {
+                        "phrase": "Furnizor de servicii",
+                        "definition": "un antreprenor care încheie un acord cu Furnizorul pentru furnizarea Serviciului Electronic sub forma disponibilității Serviciului, așa cum este definit în prezentul Regulament,"
+                    },
+                    {
+                        "phrase": "Serviciu",
+                        "definition": "software pus la dispoziția Destinatarului Serviciului, electronic prin intermediul browserului web, care să permită în special serviciul de recrutare de resurse umane,"
+                    },
+                    {
+                        "phrase": "Cont",
+                        "definition": "marcat de numele individual al organizației (organizației) furnizate de către Destinatarul Serviciului, o colecție de resurse în sistemul informatic al Furnizorului de Servicii, în care sunt colectate Datele, datorită cărora Utilizatorul Serviciului poate utiliza Serviciul,"
+                    },
+                    {
+                        "phrase": "Administrator de cont",
+                        "definition": "acesta ar trebui să fie înțeles ca Utilizatorul care are dreptul de a administra Contul. În mod implicit, administratorul contului este persoana care a creat contul. Ca parte a Serviciului, Destinatarul Serviciului poate schimba Administratorul Contului în mod independent, utilizând funcționalitatea disponibilă în Serviciu."
+                    },
+                    {
+                        "phrase": "Utilizator",
+                        "definition": "orice persoană care a folosit sau folosește vreodată Serviciul"
+                    },
+                    {
+                        "phrase": "Abonament",
+                        "definition": "o declarație de voință a Destinatarului Serviciului de a încheia un acord privind furnizarea unui serviciu electronic sub forma rulării unui Cont pe Serviciu și utilizând Serviciul. Trimiterea se face prin crearea unui Cont prin intermediul site-ului web care operează la www.interviewlyapp.com sau prin prelungirea contractului de furnizare a unui serviciu electronic sub forma rulării unui Cont pe Serviciu și utilizând Serviciul,"
+                    },
+                    {
+                        "phrase": "Taxa",
+                        "definition": "„remunerarea Furnizorului de Servicii pentru Serviciu datorată de la Destinatarul Serviciului. Taxa"
+                    },
+                    {
+                        "phrase": "este plătită ca taxă de abonament la servicii în timpul Perioadei de abonamente sau abonament extins selectat",
+                        "definition": "în perioada de abonament selectată”."
+                    }
+                ]
+            },
+            "obligationsOfServiceProvider": {
+                "header": "Perioada de abonament",
+                "list": [
+                    "„aceasta trebuie înțeles ca perioada de funcționare a Contului, pt",
+                    "care se plătește o taxă și în cadrul cărora serviciile sunt furnizate de către Furnizorul de servicii Serviciului",
+                    "Destinatarul electronic sub forma disponibilității Serviciului. Perioadele de abonament sunt",
+                    "acceptat: o lună, șase luni, douăsprezece luni.\"",
+                    {
+                        "text": "Obligațiile furnizorului de servicii",
+                        "sublist": [
+                            "Furnizorul de servicii declară disponibilitatea Serviciului (SLA) în 80% din perioada anului.",
+                            "Indisponibilitatea Serviciului nu va fi inclusă în facturarea de disponibilitate atunci când Taxele nu sunt plătite de către Beneficiarul Serviciului la momentul Aplicației Indisponibile."
+                        ]
+                    },
+                    "Indicatorul se referă la disponibilitatea Site-ului, excluzând problemele apărute din infrastructura IT a Furnizorului de Servicii sau companiilor terțe, infrastructura informațională sau forța majoră.",
+                    {
+                        "text": "Furnizorul de servicii nu este responsabil pentru:",
+                        "sublist": [
+                            "consecințele introducerii incorecte a datelor sau prelucrării datelor în Serviciu de către Destinatarul Serviciului;",
+                            "utilizarea necorespunzătoare a Serviciului www.interviewlyapp.com;",
+                            "lipsa accesului la Internet de către Destinatarul Serviciului sau limitarea disponibilității acestuia;",
+                            "operarea incorectă a software-ului sau dispozitivelor aparținând Destinatarului Serviciului sau angajaților acestuia pe care le utilizează și care împiedică utilizarea Serviciului,",
+                            "daune suferite, inclusiv beneficii pierdute, cauzate de către Destinatarul Serviciului prin securitate necorespunzătoare, furnizarea către persoane neautorizate a datelor de autentificare pentru accesul la Serviciu;",
+                            "daunele suferite, inclusiv beneficiile pierdute, cauzate de acțiuni sau omisiuni ale Destinatarului Serviciului, în special prin utilizarea Serviciului într-un mod neconform cu prevederile legii sau ale Regulamentelor,",
+                            "daune, inclusiv pierderi de prestații, cauzate de evenimente de forță majoră."
+                        ]
+                    },
+                    "În nicio circumstanță Furnizorul de servicii sau entitățile sale afiliate legal nu vor fi răspunzători pentru orice pierdere de profit sau venituri (profituri pierdute), economii, pierdere sau distrugere de date, valoarea companiei sau reputația, inexactitatea oricăror date și nici nu va aceștia sunt răspunzători pentru orice daune materiale/intangibile sau pierderi indirecte, accidentale, orice suferite indiferent de teoria surselor de răspundere, chiar dacă au fost informați cu privire la posibilitatea unei astfel de daune sau pierderi.",
+                    "Răspunderea Furnizorului de servicii conform Acordului este limitată la suma egală cu valoarea ultimei plăți plătită de către Beneficiarul serviciului, dar nu mai mult decât suma plății pentru perioada de abonament dată."
+                ]
+            },
+            "principlesOfApplicationUse": {
+                "header": "Principii de utilizare a aplicației",
+                "list": [
+                    "Pentru a utiliza Serviciul este necesar să aveți un dispozitiv cu acces la Internet, un browser web și să stabiliți un Cont – pe lângă în/în – și un cont de e-mail.",
+                    "Accesul la Site este posibil prin intermediul unuia dintre browserele web general disponibile: Google Chrome, Mozilla Firefox, Opera, Edge, Safari, în cele mai recente versiuni. Din versiunile disponibile, cu activat, în browser web, suportul Cookie-urilor și Javascript.",
+                    "Furnizorul de Servicii furnizează servicii IT legate de accesul și deservirea Serviciului numai prin Internet.",
+                    "Utilizatorul recunoaște că actualizarea regulată a dispozitivelor și software-ului său pentru a sprijini mecanismele moderne de criptare în timpul comunicării de pe site face posibilă utilizarea acestora. Disponibilitatea actualizărilor menționate poate depinde de hardware-ul și/sau software-ul deținut de Utilizator și, prin urmare, Furnizorul de Servicii nu este responsabil pentru eventuala absență a actualizărilor menționate și, în consecință, incapacitatea de a utiliza Serviciul din acest motiv.",
+                    "„Utilizatorul care utilizează Serviciul nu primește niciun drept de autor asupra Serviciului. Serviciul",
+                    {
+                        "text": "Destinatarului și Utilizatorilor li se acordă numai – în condițiile indicate în Regulament – ​​o licență plătită, netransferabilă și neexclusivă, care îi dă dreptul să utilizeze Serviciul în scopul scopului său.”",
+                        "sublist": [
+                            "Pentru a evita orice îndoială, nu vei permite sau autoriza pe nimeni să:",
+                            "Distribuirea, transferul, împrumutul, partajarea, vânzarea, transmiterea, acordarea de licențe, închirierea sau punerea la dispoziție în alt mod a Serviciului.",
+                            "copierea, decompilarea, redesenarea, inginerie inversă sau altă extragere sau reproducere a codului sursă sau a altor metode, algoritmi sau procese de pe site.",
+                            "să ofere sau să opereze Serviciul în orice altă formă comercială profitabilă care adaugă valoare produselor sau serviciilor oricărei terțe părți, inclusiv furnizarea de servicii de găzduire, servicii de partajare a timpului, servicii SaaS (Software ca serviciu) sau gestionarea serviciilor, chiar dacă sunt oferite împreună sau ca parte a altor produse și servicii;"
+                        ]
+                    },
+                    "Eliminați toate informațiile privind drepturile de autor, mărcile comerciale, cu excepția elementelor editabile la nivelul funcționalității Site-ului.",
+                    "Furnizorul de servicii nu își asumă nicio responsabilitate pentru încălcarea drepturilor terților și pentru cauzarea oricăror daune terților ca urmare a și în legătură cu activitățile desfășurate de către Beneficiarul serviciului, utilizatorii sau angajații săi în utilizarea serviciului. Serviciu.",
+                    "În cazul în care Utilizatorul de servicii informează Furnizorul de servicii despre idei și sugestii legate de Serviciu, Beneficiarul Serviciului este de acord cu utilizarea acestor idei și sugestii de către Furnizorul de Servicii în orice scop, fără limitare, în special, dezvoltarea, modificarea, corectarea cu excludere. a răspunderii, precum și a remunerației către Utilizator."
+                ]
+            },
+            "feesAndPayments": {
+                "header": "Utilizatorul înțelege și este de acord că serviciile furnizate de Furnizorul de servicii se bazează pe o singură versiune de bază a aplicației, hardware-ului și infrastructurii și au scopul de a furniza serviciul mai multor clienți într-un mod scalabil. Serviciul nu va fi adaptat sau/sau adaptat Destinatarului Serviciului, cu excepția cazului în care este convenit în mod expres de către Părți.",
+                "list": [
+                    "Prețul abonamentului este publicat pe site-ul Furnizorului de Servicii: www.interviewlyapp.com.",
+                    "Prețurile indicate sunt prețuri nete (adică nu includ TVA). Prețurile sunt exprimate în zloți polonezi, dolari americani.",
+                    "Taxa se plătește în avans și se calculează în funcție de modelul de abonament selectat.",
+                    "Plățile se efectuează cu cardul de credit (Visa, MasterCard, American Express) sau prin transfer bancar pe baza unei facturi emise de Furnizorul de Servicii.",
+                    "Taxa prin transfer bancar va fi plătită în contul bancar al Furnizorului de Servicii indicat pe factura de TVA. Clientul se obligă să plătească taxa în termen de 7 zile de la data primirii facturii de TVA la adresa de e-mail specificată. Există posibilitatea de a prelungi perioada de transfer în cadrul aranjamentelor individuale cu Destinatarul de Servicii. Decizia finală este luată de furnizor.",
+                    "Furnizorul de Servicii poate refuza plata prin transfer bancar dacă Destinatarul de Servicii nu respectă termenul de plată.",
+                    "Facturile plătite sunt livrate prin e-mail.",
+                    "Livrarea facturii trimise sub formă de fișier are loc imediat ce Furnizorul de Servicii trimite un e-mail conținând un fișier de facturare de la adresa de e-mail către adresa indicată de Destinatarul de Servicii. În cazul în care e-mailul care conține factura nu este livrat Destinatarului de Servicii, din motive independente de Furnizorul de Servicii, va fi emisă o duplicat a acestei facturări la cererea Clientului.",
+                    "Pentru ziua plății sumelor pe baza facturilor emise de Furnizorul de Servicii, Părțile acceptă data recunoașterii contului bancar al Furnizorului de Servicii.",
+                    "Părțile sunt de acord că Furnizorul de Servicii va înregistra plățile provenite de la Destinatarul de Servicii în primul rând în contul datoriilor anterioare scadente, indiferent de conținutul Declarațiilor care însoțesc plata.",
+                    "Dacă alegeți cardul de credit sau de debit ca metodă de plată a Taxei de Abonament, taxa pentru fiecare Perioadă de Abonament ulterioară va fi debitată automat până când Destinatarul de Servicii își exprimă dorința de a se retrage. O astfel de retragere trebuie anunțată prin e-mail la adresa contact@interviewlyapp.com cu cel puțin 7 zile înainte de începerea noii Perioade de Abonament.",
+                    "Destinatarul de Servicii este obligat să plătească Taxa pentru Abonamentul selectat în termen de cel mult 7 zile lucrătoare de la data înregistrării Abonamentului. Ziua plății este considerată ziua contabilizării datoriei necesare în contul bancar al Furnizorului de Servicii. Neplata în termenul specificat echivalează cu anularea abonamentului.",
+                    "Schimbarea Parametrilor Abonamentului este realizată de Administratorul de Cont direct în Contul din Serviciu și poate fi anulată de acesta în orice moment sau la cererea Administratorului de Cont trimisă la adresa de e-mail specificată în paragraful 2 al Furnizorului de Servicii.",
+                    "Administratorul de Cont are acces în Serviciu la",
+                    "„Destinatarul de Servicii este de acord să primească facturi de TVA de la Furnizorul de Servicii în formă electronică, în conformitate cu baza legală pentru emiterea și trimiterea facturilor în format electronic. Legea din 11 martie 2004 privind impozitul pe bunuri și servicii (Dz.U. Capitolul 54, Poziția și 535). Factura trimisă în formă electronică în conformitate cu Legea (Dz.U. nr. 144, poziția 1204, așa cum a fost modificată) este echivalentă cu trimiterea unei facturi emise în formă fizică și constituie un document contabil.",
+                    "Factura de TVA în formă fizică va fi emisă și livrată numai la cererea expresă a Destinatarului de Servicii exprimată în formă electronică la adresa de e-mail de contact a Furnizorului. Taxa pentru tipărirea și livrarea facturii de TVA în formă fizică este plătită de Furnizorul de Servicii și adăugată la factură, în valoare de 59 PLN net + TVA.",
+                    "Furnizorul de Servicii poate în orice moment, după informarea Destinatarilor de Servicii, cu cel puțin 60 de zile înainte de schimbare, dacă acest lucru este cerut de legea aplicabilă, să modifice Lista de Prețuri sau o parte din aceasta sau să stabilească noi taxe. Schimbările de prețuri și stabilirea de noi taxe vor intra în vigoare pentru perioadele de abonament ulterioare și pentru toți noii Destinatari de Servicii după data intrării în vigoare a schimbării. Dacă Destinatarul de Servicii nu este de acord cu modificările de preț în Tarif, el/ea poate anula Abonamentul și înceta utilizarea Serviciului înainte de începerea următoarei Perioade, de la care vor aplica prețurile modificate."
+                ]
+            },
+            "support": {
+                "header": "Suport",
+                "list": [
+                    "Asistența tehnică este disponibilă în fiecare zi. 9:00 - 15:00 (CET) pentru Destinatarii de Servicii cu Taxă plătită pentru Perioada de Abonament Aplicabilă pentru modelele de abonament selectate.",
+                    "Contactul pentru asistență tehnică este disponibil Administratorului de Cont prin e-mail la contact@interviewlyapp.com",
+                    "Furnizorul de Servicii va face toate eforturile pentru a răspunde la e-mailuri în termen de 72 de ore în zilele lucrătoare aplicabile furnizorului de servicii."
+                ]
+            },
+            "compliants": {
+                "header": "Reclamații",
+                "list": [
+                    "Furnizorul de Servicii se angajează să elimine imediat defectele care împiedică accesul la utilizarea Serviciului.",
+                    "Reclamațiile legate de furnizarea serviciului de acces la Serviciu, Destinatarul de Servicii le poate depune prin e-mail la contact@interviewlyapp.com",
+                    {
+                        "text": "Raportul ar trebui să indice:",
+                        "sublist": [
+                            "numele organizației (informații furnizate la crearea contului) și adresa sa de e-mail",
+                            "informații despre utilizatorul afectat,",
+                            "timpul și circumstanțele apariției problemei cu funcționarea Serviciului, URL-ul sau numele paginii,",
+                            "Ecran cu URL vizibil și problemă"
+                        ]
+                    },
+                    "Dacă sunt necesare informații suplimentare pentru examinarea reclamației, Furnizorul de Servicii solicită să furnizați aceste informații înainte de a examina reclamantul, iar timpul pentru examinarea cererii este calculat de la data primirii informațiilor solicitate.",
+                    "Este recomandat să furnizați în e-mailul de mai sus cât mai multe informații și circumstanțe posibile referitoare la subiectul reclamației, în special tipul și data apariției neregularității și detaliile de contact - acest lucru va facilita și accelera procesarea reclamațiilor de către Furnizorul de Servicii.",
+                    "Reclamația este rezolvată de Furnizorul de Servicii imediat, nu mai târziu de 14 zile lucrătoare.",
+                    "Examinarea reclamației de către Furnizorul de Servicii este finală.",
+                    "Răspunsul Furnizorului de Servicii la reclamație este trimis la adresa de e-mail a Destinatarului de Servicii indicată în notificarea privind reclamația."
+                ]
+            },
+            "serviceData": {
+                "header": "Service data",
+                "list": [
+                    "Datele de serviciu",
+                    "Datele introduse de către Destinatarul de Servicii în Contul de Servicii sunt proprietatea Destinatarului de Servicii.",
+                    "Toate datele introduse în Contul de Servicii vor fi stocate de către Furnizorul de Servicii în conformitate cu Regulamentul (UE) 2016/679 al Parlamentului European și al Consiliului din 27 aprilie 2016 privind protecția persoanelor fizice în ceea ce privește prelucrarea datelor cu caracter personal și privind libera circulație a acestor date și de abrogare a Directivei 95/46/CE. (denumit în continuare RGPD).",
+                    "Furnizorul de Servicii stochează și procesează datele puse la dispoziție de către Destinatarul de Servicii în conformitate cu prevederile legale aplicabile și în conformitate cu Acordul de Încredere pentru Prelucrarea Datelor cu Caracter Personal, care constituie Anexa Nr. 1 la Regulamente."
+                ]
+            },
+            "conditionsOfCeasementOfContract": {
+                "header": "Prin acceptarea acestor Termeni și Condiții de Serviciu, Destinatarul de Servicii este de acord să își încredințeze datele Furnizorului de Servicii în conformitate cu Acordul de Încredere pentru Prelucrarea Datelor cu Caracter Personal.",
+                "list": [
+                    "Condiții de încetare a contractului",
+                    "Clientul poate încheia contractul cu un preaviz de o lună și fără a furniza motive, prin trimiterea unei declarații relevante prin e-mail la contact@interviewlyapp.com.",
+                    {
+                        "text": "Destinatarul de Servicii poate încheia contractul imediat dacă Furnizorul de Servicii nu menține disponibilitatea Serviciului în cadrul specificat în Acordul de nivel de serviciu (SLA) din secțiunea III.1, prin trimiterea unei declarații relevante prin e-mail la contact@interviewlyapp.com.",
+                        "sublist": [
+                            "Furnizorul de Servicii poate bloca temporar sau permanent Contul Destinatarului de Servicii sau poate rezilia Acordul în cazul în care Utilizatorul:",
+                            "încalcă Regulile,",
+                            "furnizează conținut de natură ilegală, după un apel prealabil ineficient de a înceta încălcările cu o limită de timp fixă;",
+                            "dăunează Furnizorului de Servicii sau furnizează date false în timpul procesului de înregistrare sau nu actualizează imediat modificările aduse datelor furnizate conform stării actuale,",
+                            "nu plătește la timp."
+                        ]
+                    },
+                    "comite acțiuni cu scopul de a încălca securitatea datelor prelucrate în Serviciu și de a utiliza Serviciul sau face o tentativă neautorizată de a accesa Serviciul, sau efectuează alte acțiuni concepute pentru a interfera cu buna funcționare a Serviciului.",
+                    "Furnizorul de Servicii are dreptul să rezilieze Acordul cu efect imediat în cazul în care una dintre motivele specificate în paragraful 3 al acestui capitol survine.",
+                    "Declarația de voință a Furnizorului de Servicii privind rezilierea contractului pentru valabilitatea acestuia necesită un formular documentar și trebuie trimisă respectiv la adresa de e-mail a actualului Administrator de Cont al Destinatarului Serviciului. Perioada de reziliere a Acordului începe din Ziua Livrării declarației de voință a Furnizorului de Servicii de a rezilia Contractul.",
+                    "Această încetare duce la încetarea raportului juridic cu efect pentru viitor."
+                ]
+            },
+            "finalProvisions": {
+                "header": "Dispoziții finale",
+                "list": [
+                    "Contractele încheiate de Furnizorul de servicii în cadrul activităților Aplicației sunt încheiate în limba poloneză, în conformitate cu legea în vigoare pe teritoriul Poloniei.",
+                    "Furnizorul de servicii își rezervă dreptul de a aduce modificări Regulamentului. Modificările aduse Termenilor de utilizare vor obliga Destinatarul serviciului, cu condiția ca acesta să fi fost informat în mod corespunzător cu privire la modificări și să nu fi reziliat Acordul în termen de 14 zile de la data notificării modificării de către Furnizorul de servicii.",
+                    "În cazul nerespectării oricărei părți a Regulamentelor cu legislația aplicabilă, se vor aplica prevederile relevante ale legislației poloneze în locul prevederii contestate din regulament.",
+                    "Orice dispute apărute între Furnizorul de Servicii și Destinatarul Serviciului vor fi supuse instanței competente pe baza sediului Furnizorului de Servicii."
+                ]
+            }
+        },
+        "personalDataProcessingAgreement": {
+            "header": "Acord privind prelucrarea datelor cu caracter personal",
+            "text": "„Acordul privind prelucrarea datelor cu caracter personal este parte integrantă a Regulamentelor și stabilește regulile de prelucrare de către Furnizorul de servicii în numele Destinatarului serviciului a datelor personale ale Utilizatorului prin intermediul Serviciului de la www.interviewlyapp.com.",
+            "rules": [
+                {
+                    "title": "Acordul pentru Prelucrarea Datelor cu Caracter Personal constituie ansamblul obligațiilor și condițiilor de prelucrare a datelor de către Utilizator între Furnizorul de Servicii și Destinatarul Serviciului în legătură cu Serviciul SaaS și înlocuiește toate acordurile, acordurile și aranjamentele anterioare dintre Furnizorul de Servicii și destinatarul serviciului în acest sens”.",
+                    "list": [
+                        "Administrator – înseamnă Destinatarul Serviciului, care, singur sau împreună cu alte entități, determină scopurile și metodele de prelucrare a Datelor cu Caracter Personal;",
+                        "Procesor – înseamnă Furnizor de servicii"
+                    ]
+                },
+                {
+                    "title": "Subiectul prelucrării datelor cu caracter personal",
+                    "list": [
+                        "În legătură cu implementarea contractului de furnizare de servicii prin mijloace electronice pentru serviciul SaaS reglementat în Regulamente (denumit în continuare „Acordul Principal” încheiat între Părți, Controlorul încredințează Procesatorului în conformitate cu art. 28 din Regulament, datele cu caracter personal urmează a fi prelucrate în numele Administratorului, în termenii și scopurile specificate în Contract.",
+                        "Încheierea Acordului constituie o instrucțiune documentată a Administratorului de a procesa Date cu caracter personal de către Furnizorul de servicii, inclusiv transferul de date cu caracter personal către țări terțe, așa cum este menționat la articolul 28 alineatul (3) litera (a) din GDPR.",
+                        "Operatorul declară că este operatorul datelor cu caracter personal în sensul prevederilor Regulamentului (UE) 2016/679 al Parlamentului European și al Consiliului din 27 aprilie 2016 privind protecția persoanelor fizice în ceea ce privește prelucrarea datelor cu caracter personal. Date și privind libera circulație a acestor date și de abrogare a Directivei 95/46/CE (Regulamentul general privind protecția datelor), (denumit în continuare „Regulamentul”), pe care o încredințează Procesatorului."
+                    ]
+                },
+                {
+                    "title": "Domeniul și scopul prelucrării datelor",
+                    "list": [
+                        "Datele cu caracter personal încredințate Controlorului vor fi prelucrate de către Procesor numai în scopul realizării serviciilor descrise în detaliu în Acordul principal menționat la § 2 paragraful 1 și într-o manieră conformă cu prezentele Acorduri și cu prevederile legale relevante, aplicabile în general.",
+                        "Categorie de persoane: angajați și colegi de muncă ai Administratorului, candidați la angajare, utilizatori ai Serviciului.",
+                        {
+                            "text": "Procesatorul se obligă să prelucreze datele cu caracter personal încredințate în următoarea măsură:",
+                            "sublist": [
+                                "Numele și prenumele",
+                                "Imagine – fotografie și înregistrări încărcate în Serviciu",
+                                "Gen",
+                                "Abordare",
+                                "Telefon de Contact",
+                                "Adresa de e-mail",
+                                "Data nașterii",
+                                "Numarul contului bancar",
+                                "Profesii",
+                                "Industrie",
+                                "Stare civilă",
+                                "Informații despre a avea copii",
+                                "Alte date conținute în fișiere stocate sau introduse în altă parte."
+                            ]
+                        },
+                        "Activități de prelucrare: Colectare, înregistrare, organizare, aranjare, stocare, vizualizare, transfer, modificare, ștergere.",
+                        "Forma de prelucrare: electronica"
+                    ]
+                },
+                {
+                    "title": "Obligațiile Procesatorului",
+                    "list": [
+                        "Procesatorul declară că furnizează măsuri tehnice și organizatorice adecvate pentru a se asigura că prelucrarea respectă cerințele prevăzute în Regulament și protejează drepturile persoanelor vizate, ceea ce înseamnă în special că Procesatorul ia măsurile corespunzătoare prevăzute de art. 32 din Regulament și este due diligence în prelucrarea datelor cu caracter personal încredințate.",
+                        "Procesatorul se angajează să autorizeze prelucrarea datelor cu caracter personal tuturor persoanelor care vor prelucra datele încredințate în scopurile prezentului Acord.",
+                        "Ținând cont de natura prelucrării, Persoana împuternicită de prelucrare va asista, pe cât posibil, Operatorul, prin măsuri tehnice și organizatorice adecvate, să îndeplinească obligația de a răspunde solicitărilor persoanei vizate în exercitarea propriei sau drepturile sale, specificate în capitolul III din regulament.",
+                        "Ținând cont de natura prelucrării și de informațiile de care dispune, împuternicitul va asista operatorul în îndeplinirea obligațiilor specificate la art. 32 la 36 din Regulament.",
+                        "Operatorul se angajează să asigure confidențialitatea datelor prelucrate (așa cum se prevede la articolul 28 alineatul (3) litera (b) din Regulament) de către persoanele pe care le autorizează să prelucreze date cu caracter personal în scopul executării prezentului contract, atât pe durata acestora. angajarea cu procesatorul și după încetarea acestuia.",
+                        "Procesatorul după finalizarea prestării serviciilor legate de prelucrarea datelor va șterge toate datele încredințate de Operator după expirarea termenului specificat în contractul principal.",
+                        "Procesatorul, după ce a constatat o încălcare a protecției datelor cu caracter personal, fără întârzieri nejustificate, o raportează Operatorului.",
+                        "Procesatorul, după ce constată o încălcare a protecției datelor cu caracter personal fără întârzieri nejustificate, nu mai târziu de 36 de ore de la încălcare, o va raporta Operatorului. Aplicația trebuie depusă prin e-mail la adresa de e-mail introdusă de Administrator în date în timpul înregistrării (adresa este și autentificarea administratorului)."
+                    ]
+                },
+                {
+                    "title": "Măsuri tehnice și organizatorice",
+                    "list": [
+                        "Ținând cont de starea cunoștințelor tehnice, de costul implementării și de natura, domeniul de aplicare, contextul și scopurile prelucrării Datelor cu caracter personal și riscul de încălcare a drepturilor persoanelor ale căror date cu caracter personal sunt vizate, Furnizorul de servicii va furniza măsuri tehnice și organizatorice adecvate tipului de date cu caracter personal și riscului de încălcare a drepturilor persoanelor vizate de Datele cu caracter personal."
+                    ]
+                },
+                {
+                    "title": "Dreptul la controlul prelucrării",
+                    "list": [
+                        "În conformitate cu articolul 28 alineatul (3) litera (h) din Regulament, Operatorul are dreptul de a controla dacă măsurile aplicate de către Operator la prelucrarea și securizarea datelor cu caracter personal încredințate sunt în conformitate cu prevederile contractului.",
+                        "Notificarea intenției de a efectua inspecția sau auditul trebuie transmisă procesatorului cu cel puțin 14 zile calendaristice înainte de începerea activității. Costurile auditului sunt suportate de administrator.",
+                        "Auditorul desemnat de Controlor nu poate fi o entitate care desfășoară activități competitive cu Procesatorul, nici o entitate aferentă acestuia, un angajat sau o entitate cooperantă, indiferent de baza de angajare sau de cooperare. Înainte de a desfășura activități de audit, auditorul este obligat să se asigure că informațiile obținute sunt păstrate confidențiale.",
+                        "Controlul prelucrării, în măsura în care se referă la domeniile de prelucrare a datelor cu caracter personal, nu poate dura mai mult de 3 zile lucrătoare.",
+                        "Controlul prelucrării va fi finalizat prin semnarea protocolului de control al prelucrării de către ambele părți. Protocolul va conține concluziile din Controlul Prelucrării și domeniul de aplicare agreat de ambele Părți cu privire la posibilele modificări în prelucrarea Datelor cu Caracter Personal de către Procesor.",
+                        "Procesatorul se obligă să respecte recomandările Controlorului sau ale entității împuternicite de acesta, cu privire la îmbunătățirea calității securității datelor cu caracter personal și a modului de prelucrare a acestora sau înlăturarea defectelor constatate în timpul inspecției sau auditului într-un interval de timp. specificat de controlor nu mai mult de 28 de zile."
+                    ]
+                },
+                {
+                    "title": "Livrarea datelor pentru prelucrare",
+                    "list": [
+                        "Procesatorul poate subcontracta prelucrarea datelor cu caracter personal prelucrate de el în legătură cu furnizarea serviciului vizat de contractul menționat la § 2 alin. 1 contracte cu alți procesatori (denumiti în continuare „Subcontractanți”), în conformitate cu condițiile de utilizare a serviciilor Subcontractanților specificate în Regulament.",
+                        "Controlorul este de acord să se subordoneze, încredințat Procesatorului să prelucreze datele pe baza Acordului specificat în Anexa nr. 1 la Contract.",
+                        "Entitățile cărora operatorul le-a încredințat prelucrarea ulterioară a datelor cu caracter personal sunt specificate în Anexa 1 la Acord.",
+                        "Procesatorul poate face modificări subcontractanților actuali și poate adăuga suplimentar, fără notificare prealabilă a Controlorului."
+                    ]
+                },
+                {
+                    "title": "Notificarea încălcărilor",
+                    "list": [
+                        {
+                            "text": "La constatarea unei încălcări a protecției datelor cu caracter personal încredințate acestuia de către Operator, Procesatorul, fără întârzieri nejustificate, de la detectarea încălcării, o raportează Administratorului. Raportul trebuie să conțină cel puțin informații despre:",
+                            "sublist": [
+                                "data, durata și locația încălcării datelor cu caracter personal;",
+                                "natura și amploarea încălcării, și anume, în special categoriile și numărul aproximativ de persoane vizate și tipurile și numărul aproximativ de intrări de date cu caracter personal afectate de încălcare și, acolo unde este posibil, și identificarea persoanelor vizate;",
+                                "timpul estimat necesar pentru repararea prejudiciului cauzat de încălcare;",
+                                "natura și domeniul de aplicare a datelor cu caracter personal care fac obiectul încălcării;",
+                                "consecințele posibile ale încălcării, inclusiv consecințele pentru persoanele vizate;",
+                                "măsurile luate pentru a minimiza consecințele încălcării și măsurile preventive și corective propuse;",
+                                "datele de contact ale persoanei care poate furniza informații suplimentare despre încălcare."
+                            ]
+                        },
+                        "În cazul în care operatorul nu este în măsură să furnizeze operatorului toate informațiile menționate la alineatul (1) în același timp, acesta le furnizează succesiv, fără întârzieri nejustificate.",
+                        "Până la primirea instrucțiunilor de la Controlor, Procesatorul va lua toate măsurile rezonabile pentru a limita și a remedia efectele negative ale încălcării."
+                    ]
+                },
+                {
+                    "title": "Responsabilitatea Procesatorului",
+                    "list": [
+                        "Operatorul este răspunzător pentru daunele suferite Controlorului sau terților cauzate de prelucrarea datelor cu caracter personal numai dacă (i) a prelucrat date cu caracter personal contrar prezentului Acord, (ii) nu respectă obligațiile pe care Regulamentul sau alte prevederile privind protecția Datelor cu Caracter Personal impun procesatorilor sau (iii) acţionează cu încălcarea instrucţiunilor legale scrise ale Administratorului sau dincolo de aceste instrucţiuni.",
+                        "Sub rezerva prevederilor strict aplicabile ale legii, Procesatorul va fi răspunzător față de Controlor pentru neexecutarea sau executarea necorespunzătoare a prezentului Contract numai pentru daunele reale documentate (damnum emergens) ale Administratorului, limitate la suma ultimei plăți pentru Abonamentul Aplicației ca remunerație datorată Entității de Procesare de la Manager, în conformitate cu prevederile.",
+                        "Limitarea răspunderii menționată la alineatul (2) nu se aplică răspunderii față de persoanele vizate și în cazul în care prejudiciul este cauzat de acțiunea intenționată a operatorului.",
+                        "Partea care a plătit despăgubiri pentru întregul prejudiciu cauzat va avea dreptul să solicite celeilalte părți care a participat la aceeași prelucrare să ramburseze partea din despăgubire corespunzătoare părții din prejudiciu pentru care este răspunzătoare cealaltă parte, pe baza dreptului la regresie descris la articolul 82 alineatul (2). 5 din Regulament. Limitarea răspunderii menționată la alineatul (2) nu se aplică cererilor regresive descrise în prezentul alineat. 4.",
+                        "Procesatorul nu este responsabil pentru acțiunile sau omisiunile subcontractantului cu privire la prelucrarea datelor cu caracter personal încredințate."
+                    ]
+                },
+                {
+                    "title": "Durata acordului",
+                    "list": [
+                        "Acest Acord va fi în vigoare începând cu data încheierii sale pentru o perioadă specificată în legătură cu valabilitatea acordului menționat în § 2 alineatul 1.",
+                        "Procesatorul poate prelucra datele cu caracter personal încredințate în temeiul acestui Acord numai pe durata valabilității Contractului Principal, cu excepția cazului în care Controllerul și Procesatorul stabilesc o perioadă diferită pentru prelucrarea datelor cu caracter personal printr-un acord separat, pentru o remunerație separată, sau acest Contract va fi reziliat în cazurile specificate în § 10 din acest acord.",
+                        "Contractul este de asemenea reziliat atunci când prelucrarea datelor cu caracter personal furnizate Procesatorului de către Controller nu mai este necesară pentru executarea Contractului Principal.",
+                        "Părțile pot rezilia acest Acord cu un termen de notificare de trei luni sau prin încheierea unui acord corespunzător, ținând cont că rezilierea acestui acord poate împiedica executarea contractului principal și, astfel, poate duce la încetarea sa."
+                    ]
+                },
+                {
+                    "title": "Încetarea acordului",
+                    "list": [
+                        "Procesatorul recunoaște că încetarea acestui Acord poate afecta imposibilitatea de a continua acordul menționat în § 2 alineatul 1."
+                    ]
+                },
+                {
+                    "title": "Reguli de confidențialitate",
+                    "list": [
+                        "Toate informațiile obținute de către părți pe durata Acordului, care constituie secret de afaceri în sensul Legii din 16 aprilie 1993 privind combaterea concurenței neloiale (Monitorul Oficial din 1993, nr. 47, poziția 211), pot fi utilizate numai în scopul executării corecte a Acordului de către fiecare parte, cu excepția cazului în care cealaltă parte îl exonerează de obligația de a menține confidențialitatea sau obligația de a le dezvălui rezultă din dispozițiile legale aplicabile."
+                    ]
+                },
+                {
+                    "title": "Prevederi finale",
+                    "list": [
+                        "Remunerația pentru prestarea de către Procesator a Serviciilor din cadrul Acordului include și recompensa pentru executarea acestui acord.",
+                        "În privința aspectelor nereglementate, se aplică prevederile Codului Civil și ale Regulamentului."
+                    ]
+                }
+            ],
+            "annex": {
+                "title": "Anexa 1 – Lista subcontractanților",
+                "table": [
+                    [
+                        "Subiect",
+                        "Regiune",
+                        "Sfera prelucrării datelor"
+                    ],
+                    [
+                        "Amazon, Luxemburg",
+                        "UE",
+                        "Mediul serverului pe care rulează Aplicația, bazele de date, copiile de rezervă sunt stocate."
+                    ],
+                    [
+                        "OVH S.A., Polonia",
+                        "UE",
+                        "Mediul serverului este utilizat pentru crearea copiilor de rezervă."
+                    ]
+                ]
+            }
+        },
+        "privacyPolicy": {
+            "header": "Politica de Confidențialitate și Modulele Cookie",
+            "chapterOne": "Prevederi preliminare",
+            "paragraphOne": "1 din Legea din 18 iulie 2002 privind furnizarea de servicii electronice (Dz. În conformitate cu articolul 173 din Legea din 16 iulie 2004 din Legea telecomunicațiilor (Dz. U. 2014.243, adică de mai târziu. Societatea este o societate cu răspundere limitată cu sediul central). în Łódź, ul. Wólczańska 125, 90-521 Łódź, înregistrată în Registrul Curții Naționale – registrul întreprinzătorilor sub numărul KRS: 0000541582, ale cărui evidențe de înregistrare sunt înregistrate de Judecătoria pentru Łódźź Secția Economică din Łódźź-Śród-Śródź, XX : 7692223109, REGON: 360412382 capital social: 5 000,00 PLN transmis integral, e-mail: info@strategaresearch.com, denumit în continuare „antreprenorul”, introduce această Politică de confidențialitate și cookie-uri, denumite în continuare „Politică”.",
+            "paragraphTwo": [
+                "Termenii scriși în Politica cu majusculă, cu excepția cazului în care este specificat altfel în conținutul Politicii, au sensul specificat în Regulamentul Site-ului (www.interviewlyapp.com).",
+                "Termenul \"Utilizator\" înseamnă, în funcție de context, Clientul sau persoana care dorește să devină Client, un Candidat sau o persoană care dorește să devină Candidat, sau un utilizator de internet care vizitează Site-ul."
+            ],
+            "chapterTwo": "Date personale",
+            "paragraphThree": [
+                "Utilizatorul, în scopul utilizării serviciilor oferite de Contractant prin intermediul Site-ului, este obligat să completeze formularul de înregistrare corespunzător, în care trebuie introduse anumite date personale.",
+                "Furnizarea datelor personale în formularul de înregistrare este voluntară, dar necesară pentru furnizarea serviciilor de către Furnizor către Utilizator prin intermediul Site-ului.",
+                "Toate datele personale pe care Utilizatorul le introduce în formularul de înregistrare sau le trimite în corespondență cu Contractantul sunt prelucrate într-un mod conform cu cerințele stabilite în Regulamentul (UE) 2016/679 al Parlamentului European și al Consiliului din 27 aprilie 2016 privind protecția persoanelor fizice în ceea ce privește prelucrarea datelor cu caracter personal și privind libera circulație a acestor date și de abrogare a Directivei 95/46/CE, denumit în continuare GDPR și Legea din 18 iulie 2002 privind furnizarea de servicii electronice (Monitorul Oficial al Federației Ruse). 2013 – 1422 – adică ulterior."
+            ],
+            "paragraphFour": [
+                "Operatorul datelor cu caracter personal colectate prin formularul de înregistrare al Site-ului este Antreprenorul. În companie a fost desemnat un inspector pentru protecția datelor, cu care este posibil contactul la adresa de e-mail: inspektor@stratega.pl",
+                "Antreprenorul poate încredința prelucrarea datelor cu caracter personal colectate ale Utilizatorilor unei alte entități pe baza încheiată cu acesta, în temeiul art. 28 GDPR.",
+                {
+                    "text": "În vederea executării contractelor de vânzare și prestări servicii încheiate de Vânzător cu Utilizatorii prin intermediul Serviciului, datele Utilizatorului vor fi încredințate în special următoarelor entități:",
+                    "sublist": [
+                        "furnizori de servicii poștale sau de curierat, care vor furniza Utilizatorului bunurile testate,",
+                        "gestionarea tranzacțiilor online."
+                    ]
+                }
+            ],
+            "paragraphFive": "Utilizatorul are dreptul de a accesa datele sale personale și le poate verifica sau corecta, precum și de a-și retrage consimțământul în orice moment, adresând solicitarea corespunzătoare Antreprenorului.",
+            "paragraphSix": {
+                "text": "Furnizorul de servicii prelucrează datele personale ale Utilizatorului și le utilizează în măsura și în următoarele scopuri:",
+                "sublist": [
+                    "necesare pentru prestarea serviciilor oferite prin intermediul Serviciului în conformitate cu articolul 6 alineatul (1) litera (b) GDPR,",
+                    "pe baza consimțământului suplimentar și opțional, pe care Utilizatorul îl poate exprima într-o declarație separată, Contractorul poate prelucra datele personale ale Utilizatorului în scopuri de marketing, în conformitate cu articolul 6 alineatul (1) litera (f) GDPR. Dacă Utilizatorul își dă un astfel de consimțământ, acesta îl poate revoca în orice moment.",
+                    "pe baza consimțământului suplimentar și opțional acordat de către Utilizator are dreptul de a-i transmite acestuia la adresele de e-mail sau numerele de telefon date informații comerciale în temeiul art. 6 (1) litera (a) GDPR. Consimțământul la care se face referire în teza anterioară poate fi revocat de către Utilizator în orice moment."
+                ]
+            },
+            "paragraphSeven": "Datele cu caracter personal colectate de Antreprenor pot fi transferate către autoritățile de stat autorizate, în baza legislației aplicabile.",
+            "chapterThree": "Prajiturile",
+            "paragraphEight": [
+                "Furnizorul folosește cookie-uri, adică mici informații text, stocate pe dispozitivul terminal al Utilizatorului. (adică computer, tabletă, smartphone). Cookie-urile pot fi citite de sistemul informatic al Furnizorului.",
+                "Furnizorul stochează cookie-uri pe dispozitivul terminal al Utilizatorului și apoi obține acces la informațiile conținute în acesta în scopuri statistice și pentru a asigura funcționarea corectă a site-ului, și în special pentru a menține sesiunea după autentificare."
+            ],
+            "paragraphNine": [
+                "De asemenea, Furnizorul informează Utilizatorii că există posibilitatea unei astfel de configurare a browserului web care împiedică stocarea cookie-urilor pe dispozitivul terminal al Utilizatorului.",
+                "Furnizorul mai indică faptul că cookie-urile pot fi șterse de către Utilizator după ce au fost salvate de către Furnizor, prin: funcții adecvate ale browserului web, programe care servesc în acest scop sau utilizarea instrumentelor adecvate disponibile în sistemul de operare pe care îl folosește Utilizatorul .",
+                {
+                    "text": "Următoarele link-uri oferă informații despre cum să ștergeți cookie-urile din cele mai populare browsere web:",
+                    "sublist": [
+                        "Firefox: http://support.mozilla.org/pl/kb/delete-cookies",
+                        "Opera: http://help.opera.com/Linux/9.60/pl/cookies.html",
+                        "Internet Explorer: http://support.microsoft.com/kb/278835/pl",
+                        "Chrome: https://support.google.comhl=pl&amp;answer=95647"
+                    ]
+                }
+            ],
+            "paragraphTen": "Contractorul informează, de asemenea, Utilizatorii că modificarea setărilor browserului de internet pentru a dezactiva sau a limita stocarea cookie-urilor pe dispozitivul final al Utilizatorului poate duce la o limitare a funcționalității serviciilor furnizate. Consecințe similare pot apărea dacă cookie-urile sunt șterse în timpul furnizării serviciului. Acest lucru poate duce la incapacitatea de a vă conecta la Serviciu sau întreruperea unei sesiuni după conectare.",
+            "chapterFour": "Date conținute în jurnalele de sistem",
+            "paragraphEleven": "Informațiile conținute în jurnalele de sistem în legătură cu regulile generale de implementare a conexiunilor la Internet sunt utilizate de către compania de găzduire care operează Serviciul doar în scopuri tehnice și statistice.",
+            "chapterFive": "Măsuri tehnice utilizate de antreprenor",
+            "paragraphTwelve": "Antreprenorul va aplica măsurile tehnice cerute de legislația în vigoare privind protecția datelor cu caracter personal pentru a preveni achiziționarea și modificarea de către persoane neautorizate a datelor cu caracter personal transmise electronic.",
+            "paragraphThirteen": [
+                "În cazul întrebărilor și opiniilor cu privire la Politica aplicată de Antreprenor, vă rugăm să le trimiteți la adresa de e-mail: inspektor@stratega.pl",
+                "Politica poate fi găsită pe www.interviewlyapp.com"
+            ]
+        },
+        "surveyStatuses": {
+            "pending": "in asteptarea",
+            "finished": "terminat",
+            "seeResultsLabel": "Vezi rezultatele"
+        }
+    }
+}

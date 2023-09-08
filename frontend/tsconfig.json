@@ -18,6 +18,7 @@
     "allowSyntheticDefaultImports": true,
     "paths": {
       "config/*": ["./config/*"]
-    }
+    },
+    "resolveJsonModule": true
   },
 }

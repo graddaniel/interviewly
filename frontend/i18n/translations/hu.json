@@ -1,0 +1,1073 @@
+{
+    "translation": {
+        "currentLanguage": "Magyar",
+        "generic": {
+            "loading": "Betöltés",
+            "created": "létre",
+            "yes": "Igen",
+            "no": "nem",
+            "saved": "Saved"
+        },
+        "validation": {
+            "join": {
+                "repeatPasswordError": "A jelszavak nem egyeznek."
+            },
+            "changePassword": {
+                "repeatPasswordError": "Passwords do not match",
+                "newPasswordSameAsOld": "New password is the same as previous one"
+            },
+            "projectRespondent": {
+                "meetingDateError": "Pick a future date"
+            }
+        },
+        "errors": {
+            "10000": "Ismeretlen hiba.",
+            "10010": "Az ellenőrzés nem sikerült.",
+            "10011": "Hiányzó hitelesítő adatok.",
+            "10012": "Érvénytelen engedélyezési fejlécformátum.",
+            "10013": "Az engedélyezési fejléc hiányzik.",
+            "10014": "Érvénytelen engedélyezési típus.",
+            "10015": "A művelet nem engedélyezett.",
+            "10016": "Token hiányzik.",
+            "20000": "A fiók már aktív.",
+            "20001": "A toborzó fiókból hiányoznak a vállalati adatok.",
+            "20002": "A toborzói fiókból hiányzik a cégnév.",
+            "20003": "Fiók nem található.",
+            "20004": "A jelszó-visszaállítási kérés lejárt. Kérjük, használja újra a jelszó emlékeztető űrlapot.",
+            "20005": "A fiók nem kért jelszó-visszaállítást.",
+            "20006": "A számla már létezik.",
+            "20007": "Hibás jelszó.",
+            "20100": "A cég nem található.",
+            "20101": "A cég már létezik.",
+            "20200": "A kutatás nem található.",
+            "30000": "E-mail megadása kötelező.",
+            "30001": "Kérjük valós e-mail címet adjon meg! Példa: johndoe@domain.pl.",
+            "30010": "A név mező kitöltése kötelező.",
+            "30011": "A név túl rövid.",
+            "30012": "A név túl hosszú.",
+            "30020": "A vezetéknév mező kitöltése kötelező.",
+            "30021": "A vezetéknév túl rövid.",
+            "30022": "A vezetéknév túl hosszú.",
+            "30030": "A megadott típus megadása kötelező.",
+            "30031": "A típusérték helytelen.",
+            "30040": "A Nem mező kitöltése kötelező.",
+            "30041": "A nem értéke helytelen.",
+            "30050": "Jelszó szükséges.",
+            "30051": "A jelszónak kis betűket, nagybetűket, számjegyeket, speciális karaktereket kell tartalmaznia.",
+            "30052": "A jelszó túl rövid.",
+            "30053": "A jelszó túl hosszú.",
+            "30070": "A szerepkör mező kitöltése kötelező.",
+            "30071": "A szerep értéke hibás.",
+            "30080": "Az állapot mező kitöltése kötelező.",
+            "30081": "Az állapot hibás.",
+            "30093": "Number is too long",
+            "30100": "A cím mező kitöltése kötelező.",
+            "30101": "A cím nem engedélyezett karaktereket tartalmaz.",
+            "30102": "A cím túl rövid.",
+            "30103": "A cím túl hosszú.",
+            "30112": "A leírás túl rövid.",
+            "30113": "A leírás túl hosszú.",
+            "30120": "A módszertani mező kitöltése kötelező.",
+            "30121": "A módszertani érték helytelen.",
+            "30130": "A résztvevők száma mező kitöltése kötelező.",
+            "30131": "A résztvevők száma túl alacsony.",
+            "30132": "A résztvevők száma túl magas.",
+            "30140": "A tartalék résztvevők száma mező kitöltése kötelező.",
+            "30141": "A tartalék résztvevők száma túl alacsony.",
+            "30142": "A tartalék résztvevők száma túl magas.",
+            "30150": "A találkozó időtartamának megadása kötelező.",
+            "30151": "A megbeszélés időtartamának értéke hibás.",
+            "30160": "A Pénznem mező kitöltése kötelező.",
+            "30161": "A pénznem értéke hibás.",
+            "30170": "Fizetési mező kitöltése kötelező.",
+            "30171": "A fizetési érték helytelen.",
+            "30183": "Requirements are too long",
+            "30190": "Project languages value is requried",
+            "30191": "Project languages value must be a string encoded boolean",
+            "30200": "Screening survey value is required",
+            "30201": "Screening survey value must be a string encoded boolean",
+            "30210": "Recordings value is requried",
+            "30211": "Recordings value must be a string encoded boolean",
+            "30220": "Start date is required",
+            "30221": "Start date must be, positive string encoded number",
+            "30230": "End date is required",
+            "30231": "End date must be positive, string encoded number",
+            "30235": "Start date must be earlier than end date",
+            "30240": "Transcription needed value is required",
+            "30241": "Transcription needed value must be a string encoded boolean",
+            "30250": "Moderator needed value is required",
+            "30251": "Moderator needed value must be a string encoded boolean",
+            "30500": "Az üzenet mező kitöltése kötelező.",
+            "30502": "Az üzenet túl rövid.",
+            "30503": "Az üzenet túl hosszú.",
+            "30602": "A cégnév túl rövid.",
+            "30603": "A cég neve túl hosszú.",
+            "30613": "Az adóazonosító túl hosszú.",
+            "30702": "Az ország neve túl rövid.",
+            "30703": "Az ország neve túl hosszú.",
+            "30712": "A város neve túl rövid.",
+            "30713": "A város neve túl hosszú.",
+            "30723": "Az utcanév túl hosszú.",
+            "30732": "Az épület száma túl rövid.",
+            "30733": "Az épület száma túl hosszú.",
+            "30743": "Az épület egységszáma túl hosszú.",
+            "30752": "Az irányítószám túl rövid.",
+            "30753": "Az irányítószám túl hosszú.",
+            "30803": "Value is too long",
+            "30811": "Incorrect value",
+            "30822": "Value is too high",
+            "30931": "Value is too low",
+            "30932": "Value is too high",
+            "networkError": "Nem lehet csatlakozni a szerverhez.",
+            "tokenExpired": "Session expired"
+        },
+        "links": {
+            "priceCalculator": "Árkalkulátor",
+            "tutorials": "Oktatóanyagok",
+            "blog": "Blog",
+            "contact": "Kapcsolatba lépni",
+            "forgotPassword": "Elfelejtetted a jelszavad?",
+            "termsAndConditions": "Felhasználási feltételek",
+            "privacyPolicy": "Adatvédelmi irányelvek",
+            "personalDataProcessingAgreement": "Megállapodás a személyes adatok kezeléséről"
+        },
+        "buttons": {
+            "signUp": "Csatlakozz az Interjúhoz",
+            "resign": "Lemond",
+            "logIn": "Belépés",
+            "save": "Megment",
+            "next": "Következő",
+            "back": "Vissza",
+            "add": "Hozzáadás",
+            "download": "Download"
+        },
+        "menu": {
+            "home": "itthon",
+            "projects": "Projektek",
+            "myTeam": "Az én csapatom",
+            "calendar": "Naptár",
+            "library": "Könyvtár",
+            "createProject": "Projekt létrehozása"
+        },
+        "dropdownMenu": {
+            "openUserPanel": "Nyissa meg a felhasználói panelt",
+            "personalData": "Személyes adatok",
+            "companyData": "Cégadatok",
+            "myTeam": "Az én csapatom",
+            "logout": "Kijelentkezés"
+        },
+        "inputs": {
+            "email": "Email",
+            "password": "Jelszó"
+        },
+        "sorting": {
+            "newest": "legújabb",
+            "oldest": "legrégebbi"
+        },
+        "dialogs": {
+            "languageSelection": "Válassza ki a nyelvet"
+        },
+        "pages": {
+            "notFound": "Az oldal nem található"
+        },
+        "logIn": {
+            "rememberMe": "Emlékezz rám",
+            "joinText": "Nincs fiókod?"
+        },
+        "setPassword": {
+            "subtitle": "Set password",
+            "newPassword": "New password",
+            "repeatPassword": "Repeat new password",
+            "success": "Password has been set"
+        },
+        "join": {
+            "joinControl": "Van már felhasználói fiókod?",
+            "back": "Vissza",
+            "next": "Következő",
+            "skip": "Kihagyás",
+            "page1": {
+                "title": "Csatlakozz az Interjúhoz",
+                "respondentTitle": "válaszoló vagyok",
+                "respondentSubtitle": "Szeretnék felvételi interjúkon részt venni.",
+                "recruiterTitle": "toborzó vagyok",
+                "recruiterSubtitle": "Szeretnék hozzáférni a válaszadók adatbázisához."
+            },
+            "page2": {
+                "title": "Válassza ki a nemét",
+                "maleTitle": "férfi vagyok",
+                "femaleTitle": "nő vagyok",
+                "maleTitleShort": "Férfi",
+                "femaleTitleShort": "Nő"
+            },
+            "page3": {
+                "title": "Személyes adatok",
+                "inputs": {
+                    "name": "Név*",
+                    "surname": "Vezetéknév*",
+                    "email": "Email*",
+                    "password": "Jelszó*",
+                    "repeatPassword": "Jelszó újra*",
+                    "companyName": "Cégnév*",
+                    "passwordConstraints": "(legalább 8 karakter, egy nagybetű, egy szám és egy speciális karakter)",
+                    "newsletter": "Hírlevél küldését elfogadom.",
+                    "newsletterDetails": "Az elektronikus szolgáltatások nyújtásáról szóló 2002. július 18-i törvény rendelkezéseivel összhangban (d. 2020.344) hozzájárulok ahhoz, hogy a STRATEGA CEE, KORLÁTOZOTT FELELŐSSÉGŰ VÁLLALAT, amelynek székhelye: Łódź, ul. Wólczańska 125, 90-521 Łódź, az Interviewlyapp.com szolgáltatás termékeivel és szolgáltatásaival kapcsolatos kereskedelmi információk hírlevél formájában. Ez a hozzájárulás önkéntes és bármikor visszavonható. A hozzájárulás visszavonása nem érinti a hozzájárulás visszavonása előtti adatkezelés jogszerűségét."
+                },
+                "rulesAgreement": {
+                    "text": "Elfogadom a szolgáltatás szabályzatát a személyes adatok kezelésével kapcsolatos megbízási szerződéssel együtt.*",
+                    "termsAndConditionsKeyword": "előírások",
+                    "privacyPolicyKeyword": "szerződés"
+                }
+            },
+            "page4": {
+                "title": "Készíts videót magadról",
+                "text": "(max. 10 perc)",
+                "submissionText": "Az űrlap beküldése"
+            },
+            "page5": {
+                "title": "Szinte a család tagja vagy!",
+                "text": "Küldtünk Önnek egy megerősítő linket tartalmazó e-mailt.",
+                "homeButton": "itthon"
+            },
+            "interviewDialog": {
+                "record": "Rekord",
+                "stop": "Állj meg",
+                "finish": "Befejez"
+            },
+            "fakedoor": {
+                "title": "A felhasználói fiókod elkészült.",
+                "text1": {
+                    "regular": "Weboldalunk teljes mértékben működőképes lesz",
+                    "strong": "pár napon belül"
+                },
+                "subtitle": {
+                    "regular1": "Te leszel a",
+                    "strong": "első",
+                    "regular2": "hogy tájékozódjanak"
+                },
+                "text2": {
+                    "regular": "Ön lesz az első, aki teljes mértékben kihasználja szolgáltatásaink előnyeit",
+                    "strong": "innovatív megoldások"
+                },
+                "text3": "Maradjunk kapcsolatban!"
+            }
+        },
+        "home": {
+            "initialSection": {
+                "title": "AI által vezérelt toborzás és interjúk",
+                "timeBoxText": "Maximalizálja az idejét"
+            },
+            "stepsSection": {
+                "header": {
+                    "firstPart": "Csak",
+                    "secondPart": "3 lépés",
+                    "thirdPart": "nak nek",
+                    "fourthPart": "Találd meg",
+                    "fifthPart": "legjobb",
+                    "sixthPart": "munkavállaló"
+                },
+                "content": {
+                    "firstStep": {
+                        "title": "Feltöltés",
+                        "text": "a jelöltek adatbázisa"
+                    },
+                    "secondStep": {
+                        "title": "Magatartás",
+                        "text1": "videohívás, programfelmérések",
+                        "text2": "ellenőrizze a nyelvtudást"
+                    },
+                    "thirdStep": {
+                        "title": "Kap",
+                        "text": "jelölt értékelése"
+                    }
+                }
+            },
+            "worldSection": {
+                "firstLine": "Toborozzon embereket",
+                "secondLine": "az egész világon"
+            },
+            "openAISection": {
+                "subtitle": "Töltse fel az összefoglalót, és kérjen árajánlatot",
+                "title": "1 perc alatt!",
+                "dashedLabelText": "Mesterséges intelligencia",
+                "buttonText": "Tovább az árkalkulátorhoz"
+            },
+            "subscriptionSection": {
+                "subtitle": "Ajánlunk",
+                "title": "4 előfizetési csomag",
+                "labelText1": "Nincs szerződés.",
+                "labelText2": "Nincs meglepetés díj.",
+                "subscriptionButtonText": "Fogj neki"
+            },
+            "tutorialsSection": {
+                "title": "Oktatóanyagok",
+                "subscriptionsText": "Előfizetések száma: {{subscriptionsCount, number}}",
+                "subscribeButtonText": "Iratkozz fel"
+            },
+            "blogSection": {
+                "title": "Blog",
+                "blogLinkText": "Olvass tovább"
+            }
+        },
+        "methodologies": {
+            "interviews": {
+                "title": "Interjúk",
+                "text": "1:1 beszélgetés a résztvevővel."
+            },
+            "focusGroups": {
+                "title": "Fókuszcsoportok",
+                "text": "Csoportos beszélgetés moderátorral."
+            },
+            "onlineCommunities": {
+                "title": "Online közösségek",
+                "text": "Online közösség a Bulletin Board segítségével."
+            },
+            "uxInterviews": {
+                "title": "UX interjúk",
+                "text": "A résztvevők interjúja képernyőmegosztással."
+            },
+            "productTests": {
+                "title": "Terméktesztek",
+                "text": "Termékek tesztelése potenciális vásárlókkal."
+            }
+        },
+        "accountStatuses": {
+            "active": "aktív",
+            "unconfirmed": "nem megerősített",
+            "inactive": "inaktív"
+        },
+        "genders": {
+            "male": "férfi",
+            "female": "női"
+        },
+        "martialStatuses": {
+            "singleMan": "Single man",
+            "singleWoman": "Single woman",
+            "marriedMan": "Married man",
+            "marriedWoman": "Married woman",
+            "widower": "Widower",
+            "widow": "Widow",
+            "divorcedMan": "Divorced man",
+            "divorcedWoman": "Divorced woman",
+            "separatedMan": "Separated man",
+            "separatedWoman": "Separated woman"
+        },
+        "profileRoles": {
+            "admin": "admin",
+            "moderator": "moderátor",
+            "observer": "megfigyelő",
+            "translator": "translator",
+            "interviewlyStaff": "Interjú személyzet"
+        },
+        "projectStatuses": {
+            "draft": "draft",
+            "awaitingPayment": "awaiting payment",
+            "new": "new",
+            "inProgress": "in progress",
+            "finished": "befejezett",
+            "pending": "függőben levő",
+            "canceled": "törölve"
+        },
+        "languages": {
+            "bulgarian": "bolgár",
+            "czech": "cseh",
+            "dutch": "holland",
+            "english": "angol",
+            "french": "Francia",
+            "german": "német",
+            "greek": "görög",
+            "hungarian": "Magyar",
+            "italian": "olasz",
+            "polish": "fényesít",
+            "portuguese": "portugál",
+            "romanian": "román",
+            "russian": "orosz",
+            "slovak": "szlovák",
+            "spanish": "spanyol",
+            "swedish": "svéd",
+            "ukrainian": "ukrán"
+        },
+        "surveyTypes": {
+            "regular": "Regular",
+            "screening": "Screening",
+            "language": "Language"
+        },
+        "personalData": {
+            "title": "Személyes adatok",
+            "marketingConsentsSubtitle": "Marketing hozzájárulások",
+            "changePasswordSubtitle": "Jelszó változtatás",
+            "currentPassword": "Jelenlegi jelszó",
+            "newPassword": "Új jelszó",
+            "repeatPassword": "Repeat new password",
+            "save": "Megment",
+            "passwordChangeSuccessMessage": "Password changed",
+            "name": "Name",
+            "surname": "Surname",
+            "email": "E-mail",
+            "phoneNumber": "Phone number",
+            "companyName": "Company name",
+            "sector": "Sector",
+            "bankAccountNumber": "Bank account number",
+            "birthYear": "Birth year",
+            "province": "Province",
+            "city": "City",
+            "zipCode": "Zip code",
+            "street": "Street",
+            "profession": "Profession",
+            "specialization": "Specialization",
+            "hasChildren": "Has children",
+            "childrenCount": "Children count",
+            "martialStatus": "Martial status",
+            "selectGender": "Select gender",
+            "repeatedNewPassword": "Ismételd meg az új jelszót"
+        },
+        "companyData": {
+            "title": "Cégadatok",
+            "name": "Cégnév",
+            "taxIdNumber": "Adóazonosító szám",
+            "country": "Ország",
+            "city": "Város",
+            "street": "utca",
+            "buildingNumber": "Épületszám",
+            "unitNumber": "Egység szám",
+            "postalCode": "irányítószám",
+            "save": "Megment",
+            "success": "Sikeresen mentve"
+        },
+        "myAccount": {
+            "greeting": "Szia",
+            "latestTeamMembersLabel": "A csapat legújabb tagjai",
+            "upcomingInterviewsLabel": "Közelgő interjúk",
+            "projectsLabel": "Projektek"
+        },
+        "projects": {
+            "title": "Projektek",
+            "projectsCounterText": "projektek",
+            "searchInputPlaceholder": "Keresés a projekt neve alapján",
+            "statusLabel": "Állapot"
+        },
+        "viewProject": {
+            "title": "Projekt részletei",
+            "edit": "Szerkesztés",
+            "markAsPaid": "Mark as paid",
+            "steps": [
+                "Tábornok",
+                "Módszertan",
+                "Válaszadók",
+                "Szűrő felmérés",
+                "Részletek"
+            ],
+            "general": {
+                "title": "User Experience in Samsung company",
+                "description": "„Idegtépő, sebezhető és kihívásokkal teli lehet, de ha kiszabadulunk a fejünkből, és beépítjük az együttműködést a tervezési folyamatainkba, mindannyian jobb tervezőkké válhatunk.\n\n\n\nAz évek során megtanultam, hogy a közös tervezés azt jelenti, hogy félre kell tenni az egódat, hogy valami olyat készíts, ami meghaladja az alkotók összességét.\""
+            },
+            "methodology": {
+                "interview": {
+                    "createSurvey": "Kérdőív létrehozása",
+                    "instruction": "vagy válasszon felmérést a könyvtárból",
+                    "save": "Megment"
+                },
+                "onlineCommunity": {
+                    "createBulletinBoardButtonText": "Hozza létre a hirdetőtáblát",
+                    "membersLabel": "tagjai",
+                    "createRoomButtonText": "Hozzon létre szobát",
+                    "roomName": "Szoba neve",
+                    "addMembersLabel": "Tagok hozzáadása",
+                    "surveySubtitle": "vagy válasszon felmérést a könyvtárból",
+                    "room": {
+                        "addTopicLabel": "Téma hozzáadása",
+                        "visibilityLabel": "Láthatóság",
+                        "publicVisibility": "Nyilvános",
+                        "specificMembersVisibility": "Konkrét tagok",
+                        "topicInputPlaceholder": "Téma",
+                        "addCommentLabel": "Megjegyzés hozzáadása",
+                        "noCommentsCabel": "Nincs hozzászólás",
+                        "commentSingularLabel": "megjegyzés",
+                        "commentPluralLabel": "Hozzászólások"
+                    }
+                },
+                "sessionStartDateLabel": "Session start date",
+                "sessionEndDateLabel": "Session end date"
+            },
+            "respondents": {
+                "personalDataSubtitle": "Personal data",
+                "seeDetailsLabel": "Lásd a részleteket",
+                "respondentVideoSubtitle": "Válaszadó videója",
+                "upcomingInterviewsSubtitle": "Közelgő interjúk",
+                "meetingSchedulerSubtitle": "Schedule the meeting",
+                "scheduleButtonText": "Schedule",
+                "respondentSurveysSubtitle": "A válaszadó felmérései",
+                "scheduledSuccessMessage": "Scheduled"
+            },
+            "screeningSurveys": {
+                "resultsTitle": "Results",
+                "noResultsMessage": "No results"
+            },
+            "details": {
+                "participantsCountInputLabel": "Participants Count",
+                "reserveParticipantsCountInputLabel": "Reserve Participants Count",
+                "interviewDurationLabel": "Interview duration",
+                "startDateLabel": "Start date",
+                "endDateLabel": "End date",
+                "transcriptionSubtitle": "Transcription",
+                "respondentFeeSubtitle": "Payment for the respondent",
+                "respondentFeeLabel": "Respondent fee",
+                "currencyLabel": "Currency"
+            },
+            "respondentPage": {
+                "interviewsSubtitle": "Interviews",
+                "surveysSubtitle": "Surveys",
+                "surveysStatuses": {
+                    "filled": "filled",
+                    "ended": "ended",
+                    "pending": "pending"
+                },
+                "noResponsesMessage": "No responses"
+            }
+        },
+        "editProject": {
+            "title": "Új kutatási alkotó",
+            "aboutStepTitle": "A projektről",
+            "methodologyStepTitle": "Kutatásmódszertan",
+            "respondentsStepTitle": "Válaszadók kiválasztása",
+            "detailsStepTitle": "Projekt részletei",
+            "summaryStepTitle": "Összegzés",
+            "aboutStep": {
+                "title": "A projektről",
+                "projectNameSubtitle": "Kérjük, adja meg a projekt nevét",
+                "projectNameInputPlaceholder": "Projekt neve",
+                "descriptionInputPlaceholder": "Leírás (opcionális)",
+                "avatarSubtitle": "Töltsd fel az Avatart"
+            },
+            "methodologyStep": {
+                "title": "Kutatásmódszertan",
+                "methodologySubtitle": "Válassza ki a kutatási módszertant."
+            },
+            "respondentsStep": {
+                "title": "Válaszadók kiválasztása",
+                "respondentsSelectionSubtitle": "Válassza ki a válaszadókat ehhez a kutatáshoz",
+                "respondentsSelectionInstructionPart1": "Ha nem biztos benne, hogyan nézzen ki a válaszadói fájl, töltse le mintafájlunkat, ahol minden szükséges információt megtalál.",
+                "respondentsSelectionInstructionPart2": "vagy adja meg a kívánt válaszadói profilt az alábbi szűrőkkel",
+                "genderLabel": "Nem",
+                "otherRequirementsInputPlaceholder": "Egyéb követelmények",
+                "languageTestSubtitle": "Nyelvvizsga a válaszadónak",
+                "screeningSurveySubtitle": "Szüksége van szűrővizsgálatra?",
+                "screeningSurveyDescription": "A felmérés befizetése után lehetősége van egy kész felmérési könyvtár használatára vagy saját készítésére.",
+                "recordingSubtitle": "Szüksége van előzetes válaszadó toborzási felvételre?"
+            },
+            "detailsStep": {
+                "title": "Projekt részletei",
+                "participantsCountInputLabel": "Résztvevők száma",
+                "reserveParticipantsCountInputLabel": "Tartalék résztvevők száma",
+                "interviewDurationDropdownName": "Az interjú időtartama",
+                "startDateLabel": "Kezdő dátum",
+                "endDateLabel": "Befejezés dátuma",
+                "transcriptionSubtitle": "Szüksége van átírásra?",
+                "moderatorSubtitle": "Szüksége van moderátorra?",
+                "paymentSubtitle": "Fizetés a válaszadónak",
+                "paymentInstruction": "Kérjük, adja meg a bruttó összeget. A pénznemnek meg kell egyeznie a számla kifizetéséhez használt pénznemrel."
+            },
+            "summaryStep": {
+                "title": "Összegzés"
+            },
+            "nameStepTitle": "Nevezze el a felmérést",
+            "questionStepTitle": "Kérdések hozzáadása",
+            "nameInputLabel": "Kérjük, adja meg a",
+            "nameInputPlaceholder": "felmérés címe",
+            "availableLanguagesDropdownName": "Elérhető nyelvek",
+            "addLanguageButtonText": "Nyelv hozzáadása",
+            "addLabel": "Hozzáadás",
+            "openQuestionName": "nyitott kérdés",
+            "closedQuestionName": "zárt kérdés",
+            "multipleChoiceQuestionName": "feleletválasztós kérdés",
+            "singleChoiceQuestionName": "egyválasztós kérdés",
+            "newQuestionText": "Új kérdés",
+            "addAnswerButtonText": "Válasz hozzáadása",
+            "newAnswerText": "Új válasz",
+            "correctAnswerLabel": "Helyes válasz",
+            "correctAnswerDropdownName": "Helyes válasz"
+        },
+        "myTeam": {
+            "title": "Az én csapatom",
+            "membersLabel": "tagjai",
+            "inviteTeamMemberButton": "Csapattag meghívása",
+            "administratorsLabel": "Rendszergazdák",
+            "moderatorsLabel": "Moderátorok",
+            "observersLabel": "Megfigyelők",
+            "popup": {
+                "addLabel": "Hozzáadás",
+                "editLabel": "Szerkesztés",
+                "memberText": "tag",
+                "nameInputPlaceholder": "Név",
+                "surnameInputPlaceholder": "Vezetéknév",
+                "emailInputPlaceholder": "Email",
+                "roleDropdownName": "Szerep",
+                "statusDropdownName": "Állapot",
+                "projectsDropdownName": "Projects",
+                "genderDropdownName": "Nem",
+                "saveButtonText": "Megment"
+            }
+        },
+        "meeting": {
+            "finishedMessage": "The meeting has finished"
+        },
+        "library": {
+            "title": "Könyvtár",
+            "mySurveys": "Felméréseim",
+            "publicSurveys": "Lakossági felmérések",
+            "addNewTemplate": "Új sablon hozzáadása"
+        },
+        "calendar": {
+            "title": "Calendar"
+        },
+        "passwordReset": {
+            "request": {
+                "header": "Hozzon létre új jelszót",
+                "subheader": "Adja meg e-mail címét, és küldünk egy üzenetet az új jelszó létrehozásához.",
+                "submitButton": "Küld"
+            },
+            "confirmation": {
+                "header": "Nekünk megvan!",
+                "subheader": "Üzenetet küldtünk Önnek új jelszóval.",
+                "submitButton": "Vissza a honlapra"
+            }
+        },
+        "contact": {
+            "getInTouch": "Felveszi a kapcsolatot",
+            "sendUsAMessage": "Küldj nekünk üzenetet",
+            "quote": "Az Interview mindent tartalmaz, amire szükségünk van, egyetlen platformon.",
+            "messageSent": "Üzenet elküldve!"
+        },
+        "registrationConfirmation": {
+            "header": "Készen van!",
+            "subheader": "Most már bejelentkezhet."
+        },
+        "termsAndConditions": {
+            "header": "Szolgáltatás feltételei",
+            "generalProvisions": {
+                "header": "Általános rendelkezések",
+                "main": "„Az Interjúszolgáltatáshoz – a továbbiakban: „Szolgáltatás” – hozzáférést biztosító szolgáltató az\n\nSTRATEGA CEE KORLÁTOLT FELELŐSSÉGŰ TÁRSASÁG, székhelye: Łódź, ul. Wólczańska 125,\n\n90-521 Łódź, bejegyezve az Országos Bírósági Nyilvántartásba – Vállalkozói Nyilvántartás a KRS alatt\n\nszám: 0000541582, amelynek nyilvántartási bejegyzéseit a ŁÓDŹ-Śródmieście kerületi bíróság őrzi\n\nŁÓDŹ, XX. KRS gazdasági osztály, NIP: 7692223109, REGON: 360412382, a továbbiakban:\n\n„Szolgáltató” vagy „Adminisztrátor”.",
+                "listHeader": "Ez a rendelet (más néven „megállapodás”) előírja:",
+                "list": [
+                    "a Szolgáltató által a Szolgáltatást igénybe vevő elektronikus úton nyújtott szolgáltatások fajtája, terjedelme és szabályai,",
+                    "A szolgáltatást igénybe vevők és a szolgáltatók felelőssége,",
+                    "elektronikus szolgáltatások nyújtására vonatkozó szerződések megkötése és felmondása,",
+                    "A Szolgáltató felelőssége és felelőssége,",
+                    "a reklámozás módja,",
+                    "Személyes adatok feldolgozása."
+                ]
+            },
+            "definitions": {
+                "header": "Definíciók",
+                "list": [
+                    {
+                        "phrase": "Szolgáltató",
+                        "definition": "az a vállalkozó, aki a Szolgáltatóval az Elektronikus Szolgáltatás nyújtására a jelen Szabályzatban meghatározott Szolgáltatás elérhetősége formájában szerződést köt,"
+                    },
+                    {
+                        "phrase": "Szolgáltatás",
+                        "definition": "a Szolgáltatást igénybe vevő webböngészőn keresztül elektronikusan elérhetővé tett szoftver, amely lehetővé teszi különösen a HR toborzás szolgáltatását,"
+                    },
+                    {
+                        "phrase": "fiók",
+                        "definition": "a Szolgáltatás igénybevevője által megadott szervezet (szervezet) egyedi nevével megjelölt, a Szolgáltató informatikai rendszerében található erőforrás-gyűjtemény, amelyben az Adatok gyűjtése történik, melynek köszönhetően a Szolgáltatás igénybevevője igénybe veheti a Szolgáltatást,"
+                    },
+                    {
+                        "phrase": "Fiókadminisztrátor",
+                        "definition": "ez alatt a Felhasználót kell érteni, aki jogosult a Fiók kezelésére. Alapértelmezés szerint a fiók adminisztrátora az a személy, aki létrehozta a fiókot. A Szolgáltatás részeként a Szolgáltatás címzettje a Szolgáltatásban elérhető funkciók segítségével önállóan válthatja a Fiókadminisztrátort."
+                    },
+                    {
+                        "phrase": "Felhasználó",
+                        "definition": "bármely személy, aki valaha is használta vagy használja a Szolgáltatást"
+                    },
+                    {
+                        "phrase": "Feliratkozás",
+                        "definition": "a Szolgáltatás igénybevevőjének nyilatkozata a Szolgáltatáson keresztül történő Fiókvezetés és a Szolgáltatás igénybevétele formájában történő elektronikus szolgáltatás nyújtásáról szóló szerződés megkötésére. A benyújtás a www.interviewlyapp.com weboldalon keresztül történő Fiók létrehozásával vagy az elektronikus szolgáltatás nyújtására vonatkozó szerződés meghosszabbításával történik Fiók létrehozása és a Szolgáltatás használata formájában,"
+                    },
+                    {
+                        "phrase": "Díj",
+                        "definition": "a Szolgáltatónak a Szolgáltatásért járó díja a Szolgáltatás igénybevevőjét terheli. A díj\r\nSzolgáltatás-előfizetési díjként fizetik a kiválasztott Előfizetési Időszakban vagy Meghosszabbított Előfizetésben\r\na kiválasztott előfizetési időszak alatt."
+                    },
+                    {
+                        "phrase": "Előfizetési időszak",
+                        "definition": "ezt a Számla működési időszakát kell érteni\r\namely díjat fizet és amelyen belül szolgáltatásokat nyújt a Szolgáltató a Szolgáltatásnak\r\nCímzett elektronikusan a Szolgáltatás elérhetősége formájában. Az előfizetési időszakok\r\nelfogadva: egy hónap, hat hónap, tizenkét hónap."
+                    }
+                ]
+            },
+            "obligationsOfServiceProvider": {
+                "header": "A szolgáltató kötelezettségei",
+                "list": [
+                    "A Szolgáltató az év 80%-ában kijelenti a Szolgáltatás (SLA) elérhetőségét.",
+                    "A Szolgáltatás elérhetetlensége nem számít bele a rendelkezésre állási számlázásba, ha a Szolgáltatás igénybevevője nem fizeti meg a Díjat a Nem elérhető Alkalmazás időpontjában.",
+                    "A mutató a Weboldal elérhetőségére vonatkozik, kizárva a Szolgáltató vagy külső cégek informatikai infrastruktúrájából, információs infrastruktúrájából vagy vis maiorból adódó problémákat.",
+                    "Műszaki szünet a Szolgáltatás és/vagy a Szolgáltató által használt infrastruktúra karbantartásához szükséges idő.",
+                    {
+                        "text": "Műszaki megszakítások és szervizfrissítések",
+                        "sublist": [
+                            "„A Szolgáltató a Szolgáltatás frissítéseit 19:00 és 7:00 óra között végzi el a helyi időzónában.",
+                            "A szolgáltatónál vagy a technikai szünetekben.\""
+                        ]
+                    },
+                    "„A Szolgáltató bármikor jogosult a Szolgáltatáshoz való hozzáférés technikai megszakítására",
+                    {
+                        "text": "19:00-7:00 óráig a Szolgáltató Időzónájában.\"",
+                        "sublist": [
+                            "A Szolgáltató fenntartja a jogot a Szolgáltatás módosítására, így különösen annak hatályának kiterjesztésére.",
+                            "A Szolgáltató nem vállal felelősséget:",
+                            "a Szolgáltatás igénybevevője által a Szolgáltatásban történő hibás adatbevitel vagy adatkezelés következményei;",
+                            "a www.interviewlyapp.com szolgáltatás helytelen használata;",
+                            "a Szolgáltatás igénybevevője által a nem megfelelő biztonság, a Szolgáltatáshoz való hozzáféréshez illetéktelen személyek részére történő hitelesítési adatok átadása által okozott károk, ideértve az elmaradt előnyöket is;",
+                            "a Szolgáltatást igénybe vevő cselekményéből vagy mulasztásából, így különösen a Szolgáltatás jogszabályi vagy a Szabályzat előírásaival nem összeegyeztethető módon történő igénybevételéből eredő károk, ideértve az elmaradt hasznot is,",
+                            "vis maior események által okozott károk, ideértve az elmaradt hasznot is."
+                        ]
+                    },
+                    "A Szolgáltató vagy jogilag kapcsolt vállalkozásai semmilyen körülmények között nem vállalnak felelősséget a haszon- vagy bevételkiesésért (kiesett haszon), a megtakarításokért, az adatok elvesztéséért vagy megsemmisüléséért, a cég vagy a jó hírnév értékéért, az adatok pontatlanságáért, továbbá felelősek minden anyagi/immateriális kárért vagy közvetett, véletlen veszteségért, függetlenül a felelősség forrásának elméletétől, még akkor is, ha az ilyen kár vagy veszteség lehetőségéről tájékoztatták őket.",
+                    "A Szolgáltató Szerződés szerinti felelőssége a Szolgáltatás igénybevevője által utoljára kifizetett Befizetés értékével megegyező összegre korlátozódik, de legfeljebb az adott Előfizetési Időszakra vonatkozó Fizetés összegére."
+                ]
+            },
+            "principlesOfApplicationUse": {
+                "header": "Az alkalmazás használatának elvei",
+                "list": [
+                    "A Szolgáltatás igénybevételéhez internet-hozzáféréssel rendelkező készülék, webböngésző, valamint Fiók létrehozása szükséges – a be/be – mellett egy e-mail fiók is.",
+                    "A Weboldal elérése az általánosan elérhető webböngészők egyikén keresztül lehetséges: Google Chrome, Mozilla Firefox, Opera, Edge, Safari, a legújabb verziókban. Az elérhető verziók közül az engedélyezett verziók közül a webböngészőben a Cookie-k, ill. Javascript.",
+                    "A Szolgáltató a Szolgáltatás eléréséhez és szolgáltatásához kapcsolódó informatikai szolgáltatásokat kizárólag interneten keresztül nyújtja.",
+                    "A Felhasználó tudomásul veszi, hogy eszközeinek és szoftvereinek rendszeres frissítése a Weboldalról folytatott kommunikáció során a modern titkosítási mechanizmusok támogatása érdekében lehetővé teszi azok használatát. Az említett frissítések elérhetősége a Felhasználó tulajdonában lévő hardvertől és/vagy szoftvertől függhet, ezért a Szolgáltató nem vállal felelősséget az említett frissítések esetleges elmaradásáért és ebből adódóan a Szolgáltatás ezen okból történő használatának hiányáért.",
+                    "A Szolgáltatást igénybe vevő Felhasználó nem kap semmilyen szerzői jogot a Szolgáltatásra. A Szolgáltatás\r\nAz Átvevő és a Felhasználó csak – a Szabályzatban megjelölt feltételekkel – olyan fizetős, át nem ruházható és nem kizárólagos licencet kap, amely feljogosítja a Szolgáltatás rendeltetésszerű használatára.”",
+                    {
+                        "text": "A kétségek elkerülése érdekében Ön egyedül nem engedi meg és nem hatalmaz fel senkit arra, hogy:",
+                        "sublist": [
+                            "A Szolgáltatás terjesztése, átadása, kölcsönzése, megosztása, értékesítése, továbbítása, licencelése, bérbeadása vagy más módon elérhetővé tétele.",
+                            "forráskód vagy más módszerek, algoritmusok vagy folyamatok másolása, visszafejtése, újrarajzolása, visszafejtése vagy más módon történő kinyerése vagy reprodukálása a Webhelyről.",
+                            "bármely más nyereséges kereskedelmi formában kínálni vagy működtetni a Szolgáltatást, amely hozzáadott értéket ad a termékekhez vagy szolgáltatásokhoz bármely harmadik fél számára, ideértve a tárhelyszolgáltatást, az időmegosztási szolgáltatásokat, az SaaS (Szoftver mint szolgáltatás) szolgáltatásokat vagy a kezelési szolgáltatásokat, még akkor is, ha együtt kínálják vagy más termékek és szolgáltatások részeként;",
+                            "Távolítson el minden szerzői jogi információt, védjegyet, kivéve a szerkeszthető elemeket a Weboldal funkcionalitási szintjén."
+                        ]
+                    },
+                    "A Szolgáltató nem vállal felelősséget harmadik személyek jogainak megsértéséért és harmadik személyeknek okozott károkért a Szolgáltatás igénybe vevője, Felhasználói vagy Munkavállalói által a szolgáltatás igénybevétele során végzett tevékenység következtében és azzal összefüggésben. Szolgáltatás.",
+                    "Amennyiben a Szolgáltatás igénybe vevője a Szolgáltatással kapcsolatos ötleteiről, javaslatairól a Szolgáltató felé tájékoztatást ad, úgy a Szolgáltatást igénybe vevő hozzájárul ahhoz, hogy az ilyen ötleteket, javaslatokat a Szolgáltató korlátozás nélkül bármilyen célra felhasználja, különös tekintettel a fejlesztésre, módosításra, javításra, kizárással. felelősség, valamint díjazás a Felhasználó felé.",
+                    "A Felhasználó tudomásul veszi és elfogadja, hogy a Szolgáltató által nyújtott szolgáltatások az alkalmazás, a hardver és az infrastruktúra egyetlen alapváltozatán alapulnak, és célja, hogy a szolgáltatást több ügyfél számára skálázható módon nyújtsa. A Szolgáltatás nem lesz adaptálva és/vagy adaptálva a Szolgáltatás igénybevevőjéhez, kivéve, ha abban a Felek kifejezetten megállapodtak."
+                ]
+            },
+            "feesAndPayments": {
+                "header": "Díjak és kifizetések",
+                "list": [
+                    "Az előfizetési árat a Szolgáltató honlapján teszik közzé: www.interviewlyapp.com.",
+                    "A feltüntetett árak nettó árak (azaz az ÁFA-t nem tartalmazzák). Az árak lengyel zlotyban, amerikai dollárban értendők.",
+                    "A díj előre fizetendő, és a kiválasztott előfizetési modell szerint kerül kiszámításra.",
+                    "A fizetés hitelkártyával (Visa, MasterCard, American Express) vagy banki átutalással történik a Szolgáltató által kiállított számla alapján.",
+                    "A díj átutalással a Szolgáltató ÁFA számlán feltüntetett bankszámlájára kerül befizetésre. A Megrendelő vállalja, hogy a díjat az ÁFA számla megadott email címre történő kézbesítésétől számított 7 napon belül megfizeti. Lehetőség van az átutalás időtartamának meghosszabbítására a Szolgáltatás átvevővel kötött egyedi megállapodás keretében. A végső döntést a szolgáltató hozza meg.",
+                    "A Szolgáltató a banki átutalással történő fizetést megtagadhatja, ha a Szolgáltató a fizetési határidőt nem tartja be.",
+                    "A kifizetett számlákat e-mailben kézbesítjük.",
+                    "A fájl formájában kiküldött számla kézbesítése azonnal megtörténik, amint a Szolgáltató az e-mail címről számlafájlt tartalmazó e-mailt küld a Szolgáltató által megjelölt címre. Abban az esetben, ha a számlát tartalmazó e-mail a Szolgáltatótól független okokból nem érkezik meg a Szolgáltatás címzettjéhez, a számláról az Ügyfél kérésére másolatot állítunk ki.",
+                    "A Szolgáltató által kiállított számlák alapján történő összegek kifizetésének napjára a Felek elfogadják a Szolgáltató Bankszámlája elismerésének napját.",
+                    "Felek megállapodnak abban, hogy a Szolgáltató a korábban esedékes tartozások terhére a Szolgáltatás igénybevevőjétől származó kifizetéseket elsősorban a fizetést kísérő Nyilatkozatok tartalmától függetlenül számolja el.",
+                    "Ha az Előfizetési Díj fizetési módjaként hitel- vagy betéti kártyát választ, minden további Előfizetési Időszak díja automatikusan felszámításra kerül mindaddig, amíg a Szolgáltatást igénybe vevő nem nyilatkozik az elállási szándékáról. A lemondást e-mailben kell jelenteni a contact@interviewlyapp.com címre, legkésőbb 7 nappal az új Előfizetési Időszak kezdete előtt.",
+                    "A Szolgáltatást igénybe vevő a kiválasztott Előfizetés díját legkésőbb az Előfizetés benyújtásától számított 7 munkanapon belül köteles megfizetni. A fizetés napja a szükséges tartozás Szolgáltató Bankszámláján történő elszámolásának napja. A megadott határidőn belüli fizetés elmulasztása az előfizetés lemondásával egyenértékű.",
+                    "Az Előfizetés Paramétereinek módosítását a Fiókadminisztrátor közvetlenül a Szolgáltatásban lévő Fiókon hajtja végre, és azt bármikor lemondhatja, vagy a Fiókadminisztrátor a bekezdésben megadott email címre küldött utasítására. 2. pontja szerint.",
+                    "A Fiókadminisztrátornak hozzáférése van a Szolgáltatáshoz",
+                    "A Szolgáltatás igénybevevője hozzájárul ahhoz, hogy a Szolgáltató az áfás számlákat elektronikus formában küldje meg az elektronikus formátumú számla kiállításának és küldésének jogalapjának megfelelően. 2004. március 11-i törvény az áruk és szolgáltatások adójáról (Dz.U. 54. fejezet). , Pos. and 535.) A törvénynek megfelelően elektronikus formában kiküldött számla (Dz.U. 144. sz. 1204, módosítások) egyenértékű a papír alapú számla kiküldésével, és számviteli bizonylatnak minősül.\r\n\r\nA helyesbítő számlákat és az elektronikusan küldött számla másolatait is elektronikus formában küldjük meg.",
+                    "Az ÁFA-s számla papír formátumban kizárólag a Szolgáltatás igénybevevőjének kifejezett, elektronikus formában kifejezett kérésére kerül kibocsátásra és kézbesítésre a Szolgáltató kapcsolattartási e-mail címére. Az áfa papír formában történő kinyomtatásának és kézbesítésének díját a Szolgáltató fizeti és hozzáadja a számlához, nettó 59 PLN + ÁFA összegben.",
+                    "A Szolgáltató a változást megelőzően legalább 60 nappal a Szolgáltatás igénybevevőinek tájékoztatását követően bármikor módosíthatja az Árlistát vagy annak egy részét, vagy új díjakat állapíthat meg. Az árváltozások és az új díjak megállapítása a következő előfizetési időszakokra, valamint a változás hatálybalépését követően minden új Szolgáltatás igénybevevőjére lép hatályba. Amennyiben a Szolgáltatást igénybe vevő nem járul hozzá a Díjszabás árváltozásaihoz, az Előfizetést lemondhatja és a Szolgáltatás igénybevételét abbahagyhatja a következő Időszak kezdete előtt, amelytől kezdve a megváltozott árak érvényesek."
+                ]
+            },
+            "support": {
+                "header": "Támogatás",
+                "list": [
+                    "A technikai támogatás minden nap elérhető. 9:00 – 15:00 (CET) azon Szolgáltatás igénybevevői számára, akiknek az Alkalmazandó Előfizetési Időszakért díjat kell fizetni a kiválasztott előfizetési modellek esetében.",
+                    "A technikai támogatással kapcsolatos elérhetőségek a fiókadminisztrátor számára elérhetők a contact@interviewlyapp.com e-mail címen",
+                    "A Szolgáltató mindent megtesz annak érdekében, hogy az e-mailekre a Szolgáltatóra vonatkozó munkanapokon belül 72 órán belül válaszoljon."
+                ]
+            },
+            "compliants": {
+                "header": "Megfelelő",
+                "list": [
+                    "A Szolgáltató vállalja, hogy haladéktalanul megszünteti azokat a hibákat, amelyek a Szolgáltatás igénybevételét akadályozzák.",
+                    "A Szolgáltatáshoz való hozzáférési szolgáltatás nyújtásával kapcsolatos panaszait a Szolgáltatás igénybevevője a contact@interviewlyapp.com e-mail címen nyújthatja be.",
+                    {
+                        "text": "A jelentésnek tartalmaznia kell:",
+                        "sublist": [
+                            "a szervezet neve (a fiók létrehozásakor megadott adatok) és e-mail címe",
+                            "információkat az érintett felhasználóról,",
+                            "a Szolgáltatás működésével kapcsolatos probléma előfordulásának időpontja és körülményei, az oldal URL-je vagy neve,",
+                            "Képernyő látható URL-lel és problémával"
+                        ]
+                    },
+                    "Amennyiben a panasz kivizsgálásához további információra van szükség, a Szolgáltató a panaszos elbírálása előtt kéri ezen adatok megadását, és a panasz kivizsgálásának idejét a kért tájékoztatás kézbesítésének napjától számítjuk.",
+                    "Javasoljuk, hogy a fenti e-mailben minél több információt és körülményt adjon meg a panasz tárgyával kapcsolatban, különös tekintettel a szabálytalanság típusára, bekövetkezésének időpontjára és elérhetőségeire – ez megkönnyíti és felgyorsítja a panaszok feldolgozását. a Szolgáltató által.",
+                    "A panaszt a Szolgáltató haladéktalanul, de legkésőbb 14 munkanapon belül kezeli.",
+                    "A panasz Szolgáltató általi elbírálása végleges.",
+                    "A Szolgáltató a panaszra adott válaszát a Szolgáltatás igénybevevőjének a reklamációs bejelentésben megjelölt e-mail címére küldi meg,"
+                ]
+            },
+            "serviceData": {
+                "header": "Szolgáltatási adatok",
+                "list": [
+                    "A Szolgáltatás igénybevevője által a Szolgáltatási fiókba bevitt adatok a Szolgáltatás címzettjének tulajdonát képezik.",
+                    "A Szolgáltató a Szolgáltatásszámlára bevitt valamennyi adatot a személyes adatok kezelése tekintetében az egyének védelméről szóló, 2016. április 27-i (EU) 2016/679 európai parlamenti és tanácsi rendeletnek megfelelően tárolja, ill. az ilyen adatok szabad áramlásáról és a 95/46/EK irányelv hatályon kívül helyezéséről. (dalej RODO).",
+                    "A Szolgáltató a Szolgáltatás igénybevevője által rendelkezésére bocsátott adatokat a vonatkozó jogszabályi rendelkezéseknek megfelelően, valamint a Szabályzat 1. számú mellékletét képező Személyes Adatkezelési Megbízási Szerződés szerint tárolja és kezeli.",
+                    "A Szolgáltatás igénybevevője jelen Általános Szerződési Feltételek elfogadásával hozzájárul ahhoz, hogy a Személyes Adatkezelési Megbízási Szerződésben foglaltaknak megfelelően az adatokat a Szolgáltatóra bízza."
+                ]
+            },
+            "conditionsOfCeasementOfContract": {
+                "header": "A szerződés megszűnésének feltételei",
+                "list": [
+                    "Az Ügyfél a szerződést egy hónapos felmondási idővel és indokolás nélkül felmondhatja a contact@interviewlyapp.com e-mail címre küldött erre vonatkozó nyilatkozatával.",
+                    "A Szolgáltatást igénybe vevő a szerződést azonnali hatállyal felmondhatja, ha a Szolgáltató nem tartja fenn a Szolgáltatás elérhetőségét az SLA-ban meghatározott keretek között a III.1. pontban, a contact@interviewlyapp.com e-mail címre küldött erre vonatkozó nyilatkozatával.",
+                    {
+                        "text": "A Szolgáltató ideiglenesen vagy véglegesen zárolhatja a Szolgáltatást igénybe vevő fiókját, illetve felmondhatja a Szerződést abban az esetben, ha a Felhasználó:",
+                        "sublist": [
+                            "sérti a szabályzatot,",
+                            "törvénysértő jellegű tartalmat ad a szabálysértések határozott határidővel történő megszüntetésére irányuló, eredménytelen előzetes felszólítás után;",
+                            "a Szolgáltatóra nézve hátrányos, vagy hamis adatot ad meg a regisztráció során, vagy a megadott adatokban bekövetkezett változásokat nem frissíti azonnal a tényleges állapotnak megfelelően,",
+                            "nem fizet időben.",
+                            "olyan cselekményeket követ el, amelyek célja a Szolgáltatásban és a Szolgáltatás használatával kezelt adatok biztonságának megsértése, vagy a Szolgáltatáshoz való jogosulatlan hozzáférést kísérel meg, vagy egyéb olyan tevékenységet hajt végre, amely a Szolgáltatás rendeltetésszerű működését akadályozza."
+                        ]
+                    },
+                    "A Szolgáltató jogosult a Szerződést azonnali felmondással felmondani, ha a jelen fejezet (3) bekezdésében meghatározott okok valamelyike ​​bekövetkezik.",
+                    "A Szolgáltató a Szerződést bármikor, három hónapos felmondási idővel felmondhatja.",
+                    "A Szolgáltatónak a szerződés felmondására vonatkozó akaratnyilatkozata annak érvényességéhez okirati formanyomtatványt igényel, és azt a Szolgáltatást igénybevevő mindenkori Számlaadminisztrátorának email címére kell elküldeni. A Szerződés felmondási ideje a Szolgáltató a Szerződés felmondására vonatkozó akaratnyilatkozatának kézbesítésének napjától kezdődik.",
+                    "Ez a megszűnés a jogviszony jövőre vonatkozó megszűnését vonja maga után."
+                ]
+            },
+            "finalProvisions": {
+                "header": "Záró rendelkezések",
+                "list": [
+                    "A Szolgáltató által az Alkalmazás tevékenységei körében kötött szerződések lengyel nyelven jönnek létre, a Lengyelország területén hatályos jogszabályoknak megfelelően.",
+                    "A Szolgáltató fenntartja a jogot a Szabályzat módosítására. A Felhasználási feltételekben végrehajtott változtatások a Szolgáltatás igénybevevőjét kötelező érvényűek, feltéve, hogy a változásokról megfelelően tájékoztatták, és a változásról a Szolgáltató általi értesítéstől számított 14 napon belül nem bontotta fel a Szerződést.",
+                    "Abban az esetben, ha a Szabályzat bármely része nem felel meg az alkalmazandó jognak, a szabályzat vitatott rendelkezése helyett a lengyel jog vonatkozó rendelkezéseit kell alkalmazni.",
+                    "A Szolgáltató és a Szolgáltatás igénybevevője között felmerülő vitás kérdéseket a Szolgáltató székhelye szerint illetékes bírósághoz kell benyújtani."
+                ]
+            }
+        },
+        "personalDataProcessingAgreement": {
+            "header": "Megállapodás a személyes adatok kezeléséről",
+            "text": "„A Személyes adatok kezeléséről szóló megállapodás a Szabályzat szerves részét képezi, és rögzíti a Felhasználó személyes adatainak a Szolgáltató által a Szolgáltatás címzettje nevében történő kezelésének szabályait a www.interviewlyapp.com weboldalon található Szolgáltatáson keresztül.",
+            "rules": [
+                {
+                    "title": "A Személyes adatok feldolgozására vonatkozó szerződés képezi a Felhasználói adatkezelésre vonatkozó kötelezettségek és feltételek összességét a Szolgáltató és a Szolgáltatás igénybevevője között a SaaS szolgáltatással kapcsolatban, és minden korábbi megállapodást, megállapodást és megállapodást felvált a Szolgáltató és a Szolgáltató között. e tekintetben a szolgáltatás igénybevevője.\"",
+                    "list": [
+                        "Definíciók",
+                        "Adminisztrátor – a Szolgáltatás címzettje, aki egyedül vagy más szervezetekkel közösen meghatározza a Személyes adatok kezelésének céljait és módjait;"
+                    ]
+                },
+                {
+                    "title": "Processzor – a Szolgáltatót jelenti",
+                    "list": [
+                        "A személyes adatok kezelésének alanya",
+                        "A Szabályzatban szabályozott SaaS szolgáltatásra vonatkozó, elektronikus úton történő szolgáltatásnyújtásra vonatkozó szerződés (a továbbiakban: „Főszerződés”) végrehajtásával kapcsolatban az Adatkezelő a Feldolgozót bízza meg a Szabályzatban foglaltak szerint. A Rendelet 28. pontja szerint az Adatkezelő megbízásából, a Szerződésben meghatározott feltételekkel és célból kezelendő személyes adatokat.",
+                        "Az Adatkezelő kijelenti, hogy a személyes adatok feldolgozása tekintetében a természetes személyek védelméről szóló 2016. április 27-i (EU) 2016/679 európai parlamenti és tanácsi rendelet rendelkezései értelmében ő a személyes adatok kezelője. Az adatok és az ilyen adatok szabad áramlásáról, valamint a 95/46/EK irányelv (Általános Adatvédelmi Rendelet) hatályon kívül helyezéséről (a továbbiakban: Rendelet), amellyel az Adatfeldolgozót bízza meg."
+                    ]
+                },
+                {
+                    "title": "Az adatkezelés köre és célja",
+                    "list": [
+                        "Az Adatkezelőre bízott személyes adatokat az Adatfeldolgozó kizárólag a 2. § (1) bekezdésében említett Főszerződésben részletesen leírt szolgáltatások teljesítése céljából, valamint a jelen Szerződésekkel és a vonatkozó, általánosan alkalmazandó jogszabályi rendelkezésekkel összhangban álló módon kezeli.",
+                        "Személyek kategóriája: az Adminisztrátor alkalmazottai és munkatársai, állásra jelentkezők, a Szolgáltatást igénybe vevők.",
+                        {
+                            "text": "Az adatfeldolgozó vállalja, hogy a rábízott személyes adatokat az alábbi mértékben kezeli:",
+                            "sublist": [
+                                "Vezetéknév, keresztnév",
+                                "Kép – a Szolgáltatásba feltöltött fotó és felvétel",
+                                "Nem",
+                                "Cím",
+                                "Kapcsolat Telefon",
+                                "Email cím",
+                                "Születési dátum",
+                                "Bankszámlaszám",
+                                "Szakmák",
+                                "Ipar",
+                                "Polgári állam",
+                                "Információ a gyermekvállalásról",
+                                "A tárolt fájlokban található vagy máshol megadott egyéb adatok."
+                            ]
+                        },
+                        "Feldolgozási tevékenységek: Gyűjtés, rögzítés, rendszerezés, rendezés, tárolás, megtekintés, átvitel, módosítás, törlés.",
+                        "A feldolgozás formája: Elektronikus"
+                    ]
+                },
+                {
+                    "title": "A Feldolgozó kötelezettségei",
+                    "list": [
+                        "Az Adatfeldolgozó kijelenti, hogy megfelelő technikai és szervezési intézkedéseket tesz annak érdekében, hogy az adatkezelés megfeleljen a rendeletben foglalt követelményeknek, és védje az érintettek jogait, ami különösen azt jelenti, hogy az Adatfeldolgozó megteszi a 1. sz. 32. §-a alapján, és a kellő gondosság a rábízott személyes adatok kezelése során.",
+                        "Az adatfeldolgozó kötelezettséget vállal arra, hogy minden olyan személy számára engedélyezi a személyes adatok feldolgozását, akik a rábízott adatokat jelen Szerződés céljaira feldolgozzák.",
+                        "Figyelembe véve az adatkezelés jellegét, az Adatfeldolgozó a lehetőségekhez mérten megfelelő technikai és szervezési intézkedésekkel segíti az Adatkezelőt abban, hogy az érintett kérelmeire való válaszadási kötelezettségét teljesítse az adatkezelés gyakorlása során. fejezetében meghatározott jogait.",
+                        "Az adatfeldolgozó az adatkezelés jellegére és a rendelkezésére álló információkra figyelemmel segíti az adatkezelőt az adatkezelésben meghatározott kötelezettségek teljesítésében. A szabályzat 32-36.",
+                        "Az adatfeldolgozó kötelezettséget vállal arra, hogy a kezelt adatok bizalmas kezelését (a Rendelet 28. cikk (3) bekezdés b) pontja szerint) biztosítja azon személyek által, akiket jelen szerződés teljesítése céljából személyes adatok feldolgozására felhatalmaz, mind a kezelésük során. munkaviszony a feldolgozónál és annak megszűnése után.",
+                        "Az adatfeldolgozó az adatkezeléssel kapcsolatos szolgáltatásnyújtás teljesítését követően a főszerződésben meghatározott idő lejártát követően az Adatkezelő által megbízott valamennyi adatot törli.",
+                        "Az adatfeldolgozó a személyes adatok védelmének megsértésének megállapítását követően indokolatlan késedelem nélkül jelenti azt az Adatkezelőnek.",
+                        "Az adatfeldolgozó a személyes adatok védelmének megsértésének megállapítását követően indokolatlan késedelem nélkül, legkésőbb a jogsértéstől számított 36 órán belül köteles azt jelenteni az Adatkezelőnek. A kérelmet e-mailben kell benyújtani az Adminisztrátor által a regisztráció során az adatok között megadott e-mail címre (a cím egyben az adminisztrátor bejelentkezési adatai is)."
+                    ]
+                },
+                {
+                    "title": "Műszaki és szervezési intézkedések",
+                    "list": [
+                        "Figyelembe véve a technikai ismeretek állapotát, a megvalósítás költségeit, valamint a Személyes adatok kezelésének jellegét, körét, összefüggéseit és céljait, valamint azon személyek jogai megsértésének kockázatát, akiknek személyes adatai érintettek, a Szolgáltató a a személyes adatok típusának és a személyes adatokkal érintett egyének jogai megsértésének kockázatának megfelelő technikai és szervezési intézkedések."
+                    ]
+                },
+                {
+                    "title": "A feldolgozás ellenőrzésének joga",
+                    "list": [
+                        "A Rendelet 28. cikk (3) bekezdés h) pontja értelmében az Adatkezelő jogosult ellenőrizni, hogy az Adatfeldolgozó által a rábízott személyes adatok kezelése és biztosítása során alkalmazott intézkedések megfelelnek-e a szerződésben foglaltaknak.",
+                        "Az ellenőrzési, auditálási szándékról szóló értesítést a tevékenység megkezdése előtt legalább 14 naptári nappal meg kell küldeni a feldolgozónak. Az ellenőrzés költségeit az ügyintéző fedezi.",
+                        "Az Adatkezelő által kijelölt könyvvizsgáló nem lehet az Adatfeldolgozóval versengő tevékenységet folytató, sem vele kapcsolatban álló jogalany, munkavállaló vagy együttműködő szervezet, tekintet nélkül a munkaviszony vagy az együttműködés alapjára. A könyvvizsgáló az ellenőrzési tevékenység elvégzése előtt köteles gondoskodni a megszerzett információk bizalmas kezeléséről.",
+                        "Az adatkezelés ellenőrzése, amennyiben az a személyes adatok kezelési területeire vonatkozik, nem tarthat tovább 3 munkanapnál.",
+                        "A feldolgozás ellenőrzése a Feldolgozás Ellenőrzési Jegyzőkönyv mindkét Fél általi aláírásával zárul. A jegyzőkönyv tartalmazza a Feldolgozás Ellenőrzéséből származó következtetéseket és a Személyes Adatok Adatfeldolgozó általi kezelésében bekövetkezett esetleges változtatások körét, amelyekben a Felek megállapodtak.",
+                        "Az adatfeldolgozó kötelezettséget vállal arra, hogy az Adatkezelő vagy az általa meghatalmazott személy a személyes adatok biztonsága minőségének javítására és kezelésének módjára, illetve az ellenőrzés vagy audit során feltárt hibák elhárítására vonatkozó ajánlásait határidőn belül teljesíti. az adatkezelő által meghatározott legfeljebb 28 nap."
+                    ]
+                },
+                {
+                    "title": "Adatok szállítása feldolgozásra",
+                    "list": [
+                        "Az adatfeldolgozó alvállalkozásba adhatja az általa kezelt személyes adatok feldolgozását a (2) bekezdésben említett szerződés hatálya alá tartozó szolgáltatás nyújtásával kapcsolatban. 1 szerződéseket köt más feldolgozókkal (a továbbiakban: Alvállalkozók), a Rendeletben meghatározott Alvállalkozói szolgáltatások igénybevételi feltételeinek megfelelően.",
+                        "Az Adatkezelő hozzájárul ahhoz, hogy a Szerződés 1. számú mellékletében meghatározott Megállapodás alapján az Adatfeldolgozónak alárendelje az adatkezelést.",
+                        "A Megállapodás 1. számú melléklete tartalmazza azokat a jogalanyokat, amelyekre az adatfeldolgozó a személyes adatok további feldolgozását bízta.",
+                        "Az adatfeldolgozó az Adatkezelő előzetes értesítése nélkül módosíthatja a jelenlegi alvállalkozókat, és hozzáadhat továbbiakat."
+                    ]
+                },
+                {
+                    "title": "Értesítés a jogsértésekről",
+                    "list": [
+                        {
+                            "text": "Az Adatkezelő által rábízott személyes adatok védelmének megsértését észlelve az Adatfeldolgozó a jogsértés észlelésétől számított indokolatlan késedelem nélkül jelenti azt az Adatkezelőnek. A jelentésnek legalább az alábbi információkat kell tartalmaznia:",
+                            "sublist": [
+                                "a személyes adatok megsértése időpontja, időtartama és helye;",
+                                "a jogsértés jellege és mértéke, azaz különösen az érintettek kategóriái és hozzávetőleges száma, valamint a jogsértés által érintett személyes adatbevitelek típusai és hozzávetőleges száma, valamint lehetőség szerint az érintettek azonosítása;",
+                                "a jogsértés által okozott kár helyreállításához szükséges várható idő;",
+                                "a jogsértés által érintett személyes adatok jellege és köre;",
+                                "a jogsértés lehetséges következményei, beleértve az érintettekre vonatkozó következményeket is;",
+                                "a jogsértés következményeinek minimalizálása érdekében hozott intézkedések, valamint a javasolt megelőző és korrekciós intézkedések;",
+                                "annak a személynek az elérhetőségei, aki további információval szolgálhat a jogsértésről."
+                            ]
+                        },
+                        "Ha az adatfeldolgozó nem tudja az (1) bekezdésben említett összes információt egyidejűleg az adatkezelő rendelkezésére bocsátani, azokat indokolatlan késedelem nélkül egymás után megadja.",
+                        "Az Adatkezelőtől kapott utasítások kézhezvételéig az Adatfeldolgozó minden ésszerű intézkedést megtesz a jogsértés negatív hatásainak korlátozása és orvoslása érdekében."
+                    ]
+                },
+                {
+                    "title": "A Feldolgozó felelőssége",
+                    "list": [
+                        "Az adatfeldolgozó csak abban az esetben felel a személyes adatok kezelésével az Adatkezelőt vagy harmadik feleket ért károkért, ha (i) a személyes adatokat a jelen Szerződéssel ellentétes módon kezelte, (ii) nem teljesíti a rendeletben vagy egyéb a személyes adatok védelmére vonatkozó rendelkezések az adatfeldolgozókat terhelik, vagy (iii) az Adatkezelő törvényes írásbeli utasításait megsértve vagy ezen utasításokat meghaladóan jár el.",
+                        "A törvény szigorúan alkalmazandó rendelkezéseire is figyelemmel, az Adatfeldolgozó a jelen Szerződés elmulasztásáért vagy nem megfelelő teljesítéséért csak az Adminisztrátor dokumentált tényleges káráért (damnum emergens) felel az Adatkezelő felé, a legutolsó fizetési összeg erejéig. az Alkalmazás Előfizetését, mint a Feldolgozót megillető díjazást az Ügyvezetőtől, a rendelkezéseknek megfelelően.",
+                        "A (2) bekezdésben említett felelősségkorlátozás nem vonatkozik az érintettekkel szembeni felelősségre, valamint arra az esetre, ha a kárt az adatfeldolgozó szándékos tevékenysége okozta.",
+                        "Az a Fél, amelyik az okozott kár egészét megtérítette, jogosult kérni, hogy az ugyanabban a feldolgozásban részt vevő másik Fél térítse meg a kártérítés azon részét, amely megfelel a kár másik felet terhelő részének. 82. § (2) bekezdésében meghatározott visszalépési jog alapján. rendelet 5. -a. A (2) bekezdésben említett felelősségkorlátozás nem vonatkozik az e bekezdésben leírt regresszív követelésekre. 4.",
+                        "Az adatfeldolgozó nem vállal felelősséget az alvállalkozónak a rábízott személyes adatok feldolgozásával kapcsolatos intézkedéseiért vagy mulasztásaiért."
+                    ]
+                },
+                {
+                    "title": "A megállapodás időtartama",
+                    "list": [
+                        "Ez a megállapodás a megkötésének napjától a 2. § (1) bekezdésében említett megállapodás érvényességéhez kapcsolódó meghatározott ideig hatályos.",
+                        "Az Adatfeldolgozó a jelen Szerződéssel megbízott személyes adatokat csak a Főszerződés hatályának időtartama alatt kezelheti, kivéve, ha az Adatkezelő és az Adatfeldolgozó külön megállapodásban, külön díjazás ellenében eltérő időtartamot határoznak meg a személyes adatok kezelésére, vagy jelen Szerződés a jelen megállapodás 10. §-ában meghatározott esetekben megszűnik.",
+                        "A szerződés akkor is megszűnik, ha az Adatkezelő által az Adatfeldolgozó rendelkezésére bocsátott személyes adatok kezelése a Főszerződés teljesítéséhez már nem szükséges.",
+                        "A Felek a jelen Szerződést három hónapos felmondási idővel vagy megfelelő megállapodás megkötésével felmondhatják, tekintettel arra, hogy a jelen szerződés felmondása akadályozhatja az Alapszerződés teljesítését, és ezáltal annak megszűnését eredményezheti."
+                    ]
+                },
+                {
+                    "title": "Megállapodás felmondása",
+                    "list": [
+                        "Az adatfeldolgozó tudomásul veszi, hogy a jelen Szerződés felmondása hatással lehet a 2. §-ban említett megállapodás folytatásának lehetetlenségére. 1."
+                    ]
+                },
+                {
+                    "title": "Titoktartási szabályok",
+                    "list": [
+                        "A tisztességtelen verseny elleni küzdelemről szóló, 1993. április 16-i törvény (1993r. 47. sz. 211. pont) értelmében üzleti titoknak minősülő, a megállapodás időtartama alatt a felek által megszerzett minden információ kizárólag a a Szerződés bármelyik fél általi megfelelő végrehajtása, kivéve, ha a másik fél mentesíti a titoktartási kötelezettség vagy azok nyilvánosságra hozatalának kötelezettsége alól a vonatkozó jogszabályi rendelkezésekből."
+                    ]
+                },
+                {
+                    "title": "Záró rendelkezések",
+                    "list": [
+                        "A Szerződés Szolgáltatásainak Feldolgozó általi nyújtásáért járó díjazás magában foglalja a jelen szerződés végrehajtásáért járó jutalmat is.",
+                        "Nem szabályozott kérdésekben a Polgári Törvénykönyv és a Szabályzat rendelkezései az irányadók."
+                    ]
+                }
+            ],
+            "annex": {
+                "title": "1. melléklet – Alvállalkozók listája",
+                "table": [
+                    [
+                        "Tantárgy",
+                        "Vidék",
+                        "Az adatkezelés köre"
+                    ],
+                    [
+                        "Amazon, Luxemburg",
+                        "EU",
+                        "A szerverkörnyezet, amelyen az Alkalmazás fut, az adatbázisok és a biztonsági mentések tárolásra kerülnek."
+                    ],
+                    [
+                        "OVH S.A., Polska",
+                        "EU",
+                        "A szerver környezetet biztonsági másolatok készítésére használják."
+                    ]
+                ]
+            }
+        },
+        "privacyPolicy": {
+            "header": "Adatvédelmi szabályzat és cookie-k",
+            "chapterOne": "Előzetes rendelkezések",
+            "paragraphOne": "Az elektronikus szolgáltatások nyújtásáról szóló, 2002. július 18-i törvény 1. §-a (Dz. A 2004. július 16-i távközlési törvény (Dz. U. 2014.243, azaz későbbtől. A társaság székhelyű korlátolt felelősségű társaság) 173. cikkének megfelelően. Łódź, ul. Wólczańska 125, 90-521 Łódź, az Országos Bírósági Nyilvántartásba bejegyzett vállalkozók nyilvántartása KRS-számon: 0000541582, akiknek nyilvántartásba vételét a Łódź-Śródmieście, XX Łódmieście gazdasági osztály Körzeti Bírósága őrzi. : 7692223109, REGON: 360412382 alaptőke: 5 000,00 PLN teljes körűen benyújtva, e-mail: info@strategaresearch.com, a továbbiakban: „Vállalkozó”, bemutatja a jelen Adatvédelmi szabályzatot és a cookie-kat, a továbbiakban: „Szabályzat”.",
+            "paragraphTwo": [
+                "A Szabályzatban nagybetűvel írt kifejezések, hacsak a Szabályzat tartalma másként nem rendelkezik, a Weboldal Szabályzatában meghatározott jelentéssel bírnak. (www.interviewlyapp.com).",
+                "A „Felhasználó” kifejezés az Ügyfél vagy az Ügyfélvé válni kívánó személy kontextusától függően Jelöltet vagy Jelölt lenni kívánó személyt, illetve a Weboldalt meglátogató internethasználót jelenti."
+            ],
+            "chapterTwo": "Személyes adatok",
+            "paragraphThree": [
+                "A Felhasználó a Vállalkozó által a Weboldalon keresztül kínált szolgáltatások igénybevételéhez köteles kitölteni a megfelelő regisztrációs űrlapot, amelyen konkrét személyes adatokat kell megadni.",
+                "A regisztrációs űrlapon a személyes adatok megadása önkéntes, de szükséges ahhoz, hogy a Szolgáltató a Felhasználónak a Weboldalon keresztül szolgáltatásokat nyújtson.",
+                "A Felhasználó által a regisztrációs űrlapon feltüntetett vagy a Vállalkozóval folytatott levelezésben benyújtott valamennyi személyes adat feldolgozása a 2016. április 27-i (EU) 2016/679 Európai Parlament és Tanács rendeletében meghatározott követelményeknek megfelelő módon történik. az egyének védelméről a személyes adatok kezelése tekintetében és az ilyen adatok szabad áramlásáról, valamint a 95/46/EK irányelv (a továbbiakban: GDPR), valamint az elektronikus szolgáltatások nyújtásáról szóló, 2002. július 18-i törvény hatályon kívül helyezéséről. Az Orosz Föderáció Jogi Lapja). 2013 – 1422 – azaz későbbről."
+            ],
+            "paragraphFour": [
+                "A Weboldal regisztrációs űrlapján keresztül gyűjtött személyes adatok kezelője a Vállalkozó. A cégnél adatvédelmi felügyelőt jelöltek ki, akivel a kapcsolatfelvétel a következő email címen lehetséges: inspektor@stratega.pl",
+                "A Vállalkozó a Felhasználók összegyűjtött személyes adatainak feldolgozását a vele kötött alapon más jogalanyra bízhatja, a Kbt. 28 GDPR.",
+                {
+                    "text": "Az Eladó által a Szolgáltatáson keresztül a Felhasználókkal kötött adásvételi és szolgáltatási szerződések teljesítése érdekében a Felhasználói adatokat különösen az alábbi jogalanyokra bízzuk meg:",
+                    "sublist": [
+                        "postai vagy futárszolgálatot nyújtó szolgáltatók, amelyek a Felhasználót a tesztelt áruval látják el,",
+                        "online tranzakciók kezelése."
+                    ]
+                }
+            ],
+            "paragraphFive": "A felhasználó jogosult személyes adataihoz hozzáférni, azokat ellenőrizni vagy helyesbíteni, valamint hozzájárulását a Vállalkozóhoz intézett megfelelő kéréssel bármikor visszavonhatja.",
+            "paragraphSix": {
+                "text": "A Szolgáltató a Felhasználó személyes adatait kezeli, és az alábbi mértékben és célokra használja fel:",
+                "sublist": [
+                    "a GDPR 6. cikk (1) bekezdés b) pontja alapján a Szolgáltatáson keresztül kínált szolgáltatások teljesítéséhez szükséges,",
+                    "kiegészítő és választható hozzájárulása alapján, amelyet a Felhasználó külön nyilatkozatban adhat ki, a Vállalkozó a Felhasználó személyes adatait marketing célból a GDPR 6. cikk (1) bekezdés f) pontja alapján kezelheti. Ha a Felhasználó ehhez hozzájárul, azt bármikor visszavonhatja.",
+                    "A Felhasználó a további és opcionális hozzájárulása alapján jogosult részére a megadott e-mail címekre vagy telefonszámokra kereskedelmi tájékoztatást küldeni. GDPR 6. (1) bekezdés a) pont. Az előző mondatban említett hozzájárulást a Felhasználó bármikor visszavonhatja."
+                ]
+            },
+            "paragraphSeven": "A Vállalkozó által gyűjtött személyes adatok a vonatkozó jogszabályok alapján felhatalmazott állami hatóságokhoz továbbíthatók.",
+            "chapterThree": "A sütik",
+            "paragraphEight": [
+                "A Szolgáltató a Felhasználó végberendezésén tárolt cookie-kat, azaz kis szöveges információkat használ. (azaz számítógép, táblagép, okostelefon). A cookie-kat a Szolgáltató informatikai rendszere tudja beolvasni.",
+                "Az Üzemeltető cookie-kat tárol a Felhasználó végberendezésén, majd az abban található információkhoz hozzáférést kap statisztikai célokból, valamint a weboldal megfelelő működésének biztosítása, különösen a bejelentkezés utáni munkamenet fenntartása érdekében."
+            ],
+            "paragraphNine": [
+                "Az Üzemeltető egyúttal tájékoztatja a Felhasználókat, hogy lehetőség van a webböngésző olyan konfigurációjára, amely megakadályozza a cookie-k tárolását a Felhasználó végberendezésén.",
+                "A Szolgáltató jelzi továbbá, hogy a cookie-kat a Felhasználó a Szolgáltató általi mentést követően törölheti: a webböngésző megfelelő funkciói, az erre szolgáló programok, vagy az általa használt operációs rendszeren belül elérhető megfelelő eszközök használatával. .",
+                {
+                    "text": "Az alábbi linkek tájékoztatást nyújtanak a cookie-k törlésének módjáról a legnépszerűbb böngészőkben:",
+                    "sublist": [
+                        "Firefox: http://support.mozilla.org/pl/kb/delete-cookies",
+                        "Opera: http://help.opera.com/Linux/9.60/pl/cookies.html",
+                        "Internet Explorer: http://support.microsoft.com/kb/278835/pl",
+                        "Chrome: https://suport.google.comhl=pl&amp;answer=95647"
+                    ]
+                }
+            ],
+            "paragraphTen": "A vállalkozó tájékoztatja a Felhasználókat arról is, hogy az internetböngésző beállításainak módosítása a cookie-k tárolásának letiltása vagy korlátozása érdekében a Felhasználó végkészülékén a nyújtott szolgáltatások funkcionalitásának korlátozását eredményezheti. Hasonló következményekkel járhat, ha a sütik a szolgáltatás nyújtása során törlődnek. Ez azt eredményezheti, hogy nem tud bejelentkezni a Szolgáltatásba, vagy a bejelentkezés után egy munkamenet megszakad.",
+            "chapterFour": "A rendszernaplókban található adatok",
+            "paragraphEleven": "A rendszernaplókban az internetkapcsolat megvalósításának általános szabályaival összefüggésben szereplő információkat a Szolgáltatást üzemeltető tárhely kizárólag technikai és statisztikai célokra használja fel.",
+            "chapterFive": "A vállalkozó által alkalmazott műszaki intézkedések",
+            "paragraphTwelve": "A Vállalkozó köteles megtenni a személyes adatok védelmére vonatkozó hatályos jogszabályok által megkövetelt technikai intézkedéseket annak megakadályozására, hogy az elektronikus úton továbbított személyes adatokat illetéktelen személyek megszerezzék és módosítsák.",
+            "paragraphThirteen": [
+                "A Vállalkozó által alkalmazott Szabályzattal kapcsolatos kérdéseit, véleményét kérjük, küldje el a inspektor@stratega.pl e-mail címre.",
+                "A szabályzat megtalálható a www.interviewlyapp.com oldalon"
+            ]
+        },
+        "surveyStatuses": {
+            "pending": "függőben levő",
+            "finished": "befejezett",
+            "seeResultsLabel": "Lásd az eredményeket"
+        }
+    }
+}

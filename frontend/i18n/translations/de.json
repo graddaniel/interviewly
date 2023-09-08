@@ -1,0 +1,1073 @@
+{
+    "translation": {
+        "currentLanguage": "Deutsch",
+        "generic": {
+            "loading": "Wird geladen",
+            "created": "erstellt",
+            "yes": "Ja",
+            "no": "Nein",
+            "saved": "Saved"
+        },
+        "validation": {
+            "join": {
+                "repeatPasswordError": "Passwörter stimmen nicht überein."
+            },
+            "changePassword": {
+                "repeatPasswordError": "Passwords do not match",
+                "newPasswordSameAsOld": "New password is the same as previous one"
+            },
+            "projectRespondent": {
+                "meetingDateError": "Pick a future date"
+            }
+        },
+        "errors": {
+            "10000": "Unbekannter Fehler",
+            "10010": "Die Überprüfung des JWT-Tokens ist fehlgeschlagen.",
+            "10011": "Fehlende Anmeldeinformationen.",
+            "10012": "Ungültiges Autorisierungsheaderformat.",
+            "10013": "Der Autorisierungsheader fehlt.",
+            "10014": "Ungültiger Autorisierungstyp.",
+            "10015": "Operation unzulässig.",
+            "10016": "JWT-Token fehlt.",
+            "20000": "Das Konto ist bereits aktiv.",
+            "20001": "Im Personalvermittlerkonto fehlen Unternehmensinformationen.",
+            "20002": "Im Personalvermittlerkonto fehlt der Firmenname.",
+            "20003": "Konto nicht gefunden.",
+            "20004": "Die Anforderung zum Zurücksetzen des Passworts ist abgelaufen. Bitte nutzen Sie erneut das Passwort-Erinnerungsformular.",
+            "20005": "Das Konto hat kein Zurücksetzen des Passworts angefordert.",
+            "20006": "Konto existiert bereits.",
+            "20007": "Falsches Passwort.",
+            "20100": "Firma nicht gefunden.",
+            "20101": "Firma existiert bereits.",
+            "20200": "Forschung nicht gefunden.",
+            "30000": "E-Mail ist erforderlich.",
+            "30001": "Bitte geben Sie eine gültige E-Mail-Adresse ein. Beispiel: johndoe@domain.pl.",
+            "30010": "Das Namensfeld ist erforderlich.",
+            "30011": "Name ist zu kurz.",
+            "30012": "Name ist zu lang.",
+            "30020": "Das Feld „Nachname“ ist erforderlich.",
+            "30021": "Nachname ist zu kurz.",
+            "30022": "Nachname ist zu lang.",
+            "30030": "Der eingereichte Typ ist erforderlich.",
+            "30031": "Der Typwert ist falsch.",
+            "30040": "Das Feld „Geschlecht“ ist erforderlich.",
+            "30041": "Der Geschlechtswert ist falsch.",
+            "30050": "Passwort wird benötigt.",
+            "30051": "Das Passwort muss Kleinbuchstaben, Großbuchstaben, Ziffern und Sonderzeichen enthalten.",
+            "30052": "Das Passwort ist zu kurz.",
+            "30053": "Das Passwort ist zu lang.",
+            "30070": "Rollenfeld ist erforderlich.",
+            "30071": "Der Rollenwert ist falsch.",
+            "30080": "Das Statusfeld ist erforderlich.",
+            "30081": "Der Status ist falsch.",
+            "30093": "Number is too long",
+            "30100": "Das Titelfeld ist erforderlich.",
+            "30101": "Der Titel enthält unzulässige Zeichen.",
+            "30102": "Der Titel ist zu kurz.",
+            "30103": "Der Titel ist zu lang.",
+            "30112": "Beschreibung ist zu kurz.",
+            "30113": "Beschreibung ist zu lang.",
+            "30120": "Das Feld „Methodik“ ist erforderlich.",
+            "30121": "Der methodische Wert ist falsch.",
+            "30130": "Das Feld „Anzahl der Teilnehmer“ ist erforderlich.",
+            "30131": "Die Teilnehmerzahl ist zu gering.",
+            "30132": "Die Teilnehmerzahl ist zu hoch.",
+            "30140": "Das Feld „Anzahl der Reserveteilnehmer“ ist erforderlich.",
+            "30141": "Anzahl der Reserveteilnehmer ist zu gering.",
+            "30142": "Anzahl der Reserveteilnehmer ist zu hoch.",
+            "30150": "Die angegebene Besprechungsdauer ist erforderlich.",
+            "30151": "Der Wert für die Besprechungsdauer ist falsch.",
+            "30160": "Das Währungsfeld ist erforderlich.",
+            "30161": "Der Währungswert ist falsch.",
+            "30170": "Das Zahlungsfeld ist erforderlich.",
+            "30171": "Der Zahlungswert ist falsch.",
+            "30183": "Requirements are too long",
+            "30190": "Project languages value is requried",
+            "30191": "Project languages value must be a string encoded boolean",
+            "30200": "Screening survey value is required",
+            "30201": "Screening survey value must be a string encoded boolean",
+            "30210": "Recordings value is requried",
+            "30211": "Recordings value must be a string encoded boolean",
+            "30220": "Start date is required",
+            "30221": "Start date must be, positive string encoded number",
+            "30230": "End date is required",
+            "30231": "End date must be positive, string encoded number",
+            "30235": "Start date must be earlier than end date",
+            "30240": "Transcription needed value is required",
+            "30241": "Transcription needed value must be a string encoded boolean",
+            "30250": "Moderator needed value is required",
+            "30251": "Moderator needed value must be a string encoded boolean",
+            "30500": "Das Nachrichtenfeld ist erforderlich.",
+            "30502": "Die Nachricht ist zu kurz.",
+            "30503": "Die Nachricht ist zu lang.",
+            "30602": "Firmenname ist zu kurz.",
+            "30603": "Firmenname ist zu lang.",
+            "30613": "Die Steuernummer ist zu lang.",
+            "30702": "Der Ländername ist zu kurz.",
+            "30703": "Der Ländername ist zu lang.",
+            "30712": "Der Name der Stadt ist zu kurz.",
+            "30713": "Der Name der Stadt ist zu lang.",
+            "30723": "Der Straßenname ist zu lang.",
+            "30732": "Die Gebäudenummer ist zu kurz.",
+            "30733": "Die Gebäudenummer ist zu lang.",
+            "30743": "Die Einheitennummer des Gebäudes ist zu lang.",
+            "30752": "Postleitzahl ist zu kurz.",
+            "30753": "Die Postleitzahl ist zu lang.",
+            "30803": "Value is too long",
+            "30811": "Incorrect value",
+            "30822": "Value is too high",
+            "30931": "Value is too low",
+            "30932": "Value is too high",
+            "networkError": "Kann nicht mit dem Server verbinden.",
+            "tokenExpired": "Session expired"
+        },
+        "links": {
+            "priceCalculator": "Preisrechner",
+            "tutorials": "Tutorials",
+            "blog": "Blog",
+            "contact": "Kontakt",
+            "forgotPassword": "Passwort vergessen?",
+            "termsAndConditions": "Geschäftsbedingungen",
+            "privacyPolicy": "Datenschutzrichtlinie",
+            "personalDataProcessingAgreement": "Vereinbarung zur Verarbeitung personenbezogener Daten"
+        },
+        "buttons": {
+            "signUp": "Nehmen Sie an einem Vorstellungsgespräch teil",
+            "resign": "Zurücktreten",
+            "logIn": "Anmeldung",
+            "save": "Speichern",
+            "next": "Nächste",
+            "back": "Zurück",
+            "add": "Hinzufügen",
+            "download": "Download"
+        },
+        "menu": {
+            "home": "Heim",
+            "projects": "Projekte",
+            "myTeam": "Mein Team",
+            "calendar": "Kalender",
+            "library": "Bibliothek",
+            "createProject": "Projekt erstellen"
+        },
+        "dropdownMenu": {
+            "openUserPanel": "Benutzerpanel öffnen",
+            "personalData": "persönliche Daten",
+            "companyData": "Firmen Daten",
+            "myTeam": "Mein Team",
+            "logout": "Ausloggen"
+        },
+        "inputs": {
+            "email": "Email",
+            "password": "Passwort"
+        },
+        "sorting": {
+            "newest": "neueste",
+            "oldest": "älteste"
+        },
+        "dialogs": {
+            "languageSelection": "Wählen Sie die Sprache aus"
+        },
+        "pages": {
+            "notFound": "Seite nicht gefunden"
+        },
+        "logIn": {
+            "rememberMe": "Erinnere dich an mich",
+            "joinText": "Sie haben noch kein Konto?"
+        },
+        "setPassword": {
+            "subtitle": "Set password",
+            "newPassword": "New password",
+            "repeatPassword": "Repeat new password",
+            "success": "Password has been set"
+        },
+        "join": {
+            "joinControl": "Haben Sie bereits ein Konto?",
+            "back": "Zurück",
+            "next": "Nächste",
+            "skip": "Überspringen",
+            "page1": {
+                "title": "Nehmen Sie an einem Vorstellungsgespräch teil",
+                "respondentTitle": "Ich bin ein Befragter",
+                "respondentSubtitle": "Ich möchte an Einstellungsgesprächen teilnehmen.",
+                "recruiterTitle": "Ich bin Personalvermittler",
+                "recruiterSubtitle": "Ich möchte auf die Datenbank der Befragten zugreifen."
+            },
+            "page2": {
+                "title": "Wählen Sie ihr Geschlecht",
+                "maleTitle": "ich bin ein Mann",
+                "femaleTitle": "ich bin eine Frau",
+                "maleTitleShort": "Mann",
+                "femaleTitleShort": "Frau"
+            },
+            "page3": {
+                "title": "persönliche Daten",
+                "inputs": {
+                    "name": "Name*",
+                    "surname": "Nachname*",
+                    "email": "Email*",
+                    "password": "Passwort*",
+                    "repeatPassword": "Passwort wiederholen*",
+                    "companyName": "Name der Firma*",
+                    "passwordConstraints": "(Minimum: 8 Zeichen, ein Großbuchstabe, eine Zahl und ein Sonderzeichen)",
+                    "newsletter": "Ich akzeptiere den Newsletterversand.",
+                    "newsletterDetails": "Gemäß den Bestimmungen des Gesetzes vom 18. Juli 2002 über die Bereitstellung elektronischer Dienste (d. 2020.344) erkläre ich mich damit einverstanden, von STRATEGA CEE, UNTERNEHMEN MIT BESCHRÄNKTER VERANTWORTUNG mit Sitz in Łódź, ul. Wólczańska 125, 90-521 Łódź, kommerzielle Informationen über Produkte und Dienstleistungen des Dienstes Interviewlyapp.com in Form eines Newsletters. Diese Einwilligung ist freiwillig und kann jederzeit widerrufen werden. Der Widerruf der Einwilligung hat keinen Einfluss auf die Rechtmäßigkeit der Verarbeitung vor dem Widerruf."
+                },
+                "rulesAgreement": {
+                    "text": "Ich akzeptiere die Bestimmungen des Dienstes sowie den Vertrag zur Beauftragung der Verarbeitung personenbezogener Daten*",
+                    "termsAndConditionsKeyword": "Vorschriften",
+                    "privacyPolicyKeyword": "Vertrag"
+                }
+            },
+            "page4": {
+                "title": "Nehmen Sie ein Video über sich auf",
+                "text": "(max. 10 Minuten)",
+                "submissionText": "Absenden des Formulars"
+            },
+            "page5": {
+                "title": "Du bist fast ein Teil unserer Familie!",
+                "text": "Wir haben Ihnen eine E-Mail mit einem Bestätigungslink gesendet.",
+                "homeButton": "Heim"
+            },
+            "interviewDialog": {
+                "record": "Aufzeichnen",
+                "stop": "Stoppen",
+                "finish": "Beenden"
+            },
+            "fakedoor": {
+                "title": "Ihr Konto wurde erstellt",
+                "text1": {
+                    "regular": "Unsere Website ist voll funktionsfähig",
+                    "strong": "in ein paar Tagen"
+                },
+                "subtitle": {
+                    "regular1": "Du wirst der sein",
+                    "strong": "Erste",
+                    "regular2": "informiert sein"
+                },
+                "text2": {
+                    "regular": "Sie werden auch der Erste sein, der unsere Vorteile voll ausnutzt",
+                    "strong": "innovative Lösungen"
+                },
+                "text3": "Lass uns Kontakt halten!"
+            }
+        },
+        "home": {
+            "initialSection": {
+                "title": "KI-gestützte Rekrutierung und Vorstellungsgespräche",
+                "timeBoxText": "Maximieren Sie Ihre Zeit"
+            },
+            "stepsSection": {
+                "header": {
+                    "firstPart": "Nur",
+                    "secondPart": "3 Schritte",
+                    "thirdPart": "Zu",
+                    "fourthPart": "finde das",
+                    "fifthPart": "am besten",
+                    "sixthPart": "Mitarbeiter"
+                },
+                "content": {
+                    "firstStep": {
+                        "title": "Hochladen",
+                        "text": "die Kandidatendatenbank"
+                    },
+                    "secondStep": {
+                        "title": "Benehmen",
+                        "text1": "Videoanruf, Programmumfragen",
+                        "text2": "Sprachkenntnisse überprüfen"
+                    },
+                    "thirdStep": {
+                        "title": "Erhalten",
+                        "text": "Einschätzung des Kandidaten"
+                    }
+                }
+            },
+            "worldSection": {
+                "firstLine": "Rekrutieren Sie Leute aus",
+                "secondLine": "weltweit"
+            },
+            "openAISection": {
+                "subtitle": "Laden Sie das Briefing hoch und erhalten Sie ein Angebot",
+                "title": "in 1 Minute!",
+                "dashedLabelText": "Künstliche Intelligenz",
+                "buttonText": "Gehen Sie zum Preisrechner"
+            },
+            "subscriptionSection": {
+                "subtitle": "Wir bieten",
+                "title": "4 Abonnementpläne",
+                "labelText1": "Keine Verträge.",
+                "labelText2": "Keine Überraschungsgebühren.",
+                "subscriptionButtonText": "Loslegen"
+            },
+            "tutorialsSection": {
+                "title": "Tutorials",
+                "subscriptionsText": "Anzahl der Abonnements: {{subscriptionsCount, number}}",
+                "subscribeButtonText": "Abonnieren"
+            },
+            "blogSection": {
+                "title": "Blog",
+                "blogLinkText": "Mehr lesen"
+            }
+        },
+        "methodologies": {
+            "interviews": {
+                "title": "Interviews",
+                "text": "1:1 Gespräch mit dem Teilnehmer."
+            },
+            "focusGroups": {
+                "title": "Schwerpunktgruppen",
+                "text": "Gruppendiskussion mit einem Moderator."
+            },
+            "onlineCommunities": {
+                "title": "Online-Communitys",
+                "text": "Online-Community mit Bulletin Board."
+            },
+            "uxInterviews": {
+                "title": "UX-Interviews",
+                "text": "Teilnehmerinterview mit Screensharing."
+            },
+            "productTests": {
+                "title": "Produkttests",
+                "text": "Testen von Produkten mit potenziellen Kunden."
+            }
+        },
+        "accountStatuses": {
+            "active": "aktiv",
+            "unconfirmed": "unbestätigt",
+            "inactive": "inaktiv"
+        },
+        "genders": {
+            "male": "männlich",
+            "female": "weiblich"
+        },
+        "martialStatuses": {
+            "singleMan": "Single man",
+            "singleWoman": "Single woman",
+            "marriedMan": "Married man",
+            "marriedWoman": "Married woman",
+            "widower": "Widower",
+            "widow": "Widow",
+            "divorcedMan": "Divorced man",
+            "divorcedWoman": "Divorced woman",
+            "separatedMan": "Separated man",
+            "separatedWoman": "Separated woman"
+        },
+        "profileRoles": {
+            "admin": "Administrator",
+            "moderator": "Moderator",
+            "observer": "Beobachter",
+            "translator": "translator",
+            "interviewlyStaff": "Mitarbeiterbefragung"
+        },
+        "projectStatuses": {
+            "draft": "draft",
+            "awaitingPayment": "awaiting payment",
+            "new": "new",
+            "inProgress": "in progress",
+            "finished": "fertig",
+            "pending": "ausstehend",
+            "canceled": "abgesagt"
+        },
+        "languages": {
+            "bulgarian": "bulgarisch",
+            "czech": "Tschechisch",
+            "dutch": "niederländisch",
+            "english": "Englisch",
+            "french": "französisch",
+            "german": "Deutsch",
+            "greek": "griechisch",
+            "hungarian": "ungarisch",
+            "italian": "Italienisch",
+            "polish": "Polieren",
+            "portuguese": "Portugiesisch",
+            "romanian": "rumänisch",
+            "russian": "Russisch",
+            "slovak": "slowakisch",
+            "spanish": "Spanisch",
+            "swedish": "Schwedisch",
+            "ukrainian": "ukrainisch"
+        },
+        "surveyTypes": {
+            "regular": "Regular",
+            "screening": "Screening",
+            "language": "Language"
+        },
+        "personalData": {
+            "title": "persönliche Daten",
+            "marketingConsentsSubtitle": "Marketing-Einwilligungen",
+            "changePasswordSubtitle": "Passwortänderung",
+            "currentPassword": "Aktuelles Passwort",
+            "newPassword": "Neues Kennwort",
+            "repeatPassword": "Repeat new password",
+            "save": "Speichern",
+            "passwordChangeSuccessMessage": "Password changed",
+            "name": "Name",
+            "surname": "Surname",
+            "email": "E-mail",
+            "phoneNumber": "Phone number",
+            "companyName": "Company name",
+            "sector": "Sector",
+            "bankAccountNumber": "Bank account number",
+            "birthYear": "Birth year",
+            "province": "Province",
+            "city": "City",
+            "zipCode": "Zip code",
+            "street": "Street",
+            "profession": "Profession",
+            "specialization": "Specialization",
+            "hasChildren": "Has children",
+            "childrenCount": "Children count",
+            "martialStatus": "Martial status",
+            "selectGender": "Select gender",
+            "repeatedNewPassword": "Wiederhole das neue Passwort"
+        },
+        "companyData": {
+            "title": "Firmen Daten",
+            "name": "Name der Firma",
+            "taxIdNumber": "USt-ID Nummer",
+            "country": "Land",
+            "city": "Stadt",
+            "street": "Straße",
+            "buildingNumber": "Hausnummer",
+            "unitNumber": "Einheitennummer",
+            "postalCode": "Postleitzahl",
+            "save": "Speichern",
+            "success": "Erfolgreich gespeichert"
+        },
+        "myAccount": {
+            "greeting": "Hallo",
+            "latestTeamMembersLabel": "Neueste Teammitglieder",
+            "upcomingInterviewsLabel": "Kommende Interviews",
+            "projectsLabel": "Projekte"
+        },
+        "projects": {
+            "title": "Projekte",
+            "projectsCounterText": "Projekte",
+            "searchInputPlaceholder": "Suche nach Projektnamen",
+            "statusLabel": "Status"
+        },
+        "viewProject": {
+            "title": "Projekt Details",
+            "edit": "Bearbeiten",
+            "markAsPaid": "Mark as paid",
+            "steps": [
+                "Allgemein",
+                "Methodik",
+                "Befragte",
+                "Screening-Umfrage",
+                "Einzelheiten"
+            ],
+            "general": {
+                "title": "User Experience in Samsung company",
+                "description": "„Es kann manchmal nervenaufreibend, verletzlich und herausfordernd sein, aber wenn wir aus unseren eigenen Köpfen herauskommen und die Zusammenarbeit in unsere Designprozesse integrieren, können wir alle zu besseren Designern werden.“"
+            },
+            "methodology": {
+                "interview": {
+                    "createSurvey": "Umfrage erstellen",
+                    "instruction": "oder wählen Sie eine Umfrage aus der Bibliothek",
+                    "save": "Speichern"
+                },
+                "onlineCommunity": {
+                    "createBulletinBoardButtonText": "Erstellen Sie ein Bulletin Board",
+                    "membersLabel": "Mitglieder",
+                    "createRoomButtonText": "Platz schaffen",
+                    "roomName": "Raumname",
+                    "addMembersLabel": "Fügen Sie Mitglieder hinzu",
+                    "surveySubtitle": "oder wählen Sie eine Umfrage aus der Bibliothek",
+                    "room": {
+                        "addTopicLabel": "Thema hinzufügen",
+                        "visibilityLabel": "Sichtweite",
+                        "publicVisibility": "Öffentlich",
+                        "specificMembersVisibility": "Spezifische Mitglieder",
+                        "topicInputPlaceholder": "Thema",
+                        "addCommentLabel": "Einen Kommentar hinzufügen",
+                        "noCommentsCabel": "Keine Kommentare",
+                        "commentSingularLabel": "Kommentar",
+                        "commentPluralLabel": "Kommentare"
+                    }
+                },
+                "sessionStartDateLabel": "Session start date",
+                "sessionEndDateLabel": "Session end date"
+            },
+            "respondents": {
+                "personalDataSubtitle": "Personal data",
+                "seeDetailsLabel": "Siehe Einzelheiten",
+                "respondentVideoSubtitle": "Video des Befragten",
+                "upcomingInterviewsSubtitle": "Kommende Interviews",
+                "meetingSchedulerSubtitle": "Schedule the meeting",
+                "scheduleButtonText": "Schedule",
+                "respondentSurveysSubtitle": "Umfragen der Befragten",
+                "scheduledSuccessMessage": "Scheduled"
+            },
+            "screeningSurveys": {
+                "resultsTitle": "Results",
+                "noResultsMessage": "No results"
+            },
+            "details": {
+                "participantsCountInputLabel": "Participants Count",
+                "reserveParticipantsCountInputLabel": "Reserve Participants Count",
+                "interviewDurationLabel": "Interview duration",
+                "startDateLabel": "Start date",
+                "endDateLabel": "End date",
+                "transcriptionSubtitle": "Transcription",
+                "respondentFeeSubtitle": "Payment for the respondent",
+                "respondentFeeLabel": "Respondent fee",
+                "currencyLabel": "Currency"
+            },
+            "respondentPage": {
+                "interviewsSubtitle": "Interviews",
+                "surveysSubtitle": "Surveys",
+                "surveysStatuses": {
+                    "filled": "filled",
+                    "ended": "ended",
+                    "pending": "pending"
+                },
+                "noResponsesMessage": "No responses"
+            }
+        },
+        "editProject": {
+            "title": "Neuer Forschungsschöpfer",
+            "aboutStepTitle": "Über das Projekt",
+            "methodologyStepTitle": "Forschungsmethodik",
+            "respondentsStepTitle": "Auswahl der Befragten",
+            "detailsStepTitle": "Projekt Details",
+            "summaryStepTitle": "Zusammenfassung",
+            "aboutStep": {
+                "title": "Über das Projekt",
+                "projectNameSubtitle": "Bitte geben Sie den Projektnamen an",
+                "projectNameInputPlaceholder": "Projektname",
+                "descriptionInputPlaceholder": "Beschreibung (optional)",
+                "avatarSubtitle": "Laden Sie den Avatar hoch"
+            },
+            "methodologyStep": {
+                "title": "Forschungsmethodik",
+                "methodologySubtitle": "Wählen Sie die Forschungsmethodik."
+            },
+            "respondentsStep": {
+                "title": "Auswahl der Befragten",
+                "respondentsSelectionSubtitle": "Wählen Sie Befragte für diese Forschung aus",
+                "respondentsSelectionInstructionPart1": "Wenn Sie unsicher sind, wie die Befragtendatei aussehen soll, laden Sie unsere Beispieldatei herunter, in der Sie alle notwendigen Informationen finden.",
+                "respondentsSelectionInstructionPart2": "oder geben Sie das gewünschte Befragtenprofil mit den unten stehenden Filtern an",
+                "genderLabel": "Geschlecht",
+                "otherRequirementsInputPlaceholder": "Andere Vorraussetzungen",
+                "languageTestSubtitle": "Sprachtest für den Befragten",
+                "screeningSurveySubtitle": "Benötigen Sie eine Screening-Umfrage?",
+                "screeningSurveyDescription": "Nachdem Sie die Umfrage bezahlt haben, haben Sie die Möglichkeit, eine vorgefertigte Umfragebibliothek zu nutzen oder Ihre eigene zu erstellen.",
+                "recordingSubtitle": "Benötigen Sie eine vorläufige Aufnahme der Befragtenrekrutierung?"
+            },
+            "detailsStep": {
+                "title": "Projekt Details",
+                "participantsCountInputLabel": "Zahl der Teilnehmer",
+                "reserveParticipantsCountInputLabel": "Anzahl der Reserveteilnehmer",
+                "interviewDurationDropdownName": "Interviewdauer",
+                "startDateLabel": "Startdatum",
+                "endDateLabel": "Endtermin",
+                "transcriptionSubtitle": "Benötigen Sie eine Transkription?",
+                "moderatorSubtitle": "Brauchen Sie einen Moderator?",
+                "paymentSubtitle": "Zahlung für den Befragten",
+                "paymentInstruction": "Bitte geben Sie den Bruttobetrag ein. Die Währung sollte mit der Währung übereinstimmen, die für die Rechnungszahlung verwendet wurde."
+            },
+            "summaryStep": {
+                "title": "Zusammenfassung"
+            },
+            "nameStepTitle": "Benennen Sie die Umfrage",
+            "questionStepTitle": "Fügen Sie Fragen hinzu",
+            "nameInputLabel": "Bitte geben Sie die an",
+            "nameInputPlaceholder": "Titel der Umfrage",
+            "availableLanguagesDropdownName": "Verfügbare Sprachen",
+            "addLanguageButtonText": "Sprache hinzufügen",
+            "addLabel": "Hinzufügen",
+            "openQuestionName": "offene Frage",
+            "closedQuestionName": "geschlossene Frage",
+            "multipleChoiceQuestionName": "Frage mit mehreren Antwortmöglichkeiten",
+            "singleChoiceQuestionName": "Single-Choice-Frage",
+            "newQuestionText": "Neue Frage",
+            "addAnswerButtonText": "Antwort hinzufügen",
+            "newAnswerText": "Neue Antwort",
+            "correctAnswerLabel": "Korrekte Antwort",
+            "correctAnswerDropdownName": "Korrekte Antwort"
+        },
+        "myTeam": {
+            "title": "Mein Team",
+            "membersLabel": "Mitglieder",
+            "inviteTeamMemberButton": "Teammitglied einladen",
+            "administratorsLabel": "Administratoren",
+            "moderatorsLabel": "Moderatoren",
+            "observersLabel": "Beobachter",
+            "popup": {
+                "addLabel": "Hinzufügen",
+                "editLabel": "Bearbeiten",
+                "memberText": "Mitglied",
+                "nameInputPlaceholder": "Name",
+                "surnameInputPlaceholder": "Nachname",
+                "emailInputPlaceholder": "Email",
+                "roleDropdownName": "Rolle",
+                "statusDropdownName": "Status",
+                "projectsDropdownName": "Projects",
+                "genderDropdownName": "Geschlecht",
+                "saveButtonText": "Speichern"
+            }
+        },
+        "meeting": {
+            "finishedMessage": "The meeting has finished"
+        },
+        "library": {
+            "title": "Bibliothek",
+            "mySurveys": "Meine Umfragen",
+            "publicSurveys": "Öffentliche Umfragen",
+            "addNewTemplate": "Neue Vorlage hinzufügen"
+        },
+        "calendar": {
+            "title": "Calendar"
+        },
+        "passwordReset": {
+            "request": {
+                "header": "Neues Passwort erstellen",
+                "subheader": "Geben Sie Ihre E-Mail-Adresse ein und wir senden Ihnen eine Nachricht mit Anweisungen zum Erstellen eines neuen Passworts.",
+                "submitButton": "Schicken"
+            },
+            "confirmation": {
+                "header": "Wir haben es!",
+                "subheader": "Wir haben Ihnen eine Nachricht mit einem neuen Passwort gesendet.",
+                "submitButton": "Zurück zur Startseite"
+            }
+        },
+        "contact": {
+            "getInTouch": "In Kontakt kommen",
+            "sendUsAMessage": "Schick uns eine Nachricht",
+            "quote": "„Interviewly bietet alles, was wir brauchen, auf einer einzigen Plattform.“",
+            "messageSent": "Nachricht gesendet!"
+        },
+        "registrationConfirmation": {
+            "header": "Es ist fertig!",
+            "subheader": "Du darfst dich jetzt einloggen"
+        },
+        "termsAndConditions": {
+            "header": "Nutzungsbedingungen",
+            "generalProvisions": {
+                "header": "Allgemeine Bestimmungen",
+                "main": "„Der Dienstanbieter für den Zugriff auf den Interviewly-Dienst, im Folgenden als „Dienst“ bezeichnet, ist\n\nSTRATEGA CEE GESELLSCHAFT MIT BESCHRÄNKTER HAFTUNG mit Sitz in Łódź, ul. Wólczańska 125,\n\n90-521 Łódź, eingetragen im Landesgerichtsregister – Unternehmerregister unter KRS\n\nNummer: 0000541582, deren Registrierungsunterlagen beim Bezirksgericht ŁÓDŹ-Śródmieście geführt werden\n\nIN ŁÓDŹ, XX Wirtschaftsabteilung KRS, NIP: 7692223109, REGON: 360412382, im Folgenden bezeichnet\n\n„Dienstanbieter“ oder „Administrator“.",
+                "listHeader": "Diese Verordnung (auch als „die Vereinbarung“ bezeichnet) legt Folgendes fest:",
+                "list": [
+                    "Art, Umfang und Regeln der vom Dienstanbieter unter Nutzung des Dienstes elektronisch erbrachten Dienstleistungen,",
+                    "Verantwortlichkeiten von Leistungsempfängern und Leistungserbringern,",
+                    "der Abschluss und die Beendigung von Verträgen über die Erbringung elektronischer Dienstleistungen,",
+                    "Verantwortlichkeiten und Verantwortlichkeiten des Dienstleisters,",
+                    "Methode der Werbung,",
+                    "Verarbeitung personenbezogener Daten."
+                ]
+            },
+            "definitions": {
+                "header": "Definitionen",
+                "list": [
+                    {
+                        "phrase": "Dienstleister",
+                        "definition": "ein Unternehmer, der mit dem Anbieter einen Vertrag über die Bereitstellung des elektronischen Dienstes in Form der Verfügbarkeit des Dienstes im Sinne dieser Verordnung abschließt,"
+                    },
+                    {
+                        "phrase": "Service",
+                        "definition": "Software, die dem Dienstleistungsempfänger elektronisch über den Webbrowser zur Verfügung gestellt wird und insbesondere die Dienstleistung der Personalbeschaffung ermöglicht,"
+                    },
+                    {
+                        "phrase": "Konto",
+                        "definition": "gekennzeichnet durch den individuellen Namen der vom Servicenehmer bereitgestellten Organisation (Organisation), eine Sammlung von Ressourcen im IT-System des Serviceanbieters, in denen die Daten gesammelt werden, dank derer der Servicenutzer den Service nutzen kann,"
+                    },
+                    {
+                        "phrase": "Kontoadministrator",
+                        "definition": "Darunter ist der Benutzer zu verstehen, der über die Rechte zur Verwaltung des Kontos verfügt. Standardmäßig ist der Kontoadministrator die Person, die das Konto erstellt hat. Im Rahmen des Dienstes kann der Dienstempfänger den Kontoadministrator unabhängig ändern, indem er die im Dienst verfügbaren Funktionen nutzt."
+                    },
+                    {
+                        "phrase": "Benutzer",
+                        "definition": "jede Person, die den Dienst jemals genutzt hat oder nutzt"
+                    },
+                    {
+                        "phrase": "Abonnement",
+                        "definition": "eine Willenserklärung des Leistungsempfängers zum Abschluss einer Vereinbarung über die Bereitstellung eines elektronischen Dienstes in Form der Führung eines Kontos im Dienst und der Nutzung des Dienstes. Die Einreichung erfolgt durch die Erstellung eines Kontos über die unter www.interviewlyapp.com betriebene Website oder durch die Verlängerung des Vertrags zur Bereitstellung eines elektronischen Dienstes in Form der Führung eines Kontos für den Dienst und der Nutzung des Dienstes."
+                    },
+                    {
+                        "phrase": "Gebühr",
+                        "definition": "„Vergütung des Dienstanbieters für die vom Dienstempfänger geschuldete Leistung. Die Gebühr"
+                    },
+                    {
+                        "phrase": "Abonnementzeitraum",
+                        "definition": "„Hierunter ist der Zeitraum der Kontoführung zu verstehen, z"
+                    }
+                ]
+            },
+            "obligationsOfServiceProvider": {
+                "header": "innerhalb derer eine Gebühr entrichtet wird und innerhalb derer der Dienstanbieter Dienstleistungen für den Dienst erbringt",
+                "list": [
+                    "Empfänger elektronisch in Form der Verfügbarkeit des Dienstes informieren. Abonnementlaufzeiten sind",
+                    "akzeptiert: ein Monat, sechs Monate, zwölf Monate.“",
+                    "Pflichten des Dienstleisters",
+                    "Der Dienstanbieter erklärt die Verfügbarkeit des Dienstes (SLA) zu 80 % der Zeit im Jahr.",
+                    {
+                        "text": "Die Nichtverfügbarkeit des Dienstes wird nicht in die Verfügbarkeitsabrechnung einbezogen, wenn der Dienstempfänger zum Zeitpunkt der Nichtverfügbarkeit der Anwendung keine Gebühren bezahlt hat.",
+                        "sublist": [
+                            "Der Indikator bezieht sich auf die Verfügbarkeit der Website, ausgenommen Probleme, die sich aus der IT-Infrastruktur des Dienstleisters oder Drittunternehmen, der Informationsinfrastruktur oder höherer Gewalt ergeben.",
+                            "Technische Pause ist die Zeit, die für die Wartung des Dienstes und/oder der vom Dienstanbieter genutzten Infrastruktur erforderlich ist."
+                        ]
+                    },
+                    "Technische Unterbrechung und Service-Updates",
+                    {
+                        "text": "Der Dienstanbieter ist nicht verantwortlich für:",
+                        "sublist": [
+                            "die Folgen einer fehlerhaften Dateneingabe oder Datenverarbeitung im Dienst durch den Dienstempfänger;",
+                            "unsachgemäße Nutzung des Dienstes www.interviewlyapp.com;",
+                            "fehlender Zugang des Servicenehmers zum Internet oder eingeschränkte Verfügbarkeit;",
+                            "fehlerhafte Bedienung von Software oder Geräten des Servicenehmers oder seiner Mitarbeiter, die er nutzt und die die Nutzung des Service verhindert,",
+                            "entstandene Schäden, einschließlich entgangener Vorteile, die dem Serviceempfänger durch unzureichende Sicherheit oder die Bereitstellung von Authentifizierungsdaten für den Zugriff auf den Service an Unbefugte entstehen;",
+                            "entstandene Schäden, einschließlich entgangener Vorteile, die durch Handlungen oder Unterlassungen des Servicenehmers verursacht wurden, insbesondere durch die Nutzung des Service in einer Weise, die nicht mit den gesetzlichen Bestimmungen oder den Bestimmungen vereinbar ist,",
+                            "Schäden, einschließlich entgangener Vorteile, die durch Ereignisse höherer Gewalt verursacht werden."
+                        ]
+                    },
+                    "Unter keinen Umständen haften der Dienstanbieter oder seine rechtlich verbundenen Unternehmen für entgangenen Gewinn oder Einkommen (entgangener Gewinn), Einsparungen, Verlust oder Zerstörung von Daten, den Wert des Unternehmens oder des Rufs oder die Ungenauigkeit von Daten Sie haften für alle materiellen/immateriellen Schäden oder indirekten, zufälligen Verluste, unabhängig von der Theorie der Haftungsquellen, selbst wenn sie über die Möglichkeit solcher Schäden oder Verluste informiert wurden.",
+                    "Die Haftung des Dienstanbieters im Rahmen der Vereinbarung ist auf den Betrag beschränkt, der dem Wert der letzten vom Dienstempfänger gezahlten Zahlung entspricht, jedoch nicht mehr als den Betrag der Zahlung für den jeweiligen Abonnementzeitraum."
+                ]
+            },
+            "principlesOfApplicationUse": {
+                "header": "Grundsätze der Anwendungsnutzung",
+                "list": [
+                    "Um den Dienst nutzen zu können, ist es erforderlich, über ein Gerät mit Internetzugang und einen Webbrowser zu verfügen und neben In/In auch ein E-Mail-Konto einzurichten.",
+                    "Der Zugriff auf die Website ist über einen der allgemein verfügbaren Webbrowser möglich: Google Chrome, Mozilla Firefox, Opera, Edge, Safari in den neuesten Versionen. Von den verfügbaren Versionen mit aktivierter, im Webbrowser aktivierter Unterstützung von Cookies und Javascript.",
+                    "Der Dienstleister erbringt IT-Dienstleistungen im Zusammenhang mit dem Zugang und der Bedienung des Dienstes ausschließlich über das Internet.",
+                    "Der Nutzer erkennt an, dass die regelmäßige Aktualisierung seiner Geräte und Software zur Unterstützung moderner Verschlüsselungsmechanismen während der Kommunikation über die Website die Nutzung dieser Geräte und Software ermöglicht. Die Verfügbarkeit dieser Updates kann von der Hardware und/oder Software des Benutzers abhängen und daher ist der Dienstanbieter nicht für das mögliche Fehlen dieser Updates und die daraus resultierende Unmöglichkeit der Nutzung des Dienstes verantwortlich.",
+                    "„Der Nutzer, der den Dienst nutzt, erhält keinerlei Urheberrechte an dem Dienst. Der Dienst.“",
+                    {
+                        "text": "Dem Empfänger und den Nutzern wird – unter den in den Bestimmungen genannten Bedingungen – lediglich eine entgeltliche, nicht übertragbare und nicht ausschließliche Lizenz gewährt, die ihn zur Nutzung des Dienstes im Rahmen seines Zwecks berechtigt.“",
+                        "sublist": [
+                            "Um jeden Zweifel auszuschließen, werden Sie weder selbst, noch jemandem gestatten oder bevollmächtigen, Folgendes zu tun:",
+                            "Verteilen, Übertragen, Ausleihen, Teilen, Verkaufen, Übertragen, Lizenzieren, Vermieten oder anderweitige Bereitstellung des Dienstes.",
+                            "Kopieren, Dekompilieren, Neuzeichnen, Reverse Engineering oder sonstige Extraktion oder Reproduktion von Quellcode oder anderen Methoden, Algorithmen oder Prozessen von der Website.",
+                            "den Dienst in einer anderen gewinnbringenden kommerziellen Form anzubieten oder zu betreiben, die den Produkten oder Dienstleistungen einen Mehrwert für Dritte verleiht, einschließlich der Bereitstellung von Hosting-Diensten, Time-Sharing-Diensten, SaaS-Diensten (Software as a Service) oder Verwaltungsdiensten, auch wenn sie zusammen angeboten werden oder als Teil anderer Produkte und Dienstleistungen;"
+                        ]
+                    },
+                    "Entfernen Sie alle Urheberrechtsinformationen und Marken mit Ausnahme bearbeitbarer Elemente auf der Ebene der Funktionalität der Website.",
+                    "Wenn der Dienstnutzer den Dienstanbieter über Ideen und Vorschläge im Zusammenhang mit dem Dienst informiert, stimmt der Dienstempfänger der Verwendung dieser Ideen und Vorschläge durch den Dienstanbieter für jeden Zweck zu, ohne Einschränkung, insbesondere für Entwicklung, Änderung, Korrektur mit Ausschluss Haftung sowie Vergütung gegenüber dem Nutzer.",
+                    "Der Nutzer versteht und stimmt zu, dass die vom Dienstanbieter bereitgestellten Dienste auf einer einzigen Basisversion der Anwendung, Hardware und Infrastruktur basieren und dazu gedacht sind, den Dienst mehreren Kunden auf skalierbare Weise bereitzustellen. Der Service wird nicht an den Serviceempfänger angepasst oder/oder angepasst, es sei denn, dies wurde ausdrücklich von den Parteien vereinbart."
+                ]
+            },
+            "feesAndPayments": {
+                "header": "Gebühren und Zahlungen",
+                "list": [
+                    "Der Abonnementpreis wird auf der Website des Dienstanbieters veröffentlicht: www.interviewlyapp.com.",
+                    "Die angegebenen Preise sind Nettopreise (d. h. ohne Mehrwertsteuer). Die Preise sind in polnischen Zloty und US-Dollar angegeben.",
+                    "Die Gebühr wird im Voraus bezahlt und berechnet sich nach dem gewählten Abonnementmodell.",
+                    "Die Zahlung erfolgt per Kreditkarte (Visa, MasterCard, American Express) oder Banküberweisung auf Grundlage einer vom Dienstleister ausgestellten Rechnung.",
+                    "Die Gebühr per Banküberweisung wird auf das auf der Rechnung mit ausgewiesener Mehrwertsteuer angegebene Bankkonto des Dienstleisters gezahlt. Der Kunde verpflichtet sich, die Gebühr innerhalb von 7 Tagen ab Zustellung der Rechnung mit ausgewiesener Mehrwertsteuer an die angegebene E-Mail-Adresse zu zahlen. Es besteht die Möglichkeit, den Übertragungszeitraum im Rahmen individueller Vereinbarungen mit dem Leistungsempfänger zu verlängern. Die endgültige Entscheidung liegt beim Anbieter.",
+                    "Der Dienstleister kann die Zahlung per Banküberweisung verweigern, wenn der Leistungsempfänger die Zahlungsfrist nicht einhält.",
+                    "Bezahlte Rechnungen werden per E-Mail zugestellt.",
+                    "Die Zustellung der in Form einer Datei übermittelten Rechnung erfolgt, sobald der Dienstleister eine E-Mail mit einer Rechnungsdatei von der E-Mail-Adresse an die vom Leistungsempfänger angegebene Adresse sendet. Für den Fall, dass die E-Mail mit der Rechnung aus vom Dienstleister unabhängigen Gründen nicht an den Leistungsempfänger zugestellt wird, wird auf Wunsch des Kunden ein Duplikat dieser Rechnung ausgestellt.",
+                    "Für den Tag der Zahlung von Beträgen auf der Grundlage der vom Dienstleister ausgestellten Rechnungen akzeptieren die Parteien das Datum der Anerkennung des Bankkontos des Dienstleisters.",
+                    "Die Parteien vereinbaren, dass der Dienstleister Zahlungen des Leistungsempfängers in erster Linie für die zuvor fälligen Schulden verrechnet, unabhängig vom Inhalt der der Zahlung beigefügten Abrechnungen.",
+                    "Wenn Sie als Zahlungsmethode für die Abonnementgebühr eine Kredit- oder Debitkarte wählen, wird die Gebühr für jeden weiteren Abonnementzeitraum automatisch berechnet, bis der Leistungsempfänger seinen Rücktrittswunsch erklärt. Ein solcher Rücktritt sollte bis zu 7 Tage vor Beginn des neuen Abonnementzeitraums per E-Mail an die Adresse contact@interviewlyapp.com gemeldet werden.",
+                    "Der Servicenehmer ist verpflichtet, die Gebühr für das ausgewählte Abonnement spätestens innerhalb von 7 Werktagen ab dem Datum der Einreichung des Abonnements zu zahlen. Als Tag der Zahlung gilt der Tag der Verbuchung der geforderten Schulden auf dem Bankkonto des Dienstleisters. Die Nichtzahlung innerhalb der angegebenen Frist führt zur Kündigung des Abonnements.",
+                    "Die Änderung der Parameter des Abonnements erfolgt durch den Kontoadministrator direkt auf dem Konto im Dienst und kann von ihm jederzeit oder auf Anordnung des Kontoadministrators an die im Absatz angegebene E-Mail-Adresse storniert werden. 2 des Diensteanbieters.",
+                    "Der Kontoadministrator hat Zugriff auf den Dienst",
+                    "„Der Leistungsempfänger stimmt zu, die Mehrwertsteuerrechnungen des Leistungserbringers in elektronischer Form gemäß der Rechtsgrundlage für die Ausstellung und Übermittlung von Rechnungen in elektronischer Form zu versenden. Gesetz vom 11. März 2004 über die Steuer auf Waren und Dienstleistungen (Dz.U. Kapitel 54). , Pos. und 535). Eine gemäß dem Gesetz (GBl. Nr. 144 Pos. 1204 in der jeweils gültigen Fassung) in elektronischer Form versandte Rechnung entspricht der Zusendung einer in Papierform ausgestellten Rechnung und stellt einen Buchhaltungsbeleg dar.",
+                    "Die Rechnung mit ausgewiesener Mehrwertsteuer in Papierform wird nur auf ausdrücklichen Wunsch des Leistungsempfängers in elektronischer Form an die Kontakt-E-Mail-Adresse des Anbieters ausgestellt und zugestellt. Die Gebühr für den Druck und die Lieferung der Mehrwertsteuer in Papierform wird vom Dienstleister bezahlt und der Rechnung in Höhe von 59 PLN netto + Mehrwertsteuer hinzugefügt.",
+                    "Der Dienstleister kann die Preisliste oder einen Teil davon jederzeit ändern oder neue Gebühren festlegen, nachdem er die Dienstleistungsempfänger mindestens 60 Tage vor der Änderung informiert hat, sofern dies nach geltendem Recht erforderlich ist. Preisänderungen und die Festlegung neuer Gebühren werden für nachfolgende Abonnementzeiträume und für alle neuen Leistungsempfänger nach dem Datum des Inkrafttretens der Änderung wirksam. Wenn der Servicenehmer mit den Preisänderungen im Tarif nicht einverstanden ist, kann er das Abonnement kündigen und die Nutzung des Service vor Beginn des nächsten Zeitraums einstellen, ab dem die geänderten Preise gelten."
+                ]
+            },
+            "support": {
+                "header": "Unterstützung",
+                "list": [
+                    "Technischer Support ist täglich verfügbar. 9:00 – 15:00 Uhr (MEZ) für Serviceempfänger, die für ausgewählte Abonnementmodelle eine Gebühr für den geltenden Abonnementzeitraum gezahlt haben.",
+                    "Der Kontoadministrator kann den technischen Support per E-Mail unter contact@interviewlyapp.com kontaktieren",
+                    "Der Dienstanbieter wird sich bemühen, die E-Mails innerhalb der für den Dienstanbieter geltenden Werktage innerhalb von 72 Stunden zu beantworten."
+                ]
+            },
+            "compliants": {
+                "header": "Konform",
+                "list": [
+                    "Der Dienstleister verpflichtet sich, Mängel, die den Zugang zur Nutzung des Dienstes verhindern, unverzüglich zu beseitigen.",
+                    "Beschwerden im Zusammenhang mit der Bereitstellung des Zugangs zum Service können vom Serviceempfänger per E-Mail an contact@interviewlyapp.com eingereicht werden",
+                    {
+                        "text": "Der Bericht sollte Folgendes enthalten:",
+                        "sublist": [
+                            "den Namen der Organisation (Informationen, die bei der Erstellung des Kontos angegeben wurden) und ihre E-Mail-Adresse",
+                            "Informationen über den betreffenden Nutzer,",
+                            "den Zeitpunkt und die Umstände des Auftretens des Problems beim Betrieb des Dienstes, die URL oder den Namen der Seite,",
+                            "Bildschirm mit sichtbarer URL und Problem"
+                        ]
+                    },
+                    "Wenn für die Prüfung der Beschwerde zusätzliche Informationen erforderlich sind, fordert der Dienstleister Sie auf, diese Informationen vor der Prüfung des Beschwerdeführers bereitzustellen, und die Zeit für die Prüfung der Beschwerde beginnt mit dem Datum der Zustellung der angeforderten Informationen.",
+                    "Es wird empfohlen, in der oben genannten E-Mail möglichst viele Informationen und Umstände zum Gegenstand der Beschwerde anzugeben, insbesondere Art und Datum des Auftretens der Unregelmäßigkeit sowie Kontaktdaten – dies erleichtert und beschleunigt die Bearbeitung der Beschwerde durch den Dienstanbieter.",
+                    "Die Reklamation wird vom Dienstleister unverzüglich, spätestens jedoch innerhalb von 14 Werktagen bearbeitet.",
+                    "Die Prüfung der Beschwerde durch den Dienstleister ist endgültig.",
+                    "Die Antwort des Dienstleisters auf die Beschwerde wird an die in der Schadensmeldung angegebene E-Mail-Adresse des Dienstleistungsempfängers gesendet."
+                ]
+            },
+            "serviceData": {
+                "header": "Servicedaten",
+                "list": [
+                    "Die vom Serviceempfänger in das Servicekonto eingegebenen Daten sind Eigentum des Serviceempfängers.",
+                    "Alle in das Dienstkonto eingegebenen Daten werden vom Dienstanbieter gemäß der Verordnung (EU) 2016/679 des Europäischen Parlaments und des Rates vom 27. April 2016 zum Schutz natürlicher Personen bei der Verarbeitung personenbezogener Daten gespeichert über den freien Datenverkehr und zur Aufhebung der Richtlinie 95/46/EG. (dalej RODO).",
+                    "Der Dienstleister speichert und verarbeitet die ihm vom Dienstleistungsempfänger zur Verfügung gestellten Daten gemäß den geltenden gesetzlichen Bestimmungen und gemäß der Treuhandvereinbarung zur Verarbeitung personenbezogener Daten, die Anhang Nr. 1 der Geschäftsordnung darstellt.",
+                    "Durch die Annahme dieser Nutzungsbedingungen erklärt sich der Dienstempfänger damit einverstanden, die Daten dem Dienstanbieter gemäß der Treuhandvereinbarung zur Verarbeitung personenbezogener Daten anzuvertrauen."
+                ]
+            },
+            "conditionsOfCeasementOfContract": {
+                "header": "Bedingungen für die Beendigung des Vertrags",
+                "list": [
+                    "Der Kunde kann den Vertrag mit einer Kündigungsfrist von einem Monat und ohne Angabe von Gründen durch Zusendung einer entsprechenden Erklärung per E-Mail an contact@interviewlyapp.com kündigen.",
+                    "Der Leistungsempfänger kann den Vertrag sofort kündigen, wenn der Leistungserbringer die Verfügbarkeit des Dienstes nicht gemäß dem im SLA in Absatz III.1 festgelegten Umfang aufrechterhält, indem er eine entsprechende Erklärung per E-Mail an contact@interviewlyapp.com sendet.",
+                    {
+                        "text": "Der Leistungserbringer kann das Konto des Leistungsempfängers vorübergehend oder dauerhaft sperren oder den Vertrag kündigen, wenn der Nutzer:",
+                        "sublist": [
+                            "gegen die Regeln verstößt,",
+                            "unrechtmäßigen Inhalt bereitstellt, nach erfolgloser Aufforderung zur Einstellung der Verstöße innerhalb einer festgelegten Frist;",
+                            "dem Leistungserbringer schadet oder bei der Registrierung falsche Daten angibt oder Änderungen der bereitgestellten Daten entsprechend dem tatsächlichen Stand nicht unverzüglich aktualisiert,",
+                            "nicht rechtzeitig zahlt.",
+                            "Handlungen begeht, die darauf abzielen, die Sicherheit der im Dienst verarbeiteten Daten zu verletzen, den Dienst zu nutzen oder einen unbefugten Versuch unternehmen, auf den Dienst zuzugreifen, oder andere Handlungen durchführt, die darauf abzielen, die ordnungsgemäße Funktion des Dienstes zu stören."
+                        ]
+                    },
+                    "Der Leistungserbringer ist berechtigt, den Vertrag mit sofortiger Wirkung zu kündigen, wenn einer der in Absatz 3 dieses Kapitels genannten Gründe vorliegt.",
+                    "Der Leistungserbringer kann den Vertrag jederzeit mit einer Kündigungsfrist von drei Monaten kündigen.",
+                    "Die Willenserklärung des Leistungserbringers zur Kündigung des Vertrags bedarf der schriftlichen Form und sollte jeweils an die E-Mail-Adresse des aktuellen Kontoadministrators des Leistungsempfängers gesendet werden. Die Kündigungsfrist des Vertrags beginnt ab dem Tag der Zustellung der Willenserklärung des Leistungserbringers zur Kündigung des Vertrags.",
+                    "Diese Kündigung führt zur Beendigung des Rechtsverhältnisses mit Wirkung für die Zukunft."
+                ]
+            },
+            "finalProvisions": {
+                "header": "Schlussbestimmungen",
+                "list": [
+                    "Von dem Leistungserbringer im Rahmen der Aktivitäten der Anwendung abgeschlossene Verträge werden auf Polnisch abgeschlossen, gemäß dem auf dem Gebiet Polens geltenden Recht.",
+                    "Der Leistungserbringer behält sich das Recht vor, Änderungen an den Bestimmungen vorzunehmen. Die an den Nutzungsbedingungen vorgenommenen Änderungen binden den Leistungsempfänger, sofern er ordnungsgemäß über die Änderungen informiert wurde und den Vertrag nicht innerhalb von 14 Tagen nach dem Datum der Benachrichtigung über die Änderung durch den Leistungserbringer gekündigt hat.",
+                    "Im Falle der Nichteinhaltung eines Teils der Vorschriften im Einklang mit geltendem Recht gelten anstelle der angefochtenen Bestimmung der Vorschriften die relevanten Bestimmungen des polnischen Rechts.",
+                    "Alle Streitigkeiten, die zwischen dem Dienstleister und dem Dienstempfänger entstehen, werden dem zuständigen Gericht am Sitz des Dienstleisters vorgelegt."
+                ]
+            }
+        },
+        "personalDataProcessingAgreement": {
+            "header": "Vereinbarung über die Verarbeitung personenbezogener Daten",
+            "text": "Die Vereinbarung über die Verarbeitung personenbezogener Daten ist ein integraler Bestandteil der Vorschriften und legt die Regeln für die Verarbeitung der personenbezogenen Daten des Nutzers durch den Dienstleister im Auftrag des Dienstempfängers über den Service unter www.interviewlyapp.com fest.\r\nDie Vereinbarung über die Verarbeitung personenbezogener Daten umfasst sämtliche Verpflichtungen und Bedingungen für die Verarbeitung der Daten des Nutzers zwischen dem Dienstleister und dem Dienstempfänger im Zusammenhang mit dem SaaS-Dienst und ersetzt alle vorherigen Vereinbarungen, Absprachen und Abmachungen zwischen dem Dienstleister und dem Dienstempfänger in dieser Hinsicht.",
+            "rules": [
+                {
+                    "title": "Definitionen",
+                    "list": [
+                        "Administrator – bezeichnet den Dienstempfänger, der allein oder gemeinsam mit anderen Stellen die Zwecke und Methoden der Verarbeitung personenbezogener Daten festlegt;",
+                        "Verarbeiter – bezeichnet den Dienstleister"
+                    ]
+                },
+                {
+                    "title": "Gegenstand der Verarbeitung personenbezogener Daten",
+                    "list": [
+                        "Im Zusammenhang mit der Umsetzung des Vertrags über die Erbringung von Dienstleistungen auf elektronischem Wege für den SaaS-Dienst, der in den Vorschriften geregelt ist (nachfolgend als \"Hauptvereinbarung\" bezeichnet und zwischen den Parteien geschlossen), überträgt der Verantwortliche gemäß Artikel 28 der Verordnung dem Verarbeiter personenbezogene Daten zur Verarbeitung im Auftrag des Administrators unter den in der Vereinbarung festgelegten Bedingungen und zu den angegebenen Zwecken.",
+                        "Der Abschluss der Vereinbarung stellt eine dokumentierte Anweisung des Administrators an den Dienstleister dar, personenbezogene Daten zu verarbeiten, einschließlich der Übermittlung personenbezogener Daten in Drittländer gemäß Artikel 28 Absatz 3 Buchstabe a der DSGVO.",
+                        "Der Verantwortliche erklärt, dass er der Verantwortliche für personenbezogene Daten im Sinne der Bestimmungen der Verordnung (EU) 2016/679 des Europäischen Parlaments und des Rates vom 27. April 2016 zum Schutz natürlicher Personen bei der Verarbeitung personenbezogener Daten ist Daten und zum freien Datenverkehr sowie zur Aufhebung der Richtlinie 95/46/EG (Datenschutz-Grundverordnung) (im Folgenden „Verordnung“), die er dem Auftragsverarbeiter anvertraut."
+                    ]
+                },
+                {
+                    "title": "Umfang und Zweck der Datenverarbeitung",
+                    "list": [
+                        "Die dem Verantwortlichen anvertrauten personenbezogenen Daten werden vom Auftragsverarbeiter nur zum Zwecke der Erbringung der im Hauptvertrag gemäß § 2 Absatz 1 ausführlich beschriebenen Leistungen und in einer Weise verarbeitet, die mit diesen Verträgen und den einschlägigen, allgemein geltenden Rechtsvorschriften im Einklang steht.",
+                        "Personenkategorie: Angestellte und Mitarbeiter des Administrators, Bewerber für eine Anstellung, Nutzer des Dienstes.",
+                        {
+                            "text": "Der Auftragsverarbeiter verpflichtet sich, die anvertrauten personenbezogenen Daten im folgenden Umfang zu verarbeiten:",
+                            "sublist": [
+                                "Name und Nachname",
+                                "Bild – Fotos und Aufnahmen, die auf den Dienst hochgeladen werden",
+                                "Geschlecht",
+                                "Adresse",
+                                "Kontakt-Telefon",
+                                "E-Mail-Adresse",
+                                "Geburtsdatum",
+                                "Kontonummer",
+                                "Berufe",
+                                "Industrie",
+                                "Zivilstaat",
+                                "Informationen rund ums Kinderkriegen",
+                                "Sonstige Daten, die in gespeicherten Dateien enthalten sind oder an anderer Stelle eingegeben wurden."
+                            ]
+                        },
+                        "Verarbeitungstätigkeiten: Erheben, Aufzeichnen, Ordnen, Ordnen, Speichern, Anzeigen, Übertragen, Verändern, Löschen.",
+                        "Form der Verarbeitung: Elektronisch"
+                    ]
+                },
+                {
+                    "title": "Pflichten des Auftragsverarbeiters",
+                    "list": [
+                        "Der Auftragsverarbeiter erklärt, dass er geeignete technische und organisatorische Maßnahmen ergreift, um sicherzustellen, dass die Verarbeitung den in der Verordnung festgelegten Anforderungen entspricht und die Rechte der betroffenen Personen schützt, was insbesondere bedeutet, dass der Auftragsverarbeiter die geeigneten Maßnahmen gemäß Art. 32 der Verordnung und ist die Sorgfaltspflicht bei der Verarbeitung anvertrauter personenbezogener Daten.",
+                        "Der Auftragsverarbeiter verpflichtet sich, die Verarbeitung personenbezogener Daten allen Personen zu gestatten, die die anvertrauten Daten für die Zwecke dieser Vereinbarung verarbeiten.",
+                        "Unter Berücksichtigung der Art der Verarbeitung unterstützt der Auftragsverarbeiter den Verantwortlichen im Rahmen seiner Möglichkeiten durch geeignete technische und organisatorische Maßnahmen bei der Erfüllung seiner Verpflichtung, auf die Anfragen der betroffenen Person bei der Ausübung seines Auftrags zu reagieren ihre in Kapitel III der Verordnung festgelegten Rechte.",
+                        "Unter Berücksichtigung der Art der Verarbeitung und der ihm zur Verfügung stehenden Informationen unterstützt der Auftragsverarbeiter den Verantwortlichen bei der Erfüllung der in Art. 32 bis 36 der Verordnung.",
+                        "Der Auftragsverarbeiter verpflichtet sich, die Vertraulichkeit der verarbeiteten Daten (im Sinne von Artikel 28 Absatz 3 Buchstabe b der Verordnung) durch Personen, denen er die Verarbeitung personenbezogener Daten zum Zweck der Ausführung dieses Vertrags gestattet, sowohl während deren als auch während der Vertragslaufzeit zu gewährleisten Anstellung beim Auftragsverarbeiter und nach dessen Beendigung.",
+                        "Der Auftragsverarbeiter löscht nach Abschluss der Erbringung der mit der Datenverarbeitung verbundenen Dienstleistungen alle vom Verantwortlichen anvertrauten Daten nach Ablauf der im Hauptvertrag genannten Frist.",
+                        "Nachdem der Auftragsverarbeiter einen Verstoß gegen den Schutz personenbezogener Daten festgestellt hat, meldet er diesen unverzüglich dem Verantwortlichen.",
+                        "Nachdem der Auftragsverarbeiter unverzüglich, spätestens jedoch innerhalb von 36 Stunden nach dem Verstoß, einen Verstoß gegen den Schutz personenbezogener Daten festgestellt hat, muss er diesen dem Verantwortlichen melden. Der Antrag ist per E-Mail an die E-Mail-Adresse zu richten, die der Administrator bei der Registrierung in den Daten angegeben hat (die Adresse ist gleichzeitig das Login des Administrators)."
+                    ]
+                },
+                {
+                    "title": "Technische und organisatorische Maßnahmen",
+                    "list": [
+                        "Unter Berücksichtigung des Stands der technischen Kenntnisse, der Implementierungskosten sowie der Art, des Umfangs, des Kontexts und der Zwecke der Verarbeitung personenbezogener Daten sowie des Risikos einer Verletzung der Rechte von Personen, deren personenbezogene Daten betroffen sind, stellt der Dienstleister bereit technische und organisatorische Maßnahmen, die der Art der personenbezogenen Daten und dem Risiko einer Verletzung der Rechte der Personen, die von den personenbezogenen Daten betroffen sind, angemessen sind."
+                    ]
+                },
+                {
+                    "title": "Recht auf Kontrolle der Verarbeitung",
+                    "list": [
+                        "Gemäß Artikel 28 Absatz 3 Buchstabe h der Verordnung hat der Verantwortliche das Recht zu kontrollieren, ob die vom Auftragsverarbeiter bei der Verarbeitung und Sicherung der anvertrauten personenbezogenen Daten angewandten Maßnahmen den Vertragsbestimmungen entsprechen.",
+                        "Die Mitteilung über die Absicht, die Inspektion oder das Audit durchzuführen, sollte dem Verarbeiter mindestens 14 Kalendertage vor Beginn der Tätigkeit zugesandt werden. Die Kosten der Prüfung trägt der Verwalter.",
+                        "Der vom Verantwortlichen bestellte Prüfer darf weder ein Unternehmen sein, das mit dem Auftragsverarbeiter im Wettbewerb steht, noch ein mit ihm verbundenes Unternehmen, ein Mitarbeiter oder ein kooperierendes Unternehmen, unabhängig von der Grundlage des Beschäftigungsverhältnisses oder der Zusammenarbeit. Vor der Durchführung von Prüfungstätigkeiten ist der Prüfer verpflichtet, die Vertraulichkeit der erlangten Informationen sicherzustellen.",
+                        "Die Kontrolle der Verarbeitung, soweit sie sich auf die Bereiche der Verarbeitung personenbezogener Daten bezieht, darf nicht länger als 3 Werktage dauern.",
+                        "Die Kontrolle der Verarbeitung wird durch die Unterzeichnung des Protokolls zur Kontrolle der Verarbeitung durch beide Parteien abgeschlossen. Das Protokoll enthält Schlussfolgerungen aus der Verarbeitungskontrolle und den von beiden Parteien vereinbarten Umfang möglicher Änderungen bei der Verarbeitung personenbezogener Daten durch den Auftragsverarbeiter.",
+                        "Der Auftragsverarbeiter verpflichtet sich, den Empfehlungen des Verantwortlichen oder der von ihm beauftragten Stelle hinsichtlich der Verbesserung der Qualität der Sicherheit personenbezogener Daten und der Art ihrer Verarbeitung oder der Beseitigung von Mängeln, die bei der Inspektion oder Prüfung festgestellt wurden, innerhalb einer bestimmten Frist Folge zu leisten vom Verantwortlichen vorgegebenen Zeitraum nicht länger als 28 Tage."
+                    ]
+                },
+                {
+                    "title": "Übergabe der Daten zur Verarbeitung",
+                    "list": [
+                        "Der Auftragsverarbeiter kann die Verarbeitung der von ihm verarbeiteten personenbezogenen Daten im Zusammenhang mit der Erbringung der Dienstleistung, die Gegenstand des in § 2 Absatz genannten Vertrags ist, an einen Subunternehmer vergeben. 1 Verträge mit anderen Auftragsverarbeitern (im Folgenden „Subunternehmer“ genannt) gemäß den in der Verordnung festgelegten Nutzungsbedingungen für Subunternehmerdienste.",
+                        "Der Verantwortliche erklärt sich damit einverstanden, dem Auftragsverarbeiter die Verarbeitung der Daten auf der Grundlage der in Anlage Nr. 1 zum Vertrag genannten Vereinbarung zu übertragen.",
+                        "Die Stellen, denen der Auftragsverarbeiter die weitere Verarbeitung personenbezogener Daten anvertraut hat, sind in Anlage 1 der Vereinbarung aufgeführt.",
+                        "Der Auftragsverarbeiter kann ohne vorherige Ankündigung an den Verantwortlichen Änderungen an aktuellen Subunternehmern vornehmen und weitere hinzufügen."
+                    ]
+                },
+                {
+                    "title": "Benachrichtigung bei Verstößen",
+                    "list": [
+                        {
+                            "text": "Stellt der Auftragsverarbeiter einen Verstoß gegen den Schutz der ihm vom Verantwortlichen anvertrauten personenbezogenen Daten fest, meldet er diesen unverzüglich nach Feststellung des Verstoßes dem Administrator. Der Bericht muss mindestens Informationen enthalten über:",
+                            "sublist": [
+                                "Datum, Dauer und Ort des Verstoßes gegen den Schutz personenbezogener Daten;",
+                                "die Art und das Ausmaß des Verstoßes, d. h. insbesondere die Kategorien und die ungefähre Anzahl der betroffenen Personen sowie die Arten und die ungefähre Anzahl der von dem Verstoß betroffenen personenbezogenen Dateneinträge, und, soweit möglich, auch die Identifizierung der betroffenen Personen;",
+                                "die voraussichtliche Zeit, die zur Behebung des durch den Verstoß verursachten Schadens benötigt wird;",
+                                "Art und Umfang der personenbezogenen Daten, die Gegenstand der Verletzung sind;",
+                                "die möglichen Folgen des Verstoßes, einschließlich der Folgen für die betroffenen Personen;",
+                                "die Maßnahmen, die ergriffen wurden, um die Folgen des Verstoßes zu minimieren, und die vorgeschlagenen Präventiv- und Korrekturmaßnahmen;",
+                                "Kontaktdaten der Person, die weitere Informationen zum Verstoß bereitstellen kann."
+                            ]
+                        },
+                        "Ist der Auftragsverarbeiter nicht in der Lage, dem Verantwortlichen alle in Absatz 1 genannten Informationen gleichzeitig zur Verfügung zu stellen, muss er diese unverzüglich nacheinander bereitstellen.",
+                        "Bis zum Erhalt der Weisungen des Verantwortlichen ergreift der Auftragsverarbeiter alle angemessenen Maßnahmen, um die negativen Auswirkungen des Verstoßes zu begrenzen und zu beheben."
+                    ]
+                },
+                {
+                    "title": "Verantwortung des Auftragsverarbeiters",
+                    "list": [
+                        "Der Auftragsverarbeiter haftet für Schäden, die dem Verantwortlichen oder Dritten durch die Verarbeitung personenbezogener Daten entstehen, nur dann, wenn (i) er personenbezogene Daten im Widerspruch zu dieser Vereinbarung verarbeitet hat, (ii) er seinen Verpflichtungen aus der Verordnung oder anderen nicht nachkommt Bestimmungen zum Schutz personenbezogener Daten, die den Auftragsverarbeitern auferlegt werden, oder (iii) er verstößt gegen die rechtmäßigen schriftlichen Anweisungen des Administrators oder geht über diese Anweisungen hinaus.",
+                        "Vorbehaltlich der streng geltenden gesetzlichen Bestimmungen haftet der Auftragsverarbeiter gegenüber dem Verantwortlichen für die Nichterfüllung oder nicht ordnungsgemäße Erfüllung dieser Vereinbarung nur für den dokumentierten tatsächlichen Schaden (damnum emergens) des Administrators, begrenzt auf den Betrag der letzten Zahlung das Abonnement des Antrags als Vergütung, die der Verarbeitungseinheit vom Manager gemäß den Bestimmungen zusteht.",
+                        "Die in Absatz 2 genannte Haftungsbeschränkung gilt nicht für die Haftung gegenüber betroffenen Personen und für den Fall, dass der Schaden durch vorsätzliches Handeln des Auftragsverarbeiters verursacht wird.",
+                        "Die Partei, die den gesamten verursachten Schaden ersetzt hat, hat das Recht, von der anderen Partei, die an derselben Verarbeitung beteiligt war, die Erstattung des Teils der Entschädigung zu verlangen, der dem Teil des Schadens entspricht, für den die andere Partei haftet Grundlage des in Artikel 82 Absatz 2 beschriebenen Rückschrittsrechts. 5 der Verordnung. Die in Absatz 2 genannte Haftungsbeschränkung gilt nicht für in diesem Absatz beschriebene regressive Ansprüche. 4.",
+                        "Der Auftragsverarbeiter ist nicht verantwortlich für die Handlungen oder Unterlassungen des Unterauftragnehmers im Zusammenhang mit der Verarbeitung der anvertrauten personenbezogenen Daten."
+                    ]
+                },
+                {
+                    "title": "Dauer der Vereinbarung",
+                    "list": [
+                        "Diese Vereinbarung gilt ab dem Datum ihres Abschlusses für einen bestimmten Zeitraum, der sich auf die Gültigkeit der in § 2 Absatz 1 genannten Vereinbarung bezieht.",
+                        "Der Auftragsverarbeiter darf die im Rahmen dieser Vereinbarung anvertrauten personenbezogenen Daten nur für die Dauer der Gültigkeit des Hauptvertrags verarbeiten, es sei denn, der Verantwortliche und der Auftragsverarbeiter legen durch eine gesonderte Vereinbarung einen anderen Zeitraum für die Verarbeitung personenbezogener Daten gegen eine gesonderte Vergütung fest. oder dieser Vertrag wird in den in § 10 dieser Vereinbarung genannten Fällen gekündigt.",
+                        "Der Vertrag endet auch dann, wenn die Verarbeitung der dem Auftragsverarbeiter durch den Verantwortlichen zur Verfügung gestellten personenbezogenen Daten für die Erfüllung des Hauptvertrags nicht mehr erforderlich ist.",
+                        "Die Parteien können diesen Vertrag mit einer dreimonatigen Kündigungsfrist oder durch Abschluss einer entsprechenden Vereinbarung kündigen, wobei zu berücksichtigen ist, dass die Kündigung dieses Vertrags die Ausführung des Hauptvertrags verhindern und somit zu dessen Kündigung führen kann."
+                    ]
+                },
+                {
+                    "title": "Ende der Vereinbarung",
+                    "list": [
+                        "Der Auftragsverarbeiter erkennt an, dass die Kündigung dieser Vereinbarung dazu führen kann, dass die in § 2 Absatz genannte Vereinbarung nicht fortgeführt werden kann. 1."
+                    ]
+                },
+                {
+                    "title": "Vertraulichkeitsregeln",
+                    "list": [
+                        "Alle von den Parteien während der Laufzeit der Vereinbarung erhaltenen Informationen, die ein Geschäftsgeheimnis im Sinne des Gesetzes vom 16. April 1993 zur Bekämpfung des unlauteren Wettbewerbs (polnisches Gesetzblatt vom 1993 Nr. 47, Pos. 211) darstellen, dürfen nur für den Zweck verwendet werden ordnungsgemäße Durchführung des Vertrages durch eine der Parteien, es sei denn, die andere Partei entbindet sie von der Verpflichtung zur Geheimhaltung oder die Offenlegungspflicht ergibt sich aus anwendbaren Rechtsvorschriften."
+                    ]
+                },
+                {
+                    "title": "Schlussbestimmungen",
+                    "list": [
+                        "Die Vergütung für die Erbringung der vertraglichen Leistungen durch den Auftragsverarbeiter umfasst auch die Vergütung für die Ausführung dieser Vereinbarung.",
+                        "In nicht geregelten Angelegenheiten gelten die Bestimmungen des Bürgerlichen Gesetzbuches und der Verordnungen."
+                    ]
+                }
+            ],
+            "annex": {
+                "title": "Anhang 1 – Liste der Subunternehmer",
+                "table": [
+                    [
+                        "Thema",
+                        "Region",
+                        "Umfang der Datenverarbeitung"
+                    ],
+                    [
+                        "Amazon, Luxemburg",
+                        "EU",
+                        "Die Serverumgebung, auf der die Anwendung ausgeführt wird, Datenbanken und Backups werden gespeichert."
+                    ],
+                    [
+                        "OVH S.A., Polen",
+                        "EU",
+                        "Zur Erstellung von Sicherungskopien wird die Serverumgebung genutzt."
+                    ]
+                ]
+            }
+        },
+        "privacyPolicy": {
+            "header": "Datenschutzrichtlinie und Cookies",
+            "chapterOne": "Vorläufige Bestimmungen",
+            "paragraphOne": "1 des Gesetzes vom 18. Juli 2002 über die Erbringung elektronischer Dienste (Dz.) Gemäß Artikel 173 des Gesetzes vom 16. Juli 2004 über das Telekommunikationsgesetz (Dz. U. 2014.243 d. h. ab später). Die Gesellschaft ist eine Gesellschaft mit beschränkter Haftung mit Sitz in Łódź, ul. Wólczańska 125, 90-521 Łódź, eingetragen im Landesgerichtsregister – Unternehmerregister unter der KRS-Nummer: 0000541582, deren Eintragungsunterlagen beim Bezirksgericht für Łódź-Śródmieście in Łódź, XX Wirtschaftsabteilung KRS, NIP geführt werden : 7692223109, REGON: 360412382 Stammkapital: 5.000,00 PLN vollständig eingereicht, E-Mail: info@strategaresearch.com, im Folgenden „der Auftragnehmer“ genannt, stellt diese Datenschutzrichtlinie und Cookies vor, im Folgenden „Richtlinie“ genannt.",
+            "paragraphTwo": [
+                "Die in der Richtlinie mit Großbuchstaben geschriebenen Begriffe haben, sofern im Inhalt der Richtlinie nicht anders angegeben, die in den Bestimmungen der Website festgelegte Bedeutung. (www.interviewlyapp.com).",
+                "Der Begriff „Benutzer“ bezeichnet je nach Kontext den Kunden oder die Person, die Kunde werden möchte, einen Kandidaten oder eine Person, die Kandidat werden möchte, oder einen Internetnutzer, der die Website besucht."
+            ],
+            "chapterTwo": "persönliche Daten",
+            "paragraphThree": [
+                "Um die vom Auftragnehmer über die Website angebotenen Dienste nutzen zu können, ist der Nutzer verpflichtet, das entsprechende Registrierungsformular auszufüllen, in das bestimmte personenbezogene Daten eingegeben werden müssen.",
+                "Die Angabe personenbezogener Daten im Registrierungsformular ist freiwillig, aber für die Bereitstellung von Diensten durch den Anbieter für den Benutzer über die Website erforderlich.",
+                "Alle personenbezogenen Daten, die der Nutzer in das Registrierungsformular eingibt oder in der Korrespondenz mit dem Auftragnehmer übermittelt, werden in einer Weise verarbeitet, die den Anforderungen der Verordnung (EU) 2016/679 des Europäischen Parlaments und des Rates vom 27. April 2016 entspricht zum Schutz natürlicher Personen bei der Verarbeitung personenbezogener Daten und zum freien Datenverkehr sowie zur Aufhebung der Richtlinie 95/46/EG, im Folgenden „DSGVO“ genannt, und des Gesetzes vom 18. Juli 2002 über die Bereitstellung elektronischer Dienste ( Zeitschrift für Gesetze der Russischen Föderation). 2013 – 1422 – also von später."
+            ],
+            "paragraphFour": [
+                "Der Verantwortliche für die über das Registrierungsformular der Website erhobenen personenbezogenen Daten ist der Auftragnehmer. Im Unternehmen wurde ein Datenschutzinspektor ernannt, mit dem Sie unter der E-Mail-Adresse inspektor@stratega.pl Kontakt aufnehmen können",
+                "Der Auftragnehmer kann die Verarbeitung der erhobenen personenbezogenen Daten der Nutzer einem anderen Unternehmen auf der mit ihm vereinbarten Grundlage gemäß Art. 28 DSGVO.",
+                {
+                    "text": "Zur Durchführung der vom Verkäufer mit den Nutzern über den Dienst abgeschlossenen Verkaufs- und Dienstleistungsverträge werden die Nutzerdaten insbesondere den folgenden Stellen anvertraut:",
+                    "sublist": [
+                        "Anbieter von Post- oder Kurierdiensten, die dem Nutzer die getesteten Waren zur Verfügung stellen,",
+                        "Verwaltung von Online-Transaktionen."
+                    ]
+                }
+            ],
+            "paragraphFive": "Der Nutzer hat das Recht, auf seine personenbezogenen Daten zuzugreifen und diese zu überprüfen oder zu korrigieren sowie seine Einwilligung jederzeit zu widerrufen, indem er eine entsprechende Anfrage an den Auftragnehmer richtet.",
+            "paragraphSix": {
+                "text": "Der Dienstleister verarbeitet die personenbezogenen Daten des Nutzers und nutzt diese im Umfang und zu folgenden Zwecken:",
+                "sublist": [
+                    "erforderlich für die Erbringung der über den Dienst angebotenen Dienste gemäß Artikel 6 Absatz 1 Buchstabe b DSGVO,",
+                    "Auf Grundlage einer zusätzlichen und optionalen Einwilligung, die der Nutzer in einer gesonderten Erklärung zum Ausdruck bringen kann, darf der Auftragnehmer die personenbezogenen Daten des Nutzers zu Marketingzwecken gemäß Art. 6 Abs. 1 lit. f DSGVO verarbeiten. Erteilt der Nutzer eine solche Einwilligung, kann er diese jederzeit widerrufen.",
+                    "Auf der Grundlage der zusätzlichen und optionalen Einwilligung des Nutzers ist er berechtigt, ihm an die angegebenen E-Mail-Adressen oder Telefonnummern kommerzielle Informationen gemäß Art. Art. 6 Abs. 1 lit. a DSGVO. Die im vorstehenden Satz genannte Einwilligung kann vom Nutzer jederzeit widerrufen werden."
+                ]
+            },
+            "paragraphSeven": "Die vom Auftragnehmer erhobenen personenbezogenen Daten können auf der Grundlage der geltenden Gesetzgebung an autorisierte staatliche Behörden übermittelt werden.",
+            "chapterThree": "Die Kekse",
+            "paragraphEight": [
+                "Der Anbieter verwendet Cookies, also kleine Textinformationen, die auf dem Endgerät des Nutzers gespeichert werden. (d. h. Computer, Tablet, Smartphone). Cookies können vom IT-System des Anbieters gelesen werden.",
+                "Der Anbieter speichert Cookies auf dem Endgerät des Nutzers und erhält anschließend Zugriff auf die darin enthaltenen Informationen zu statistischen Zwecken und zur Sicherstellung des ordnungsgemäßen Betriebs der Website, insbesondere zur Aufrechterhaltung der Sitzung nach dem Login."
+            ],
+            "paragraphNine": [
+                "Der Anbieter weist die Nutzer außerdem darauf hin, dass die Möglichkeit einer solchen Konfiguration des Webbrowsers besteht, die die Speicherung von Cookies auf dem Endgerät des Nutzers verhindert.",
+                "Der Anbieter weist außerdem darauf hin, dass Cookies vom Nutzer gelöscht werden können, nachdem sie vom Anbieter gespeichert wurden, und zwar durch: entsprechende Funktionen des Webbrowsers, zu diesem Zweck dienende Programme oder die Verwendung geeigneter Tools, die innerhalb des vom Nutzer verwendeten Betriebssystems verfügbar sind .",
+                {
+                    "text": "Unter den folgenden Links finden Sie Informationen zum Löschen von Cookies in den gängigsten Webbrowsern:",
+                    "sublist": [
+                        "Firefox: http://support.mozilla.org/pl/kb/delete-cookies",
+                        "Opera: http://help.opera.com/Linux/9.60/pl/cookies.html",
+                        "Internet Explorer: http://support.microsoft.com/kb/278835/pl",
+                        "Chrome: https://suport.google.comhl=pl&amp;answer=95647"
+                    ]
+                }
+            ],
+            "paragraphTen": "Der Auftragnehmer weist die Nutzer außerdem darauf hin, dass eine Änderung der Internetbrowser-Einstellungen zur Deaktivierung oder Einschränkung der Speicherung von Cookies auf dem Endgerät des Nutzers zu einer Einschränkung der Funktionalität der bereitgestellten Dienste führen kann. Ähnliche Folgen können auch eintreten, wenn die Cookies im Zuge der Leistungserbringung gelöscht werden. Dies kann dazu führen, dass die Anmeldung beim Dienst nicht möglich ist oder eine Sitzung nach der Anmeldung unterbrochen wird.",
+            "chapterFour": "In Systemprotokollen enthaltene Daten",
+            "paragraphEleven": "Die in den Systemprotokollen enthaltenen Informationen im Zusammenhang mit den allgemeinen Regeln für die Durchführung von Internetverbindungen werden vom Hosting-Unternehmen, das den Dienst betreibt, nur für technische und statistische Zwecke verwendet.",
+            "chapterFive": "Technische Maßnahmen des Auftragnehmers",
+            "paragraphTwelve": "Der Auftragnehmer wird die nach den geltenden Rechtsvorschriften zum Schutz personenbezogener Daten erforderlichen technischen Maßnahmen ergreifen, um die Erfassung und Änderung der elektronisch übermittelten personenbezogenen Daten durch Unbefugte zu verhindern.",
+            "paragraphThirteen": [
+                "Bei Fragen und Meinungen zu den vom Auftragnehmer angewandten Richtlinien senden Sie diese bitte an die E-Mail-Adresse: inspektor@stratega.pl",
+                "Die Richtlinie finden Sie unter www.interviewlyapp.com"
+            ]
+        },
+        "surveyStatuses": {
+            "pending": "ausstehend",
+            "finished": "fertig",
+            "seeResultsLabel": "Siehe Ergebnisse"
+        }
+    }
+}

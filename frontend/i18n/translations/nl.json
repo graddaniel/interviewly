@@ -1,0 +1,1073 @@
+{
+    "translation": {
+        "currentLanguage": "Nederlands",
+        "generic": {
+            "loading": "bezig met laden",
+            "created": "gemaakt",
+            "yes": "Ja",
+            "no": "Nee",
+            "saved": "Saved"
+        },
+        "validation": {
+            "join": {
+                "repeatPasswordError": "Wachtwoorden komen niet overeen."
+            },
+            "changePassword": {
+                "repeatPasswordError": "Passwords do not match",
+                "newPasswordSameAsOld": "New password is the same as previous one"
+            },
+            "projectRespondent": {
+                "meetingDateError": "Pick a future date"
+            }
+        },
+        "errors": {
+            "10000": "Onbekende fout.",
+            "10010": "Verificatie mislukt.",
+            "10011": "Ontbrekende inloggegevens.",
+            "10012": "Ongeldig autorisatieheaderformaat.",
+            "10013": "Autorisatiekop ontbreekt.",
+            "10014": "Ongeldig autorisatietype.",
+            "10015": "Bediening niet toegestaan.",
+            "10016": "Token ontbreekt.",
+            "20000": "Account is al actief.",
+            "20001": "Er ontbreken bedrijfsinformatie in het recruiteraccount.",
+            "20002": "Recruiteraccount mist bedrijfsnaam.",
+            "20003": "Account niet gevonden.",
+            "20004": "Verzoek om wachtwoord opnieuw in te stellen is verlopen. Gebruik alstublieft opnieuw het wachtwoordherinneringsformulier.",
+            "20005": "Account heeft geen wachtwoordreset aangevraagd.",
+            "20006": "Account bestaat al.",
+            "20007": "Incorrect wachtwoord.",
+            "20100": "Bedrijf niet gevonden.",
+            "20101": "Bedrijf bestaat al.",
+            "20200": "Onderzoek niet gevonden.",
+            "30000": "E-mail is vereist.",
+            "30001": "Gelieve een geldig e-mailadres in te geven. Voorbeeld: johndoe@domein.pl.",
+            "30010": "Naamveld is verplicht.",
+            "30011": "Naam is te kort.",
+            "30012": "Naam is te lang.",
+            "30020": "Het veld Achternaam is verplicht.",
+            "30021": "De achternaam is te kort.",
+            "30022": "Achternaam is te lang.",
+            "30030": "Type ingediend is vereist.",
+            "30031": "Typewaarde is onjuist.",
+            "30040": "Het geslachtsveld is verplicht.",
+            "30041": "Geslachtswaarde is onjuist.",
+            "30050": "Een wachtwoord is verplicht.",
+            "30051": "Het wachtwoord moet kleine letters, hoofdletters, cijfers en speciale tekens bevatten.",
+            "30052": "Wachtwoord is te kort.",
+            "30053": "Wachtwoord is te lang.",
+            "30070": "Rolveld is vereist.",
+            "30071": "Rolwaarde is onjuist.",
+            "30080": "Statusveld is verplicht.",
+            "30081": "Status is onjuist.",
+            "30093": "Number is too long",
+            "30100": "Titelveld is verplicht.",
+            "30101": "Titel bevat niet-toegestane tekens.",
+            "30102": "Titel is te kort.",
+            "30103": "Titel is te lang.",
+            "30112": "Beschrijving is te kort.",
+            "30113": "Beschrijving is te lang.",
+            "30120": "Het methodologieveld is verplicht.",
+            "30121": "Methodologiewaarde is onjuist.",
+            "30130": "Het veld Aantal deelnemers is verplicht.",
+            "30131": "Het aantal deelnemers is te laag.",
+            "30132": "Het aantal deelnemers is te hoog.",
+            "30140": "Het veld Aantal reservedeelnemers is verplicht.",
+            "30141": "Het aantal reservedeelnemers is te laag.",
+            "30142": "Aantal reservedeelnemers is te hoog.",
+            "30150": "De ingediende vergaderduur is vereist.",
+            "30151": "Waarde voor de duur van de vergadering is onjuist.",
+            "30160": "Valutaveld is verplicht.",
+            "30161": "Valutawaarde is onjuist.",
+            "30170": "Betalingsveld is verplicht.",
+            "30171": "Betalingswaarde is onjuist.",
+            "30183": "Requirements are too long",
+            "30190": "Project languages value is requried",
+            "30191": "Project languages value must be a string encoded boolean",
+            "30200": "Screening survey value is required",
+            "30201": "Screening survey value must be a string encoded boolean",
+            "30210": "Recordings value is requried",
+            "30211": "Recordings value must be a string encoded boolean",
+            "30220": "Start date is required",
+            "30221": "Start date must be, positive string encoded number",
+            "30230": "End date is required",
+            "30231": "End date must be positive, string encoded number",
+            "30235": "Start date must be earlier than end date",
+            "30240": "Transcription needed value is required",
+            "30241": "Transcription needed value must be a string encoded boolean",
+            "30250": "Moderator needed value is required",
+            "30251": "Moderator needed value must be a string encoded boolean",
+            "30500": "Berichtveld is verplicht.",
+            "30502": "Bericht is te kort.",
+            "30503": "Bericht is te lang.",
+            "30602": "Bedrijfsnaam is te kort.",
+            "30603": "Bedrijfsnaam is te lang.",
+            "30613": "Belastingnummer is te lang.",
+            "30702": "Landnaam is te kort.",
+            "30703": "Landnaam is te lang.",
+            "30712": "Plaatsnaam is te kort.",
+            "30713": "De plaatsnaam is te lang.",
+            "30723": "Straatnaam is te lang.",
+            "30732": "Gebouwnummer is te kort.",
+            "30733": "Gebouwnummer is te lang.",
+            "30743": "Het unitnummer van het gebouw is te lang.",
+            "30752": "Postcode is te kort.",
+            "30753": "Postcode is te lang.",
+            "30803": "Value is too long",
+            "30811": "Incorrect value",
+            "30822": "Value is too high",
+            "30931": "Value is too low",
+            "30932": "Value is too high",
+            "networkError": "Kan niet verbinden met de server.",
+            "tokenExpired": "Session expired"
+        },
+        "links": {
+            "priceCalculator": "Prijscalculator",
+            "tutorials": "Handleidingen",
+            "blog": "Bloggen",
+            "contact": "Contact",
+            "forgotPassword": "Wachtwoord vergeten?",
+            "termsAndConditions": "Voorwaarden",
+            "privacyPolicy": "Privacybeleid",
+            "personalDataProcessingAgreement": "Overeenkomst inzake de verwerking van persoonsgegevens"
+        },
+        "buttons": {
+            "signUp": "Sluit je aan bij Interviewly",
+            "resign": "Ontslag nemen",
+            "logIn": "Log in",
+            "save": "Redden",
+            "next": "Volgende",
+            "back": "Rug",
+            "add": "Toevoegen",
+            "download": "Download"
+        },
+        "menu": {
+            "home": "Thuis",
+            "projects": "Projecten",
+            "myTeam": "Mijn team",
+            "calendar": "Kalender",
+            "library": "Bibliotheek",
+            "createProject": "Project maken"
+        },
+        "dropdownMenu": {
+            "openUserPanel": "Open het gebruikerspaneel",
+            "personalData": "Persoonlijke gegevens",
+            "companyData": "Bedrijfsgegevens",
+            "myTeam": "Mijn team",
+            "logout": "Uitloggen"
+        },
+        "inputs": {
+            "email": "E-mail",
+            "password": "Wachtwoord"
+        },
+        "sorting": {
+            "newest": "nieuwste",
+            "oldest": "oudste"
+        },
+        "dialogs": {
+            "languageSelection": "Selecteer de taal"
+        },
+        "pages": {
+            "notFound": "Pagina niet gevonden"
+        },
+        "logIn": {
+            "rememberMe": "Onthoud me",
+            "joinText": "Heeft u geen account?"
+        },
+        "setPassword": {
+            "subtitle": "Set password",
+            "newPassword": "New password",
+            "repeatPassword": "Repeat new password",
+            "success": "Password has been set"
+        },
+        "join": {
+            "joinControl": "Heeft u al een account?",
+            "back": "Rug",
+            "next": "Volgende",
+            "skip": "Overslaan",
+            "page1": {
+                "title": "Sluit je aan bij Interviewly",
+                "respondentTitle": "Ik ben een respondent",
+                "respondentSubtitle": "Ik wil deelnemen aan sollicitatiegesprekken.",
+                "recruiterTitle": "Ik ben een rekruteerder",
+                "recruiterSubtitle": "Ik wil toegang tot de respondentendatabase."
+            },
+            "page2": {
+                "title": "Kies je geslacht",
+                "maleTitle": "ik ben een man",
+                "femaleTitle": "ik ben een vrouw",
+                "maleTitleShort": "Man",
+                "femaleTitleShort": "Vrouw"
+            },
+            "page3": {
+                "title": "Persoonlijke gegevens",
+                "inputs": {
+                    "name": "Naam*",
+                    "surname": "Achternaam*",
+                    "email": "E-mail*",
+                    "password": "Wachtwoord*",
+                    "repeatPassword": "Herhaal wachtwoord*",
+                    "companyName": "Bedrijfsnaam*",
+                    "passwordConstraints": "(minimaal: 8 tekens, één hoofdletter, één cijfer en één speciaal teken)",
+                    "newsletter": "Ik accepteer het verzenden van de nieuwsbrief.",
+                    "newsletterDetails": "In overeenstemming met de bepalingen van de wet van 18 juli 2002 betreffende het aanbieden van elektronische diensten (d. 2020.344) ga ik ermee akkoord om van STRATEGA CEE, BEDRIJF MET BEPERKTE VERANTWOORDELIJKHEID met hoofdkantoor in Łódź, ul. Wólczańska 125, 90-521 Łódź, commerciële informatie over producten en diensten van de Dienst Interviewlyapp.com in de vorm van een nieuwsbrief. Deze toestemming is vrijwillig en kan op elk moment worden ingetrokken. Het intrekken van de toestemming heeft geen invloed op de rechtmatigheid van de verwerking vóór de intrekking van de toestemming."
+                },
+                "rulesAgreement": {
+                    "text": "Ik aanvaard het reglement van de dienst samen met het contract voor het toevertrouwen van de verwerking van persoonsgegevens.*",
+                    "termsAndConditionsKeyword": "regelgeving",
+                    "privacyPolicyKeyword": "contract"
+                }
+            },
+            "page4": {
+                "title": "Neem een ​​video over jezelf op",
+                "text": "(max. 10 minuten)",
+                "submissionText": "Het formulier verzenden"
+            },
+            "page5": {
+                "title": "Je maakt bijna deel uit van onze familie!",
+                "text": "Wij hebben u een e-mail gestuurd met een bevestigingslink.",
+                "homeButton": "Thuis"
+            },
+            "interviewDialog": {
+                "record": "Dossier",
+                "stop": "Stop",
+                "finish": "Finish"
+            },
+            "fakedoor": {
+                "title": "Je account is aangemaakt.",
+                "text1": {
+                    "regular": "Onze website zal volledig operationeel zijn",
+                    "strong": "binnen enkele dagen"
+                },
+                "subtitle": {
+                    "regular1": "Jij zult de",
+                    "strong": "Eerst",
+                    "regular2": "geinformeerd zijn"
+                },
+                "text2": {
+                    "regular": "Bovendien profiteert u als eerste optimaal van onze mogelijkheden",
+                    "strong": "innovatieve oplossingen"
+                },
+                "text3": "Laten we contact houden!"
+            }
+        },
+        "home": {
+            "initialSection": {
+                "title": "AI-aangedreven werving en sollicitatiegesprekken",
+                "timeBoxText": "Maximaliseer uw tijd"
+            },
+            "stepsSection": {
+                "header": {
+                    "firstPart": "Alleen",
+                    "secondPart": "3 stappen",
+                    "thirdPart": "naar",
+                    "fourthPart": "vind de",
+                    "fifthPart": "best",
+                    "sixthPart": "medewerker"
+                },
+                "content": {
+                    "firstStep": {
+                        "title": "Uploaden",
+                        "text": "de kandidatendatabase"
+                    },
+                    "secondStep": {
+                        "title": "Gedrag",
+                        "text1": "videogesprek, programma-enquêtes",
+                        "text2": "taalvaardigheid controleren"
+                    },
+                    "thirdStep": {
+                        "title": "Ontvangen",
+                        "text": "beoordeling van de kandidaat"
+                    }
+                }
+            },
+            "worldSection": {
+                "firstLine": "Rekruteer mensen uit",
+                "secondLine": "over de hele wereld"
+            },
+            "openAISection": {
+                "subtitle": "Upload de opdracht en ontvang een offerte",
+                "title": "binnen 1 minuut!",
+                "dashedLabelText": "Kunstmatige intelligentie",
+                "buttonText": "Ga naar de prijscalculator"
+            },
+            "subscriptionSection": {
+                "subtitle": "Wij bieden",
+                "title": "4 abonnementen",
+                "labelText1": "Geen contracten.",
+                "labelText2": "Geen verrassingskosten.",
+                "subscriptionButtonText": "Begin"
+            },
+            "tutorialsSection": {
+                "title": "Handleidingen",
+                "subscriptionsText": "Aantal abonnementen: {{subscriptionsCount, number}}",
+                "subscribeButtonText": "Abonneren"
+            },
+            "blogSection": {
+                "title": "Bloggen",
+                "blogLinkText": "Lees verder"
+            }
+        },
+        "methodologies": {
+            "interviews": {
+                "title": "Sollicitatiegesprekken",
+                "text": "1:1 gesprek met de deelnemer."
+            },
+            "focusGroups": {
+                "title": "Focusgroepen",
+                "text": "Groepsgesprek met een moderator."
+            },
+            "onlineCommunities": {
+                "title": "Online gemeenschappen",
+                "text": "Online community met behulp van Bulletin Board."
+            },
+            "uxInterviews": {
+                "title": "UX-interviews",
+                "text": "Deelnemersinterview met scherm delen."
+            },
+            "productTests": {
+                "title": "Producttesten",
+                "text": "Producten testen bij potentiële klanten."
+            }
+        },
+        "accountStatuses": {
+            "active": "actief",
+            "unconfirmed": "niet bevestigd",
+            "inactive": "inactief"
+        },
+        "genders": {
+            "male": "mannelijk",
+            "female": "vrouwelijk"
+        },
+        "martialStatuses": {
+            "singleMan": "Single man",
+            "singleWoman": "Single woman",
+            "marriedMan": "Married man",
+            "marriedWoman": "Married woman",
+            "widower": "Widower",
+            "widow": "Widow",
+            "divorcedMan": "Divorced man",
+            "divorcedWoman": "Divorced woman",
+            "separatedMan": "Separated man",
+            "separatedWoman": "Separated woman"
+        },
+        "profileRoles": {
+            "admin": "beheerder",
+            "moderator": "moderator",
+            "observer": "waarnemer",
+            "translator": "translator",
+            "interviewlyStaff": "Interview personeel"
+        },
+        "projectStatuses": {
+            "draft": "draft",
+            "awaitingPayment": "awaiting payment",
+            "new": "new",
+            "inProgress": "in progress",
+            "finished": "afgerond",
+            "pending": "in behandeling",
+            "canceled": "geannuleerd"
+        },
+        "languages": {
+            "bulgarian": "Bulgaars",
+            "czech": "Tsjechisch",
+            "dutch": "Nederlands",
+            "english": "Engels",
+            "french": "frans",
+            "german": "duits",
+            "greek": "Grieks",
+            "hungarian": "Hongaars",
+            "italian": "Italiaans",
+            "polish": "Pools",
+            "portuguese": "Portugees",
+            "romanian": "Roemeense",
+            "russian": "Russisch",
+            "slovak": "Slowaaks",
+            "spanish": "Spaans",
+            "swedish": "Zweeds",
+            "ukrainian": "Oekraïens"
+        },
+        "surveyTypes": {
+            "regular": "Regular",
+            "screening": "Screening",
+            "language": "Language"
+        },
+        "personalData": {
+            "title": "Persoonlijke gegevens",
+            "marketingConsentsSubtitle": "Marketingtoestemmingen",
+            "changePasswordSubtitle": "Wachtwoord verandering",
+            "currentPassword": "Huidig ​​wachtwoord",
+            "newPassword": "Nieuw paswoord",
+            "repeatPassword": "Repeat new password",
+            "save": "Redden",
+            "passwordChangeSuccessMessage": "Password changed",
+            "name": "Name",
+            "surname": "Surname",
+            "email": "E-mail",
+            "phoneNumber": "Phone number",
+            "companyName": "Company name",
+            "sector": "Sector",
+            "bankAccountNumber": "Bank account number",
+            "birthYear": "Birth year",
+            "province": "Province",
+            "city": "City",
+            "zipCode": "Zip code",
+            "street": "Street",
+            "profession": "Profession",
+            "specialization": "Specialization",
+            "hasChildren": "Has children",
+            "childrenCount": "Children count",
+            "martialStatus": "Martial status",
+            "selectGender": "Select gender",
+            "repeatedNewPassword": "Herhaal nieuw wachtwoord"
+        },
+        "companyData": {
+            "title": "Bedrijfsgegevens",
+            "name": "Bedrijfsnaam",
+            "taxIdNumber": "BTW-nummer",
+            "country": "Land",
+            "city": "Stad",
+            "street": "Straat",
+            "buildingNumber": "Gebouwnummer",
+            "unitNumber": "Eenheidsnummer",
+            "postalCode": "Postcode",
+            "save": "Redden",
+            "success": "Succesvol opgeslagen"
+        },
+        "myAccount": {
+            "greeting": "Hoi",
+            "latestTeamMembersLabel": "Laatste teamleden",
+            "upcomingInterviewsLabel": "Komende interviews",
+            "projectsLabel": "Projecten"
+        },
+        "projects": {
+            "title": "Projecten",
+            "projectsCounterText": "projecten",
+            "searchInputPlaceholder": "Zoek op projectnaam",
+            "statusLabel": "Toestand"
+        },
+        "viewProject": {
+            "title": "Project details",
+            "edit": "Bewerking",
+            "markAsPaid": "Mark as paid",
+            "steps": [
+                "Algemeen",
+                "Methodologie",
+                "Respondenten",
+                "Screeningsonderzoek",
+                "Details"
+            ],
+            "general": {
+                "title": "User Experience in Samsung company",
+                "description": "“Het kan soms zenuwslopend, kwetsbaar en uitdagend zijn, maar door uit ons hoofd te komen en samenwerking op te nemen in onze ontwerpprocessen kunnen we allemaal betere ontwerpers worden.\n\n\n\nDoor de jaren heen heb ik geleerd dat samenwerken betekent dat je je ego opzij moet zetten om iets te maken dat de som van zijn makers overstijgt.\""
+            },
+            "methodology": {
+                "interview": {
+                    "createSurvey": "Enquête maken",
+                    "instruction": "of kies een enquête uit de bibliotheek",
+                    "save": "Redden"
+                },
+                "onlineCommunity": {
+                    "createBulletinBoardButtonText": "Prikbord maken",
+                    "membersLabel": "leden",
+                    "createRoomButtonText": "Ruimte creëren",
+                    "roomName": "Kamer naam",
+                    "addMembersLabel": "Leden toevoegen",
+                    "surveySubtitle": "of kies enquête uit de bibliotheek",
+                    "room": {
+                        "addTopicLabel": "Onderwerp toevoegen",
+                        "visibilityLabel": "Zichtbaarheid",
+                        "publicVisibility": "Openbaar",
+                        "specificMembersVisibility": "Specifieke leden",
+                        "topicInputPlaceholder": "Onderwerp",
+                        "addCommentLabel": "Voeg commentaar toe",
+                        "noCommentsCabel": "Geen commentaar",
+                        "commentSingularLabel": "opmerking",
+                        "commentPluralLabel": "opmerkingen"
+                    }
+                },
+                "sessionStartDateLabel": "Session start date",
+                "sessionEndDateLabel": "Session end date"
+            },
+            "respondents": {
+                "personalDataSubtitle": "Personal data",
+                "seeDetailsLabel": "Zie de details",
+                "respondentVideoSubtitle": "Respondentvideo",
+                "upcomingInterviewsSubtitle": "Komende interviews",
+                "meetingSchedulerSubtitle": "Schedule the meeting",
+                "scheduleButtonText": "Schedule",
+                "respondentSurveysSubtitle": "Enquêtes van respondenten",
+                "scheduledSuccessMessage": "Scheduled"
+            },
+            "screeningSurveys": {
+                "resultsTitle": "Results",
+                "noResultsMessage": "No results"
+            },
+            "details": {
+                "participantsCountInputLabel": "Participants Count",
+                "reserveParticipantsCountInputLabel": "Reserve Participants Count",
+                "interviewDurationLabel": "Interview duration",
+                "startDateLabel": "Start date",
+                "endDateLabel": "End date",
+                "transcriptionSubtitle": "Transcription",
+                "respondentFeeSubtitle": "Payment for the respondent",
+                "respondentFeeLabel": "Respondent fee",
+                "currencyLabel": "Currency"
+            },
+            "respondentPage": {
+                "interviewsSubtitle": "Interviews",
+                "surveysSubtitle": "Surveys",
+                "surveysStatuses": {
+                    "filled": "filled",
+                    "ended": "ended",
+                    "pending": "pending"
+                },
+                "noResponsesMessage": "No responses"
+            }
+        },
+        "editProject": {
+            "title": "Nieuwe onderzoeksmaker",
+            "aboutStepTitle": "Over projecten",
+            "methodologyStepTitle": "Onderzoeksmethode",
+            "respondentsStepTitle": "Selectie van respondenten",
+            "detailsStepTitle": "Project details",
+            "summaryStepTitle": "Samenvatting",
+            "aboutStep": {
+                "title": "Over projecten",
+                "projectNameSubtitle": "Geef de projectnaam op",
+                "projectNameInputPlaceholder": "Naam van het project",
+                "descriptionInputPlaceholder": "Beschrijving (optioneel)",
+                "avatarSubtitle": "Upload de avatar"
+            },
+            "methodologyStep": {
+                "title": "Onderzoeksmethode",
+                "methodologySubtitle": "Kies de onderzoeksmethodologie."
+            },
+            "respondentsStep": {
+                "title": "Selectie van respondenten",
+                "respondentsSelectionSubtitle": "Selecteer respondenten voor dit onderzoek",
+                "respondentsSelectionInstructionPart1": "Als u niet zeker weet hoe het respondentenbestand er uit moet zien, download dan ons voorbeeldbestand. Hierin vindt u alle benodigde informatie.",
+                "respondentsSelectionInstructionPart2": "of specificeer het gewenste respondentenprofiel met onderstaande filters",
+                "genderLabel": "Geslacht",
+                "otherRequirementsInputPlaceholder": "Andere vereisten",
+                "languageTestSubtitle": "Taaltest voor de respondent",
+                "screeningSurveySubtitle": "Heeft u een screeningsonderzoek nodig?",
+                "screeningSurveyDescription": "Nadat u voor de enquête heeft betaald, heeft u de mogelijkheid om een ​​kant-en-klare enquêtebibliotheek te gebruiken of uw eigen enquêtebibliotheek te maken.",
+                "recordingSubtitle": "Heeft u een voorlopige opname van de werving van respondenten nodig?"
+            },
+            "detailsStep": {
+                "title": "Project details",
+                "participantsCountInputLabel": "Aantal deelnemers",
+                "reserveParticipantsCountInputLabel": "Aantal reservedeelnemers",
+                "interviewDurationDropdownName": "Duur van het interview",
+                "startDateLabel": "Begin datum",
+                "endDateLabel": "Einddatum",
+                "transcriptionSubtitle": "Transcriptie nodig?",
+                "moderatorSubtitle": "Heeft u een moderator nodig?",
+                "paymentSubtitle": "Betaling voor de respondent",
+                "paymentInstruction": "Vul het brutobedrag in. De valuta moet overeenkomen met de valuta die wordt gebruikt voor de betaling van de factuur."
+            },
+            "summaryStep": {
+                "title": "Samenvatting"
+            },
+            "nameStepTitle": "Geef de enquête een naam",
+            "questionStepTitle": "Voeg vragen toe",
+            "nameInputLabel": "Geef alstublieft de",
+            "nameInputPlaceholder": "titel van het onderzoek",
+            "availableLanguagesDropdownName": "Beschikbare talen",
+            "addLanguageButtonText": "Taal toevoegen",
+            "addLabel": "Toevoegen",
+            "openQuestionName": "open vraag",
+            "closedQuestionName": "gesloten vraag",
+            "multipleChoiceQuestionName": "meerkeuze vraag",
+            "singleChoiceQuestionName": "vraag met één keuze",
+            "newQuestionText": "Nieuwe vraag",
+            "addAnswerButtonText": "Antwoord toevoegen",
+            "newAnswerText": "Nieuw antwoord",
+            "correctAnswerLabel": "Goed antwoord",
+            "correctAnswerDropdownName": "Goed antwoord"
+        },
+        "myTeam": {
+            "title": "Mijn team",
+            "membersLabel": "leden",
+            "inviteTeamMemberButton": "Nodig teamlid uit",
+            "administratorsLabel": "Beheerders",
+            "moderatorsLabel": "Moderators",
+            "observersLabel": "Waarnemers",
+            "popup": {
+                "addLabel": "Toevoegen",
+                "editLabel": "Bewerking",
+                "memberText": "lid",
+                "nameInputPlaceholder": "Naam",
+                "surnameInputPlaceholder": "Achternaam",
+                "emailInputPlaceholder": "E-mail",
+                "roleDropdownName": "Rol",
+                "statusDropdownName": "Toestand",
+                "projectsDropdownName": "Projects",
+                "genderDropdownName": "Geslacht",
+                "saveButtonText": "Redden"
+            }
+        },
+        "meeting": {
+            "finishedMessage": "The meeting has finished"
+        },
+        "library": {
+            "title": "Bibliotheek",
+            "mySurveys": "Mijn enquêtes",
+            "publicSurveys": "Publieke enquêtes",
+            "addNewTemplate": "Voeg een nieuw sjabloon toe"
+        },
+        "calendar": {
+            "title": "Calendar"
+        },
+        "passwordReset": {
+            "request": {
+                "header": "Maak een nieuw wachtwoord aan",
+                "subheader": "Vul uw e-mailadres in, dan sturen wij u een bericht met instructies voor het aanmaken van een nieuw wachtwoord.",
+                "submitButton": "Versturen"
+            },
+            "confirmation": {
+                "header": "We hebben het!",
+                "subheader": "Wij hebben u een bericht gestuurd met een nieuw wachtwoord.",
+                "submitButton": "Terug naar de startpagina"
+            }
+        },
+        "contact": {
+            "getInTouch": "Neem contact op",
+            "sendUsAMessage": "zend ons een bericht",
+            "quote": "Interviewly heeft alles wat we nodig hebben op één platform.",
+            "messageSent": "Bericht verzonden!"
+        },
+        "registrationConfirmation": {
+            "header": "Het is klaar!",
+            "subheader": "U kunt nu inloggen."
+        },
+        "termsAndConditions": {
+            "header": "Servicevoorwaarden",
+            "generalProvisions": {
+                "header": "Algemene bepalingen",
+                "main": "De dienstverlener die toegang geeft tot de Interviewly Dienst, hierna de “Dienst” genoemd, is\r\n\r\nSTRATEGA CEE BEDRIJF MET BEPERKTE AANSPRAKELIJKHEID, met hoofdkantoor in Łódź, ul. Wólczańska 125,\r\n\r\n90-521 Łódź, geregistreerd in het Nationale Hofregister – Register van Ondernemers onder KRS\r\n\r\nnummer: 0000541582, waarvan de registratiegegevens zijn bewaard door de districtsrechtbank voor ŁÓDŹ-Śródmieście\r\n\r\nIN ŁÓDŹ, XX Economische Afdeling KRS, NIP: 7692223109, REGON: 360412382, hierna te noemen\r\n\r\n“Dienstverlener” of “Beheerder”.",
+                "listHeader": "Deze Verordening (ook aangeduid als \"de Overeenkomst\") bepaalt:",
+                "list": [
+                    "het type, de reikwijdte en de regels van diensten die elektronisch door de Dienstverlener worden aangeboden via de Dienst,",
+                    "Verantwoordelijkheden van Dienstontvangers en Dienstverleners,",
+                    "het sluiten en beëindigen van overeenkomsten voor het leveren van elektronische diensten,",
+                    "Verplichtingen en verantwoordelijkheden van de Dienstverlener,",
+                    "wijze van adverteren,",
+                    "Verwerking van persoonsgegevens."
+                ]
+            },
+            "definitions": {
+                "header": "Definities",
+                "list": [
+                    {
+                        "phrase": "Dienstverlener",
+                        "definition": "een ondernemer die een overeenkomst sluit met de Provider voor het leveren van de Elektronische Dienst in de vorm van de beschikbaarheid van de Dienst zoals gedefinieerd in deze Verordening,"
+                    },
+                    {
+                        "phrase": "Dienst",
+                        "definition": "software die elektronisch beschikbaar wordt gesteld aan de Dienstontvanger via de webbrowser, waardoor met name de HR-wervingsdienst wordt geboden,"
+                    },
+                    {
+                        "phrase": "Rekening",
+                        "definition": "aangeduid door de individuele naam van de organisatie (organisatie) verstrekt door de Dienstontvanger, een verzameling middelen in het IT-systeem van de Dienstverlener, waarin de Gegevens worden verzameld, waardoor de Gebruiker van de Dienst de Dienst kan gebruiken,"
+                    },
+                    {
+                        "phrase": "Accountbeheerder",
+                        "definition": "dit moet worden begrepen als de Gebruiker die de rechten heeft om het Account te beheren. Standaard is de accountbeheerder degene die het Account heeft aangemaakt. Als onderdeel van de Dienst kan de Dienstontvanger de Accountbeheerder zelfstandig wijzigen met behulp van de beschikbare functionaliteit op de Dienst."
+                    },
+                    {
+                        "phrase": "Gebruiker",
+                        "definition": "elke persoon die ooit de Dienst heeft gebruikt of gebruikt"
+                    },
+                    {
+                        "phrase": "Abonnement",
+                        "definition": "een verklaring van de wil van de Dienstontvanger om een overeenkomst aan te gaan voor het leveren van een elektronische dienst in de vorm van het beheren van een Account op de Dienst en het gebruiken van de Dienst. De indiening wordt gedaan door een Account aan te maken via de website die actief is op www.interviewlyapp.com of door het verlengen van het contract voor het leveren van een elektronische dienst in de vorm van het beheren van een Account op de Dienst en het gebruiken van de Dienst,"
+                    },
+                    {
+                        "phrase": "Vergoeding",
+                        "definition": "vergoeding van de Dienstverlener voor de Dienst die verschuldigd is door de Dienstontvanger. De vergoeding\r\nwordt betaald als abonnementsgeld voor de Dienst tijdens de gekozen Abonnementsperiode of Verlengde Abonnementsperiode\r\ntijdens de geselecteerde Abonnementsperiode."
+                    },
+                    {
+                        "phrase": "Abonnementsperiode",
+                        "definition": "dient te worden begrepen als de periode van de werking van het Account, waarvoor een vergoeding wordt betaald en waarbinnen diensten elektronisch worden geleverd door de Dienstverlener aan de Dienstontvanger in de vorm van de beschikbaarheid van de Dienst. Abonnementsperioden worden geaccepteerd: één maand, zes maanden, twaalf maanden."
+                    }
+                ]
+            },
+            "obligationsOfServiceProvider": {
+                "header": "Verplichtingen van de dienstverlener",
+                "list": [
+                    "De Dienstverlener verklaart beschikbaarheid van de Dienst (SLA) gedurende 80% van het jaar.",
+                    "De niet-beschikbaarheid van de Dienst wordt niet opgenomen in de beschikbaarheidsfacturering wanneer enige Vergoedingen niet zijn betaald door de Dienstontvanger op het moment van de Niet-beschikbare Aanvraag.",
+                    "De indicator heeft betrekking op de beschikbaarheid van de Website, met uitzondering van problemen die voortvloeien uit de IT-infrastructuur van de Dienstverlener of externe bedrijven, informatie-infrastructuur of overmacht.",
+                    "Technische onderbreking is de tijd die nodig is voor het onderhoud van de Dienst en/of de infrastructuur die door de Dienstverlener wordt gebruikt.",
+                    {
+                        "text": "Technische Onderbreking en Dienst Updates",
+                        "sublist": [
+                            "De Dienstverlener zal updates van de Dienst uitvoeren van 19:00 uur tot 7:00 uur in de tijdzone van de Dienstverlener of tijdens technische onderbrekingen.",
+                            "De Dienstverlener is gerechtigd om op elk moment een technische onderbreking in de toegang tot de Dienst uit te voeren van 19:00 uur tot 7:00 uur in de tijdzone van de Dienstverlener."
+                        ]
+                    },
+                    "De Dienstverlener behoudt zich het recht voor om de Dienst te wijzigen, met name om de reikwijdte ervan uit te breiden.",
+                    {
+                        "text": "De Dienstverlener is niet verantwoordelijk voor:",
+                        "sublist": [
+                            "de gevolgen van onjuiste invoer of verwerking van gegevens in de Dienst door de Dienstontvanger;",
+                            "onjuist gebruik van de dienst www.interviewlyapp.com;",
+                            "gebrek aan toegang tot internet door de Dienstontvanger of beperking in beschikbaarheid ervan;",
+                            "onjuiste werking van software of apparaten van de Dienstontvanger of diens medewerkers die zij gebruiken en die het gebruik van de Dienst verhinderen,",
+                            "schade geleden, inclusief verloren voordelen, veroorzaakt door de Dienstontvanger door onvoldoende beveiliging, verstrekking van authenticatiegegevens aan onbevoegde personen voor toegang tot de Dienst;",
+                            "schade geleden, inclusief verloren voordelen, veroorzaakt door handelingen of nalatigheden van de Dienstontvanger, met name door het gebruik van de Dienst op een manier die in strijd is met de wettelijke bepalingen of de voorschriften,",
+                            "schade, inclusief verloren voordelen, veroorzaakt door overmachtgebeurtenissen."
+                        ]
+                    },
+                    "Onder geen enkele omstandigheid zullen de Dienstverlener of zijn wettelijk gelieerde entiteiten aansprakelijk zijn voor verlies van winst of inkomsten (verloren winst), besparingen, verlies of vernietiging van gegevens, de waarde van het bedrijf of reputatie, de onnauwkeurigheid van enige gegevens, noch zullen zij verantwoordelijk zijn voor enige materiële / immateriële schade of indirect verlies, enige opgelopen ongeacht de theorie van de bronnen van aansprakelijkheid, zelfs als zij op de hoogte zijn gebracht van de mogelijkheid van dergelijke schade of verlies.",
+                    "De aansprakelijkheid van de Dienstverlener onder de Overeenkomst is beperkt tot het bedrag gelijk aan de waarde van de laatste betaling die door de Dienstontvanger is gedaan, maar niet meer dan het bedrag van de betaling voor de betreffende Abonnementsperiode."
+                ]
+            },
+            "principlesOfApplicationUse": {
+                "header": "Principes van toepassingsgebruik",
+                "list": [
+                    "Om de Dienst te gebruiken, is het noodzakelijk om te beschikken over een apparaat met toegang tot internet, een webbrowser en om een Account op te zetten - naast in/in - ook een e-mailaccount.",
+                    "Toegang tot de Website is mogelijk via een van de algemeen beschikbare webbrowsers: Google Chrome, Mozilla Firefox, Opera, Edge, Safari, in de nieuwste versies. Vanuit de beschikbare versies, met ingeschakelde, in de webbrowser, de ondersteuning van Cookies en Javascript.",
+                    "De Dienstverlener levert IT-diensten met betrekking tot de toegang en dienst van de Dienst alleen via internet.",
+                    "De Gebruiker erkent dat regelmatige updates van hun apparaten en software om moderne versleutelingsmechanismen te ondersteunen tijdens communicatie vanaf de Website het gebruik ervan mogelijk maken. De beschikbaarheid van genoemde updates kan afhangen van de hardware en/of software in het bezit van de Gebruiker en daarom is de Dienstverlener niet verantwoordelijk voor de mogelijke afwezigheid van genoemde updates en bijgevolg de onmogelijkheid om de Dienst om deze reden te gebruiken.",
+                    "De Gebruiker die de Dienst gebruikt, ontvangt geen auteursrechten op de Dienst. De Dienstontvanger en Gebruikers worden slechts - onder de voorwaarden zoals aangegeven in de Voorschriften - een betaalde, niet-overdraagbare en niet-exclusieve licentie verleend die hen het recht geeft om de Dienst te gebruiken binnen de reikwijdte van het doel ervan.",
+                    {
+                        "text": "Om elke twijfel te voorkomen, zult u noch op eigen initiatief, noch iemand anders toestaan of machtigen om:",
+                        "sublist": [
+                            "Het verspreiden, overdragen, lenen, delen, verkopen, verzenden, licentiëren, verhuren of anderszins beschikbaar stellen van de Dienst.",
+                            "het kopiëren, decompileren, opnieuw tekenen, reverse engineering of andere extractie of reproductie van broncode of andere methoden, algoritmen of processen van de Website.",
+                            "het aanbieden of exploiteren van de Dienst in enige andere winstgevende commerciële vorm die waarde toevoegt aan producten of diensten van een derde partij, inclusief het aanbieden van hostingdiensten, timesharingdiensten, SaaS (Software as a Service) diensten of beheerdiensten, zelfs als deze samen of als onderdeel van andere producten en diensten worden aangeboden;",
+                            "Verwijder alle auteursrechtinformatie en handelsmerken, met uitzondering van bewerkbare elementen op het niveau van de functionaliteit van de Website."
+                        ]
+                    },
+                    "De Dienstverlener aanvaardt geen enkele verantwoordelijkheid voor inbreuk op de rechten van derden en voor het veroorzaken van enige schade aan derden als gevolg van en in verband met de activiteiten die worden uitgevoerd door de Dienstontvanger, zijn Gebruikers of Medewerkers bij het gebruik van de Dienst.",
+                    "Als de Gebruiker van de Dienst de Dienstverlener informeert over ideeën en suggesties met betrekking tot de Dienst, stemt de Dienstontvanger ermee in dat de Dienstverlener dergelijke ideeën en suggesties voor elk doel gebruikt, zonder beperking, met name ontwikkeling, aanpassing, correctie met uitsluiting van aansprakelijkheid en beloning aan de Gebruiker.",
+                    "De Gebruiker begrijpt en stemt ermee in dat de diensten die door de Dienstverlener worden geleverd, zijn gebaseerd op een enkele, basisversie van de toepassing, hardware en infrastructuur en bedoeld zijn om de dienst aan meerdere klanten op een schaalbare manier te leveren. De Dienst wordt niet aangepast of / of aangepast aan de Dienstontvanger, tenzij uitdrukkelijk overeengekomen door de Partijen."
+                ]
+            },
+            "feesAndPayments": {
+                "header": "Tarieven en betalingen",
+                "list": [
+                    "De abonnementsprijs wordt gepubliceerd op de website van de Dienstverlener: www.interviewlyapp.com.",
+                    "De vermelde prijzen zijn nettoprijzen (dat wil zeggen exclusief btw). Prijzen worden uitgedrukt in Poolse zloty, Amerikaanse dollars.",
+                    "De vergoeding wordt vooraf betaald en wordt berekend volgens het geselecteerde abonnementsmodel.",
+                    "Betalingen worden gedaan met een creditcard (Visa, MasterCard, American Express) of per bankoverschrijving op basis van een factuur die is uitgegeven door de Dienstverlener.",
+                    "De vergoeding via bankoverschrijving wordt betaald op de bankrekening van de Dienstverlener die is vermeld op de btw-factuur. De Klant verplicht zich om de vergoeding binnen 7 dagen na de datum van levering van de btw-factuur op het opgegeven e-mailadres te betalen. Er is een mogelijkheid om de overdrachtsperiode te verlengen als onderdeel van individuele afspraken met de Dienstontvanger. De uiteindelijke beslissing wordt genomen door de aanbieder.",
+                    "De Dienstverlener kan betaling via bankoverschrijving weigeren als de Dienstontvanger de betalingstermijn niet nakomt.",
+                    "Betaalde facturen worden per e-mail bezorgd.",
+                    "Levering van de factuur die in de vorm van een bestand is verzonden, vindt plaats zodra de Dienstverlener een e-mail verzendt met daarin een bestand met facturering vanaf het e-mailadres naar het door de Dienstontvanger opgegeven adres. In het geval dat de e-mail met de factuur niet wordt bezorgd bij de Dienstontvanger, om redenen die onafhankelijk zijn van de Dienstverlener, wordt op verzoek van de Klant een duplicaat van deze facturering uitgegeven.",
+                    "Voor de dag van betaling van bedragen op basis van facturen die door de Dienstverlener zijn uitgegeven, accepteren de Partijen de datum van ontvangst van de bankrekening van de Dienstverlener.",
+                    "De Partijen zijn het erover eens dat de Dienstverlener betalingen die afkomstig zijn van de Dienstontvanger in de eerste plaats zal verrekenen ter vereffening van de voorheen verschuldigde schulden, ongeacht de inhoud van de verklaringen die de betaling vergezellen.",
+                    "Als u een creditcard of betaalkaart kiest als betaalmethode voor het abonnementsgeld, wordt het tarief voor elke volgende abonnementsperiode automatisch in rekening gebracht totdat de Dienstontvanger aangeeft te willen opzeggen. Een dergelijke opzegging moet per e-mail worden gemeld aan het adres contact@interviewlyapp.com tot 7 dagen voor het begin van de nieuwe abonnementsperiode.",
+                    "De Dienstontvanger is verplicht om de vergoeding voor het geselecteerde abonnement uiterlijk binnen 7 werkdagen na de datum van indiening van het abonnement te betalen. De dag van betaling wordt beschouwd als de dag van verrekening van de vereiste schuld op de bankrekening van de Dienstverlener. Niet betalen binnen de gespecificeerde termijn staat gelijk aan annulering van het abonnement.",
+                    "De wijziging van de parameters van het abonnement wordt door de Accountbeheerder direct op het Account in de Dienst aangebracht en kan op elk moment door hem worden geannuleerd of op bevel van de Accountbeheerder dat naar het in paragraaf 2 van de Dienstverlener gespecificeerde e-mailadres is gestuurd.",
+                    "De Accountbeheerder heeft toegang tot de Dienst om aanpassingen aan te brengen op het niveau van de functionaliteit van de Website. ",
+                    "De Dienstontvanger stemt ermee in om btw-facturen door de Dienstverlener in elektronische vorm te ontvangen in overeenstemming met de wettelijke basis voor het uitgeven en verzenden van facturen in elektronisch formaat. Wet van 11 maart 2004 betreffende de belasting over goederen en diensten (Dz.U. Hoofdstuk 54, Pos. en 535). Factuur die in elektronische vorm wordt verzonden overeenkomstig de wet (Dz.U. Nr. 144, punt 1204, zoals gewijzigd) is gelijkwaardig aan het verzenden van een factuur die op papier is uitgegeven en vormt een boekhoudkundig document.\r\n\r\nCorrectiefacturen en duplicaten van facturen die elektronisch zijn verzonden, worden ook in elektronische vorm verzonden.",
+                    "De BTW-factuur in papieren vorm wordt uitsluitend op uitdrukkelijk verzoek van de Dienstontvanger, uitgedrukt in elektronische vorm, afgegeven en afgeleverd op het e-mailadres van de Aanbieder. De kosten voor het afdrukken en bezorgen van BTW op papier worden betaald door de Dienstverlener en toegevoegd aan de factuur, voor een bedrag van 59 PLN netto + BTW.",
+                    "De Dienstverlener kan op elk moment, na de Ontvangers van de Dienst op de hoogte te hebben gesteld, en ten minste 60 dagen vóór de wijziging, indien dit vereist is door de toepasselijke wetgeving, de Prijslijst of een deel daarvan wijzigen of nieuwe tarieven vaststellen. Prijswijzigingen en de vaststelling van nieuwe tarieven worden van kracht voor daaropvolgende abonnementsperioden en voor alle nieuwe Dienstontvangers na de datum van inwerkingtreding van de wijziging. Als de Ontvanger van de Dienst niet akkoord gaat met de prijswijzigingen in het Tarief, kan hij/zij het Abonnement opzeggen en stoppen met het gebruik van de Dienst vóór het begin van de volgende Periode, vanaf welke de gewijzigde prijzen van toepassing zijn."
+                ]
+            },
+            "support": {
+                "header": "Steun",
+                "list": [
+                    "Er is elke dag technische ondersteuning beschikbaar. 9:00 – 15:00 (CET) voor serviceontvangers met een vergoeding betaald voor de toepasselijke abonnementsperiode voor geselecteerde abonnementsmodellen.",
+                    "Contact voor technische ondersteuning is per e-mail beschikbaar voor de accountbeheerder op contact@interviewlyapp.com",
+                    "De Dienstverlener zal zich inspannen om de e-mails binnen de voor de Dienstverlener geldende werkdagen binnen 72 uur te beantwoorden."
+                ]
+            },
+            "compliants": {
+                "header": "Voldoet",
+                "list": [
+                    "De Dienstverlener verbindt zich ertoe gebreken die de toegang tot het gebruik van de Dienst verhinderen, onmiddellijk te verwijderen.",
+                    "Klachten met betrekking tot het verlenen van de dienst of toegang tot de Dienst, kan de Dienstontvanger per e-mail indienen op contact@interviewlyapp.com",
+                    {
+                        "text": "Het rapport moet het volgende vermelden:",
+                        "sublist": [
+                            "de naam van de organisatie (informatie verstrekt bij het aanmaken van het account) en het e-mailadres",
+                            "informatie over de betrokken gebruiker,",
+                            "het tijdstip en de omstandigheden van het optreden van het probleem met de werking van de Dienst, de URL of de naam van de pagina,",
+                            "Scherm met zichtbare URL en probleem"
+                        ]
+                    },
+                    "Als aanvullende informatie nodig is voor het onderzoek van de klacht, verzoekt de Dienstverlener u deze informatie te verstrekken voordat de klager in behandeling wordt genomen. De tijd voor het onderzoeken van de claim wordt gerekend vanaf de datum van levering van de gevraagde informatie.",
+                    "Het wordt aanbevolen om in bovenstaande e-mail zoveel mogelijk informatie en omstandigheden te verstrekken met betrekking tot het onderwerp van de klacht, in het bijzonder het type en de datum van optreden van de onregelmatigheid en contactgegevens – dit zal de verwerking van klachten vergemakkelijken en versnellen door de Dienstverlener.",
+                    "De klacht wordt door Dienstverlener onverwijld, uiterlijk binnen 14 werkdagen, in behandeling genomen.",
+                    "De behandeling van de klacht door de Dienstverlener is definitief.",
+                    "Het antwoord van de Dienstverlener op de klacht wordt verzonden naar het e-mailadres van de Dienstontvanger dat is vermeld in de claimmelding,"
+                ]
+            },
+            "serviceData": {
+                "header": "Servicegegevens",
+                "list": [
+                    "De gegevens die de Dienstontvanger in het Serviceaccount invoert, zijn eigendom van de Dienstontvanger.",
+                    "Alle gegevens die in het Serviceaccount worden ingevoerd, worden door de Dienstverlener opgeslagen in overeenstemming met Verordening (EU) 2016/679 van het Europees Parlement en de Raad van 27 april 2016 betreffende de bescherming van natuurlijke personen in verband met de verwerking van persoonsgegevens en betreffende het vrije verkeer van dergelijke gegevens en tot intrekking van Richtlijn 95/46/EG. (dalej RODO).",
+                    "De Dienstverlener bewaart en verwerkt de gegevens die hem door de Dienstontvanger ter beschikking worden gesteld in overeenstemming met de toepasselijke wettelijke bepalingen en in overeenstemming met de Vertrouwensovereenkomst voor de verwerking van persoonsgegevens, die bijlage nr. 1 bij de Verordeningen vormt.",
+                    "Door deze Servicevoorwaarden te accepteren, gaat de Dienstontvanger ermee akkoord de gegevens aan de Dienstverlener toe te vertrouwen in overeenstemming met de Vertrouwensovereenkomst voor de verwerking van persoonsgegevens."
+                ]
+            },
+            "conditionsOfCeasementOfContract": {
+                "header": "Voorwaarden voor het beëindigen van het contract",
+                "list": [
+                    "De Klant kan de overeenkomst met een opzegtermijn van één maand en zonder opgave van redenen beëindigen door een desbetreffende verklaring per e-mail te sturen naar contact@interviewlyapp.com.",
+                    "De Dienstontvanger kan het contract onmiddellijk beëindigen als de Dienstverlener de beschikbaarheid van de Dienst niet binnen de in de SLA in paragraaf III.1 gespecificeerde reikwijdte handhaaft, door een relevante verklaring per e-mail te sturen naar contact@interviewlyapp.com.",
+                    {
+                        "text": "De Dienstverlener kan het Account van de Dienstontvanger tijdelijk of permanent blokkeren of de Overeenkomst beëindigen in het geval dat de Gebruiker:",
+                        "sublist": [
+                            "de regels overtreedt,",
+                            "leidt, doet hij/zij dit niet binnen de vastgestelde termijn;",
+                            "schadelijk is voor de Dienstverlener of valse gegevens verstrekt tijdens het registratieproces, of wijzigingen in de verstrekte gegevens niet onmiddellijk bijwerkt volgens de werkelijke staat,",
+                            "niet op tijd betaalt.",
+                            "handelingen pleegt gericht op het schenden van de beveiliging van gegevens die in de Dienst worden verwerkt en het gebruik van de Dienst, of een ongeoorloofde poging doet om toegang te krijgen tot de Dienst, of andere handelingen verricht die bedoeld zijn om de juiste werking van de Dienst te verstoren."
+                        ]
+                    },
+                    "De Dienstverlener is gerechtigd de Overeenkomst met onmiddellijke ingang te beëindigen wanneer een van de redenen vermeld in paragraaf 3 van dit hoofdstuk zich voordoet.",
+                    "De Dienstverlener kan de Overeenkomst te allen tijde beëindigen, met een opzegtermijn van drie maanden.",
+                    "De verklaring van wil van de Dienstverlener met betrekking tot de beëindiging van het contract voor zijn geldigheid vereist een schriftelijke vorm en moet respectievelijk worden verzonden naar het e-mailadres van de huidige Accountbeheerder van de Dienstontvanger. De periode van beëindiging van de Overeenkomst begint op de Dag van Bezorging van de verklaring van wil van de Dienstverlener om het Contract te beëindigen.",
+                    "Deze beëindiging leidt tot de beëindiging van de juridische relatie met ingang van de toekomst."
+                ]
+            },
+            "finalProvisions": {
+                "header": "Slotbepalingen",
+                "list": [
+                    "Contracten die door de Dienstverlener zijn gesloten binnen het kader van de activiteiten van de Toepassing worden in het Pools gesloten, in overeenstemming met de geldende wetgeving op het grondgebied van Polen.",
+                    "De Dienstverlener behoudt zich het recht voor om wijzigingen aan te brengen in de Voorschriften. Wijzigingen in de Gebruiksvoorwaarden die zijn aangebracht, zijn bindend voor de Dienstontvanger, mits hij/zij op de hoogte is gebracht van de wijzigingen en de Overeenkomst niet binnen 14 dagen na de datum van kennisgeving van de wijziging door de Dienstverlener heeft beëindigd.",
+                    "In geval van niet-naleving van enig deel van de Voorschriften met de toepasselijke wetgeving, zijn de relevante bepalingen van het Poolse recht van toepassing in plaats van de betwiste bepaling van de voorschriften.",
+                    "Eventuele geschillen tussen de Dienstverlener en de Dienstontvanger worden voorgelegd aan de rechtbank die bevoegd is op basis van de zetel van de Dienstverlener."
+                ]
+            }
+        },
+        "personalDataProcessingAgreement": {
+            "header": "Overeenkomst inzake de Verwerking van Persoonsgegevens",
+            "text": "De Overeenkomst inzake de Verwerking van Persoonsgegevens maakt integraal deel uit van de Voorschriften en stelt de regels vast voor de verwerking door de Dienstverlener namens de Dienstontvanger van de persoonlijke gegevens van de Gebruiker via de Dienst op www.interviewlyapp.com. \r\nDe Overeenkomst inzake de Verwerking van Persoonsgegevens omvat de gehele verplichtingen en voorwaarden van de verwerking van de gegevens van de Gebruiker tussen de Dienstverlener en de Dienstontvanger in verband met de SaaS-dienst en vervangt alle eerdere overeenkomsten, afspraken en regelingen tussen de Dienstverlener en de Dienstontvanger in dit verband.",
+            "rules": [
+                {
+                    "title": "Definities",
+                    "list": [
+                        "Beheerder - betekent de Dienstontvanger, die alleen of gezamenlijk met andere entiteiten, de doelen en methoden van de verwerking van Persoonsgegevens bepaalt;",
+                        "Verwerker - betekent de Dienstverlener"
+                    ]
+                },
+                {
+                    "title": "Onderwerp van verwerking van persoonsgegevens",
+                    "list": [
+                        "In verband met de uitvoering van het contract voor het leveren van diensten via elektronische middelen voor de SaaS-dienst zoals geregeld in de Voorschriften (hierna aangeduid als de \"Hoofdovereenkomst\" gesloten tussen de Partijen, draagt de Beheerder aan de Verwerker op grond van artikel 28 van de Verordening persoonsgegevens op die namens de Beheerder moeten worden verwerkt, op de voorwaarden en voor de doeleinden zoals gespecificeerd in de Overeenkomst.",
+                        "Het aangaan van de Overeenkomst vormt een gedocumenteerde instructie van de Beheerder aan de Verwerker om Persoonsgegevens te verwerken, inclusief de Overdracht van Persoonsgegevens naar Derde Landen, zoals bedoeld in artikel 28 (3) (a) van de AVG.",
+                        "De Beheerder verklaart dat hij de verwerkingsverantwoordelijke is van persoonsgegevens in de zin van de bepalingen van Verordening (EU) 2016/679 van het Europees Parlement en de Raad van 27 april 2016 betreffende de bescherming van natuurlijke personen in verband met de verwerking van persoonsgegevens en betreffende het vrije verkeer van die gegevens en tot intrekking van Richtlijn 95/46/EG (Algemene verordening gegevensbescherming), (hierna de \"Verordening\"), die hij aan de Verwerker toevertrouwt."
+                    ]
+                },
+                {
+                    "title": "Omvang en doel van gegevensverwerking",
+                    "list": [
+                        "Persoonsgegevens die aan de Beheerder zijn toevertrouwd, worden door de Verwerker alleen verwerkt voor het uitvoeren van de diensten die gedetailleerd worden beschreven in de Hoofdovereenkomst zoals vermeld in § 2 lid 1 en op een wijze die in overeenstemming is met deze Overeenkomsten en relevante, algemeen geldende wettelijke bepalingen.",
+                        "Categorie van personen: medewerkers en medewerkers van de Beheerder, sollicitanten voor werk, gebruikers van de Dienst.",
+                        {
+                            "text": "De verwerker verbindt zich ertoe de toevertrouwde persoonsgegevens te verwerken tot de volgende omvang:",
+                            "sublist": [
+                                "Naam en achternaam",
+                                "Afbeelding – foto en opnames geüpload naar de Dienst",
+                                "Geslacht",
+                                "Adres",
+                                "Neem contact op met Telefoon",
+                                "E-mailadres",
+                                "Geboortedatum",
+                                "Bankrekeningnummer",
+                                "Beroepen",
+                                "Industrie",
+                                "Burgelijke staat",
+                                "Informatie over het krijgen van kinderen",
+                                "Overige gegevens die in opgeslagen bestanden staan ​​of elders zijn ingevoerd."
+                            ]
+                        },
+                        "Verwerkingsactiviteiten: Verzamelen, vastleggen, ordenen, ordenen, bewaren, bekijken, overdragen, wijzigen, verwijderen.",
+                        "Vorm van verwerking: Elektronisch"
+                    ]
+                },
+                {
+                    "title": "Verplichtingen van de Verwerker",
+                    "list": [
+                        "De Verwerker verklaart dat het passende technische en organisatorische maatregelen levert om ervoor te zorgen dat de verwerking voldoet aan de eisen zoals uiteengezet in de Verordening en de rechten van de betrokkenen beschermt, wat met name inhoudt dat de Verwerker de passende maatregelen neemt die vereist zijn door artikel 32 van de Verordening en de vereiste zorgvuldigheid betracht bij de verwerking van toevertrouwde persoonsgegevens.",
+                        "De verwerker verbindt zich ertoe om de verwerking van persoonsgegevens te autoriseren voor alle personen die de toevertrouwde gegevens zullen verwerken voor de doeleinden van deze Overeenkomst.",
+                        "Met inachtneming van de aard van de verwerking zal de Verwerker, voor zover mogelijk, de Beheerder bijstaan door middel van passende technische en organisatorische maatregelen om aan de verplichting te voldoen om te reageren op verzoeken van de betrokkene bij de uitoefening van zijn of haar rechten, zoals gespecificeerd in Hoofdstuk III van de Verordening.",
+                        "Met inachtneming van de aard van de verwerking en de beschikbare informatie zal de verwerker de beheerder bijstaan bij het nakomen van de verplichtingen zoals gespecificeerd in artikel 32 tot 36 van de Verordening.",
+                        "De verwerker verbindt zich ertoe de vertrouwelijkheid van de verwerkte gegevens te waarborgen (zoals bedoeld in artikel 28(3)(b) van de Verordening) door personen die het machtigt om persoonsgegevens te verwerken voor het doel van de uitvoering van dit contract, zowel tijdens hun dienstverband bij de verwerker als na beëindiging ervan.",
+                        "Na het voltooien van de dienstverlening in verband met gegevensverwerking zal de verwerker alle gegevens die door de Beheerder zijn toevertrouwd verwijderen na het verstrijken van de in de hoofdovereenkomst gespecificeerde tijd.",
+                        "De verwerker meldt een schending van de bescherming van persoonsgegevens zonder onnodige vertraging aan de Beheerder.",
+                        "De verwerker meldt een schending van de bescherming van persoonsgegevens zonder onnodige vertraging, uiterlijk binnen 36 uur na de schending, aan de Beheerder. De melding moet worden ingediend via e-mail naar het e-mailadres dat door de Beheerder is ingevoerd bij de gegevens tijdens de registratie (het adres is ook de inloggegevens van de beheerder)."
+                    ]
+                },
+                {
+                    "title": "Technische en organisatorische maatregelen",
+                    "list": [
+                        "Met inachtneming van de stand van de technische kennis, de kosten van implementatie en de aard, omvang, context en doeleinden van de verwerking van persoonsgegevens en het risico van schending van de rechten van personen wiens persoonsgegevens worden verwerkt, zal de Dienstverlener technische en organisatorische maatregelen bieden die geschikt zijn voor het type persoonsgegevens en het risico van schending van de rechten van de personen wiens persoonsgegevens worden verwerkt."
+                    ]
+                },
+                {
+                    "title": "Recht op controle van verwerking",
+                    "list": [
+                        "Overeenkomstig artikel 28(3)(h) van de Verordening heeft de Beheerder het recht om te controleren of de door de Verwerker toegepaste maatregelen bij de verwerking en beveiliging van de toevertrouwde persoonsgegevens in overeenstemming zijn met de bepalingen van het contract.",
+                        "De kennisgeving van de intentie tot inspectie of audit moet ten minste 14 kalenderdagen voor aanvang van de activiteit naar de verwerker worden gestuurd. De kosten van de audit worden gedekt door de beheerder.",
+                        "De door de Beheerder aangewezen auditor mag geen entiteit zijn die concurrerende activiteiten uitvoert met de Verwerker, noch entiteiten die daaraan gerelateerd zijn, een werknemer of een samenwerkende entiteit, ongeacht de basis van het dienstverband of de samenwerking. Voordat auditactiviteiten worden uitgevoerd, is de auditor verplicht ervoor te zorgen dat de verkregen informatie vertrouwelijk wordt behandeld.",
+                        "De controle van de verwerking, voor zover het betrekking heeft op de gebieden van de verwerking van persoonsgegevens, mag niet langer duren dan 3 werkdagen.",
+                        "De controle van de verwerking wordt voltooid door het ondertekenen van het protocol van Controle van Verwerking door beide Partijen. Het protocol bevat conclusies van de Controle van Verwerking en de door beide Partijen overeengekomen scope van mogelijke wijzigingen in de verwerking van Persoonsgegevens door de Verwerker.",
+                        "De verwerker verbindt zich ertoe de aanbevelingen van de Beheerder of de door hem gemachtigde entiteit na te leven met betrekking tot de verbetering van de kwaliteit van de beveiliging van persoonsgegevens en de methode van hun verwerking of het verwijderen van gebreken die tijdens de inspectie of audit zijn aangetroffen, binnen een door de beheerder vastgestelde termijn van maximaal 28 dagen."
+                    ]
+                },
+                {
+                    "title": "Levering van gegevens voor verwerking",
+                    "list": [
+                        "De verwerker kan de verwerking van persoonsgegevens die door hem worden verwerkt in verband met de dienstverlening die wordt gedekt door het in § 2, lid 1 genoemde contract, uitbesteden aan andere verwerkers (hierna \"Subverwerkers\") in overeenstemming met de gebruiksvoorwaarden van de diensten van Subverwerkers zoals gespecificeerd in de Verordening.",
+                        "De Beheerder stemt ermee in om zich te onderwerpen aan de verwerking van data die aan de Verwerker zijn toevertrouwd op basis van de Overeenkomst gespecificeerd in Bijlage nr. 1 bij de Overeenkomst.",
+                        "De entiteiten aan wie de verwerker verdere verwerking van persoonsgegevens heeft toevertrouwd, zijn gespecificeerd in Bijlage 1 bij de Overeenkomst.",
+                        "De verwerker kan wijzigingen aanbrengen in huidige subverwerkers en aanvullende toevoegen, zonder voorafgaande kennisgeving aan de Beheerder."
+                    ]
+                },
+                {
+                    "title": "Melding van schendingen",
+                    "list": [
+                        {
+                            "text": "Bij het constateren van een schending van de bescherming van de aan hem toevertrouwde persoonsgegevens door de Beheerder, meldt de Verwerker dit zonder onnodige vertraging vanaf de ontdekking van de schending aan de Beheerder. Het rapport bevat ten minste informatie over:",
+                            "sublist": [
+                                "de datum, duur en locatie van de inbreuk op de persoonsgegevens;",
+                                "de aard en omvang van de inbreuk, namelijk met name de categorieën en bij benadering het aantal betrokkenen en de soorten en bij benadering het aantal getroffen persoonsgegevens, en, indien mogelijk, ook de identificatie van de betrokken personen;",
+                                "de verwachte tijd die nodig is om de schade veroorzaakt door de inbreuk te herstellen;",
+                                "de aard en omvang van de persoonsgegevens die onderhevig zijn aan de inbreuk;",
+                                "de mogelijke gevolgen van de inbreuk, inclusief de gevolgen voor de betrokkenen;",
+                                "de maatregelen die zijn genomen om de gevolgen van de overtreding tot een minimum te beperken en de voorgestelde preventieve en corrigerende maatregelen;",
+                                "contactgegevens van de persoon die verdere informatie kan verstrekken over de inbreuk."
+                            ]
+                        },
+                        "Indien de verwerker niet in staat is de verwerkingsverantwoordelijke alle in lid 1 bedoelde informatie tegelijkertijd te verstrekken, verstrekt hij deze achtereenvolgens zonder onnodige vertraging.",
+                        "Tot ontvangst van instructies van Verwerkingsverantwoordelijke zal Verwerker alle redelijke maatregelen nemen om de negatieve gevolgen van de inbreuk te beperken en ongedaan te maken."
+                    ]
+                },
+                {
+                    "title": "Verantwoordelijkheid van de Verwerker",
+                    "list": [
+                        "De verwerker is alleen aansprakelijk voor schade geleden aan de Verwerkingsverantwoordelijke of derden veroorzaakt door de verwerking van persoonsgegevens indien (i) hij persoonsgegevens heeft verwerkt in strijd met deze Overeenkomst, (ii) hij niet voldoet aan de verplichtingen die de Verordening of andere bepalingen inzake de bescherming van Persoonsgegevens aan de verwerker oplegt of (iii) deze in strijd handelt met de wettige schriftelijke instructies van de Beheerder of verder gaat dan deze instructies.",
+                        "Met inachtneming van de strikt toepasselijke bepalingen van de wet, is de Verwerker jegens de Verwerkingsverantwoordelijke alleen aansprakelijk voor het niet of onjuist uitvoeren van deze Overeenkomst voor de gedocumenteerde daadwerkelijke schade (damnum emergency) van de Beheerder, beperkt tot het bedrag van de laatste betaling voor de Abonnement op de Applicatie als vergoeding die de Verwerkingsinstantie verschuldigd is van de Beheerder, conform het bepaalde.",
+                        "De in lid 2 genoemde beperking van de aansprakelijkheid geldt niet voor aansprakelijkheid jegens betrokkenen en voor zover de schade is veroorzaakt door opzet van de verwerker.",
+                        "De Partij die compensatie heeft betaald voor de gehele veroorzaakte schade heeft het recht te verzoeken dat de andere Partij die aan dezelfde verwerking heeft deelgenomen, het deel van de schadevergoeding terugbetaalt dat overeenkomt met het deel van de schade waarvoor de andere partij aansprakelijk is, op de basis van het recht op regressie zoals beschreven in artikel 82, lid 2. 5 van de verordening. De in lid 2 genoemde beperking van aansprakelijkheid is niet van toepassing op regressieve claims beschreven in dit lid. 4.",
+                        "De verwerker is niet verantwoordelijk voor het handelen of nalaten van de onderaannemer met betrekking tot de verwerking van de toevertrouwde persoonsgegevens."
+                    ]
+                },
+                {
+                    "title": "Duur van de overeenkomst",
+                    "list": [
+                        "Deze Overeenkomst is van kracht vanaf de datum van sluiting ervan voor een bepaalde periode die verband houdt met de geldigheid van de overeenkomst bedoeld in § 2, lid 1.",
+                        "Verwerker mag de op grond van deze Overeenkomst toevertrouwde persoonsgegevens slechts verwerken voor de geldigheidsduur van de Hoofdovereenkomst, tenzij Verwerkingsverantwoordelijke en Verwerker middels een aparte overeenkomst, tegen een aparte vergoeding, een andere periode voor de verwerking van persoonsgegevens bepalen, of dit Contract wordt beëindigd in de gevallen vermeld in § 10 van deze overeenkomst.",
+                        "De overeenkomst wordt eveneens beëindigd wanneer de verwerking van de door Verantwoordelijke aan Verwerker verstrekte persoonsgegevens niet langer noodzakelijk is voor de uitvoering van de Hoofdovereenkomst.",
+                        "Partijen kunnen deze Overeenkomst beëindigen met een opzegtermijn van drie maanden of door een overeenkomstige overeenkomst te sluiten, met dien verstande dat de beëindiging van deze overeenkomst de uitvoering van de Hoofdovereenkomst in de weg kan staan ​​en aldus tot de beëindiging ervan kan leiden."
+                    ]
+                },
+                {
+                    "title": "Beëindiging van de overeenkomst",
+                    "list": [
+                        "De verwerker erkent dat de beëindiging van deze Overeenkomst gevolgen kan hebben voor de onmogelijkheid om de in § 2 paragraaf bedoelde overeenkomst voort te zetten. 1."
+                    ]
+                },
+                {
+                    "title": "Regels van vertrouwelijkheid",
+                    "list": [
+                        "Alle informatie die door de partijen wordt verkregen tijdens de looptijd van de Overeenkomst en die een zakengeheim vormt in de zin van de wet van 16 april 1993 ter bestrijding van oneerlijke concurrentie (Staatsblad van 1993r. nr. 47, item 211), mag uitsluitend worden gebruikt voor de een goede uitvoering van de Overeenkomst door een der partijen, tenzij de andere partij hem vrijstelt van de verplichting tot geheimhouding of de plicht tot openbaarmaking daarvan voortvloeit uit toepasselijke wettelijke bepalingen."
+                    ]
+                },
+                {
+                    "title": "Slotbepalingen",
+                    "list": [
+                        "In de vergoeding voor het verlenen door Verwerker van de Diensten van de Overeenkomst wordt tevens begrepen de beloning voor de uitvoering van deze overeenkomst.",
+                        "In niet-gereguleerde aangelegenheden zijn de bepalingen van het Burgerlijk Wetboek en het Reglement van toepassing."
+                    ]
+                }
+            ],
+            "annex": {
+                "title": "Bijlage 1 – Lijst van onderaannemers",
+                "table": [
+                    [
+                        "Onderwerp",
+                        "Regio",
+                        "Omvang van de gegevensverwerking"
+                    ],
+                    [
+                        "Amazon, Luxemburg",
+                        "EU",
+                        "De serveromgeving waarop de Applicatie draait, databases en back-ups worden opgeslagen."
+                    ],
+                    [
+                        "OVH S.A., Polen",
+                        "EU",
+                        "De serveromgeving wordt gebruikt om back-ups te maken."
+                    ]
+                ]
+            }
+        },
+        "privacyPolicy": {
+            "header": "Privacybeleid en cookies",
+            "chapterOne": "Voorlopige bepalingen",
+            "paragraphOne": "1 van de wet van 18 juli 2002 betreffende het aanbieden van elektronische diensten (Dz. In overeenstemming met artikel 173 van de wet van 16 juli 2004 Telecommunicatiewet (Dz. U. 2014.243, d.w.z. van later). De vennootschap is een naamloze vennootschap met maatschappelijke zetel in Łódź, ul. Wólczańska 125, 90-521 Łódź, geregistreerd in het Nationale Rechtbankregister – ondernemersregister onder KRS-nummer: 0000541582, waarvan de registratiegegevens zijn bijgehouden door de Districtsrechtbank voor Łódź-Śródmieście in Łódź, XX Economische Afdeling KRS, NIP : 7692223109, REGON: 360412382 aandelenkapitaal: 5 000,00 PLN volledig ingediend, e-mail: info@strategaresearch.com, hierna “de contractant” genoemd, introduceert dit privacybeleid en cookies, hierna “beleid” genoemd.",
+            "paragraphTwo": [
+                "De termen die in het Beleid met een hoofdletter zijn geschreven, hebben, tenzij anders vermeld in de inhoud van het Beleid, de betekenis zoals gespecificeerd in het Reglement van de Website. (www.interviewlyapp.com).",
+                "De term “Gebruiker” betekent, afhankelijk van de context van de Klant of de persoon die Klant wenst te worden, een Kandidaat of een persoon die Kandidaat wenst te zijn, of een internetgebruiker die de Website bezoekt."
+            ],
+            "chapterTwo": "Persoonlijke gegevens",
+            "paragraphThree": [
+                "Om gebruik te kunnen maken van de diensten die Opdrachtnemer via de Website aanbiedt, is Gebruiker verplicht het daartoe bestemde registratieformulier in te vullen, waarin specifieke persoonsgegevens moeten worden ingevuld.",
+                "Het verstrekken van persoonsgegevens in het registratieformulier is vrijwillig, maar noodzakelijk voor de dienstverlening door de Aanbieder aan de Gebruiker via de Website.",
+                "Alle persoonsgegevens die de Gebruiker invult op het registratieformulier of in correspondentie met de Contractant indient, worden verwerkt op een wijze die voldoet aan de eisen vastgelegd in Verordening (EU) 2016/679 van het Europees Parlement en de Raad van 27 april 2016 betreffende de bescherming van natuurlijke personen in verband met de verwerking van persoonsgegevens en betreffende het vrije verkeer van die gegevens en tot intrekking van Richtlijn 95/46/EG, hierna de AVG genoemd, en de wet van 18 juli 2002 betreffende het aanbieden van elektronische diensten ( Journal of Laws van de Russische Federatie). 2013 – 1422 – dus van later."
+            ],
+            "paragraphFour": [
+                "De verwerkingsverantwoordelijke van de persoonsgegevens die via het registratieformulier van de Website worden verzameld, is de Contractant. In het bedrijf is een inspecteur voor gegevensbescherming aangesteld, met wie contact mogelijk is op het e-mailadres: inspektor@stratega.pl",
+                "De Contractant kan de verwerking van de verzamelde persoonsgegevens van de Gebruikers toevertrouwen aan een andere entiteit op basis van de met hem overeengekomen basis, overeenkomstig art. 28 AVG.",
+                {
+                    "text": "Om verkoop- en servicecontracten uit te voeren die door de Verkoper met Gebruikers via de Dienst zijn gesloten, worden Gebruikersgegevens met name aan de volgende entiteiten toevertrouwd:",
+                    "sublist": [
+                        "aanbieders van post- of koeriersdiensten, die de gebruiker de geteste goederen zullen leveren,",
+                        "het beheren van online transacties."
+                    ]
+                }
+            ],
+            "paragraphFive": "De gebruiker heeft recht op toegang tot zijn persoonsgegevens en kan deze verifiëren of corrigeren, en zijn toestemming op elk moment intrekken door een daartoe strekkend verzoek aan de Contractant te richten.",
+            "paragraphSix": {
+                "text": "De Dienstverlener verwerkt de persoonsgegevens van de Gebruiker en gebruikt deze voor zover en voor de volgende doeleinden:",
+                "sublist": [
+                    "noodzakelijk voor de uitvoering van de diensten die via de Dienst worden aangeboden overeenkomstig artikel 6, lid 1, onder b) AVG,",
+                    "op basis van aanvullende en optionele toestemming, die de Gebruiker in een afzonderlijke verklaring kan uiten, kan de Contractant de persoonsgegevens van de Gebruiker verwerken voor marketingdoeleinden op grond van artikel 6, lid 1, onder f) AVG. Als de Gebruiker een dergelijke toestemming geeft, kan hij deze op elk moment intrekken.",
+                    "op basis van de aanvullende en optionele toestemming van de gebruiker heeft het recht om hem naar de opgegeven e-mailadressen of telefoonnummers commerciële informatie te sturen overeenkomstig art. 6 (1) (a) AVG. De in de vorige zin bedoelde toestemming kan te allen tijde door de Gebruiker worden ingetrokken."
+                ]
+            },
+            "paragraphSeven": "Door de Contractant verzamelde persoonlijke gegevens kunnen worden overgedragen aan bevoegde overheidsinstanties op basis van de toepasselijke wetgeving.",
+            "chapterThree": "De koekjes",
+            "paragraphEight": [
+                "De aanbieder maakt gebruik van cookies, d.w.z. kleine tekstinformatie, die op het eindapparaat van de gebruiker wordt opgeslagen. (d.w.z. computer, tablet, smartphone). Cookies kunnen worden uitgelezen door het IT-systeem van de Aanbieder.",
+                "De Aanbieder slaat cookies op het eindapparaat van de Gebruiker op en verkrijgt vervolgens toegang tot de daarin opgenomen informatie voor statistische doeleinden en om de correcte werking van de website te garanderen, en in het bijzonder om de sessie na het inloggen te behouden."
+            ],
+            "paragraphNine": [
+                "De aanbieder informeert gebruikers ook dat er een mogelijkheid bestaat dat een dergelijke configuratie van de webbrowser de opslag van cookies op het eindapparaat van de gebruiker verhindert.",
+                "De Aanbieder geeft ook aan dat cookies door de Gebruiker kunnen worden verwijderd nadat ze door de Aanbieder zijn opgeslagen, via: geschikte functies van de webbrowser, programma's die voor dit doel dienen of het gebruik van geschikte tools die beschikbaar zijn binnen het besturingssysteem dat de Gebruiker gebruikt .",
+                {
+                    "text": "De volgende links bieden informatie over hoe u cookies in de populairste webbrowsers kunt verwijderen:",
+                    "sublist": [
+                        "Firefox: http://support.mozilla.org/pl/kb/delete-cookies",
+                        "Opera: http://help.opera.com/Linux/9.60/pl/cookies.html",
+                        "Internet Explorer: http://support.microsoft.com/kb/278835/pl",
+                        "Chrome: https://suport.google.comhl=pl&amp;answer=95647"
+                    ]
+                }
+            ],
+            "paragraphTen": "De contractant informeert Gebruikers tevens dat het wijzigen van de instellingen van de internetbrowser om de opslag van cookies op het eindapparaat van de Gebruiker uit te schakelen of te beperken, kan leiden tot een beperking van de functionaliteit van de geleverde diensten. Soortgelijke gevolgen kunnen optreden als de cookies tijdens de dienstverlening worden verwijderd. Dit kan resulteren in het niet kunnen inloggen op de Dienst of het onderbreken van een sessie na het inloggen.",
+            "chapterFour": "Gegevens in systeemlogboeken",
+            "paragraphEleven": "De informatie in de systeemlogboeken in verband met de algemene regels voor de implementatie van internetverbindingen wordt door het hostingbedrijf dat de Dienst exploiteert uitsluitend voor technische en statistische doeleinden gebruikt.",
+            "chapterFive": "Door de opdrachtnemer toegepaste technische maatregelen",
+            "paragraphTwelve": "De Contractant zal de technische maatregelen toepassen die vereist zijn door de huidige wetgeving inzake de bescherming van persoonsgegevens om de verwerving en wijziging door onbevoegde personen van de elektronisch verzonden persoonsgegevens te voorkomen.",
+            "paragraphThirteen": [
+                "In geval van vragen en meningen over het door de Contractant gehanteerde Beleid kunt u deze sturen naar het e-mailadres: inspektor@stratega.pl",
+                "Het beleid is te vinden op www.interviewlyapp.com"
+            ]
+        },
+        "surveyStatuses": {
+            "pending": "in behandeling",
+            "finished": "afgerond",
+            "seeResultsLabel": "Zie resultaten"
+        }
+    }
+}
