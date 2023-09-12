@@ -50,6 +50,7 @@ import JanusRestApiAdapter from './services/janus-service/janus-rest-api-adapter
 import JanusAdminRestApiAdapter from './services/janus-service/janus-admin-rest-api-adapter';
 import MQAdapter from './services/mq-adapter';
 import S3Adapter from './services/s3-adapter';
+import JWTVerificationFailedError from './services/jwt-service/errors/jwt-verification-failed-error';
 
 
 export default class Appplication {
@@ -138,10 +139,6 @@ export default class Appplication {
             name: 'avatarFile',
             maxCount: 1,
         }]);
-        const cvUploadFilesMiddleware = uploadHandler.fields([{
-            name: 'cvFile',
-            maxCount: 1,
-        }]);
 
         this.app = express();
 
@@ -177,8 +174,13 @@ export default class Appplication {
             '/profile/cv',
             requireJWT,
             requireAccountType(AccountTypes.Type.RESPONDENT),
-            cvUploadFilesMiddleware,
-            accountsController.uploadCVFile,
+            accountsController.cvUploaded,
+        );
+        accountsRouter.get(
+            '/profile/cv/uploadLink',
+            requireJWT,
+            requireAccountType(AccountTypes.Type.RESPONDENT),
+            accountsController.getCVUploadUrl,
         );
         accountsRouter.post('/:accountId/password/reset', accountsController.requestPasswordReset);
         accountsRouter.patch('/:accountId/password/reset/confirm', accountsController.confirmPasswordReset);
@@ -443,6 +445,10 @@ export default class Appplication {
                 statusCode = StatusCodes.UNAUTHORIZED;
                 response.error.message = 'JWT expired';
                 response.error.type = 'tokenExpired';
+            } else if (err instanceof JWTVerificationFailedError) {
+                statusCode = StatusCodes.UNAUTHORIZED;
+                response.error.message = 'Invalid JWT';
+                response.error.type = 'invalidToken';
             } else {
                 console.log(err.constructor, err);
             }

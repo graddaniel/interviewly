@@ -32,14 +32,38 @@ export default class ProfileService {
         return data;
     }
 
-    static uploadCV = async (bodyFormData) => {
+    static cvUploaded = async () => {
         const accessToken = sessionStorage.getItem('accessToken') || localStorage.getItem('accessToken');
 
-        return axios.put(`${API_HOST}/accounts/profile/cv`, bodyFormData, {
+        return axios.put(`${API_HOST}/accounts/profile/cv`, {}, {
             headers: {
-                'content-type': 'multipart/form-data',
                 'authorization': `bearer ${accessToken}`
             },
         });
+    }
+
+    static uploadCVFile = async (
+        uploadUrl: string,
+        file,
+    ) => {
+        return axios.put(uploadUrl, file, {
+            headers: {
+                'content-type': file.type,
+            },
+        });
+    }
+
+    static getCVUploadUrl = async (): Promise<string> => {
+        const accessToken = sessionStorage.getItem('accessToken') || localStorage.getItem('accessToken');
+
+        const response = await axios.get(`${API_HOST}/accounts/profile/cv/uploadLink`, {
+            headers: {
+                'authorization': `bearer ${accessToken}`
+            },
+        });
+
+        const { data } = response;
+
+        return data;
     }
 }

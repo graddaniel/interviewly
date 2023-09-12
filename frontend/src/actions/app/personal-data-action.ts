@@ -149,8 +149,8 @@ async function updatePersonalData(formData: any) {
 async function uploadCV() {
     console.log("uploading CV")
 
-    const bodyFormData = new FormData();
-
+    const uploadUrl = await ProfileService.getCVUploadUrl();
+    console.log(uploadUrl)
     const cvFiles = (document.getElementById("cvFile") as HTMLInputElement).files;
     if (!cvFiles || cvFiles.length < 1) {
         console.error('CV file not found')
@@ -159,9 +159,9 @@ async function uploadCV() {
         }
     }
 
-    bodyFormData.append("cvFile", cvFiles[0]);
+    await ProfileService.uploadCVFile(uploadUrl, cvFiles[0]);
 
-    ProfileService.uploadCV(bodyFormData);
+    await ProfileService.cvUploaded();
 
     return {
         success: true,

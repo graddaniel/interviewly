@@ -38,7 +38,7 @@ export default class Application {
                     
                     await this.s3Adapter.upload(mergedFileName, meetingUuid);
                     
-                    // delete it if there's no transcribing later on
+                    // delete it if there's no transcription later on
                     if (deleteRecording) {
                         fs.rmSync(
                             `${this.processedRecordingsDirectory}/${meetingUuid}`,

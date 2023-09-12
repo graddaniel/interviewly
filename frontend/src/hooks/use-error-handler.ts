@@ -26,8 +26,9 @@ export default function useErrorHandler (error) {
             if (error.code === "ERR_NETWORK") {
                 errorMessage = t('errors.networkError');
             } else {
-                if (error?.response?.data?.error?.type === 'tokenExpired') {
-                    errorMessage = t('errors.tokenExpired');
+                const errorType = error?.response?.data?.error?.type;
+                if (errorType === 'tokenExpired' || errorType === 'invalidToken') {
+                    errorMessage = t(`errors.${errorType}`);
                     auth.clearSession();
                     navigate(ROUTES.LOG_IN.PATH);
                 } else {

@@ -115,7 +115,7 @@ export default class AccountsController {
         res.status(StatusCodes.OK).send(profile);
     }
 
-    uploadCVFile = async (
+    cvUploaded = async (
         req: AuthenticatedRequest,
         res: Response,
     ) => {
@@ -123,24 +123,25 @@ export default class AccountsController {
             uuid,
         } = req.currentUser;
 
-        //@ts-ignore
-        const { cvFile } = req.files;
 
-        if (cvFile.length < 1) {
-            throw new ValidationError(
-                'cvFile',
-                'Missing CV file'
-            );
-        }
-
-        console.log(cvFile, cvFile[0])
-
-        await this.accountsService.uploadCVFile(
+        await this.accountsService.confirmCVUpload(
             uuid,
-            cvFile[0],
         );
 
         res.status(StatusCodes.OK).send();
+    }
+
+    getCVUploadUrl = async (
+        req: AuthenticatedRequest,
+        res: Response,
+    ) => {
+        const {
+            uuid,
+        } = req.currentUser;
+
+        const uploadUrl = await this.accountsService.getCVUploadUrl(uuid);
+
+        res.status(StatusCodes.OK).send(uploadUrl);
     }
 
     patchAccountConfirmed = async (

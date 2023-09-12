@@ -668,29 +668,29 @@ export default class AccountsService {
         );
     });
 
-    uploadCVFile = async (
+    confirmCVUpload = async (
         currentUserUuid: string,
-        cvFileInfo: any,
     ) => {
-        const fileData = await readFile(cvFileInfo.path);
-
         const currentAccount = await this.getAccount({ uuid: currentUserUuid });
         const { RespondentProfile: currentProfile } = currentAccount;
-
-        const fileBucketKey = this.getCVBucketKeyByEmail(currentAccount.email);
-
-        await this.s3Adapter.upload(
-            this.cvBucketName,
-            fileBucketKey,
-            fileData,
-        );
-
-        await unlink(cvFileInfo.path);
 
         currentProfile.hasUploadedCV = true;
         if (currentProfile.changed()) {
             await currentProfile.save();
         }
+    }
+
+    getCVUploadUrl = async (
+        currentUserUuid: string,
+    ) => {
+        const currentAccount = await this.getAccount({ uuid: currentUserUuid });
+
+        const fileBucketKey = this.getCVBucketKeyByEmail(currentAccount.email);
+
+        return await this.s3Adapter.getPResignedS3UploadUrl(
+            this.cvBucketName,
+            fileBucketKey,
+        );
     }
 
     private getCVBucketKeyByEmail = (email: string) => `cv_${email.replace('@', '_').replace('.', '_')}`;

@@ -119,7 +119,8 @@
             "30931": "Value is too low",
             "30932": "Value is too high",
             "networkError": "Cannot connect to the server.",
-            "tokenExpired": "Session expired"
+            "tokenExpired": "Session expired",
+            "invalidToken": "Invalid authentication token"
         },
         "links": {
             "priceCalculator": "Price calculator",

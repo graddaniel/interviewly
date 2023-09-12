@@ -293,6 +293,7 @@ const PersonalDataPage = () => {
                                 <a
                                     className={classes.cvLink}
                                     href={profileData.cvUrl}
+                                    target="_blank"
                                 >
                                     Download current
                                 </a>
