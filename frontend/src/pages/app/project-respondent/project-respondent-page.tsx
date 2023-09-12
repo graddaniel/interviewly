@@ -25,6 +25,7 @@ import TextInput from '../../../components/text-input/text-input';
 import Checkbox from '../../../components/checkbox/checkbox';
 import NumericalInput from '../../../components/numerical-input/numerical-input';
 import PeopleIconBlack from 'images/people-icon-black.svg';
+import FilledSurveyIconBlack from 'images/filled-survey-icon-black.svg';
 
 
 type Survey = {
@@ -41,6 +42,7 @@ type Meeting = {
 
 type Respondent = {
     avatarUrl: string;
+    cvUrl: string;
     name: string;
     surname: string;
     gender: ProfileTypes.Gender;
@@ -97,6 +99,7 @@ const ProjectRespondentPage = () => {
         surname,
         gender,
         avatarUrl,
+        cvUrl,
         email,
         nationality,
         age,
@@ -206,6 +209,17 @@ const ProjectRespondentPage = () => {
                     className={classes.videoTile}
                     coverUrl="https://picsum.photos/600/400"
                 />
+                {cvUrl && (
+                    <div className={classes.cvTile}>
+                        <div className={classNames(classes.sectionHeaderTitle)}>
+                            <img className={classes.sectionHeaderIcon} src={FilledSurveyIconBlack} />
+                            {t('viewProject.respondents.cvSubtitle')}
+                        </div>
+                        <a className={classes.link} href={cvUrl} target='_blank'>
+                            {t('viewProject.respondents.openCVLabel')}
+                        </a>
+                    </div>
+                )}
                 <div className={classes.upcomingInterview}>
                     <div className={classNames(classes.sectionHeaderTitle)}>
                         <img className={classes.sectionHeaderIcon} src={CalendarIconBlack} />

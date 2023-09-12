@@ -419,7 +419,10 @@
             "childrenCount": "Children count",
             "martialStatus": "Martial status",
             "selectGender": "Select gender",
-            "repeatedNewPassword": "Powtórz nowe hasło"
+            "repeatedNewPassword": "Powtórz nowe hasło",
+            "cvSubtitle": "Zarządzaj swoim CV",
+            "cvDownloadLabel": "Pobierz obecne",
+            "cvUploadLabel": "lub wyślij nowe"
         },
         "companyData": {
             "title": "Dane firmy",
@@ -497,7 +500,9 @@
                 "meetingSchedulerSubtitle": "Schedule the meeting",
                 "scheduleButtonText": "Schedule",
                 "respondentSurveysSubtitle": "Ankiety Kandydata",
-                "scheduledSuccessMessage": "Scheduled"
+                "scheduledSuccessMessage": "Scheduled",
+                "cvSubtitle": "CV Respondenta",
+                "openCVLabel": "Otwórz w nowej karcie"
             },
             "screeningSurveys": {
                 "resultsTitle": "Results",

@@ -77,6 +77,17 @@
     grid-area: videoTile;
 }
 
+.cvTile {
+    grid-area: cvTile;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+.link {
+    font-size: 1.25vw;
+    color: var(--BLACK);
+}
+
 .upcomingInterview {
     grid-area: upcomingInterview;
     height: 100%;
@@ -116,9 +127,9 @@
     grid-template-areas: 
     "personalDataTitle personalDataTitle"
     "personalData personalData"
-    "videoTile upcomingInterview"
+    "videoTile cvTile"
     "schedulerTitle schedulerTitle"
-    "meetingScheduler meetingScheduler"
+    "meetingScheduler upcomingInterview"
     "surveysTitle surveysTitle"
     "surveysList surveysList";
 }
@@ -202,6 +213,22 @@
         height: 6vw;
         align-self: start;
     }
+
+    .personalData {
+        flex-wrap: nowrap;
+        flex-direction: column;
+        gap: 3.5vw;
+    }
+    .input {
+        width: 100%;
+    }
+
+    .cvTile {
+        gap: 3.5vw;
+    }
+    .link {
+        font-size: 3.5vw;
+    }
     
     .upcomingInterview {
         gap: 3.5vw;
@@ -222,8 +249,11 @@
         grid-template-columns: auto;
         grid-template-rows: auto auto auto auto;
         row-gap: 8vw;
-        grid-template-areas: 
+        grid-template-areas:
+        "personalDataTitle"
+        "personalData"
         "videoTile"
+        "cvTile"
         "upcomingInterview"
         "schedulerTitle"
         "meetingScheduler"
@@ -308,6 +338,22 @@
         height: 4.5vw;
         align-self: start;
     }
+
+    .personalData {
+        flex-wrap: nowrap;
+        flex-direction: column;
+        gap: 3.5vw;
+    }
+    .input {
+        width: 100%;
+    }
+
+    .cvTile {
+        gap: 8vw;
+    }
+    .link {
+        font-size: 6vw;
+    }
     
     .upcomingInterview {
         gap: 8vw;
@@ -328,8 +374,11 @@
         grid-template-columns: auto;
         grid-template-rows: auto auto auto auto;
         row-gap: 10vw;
-        grid-template-areas: 
+        grid-template-areas:
+        "personalDataTitle"
+        "personalData"
         "videoTile"
+        "cvTile"
         "upcomingInterview"
         "schedulerTitle"
         "meetingScheduler"

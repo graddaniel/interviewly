@@ -13,3 +13,7 @@ export function hash(input: string) {
 export function generateRandomInteger () {
     return Math.floor(Math.random() * MAX_RAND_VALUE);
 }
+
+export function getCVBucketKeyByEmail (email: string) {
+    return `cv_${email.replace('@', '_').replace('.', '_')}`;
+}

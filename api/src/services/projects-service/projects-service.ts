@@ -28,6 +28,7 @@ import ProjectNoLongerEditableError from './errors/project-no-longer-editable';
 import ProjectValidator from '../../controllers/validators/project-validator';
 import IncompleteProjectDraftError from './errors/incomplete-project-draft-error';
 import IncorrectProjectStatusError from './errors/incorrect-proejct-status-error';
+import { getCVBucketKeyByEmail } from '../../utils'; 
 
 type LimesurveyConfig = {
     url: string;
@@ -50,6 +51,7 @@ export default class ProjectsService {
 
     recordingsBucketName: string;
     transcriptionsBucketName: string;
+    cvBucketName: string;
 
     constructor (
         accountsService: AccountsService,
@@ -73,6 +75,8 @@ export default class ProjectsService {
 
         this.recordingsBucketName = config.get('s3.recordingsBucket');
         this.transcriptionsBucketName = config.get('s3.transcriptionsBucket');
+
+        this.cvBucketName = config.get('s3.cvBucket');
     }
 
     //TODO no need to find the company by user when we have its uuid
@@ -746,6 +750,7 @@ export default class ProjectsService {
                 'hasChildren',
                 'street',
                 'childrenCount',
+                'hasUploadedCV',
             ],
             include: [{
                 association: RespondentProfileModel.associations.AccountModel,
@@ -783,7 +788,17 @@ export default class ProjectsService {
 
         const respondentProfile = respondents[0].toJSON();
 
-        return this.flattenRespondentProfile(respondentProfile, project.toJSON());
+        const flattenedRespondentProfile =
+            this.flattenRespondentProfile(respondentProfile, project.toJSON());
+
+        if (flattenedRespondentProfile.hasUploadedCV) {
+            flattenedRespondentProfile.cvUrl = this.s3Adapter.getPresignedS3Url(
+                this.cvBucketName,
+                getCVBucketKeyByEmail(flattenedRespondentProfile.email)
+            );
+        }
+
+        return flattenedRespondentProfile;
     }
 
     private flattenRespondentProfile = (respondentProfile: any, project: any) => {

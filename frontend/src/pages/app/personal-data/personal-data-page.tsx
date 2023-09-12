@@ -287,7 +287,7 @@ const PersonalDataPage = () => {
                             className={classes.cvUploader}
                         >
                             <h6 className={classes.subtitle}>
-                                Manage your CV
+                                {t('personalData.cvSubtitle')}
                             </h6>
                             {profileData.cvUrl && (
                                 <a
@@ -295,10 +295,10 @@ const PersonalDataPage = () => {
                                     href={profileData.cvUrl}
                                     target="_blank"
                                 >
-                                    Download current
+                                    {t('personalData.cvDownloadLabel')}
                                 </a>
                             )}
-                            or upload new
+                            {t('personalData.cvUploadLabel')}
                             <input 
                                 id="cvFile"
                                 type="file"

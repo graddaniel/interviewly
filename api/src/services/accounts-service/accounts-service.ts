@@ -13,7 +13,7 @@ import AccountAlreadyExistsError from './errors/account-already-exists-error';
 import AccountNotFoundError from './errors/account-not-found-error';
 import IncorrectPasswordError from './errors/incorrect-password-error';
 import JWTService from '../jwt-service/jwt-service';
-import { hash } from '../../utils'
+import { getCVBucketKeyByEmail, hash } from '../../utils'
 import AccountHasNotRequestedPasswordResetError from './errors/account-has-not-requested-password-reset-error';
 import SequelizeConnection from '../sequelize-connection';
 import CompanyModel from '../../models/company';
@@ -508,7 +508,7 @@ export default class AccountsService {
             if (respondentProfile.hasUploadedCV) {
                 profile.cvUrl = this.s3Adapter.getPresignedS3Url(
                     this.cvBucketName,
-                    this.getCVBucketKeyByEmail(account.email)
+                    getCVBucketKeyByEmail(account.email)
                 );
             }
         }
@@ -685,13 +685,11 @@ export default class AccountsService {
     ) => {
         const currentAccount = await this.getAccount({ uuid: currentUserUuid });
 
-        const fileBucketKey = this.getCVBucketKeyByEmail(currentAccount.email);
+        const fileBucketKey = getCVBucketKeyByEmail(currentAccount.email);
 
         return await this.s3Adapter.getPResignedS3UploadUrl(
             this.cvBucketName,
             fileBucketKey,
         );
     }
-
-    private getCVBucketKeyByEmail = (email: string) => `cv_${email.replace('@', '_').replace('.', '_')}`;
 }
