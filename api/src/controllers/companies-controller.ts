@@ -80,7 +80,6 @@ export default class CompaniesController {
             email,
             gender,
             role,
-            status,
         } = req.body;
 
         const { language = 'en' } = req.query;
@@ -97,7 +96,6 @@ export default class CompaniesController {
             email,
             gender,
             role,
-            status,
         });
 
         const company = await this.companiesService.getCompany({ uuid: companyUuid });
@@ -109,7 +107,6 @@ export default class CompaniesController {
             gender,
             newsletter: false,
             role,
-            status,
             company,
             language: language as string,
         });

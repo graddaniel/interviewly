@@ -29,8 +29,8 @@
     grid-template-rows: 3vw 3vw 3vw 3vw;
     grid-template-areas: 
     "nameInput roleDropdown"
-    "surnameInput statusDropdown"
-    "emailInput genderDropdown"
+    "surnameInput genderDropdown"
+    "emailInput ."
     ". saveButton";
     column-gap: 3vw;
     row-gap: 2.5vw;
@@ -48,11 +48,6 @@
     grid-area: roleDropdown;
     justify-self: end;
     z-index: 4;
-}
-.statusDropdown {
-    grid-area: statusDropdown;
-    justify-self: end;
-    z-index: 3;
 }
 .genderDropdown {
     grid-area: genderDropdown;
@@ -107,12 +102,12 @@
         "nameInput nameInput nameInput"
         "surnameInput surnameInput surnameInput"
         "emailInput emailInput emailInput"
-        "roleDropdown statusDropdown genderDropdown"
+        "roleDropdown . genderDropdown"
         ". saveButton .";
         column-gap: 3.5vw;
         row-gap: 7vw;
     }
-    .roleDropdown, .statusDropdown, .genderDropdown {
+    .roleDropdown, .genderDropdown {
         height: 7.5vw;
         width: 22vw;
         justify-self: center;
@@ -152,13 +147,12 @@
         "surnameInput"
         "emailInput"
         "roleDropdown"
-        "statusDropdown"
         "genderDropdown"
         "saveButton";
         column-gap: 3.5vw;
         row-gap: 7vw;
     }
-    .roleDropdown, .statusDropdown, .genderDropdown, .saveButton {
+    .roleDropdown, .genderDropdown, .saveButton {
         height: 12.5vw;
         width: 100%;
     }

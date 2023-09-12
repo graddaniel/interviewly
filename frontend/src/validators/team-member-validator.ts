@@ -17,7 +17,6 @@ export default class TeamMemberValidator {
             surname: SCHEMAS.accountSurname,
             email: SCHEMAS.email,
             role: SCHEMAS.accountRole,
-            status: SCHEMAS.accountStatus,
             gender: SCHEMAS.gender,
         });
 

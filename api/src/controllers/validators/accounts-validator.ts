@@ -31,7 +31,6 @@ export default class AccountsValidator {
             email: schemas.email,
             gender: schemas.gender,
             role: schemas.accountRole,
-            status: schemas.accountStatus,
         });
 
         await validate(companyAccountSchema, companyAccount);

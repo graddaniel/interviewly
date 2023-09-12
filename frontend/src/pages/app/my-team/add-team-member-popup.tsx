@@ -19,7 +19,6 @@ const ROLES = [
     ProfileTypes.Role.Moderator,
     ProfileTypes.Role.Observer,
 ];
-const STATUSES = Object.values(AccountTypes.Status);
 const GENDERS = Object.values(ProfileTypes.Gender);
 
 
@@ -46,7 +45,6 @@ const AddTeamMemberPopup = ({
     const submit = useSubmit();
     const { t } = useTranslation();
     const [ role, setRole ] = useState(defaultValues?.role || '');
-    const [ status, setStatus ] = useState(defaultValues?.status || '');
     const [ gender, setGender ] = useState(defaultValues?.gender || '');
 
     return (
@@ -96,23 +94,6 @@ const AddTeamMemberPopup = ({
                     defaultIndex={defaultValues?.role ? ROLES.indexOf(defaultValues.role) : -1}
                 />
                 <input type="hidden" name="role" value={role} />
-                <DropdownList
-                    className={classNames(
-                        classes.statusDropdown,
-                        errors?.status && classes.dropdownError,
-                    )}
-                    name={t('myTeam.popup.statusDropdownName')}
-                    elementsList={STATUSES.map(status => (
-                        <Pill
-                            key={status}
-                            className={classes[status]}
-                            text={t(`accountStatuses.${status}`)}
-                        />
-                    ))}
-                    onChange={i => setStatus(STATUSES[i])}
-                    defaultIndex={defaultValues?.status ? STATUSES.indexOf(defaultValues.status) : -1}
-                />
-                <input type="hidden" name="status" value={status} />
                 <DropdownList
                     className={classNames(
                         classes.genderDropdown,
