@@ -106,6 +106,7 @@ export default class Appplication {
             limeSurveyAdapter,
             lsqBuilder,
             s3Adapter,
+            mailService,
         );
 
         const meetingsService = new MeetingsService(

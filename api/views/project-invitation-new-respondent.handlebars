@@ -17,11 +17,14 @@
     </head>
     <body style="font-family: 'Plus Jakarta Sans', sans-serif;">
         <h1 class="header" style="font-size: 3vw;"><img style="width: 3vw; margin-right: 1vw;" src="https://interviewlyapp.com/logo.png" />Interviewly</h1>
-        <h2 class="message" style="font-size: 2vw;">{{ welcome }} {{ name }}!</h2>
+        <h2 class="message" style="font-size: 2vw;">{{ welcomeMessage }}</h2>
         <div style="color: black;padding: 4vw 1.5vw;border-radius:2.5vw;background-color: #FBF3FF;">
-            <p style="font-size: 1vw;">{{ firstParagraph }}</p>
-            <p style="font-size: 1vw;">{{ secondParagraph }}</p>
-            <a href="{{confirmationLink}}" style="margin: 1vw 1vw;padding: 1vw 1.5vw;border-radius: 2.5vw;color: #9029E2;background-color: #F2E1FF;font-size: 1.25vw;">{{ confirmationLink }}</a>
+            <p style="font-size: 1vw;">
+                {{ mainMessagePart1 }} <a href={{ passwordSetUrl }}>{{ passwordFormKeyword }}</a> {{ mainMessagePart2 }}
+            </p>
+            <div style="padding: 1vw;">
+                <a href="{{passwordSetUrl}}" style="display: block;margin: 1vw 1vw;padding: 1vw 1.5vw;border-radius: 2.5vw;color: #9029E2;background-color: #F2E1FF;font-size: 1.25vw;">{{ passwordSetUrl }}</a>
+            </div>
             <p style="font-size: 1vw;">{{ signature }}</p>
         </div>
         <span style="font-size: 0.75vw;">&copy; Interviewly, 2023</span>

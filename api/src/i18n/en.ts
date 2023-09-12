@@ -23,6 +23,22 @@ const en = {
                 },
                 signature: `Best regards,\nInterviewly team`
             },
+            projectInvitation: {
+                newRespondent: {
+                    subject: 'Invitation to take part in Research {{project_name}}',
+                    welcomeMessage: 'Welcome {{email}}!',
+                    mainMessagePart1: 'You have been invited to take part in Research {{project_name}}. Your account is ready, you only need to set your password. In order to set the password please use the ',
+                    passwordFormKeyword: 'password',
+                    mainMessagePart2: 'creation form or paste the link below into your browser.',
+                    signature: `Best regards,\nInterviewly team`
+                },
+                existingRespondent: {
+                    subject: 'Invitation to take part in Research {{project_name}} at Interviewly platform',
+                    welcomeMessage: 'Welcome {{name}}!',
+                    mainMessage: 'We are glad to inform you, that you have been invited by {{company_name}} to take part in a recruitment process. Please log into your account and check the details of your recruitment process.',
+                    signature: `Best regards,\nInterviewly team`
+                },
+            },
         },
         errors: {
             ...ErrorsTranslations.en.translation,

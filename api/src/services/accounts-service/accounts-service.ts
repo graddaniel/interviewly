@@ -3,7 +3,6 @@ import moment from 'moment';
 import { AccountTypes, ProfileTypes } from 'shared';
 import i18next from 'i18next';
 import config from 'config';
-import { readFile, unlink } from 'node:fs/promises';
 
 import AccountModel from '../../models/account';
 import ResetRequestModel from '../../models/password-reset-request';

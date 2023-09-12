@@ -1,34 +1,36 @@
 import { v4 as generateUuidV4 } from 'uuid';
 import { AccountTypes, ProfileTypes, ProjectTypes } from 'shared';
+import i18next from 'i18next';
+import moment from 'moment';
+import config from 'config';
 
 import RespondentProfileModel from '../../models/respondent-profile';
+import MeetingModel from '../../models/meeting';
 import ProjectModel from '../../models/project'
+import SurveyModel from '../../models/survey';
+import SurveyParticipantModel from '../../models/survey-participant';
+import SequelizeConnection from '../sequelize-connection';
+import TemplatesService from '../templates-service/templates-service';
+import SurveysService from '../surveys-service/surveys-service';
+import S3Adapter from '../s3-adapter';
+import MailService from '../mail-service/mail-service';
 import ProjectNotFoundError from './errors/project-not-found-error';
+import IncompleteProjectDraftError from './errors/incomplete-project-draft-error';
+import IncorrectProjectStatusError from './errors/incorrect-proejct-status-error';
+import RespondentDoesNotBelongToProjectError from './errors/respondent-does-not-belong-to-project-error';
+import NoDurationError from './errors/no-duration-error';
+import NotPermittedError from '../../generic/not-permitted-error';
+import MeetingFinishedError from '../meetings-service/errors/meeting-finished-error';
+import ProjectNoLongerEditableError from './errors/project-no-longer-editable';
+import ProjectValidator from '../../controllers/validators/project-validator';
+import { getCVBucketKeyByEmail } from '../../utils'; 
 
 import type AccountsService from '../accounts-service/accounts-service';
 import type CompaniesService from '../companies-service/companies-service';
 import type LimeSurveyAdapter from '../lime-survey-adapter';
 import type LSQBuilder from '../lsq-builder';
-import TemplatesService from '../templates-service/templates-service';
-import SurveyModel from '../../models/survey';
-import SurveyParticipantModel from '../../models/survey-participant';
+import AccountModel from '../../models/account';
 
-import type AccountModel from '../../models/account';
-import moment from 'moment';
-import config from 'config';
-import SequelizeConnection from '../sequelize-connection';
-import { MeetingModel } from '../../models';
-import RespondentDoesNotBelongToProjectError from './errors/respondent-does-not-belong-to-project-error';
-import NoDurationError from './errors/no-duration-error';
-import NotPermittedError from '../../generic/not-permitted-error';
-import S3Adapter from '../s3-adapter';
-import SurveysService from '../surveys-service/surveys-service';
-import MeetingFinishedError from '../meetings-service/errors/meeting-finished-error';
-import ProjectNoLongerEditableError from './errors/project-no-longer-editable';
-import ProjectValidator from '../../controllers/validators/project-validator';
-import IncompleteProjectDraftError from './errors/incomplete-project-draft-error';
-import IncorrectProjectStatusError from './errors/incorrect-proejct-status-error';
-import { getCVBucketKeyByEmail } from '../../utils'; 
 
 type LimesurveyConfig = {
     url: string;
@@ -48,6 +50,7 @@ export default class ProjectsService {
     lsqBuilder: LSQBuilder;
     limeSurveyUrl: string;
     s3Adapter: S3Adapter;
+    mailService: MailService;
 
     recordingsBucketName: string;
     transcriptionsBucketName: string;
@@ -61,6 +64,7 @@ export default class ProjectsService {
         limeSurveyAdapter: LimeSurveyAdapter,
         lsqBuilder: LSQBuilder,
         s3Adapter: S3Adapter,
+        mailService: MailService,
     ) {
         this.accountsService = accountsService;
         this.companiesService = companiesService;
@@ -69,6 +73,7 @@ export default class ProjectsService {
         this.limeSurveyAdapter = limeSurveyAdapter;
         this.lsqBuilder = lsqBuilder;
         this.s3Adapter = s3Adapter;
+        this.mailService = mailService;
 
         const limesurveyConfig = config.get('limesurvey') as LimesurveyConfig;
         this.limeSurveyUrl = limesurveyConfig.url;
@@ -122,8 +127,6 @@ export default class ProjectsService {
         companyUuid: string,
         projectUuid: string,
     ) => {
-        const company = await this.companiesService.getCompany({ uuid: companyUuid });
-
         const project = await ProjectModel.findOne({
             attributes: ['id', 'uuid', 'title', 'description', 'methodology', 'status',
                 'participantsCount', 'reserveParticipantsCount', 'meetingDuration',
@@ -134,7 +137,6 @@ export default class ProjectsService {
             ],
             where: {
                 uuid: projectUuid,
-                CompanyId: company.id,
             },
             include: [{
                 association: ProjectModel.associations.RespondentProfileModel,
@@ -155,6 +157,11 @@ export default class ProjectsService {
                     'startDate',
                     'endDate',
                 ],
+            }, {
+                association: ProjectModel.associations.CompanyModel,
+                where: {
+                    uuid: companyUuid,
+                },
             }]
         });
 
@@ -469,15 +476,27 @@ export default class ProjectsService {
         }
 
         const {
-            respondents: allRespondents,
+            respondents: allRespondentsEntries,
             ...projectDetails
         } = projectData;
 
-        if (allRespondents) {
-            const newRespondents = await this.separateNewRespondentsFromExisting(allRespondents);
-            await this.registerNewRespondents(newRespondents);
+        if (allRespondentsEntries) {
+            const {
+                new: newRespondentsEntries,
+                existing: existingRespondentsEntries,
+            } = await this.separateNewRespondentsFromExisting(allRespondentsEntries);
 
-            const allRespondentsEmails = allRespondents.map(r => r.email);
+            const newRespondentsAccounts = await this.registerNewRespondents(newRespondentsEntries);
+            const existingRespondentsAccounts = await AccountModel.findAll({
+                where: {
+                    email: existingRespondentsEntries.map(e => e.email),
+                },
+                include: {
+                    association: AccountModel.associations.RespondentProfileModel,
+                }
+            });
+
+            const allRespondentsEmails = allRespondentsEntries.map(r => r.email);
             const allRespondentsProfiles = await RespondentProfileModel.findAll({
                 include: [{
                     association: RespondentProfileModel.associations.AccountModel,
@@ -488,6 +507,17 @@ export default class ProjectsService {
             });
 
             await project.addRespondentProfiles(allRespondentsProfiles);
+
+            this.sendProjectInvitationsToNewRespondents(
+                project.title,
+                newRespondentsAccounts,
+            );
+
+            this.sendProjectInvitationsByCompanyToExistingRespondents(
+                project.title,
+                project.Company.name,
+                existingRespondentsAccounts,
+            );
         }
 
         await project.update(projectDetails);
@@ -500,18 +530,37 @@ export default class ProjectsService {
     private separateNewRespondentsFromExisting = async (
         allRespondents: RespondentFileEntry[]
     ) => {
-        return (await Promise.allSettled(
+        return (await Promise.all(
             allRespondents.map(
                 async respondent => {
-                    await this.accountsService.assertAccountDoesntExist({
-                        email: respondent.email
-                    });
-
-                    return respondent;
+                    try {
+                        await this.accountsService.assertAccountDoesntExist({
+                            email: respondent.email
+                        });
+                    } catch (error) {
+                        return {
+                            respondent,
+                            exists: true,
+                        };
+                    }
+                    
+                    return {
+                        respondent,
+                        exists: false,
+                    };
                 }
             )
-        )).filter(({ status }) => status === 'fulfilled')
-        .map(({ value }: PromiseFulfilledResult<any>) => value);
+        )).reduce((respondents, result) => {
+            const { respondent, exists } = result;
+
+            const setName = exists ? 'existing' : 'new';
+            respondents[setName].push(respondent);
+
+            return respondents;
+        }, {
+            existing: [],
+            new: [],
+        } as any);
     }
 
     private registerNewRespondents = async (
@@ -529,7 +578,83 @@ export default class ProjectsService {
             })
         );
 
-        await Promise.all(respondentsRegistrationPromises);
+        return await Promise.all(respondentsRegistrationPromises);
+    }
+
+    private sendProjectInvitationsToNewRespondents = (
+        projectName: string,
+        respondentsAccounts: AccountModel[],
+    ) => {
+        const { t } = i18next;
+
+        const subject = t('email.projectInvitation.newRespondent.subject', {
+            lng: 'en',
+            project_name: projectName,
+        });
+        const context = {
+            mainMessagePart1: t('email.projectInvitation.newRespondent.mainMessagePart1', {
+                lng: 'en',
+                project_name: projectName,
+            }),
+            passwordFormKeyword: t('email.projectInvitation.newRespondent.passwordFormKeyword', { lng: 'en' }),
+            mainMessagePart2: t('email.projectInvitation.newRespondent.mainMessagePart2', { lng: 'en' }),
+            signature: t('email.projectInvitation.newRespondent.signature', { lng: 'en' }),
+        } as any;
+
+        respondentsAccounts.forEach(async account => {
+            const thisAccountContext = {
+                ...context,
+                welcomeMessage: t('email.projectInvitation.newRespondent.welcomeMessage', {
+                    lng: 'en',
+                    email: account.email,
+                }),
+                passwordSetUrl: `https://interviewlyapp.com/setPassword/${account.uuid}`,
+            };
+
+            await this.mailService.sendTemplate(
+                account.email,
+                subject,
+                'project-invitation-new-respondent',
+                thisAccountContext
+            )
+        });
+    }
+
+    private sendProjectInvitationsByCompanyToExistingRespondents = (
+        projectTitle: string,
+        companyName: string,
+        existingRespondentsAccounts: AccountModel[],
+    ) => {
+        const { t } = i18next;
+
+        const subject = t('email.projectInvitation.existingRespondent.subject', {
+            lng: 'en',
+            project_name: projectTitle,
+        });
+        const context = {
+            mainMessage: t('email.projectInvitation.existingRespondent.mainMessage', {
+                lng: 'en',
+                company_name: companyName,
+            }),
+            signature: t('email.projectInvitation.existingRespondent.signature', { lng: 'en' }),
+        };
+
+        existingRespondentsAccounts.forEach(async account => {
+            const thisAccountContext = {
+                ...context,
+                welcomeMessage: t('email.projectInvitation.existingRespondent.welcomeMessage', {
+                    lng: 'en',
+                    name: account.RespondentProfile.name,
+                }),
+            };
+
+            await this.mailService.sendTemplate(
+                account.email,
+                subject,
+                'project-invitation-existing-respondent',
+                thisAccountContext
+            )
+        });
     }
 
     setProjectStatus = async (

@@ -47,12 +47,16 @@ export default class MailService {
         message: string,
     ) => {
         console.log(`Sending email to ${recipient} with subject: ${subject} and message ${message}`)
-        return await this.transport.sendMail({
-            from: 'notification@interviewlyapp.com',
-            to: recipient,
-            subject,
-            html: message,
-        });
+        try {
+            await this.transport.sendMail({
+                from: 'notification@interviewlyapp.com',
+                to: recipient,
+                subject,
+                html: message,
+            });
+        } catch (error) {
+            console.error("Failed to send email", error);
+        }
     }
 
     sendTemplate = async (
@@ -62,12 +66,16 @@ export default class MailService {
         context: any,
     ) => {
         console.log(`Sending template email to ${recipient} with subject: ${subject}.`)
-        return await this.transport.sendMail({
-            from: 'notification@interviewlyapp.com',
-            to: recipient,
-            subject,
-            template,
-            context,
-        });
+        try {
+            await this.transport.sendMail({
+                from: 'notification@interviewlyapp.com',
+                to: recipient,
+                subject,
+                template,
+                context,
+            });
+        }catch (error) {
+            console.error("Failed to send email", error);
+        }
     }
 }

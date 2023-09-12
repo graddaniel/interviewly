@@ -23,6 +23,22 @@ const pl = {
                 },
                 signature: `Pozdrawiamy,\nZespół Interviewly`
             },
+            projectInvitation: {
+                newRespondent: {
+                    subject: 'Zaproszenie do udziału w Badaniu {{project_name}}',
+                    welcomeMessage: 'Witaj {{email}}!',
+                    mainMessagePart1: 'Zostałeś zaproszony do badania {{project_name}}. Twoje konto jest już gotowe, wystarczy tylko, że stworzysz hasło. W celu stworzenia hasła skorzystaj z formularza tworzenia',
+                    passwordFormKeyword: 'hasła',
+                    mainMessagePart2: 'lub skopiuj poniższy link do przeglądarki.',
+                    signature: `Pozdrawiamy,\nZespół Interviewly`
+                },
+                existingRespondent: {
+                    subject: 'Zaproszenie do udziału w badaniu {{project_name}} w serwisie Interviewly',
+                    welcomeMessage: 'Witaj {{name}}!',
+                    mainMessage: 'Miło nam poinformować, że zostałeś zaproszony przez firmę {{company_name}} do wzięcia udziału w procesie rekrutacyjnym.  Zaloguj się do swojego konta i sprawdź szczegóły dotyczące rekturacji.',
+                    signature: `Pozdrawiamy,\nZespół Interviewly`
+                },
+            },
         },
         errors: {
             ...ErrorsTranslations.pl.translation,
