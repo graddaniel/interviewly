@@ -22,8 +22,9 @@ export default class RespondentProfile extends Model {
     declare gender: ProfileTypes.Gender;
     declare avatarUrl: string;
     declare hasUploadedCV: boolean;
+    declare hasInterviewVideo: boolean;
+    declare hasInterviewTranscript: boolean;
     declare phoneNumber: string;
-    declare introductionVideoUrl: string;
     declare bankAccountNumber: string;
     declare createdFromFile: boolean;
     declare birthYear: number;
@@ -36,6 +37,7 @@ export default class RespondentProfile extends Model {
     declare martialStatus: ProfileTypes.MartialStatus;
     declare hasChildren: boolean;
     declare childrenCount: number;
+    declare score: number;
 
     declare Account: AccountModel;
     declare Surveys: SurveyModel[];
@@ -73,8 +75,13 @@ RespondentProfile.init({
         type: DataTypes.BOOLEAN,
         defaultValue: false,
     },
-    introductionVideoUrl: {
-        type: DataTypes.STRING,
+    hasInterviewVideo: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+    },
+    hasInterviewTranscript: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
     },
     phoneNumber: {
         type: DataTypes.STRING,
@@ -117,6 +124,9 @@ RespondentProfile.init({
     childrenCount: {
         type: DataTypes.SMALLINT,
     },
+    score: {
+        type: DataTypes.INTEGER,
+    }
 }, {
     timestamps: false,
     sequelize: SequelizeConnection.instance(),

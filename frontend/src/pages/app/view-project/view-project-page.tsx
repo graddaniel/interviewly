@@ -164,11 +164,13 @@ const ViewProject = () => {
                 icon={FeatureChatIcon}
                 title={t('viewProject.respondentPage.interviewsSubtitle')}
             />
-            <MeetingBar
-                uuid={meeting.uuid}
-                date={meeting.date}
-                duration={meeting.duration}
-            />
+            {meeting && (
+                <MeetingBar
+                    uuid={meeting.uuid}
+                    date={meeting.date}
+                    duration={meeting.duration}
+                />
+            )}
             <StepTitle
                 icon={FoldersIconBlack}
                 title={t('viewProject.respondentPage.surveysSubtitle')}

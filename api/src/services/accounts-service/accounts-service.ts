@@ -29,27 +29,39 @@ import S3Adapter from '../s3-adapter';
 
 import type MailService from '../mail-service/mail-service';
 import type CompaniesService from '../companies-service/companies-service';
+import MQAdapter from '../mq-adapter';
+import GPTAdapter from '../gpt-adapter';
 
 
 export default class AccountsService {
     private mailService: MailService;
     private companiesService: CompaniesService;
     private s3Adapter: S3Adapter;
+    private mqAdapter: MQAdapter;
+    private gptAdapter: GPTAdapter;
 
     private cvBucketName: string;
     private additionalNotificationsTarget: string;
+    private interviewsToTranscribeQueue: string;
+    private recordedInterviewsQueue: string;
 
     constructor(
         mailService: MailService,
         companiesService: CompaniesService,
         s3Adapter: S3Adapter,
+        mqAdapter: MQAdapter,
+        gptAdapter: GPTAdapter,
     ) {
         this.mailService = mailService;
         this.companiesService = companiesService;
         this.s3Adapter = s3Adapter;
+        this.mqAdapter = mqAdapter;
+        this.gptAdapter = gptAdapter;
 
         this.cvBucketName = config.get('s3.cvBucket');
         this.additionalNotificationsTarget = config.get('registration.additionalNotificationsTarget');
+        this.recordedInterviewsQueue = config.get('rabbitMq.recordedInterviewsQueueName');
+        this.interviewsToTranscribeQueue = config.get('rabbitMq.interviewsToTranscribeQueueName');
     }
 
     getAccount = async (query: Partial<AccountModel>) => {
@@ -112,6 +124,7 @@ export default class AccountsService {
         companyName,
         notify,
         createdFromFile = false,
+        recordingId,
     }: {
         email: string,
         password?: string,
@@ -124,6 +137,7 @@ export default class AccountsService {
         companyName?: string,
         notify?: boolean,
         createdFromFile?: boolean,
+        recordingId?: number,
     }): Promise<string> => {
         await this.assertAccountDoesntExist({ email });
 
@@ -138,6 +152,10 @@ export default class AccountsService {
             companyName,
             createdFromFile,
         });
+
+        if (recordingId) {
+            this.mqAdapter.send(this.recordedInterviewsQueue, ""+recordingId);
+        }
 
         this._sendConfirmationEmail(newAccount.uuid, name, email, language, notify);
 
@@ -491,7 +509,6 @@ export default class AccountsService {
             profile.companyName = company.name;
             profile.sector = recruiterProfile.sector;
         } else if (respondentProfile) {
-            profile.introductionVideoUrl = respondentProfile.introductionVideoUrl;
             profile.bankAccountNumber = respondentProfile.bankAccountNumber;
             profile.createdFromFile = respondentProfile.createdFromFile;
             profile.birthYear = respondentProfile.birthYear;
@@ -690,5 +707,39 @@ export default class AccountsService {
             this.cvBucketName,
             fileBucketKey,
         );
+    }
+
+    addInterviewRecording = async (message: string) => {
+        const {
+            filename,
+            userEmail,
+        } = JSON.parse(message);
+
+        const account = await this.getAccount({
+            email: userEmail,
+        });
+
+        account.RespondentProfile.hasInterviewVideo = true;
+
+        if (account.RespondentProfile.changed()) {
+            await account.RespondentProfile.save();
+        }
+
+        this.mqAdapter.send(this.interviewsToTranscribeQueue, message);
+    }
+
+    addInterviewTranscript = async (accountEmail: string) => {
+        const account = await this.getAccount({
+            email: accountEmail,
+        });
+
+        const score = await this.gptAdapter.evaluateInterviewGrammar(accountEmail);
+        
+        account.RespondentProfile.hasInterviewTranscript = true;
+        account.RespondentProfile.score = score;
+
+        if (account.RespondentProfile.changed()) {
+            await account.RespondentProfile.save();
+        }
     }
 }

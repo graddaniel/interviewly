@@ -15,6 +15,7 @@ type JoinData = {
     companyName?: string;
     agreement?: string;
     newsletter?: string;
+    recordingId?: number;
 };
 
 const JoinPageAction = async ({
@@ -48,27 +49,31 @@ const JoinPageAction = async ({
         }
 
         const {
-            email,
-            password,
-            name,
-            surname,
             type,
-            gender,
-            companyName,
-            newsletter,
         } = formData;
-
+        
         if (type === AccountTypes.Type.RECRUITER) {   
-            await AuthService.register(
+            const {
                 email,
                 password,
                 name,
                 surname,
                 type,
                 gender,
-                !!newsletter,
                 companyName,
-            );
+                newsletter,
+            } = formData;
+
+            await AuthService.register({
+                email,
+                password,
+                name,
+                surname,
+                type,
+                gender,
+                newsletter: !!newsletter,
+                companyName,
+            });
         }
     } else if (step === 4) {
         const {
@@ -79,17 +84,19 @@ const JoinPageAction = async ({
             type,
             gender,
             newsletter,
+            recordingId,
         } = formData;
 
-        await AuthService.register(
+        await AuthService.register({
             email,
             password,
             name,
             surname,
             type,
             gender,
-            !!newsletter,
-        );
+            newsletter: !!newsletter,
+            recordingId,
+        });
     }
 
     return {

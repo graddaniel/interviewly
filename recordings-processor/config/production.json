@@ -3,10 +3,16 @@
         "queueAddress": "amqp://3.127.163.15"
     },
     "recordings": {
-        "inputPath": "/home/ubuntu/efs/recordings",
-        "outputPath": "./output"
+        "meetings": {
+            "inputPath": "/home/ubuntu/efs/recordings",
+            "outputPath": "./output"
+        },
+        "interviews": {
+            "path": "/home/ubuntu/efs/interviews"
+        }
     },
     "s3": {
-        "recordingsBucket": "meetings-recordings-prod"
+        "recordingsBucket": "meetings-recordings-prod",
+        "interviewRecordingsBucket": "interviewly-interview-recordings-prod"
     }
 }

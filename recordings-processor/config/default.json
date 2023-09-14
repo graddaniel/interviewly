@@ -1,14 +1,22 @@
 {
     "rabbitMq": {
         "queueAddress": "amqp://localhost",
-        "incomingMessagesQueue": "finishedMeeting",
-        "outcomingMessagesQueue": "readyRecordings"
+        "finishedMeetingsQueueName": "finishedMeeting",
+        "readyRecordingsQueueName": "readyRecordings",
+        "recordedInterviewsQueueName": "recordedInterviews",
+        "readyInterviewRecordingsQueueName": "readyInterviewRecordings"
     },
     "recordings": {
-        "inputPath": "/opt/janus/share/janus/recordings",
-        "outputPath": "./output"
+        "meetings": {
+            "inputPath": "/opt/janus/share/janus/recordings",
+            "outputPath": "./output"
+        },
+        "interviews": {
+            "path": "/opt/janus/share/janus/interviews"
+        }
     },
     "s3": {
-        "recordingsBucket": "meetings-recordings-dev"
+        "recordingsBucket": "meetings-recordings-dev",
+        "interviewRecordingsBucket": "interviewly-interview-recordings-dev"
     }
 }

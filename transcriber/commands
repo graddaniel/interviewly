@@ -1,4 +1,4 @@
 flask run
 curl -i -X POST -H "Content-Type: multipart/form-data" -F "data=@output.wav" http://127.0.0.1:5000
 
-INPUT_QUEUE=hello OUTPUT_QUEUE=hello2 QUEUE_HOST=localhost AWS_SERVER_PUBLIC_KEY=AKIAUFI7HMFV7Y6MRGP4 AWS_SERVER_SECRET_KEY=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 TRANSCRIPTIONS_BUCKET=meetings-transcriptions-dev python3 transcriber.py
+RECORDINGS_TO_TRANSCRIBE_QUEUE=recordingsToTranscribe READY_TRANSCRIPTIONS_QUEUE=readyTranscriptions INTERVIEWS_TO_TRANSCRIBE_QUEUE=interviewsToTranscribe READY_INTERVIEWS_TRANSCRIPTS_QUEUE=readyInterviewTranscripts QUEUE_HOST=localhost AWS_SERVER_PUBLIC_KEY=AKIAUFI7HMFV7Y6MRGP4 AWS_SERVER_SECRET_KEY=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 MEETING_TRANSCRIPTIONS_BUCKET=meetings-transcriptions-dev INTERVIEW_TRANSCRIPTS_BUCKET=interview-transcripts-dev python3 transcriber.py

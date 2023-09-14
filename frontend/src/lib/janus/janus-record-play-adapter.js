@@ -118,7 +118,7 @@ const initJanus = (serverInfo) => {
 										}
 	
 										Janus.log('Recording completed! Check the list of recordings to replay it.');
-										callbacks.onRecordingStopped();
+										callbacks.onRecordingStopped(recordingId);
 									}
 	
 									if(selectedRecording && selectedRecording !== id) {

@@ -5,6 +5,18 @@ import i18next from 'i18next';
 import { API_HOST } from 'config/current';
 
 
+type RegistrationData = {
+    email: string;
+    password: string;
+    name: string;
+    surname: string;
+    type: string;
+    gender: string;
+    newsletter: boolean;
+    companyName?: string;
+    recordingId?: number;
+};
+
 export default class AuthService {
     static login = async (
         email: string,
@@ -20,16 +32,17 @@ export default class AuthService {
         return response.data;
     };
 
-    static register = async (
-        email: string,
-        password: string,
-        name: string,
-        surname: string,
-        type: string,
-        gender: string,
-        newsletter: boolean,
-        companyName?: string,
-    ) => {
+    static register = async ({
+        email,
+        password,
+        name,
+        surname,
+        type,
+        gender,
+        newsletter,
+        companyName,
+        recordingId,
+    }: RegistrationData) => {
         const base64credentials = Buffer.from(`${email}:${password}`).toString('base64');
 
         const body: any = {
@@ -41,6 +54,9 @@ export default class AuthService {
         }
         if (companyName) {
             body.companyName = companyName;
+        }
+        if (recordingId) {
+            body.recordingId = recordingId;
         }
 
         const response = await axios.post(`${API_HOST}/accounts?notify=true&language=${i18next.resolvedLanguage}`,

@@ -5,12 +5,16 @@ import { readdir } from 'fs/promises';
 import config from 'config';
 
 export default class FilesProcessor {
-    recordingsPath: string;
-    outputPath: string;
+    meetingsRecordingsPath: string;
+    meetingsOutputPath: string;
+
+    interviewsPath: string;
 
     constructor() {
-        this.recordingsPath = config.get('recordings.inputPath');
-        this.outputPath = config.get('recordings.outputPath');
+        this.meetingsRecordingsPath = config.get('recordings.meetings.inputPath');
+        this.meetingsOutputPath = config.get('recordings.meetings.outputPath');
+
+        this.interviewsPath = config.get('recordings.interviews.path');
     }
 
     parseFilename = (filename: string) => {
@@ -37,26 +41,86 @@ export default class FilesProcessor {
         }
     };
 
-    process = async (meetingUuid: string) => {
-        const filenames = await readdir(`${this.recordingsPath}/${meetingUuid}`);
-        const filesInfo = filenames.map(this.parseFilename);
+    processInterview = async (recordingId: string): Promise<any> => {
+        const metadataFile = fs.readFileSync(`${this.interviewsPath}/${recordingId}.nfo`);
+        const [id, name, date, audio, video] = metadataFile.toString().split('\n');
 
-        if (!fs.existsSync(`${this.outputPath}`)) {
-            fs.mkdirSync(`${this.outputPath}`);
+        const userEmail = name.split('=')[1].trim();
+        const audioFileName = audio.split('=')[1].trim();
+        const videoFileName = video.split('=')[1].trim();
+
+        const sanitizedEmail = userEmail.replace('@','_').replace('.','_');
+
+        let result;
+        try {
+            result = execSync(`janus-pp-rec ${this.interviewsPath}/${audioFileName} ${this.interviewsPath}/temp_${sanitizedEmail}.opus`);
+            if (result.includes('Aborted (core dumped)')) {
+                console.log("DANIEL SEGFAULT!")
+            }
+        } catch(e) {
+            console.log(e.stdout.toString(), e.stderr.toString())
+
+        }
+        try {
+            result = execSync(`janus-pp-rec ${this.interviewsPath}/${videoFileName} ${this.interviewsPath}/temp_${sanitizedEmail}.webm`);
+            if (result.includes('Aborted (core dumped)')) {
+                console.log("DANIEL SEGFAULT!")
+            }
+        } catch(e) {
+            console.log(e.stdout.toString(), e.stderr.toString())
+
         }
 
-        if (!fs.existsSync(`${this.outputPath}/${meetingUuid}`)) {
-            fs.mkdirSync(`${this.outputPath}/${meetingUuid}`);
+        return new Promise((resolve, reject) => {
+            ffmpeg()
+            .input(`${this.interviewsPath}/temp_${sanitizedEmail}.opus`)
+            .input(`${this.interviewsPath}/temp_${sanitizedEmail}.webm`)
+            .outputOptions([
+                '-c:v', 'copy',
+                '-c:a', 'opus',
+                '-strict',
+                '-2'
+            ])
+            .saveToFile(`${this.interviewsPath}/${sanitizedEmail}.webm`)
+            .on('progress', (progress) => {
+                if (progress.percent) {
+                  console.log(`Merging: ${Math.floor(progress.percent)}% done.`);
+                }
+            })
+            .on('end', () => {
+                console.log(`Finished merging ${sanitizedEmail}.webm.`);
+                return resolve({
+                    filename: `${sanitizedEmail}.webm`,
+                    userEmail,
+                });
+            })
+            .on('error', (error) => {
+                console.error(`Failed to merge ${sanitizedEmail}.webm. ${error}`);
+                return reject(`Failed to merge ${sanitizedEmail}.webm. ${error}`);
+            });
+        });
+    }
+
+    processMeeting = async (meetingUuid: string) => {
+        const filenames = await readdir(`${this.meetingsRecordingsPath}/${meetingUuid}`);
+        const filesInfo = filenames.map(this.parseFilename);
+
+        if (!fs.existsSync(`${this.meetingsOutputPath}`)) {
+            fs.mkdirSync(`${this.meetingsOutputPath}`);
+        }
+
+        if (!fs.existsSync(`${this.meetingsOutputPath}/${meetingUuid}`)) {
+            fs.mkdirSync(`${this.meetingsOutputPath}/${meetingUuid}`);
         }
 
         filesInfo.forEach(file => {
             console.log(`Copying ${file.filename}`)
-            execSync(`cp ${this.recordingsPath}/${meetingUuid}/${file.filename} ${this.outputPath}/${meetingUuid}/`);
+            execSync(`cp ${this.meetingsRecordingsPath}/${meetingUuid}/${file.filename} ${this.meetingsOutputPath}/${meetingUuid}/`);
             
             const command = `\
 janus-pp-rec \
-${this.outputPath}/${meetingUuid}/${file.filename} \
-${this.outputPath}/${meetingUuid}/${file.participantUuid}.${file.fileType === 'audio' ? 'opus' : 'webm'}`;
+${this.meetingsOutputPath}/${meetingUuid}/${file.filename} \
+${this.meetingsOutputPath}/${meetingUuid}/${file.participantUuid}.${file.fileType === 'audio' ? 'opus' : 'webm'}`;
 
             const result = execSync(command);
             if (result.includes('Aborted (core dumped)')) {
@@ -109,12 +173,12 @@ ${this.outputPath}/${meetingUuid}/${file.participantUuid}.${file.fileType === 'a
             let pipeline = ffmpeg();
             if (fileInfo.audio) {
                 pipeline = pipeline.input(
-                    `${this.outputPath}/${meetingUuid}/${fileInfo.participantUuid}.opus`
+                    `${this.meetingsOutputPath}/${meetingUuid}/${fileInfo.participantUuid}.opus`
                 );
             }
             if (fileInfo.video) {
                 pipeline = pipeline.input(
-                    `${this.outputPath}/${meetingUuid}/${fileInfo.participantUuid}.webm`
+                    `${this.meetingsOutputPath}/${meetingUuid}/${fileInfo.participantUuid}.webm`
                 );
             }
             pipeline
@@ -124,7 +188,7 @@ ${this.outputPath}/${meetingUuid}/${file.participantUuid}.${file.fileType === 'a
                     '-strict',
                     '-2'
                 ])
-                .saveToFile(`${this.outputPath}/${meetingUuid}/merged_${fileInfo.participantUuid}.webm`)
+                .saveToFile(`${this.meetingsOutputPath}/${meetingUuid}/merged_${fileInfo.participantUuid}.webm`)
                 .on('progress', (progress) => {
                     if (progress.percent) {
                       console.log(`Merging: ${Math.floor(progress.percent)}% done.`);
@@ -132,7 +196,7 @@ ${this.outputPath}/${meetingUuid}/${file.participantUuid}.${file.fileType === 'a
                 })
                 .on('end', () => {
                     console.log(`Finished merging ${fileInfo.participantUuid}.`);
-                    console.log(`Saved to ${this.outputPath}/${meetingUuid}/merged_${fileInfo.participantUuid}.webm`)
+                    console.log(`Saved to ${this.meetingsOutputPath}/${meetingUuid}/merged_${fileInfo.participantUuid}.webm`)
                     return resolve(fileInfo);
                 })
                 .on('error', (error) => {
@@ -146,18 +210,18 @@ ${this.outputPath}/${meetingUuid}/${file.participantUuid}.${file.fileType === 'a
         return new Promise((resolve, reject) => {
             if (!fileInfo.video) {
                 fs.cpSync(
-                    `${this.outputPath}/${meetingUuid}/merged_${fileInfo.participantUuid}.webm`,
-                    `${this.outputPath}/${meetingUuid}/scaled_${fileInfo.participantUuid}.webm`    
+                    `${this.meetingsOutputPath}/${meetingUuid}/merged_${fileInfo.participantUuid}.webm`,
+                    `${this.meetingsOutputPath}/${meetingUuid}/scaled_${fileInfo.participantUuid}.webm`    
                 );
 
                 return resolve(fileInfo);
             };
 
             ffmpeg()
-                .input(`${this.outputPath}/${meetingUuid}/merged_${fileInfo.participantUuid}.webm`)
+                .input(`${this.meetingsOutputPath}/${meetingUuid}/merged_${fileInfo.participantUuid}.webm`)
                 .size('640x480')
                 .autopad(true, 'black')
-                .saveToFile(`${this.outputPath}/${meetingUuid}/scaled_${fileInfo.participantUuid}.webm`)
+                .saveToFile(`${this.meetingsOutputPath}/${meetingUuid}/scaled_${fileInfo.participantUuid}.webm`)
                 .on('progress', (progress) => {
                     if (progress.percent) {
                       console.log(`Scaling: ${Math.floor(progress.percent)}% done.`);
@@ -179,19 +243,19 @@ ${this.outputPath}/${meetingUuid}/${file.participantUuid}.${file.fileType === 'a
         return new Promise((resolve, reject) => {
             if (fileInfo.video) {
                 fs.cpSync(
-                    `${this.outputPath}/${meetingUuid}/merged_${fileInfo.participantUuid}.webm`,
-                    `${this.outputPath}/${meetingUuid}/processed_${fileInfo.participantUuid}.webm`    
+                    `${this.meetingsOutputPath}/${meetingUuid}/merged_${fileInfo.participantUuid}.webm`,
+                    `${this.meetingsOutputPath}/${meetingUuid}/processed_${fileInfo.participantUuid}.webm`    
                 );
                 return resolve(fileInfo);
             } else {
                 const command = ffmpeg()
                 .input(
-                    `${this.outputPath}/${meetingUuid}/merged_${fileInfo.participantUuid}.webm`
+                    `${this.meetingsOutputPath}/${meetingUuid}/merged_${fileInfo.participantUuid}.webm`
                 )
                 .input('color=c=black:s=640x480:r=25')
                 .inputFormat('lavfi')
                 .outputOptions(['-shortest'])
-                .saveToFile(`${this.outputPath}/${meetingUuid}/processed_${fileInfo.participantUuid}.webm`)
+                .saveToFile(`${this.meetingsOutputPath}/${meetingUuid}/processed_${fileInfo.participantUuid}.webm`)
                 //console.log("DANIEL", command._getArguments().join(' '))
                 command.on('progress', (progress) => {
                     if (progress.percent) {
@@ -200,7 +264,7 @@ ${this.outputPath}/${meetingUuid}/${file.participantUuid}.${file.fileType === 'a
                 })
                 .on('end', () => {
                     console.log(`Finished adding audio ${fileInfo.participantUuid}.`);
-                    console.log(`Saved to ${this.outputPath}/${meetingUuid}/processed_${fileInfo.participantUuid}.webm`)
+                    console.log(`Saved to ${this.meetingsOutputPath}/${meetingUuid}/processed_${fileInfo.participantUuid}.webm`)
                     return resolve(fileInfo);
                 })
                 .on('error', (error) => {
@@ -208,28 +272,6 @@ ${this.outputPath}/${meetingUuid}/${file.participantUuid}.${file.fileType === 'a
                     return reject(`Failed to add audio ${fileInfo.participantUuid}. ${error}`);
                 });
             }
-
-            // ffmpeg().input(
-            //     `${this.outputPath}/merged_${fileInfo.participantUuid}.webm`
-            // )
-            // .input('anullsrc=channel_layout=mono:sample_rate=22050')
-            // .inputFormat('lavfi')
-            // //.inputOptions(['-t', '3s'])
-            // .saveToFile(`${this.outputPath}/processed_${fileInfo.participantUuid}.webm`)
-            //     .on('progress', (progress) => {
-            //         if (progress.percent) {
-            //           console.log(`Adding audio: ${Math.floor(progress.percent)}% done.`);
-            //         }
-            //     })
-            //     .on('end', () => {
-            //         console.log(`Finished adding audio ${fileInfo.participantUuid}.`);
-            //         console.log(`Saved to ${this.outputPath}/processed_${fileInfo.participantUuid}.webm`)
-            //         return resolve(fileInfo);
-            //     })
-            //     .on('error', (error) => {
-            //         console.error(`Failed to add audio ${fileInfo.participantUuid}. ${error}`);
-            //         return reject(`Failed to add audio ${fileInfo.participantUuid}. ${error}`);
-            //     });
         });
     }
 
@@ -242,7 +284,7 @@ ${this.outputPath}/${meetingUuid}/${file.participantUuid}.${file.fileType === 'a
 
             fileInfoArray.forEach(
                 file => {
-                    const filename = `${this.outputPath}/${meetingUuid}/processed_${file.participantUuid}.webm`;
+                    const filename = `${this.meetingsOutputPath}/${meetingUuid}/processed_${file.participantUuid}.webm`;
                     command = command.addInput(filename);
                     videoInfo.push({
                         filename,
@@ -291,7 +333,7 @@ ${this.outputPath}/${meetingUuid}/${file.participantUuid}.${file.fileType === 'a
 
             complexFilter.push('[a]amerge');
 
-            var outFile = `${this.outputPath}/${meetingUuid}/${meetingUuid}.mp4`;
+            var outFile = `${this.meetingsOutputPath}/${meetingUuid}/${meetingUuid}.mp4`;
 
             command
                 .complexFilter(complexFilter, `base${fileInfoArray.length}`)

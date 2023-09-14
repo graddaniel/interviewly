@@ -43,6 +43,7 @@ const JoinPage = () => {
     const [ maxSteps, setMaxSteps ] = useState(0);
     const [ type, setType ] = useState('');
     const [ gender, setGender ] = useState('');
+    const [ recordingId, setRecordingId ] = useState(0);
     const [ isInterviewDialogOpen, setIsInterviewDialogOpen ] = useState(false);
     const [ isVideoUploaded, setIsVideoUploaded ] = useState(false);
     const [ isLoading, setIsLoading ] = useState(false);
@@ -267,6 +268,7 @@ const JoinPage = () => {
                             />
                         )
                     }
+                    <input type="hidden" name="recordingId" value={recordingId} />
                 </section>
             </section>
             {step === STEPS.FINAL && 
@@ -337,6 +339,7 @@ const JoinPage = () => {
             <InterviewDialog
                 isOpen={isInterviewDialogOpen}
                 onClose={() => setIsInterviewDialogOpen(false)}
+                onRecordingFinished={setRecordingId}
             />
             <div className={classes.mobileLoginControls}>
                 <p>{t('join.joinControl')}</p>

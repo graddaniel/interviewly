@@ -1,11 +1,18 @@
-import pika, sys, os, whisper, boto3
+import pika, sys, os, whisper, boto3, json
 
-INPUT_QUEUE = os.environ.get('INPUT_QUEUE')
-OUTPUT_QUEUE = os.environ.get('OUTPUT_QUEUE')
 QUEUE_HOST = os.environ.get('QUEUE_HOST')
-TRANSCRIPTIONS_BUCKET = os.environ.get('TRANSCRIPTIONS_BUCKET')
+
+RECORDINGS_TO_TRANSCRIBE_QUEUE = os.environ.get('RECORDINGS_TO_TRANSCRIBE_QUEUE')
+READY_TRANSCRIPTIONS_QUEUE = os.environ.get('READY_TRANSCRIPTIONS_QUEUE')
+MEETING_TRANSCRIPTIONS_BUCKET = os.environ.get('MEETING_TRANSCRIPTIONS_BUCKET')
+
+INTERVIEWS_TO_TRANSCRIBE_QUEUE = os.environ.get('INTERVIEWS_TO_TRANSCRIBE_QUEUE')
+READY_INTERVIEWS_TRANSCRIPTS_QUEUE = os.environ.get('READY_INTERVIEWS_TRANSCRIPTS_QUEUE')
+INTERVIEW_TRANSCRIPTS_BUCKET = os.environ.get('INTERVIEW_TRANSCRIPTS_BUCKET')
+
 AWS_SERVER_PUBLIC_KEY = os.environ.get('AWS_SERVER_PUBLIC_KEY')
 AWS_SERVER_SECRET_KEY = os.environ.get('AWS_SERVER_SECRET_KEY')
+
 
 model = whisper.load_model("base")
 
@@ -26,13 +33,19 @@ def upload_file(file_name, bucket, bucket_key):
 def main():
     connection = pika.BlockingConnection(pika.ConnectionParameters(host=QUEUE_HOST))
 
-    inputChannel = connection.channel()
-    inputChannel.queue_declare(queue=INPUT_QUEUE)
+    recordingsToTranscribeChannel = connection.channel()
+    recordingsToTranscribeChannel.queue_declare(queue=RECORDINGS_TO_TRANSCRIBE_QUEUE)
 
-    outputChannel = connection.channel()
-    outputChannel.queue_declare(queue=OUTPUT_QUEUE)
+    readyTranscriptionsChannel = connection.channel()
+    readyTranscriptionsChannel.queue_declare(queue=READY_TRANSCRIPTIONS_QUEUE)
 
-    def callback(ch, method, properties, body):
+    interviewsToTranscribeChannel = connection.channel()
+    interviewsToTranscribeChannel.queue_declare(queue=INTERVIEWS_TO_TRANSCRIBE_QUEUE)
+
+    readyInterviewTranscriptsChannel = connection.channel()
+    readyInterviewTranscriptsChannel.queue_declare(queue=READY_INTERVIEWS_TRANSCRIPTS_QUEUE)
+
+    def meetingsCallback(ch, method, properties, body):
         try: 
             fileName = body.decode('UTF-8')
             print(f" [x] Received {fileName}")
@@ -44,9 +57,9 @@ def main():
             f.write(result["text"])
             f.close()
 
-            upload_file(f"./files/{fileName}/{fileName}.txt", TRANSCRIPTIONS_BUCKET, f"{fileName}.txt")
+            upload_file(f"./files/{fileName}/{fileName}.txt", MEETING_TRANSCRIPTIONS_BUCKET, f"{fileName}.txt")
             
-            outputChannel.basic_publish(exchange='', routing_key=OUTPUT_QUEUE, body=fileName)
+            readyTranscriptionsChannel.basic_publish(exchange='', routing_key=READY_TRANSCRIPTIONS_QUEUE, body=fileName)
 
             os.remove(f"./files/{fileName}/{fileName}.mp4")
             os.remove(f"./files/{fileName}/{fileName}.txt")
@@ -54,10 +67,39 @@ def main():
         except Exception as e:
             print(e)
 
-    inputChannel.basic_consume(queue=INPUT_QUEUE, on_message_callback=callback, auto_ack=True)
+    def interviewsCallback(ch, method, properties, body):
+        try: 
+            message = body.decode('UTF-8')
+            print(f" [x] Received {message}")
+            interviewData = json.loads(message)
+            print(f" [x] interviewData {interviewData}")
+            filename = interviewData["filename"]
+            fileBase = filename.split(".")[0]
+            userEmail = interviewData["userEmail"]
+
+            result = model.transcribe(f"./files/{filename}")
+
+            print(result["text"])
+            f = open(f"./files/{fileBase}.txt", "w")
+            f.write(result["text"])
+            f.close()
+
+            upload_file(f"./files/{fileBase}.txt", INTERVIEW_TRANSCRIPTS_BUCKET, f"{fileBase}.txt")
+            
+            readyInterviewTranscriptsChannel.basic_publish(exchange='', routing_key=READY_INTERVIEWS_TRANSCRIPTS_QUEUE, body=userEmail)
+
+            os.remove(f"./files/{filename}")
+            os.remove(f"./files/{fileBase}.txt")
+
+        except Exception as e:
+            print(e)
+
+    recordingsToTranscribeChannel.basic_consume(queue=RECORDINGS_TO_TRANSCRIBE_QUEUE, on_message_callback=meetingsCallback, auto_ack=True)
+    interviewsToTranscribeChannel.basic_consume(queue=INTERVIEWS_TO_TRANSCRIBE_QUEUE, on_message_callback=interviewsCallback, auto_ack=True)
 
     print(' [*] Waiting for messages. To exit press CTRL+C')
-    inputChannel.start_consuming()
+    recordingsToTranscribeChannel.start_consuming()
+    readyInterviewTranscriptsChannel.start_consuming()
 
 if __name__ == '__main__':
     try:

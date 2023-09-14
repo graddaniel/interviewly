@@ -52,6 +52,7 @@ export default class AccountsController {
             gender,
             companyName,
             newsletter,
+            recordingId,
         } = req.body;
 
         await AccountsValidator.validateNewAccount({
@@ -75,6 +76,7 @@ export default class AccountsController {
             language: language as string,
             companyName,
             notify: !!notify,
+            recordingId,
         });
 
         //TODO validate language

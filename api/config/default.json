@@ -41,11 +41,20 @@
         "finishedMeetingsQueue": "finishedMeeting",
         "readyRecordingsQueueName": "readyRecordings",
         "recordingsToTranscribeQueue": "recordingsToTranscribe",
-        "readyTranscriptionsQueue": "readyTranscriptions"
+        "readyTranscriptionsQueue": "readyTranscriptions",
+        "recordedInterviewsQueueName": "recordedInterviews",
+        "readyInterviewRecordingsQueueName": "readyInterviewRecordings",
+        "interviewsToTranscribeQueueName": "interviewsToTranscribe",
+        "readyInterviewTranscriptsQueueName": "readyInterviewTranscripts"
     },
     "s3": {
         "recordingsBucket": "meetings-recordings-dev",
         "cvBucket": "respondent-cvs-dev",
-        "transcriptionsBucket": "meetings-transcriptions-dev"
+        "transcriptionsBucket": "meetings-transcriptions-dev",
+        "interviewRecordingsBucket": "interviewly-interview-recordings-dev",
+        "interviewTranscriptsBucket": "interview-transcripts-dev"
+    },
+    "chatGPT": {
+        "apiUrl": "https://api.openai.com/v1/chat/completions"
     }
 }

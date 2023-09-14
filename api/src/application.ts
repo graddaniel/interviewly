@@ -51,6 +51,7 @@ import JanusAdminRestApiAdapter from './services/janus-service/janus-admin-rest-
 import MQAdapter from './services/mq-adapter';
 import S3Adapter from './services/s3-adapter';
 import JWTVerificationFailedError from './services/jwt-service/errors/jwt-verification-failed-error';
+import GPTAdapter from './services/gpt-adapter';
 
 
 export default class Appplication {
@@ -71,6 +72,8 @@ export default class Appplication {
         const lsqBuilder = new LSQBuilder();
         const janusRestApiAdapter = new JanusRestApiAdapter();
         const mqAdapter = new MQAdapter();
+        const s3Adapter = new S3Adapter();
+        const gptAdapter = new GPTAdapter(s3Adapter);
         mqAdapter.init().then(() => {
             const readyRecordingsQueueName = config.get('rabbitMq.readyRecordingsQueueName') as string;
             const readyTranscriptionsQueue = config.get('rabbitMq.readyTranscriptionsQueue') as string;
@@ -83,8 +86,20 @@ export default class Appplication {
                 readyTranscriptionsQueue,
                 meetingsService.addTranscription,
             );
+
+            const readyInterviewRecordings = config.get('rabbitMq.readyInterviewRecordingsQueueName') as string;
+            const readyInterviewTranscripts = config.get('rabbitMq.readyInterviewTranscriptsQueueName') as string;
+
+            mqAdapter.listen(
+                readyInterviewRecordings,
+                accountsService.addInterviewRecording,
+            );
+            mqAdapter.listen(
+                readyInterviewTranscripts,
+                accountsService.addInterviewTranscript,
+            );
         });
-        const s3Adapter = new S3Adapter();
+
         const janusAdminRestApiAdapter = new JanusAdminRestApiAdapter();
         const janusService = new JanusService(
             janusRestApiAdapter,
@@ -95,6 +110,8 @@ export default class Appplication {
             mailService,
             companiesService,
             s3Adapter,
+            mqAdapter,
+            gptAdapter,
         );
         const templatesService = new TemplatesService(companiesService);
         const surveysService = new SurveysService(accountsService, limeSurveyAdapter);

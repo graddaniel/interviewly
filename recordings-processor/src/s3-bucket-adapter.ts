@@ -4,10 +4,9 @@ import 'dotenv/config';
 import config from 'config';
 
 
-export default class S3Adapter {
+export default class S3BucketAdapter {
     s3: S3;
     bucketName: string;
-    processedRecordingsDirectory: string;
 
     constructor(bucketName: string) {
         this.s3 = new AWS.S3({
@@ -16,12 +15,10 @@ export default class S3Adapter {
         });
 
         this.bucketName = bucketName;
-        this.processedRecordingsDirectory = config.get('recordings.outputPath');
     }
 
-    upload = async (fileName: string, meetingUuid: string) => {
+    upload = async (filePath: string, fileName: string) => {
         return new Promise<void>((resolve, reject) => {
-            const filePath = `${this.processedRecordingsDirectory}/${meetingUuid}/${fileName}`;
             const fileData = fs.readFileSync(filePath);
                       
             this.s3.upload({

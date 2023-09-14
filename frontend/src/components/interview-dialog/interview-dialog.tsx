@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
-import VideoCalls from 'video-calls-library';
+import * as RecorderLibrary from '../../lib/janus/janus-record-play-adapter.js';
 
 import Dialog from '../dialog/dialog';
 import TextButton from '../text-button/text-button';
@@ -10,12 +10,12 @@ import { JANUS_HOST } from 'config/current';
 import classes from './interview-dialog.module.css';
 
 
-const { recordPlayAdapter: RecorderLibrary } = VideoCalls;
 const server = JANUS_HOST;
 
 const InterviewDialog = ({
     isOpen,
     onClose,
+    onRecordingFinished,
 }) => {
     const [ isRecordingInProgress, setIsRecordingInProgress ] = useState(false);
     const [ isRecordingCompleted, setIsRecordingCompleted ] = useState(false);
@@ -42,9 +42,10 @@ const InterviewDialog = ({
         } else {
             RecorderLibrary.init({
                 onRecordingStarted: () => setIsRecordingInProgress(true),
-                onRecordingStopped: () => {
+                onRecordingStopped: (id) => {
                     setIsRecordingInProgress(false);
                     setIsRecordingCompleted(true);
+                    onRecordingFinished(id);
                 },
                 onLocalVideoTrackAdded: (track, cb) => cb(),
                 getLocalVideoElement: (trackId) => document.getElementById("cameraLookup"),
