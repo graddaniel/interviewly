@@ -104,6 +104,7 @@ const initJanus = (serverInfo) => {
 									if (id) {
 										Janus.log(`The ID of the current recording is ${id}`);
 										recordingId = id;
+										callbacks.onRecordingIdAssigned(id);
 									}
 								} else if(event === 'playing') {
 									Janus.log('Playout has started!');

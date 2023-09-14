@@ -339,7 +339,7 @@ const JoinPage = () => {
             <InterviewDialog
                 isOpen={isInterviewDialogOpen}
                 onClose={() => setIsInterviewDialogOpen(false)}
-                onRecordingFinished={setRecordingId}
+                setRecordingId={setRecordingId}
             />
             <div className={classes.mobileLoginControls}>
                 <p>{t('join.joinControl')}</p>

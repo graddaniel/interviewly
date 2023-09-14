@@ -15,7 +15,7 @@ const server = JANUS_HOST;
 const InterviewDialog = ({
     isOpen,
     onClose,
-    onRecordingFinished,
+    setRecordingId,
 }) => {
     const [ isRecordingInProgress, setIsRecordingInProgress ] = useState(false);
     const [ isRecordingCompleted, setIsRecordingCompleted ] = useState(false);
@@ -45,8 +45,10 @@ const InterviewDialog = ({
                 onRecordingStopped: (id) => {
                     setIsRecordingInProgress(false);
                     setIsRecordingCompleted(true);
-                    onRecordingFinished(id);
+
+                    setRecordingId(id);
                 },
+                onRecordingIdAssigned: id => setRecordingId(id),
                 onLocalVideoTrackAdded: (track, cb) => cb(),
                 getLocalVideoElement: (trackId) => document.getElementById("cameraLookup"),
                 onRemoteAudioTrackAdded: (track, cb) => cb(),

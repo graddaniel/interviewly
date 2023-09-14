@@ -87,8 +87,7 @@ export default class Application {
                 filename,
                 userEmail,
             } = await this.filesProcessor.processInterview(recordingId);
-            const files = await readdir(`/opt/janus/share/janus/interviews/`);
-            console.log("files",files, filename)
+            
             await this.interviewRecordingsS3Bucket.upload(
                 `${this.interviewRecordingsDirectory}/${filename}`,
                 filename,

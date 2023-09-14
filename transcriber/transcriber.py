@@ -50,19 +50,19 @@ def main():
             fileName = body.decode('UTF-8')
             print(f" [x] Received {fileName}")
 
-            result = model.transcribe(f"./files/{fileName}/{fileName}.mp4")
+            result = model.transcribe(f"./meeting-files/{fileName}/{fileName}.mp4")
 
             #print(result["text"])
-            f = open(f"./files/{fileName}/{fileName}.txt", "w")
+            f = open(f"./meeting-files/{fileName}/{fileName}.txt", "w")
             f.write(result["text"])
             f.close()
 
-            upload_file(f"./files/{fileName}/{fileName}.txt", MEETING_TRANSCRIPTIONS_BUCKET, f"{fileName}.txt")
+            upload_file(f"./meeting-files/{fileName}/{fileName}.txt", MEETING_TRANSCRIPTIONS_BUCKET, f"{fileName}.txt")
             
             readyTranscriptionsChannel.basic_publish(exchange='', routing_key=READY_TRANSCRIPTIONS_QUEUE, body=fileName)
 
-            os.remove(f"./files/{fileName}/{fileName}.mp4")
-            os.remove(f"./files/{fileName}/{fileName}.txt")
+            os.remove(f"./meeting-files/{fileName}/{fileName}.mp4")
+            os.remove(f"./meeting-files/{fileName}/{fileName}.txt")
 
         except Exception as e:
             print(e)
@@ -77,19 +77,19 @@ def main():
             fileBase = filename.split(".")[0]
             userEmail = interviewData["userEmail"]
 
-            result = model.transcribe(f"./files/{filename}")
+            result = model.transcribe(f"./interview-files/{filename}")
 
             print(result["text"])
-            f = open(f"./files/{fileBase}.txt", "w")
+            f = open(f"./interview-files/{fileBase}.txt", "w")
             f.write(result["text"])
             f.close()
 
-            upload_file(f"./files/{fileBase}.txt", INTERVIEW_TRANSCRIPTS_BUCKET, f"{fileBase}.txt")
+            upload_file(f"./interview-files/{fileBase}.txt", INTERVIEW_TRANSCRIPTS_BUCKET, f"{fileBase}.txt")
             
             readyInterviewTranscriptsChannel.basic_publish(exchange='', routing_key=READY_INTERVIEWS_TRANSCRIPTS_QUEUE, body=userEmail)
 
-            os.remove(f"./files/{filename}")
-            os.remove(f"./files/{fileBase}.txt")
+            os.remove(f"./interview-files/{filename}")
+            os.remove(f"./interview-files/{fileBase}.txt")
 
         except Exception as e:
             print(e)
