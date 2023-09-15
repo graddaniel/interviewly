@@ -616,7 +616,8 @@
             }
         },
         "meeting": {
-            "finishedMessage": "The meeting has finished"
+            "finishedMessage": "The meeting has finished",
+            "finishConfirmationMessage": "Do you want to finish the meeting?"
         },
         "library": {
             "title": "Library",

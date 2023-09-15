@@ -98,6 +98,7 @@
 }
 .buttonOn {
     border-color: var(--COLOR1);
+    border-width: 0.25vw;
 }
 
 .recordButton {
@@ -107,6 +108,10 @@
 .recordButton > img {
     width: 1.25vw;
     height: 1.25vw;
+}
+.disabledButton {
+    background-color: var(--GRAY3);
+    cursor: not-allowed;
 }
 
 .finishButton {

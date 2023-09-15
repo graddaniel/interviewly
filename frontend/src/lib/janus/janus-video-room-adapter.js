@@ -344,6 +344,14 @@ export class JanusVideoRoomAdapter {
         this.janus.attach(this._generateJanusScreenShareCallbacks());
     }
 
+    stopSharing = () => {
+        screenshare.send({
+            message: {
+                request: "unpublish"
+            }
+        });
+    }
+
     _generateJanusVideoRoomCallbacks = () => ({
         plugin: "janus.plugin.videoroom",
         opaqueId: this.opaqueId,
@@ -483,18 +491,18 @@ export class JanusVideoRoomAdapter {
             const { videoroom } = msg;
             Janus.debug("Videoroom message: " + videoroom);
 
-            if(videoroom != undefined && videoroom != null) {
+            if (videoroom != undefined && videoroom != null) {
                 this._handleScreenShareMessage(msg, videoroom);
             } else {
                 console.error("Non videoroom message received", msg)
             }
 
-            if(jsep) {
+            if (jsep) {
                 Janus.debug("Handling SDP as well...", jsep);
                 screenshare.handleRemoteJsep({ jsep });
 
                 const video = msg.video_codec;
-                if(this.stream && this.stream.getVideoTracks() && this.stream.getVideoTracks().length > 0 && !video) {
+                if (this.stream && this.stream.getVideoTracks() && this.stream.getVideoTracks().length > 0 && !video) {
                     Janus.warn("Our video stream has been rejected, viewers won't see us");
                 }
             }

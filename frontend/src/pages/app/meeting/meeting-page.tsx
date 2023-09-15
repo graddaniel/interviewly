@@ -19,6 +19,7 @@ import classes from './meeting-page.module.css';
 import CrossIconWhite from 'images/cross-icon-white.svg';
 import CameraIconPurple from 'images/camera-icon-purple.svg';
 import DotIconRed from 'images/dot-icon-red.svg';
+import DotIconGrey from 'images/dot-icon-grey.svg';
 import ScreenShareIconPurple from 'images/screen-share-icon-purple.svg';
 import LanguagesIconPurple from 'images/languages-icon-purple.svg';
 import classNames from 'classnames';
@@ -49,6 +50,9 @@ const MeetingPage = () => {
     // get room admin password; room join password; role;
 
     const meetingDate = moment(new Date()).locale(resolvedLanguage as string);
+
+    const [ isRecording, setIsRecording ] = useState(false);
+    const [ isSharing, setIsSharing ] = useState(false);
 
     const [janusAdapter, setJanusAdapter] = useState<any>();
     const [muted, setMuted] = useState(false);
@@ -92,10 +96,12 @@ const MeetingPage = () => {
     },[janusAdapter]);
 
     const disconnect = useCallback(() => {
-        janusAdapter.unpublishOwnFeed();
-        janusAdapter.stopJanus();
-        submit(formRef.current);
-        setJanusAdapter(null);
+        if (confirm(t('meeting.finishConfirmationMessage'))) {
+            janusAdapter.unpublishOwnFeed();
+            janusAdapter.stopJanus();
+            submit(formRef.current);
+            setJanusAdapter(null);
+        }
     }, [janusAdapter]);
 
     const switchLanguage = () => {
@@ -418,15 +424,36 @@ const MeetingPage = () => {
                     {(auth.currentUser?.role === ProfileTypes.Role.Admin
                         || auth.currentUser?.role === ProfileTypes.Role.Moderator) && (
                         <IconButton
-                            className={classes.recordButton}
-                            icon={DotIconRed}
-                            onClick={() => janusAdapter.recordRoom('adminpwd')}
+                            className={classNames(
+                                classes.recordButton,
+                                isRecording && classes.disabledButton,
+                            )}
+                            icon={isRecording ? DotIconGrey : DotIconRed}
+                            onClick={() => {
+                                if (isRecording) {
+                                    return;
+                                }
+
+                                janusAdapter.recordRoom('adminpwd');
+                                setIsRecording(true)
+                            }}
                         />
                     )}
                     <IconButton
-                        className={classes.controlButton}
+                        className={classNames(
+                            classes.controlButton,
+                            isSharing && classes.buttonOn,
+                        )}
                         icon={ScreenShareIconPurple}
-                        onClick={() => janusAdapter.shareScreen()}
+                        onClick={() => {
+                            if (isSharing) {
+                                janusAdapter.stopSharing();
+                                setIsSharing(false);
+                            } else {
+                                janusAdapter.shareScreen();
+                                setIsSharing(true);
+                            }
+                        }}
                     />
                     <IconButton
                         className={classes.finishButton}
