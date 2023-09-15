@@ -422,7 +422,8 @@
             "repeatedNewPassword": "Powtórz nowe hasło",
             "cvSubtitle": "Zarządzaj swoim CV",
             "cvDownloadLabel": "Pobierz obecne",
-            "cvUploadLabel": "lub wyślij nowe"
+            "cvUploadLabel": "lub wyślij nowe",
+            "aiScoreLabel": "Ocena AI"
         },
         "companyData": {
             "title": "Dane firmy",
@@ -502,7 +503,8 @@
                 "respondentSurveysSubtitle": "Ankiety Kandydata",
                 "scheduledSuccessMessage": "Scheduled",
                 "cvSubtitle": "CV Respondenta",
-                "openCVLabel": "Otwórz w nowej karcie"
+                "openCVLabel": "Otwórz w nowej karcie",
+                "aiScoreSubtitle": "Ocena AI"
             },
             "screeningSurveys": {
                 "resultsTitle": "Results",

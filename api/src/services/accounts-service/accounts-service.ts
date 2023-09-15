@@ -521,6 +521,7 @@ export default class AccountsService {
             profile.martialStatus = respondentProfile.martialStatus;
             profile.hasChildren = respondentProfile.hasChildren;
             profile.childrenCount = respondentProfile.childrenCount;
+            profile.score = respondentProfile.score;
             if (respondentProfile.hasUploadedCV) {
                 profile.cvUrl = this.s3Adapter.getPresignedS3Url(
                     this.cvBucketName,

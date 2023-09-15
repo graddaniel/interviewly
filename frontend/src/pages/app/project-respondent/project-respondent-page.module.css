@@ -77,12 +77,13 @@
     grid-area: videoTile;
 }
 
-.cvTile {
-    grid-area: cvTile;
+.extraInfoTile {
+    grid-area: extraInfoTile;
     display: flex;
     flex-direction: column;
     gap: 1vw;
 }
+
 .link {
     font-size: 1.25vw;
     color: var(--BLACK);
@@ -127,7 +128,7 @@
     grid-template-areas: 
     "personalDataTitle personalDataTitle"
     "personalData personalData"
-    "videoTile cvTile"
+    "videoTile extraInfoTile"
     "schedulerTitle schedulerTitle"
     "meetingScheduler upcomingInterview"
     "surveysTitle surveysTitle"
@@ -223,7 +224,7 @@
         width: 100%;
     }
 
-    .cvTile {
+    .extraInfoTile {
         gap: 3.5vw;
     }
     .link {
@@ -253,7 +254,7 @@
         "personalDataTitle"
         "personalData"
         "videoTile"
-        "cvTile"
+        "extraInfoTile"
         "upcomingInterview"
         "schedulerTitle"
         "meetingScheduler"
@@ -348,7 +349,7 @@
         width: 100%;
     }
 
-    .cvTile {
+    .extraInfoTile {
         gap: 8vw;
     }
     .link {
@@ -378,7 +379,7 @@
         "personalDataTitle"
         "personalData"
         "videoTile"
-        "cvTile"
+        "extraInfoTile"
         "upcomingInterview"
         "schedulerTitle"
         "meetingScheduler"

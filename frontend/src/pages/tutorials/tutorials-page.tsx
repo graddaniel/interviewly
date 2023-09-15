@@ -95,12 +95,13 @@ const TutorialsPage = () => {
                     ))}
                 </div>
             </section>
-            <VideoDialog
-                isOpen={!!openedVideo}
-                onClose={() => setOpenedVideo('')}
-                videoUrl={openedVideo}
-                useIframe={true}
-            />
+            {openedVideo && (
+                <VideoDialog
+                    onClose={() => setOpenedVideo('')}
+                    videoUrl={openedVideo}
+                    useIframe={true}
+                />
+            )}
         </article>
     );
 };

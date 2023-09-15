@@ -7,7 +7,6 @@ import classes from './video-dialog.module.css';
 
 
 const VideoDialog = ({
-    isOpen,
     onClose,
     videoUrl,
     useIframe = false,
@@ -17,7 +16,7 @@ const VideoDialog = ({
 
     return (
         <Dialog
-            isOpen={isOpen}
+            isOpen={true}
             onClose={onClose}
         >
             {isLoading && useIframe && (

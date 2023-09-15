@@ -55,6 +55,7 @@ const PersonalDataPage = () => {
         profession,
         specialization,
         childrenCount,
+        score,
     } = profileData;
     
     const [ nationality, setNationality ] = useState(ProfileTypes.Nationality.British);
@@ -93,6 +94,11 @@ const PersonalDataPage = () => {
                             defaultIndex={NATIONALITIES.indexOf(nationality)}
                             allowDeselect={false}
                         />
+                        {score && (
+                            <span className={classes.aiScoreText}>
+                                {t('personalData.aiScoreLabel')}: {score}%
+                            </span>
+                        )}
                     </div>
                     <div className={classes.inputs}>
                         <TextInput

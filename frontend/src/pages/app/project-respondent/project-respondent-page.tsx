@@ -26,6 +26,8 @@ import Checkbox from '../../../components/checkbox/checkbox';
 import NumericalInput from '../../../components/numerical-input/numerical-input';
 import PeopleIconBlack from 'images/people-icon-black.svg';
 import FilledSurveyIconBlack from 'images/filled-survey-icon-black.svg';
+import AIIconBlack from 'images/feature-ai-icon.svg';
+import VideoDialog from '../../../components/video-dialog/video-dialog';
 
 
 type Survey = {
@@ -43,6 +45,7 @@ type Meeting = {
 type Respondent = {
     avatarUrl: string;
     cvUrl: string;
+    score: number;
     name: string;
     surname: string;
     gender: ProfileTypes.Gender;
@@ -61,6 +64,7 @@ type Respondent = {
     hasChildren: boolean;
     street: string;
     childrenCount: number;
+    interviewVideoUrl: string;
 };
 
 const ProjectRespondentPage = () => {
@@ -75,6 +79,7 @@ const ProjectRespondentPage = () => {
     const [ meetingDateAndTime, setMeetingDateAndTime ] = useState<Date>(new Date());
     const [ meetingDate, setMeetingtDate] = useState(Date.now());
     const [ meetingTime, setMeetingTime ] = useState('');
+    const [ interviewVideoOpen, setInterviewVideoOpen ] = useState(false);
 
     useEffect(() => {
         const [hoursString, minutesString] = meetingTime.split(":");
@@ -100,6 +105,7 @@ const ProjectRespondentPage = () => {
         gender,
         avatarUrl,
         cvUrl,
+        score,
         email,
         nationality,
         age,
@@ -115,6 +121,7 @@ const ProjectRespondentPage = () => {
         hasChildren,
         street,
         childrenCount,
+        interviewVideoUrl,
     } = respondent;
 
     const errors = actionData?.errors || {};
@@ -205,21 +212,37 @@ const ProjectRespondentPage = () => {
                         disabled={true}
                     />
                 </div>
-                <RespondentVideoTile
-                    className={classes.videoTile}
-                    coverUrl="https://picsum.photos/600/400"
-                />
-                {cvUrl && (
-                    <div className={classes.cvTile}>
-                        <div className={classNames(classes.sectionHeaderTitle)}>
-                            <img className={classes.sectionHeaderIcon} src={FilledSurveyIconBlack} />
-                            {t('viewProject.respondents.cvSubtitle')}
-                        </div>
-                        <a className={classes.link} href={cvUrl} target='_blank'>
-                            {t('viewProject.respondents.openCVLabel')}
-                        </a>
-                    </div>
+                {interviewVideoUrl && (
+                    <RespondentVideoTile
+                        className={classes.videoTile}
+                        coverUrl=""
+                        onClick={() => setInterviewVideoOpen(true)}
+                    />
                 )}
+                <div className={classes.extraInfoTile}>
+                    {cvUrl && (
+                        <>
+                            <div className={classNames(classes.sectionHeaderTitle)}>
+                                <img className={classes.sectionHeaderIcon} src={FilledSurveyIconBlack} />
+                                {t('viewProject.respondents.cvSubtitle')}
+                            </div>
+                            <a className={classes.link} href={cvUrl} target='_blank'>
+                                {t('viewProject.respondents.openCVLabel')}
+                            </a>
+                        </>
+                    )}
+                    {score && (
+                        <>
+                            <div className={classNames(classes.sectionHeaderTitle)}>
+                                <img className={classes.sectionHeaderIcon} src={AIIconBlack} />
+                                {t('viewProject.respondents.aiScoreSubtitle')}
+                            </div>
+                            <span>
+                                {score}%
+                            </span>
+                        </>
+                    )}
+                </div>
                 <div className={classes.upcomingInterview}>
                     <div className={classNames(classes.sectionHeaderTitle)}>
                         <img className={classes.sectionHeaderIcon} src={CalendarIconBlack} />
@@ -294,6 +317,12 @@ const ProjectRespondentPage = () => {
                     ))}
                 </div>
             </div>
+            {!!interviewVideoOpen && (
+                <VideoDialog
+                    onClose={() => setInterviewVideoOpen(false)}
+                    videoUrl={interviewVideoUrl}
+                />
+            )}
         </section>
     );
 };

@@ -23,7 +23,10 @@ import NotPermittedError from '../../generic/not-permitted-error';
 import MeetingFinishedError from '../meetings-service/errors/meeting-finished-error';
 import ProjectNoLongerEditableError from './errors/project-no-longer-editable';
 import ProjectValidator from '../../controllers/validators/project-validator';
-import { getCVBucketKeyByEmail } from '../../utils'; 
+import {
+    getCVBucketKeyByEmail,
+    getInterviewRecordingsBucketKeyByEmail,
+} from '../../utils'; 
 
 import type AccountsService from '../accounts-service/accounts-service';
 import type CompaniesService from '../companies-service/companies-service';
@@ -55,6 +58,7 @@ export default class ProjectsService {
     recordingsBucketName: string;
     transcriptionsBucketName: string;
     cvBucketName: string;
+    interviewVideoBucket: string;
 
     constructor (
         accountsService: AccountsService,
@@ -82,6 +86,7 @@ export default class ProjectsService {
         this.transcriptionsBucketName = config.get('s3.transcriptionsBucket');
 
         this.cvBucketName = config.get('s3.cvBucket');
+        this.interviewVideoBucket = config.get('s3.interviewRecordingsBucket');
     }
 
     //TODO no need to find the company by user when we have its uuid
@@ -876,6 +881,8 @@ export default class ProjectsService {
                 'street',
                 'childrenCount',
                 'hasUploadedCV',
+                'hasInterviewVideo',
+                'score',
             ],
             include: [{
                 association: RespondentProfileModel.associations.AccountModel,
@@ -920,6 +927,13 @@ export default class ProjectsService {
             flattenedRespondentProfile.cvUrl = this.s3Adapter.getPresignedS3Url(
                 this.cvBucketName,
                 getCVBucketKeyByEmail(flattenedRespondentProfile.email)
+            );
+        }
+
+        if (flattenedRespondentProfile.hasInterviewVideo) {
+            flattenedRespondentProfile.interviewVideoUrl = this.s3Adapter.getPresignedS3Url(
+                this.interviewVideoBucket,
+                getInterviewRecordingsBucketKeyByEmail(flattenedRespondentProfile.email)
             );
         }
 

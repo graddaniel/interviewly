@@ -422,7 +422,8 @@
             "repeatedNewPassword": "Repeat new password",
             "cvSubtitle": "Manage your CV",
             "cvDownloadLabel": "Download current",
-            "cvUploadLabel": "or upload new"
+            "cvUploadLabel": "or upload new",
+            "aiScoreLabel": "AI Score"
         },
         "companyData": {
             "title": "Company data",
@@ -502,7 +503,8 @@
                 "respondentSurveysSubtitle": "Respondent's surveys",
                 "scheduledSuccessMessage": "Scheduled",
                 "cvSubtitle": "Respondent's CV",
-                "openCVLabel": "Open in new tab"
+                "openCVLabel": "Open in new tab",
+                "aiScoreSubtitle": "AI Score"
             },
             "screeningSurveys": {
                 "resultsTitle": "Results",

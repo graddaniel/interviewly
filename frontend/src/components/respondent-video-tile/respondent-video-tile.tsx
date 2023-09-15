@@ -10,16 +10,21 @@ import { useTranslation } from 'react-i18next';
 type RespondentVideoTileProps = {
     className?: string;
     coverUrl: string;
+    onClick: () => void;
 };
 
 const RespondentVideoTile = ({
     className,
     coverUrl,
+    onClick,
 }: RespondentVideoTileProps) => {
     const { t } = useTranslation();
 
     return (
-        <div className={classNames(classes.respondentVideoTile, className)}>
+        <div
+            className={classNames(classes.respondentVideoTile, className)}
+            onClick={onClick}
+        >
             <div className={classes.header}>
                 <img className={classes.icon} src={PlayIconBlack} />
                 <span className={classes.title}>

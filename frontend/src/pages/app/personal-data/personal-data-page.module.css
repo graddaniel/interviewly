@@ -43,6 +43,11 @@
     height: 2.5vw;
 }
 
+.aiScoreText {
+    text-align: center;
+    font-size: 1vw;
+}
+
 .inputs {
     display: flex;
     justify-content: space-between;
@@ -191,6 +196,10 @@
         height: 7vw;
         align-self: flex-end;
     }
+
+    .aiScoreText {
+        font-size: 3.5vw;
+    }
     
     .inputs {
         flex-direction: column;
@@ -268,6 +277,10 @@
         width: 45vw;
         height: 12vw;
         align-self: flex-end;
+    }
+
+    .aiScoreText {
+        font-size: 6vw;
     }
     
     .inputs {

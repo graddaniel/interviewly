@@ -227,11 +227,12 @@ const ProjectMeetingTile = ({
                     />
                 </div>
             )}
-            <VideoDialog
-                isOpen={!!displayedVideoUrl}
-                onClose={() => setDisplayedVideoUrl('')}
-                videoUrl={displayedVideoUrl}
-            />
+            {displayedVideoUrl && (
+                <VideoDialog
+                    onClose={() => setDisplayedVideoUrl('')}
+                    videoUrl={displayedVideoUrl}
+                />
+            )}
         </section>
     );
 };
