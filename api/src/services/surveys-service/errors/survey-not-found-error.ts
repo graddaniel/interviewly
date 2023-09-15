@@ -1,11 +1,8 @@
-import { StatusCodes } from 'http-status-codes';
+import NotFoundError from '../../../generic/not-found-error';
 
-export default class SurveyNotFoundError extends Error {
-    statusCode: StatusCodes;
 
+export default class SurveyNotFoundError extends NotFoundError {
     constructor() {
         super('Survey not found');
-
-        this.statusCode = StatusCodes.NOT_FOUND;
     }
 }

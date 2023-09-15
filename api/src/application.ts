@@ -440,11 +440,6 @@ export default class Appplication {
         
             if (err instanceof BussinessLogicError
                 || err instanceof IncorrectPasswordError
-                || err instanceof AccountNotFoundError
-                || err instanceof CompanyNotFound
-                || err instanceof ProfileNotFoundError
-                || err instanceof ProjectNotFoundError
-                || err instanceof SurveyNotFoundError
                 || err instanceof NotPermittedError
                 || err instanceof NotFoundError
                 || err instanceof AuthorizationError) {

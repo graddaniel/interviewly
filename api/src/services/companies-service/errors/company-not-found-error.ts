@@ -1,11 +1,8 @@
-import { StatusCodes } from 'http-status-codes';
+import NotFoundError from '../../../generic/not-found-error';
 
-export default class CompanyNotFound extends Error {
-    statusCode: StatusCodes;
 
+export default class CompanyNotFound extends NotFoundError {
     constructor() {
         super('Company not found.');
-
-        this.statusCode = StatusCodes.NOT_FOUND;
     }
 };

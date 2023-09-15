@@ -3,9 +3,9 @@ import { v4 as generateUuidV4 } from 'uuid';
 import CompanyModel from '../../models/company';
 import TemplateModel from '../../models/template';
 import NotPermittedError from '../../generic/not-permitted-error';
+import TemplateNotFoundError from './errors/template-not-found-error';
 
 import type CompaniesService from '../companies-service/companies-service';
-import NotFoundError from '../../generic/not-found-error';
 
 
 export default class TemplatesService {
@@ -20,8 +20,8 @@ export default class TemplatesService {
             where: query,
         });
 
-        if (!template) { //TODO replace with TemplateNotFoundError
-            throw new NotFoundError('Template not found.');
+        if (!template) {
+            throw new TemplateNotFoundError();
         }
 
         return template;
@@ -110,7 +110,7 @@ export default class TemplatesService {
         });
 
         if (!template) {
-            throw new NotFoundError('Template not found.');
+            throw new TemplateNotFoundError();
         }
 
         const templatesCompany = await template.getCompany();
