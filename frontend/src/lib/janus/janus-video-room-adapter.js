@@ -201,12 +201,12 @@ export class JanusVideoRoomAdapter {
         const username = this.callbacks.getUsername();
 
         if(username === "") {
-            console.error("Empty username")
+            console.error("Empty username");
             return;
         }
     
         if(/[^a-zA-Z0-9_]/.test(username)) {
-            console.error("Incorrect username")
+            console.error("Incorrect username");
             return;
         }
     

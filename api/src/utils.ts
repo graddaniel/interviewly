@@ -15,9 +15,9 @@ export function generateRandomInteger () {
 }
 
 export function getCVBucketKeyByEmail (email: string) {
-    return `cv_${email.replace('@', '_').replace('.', '_')}`;
+    return `cv_${email.replaceAll('@', '_').replaceAll('.', '_')}`;
 }
 
 export function getInterviewRecordingsBucketKeyByEmail (email: string) {
-    return `${email.replace('@', '_').replace('.', '_')}.webm`;
+    return `${email.replaceAll('@', '_').replaceAll('.', '_')}.webm`;
 }

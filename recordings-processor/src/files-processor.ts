@@ -49,7 +49,7 @@ export default class FilesProcessor {
         const audioFileName = audio.split('=')[1].trim();
         const videoFileName = video.split('=')[1].trim();
 
-        const sanitizedEmail = userEmail.replace('@','_').replace('.','_');
+        const sanitizedEmail = userEmail.replaceAll('@','_').replaceAll('.','_');
 
         let result;
         try {
