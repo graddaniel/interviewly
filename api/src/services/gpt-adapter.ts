@@ -20,7 +20,7 @@ export default class GPTAdapter {
 
     async evaluateInterviewGrammar(respondentEmail: string) {
         try {
-            const interviewTranscriptKey = respondentEmail.replaceAll('@', '_').replaceAll('.', '_') + '.txt';
+            const interviewTranscriptKey = respondentEmail.replaceAll('@', '_').replaceAll('.', '_').replaceAll('+','_') + '.txt';
             const transcriptUrl = this.s3Adapter.getPresignedS3Url(
                 this.interviewTranscriptsBucket,
                 interviewTranscriptKey,

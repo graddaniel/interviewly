@@ -49,7 +49,7 @@ export default class FilesProcessor {
         const audioFileName = audio.split('=')[1].trim();
         const videoFileName = video.split('=')[1].trim();
 
-        const sanitizedEmail = userEmail.replaceAll('@','_').replaceAll('.','_');
+        const sanitizedEmail = userEmail.replaceAll('@','_').replaceAll('.','_').replaceAll('+','_');
 
         let result;
         try {
@@ -76,10 +76,7 @@ export default class FilesProcessor {
             .input(`${this.interviewsPath}/temp_${sanitizedEmail}.opus`)
             .input(`${this.interviewsPath}/temp_${sanitizedEmail}.webm`)
             .outputOptions([
-                '-c:v', 'copy',
-                '-c:a', 'opus',
-                '-strict',
-                '-2'
+                '-c', 'copy'
             ])
             .saveToFile(`${this.interviewsPath}/${sanitizedEmail}.webm`)
             .on('progress', (progress) => {
@@ -183,10 +180,7 @@ ${this.meetingsOutputPath}/${meetingUuid}/${file.participantUuid}.${file.fileTyp
             }
             pipeline
                 .outputOptions([
-                    '-c:v', 'copy',
-                    '-c:a', 'opus',
-                    '-strict',
-                    '-2'
+                    '-c', 'copy'
                 ])
                 .saveToFile(`${this.meetingsOutputPath}/${meetingUuid}/merged_${fileInfo.participantUuid}.webm`)
                 .on('progress', (progress) => {

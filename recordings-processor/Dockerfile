@@ -1,11 +1,11 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 WORKDIR /app
 COPY recordings-processor /app/recordings-processor
 COPY shared /app/shared
 WORKDIR /app/recordings-processor
 RUN rm -rf .env
 RUN apt update
-RUN apt upgrade
+RUN apt upgrade -y
 RUN apt install -y curl
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
 RUN apt install -y nodejs

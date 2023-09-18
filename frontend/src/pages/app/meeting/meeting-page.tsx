@@ -69,7 +69,7 @@ const MeetingPage = () => {
     const [selectedVideoDeviceIndex, setSelectedVideoDeviceIndex] = useState(0);
 
     const getUserName = () => {
-        const baseUsername = auth.currentUser?.email.replaceAll('@', '').replaceAll('.', '');
+        const baseUsername = auth.currentUser?.email.replaceAll('@', '').replaceAll('.', '').replaceAll('+','');
 
         if (auth.currentUser?.role === ProfileTypes.Role.Admin
             || auth.currentUser?.role === ProfileTypes.Role.Moderator) {
