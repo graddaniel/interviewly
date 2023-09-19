@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Form, useActionData, useLoaderData, useNavigate, useRouteError, useSubmit } from 'react-router-dom';
+import { Form, useNavigate, useRouteError, useSubmit } from 'react-router-dom';
 import { useTranslation } from 'react-i18next'
 import { ProjectTypes } from 'shared';
 
@@ -15,11 +15,10 @@ import SummaryStep from './summary-step';
 
 import classes from './edit-project-page.module.css';
 import InterviewlyLogo from 'images/logo.svg';
-import useErrorHandler from '../../../hooks/use-error-handler';
+import { useActionHandler, useLoaderHandler } from '../../../hooks/use-handlers';
 
 
 const EditProjectPage = () => {
-    useErrorHandler(useRouteError());
     const { t } = useTranslation();
 
     const Steps = ProjectTypes.EditSteps;
@@ -35,16 +34,16 @@ const EditProjectPage = () => {
     const formRef = useRef(null);
     const navigate = useNavigate();
     const submit = useSubmit();
-    const actionData = useActionData() as { [k: string]: any };
-    const project = useLoaderData() as { [k: string]: any };
-
+    const actionData = useActionHandler();
+    const { data } = useLoaderHandler();
+    
     const goToProjects = useCallback(() => navigate(APP_ROUTES.PROJECTS.PATH), []);
-
+    
     useEffect(() => {
         if (!actionData) {
             return;
         }
-
+        
         if (actionData.success) {
             if (step === Steps.Summary) {
                 goToProjects();
@@ -53,6 +52,11 @@ const EditProjectPage = () => {
             }
         }
     }, [actionData]);
+
+    if (!data) {
+        return null;
+    }
+    const { project } = data;
 
     return (
         <Form method="post" className={classes.page} ref={formRef}>

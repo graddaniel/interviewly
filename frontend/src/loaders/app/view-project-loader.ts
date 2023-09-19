@@ -10,31 +10,36 @@ export default async function ViewProjectLoader ({
     const auth = getAuth();
     const { projectId } = params;
 
-    const project = await ProjectService.getProject(projectId);
+    const loaderData = {} as any;
 
-    if (auth.type === AccountTypes.Type.RESPONDENT) {
-        const respondent = await ProjectService.getProjectRespondent(
-            projectId,
-            auth.currentUser?.uuid as string,
-        );
+    try {
+        loaderData.project = await ProjectService.getProject(projectId);
 
+        if (auth.type === AccountTypes.Type.RESPONDENT) {
+            loaderData.respondent = await ProjectService.getProjectRespondent(
+                projectId,
+                auth.currentUser?.uuid as string,
+            );
+
+        } else {
+            loaderData.templates = auth.currentUserHasRole([ProfileTypes.Role.Observer])
+                ? []
+                : await TemplateService.getAllTemplates();
+    
+            loaderData.meetings = await ProjectService.getProjectMeetings(
+                projectId,
+            );
+        }
+
+    } catch (error) {
         return {
-            project,
-            respondent,
-        };
-    } else {
-        const templates = auth.currentUserHasRole([ProfileTypes.Role.Observer])
-            ? []
-            : await TemplateService.getAllTemplates();
-
-        const projectMeetings = await ProjectService.getProjectMeetings(
-            projectId,
-        );
-
-        return {
-            project,
-            templates,
-            meetings: projectMeetings,
-        };
+            success: false,
+            error,
+        }
     }
+
+    return {
+        success: true,
+        data: loaderData,
+    };
 }

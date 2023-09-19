@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AccountTypes, ProfileTypes } from 'shared';
-import { Form, useActionData, useLoaderData, useSubmit } from 'react-router-dom';
+import { Form, useSubmit } from 'react-router-dom';
 
 import SubmitButton from '../../../components/submit-button/submit-button';
 import IconButton from '../../../components/icon-button/icon-button';
@@ -16,6 +16,7 @@ import Avatar from '../../../components/avatar/avatar';
 import useSuccessFeedback from '../../../hooks/use-success-feedback';
 import useAuth from '../../../hooks/useAuth';
 import NumericalInput from '../../../components/numerical-input/numerical-input';
+import { useActionHandler, useLoaderHandler } from '../../../hooks/use-handlers';
 
 
 const NATIONALITIES = [...Object.values(ProfileTypes.Nationality)] as ProfileTypes.Nationality[];
@@ -25,18 +26,23 @@ const GENDERS = [...Object.values(ProfileTypes.Gender)];
 const PersonalDataPage = () => {
     const { t } = useTranslation();
     const auth = useAuth();
-    const profileData = useLoaderData() as any;
-    const actionData = useActionData() as any;
     const submit = useSubmit();
-    const [ newsletter, setNewsletter ] = useState(profileData.newsletter);
     const cvFormRef = useRef(null);
 
-    useSuccessFeedback(actionData, {
+    const {
+        profile,
+    } = useLoaderHandler();
+    const actionData = useActionHandler({
         passwordChange: t('personalData.passwordChangeSuccessMessage'),
         personalData: t('generic.saved'),
-    })
+        cvUpload: t('personalData.cvUploadedSuccessMessage'),
+    });
 
     const errors = actionData?.errors ?? {};
+    
+    if (!profile) {
+        return null;
+    }
 
     const {
         avatarUrl,
@@ -56,12 +62,13 @@ const PersonalDataPage = () => {
         specialization,
         childrenCount,
         score,
-    } = profileData;
+    } = profile;
     
+    const [ newsletter, setNewsletter ] = useState(profile.newsletter);
     const [ nationality, setNationality ] = useState(ProfileTypes.Nationality.British);
-    const [ martialStatus, setMartialStatus ] = useState(profileData.martialStatus);
-    const [ gender, setGender ] = useState(profileData.gender);
-    const [ hasChildren, setHasChildren ] = useState(profileData.hasChildren);
+    const [ martialStatus, setMartialStatus ] = useState(profile.martialStatus);
+    const [ gender, setGender ] = useState(profile.gender);
+    const [ hasChildren, setHasChildren ] = useState(profile.hasChildren);
 
     return (
         <section className={classes.personalDataPage}>
@@ -233,8 +240,8 @@ const PersonalDataPage = () => {
                                 name={t('personalData.martialStatus')}
                                 elementsList={MARTIAL_STATUSES.map(s => t(`martialStatuses.${s}`))}
                                 onChange={(i) => setMartialStatus(MARTIAL_STATUSES[i])}
-                                defaultIndex={profileData.martialStatus
-                                    ? MARTIAL_STATUSES.indexOf(profileData.martialStatus)
+                                defaultIndex={profile.martialStatus
+                                    ? MARTIAL_STATUSES.indexOf(profile.martialStatus)
                                     : 0
                                 }
                             />
@@ -248,8 +255,8 @@ const PersonalDataPage = () => {
                             name={t('personalData.selectGender')}
                             elementsList={GENDERS.map(s => t(`genders.${s}`))}
                             onChange={(i) => setGender(GENDERS[i])}
-                            defaultIndex={profileData.gender
-                                ? GENDERS.indexOf(profileData.gender)
+                            defaultIndex={profile.gender
+                                ? GENDERS.indexOf(profile.gender)
                                 : 0
                             }
                             allowDeselect={false}
@@ -295,10 +302,10 @@ const PersonalDataPage = () => {
                             <h6 className={classes.subtitle}>
                                 {t('personalData.cvSubtitle')}
                             </h6>
-                            {profileData.cvUrl && (
+                            {profile.cvUrl && (
                                 <a
                                     className={classes.cvLink}
-                                    href={profileData.cvUrl}
+                                    href={profile.cvUrl}
                                     target="_blank"
                                 >
                                     {t('personalData.cvDownloadLabel')}

@@ -1,24 +1,17 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Form, useActionData, useNavigate, useRouteError } from 'react-router-dom';
-
-import TextButton from '../../components/text-button/text-button';
-import ROUTES from '../../consts/routes';
+import { Form } from 'react-router-dom';
 
 import classes from './set-password.module.css';
-import Logo from 'images/logo.svg';
 import TextInput from '../../components/text-input/text-input';
 import SubmitButton from '../../components/submit-button/submit-button';
-import useErrorHandler from '../../hooks/use-error-handler';
-import useSuccessFeedback from '../../hooks/use-success-feedback';
+import { useActionHandler } from '../../hooks/use-handlers';
 
 const SetPasswordPage = () => {
     const { t } = useTranslation();
-    const actionData = useActionData() as any;
-    useErrorHandler(useRouteError());
-    useSuccessFeedback(actionData, t('setPassword.success'));
+    const actionData = useActionHandler(t('setPassword.success'));
 
-    const errors = actionData?.errors || {};
+    const errors = actionData?.errors ?? {};
 
     return (
         <section className={classes.container}>

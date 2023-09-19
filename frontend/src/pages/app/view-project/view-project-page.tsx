@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Form, generatePath, useLoaderData, useNavigate, useParams, useRouteError, useSubmit } from 'react-router-dom';
+import { Form, generatePath, useNavigate, useParams, useRouteError, useSubmit } from 'react-router-dom';
 import { AccountTypes, ProfileTypes, ProjectTypes } from 'shared';
 
 import ProjectStepper from '../../../components/project-stepper/project-stepper';
@@ -24,6 +24,7 @@ import FoldersIconBlack from 'images/folders-icon-black.svg';
 import FeatureChatIcon from 'images/feature-chat-icon.svg';
 import SubmitButton from '../../../components/submit-button/submit-button';
 import classNames from 'classnames';
+import { useActionHandler, useLoaderHandler } from '../../../hooks/use-handlers';
 
 
 const ViewProject = () => {
@@ -33,15 +34,17 @@ const ViewProject = () => {
     const submit = useSubmit();
     const { projectId } = useParams();
     const formRef = useRef(null);
-    const loaderData = useLoaderData() as {
-        project: any;
-        respondent: any;
-    };
+    useActionHandler(); 
+    const { data } = useLoaderHandler();
+
+    if (!data) {
+        return null;
+    }
+
     const {
         project,
         respondent,
-    } = loaderData;
-
+    } = data;
     const surveys = project.surveys || [];
     const { meeting } = respondent || {};
 

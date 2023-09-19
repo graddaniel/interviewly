@@ -48,9 +48,7 @@ async function changePassword(formData: any) {
     } catch (error) {
         return {
             success: false,
-            errors: {
-                generic: error,
-            },
+            error,
         };
     }
 
@@ -134,9 +132,7 @@ async function updatePersonalData(formData: any) {
     } catch (error) {
         return {
             success: false,
-            errors: {
-                generic: error,
-            },
+            error,
         };
     }
 
@@ -147,21 +143,25 @@ async function updatePersonalData(formData: any) {
 }
 
 async function uploadCV() {
-    console.log("uploading CV")
+    try {
+        const uploadUrl = await ProfileService.getCVUploadUrl();
 
-    const uploadUrl = await ProfileService.getCVUploadUrl();
-    console.log(uploadUrl)
-    const cvFiles = (document.getElementById("cvFile") as HTMLInputElement).files;
-    if (!cvFiles || cvFiles.length < 1) {
-        console.error('CV file not found')
+        const cvFiles = (document.getElementById("cvFile") as HTMLInputElement).files;
+        if (!cvFiles || cvFiles.length < 1) {
+            console.error('CV file not found')
+            return {
+                success: false,
+            }
+        }
+
+        await ProfileService.uploadCV(uploadUrl, cvFiles[0]);
+
+    } catch (error) {
         return {
             success: false,
+            error,
         }
-    }
-
-    await ProfileService.uploadCVFile(uploadUrl, cvFiles[0]);
-
-    await ProfileService.cvUploaded();
+    }    
 
     return {
         success: true,

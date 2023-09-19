@@ -12,18 +12,17 @@ import TeamMemberTile from '../../../components/team-member-tile/team-member-til
 import useAuth from '../../../hooks/useAuth';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
-import { useLoaderData, useNavigate, useRouteError } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { APP_ROUTES } from '../../../consts/routes';
-import useErrorHandler from '../../../hooks/use-error-handler';
-import useLoaderDataWithSnackbar from '../../../hooks/use-loader-data-with-snackbar';
+import { useLoaderHandler } from '../../../hooks/use-handlers';
 
 
 const MyAccountPage = () => {
     const auth = useAuth();
     const { t } = useTranslation();
     const navigate = useNavigate();
-    const loaderData = useLoaderDataWithSnackbar() as any;
-    useErrorHandler(useRouteError());
+
+    const loaderData = useLoaderHandler();
 
     if (!loaderData) {
         return null;

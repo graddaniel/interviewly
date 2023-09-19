@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { ProjectTypes } from 'shared';
 import classNames from 'classnames';
-import { useActionData } from 'react-router-dom';
 import moment from 'moment';
 
 import StepTitle from './step-title';
@@ -20,6 +19,7 @@ import DollarSignIconBlack from 'images/dollar-sign-icon-black.svg';
 import { useTranslation } from 'react-i18next';
 import capitalizeFirstLetter from '../../../utils/capitalize-first-letter';
 import HOURS from '../../../consts/hours';
+import { useActionHandler } from '../../../hooks/use-handlers';
 
 const DURATIONS = Object.values(ProjectTypes.Duration);
 const CURRENCIES = Object.values(ProjectTypes.PaymentCurrency);
@@ -41,7 +41,7 @@ const DetailsStep = ({
 
     const { t } = useTranslation();
 
-    const actionData = useActionData() as any;
+    const actionData = useActionHandler();
 
     const { i18n } = useTranslation();
     const { resolvedLanguage } = i18n;
@@ -83,7 +83,7 @@ const DetailsStep = ({
         );
     }, [endDate, endTime]);
 
-    const errors = actionData?.errors || {};
+    const errors = actionData?.errors ?? {};
 
     return (
         <section className={classes.detailsStep}>

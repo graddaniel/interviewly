@@ -11,13 +11,21 @@ export default async function CompleteSurveyLoader() {
         return;
     }
 
-    const projectUuid = await SurveyService.completeSurvey(lastSurveyUuid);
+    try {
+        const projectUuid = await SurveyService.completeSurvey(lastSurveyUuid);
+        
+        localStorage.removeItem('lastSurveyUuid');    
+    
+        return redirect(
+            projectUuid
+                ? generatePath(APP_ROUTES.VIEW_PROJECT.PATH, { projectId: projectUuid })
+                : APP_ROUTES.PROJECTS.PATH
+            );
+    } catch (error) {
+        return {
+            success: false,
+            error,
+        };
+    }
 
-    localStorage.removeItem('lastSurveyUuid');    
-
-    return redirect(
-        projectUuid
-            ? generatePath(APP_ROUTES.VIEW_PROJECT.PATH, { projectId: projectUuid })
-            : APP_ROUTES.PROJECTS.PATH
-        );
 }

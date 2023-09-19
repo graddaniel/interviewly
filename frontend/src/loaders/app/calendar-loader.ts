@@ -2,7 +2,20 @@ import MeetingService from "../../services/meeting-service";
 
 
 export default async function CalendarLoader () {
-    const meetings = await MeetingService.getAllMeetings();
+    try {
+        const meetings = await MeetingService.getAllMeetings();
 
-    return meetings;
+        return {
+            success: true,
+            data: {
+                meetings,
+            },
+        };
+
+    } catch (error) {
+        return {
+            success: false,
+            error,
+        };
+    }
 }

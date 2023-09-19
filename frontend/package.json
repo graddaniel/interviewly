@@ -42,7 +42,6 @@
     "ts-loader": "^9.4.3",
     "typescript": "^5.1.3",
     "url-loader": "^4.1.1",
-    "video-calls-library": "../video-calls-library",
     "webpack-dev-server": "^4.15.1",
     "yup": "^1.2.0"
   },

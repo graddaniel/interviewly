@@ -1,28 +1,23 @@
 import React, { useEffect } from 'react';
-import { Form, useActionData, useRouteError } from 'react-router-dom';
+import { Form } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import Decorator from '../../components/decorator/decorator';
 import TextInput from '../../components/text-input/text-input';
 import SubmitButton from '../../components/submit-button/submit-button';
-import useErrorHandler from '../../hooks/use-error-handler';
 
 import classes from './contact-page.module.css';
-import useSuccessFeedback from '../../hooks/use-success-feedback';
+import { useActionHandler } from '../../hooks/use-handlers';
 
 
-// to prevent bots from scraping it
+//contact@interv... ; to prevent bots from scraping it
 const ENCRYPTED_EMAIL_ADDRESS = "Y29udGFjdEBpbnRlcnZpZXdseWFwcC5jb20=";
 
 const ContactPage = () => {
     const { t } = useTranslation();
-    const actionData = useActionData() as any;
-    useErrorHandler(useRouteError());
-    useSuccessFeedback(actionData, t('contact.messageSent'));
+    const actionData = useActionHandler(t('contactForm.messageSent'));
 
-    const errors = actionData?.errors || {};
-
-    console.log("contact", errors)
+    const errors = actionData?.errors ?? {};
 
     useEffect(() => {
         const email = document.getElementById("email");
@@ -34,7 +29,7 @@ const ContactPage = () => {
 
     return (
         <section className={classes.contactPage}>
-            <h1 className={classes.header}>{t('contact.getInTouch')}</h1>
+            <h1 className={classes.header}>{t('contactForm.getInTouch')}</h1>
             <div className={classes.address}>
                 <span>Equator II Business Centre</span>
                 <span>Al. Jerozolimskie 96</span>
@@ -43,26 +38,26 @@ const ContactPage = () => {
             <h4 className={classes.phoneNumber}>+48 (22) 290 43 74</h4>
             <h4 className={classes.email}><a id="email">{atob(ENCRYPTED_EMAIL_ADDRESS)}</a></h4>
             <Form method="post" className={classes.contactForm}>
-                <h4 className={classes.formHeader}>{t('contact.sendUsAMessage')}</h4>
+                <h4 className={classes.formHeader}>{t('contactForm.sendUsAMessage')}</h4>
                 <Decorator />
                 <TextInput
                     name="email"
-                    placeholder="E-mail"
+                    placeholder={t('contactForm.emailLabel')}
                     error={errors.email}
                 />
                 <TextInput
                     name="message"
-                    placeholder="Message"
+                    placeholder={t('contactForm.messageLabel')}
                     multiline={true}
                     error={errors.message}
                 />
                 <SubmitButton
                     className={classes.submitButton}
-                    text="Send"
+                    text={t('contactForm.sendButtonText')}
                 />
             </Form>
             <div className={classes.poster}>
-                <h4 className={classes.posterTitle}>{t('contact.quote')}</h4>
+                <h4 className={classes.posterTitle}>{t('contactForm.quote')}</h4>
             </div>
         </section>
     );

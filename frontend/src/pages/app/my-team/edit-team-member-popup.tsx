@@ -1,12 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Form, useActionData, useSubmit } from 'react-router-dom';
+import { Form, useSubmit } from 'react-router-dom';
 import { AccountTypes, ProfileTypes } from 'shared';
 
 import Popup from '../../../components/popup/popup';
 import IconButton from '../../../components/icon-button/icon-button';
 import Pill from '../../../components/pill/pill';
 import DropdownList from '../../../components/dropdown-list/dropdown-list';
-import TextInput from '../../../components/text-input/text-input';
 import TextButton from '../../../components/text-button/text-button';
 
 import classes from './edit-team-member-popup.module.css';
@@ -145,6 +144,7 @@ const EditTeamMemberPopup = ({
                         defaultIndex={userProjects.map(p => companyProjects.findIndex(cp => cp.uuid === p.uuid))}
                         multiselect={true}
                         allowDeselect={true}
+                        ellipsis={true}
                     />
                 )}
                 <input type="hidden" name="projects" value={newUserProjects.map(p => p.uuid)} />

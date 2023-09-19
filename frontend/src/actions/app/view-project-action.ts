@@ -24,18 +24,20 @@ export default async function ViewProjectAction({
         return markProjectAsPaid(projectId);
     }
 
-    const {
-        selectedTemplateUuid,
-        startDate,
-        endDate,
-    } = formData;
+    if (type === "addSurvey") {
+        const {
+            selectedTemplateUuid,
+            startDate,
+            endDate,
+        } = formData;
 
-    return addSurvey(
-        projectId,
-        selectedTemplateUuid,
-        startDate,
-        endDate,
-    );
+        return addSurvey(
+            projectId,
+            selectedTemplateUuid,
+            startDate,
+            endDate,
+        );
+    }    
 }
 
 async function markProjectAsPaid(projectId: string) {
@@ -44,9 +46,7 @@ async function markProjectAsPaid(projectId: string) {
     } catch (error) {
         return {
             success: false,
-            errors: {
-                generic: error,
-            },
+            error,
         };
     }
 
@@ -76,9 +76,7 @@ async function addSurvey(
         console.log(error)
         return {
             success: false,
-            errors: {
-                generic: error,
-            },
+            error,
         };
     }
 

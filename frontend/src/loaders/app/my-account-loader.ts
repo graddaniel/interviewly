@@ -6,9 +6,7 @@ import CompanyService from "../../services/company-service";
 import ProjectService from "../../services/project-service";
 import promisesMap from "../../utils/promises-map";
 
-export default async function MyAccountLoader({
-
-}) {
+export default async function MyAccountLoader() {
     const auth = getAuth();
     if (!auth.currentUser) {
         return null;
@@ -45,7 +43,7 @@ export default async function MyAccountLoader({
 
         return {
             success: true,
-            data: myAccountData,
+            ...myAccountData,
         };
     } catch (error) {
         return {

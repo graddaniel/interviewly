@@ -1,25 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { ProfileTypes } from 'shared';
-import { useActionData, useLoaderData, useRouteError } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import AddTeamMemberPopup from './add-team-member-popup';
 import EditTeamMemberPopup from './edit-team-member-popup';
 import TeamMemberTile from '../../../components/team-member-tile/team-member-tile';
+import { useActionHandler, useLoaderHandler } from '../../../hooks/use-handlers';
 
 import classes from './my-team-page.module.css'
 import PeopleIconBlack from 'images/people-icon-black.svg';
 import PlusIconBlack from 'images/plus-icon-black.svg';
-import { useTranslation } from 'react-i18next';
-import useErrorHandler from '../../../hooks/use-error-handler';
-import useSuccessFeedback from '../../../hooks/use-success-feedback';
 
 
 const MyTeamPage = () => {
-    const teamMembers = useLoaderData() as any || [];
-    useErrorHandler(useRouteError());
-    const actionData = useActionData() as { [k: string]: any };
     const { t } = useTranslation();
-    useSuccessFeedback(actionData, t('generic.saved'));
+
+    const { data } = useLoaderHandler();
+    const actionData = useActionHandler(t('generic.saved'));
 
     const [ addMemberPopupOpen, setAddMemberPopupOpen ] = useState(false);
     const [ selectedMember, setSelectedMember ] = useState(null);
@@ -30,6 +27,11 @@ const MyTeamPage = () => {
             setErrors(actionData.errors);
         }
     }, [actionData]);
+
+    if (!data) {
+        return null;
+    }
+    const { teamMembers } = data;
 
     const membersCount = teamMembers.length;
     const adminsCount = teamMembers.filter(m => m.role === ProfileTypes.Role.Admin).length;
@@ -53,15 +55,15 @@ const MyTeamPage = () => {
                 </button>
                 <ul className={classes.counters}>
                     <li className={classes.counterWrapper}>
-                        <Counter value={adminsCount}/>
+                        <Counter value={adminsCount} />
                         {t('myTeam.administratorsLabel')}
                     </li>
                     <li className={classes.counterWrapper}>
-                        <Counter value={moderatorsCount}/>
+                        <Counter value={moderatorsCount} />
                         {t('myTeam.moderatorsLabel')}
                     </li>
                     <li className={classes.counterWrapper}>
-                        <Counter value={observersCount}/>
+                        <Counter value={observersCount} />
                         {t('myTeam.observersLabel')}
                     </li>
                 </ul>

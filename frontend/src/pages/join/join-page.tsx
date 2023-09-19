@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useRef,useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Form, useNavigate, useSubmit, useActionData } from 'react-router-dom';
+import { Form, useNavigate, useSubmit } from 'react-router-dom';
 import classNames from 'classnames';
 
 import CloseControls from '../../components/close-controls/close-controls';
@@ -22,9 +22,10 @@ import FemaleIcon from '../../../images/female-icon.svg';
 import { AccountTypes } from 'shared';
 import FakedoorFinal from './fakedoor-final';
 import { SAMPLE_VERSION } from 'config/current';
+import { useActionHandler } from '../../hooks/use-handlers';
 
 
-enum STEPS {
+export enum STEPS {
     TYPE_SELECTION = 1,
     GENDER_SELECTION = 2,
     DATA_FORM = 3,
@@ -36,7 +37,7 @@ const JoinPage = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
     const submit = useSubmit();
-    const actionData = useActionData() as { [k: string]: any };
+    const actionData = useActionHandler();
     const formRef = useRef(null);
 
     const [ step, setStep ] = useState(1);

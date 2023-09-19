@@ -33,9 +33,7 @@ export default async function CompanyDataAction({
     } catch (error) {
         return {
             success: false,
-            errors: {
-                generic: error,
-            },
+            error,
         };
     }
 

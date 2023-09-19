@@ -1,5 +1,5 @@
 import React from 'react';
-import { generatePath, useLoaderData, useNavigate } from 'react-router-dom';
+import { generatePath, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import TextButton from '../../../components/text-button/text-button';
@@ -8,13 +8,19 @@ import { APP_FORMS_ROUTES } from '../../../consts/routes';
 
 import classes from './library-page.module.css';
 import FoldersIconBlack from 'images/folders-icon-black.svg';
+import { useLoaderHandler } from '../../../hooks/use-handlers';
 
 
 const LibraryPage = () => {
     const navigate = useNavigate();
     const { t } = useTranslation();
     
-    const templates = useLoaderData() as any;
+    const { data } = useLoaderHandler();
+
+    if (!data) {
+        return null;
+    }
+    const { templates } = data;
 
     return (
         <section className={classes.libraryPage}>

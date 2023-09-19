@@ -2,9 +2,22 @@ import CompanyService from '../../services/company-service';
 
 
 const MyTeamLoader = async () => {
-    const companysAccounts = await CompanyService.getCompanyAccounts();
+    try {
+        const companysAccounts = await CompanyService.getCompanyAccounts();
 
-    return companysAccounts;
+        return {
+            success: true,
+            data: {
+                teamMembers: companysAccounts,
+            },
+        };
+
+    } catch (error) {
+        return {
+            success: false,
+            error,
+        };
+    }
 };
 
 export default MyTeamLoader;

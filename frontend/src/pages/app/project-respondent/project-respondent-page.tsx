@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { ProfileTypes } from 'shared';
-import { Form, generatePath, useActionData, useLoaderData, useNavigate, useParams } from 'react-router-dom';
+import { Form, generatePath, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import IconButton from '../../../components/icon-button/icon-button';
@@ -19,7 +19,6 @@ import MetricsIconBlack from 'images/metrics-icon-black.svg';
 import classNames from 'classnames';
 import moment from 'moment';
 import SubmitButton from '../../../components/submit-button/submit-button';
-import useSuccessFeedback from '../../../hooks/use-success-feedback';
 import TimeInput from '../../../components/time-input/time-input';
 import TextInput from '../../../components/text-input/text-input';
 import Checkbox from '../../../components/checkbox/checkbox';
@@ -28,6 +27,7 @@ import PeopleIconBlack from 'images/people-icon-black.svg';
 import FilledSurveyIconBlack from 'images/filled-survey-icon-black.svg';
 import AIIconBlack from 'images/feature-ai-icon.svg';
 import VideoDialog from '../../../components/video-dialog/video-dialog';
+import { useActionHandler, useLoaderHandler } from '../../../hooks/use-handlers';
 
 
 type Survey = {
@@ -71,10 +71,10 @@ const ProjectRespondentPage = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
     const params = useParams();
-    const respondent = useLoaderData() as Respondent;
-    const actionData = useActionData() as any;
-    useSuccessFeedback(actionData, t('viewProject.respondents.scheduledSuccessMessage'));
     const { i18n } = useTranslation();
+
+    const { data } = useLoaderHandler();
+    const actionData = useActionHandler(t('viewProject.respondents.scheduledSuccessMessage'));
 
     const [ meetingDateAndTime, setMeetingDateAndTime ] = useState<Date>(new Date());
     const [ meetingDate, setMeetingtDate] = useState(Date.now());
@@ -99,6 +99,10 @@ const ProjectRespondentPage = () => {
         respondentId,
     } = params;
 
+    if (!data) {
+        return null;
+    }
+
     const {
         name,
         surname,
@@ -122,9 +126,9 @@ const ProjectRespondentPage = () => {
         street,
         childrenCount,
         interviewVideoUrl,
-    } = respondent;
+    } = data.respondent;
 
-    const errors = actionData?.errors || {};
+    const errors = actionData?.errors ?? {};
 
     return (
         <section className={classes.projectRespondent}>

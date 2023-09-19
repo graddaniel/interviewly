@@ -77,6 +77,9 @@
 }
 
 @media (min-width: min-large) {
+    .overflowingSelectionText {
+        width: 32vw;
+    }
 }
 
 @media (min-width: min-medium) and (max-width: max-medium) {
@@ -90,6 +93,9 @@
         gap: 2.5vw;
         padding: 8.5vw 2vw 1.5vw;
         border-radius: 4vw;
+    }
+    .overflowingSelectionText {
+        width: 64vw;
     }
 }
 
@@ -105,5 +111,8 @@
         gap: 4vw;
         padding: 15vw 4vw 2.5vw;
         border-radius: 6vw;
+    }
+    .overflowingSelectionText {
+        width: 64vw;
     }
 }

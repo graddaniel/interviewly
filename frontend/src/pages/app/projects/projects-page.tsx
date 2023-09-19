@@ -1,26 +1,28 @@
 import React, { useState } from 'react';
-import { useLoaderData, useRouteError } from 'react-router-dom';
 
 import ProjectTile from './project-tile';
 import SearchInput from '../../../components/search-input/search-input';
 import DropdownList from '../../../components/dropdown-list/dropdown-list';
 import Pill from '../../../components/pill/pill';
-import useErrorHandler from '../../../hooks/use-error-handler';
 
 import classes from './projects-page.module.css';
 import MetricsIconBlack from 'images/metrics-icon-black.svg';
 import { useTranslation } from 'react-i18next';
 import { ProjectTypes } from 'shared';
+import { useLoaderHandler } from '../../../hooks/use-handlers';
 
 
 const STATUSES = [...Object.values(ProjectTypes.Status)];
 
 const ProjectsPage = () => {
-    const projects = useLoaderData() as any[] || [];
     const { t } = useTranslation();
-    useErrorHandler(useRouteError());
+    const { projects } = useLoaderHandler();
 
     const [ status, setStatus ] = useState<any>();
+
+    if (!projects) {
+        return null;
+    }
 
     return (
         <section className={classes.projects}>

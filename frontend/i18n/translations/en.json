@@ -181,6 +181,15 @@
             "repeatPassword": "Repeat new password",
             "success": "Password has been set"
         },
+        "contactForm": {
+            "emailLabel": "Your E-mail",
+            "messageLabel": "Message",
+            "sendButtonText": "Send",
+            "getInTouch": "Get in touch",
+            "sendUsAMessage": "Send us a message",
+            "quote": "\"Interviewly has everything we need on a single platform.\"",
+            "messageSent": "Message sent!"
+        },
         "join": {
             "joinControl": "Do you already have an account?",
             "back": "Back",
@@ -392,6 +401,11 @@
             "screening": "Screening",
             "language": "Language"
         },
+        "surveyStatuses": {
+            "pending": "pending",
+            "finished": "finished",
+            "seeResultsLabel": "See results"
+        },
         "personalData": {
             "title": "Personal data",
             "marketingConsentsSubtitle": "Marketing consents",
@@ -423,7 +437,8 @@
             "cvSubtitle": "Manage your CV",
             "cvDownloadLabel": "Download current",
             "cvUploadLabel": "or upload new",
-            "aiScoreLabel": "AI Score"
+            "aiScoreLabel": "AI Score",
+            "cvUploadedSuccessMessage": "CV has been uploaded"
         },
         "companyData": {
             "title": "Company data",
@@ -448,7 +463,8 @@
             "title": "Projects",
             "projectsCounterText": "projects",
             "searchInputPlaceholder": "Search by project name",
-            "statusLabel": "Status"
+            "statusLabel": "Status",
+            "newProjectName": "New Project"
         },
         "viewProject": {
             "title": "Project details",
@@ -639,12 +655,6 @@
                 "subheader": "We have sent you a message with a new password.",
                 "submitButton": "Back to home page"
             }
-        },
-        "contact": {
-            "getInTouch": "Get in touch",
-            "sendUsAMessage": "Send us a message",
-            "quote": "\"Interviewly has everything we need on a single platform.\"",
-            "messageSent": "Message sent!"
         },
         "registrationConfirmation": {
             "header": "It's ready!",
@@ -1072,11 +1082,6 @@
                 "In case of questions and opinions regarding the Policy applied by the Contractor, please send them to the email address: inspektor@stratega.pl",
                 "The policy can be found at www.interviewlyapp.com"
             ]
-        },
-        "surveyStatuses": {
-            "pending": "pending",
-            "finished": "finished",
-            "seeResultsLabel": "See results"
         }
     }
 }

@@ -18,15 +18,15 @@ export default async function MeetingAction ({
 
     try {
         const closedRoomId = await MeetingService.closeMeeting(meetingId);
-        console.log(closedRoomId);
+
+        console.log("closedRoomId", closedRoomId);
+
+        return redirect(APP_ROUTES.CALENDAR.PATH);
+
     } catch (error) {
         return {
             success: false,
-            errors: {
-                generic: error,
-            },
+            error,
         };
     }
-
-    return redirect(APP_ROUTES.CALENDAR.PATH);
 }

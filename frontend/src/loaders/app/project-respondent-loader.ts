@@ -5,11 +5,26 @@ export default async function ProjectRespondentLoader({
 }) {
     const { projectId, respondentId } = params;
 
-    const respondent = await ProjectService.getProjectRespondent(projectId, respondentId);
+    try {
+        const respondent = await ProjectService.getProjectRespondent(projectId, respondentId);
 
-    if (respondent.meeting) {
-        respondent.meeting.date = new Date(respondent.meeting.date);
+        if (respondent.meeting) {
+            respondent.meeting.date = new Date(respondent.meeting.date);
+        }
+    
+        return {
+            success: true,
+            data: {
+                respondent,
+            },
+        };
+
+    } catch (error) {
+        return {
+            success: false,
+            error,
+        }
     }
 
-    return respondent;
+    
 }

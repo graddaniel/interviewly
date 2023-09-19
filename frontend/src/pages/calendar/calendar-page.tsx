@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import moment from 'moment';
-import { useLoaderData } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import DateTile from './date-tile';
@@ -9,6 +8,7 @@ import DropdownList from '../../components/dropdown-list/dropdown-list';
 
 import classes from './calendar-page.module.css';
 import CalendarIconBlack from 'images/calendar-icon-black.svg';
+import { useLoaderHandler } from '../../hooks/use-handlers';
 
 
 type CalendarDate = {
@@ -58,18 +58,24 @@ function generateMonthPage(month, year, resolvedLanguage) {
     return calendarPage;
 }
 
+function generateMonth (resolvedLanguage: string) {
+    let i = 0;
+    return () => moment().locale(resolvedLanguage).month(i++).format('MMMM');
+}
+
 const CalendarPage = () => {
-    const meetings = useLoaderData() as any;
-    console.log(meetings);
     const { t, i18n } = useTranslation();
     const { resolvedLanguage } = i18n;
 
-    const generateMonth = () => {
-        let i = 0;
-        return () => moment().locale(resolvedLanguage as string).month(i++).format('MMMM');
-    };
-    const MONTHS = Array.from({ length: 12 }, generateMonth());
-    const YEARS = [2023, 2024];
+    const { data } = useLoaderHandler();
+
+    if (!data) {
+        return null;
+    } 
+    const { meetings } = data;
+
+    const MONTHS = Array.from({ length: 12 }, generateMonth(resolvedLanguage as string));
+    const YEARS = [2023, 2024, 2025, 2026, 2027, 2028, 2029];
     
     const today = moment().locale(resolvedLanguage as string);
     

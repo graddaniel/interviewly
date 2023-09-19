@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import xlsx from "json-as-xlsx";
 import { useTranslation } from 'react-i18next';
 
@@ -10,12 +10,18 @@ import StepTitle from '../edit-project/step-title';
 import classes from './project-survey.module.css';
 import ArrowLeftIconPurple from 'images/arrow-left-icon-purple.svg';
 import MetricsIconBlack from 'images/metrics-icon-black.svg';
+import { useLoaderHandler } from '../../../hooks/use-handlers';
 
 
 const ProjectSurveyPage = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
-    const surveyResponses = useLoaderData() as any;
+    const { data } = useLoaderHandler();
+
+    if (!data) {
+        return null;
+    }
+    const { surveyResponses } = data;
 
     const emptyResponsesCount = Object.values(surveyResponses).reduce(
         (counter: number, currentResponses: any[]) => currentResponses.length > 0 ? 0 : counter + 1,

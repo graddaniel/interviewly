@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import xlsx from "json-as-xlsx";
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import IconButton from '../../../components/icon-button/icon-button';
 
@@ -9,12 +9,19 @@ import ArrowLeftIconPurple from 'images/arrow-left-icon-purple.svg';
 import { useTranslation } from 'react-i18next';
 import DropdownList from '../../../components/dropdown-list/dropdown-list';
 import TextButton from '../../../components/text-button/text-button';
+import { useLoaderHandler } from '../../../hooks/use-handlers';
 
 const ProjectRespondenSurveyResponsestPage = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
     const [ languageIndex, setLanguageIndex ] = useState(0);
-    const surveyResponse = useLoaderData() as any;
+    const { data } = useLoaderHandler();
+
+    if (!data) {
+        return null;
+    }
+    const { surveyResponse } = data;
+
     const languages = Object.keys(surveyResponse);
 
     const currentLanguageAnswers = Object.entries(

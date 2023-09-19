@@ -1,11 +1,12 @@
 import React from 'react';
 import classNames from 'classnames';
-import { generatePath, useLoaderData, useNavigate, useParams } from 'react-router-dom';
+import { generatePath, useNavigate, useParams } from 'react-router-dom';
 
 import classes from './attached-surveys.module.css';
 import SurveyTile from '../../../components/survey-tile/survey-tile';
 import moment from 'moment';
 import { APP_ROUTES } from '../../../consts/routes';
+import { useLoaderHandler } from '../../../hooks/use-handlers';
 
 function isSurveyActive(
     startDateString: string,
@@ -18,11 +19,15 @@ function isSurveyActive(
 }
 
 const AttachedSurveysStep = () => {
-    const loaderData = useLoaderData() as any;
     const { projectId } = useParams();
     const navigate = useNavigate();
+    const { data } = useLoaderHandler();
 
-    const surveys = loaderData?.project?.surveys;
+    if (!data) {
+        return null;
+    }
+
+    const surveys = data.project?.surveys;
 
     return (
         <section className={classes.surveysStep}>

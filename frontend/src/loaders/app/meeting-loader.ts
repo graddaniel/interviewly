@@ -6,7 +6,20 @@ export default async function MeetingLoader({
 }) {
     const { meetingId } = params;
 
-    const room = await MeetingService.getOneMeetingRoom(meetingId);
+    try {
+        const room = await MeetingService.getOneMeetingRoom(meetingId);
 
-    return room;
+        return {
+            success: true,
+            data: {
+                room,
+            },
+        };
+
+    } catch (error) {
+        return {
+            success: false,
+            error,
+        };
+    }
 }

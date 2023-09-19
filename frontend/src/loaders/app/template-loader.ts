@@ -6,5 +6,19 @@ export default async function TemplateLoader ({
 }) {
     const { templateId } = params;
 
-    return await TemplateService.getTemplate(templateId);
+    try {
+        const templateInfo = await TemplateService.getTemplate(templateId);
+
+        return {
+            success: true,
+            data: {
+                templateInfo,
+            },
+        };
+    } catch (error) {
+        return {
+            success: false,
+            error,
+        };
+    }
 }

@@ -32,9 +32,7 @@ export default async function EditTemplateAction ({
     } catch (error) {
         return {
             success: false,
-            errors: {
-                generic: error,
-            },
+            error,
         };
     }
 

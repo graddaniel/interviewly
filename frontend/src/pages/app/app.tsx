@@ -1,7 +1,7 @@
 import React, { useCallback, useRef, useState } from 'react';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
-import { Form, Outlet, matchPath, useLoaderData, useLocation, useRouteError, useSubmit } from 'react-router-dom';
+import { Form, Outlet, matchPath, useLocation, useSubmit } from 'react-router-dom';
 import classNames from 'classnames';
 import { AccountTypes, ProfileTypes } from 'shared';
 
@@ -12,23 +12,26 @@ import Menu from './menu';
 import MenuDropdown from './menu-dropdown';
 import useAuth from '../../hooks/useAuth';
 import { APP_FORMS_ROUTES } from '../../consts/routes';
+import { useLoaderHandler } from '../../hooks/use-handlers';
 
 import classes from './app.module.css';
 import BellIconBlack from '../../../images/bell-icon-black.svg';
-import useErrorHandler from '../../hooks/use-error-handler';
-import useLoaderDataWithSnackbar from '../../hooks/use-loader-data-with-snackbar';
 
 
 const App = () => {
-    const [ isMenuOpen, setIsMenuOpen ] = useState(false);
     const { i18n, t } = useTranslation();
     const location = useLocation();
-    const { resolvedLanguage } = i18n;
     const formRef = useRef(null);
     const submit = useSubmit();
     const auth = useAuth();
-    const profile = useLoaderDataWithSnackbar() as any;
-    useErrorHandler(useRouteError());
+    const loaderData = useLoaderHandler();
+
+    const { resolvedLanguage } = i18n;
+    const {
+        profile,
+    } = loaderData;
+
+    const [ isMenuOpen, setIsMenuOpen ] = useState(false);
 
     const openDropdown = useCallback(() => setIsMenuOpen(true), []);
     const closeDropdown = useCallback(() => setIsMenuOpen(false), []);

@@ -3,7 +3,19 @@ import ProjectService from '../../services/project-service';
 
 const ProjectsLoader = async ({
 }) => {
-    return ProjectService.getProjects();
+    try {
+        const projects = await ProjectService.getProjects();
+
+        return {
+            success: true,
+            projects,
+        };
+    } catch (error) {
+        return {
+            success: false,
+            error,
+        };
+    }
 };
 
 export default ProjectsLoader;

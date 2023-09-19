@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Form, useActionData, useHref, useNavigate } from 'react-router-dom';
+import { Form, useHref, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 
 import TextButton from '../../components/text-button/text-button';
@@ -11,6 +11,7 @@ import classes from './log-in-form.module.css';
 import { FORMS_ROUTES } from '../../consts/routes';
 
 import Decorator from '../../components/decorator/decorator';
+import { useActionHandler } from '../../hooks/use-handlers';
 
 
 const LogInForm = ({
@@ -20,7 +21,7 @@ const LogInForm = ({
     const { t } = useTranslation();
     const navigate = useNavigate();
     const joinUrl = useHref(FORMS_ROUTES.JOIN.PATH);
-    const actionData = useActionData() as { [k: string]: any };
+    const actionData = useActionHandler();
 
     const goToJoin = useCallback(() => navigate(FORMS_ROUTES.JOIN.PATH), []);
 
@@ -28,7 +29,7 @@ const LogInForm = ({
         email: emailError,
         password: passwordError,
         generic: genericError,
-    } = actionData?.errors || {};
+    } = actionData?.errors ?? {};
 
     return (
         <Form method="post" className={classNames(classes.form, className)}>

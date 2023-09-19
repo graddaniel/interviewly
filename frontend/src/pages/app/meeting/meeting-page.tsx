@@ -1,11 +1,12 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Form, useLoaderData, useNavigate, useSubmit } from 'react-router-dom';
+import { Form, useNavigate, useSubmit } from 'react-router-dom';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 import { ProfileTypes } from 'shared';
+import classNames from 'classnames';
 
 import * as VideoRoom from '../../../lib/janus/janus-video-room-adapter.js';
-import { useStateCallback } from '../../../hooks/useStateCallback';
+import { useStateCallback } from '../../../hooks/use-state-callback';
 import { JANUS_HOST } from 'config/current';
 import IconButton from '../../../components/icon-button/icon-button';
 import Popup from '../../../components/popup/popup';
@@ -22,7 +23,7 @@ import DotIconRed from 'images/dot-icon-red.svg';
 import DotIconGrey from 'images/dot-icon-grey.svg';
 import ScreenShareIconPurple from 'images/screen-share-icon-purple.svg';
 import LanguagesIconPurple from 'images/languages-icon-purple.svg';
-import classNames from 'classnames';
+import { useActionHandler, useLoaderHandler } from '../../../hooks/use-handlers';
 
 
 const { JanusVideoRoomAdapter, Utils } = VideoRoom;
@@ -41,11 +42,27 @@ const ROLE_TO_SUBSCRIPTION_TYPE_MAP = {
 const MeetingPage = () => {
     const { t, i18n } = useTranslation();
     const { resolvedLanguage } = i18n;
-    const roomId = useLoaderData() as string;
     const formRef = useRef(null);
     const submit = useSubmit();
     const navigate = useNavigate();
     const auth = useAuth();
+
+    useActionHandler();
+    const { data } = useLoaderHandler();
+
+    useEffect(() => {
+        if (!data) {
+            navigate(-1);
+        }
+    }, [data]);
+
+    if (!data) {
+        return null;
+    }
+
+    const {
+        room: roomId,
+    } = data;
 
     // get room admin password; room join password; role;
 

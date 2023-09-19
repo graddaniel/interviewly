@@ -7,7 +7,6 @@ import type { Request, Response } from 'express';
 import type AccountsService from '../services/accounts-service/accounts-service';
 import type { AuthenticatedRequest, AuthenticationRequest } from '../generic/types';
 import { AccountTypes } from 'shared';
-import ValidationError from './validators/validation-error';
 
 
 export default class AccountsController {

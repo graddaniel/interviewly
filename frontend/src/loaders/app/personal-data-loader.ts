@@ -7,7 +7,17 @@ export default async function PersonalDataLoader() {
         return null;
     }
 
-    const profileData = await ProfileService.getProfile();
+    try {
+        const profile = await ProfileService.getProfile();
 
-    return profileData;
+        return {
+            success: true,
+            profile,
+        };
+    } catch (error) {
+        return {
+            success: false,
+            error,
+        };
+    }
 }

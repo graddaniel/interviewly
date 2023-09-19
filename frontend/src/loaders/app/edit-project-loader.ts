@@ -6,7 +6,23 @@ const EditProjectLoader = async ({
 }) => {
     const { projectId } = params;
 
-    return ProjectService.getProject(projectId);
+    try {
+        const project = await ProjectService.getProject(projectId);
+        
+        return {
+            success: true,
+            data: {
+                project,
+            },
+        };
+
+    } catch (error) {
+        return {
+            success: false,
+            error,
+        };
+    }
+
 };
 
 export default EditProjectLoader;

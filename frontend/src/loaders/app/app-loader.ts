@@ -2,9 +2,11 @@ import ProfileService from "../../services/profile-service";
 
 export default async function AppLoader() {
     try {
+        const profile = await ProfileService.getProfile();
+
         return {
             success: true,
-            data: await ProfileService.getProfile(),
+            profile,
         }
     } catch (error) {
         return {

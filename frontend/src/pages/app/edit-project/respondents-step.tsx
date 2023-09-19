@@ -11,15 +11,15 @@ import PlayIconBlack from 'images/play-icon-black.svg';
 import BlankSurveyIconBlack from 'images/blank-survey-icon-black.svg'
 import capitalizeFirstLetter from '../../../utils/capitalize-first-letter';
 import TextInput from '../../../components/text-input/text-input';
-import { useActionData } from 'react-router-dom';
+import { useActionHandler } from '../../../hooks/use-handlers';
 
 
 const RespondentsStep = ({
     project,
 }) => {
     const { t } = useTranslation();
-    const actionData = useActionData() as any;
-    const errors = actionData?.errors || {};
+    const actionData = useActionHandler();
+    const errors = actionData?.errors ?? {};
 
     const {
         otherRequirements,

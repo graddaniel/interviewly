@@ -6,18 +6,18 @@ import classes from './general-step.module.css';
 import ParagraphIconBlack from 'images/paragraph-icon-black.svg';
 import PictureIconBlack from 'images/picture-icon-black.svg';
 import StepTitle from './step-title';
-import { useActionData } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useActionHandler } from '../../../hooks/use-handlers';
 
 
 const GeneralStep = ({
     project,
 }) => {
     const { t } = useTranslation();
-    const actionData = useActionData() as any;
+    const actionData = useActionHandler();
 
-    const errors = actionData?.errors || {};
-    console.log("RENDERING GENERAL")
+    const errors = actionData?.errors ?? {};
+
     return (
         <section className={classes.step}>
             <section className={classes.section}>

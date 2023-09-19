@@ -6,7 +6,7 @@
             "created": "Utworzono",
             "yes": "Tak",
             "no": "Nie",
-            "saved": "Saved"
+            "saved": "Zapisano"
         },
         "validation": {
             "join": {
@@ -181,6 +181,15 @@
             "repeatPassword": "Repeat new password",
             "success": "Password has been set"
         },
+        "contactForm": {
+            "emailLabel": "Twój E-mail",
+            "messageLabel": "Wiadomość",
+            "sendButtonText": "Wyślij",
+            "getInTouch": "Get in touch",
+            "sendUsAMessage": "Send us a message",
+            "quote": "\"Interviewly has everything we need on a single platform.\"",
+            "messageSent": "Message sent!"
+        },
         "join": {
             "joinControl": "Masz już konto?",
             "back": "Wróć",
@@ -353,7 +362,7 @@
             "separatedWoman": "Separated woman"
         },
         "profileRoles": {
-            "admin": "Admministrator",
+            "admin": "Administrator",
             "moderator": "Moderator",
             "observer": "Obserwator",
             "translator": "translator",
@@ -392,6 +401,11 @@
             "screening": "Screening",
             "language": "Language"
         },
+        "surveyStatuses": {
+            "pending": "oczekująca",
+            "finished": "zakończona",
+            "seeResultsLabel": "Wyniki"
+        },
         "personalData": {
             "title": "Twoje dane",
             "marketingConsentsSubtitle": "Zgody marketingowe",
@@ -423,7 +437,8 @@
             "cvSubtitle": "Zarządzaj swoim CV",
             "cvDownloadLabel": "Pobierz obecne",
             "cvUploadLabel": "lub wyślij nowe",
-            "aiScoreLabel": "Ocena AI"
+            "aiScoreLabel": "Ocena AI",
+            "cvUploadedSuccessMessage": "CV zostało wysłane"
         },
         "companyData": {
             "title": "Dane firmy",
@@ -448,7 +463,8 @@
             "title": "Projekty",
             "projectsCounterText": "projektów",
             "searchInputPlaceholder": "Wyszukaj nazwę projektu",
-            "statusLabel": "Status"
+            "statusLabel": "Status",
+            "newProjectName": "Nowy Projekt"
         },
         "viewProject": {
             "title": "Szczegóły projektu",
@@ -639,12 +655,6 @@
                 "subheader": "Wysłaliśmy Ci wiadomość z nowym hasłem.",
                 "submitButton": "Wróć na stronę główną"
             }
-        },
-        "contact": {
-            "getInTouch": "Skontaktuj się z nami",
-            "sendUsAMessage": "Wyślij nam wiadomość",
-            "quote": "\"Interviewly to rekrutacja w zasięgu Twojej ręki.\"",
-            "messageSent": "Wysłano wiadomość!"
         },
         "registrationConfirmation": {
             "header": "Gotowe!",
@@ -1073,11 +1083,6 @@
                 "W przypadku pytań i opinii dotyczących stosowanej przez Wykonawcy Polityki prosimy o ich przesyłanie na adres e-mail: inspektor@stratega.pl",
                 "Polityka znajduje się na stronie www.interviewlyapp.com"
             ]
-        },
-        "surveyStatuses": {
-            "pending": "oczekująca",
-            "finished": "zakończona",
-            "seeResultsLabel": "Wyniki"
         }
     }
 }

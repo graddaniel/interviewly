@@ -1,8 +1,0 @@
-serwis calli:
--dockerized janus
--client (either library or a separate service)
-  -start call with a room name, password
-  -select media
-  -share screen
-  -record call 
-  -create room; terminate it after x time

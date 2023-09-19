@@ -121,7 +121,6 @@ const router = createBrowserRouter(
                 path={ROUTES.CONTACT.PATH}
                 element={<ContactPage />}
                 action={ContactPageAction}
-                errorElement={<ContactPage />}
             />
             <Route
                 path={ROUTES.REGISTRATION_CONFIRMATION.PATH}
@@ -193,7 +192,6 @@ const router = createBrowserRouter(
                         path={APP_ROUTES.PROJECTS.PATH}
                         element={<ProjectsPage />}
                         loader={ProjectsLoader}
-                        errorElement={<ProjectsPage />}
                     />
                     </Route>
                     <Route
@@ -227,7 +225,6 @@ const router = createBrowserRouter(
                         element={<EditProjectPage />}
                         loader={EditProjectLoader}
                         action={EditProjectAction}
-                        errorElement={<EditProjectPage />}
                     />
                     <Route
                         path={APP_ROUTES.CALENDAR.PATH}
@@ -245,7 +242,6 @@ const router = createBrowserRouter(
                         <Route
                             path={APP_ROUTES.LIBRARY.PATH}
                             element={<LibraryPage />}                        
-                            errorElement={<LibraryPage />}
                             loader={TemplateLibraryLoader}
                         />
                     </Route>
@@ -259,7 +255,6 @@ const router = createBrowserRouter(
                         <Route
                             path={APP_ROUTES.MY_TEAM.PATH}
                             element={<MyTeamPage />}
-                            errorElement={<MyTeamPage />}
                             loader={MyTeamLoader}
                             action={MyTeamAction}
                         />

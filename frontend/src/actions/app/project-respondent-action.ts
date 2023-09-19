@@ -37,9 +37,7 @@ export default async function ProjectRespondentAction({
     } catch (error) {
         return {
             success: false,
-            errors: {
-                generic: error,
-            },
+            error
         };
     }
 

@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Form, useLoaderData, useNavigate, useSubmit } from 'react-router-dom';
+import React, { useCallback, useRef, useState } from 'react';
+import { Form, useNavigate, useSubmit } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 import { TemplateTypes } from 'shared';
@@ -12,6 +12,7 @@ import LibraryEditorLanguageButton from './library-editor-language-button';
 import AddQuestionButton from './add-question-button';
 import languageCodeToFlagIcon from '../../../utils/language-code-to-flag-icon';
 import capitalizeFirstLetter from '../../../utils/capitalize-first-letter';
+import { useActionHandler, useLoaderHandler } from '../../../hooks/use-handlers';
 
 import classes from './library-editor-page.module.css';
 import InterviewlyLogo from 'images/logo.svg';
@@ -89,18 +90,21 @@ const LibraryEditorPage = () => {
     const submit = useSubmit();
     const formRef = useRef(null);
 
+    const loaderData = useLoaderHandler();
+    useActionHandler();
+
+    
     const {
         template: currentTemplate,
         surveyType: currentSurveyType,
-    } = useLoaderData() as any || {};
-    console.log(currentTemplate)
+    } = loaderData?.data?.templateInfo ?? {};
 
     const [ showTitleStep, setShowTitleStep ] = useState(true);
 
     const [ templateName, setTemplateName ] = useState(currentTemplate?.name ?? '');
     const [ surveyType, setSurveyType ] = useState(currentSurveyType ?? TemplateTypes.SurveyType.Regular);
     const [ questions, setQuestions ] = useState<any>(currentTemplate?.questions ?? []);
-    
+
     const [ availableLanguages, setAvailableLanguages ] = useState(
         currentTemplate?.languages
         ? INTITIAL_AVAILABLE_LANGUAGES.filter(l => !currentTemplate?.languages.includes(l.code))

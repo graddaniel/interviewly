@@ -5,9 +5,16 @@ export default async function RegistrationConfirmationPageLoader ({
 }) {
     const { accountId } = params;
 
-    await AuthService.confirm(accountId);
+    try {
+        await AuthService.confirm(accountId);
+    } catch (error) {
+        return {
+            success: false,
+            error,
+        }
+    }
 
-    //TODO if already active error, redirect to login with an error, else if regular error return to home with error
-
-    return null;
+    return {
+        success: true,
+    };
 }

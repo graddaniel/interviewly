@@ -29,9 +29,7 @@ export default async function NewTemplateAction ({
     } catch (error) {
         return {
             success: false,
-            errors: {
-                generic: error,
-            },
+            error,
         };
     }
 

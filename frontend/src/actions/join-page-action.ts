@@ -1,7 +1,7 @@
 import { AccountTypes } from 'shared';
 import AuthService from '../services/auth-service';
 import JoinValidator from '../validators/join-validator';
-
+import { STEPS } from '../pages/join/join-page';
 
 type JoinData = {
     name: string;
@@ -21,24 +21,25 @@ type JoinData = {
 const JoinPageAction = async ({
     request,
 }) => {
-    const {
-        method,
-    } = request;
     const formData = Object.fromEntries(await request.formData()) as JoinData;
 
-    console.log('Join Action', method, formData);
     const {
         step: stepString,
     } = formData;
 
     const step = parseInt(stepString, 10);
 
-    console.log("step", step)
-    if (step === 3) {
-        //TODO TEMPORARY REMOVE IT AFTER THE VIDEO RECORDING IS FINISHED
-        // return {
-        //     success: true,
-        // }
+    const {
+        email,
+        password,
+        name,
+        surname,
+        type,
+        gender,
+        newsletter,
+    } = formData;
+
+    if (step === STEPS.DATA_FORM) {
         try {
             await JoinValidator.validateData(formData);
         } catch (errors) {
@@ -50,20 +51,36 @@ const JoinPageAction = async ({
 
         const {
             type,
+            companyName,
         } = formData;
         
-        if (type === AccountTypes.Type.RECRUITER) {   
-            const {
-                email,
-                password,
-                name,
-                surname,
-                type,
-                gender,
-                companyName,
-                newsletter,
-            } = formData;
+        if (type === AccountTypes.Type.RECRUITER) {
+            try {
+                await AuthService.register({
+                    email,
+                    password,
+                    name,
+                    surname,
+                    type,
+                    gender,
+                    newsletter: !!newsletter,
+                    companyName,
+                });
+                
+            } catch (error) {
+                console.log(error)
+                return {
+                    success: false,
+                    error,
+                }
+            }            
+        }
+    } else if (step === STEPS.VIDEO_RECORDING) {
+        const {
+            recordingId,
+        } = formData;
 
+        try {
             await AuthService.register({
                 email,
                 password,
@@ -72,31 +89,16 @@ const JoinPageAction = async ({
                 type,
                 gender,
                 newsletter: !!newsletter,
-                companyName,
+                recordingId,
             });
-        }
-    } else if (step === 4) {
-        const {
-            email,
-            password,
-            name,
-            surname,
-            type,
-            gender,
-            newsletter,
-            recordingId,
-        } = formData;
 
-        await AuthService.register({
-            email,
-            password,
-            name,
-            surname,
-            type,
-            gender,
-            newsletter: !!newsletter,
-            recordingId,
-        });
+        } catch (error) {
+            console.log(error)
+            return {
+                success: false,
+                error,
+            }
+        }
     }
 
     return {

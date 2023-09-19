@@ -19,7 +19,15 @@ export default async function SetPasswordAction({
         }
     }
 
-    await AuthService.setPasswordAndConfirm(accountId, password);
+    try {
+        await AuthService.setPasswordAndConfirm(accountId, password);
+    } catch (error) {
+        return {
+            success: false,
+            error,
+        };
+    }
+
 
     return {
         success: true,

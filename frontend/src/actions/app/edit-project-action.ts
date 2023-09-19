@@ -26,12 +26,13 @@ const EditProjectAction = async ({
 
     try {
         if (!Object.values(ProjectTypes.EditSteps).includes(step)) {
-            throw new Error(`Unrecognized project edition step: ${step}`);
+            return {
+                success: false,
+                error: new Error(`Unrecognized project edition step: ${step}`),
+            };
         }
 
         await EditProjectValidator.validateData(step, editProjectData);
-
-        const result = await ProjectService.updateProject(projectId, formData);
     } catch (errors) {
         return {
             success: false,
@@ -39,9 +40,21 @@ const EditProjectAction = async ({
         };
     }
 
-    return {
-        success: true,
-    };
+    try {
+        await ProjectService.updateProject(projectId, formData);
+
+        return {
+            success: true,
+        };
+
+    } catch (error) {
+        return {
+            success: false,
+            error,
+        };
+    }
+
+
 };
 
 export default EditProjectAction;

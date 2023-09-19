@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import { Form, useActionData, useLoaderData, useNavigate } from 'react-router-dom';
+import { Form, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ProfileTypes, ProjectTypes } from 'shared';
 import DatePicker from 'react-datepicker';
@@ -12,10 +12,8 @@ import MethodologyTile from '../../../../components/methodology-tile/methodology
 import TextButton from '../../../../components/text-button/text-button';
 import SurveyTile from '../../../../components/survey-tile/survey-tile';
 import SubmitButton from '../../../../components/submit-button/submit-button';
-import useSuccessFeedback from '../../../../hooks/use-success-feedback';
 import DropdownList from '../../../../components/dropdown-list/dropdown-list';
 import HOURS from '../../../../consts/hours';
-import useErrorHandler from '../../../../hooks/use-error-handler';
 import StepTitle from '../../edit-project/step-title';
 
 import classes from './interview-section.module.css';
@@ -23,6 +21,7 @@ import ChatIcon from 'images/feature-chat-icon.svg';
 import FinishedMeetingIconBlack from 'images/finished-meeting-icon-black.svg';
 import ProjectMeetingTile from '../project-meeting-tile';
 import useAuth from '../../../../hooks/useAuth';
+import { useActionHandler, useLoaderHandler } from '../../../../hooks/use-handlers';
 
 
 const InterviewSection = () => {
@@ -32,20 +31,23 @@ const InterviewSection = () => {
     const auth = useAuth();
 
     const {
+        data,
+    } = useLoaderHandler();
+
+    if (!data) {
+        return null;
+    }
+
+    const {
         templates,
         meetings,
         project,
-    } = useLoaderData() as {
-        templates: any[];
-        meetings: any[];
-        project: any;
-    };
+    } = data;
 
     const upcomingInterviews = meetings.filter(m => !m.hasFinished);
     const finishedInterviews = meetings.filter(m => m.hasFinished);
     
-    const actionData = useActionData() as any;
-    useSuccessFeedback(actionData, t('generic.saved'));
+    const actionData = useActionHandler(t('generic.saved'));
 
     const [ selectedTemplateUuid, setSelectedTemplateUuid ] = useState('');
 
@@ -70,10 +72,11 @@ const InterviewSection = () => {
         );
     }, [endDate, endTime]);
 
-    const errors = actionData?.errors || {};
+    const errors = actionData?.errors ?? {};
 
     return (
         <Form className={classes.content} method="post">
+            <input type="hidden" value="addSurvey" name="type" />
             <MethodologyTile
                 className={classes.methodologyTile}
                 mini={true}

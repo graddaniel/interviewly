@@ -20,7 +20,14 @@ export default async function ({
         };
     }
 
-    await ContactRequestService.sendRequest(email, message);
+    try {
+        await ContactRequestService.sendRequest(email, message);
+    } catch (error) {
+        return {
+            success: false,
+            error,
+        };
+    }
 
     return {
         success: true,

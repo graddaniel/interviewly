@@ -8,5 +8,20 @@ export default async function ProjectSurveyLoader({
         surveyId,
     } = params;
 
-    return await SurveyService.getSurveyResponses(surveyId);
+    try {
+        const surveyResponses = await SurveyService.getSurveyResponses(surveyId);
+
+        return {
+            success: true,
+            data: {
+                surveyResponses,
+            },
+        };
+
+    } catch (error) {
+        return {
+            success: false,
+            error,
+        };
+    }
 }

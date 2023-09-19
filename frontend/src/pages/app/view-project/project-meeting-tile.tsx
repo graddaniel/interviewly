@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import { generatePath, useLoaderData, useNavigate, useParams } from 'react-router-dom';
+import { generatePath, useNavigate, useParams } from 'react-router-dom';
 import moment from 'moment';
 
 import VideoDialog from '../../../components/video-dialog/video-dialog';
