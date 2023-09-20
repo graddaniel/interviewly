@@ -41,7 +41,8 @@ type LimesurveyConfig = {
 
 type RespondentFileEntry = {
     email: string;
-    language: string
+    language: string;
+    gender: string;
 };
 
 export default class ProjectsService {
@@ -498,6 +499,7 @@ export default class ProjectsService {
                 },
                 include: {
                     association: AccountModel.associations.RespondentProfileModel,
+                    required: true,
                 }
             });
 
@@ -576,7 +578,7 @@ export default class ProjectsService {
                 email: respondent.email,
                 name: '',
                 surname: '',
-                gender: ProfileTypes.Gender.MALE,
+                gender: respondent.gender === ProfileTypes.Gender.FEMALE ? ProfileTypes.Gender.FEMALE : ProfileTypes.Gender.MALE,
                 newsletter: false,
                 language: respondent.language || 'en',
                 createdFromFile: true,

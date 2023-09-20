@@ -111,6 +111,7 @@ export default class ProjectService {
                     const respondents = fileData.slice(1).map(row => ({
                         email: row[0],
                         language: row[1],
+                        gender: row[2],
                     }));
 
                     bodyFormData.append('respondents', JSON.stringify(respondents));

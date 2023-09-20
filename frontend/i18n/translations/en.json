@@ -520,7 +520,8 @@
                 "scheduledSuccessMessage": "Scheduled",
                 "cvSubtitle": "Respondent's CV",
                 "openCVLabel": "Open in new tab",
-                "aiScoreSubtitle": "AI Score"
+                "aiScoreSubtitle": "AI Score",
+                "genderDropdownLabel": "Select gender"
             },
             "screeningSurveys": {
                 "resultsTitle": "Results",
