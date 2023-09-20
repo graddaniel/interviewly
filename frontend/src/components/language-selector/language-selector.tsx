@@ -4,23 +4,8 @@ import { useTranslation } from 'react-i18next';
 import classes from './language-selector.module.css';
 
 import ThreeDotsIcon from '../../../images/three-dots-icon.svg';
-import {
-    PolishFlagIcon,
-    BritishFlagIcon,
-} from '../../../images/flag-icons';
+import languageCodeToFlagIcon from '../../utils/language-code-to-flag-icon';
 
-
-const getFlagIconByLanguage = (language: string) => {
-    switch (language) {
-        case 'pl':
-            return PolishFlagIcon;
-        case 'en':
-            return BritishFlagIcon;
-        default:
-            console.error("Unrecognized language", language);
-            return null;
-    }
-}
 
 const LanguageSelector = ({
     onClick,
@@ -38,7 +23,7 @@ const LanguageSelector = ({
             >
                 <img
                     className={classes.currentLanguageIcon}
-                    src={getFlagIconByLanguage(resolvedLanguage || '')}
+                    src={languageCodeToFlagIcon(resolvedLanguage || '')}
                 />
                 <button
                     className={classes.button}

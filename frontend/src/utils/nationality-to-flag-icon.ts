@@ -3,7 +3,7 @@ import { ProfileTypes } from 'shared';
 import {
     BulgarianFlagIcon,
     CzechFlagIcon,
-    AmericanFlagIcon,
+    DutchFlagIcon,
     BritishFlagIcon,
     FrenchFlagIcon,
     GermanFlagIcon,
@@ -27,7 +27,7 @@ export default function nationalityToFlagIcon (nationality: ProfileTypes.Nationa
         case ProfileTypes.Nationality.Czech:
             return CzechFlagIcon;
         case ProfileTypes.Nationality.Dutch:
-            return AmericanFlagIcon; //TODO FIX
+            return DutchFlagIcon;
         case ProfileTypes.Nationality.British:
             return BritishFlagIcon;
         case ProfileTypes.Nationality.French:

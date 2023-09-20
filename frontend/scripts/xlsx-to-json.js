@@ -58,28 +58,17 @@ function addDataRowToJSON(row, jsonResult) {
     var previousJsonSection;
     var previousKey;
     for (var i = 0; i < keyParts.length; i += 1) {
-        //TODO exclude last index      
-        // console.log(key)
-        // console.log("before", keyParts[i], currentJsonSection, previousKey, previousJsonSection);
-        // console.log(currentJsonSection[keyParts[i]])
         if (!currentJsonSection[keyParts[i]]) {
-            //TODO handle arrays
             if (keyParts[i] < 100) {
-                //console.log("notAnArray", !Array.isArray(previousJsonSection[previousKey]))
                 if (!Array.isArray(previousJsonSection[previousKey])) {
                     previousJsonSection[previousKey] = [];
                     currentJsonSection = previousJsonSection[previousKey];
                 }
-                // if (currentJsonSection.length <= keyParts[i]) {
-                //     previousJsonSection[previousKey].push({});
-                // }
             }
             else {
                 currentJsonSection[keyParts[i]] = {};
             }
         }
-        //console.log("after", keyParts[i], currentJsonSection, previousKey, previousJsonSection)
-        //console.log(currentJsonSection[keyParts[i]])
         if (i === keyParts.length - 1) {
             if (keyParts[i] < 100) {
                 previousJsonSection[previousKey].push(value);
@@ -100,39 +89,31 @@ function addDataRowToJSON(row, jsonResult) {
         currentJsonSection = currentJsonSection[keyParts[i]];
     }
 }
-/*
-
-ostatni jest stringiem - zapisz jako wartość
-ostatni jest liczbą > 100 - zapisz jako wartość
-ostatni jest liczbą < 100 - push na poprzednim kluczu
-
-*/
 (function () {
     return __awaiter(this, void 0, void 0, function () {
         var fileNames, _i, fileNames_1, fileName, file, _a, actualFileName, extension, json;
         return __generator(this, function (_b) {
             switch (_b.label) {
-                case 0: return [4 /*yield*/, (0, promises_1.readdir)('./translations')];
-                case 1:
-                    fileNames = _b.sent();
+                case 0:
+                    fileNames = ['russian_translation.xlsx'];
                     _i = 0, fileNames_1 = fileNames;
-                    _b.label = 2;
-                case 2:
-                    if (!(_i < fileNames_1.length)) return [3 /*break*/, 6];
+                    _b.label = 1;
+                case 1:
+                    if (!(_i < fileNames_1.length)) return [3 /*break*/, 5];
                     fileName = fileNames_1[_i];
                     return [4 /*yield*/, (0, promises_1.readFile)("./translations/".concat(fileName))];
-                case 3:
+                case 2:
                     file = _b.sent();
                     _a = fileName.split('.'), actualFileName = _a[0], extension = _a[1];
                     json = XLSXtoJSON(file);
                     return [4 /*yield*/, (0, promises_1.writeFile)("./jsons/".concat(actualFileName, ".json"), JSON.stringify(json))];
-                case 4:
+                case 3:
                     _b.sent();
-                    _b.label = 5;
-                case 5:
+                    _b.label = 4;
+                case 4:
                     _i++;
-                    return [3 /*break*/, 2];
-                case 6: return [2 /*return*/];
+                    return [3 /*break*/, 1];
+                case 5: return [2 /*return*/];
             }
         });
     });

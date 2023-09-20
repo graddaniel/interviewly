@@ -6,10 +6,28 @@ import Dialog from '../dialog/dialog';
 
 import classes from './language-selection-dialog.module.css'
 import InterviewlyLogo from '../../../images/logo.svg';
-import languagesDefinitions from './languages-definitions';
+import languageCodeToFlagIcon from '../../utils/language-code-to-flag-icon';
 
 
-const LANGUAGES = Object.entries(languagesDefinitions);
+const languages = [
+    "bg",
+    "cs",
+    "de",
+    "el",
+    "en",
+    "es",
+    "fr",
+    "hu",
+    "it",
+    "nl",
+    "pl",
+    "pt",
+    "ro",
+    "ru",
+    "sk",
+    "sv",
+    "uk"
+];
 
 const LanguageSelectionDialog = ({
     isOpen,
@@ -28,13 +46,13 @@ const LanguageSelectionDialog = ({
                     {t('dialogs.languageSelection')}
                 </h1>
                 <article className={classes.languageButtons}>
-                    {LANGUAGES.map(([ code, languageDefinition ]) => (
+                    {languages.map((languageCode) => (
                         <LanguageButton
                             className={classes.languageButton}
-                            key={code}
-                            languageCode={code}
-                            languageText={languageDefinition.language}
-                            icon={languageDefinition.icon}
+                            key={languageCode}
+                            languageCode={languageCode}
+                            languageText={t('currentLanguage', { lng: languageCode })}
+                            icon={languageCodeToFlagIcon(languageCode)}
                             onClick={onClose}
                         />
                     ))}

@@ -8,6 +8,8 @@ import CzechFlagIcon from './czech-flag-icon.svg';
 export { CzechFlagIcon };
 import DanishFlagIcon from './danish-flag-icon.svg';
 export { DanishFlagIcon };
+import DutchFlagIcon from './dutch-flag-icon.svg';
+export { DutchFlagIcon };
 import FrenchFlagIcon from './french-flag-icon.svg';
 export { FrenchFlagIcon };
 import GermanFlagIcon from './german-flag-icon.svg';
