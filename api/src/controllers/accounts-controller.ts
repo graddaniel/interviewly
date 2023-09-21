@@ -145,6 +145,35 @@ export default class AccountsController {
         res.status(StatusCodes.OK).send(uploadUrl);
     }
 
+    otherFilesUploaded = async (
+        req: AuthenticatedRequest,
+        res: Response,
+    ) => {
+        const {
+            uuid,
+        } = req.currentUser;
+
+
+        await this.accountsService.confirmOtherFilesUpload(
+            uuid,
+        );
+
+        res.status(StatusCodes.OK).send();
+    }
+
+    getOtherFilesUploadUrl = async (
+        req: AuthenticatedRequest,
+        res: Response,
+    ) => {
+        const {
+            uuid,
+        } = req.currentUser;
+
+        const uploadUrl = await this.accountsService.getOtherFilesUploadUrl(uuid);
+
+        res.status(StatusCodes.OK).send(uploadUrl);
+    }
+
     patchAccountConfirmed = async (
         req: Request,
         res: Response,

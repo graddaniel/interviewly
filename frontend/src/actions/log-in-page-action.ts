@@ -12,20 +12,21 @@ const LogInPageAction = async ({ request }) => {
 
     switch (actionType) {
         case 'logIn':
-            console.log("logIn action")
             try {
                 const {
                     email,
                     password,
-                    remember,
+                    // remember,
                 } = formData;
 
                 await LogInValidator.validateData(formData);
 
                 const jwtToken = await AuthService.login(email, password);
-                console.log(sessionStorage, localStorage);
-                (remember ? localStorage : sessionStorage)
-                    .setItem('accessToken', jwtToken);
+
+                // (remember ? localStorage : sessionStorage)
+                //     .setItem('accessToken', jwtToken);
+
+                localStorage.setItem('accessToken', jwtToken);
 
                 return redirect(APP_ROUTES.MY_ACCOUNT.PATH);
 

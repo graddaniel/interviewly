@@ -50,6 +50,7 @@
     "s3": {
         "recordingsBucket": "meetings-recordings-dev",
         "cvBucket": "respondent-cvs-dev",
+        "otherFilesBucketName": "other-files-dev",
         "transcriptionsBucket": "meetings-transcriptions-dev",
         "interviewRecordingsBucket": "interviewly-interview-recordings-dev",
         "interviewTranscriptsBucket": "interview-transcripts-dev"

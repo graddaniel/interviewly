@@ -12,7 +12,7 @@ import AccountAlreadyExistsError from './errors/account-already-exists-error';
 import AccountNotFoundError from './errors/account-not-found-error';
 import IncorrectPasswordError from './errors/incorrect-password-error';
 import JWTService from '../jwt-service/jwt-service';
-import { getCVBucketKeyByEmail, hash } from '../../utils'
+import { getCVBucketKeyByEmail, getOtherFilesBucketKeyByEmail, hash } from '../../utils'
 import AccountHasNotRequestedPasswordResetError from './errors/account-has-not-requested-password-reset-error';
 import SequelizeConnection from '../sequelize-connection';
 import CompanyModel from '../../models/company';
@@ -41,6 +41,7 @@ export default class AccountsService {
     private gptAdapter: GPTAdapter;
 
     private cvBucketName: string;
+    private otherFilesBucketName: string;
     private additionalNotificationsTarget: string;
     private interviewsToTranscribeQueue: string;
     private recordedInterviewsQueue: string;
@@ -59,6 +60,7 @@ export default class AccountsService {
         this.gptAdapter = gptAdapter;
 
         this.cvBucketName = config.get('s3.cvBucket');
+        this.otherFilesBucketName = config.get('s3.otherFilesBucketName');
         this.additionalNotificationsTarget = config.get('registration.additionalNotificationsTarget');
         this.recordedInterviewsQueue = config.get('rabbitMq.recordedInterviewsQueueName');
         this.interviewsToTranscribeQueue = config.get('rabbitMq.interviewsToTranscribeQueueName');
@@ -528,6 +530,12 @@ export default class AccountsService {
                     getCVBucketKeyByEmail(account.email)
                 );
             }
+            if (respondentProfile.hasUploadedOtherFiles) {
+                profile.otherFilesUrl = this.s3Adapter.getPresignedS3Url(
+                    this.otherFilesBucketName,
+                    getOtherFilesBucketKeyByEmail(account.email)
+                );
+            }
         }
 
         return profile;
@@ -706,6 +714,31 @@ export default class AccountsService {
 
         return await this.s3Adapter.getPResignedS3UploadUrl(
             this.cvBucketName,
+            fileBucketKey,
+        );
+    }
+    
+    confirmOtherFilesUpload = async (
+        currentUserUuid: string,
+    ) => {
+        const currentAccount = await this.getAccount({ uuid: currentUserUuid });
+        const { RespondentProfile: currentProfile } = currentAccount;
+
+        currentProfile.hasUploadedOtherFiles = true;
+        if (currentProfile.changed()) {
+            await currentProfile.save();
+        }
+    }
+
+    getOtherFilesUploadUrl = async (
+        currentUserUuid: string,
+    ) => {
+        const currentAccount = await this.getAccount({ uuid: currentUserUuid });
+
+        const fileBucketKey = getOtherFilesBucketKeyByEmail(currentAccount.email);
+
+        return await this.s3Adapter.getPResignedS3UploadUrl(
+            this.otherFilesBucketName,
             fileBucketKey,
         );
     }

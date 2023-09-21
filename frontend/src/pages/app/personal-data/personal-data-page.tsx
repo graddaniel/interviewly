@@ -28,6 +28,7 @@ const PersonalDataPage = () => {
     const auth = useAuth();
     const submit = useSubmit();
     const cvFormRef = useRef(null);
+    const otherFilesFormRef = useRef(null);
 
     const {
         profile,
@@ -36,6 +37,7 @@ const PersonalDataPage = () => {
         passwordChange: t('personalData.passwordChangeSuccessMessage'),
         personalData: t('generic.saved'),
         cvUpload: t('personalData.cvUploadedSuccessMessage'),
+        otherFilesUpload: t('personalData.otherFilesUploadedSuccessMessage'),
     });
 
     const errors = actionData?.errors ?? {};
@@ -293,18 +295,18 @@ const PersonalDataPage = () => {
                     </span>
                 </Form>
                 <div className={classes.subformsWrapper}>
-                    {auth.type === AccountTypes.Type.RESPONDENT && (
+                    {auth.type === AccountTypes.Type.RESPONDENT && (<>
                         <Form
                             ref={cvFormRef}
                             method="post"
-                            className={classes.cvUploader}
+                            className={classes.fileUploader}
                         >
                             <h6 className={classes.subtitle}>
                                 {t('personalData.cvSubtitle')}
                             </h6>
                             {profile.cvUrl && (
                                 <a
-                                    className={classes.cvLink}
+                                    className={classes.link}
                                     href={profile.cvUrl}
                                     target="_blank"
                                 >
@@ -321,7 +323,33 @@ const PersonalDataPage = () => {
                             />
                             <input type="hidden" name="type" value="cvUpload" />
                         </Form>
-                    )}
+                        <Form
+                            ref={otherFilesFormRef}
+                            method="post"
+                            className={classes.fileUploader}
+                        >
+                            <h6 className={classes.subtitle}>
+                                {t('personalData.otherFilesSubtitle')}
+                            </h6>
+                            {profile.otherFilesUrl && (
+                                <a
+                                    className={classes.link}
+                                    href={profile.otherFilesUrl}
+                                    target="_blank"
+                                >
+                                    {t('personalData.otherFilesDownloadLabel')}
+                                </a>
+                            )}
+                            {t('personalData.otherFilesUploadLabel')}
+                            <input 
+                                id="otherFiles"
+                                type="file"
+                                name="otherFiles"
+                                onChange={() => submit(otherFilesFormRef.current)}
+                            />
+                            <input type="hidden" name="type" value="otherFilesUpload" />
+                        </Form>
+                    </>)}
                     <Form
                         method="post"
                         className={classes.changePassword}

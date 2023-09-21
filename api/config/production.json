@@ -15,6 +15,7 @@
     "s3": {
         "recordingsBucket": "meetings-recordings-prod",
         "cvBucket": "respondent-cvs-prod",
+        "otherFilesBucketName": "other-files-prod",
         "transcriptionsBucket": "meetings-transcriptions-prod",
         "interviewRecordingsBucket": "interviewly-interview-recordings-prod",
         "interviewTranscriptsBucket": "interview-transcripts-prod"

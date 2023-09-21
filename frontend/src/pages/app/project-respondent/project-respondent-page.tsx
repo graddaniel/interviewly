@@ -45,6 +45,7 @@ type Meeting = {
 type Respondent = {
     avatarUrl: string;
     cvUrl: string;
+    otherFilesUrl: string;
     score: number;
     name: string;
     surname: string;
@@ -109,6 +110,7 @@ const ProjectRespondentPage = () => {
         gender,
         avatarUrl,
         cvUrl,
+        otherFilesUrl,
         score,
         email,
         nationality,
@@ -126,7 +128,7 @@ const ProjectRespondentPage = () => {
         street,
         childrenCount,
         interviewVideoUrl,
-    } = data.respondent;
+    } = data.respondent as Respondent;
 
     const errors = actionData?.errors ?? {};
 
@@ -232,6 +234,17 @@ const ProjectRespondentPage = () => {
                             </div>
                             <a className={classes.link} href={cvUrl} target='_blank'>
                                 {t('viewProject.respondents.openCVLabel')}
+                            </a>
+                        </>
+                    )}
+                    {otherFilesUrl && (
+                        <>
+                            <div className={classNames(classes.sectionHeaderTitle)}>
+                                <img className={classes.sectionHeaderIcon} src={FilledSurveyIconBlack} />
+                                {t('viewProject.respondents.otherFilesSubtitle')}
+                            </div>
+                            <a className={classes.link} href={otherFilesUrl} target='_blank'>
+                                {t('viewProject.respondents.openOtherFilesLabel')}
                             </a>
                         </>
                     )}

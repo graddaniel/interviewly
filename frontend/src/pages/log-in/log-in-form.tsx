@@ -49,10 +49,10 @@ const LogInForm = ({
                 error={passwordError}
             />
             <section className={classes.miscControls}>
-                <Checkbox
+                {/* <Checkbox
                     name="remember"
                     label={t('logIn.rememberMe')}
-                />
+                /> */}
                 <span
                     className={classes.passwordReset}
                     onClick={openPasswordResetDialog}

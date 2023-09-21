@@ -196,6 +196,18 @@ export default class Appplication {
             requireAccountType(AccountTypes.Type.RESPONDENT),
             accountsController.getCVUploadUrl,
         );
+        accountsRouter.put(
+            '/profile/otherFiles',
+            requireJWT,
+            requireAccountType(AccountTypes.Type.RESPONDENT),
+            accountsController.otherFilesUploaded,
+        );
+        accountsRouter.get(
+            '/profile/otherFiles/uploadLink',
+            requireJWT,
+            requireAccountType(AccountTypes.Type.RESPONDENT),
+            accountsController.getOtherFilesUploadUrl,
+        );
         accountsRouter.post('/:accountId/password/reset', accountsController.requestPasswordReset);
         accountsRouter.patch('/:accountId/password/reset/confirm', accountsController.confirmPasswordReset);
         accountsRouter.get('/:accountId/introductionVideo', requireJWT, accountsController.getIntroductionVideo);

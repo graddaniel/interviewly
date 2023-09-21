@@ -18,6 +18,10 @@ export function getCVBucketKeyByEmail (email: string) {
     return `cv_${email.replaceAll('@', '_').replaceAll('.', '_').replaceAll('+','_')}`;
 }
 
+export function getOtherFilesBucketKeyByEmail (email: string) {
+    return `other_${email.replaceAll('@', '_').replaceAll('.', '_').replaceAll('+','_')}`;
+}
+
 export function getInterviewRecordingsBucketKeyByEmail (email: string) {
     return `${email.replaceAll('@', '_').replaceAll('.', '_').replaceAll('+','_')}.webm`;
 }

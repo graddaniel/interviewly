@@ -437,8 +437,12 @@
             "cvSubtitle": "Manage your CV",
             "cvDownloadLabel": "Download current",
             "cvUploadLabel": "or upload new",
+            "cvUploadedSuccessMessage": "CV has been uploaded",
             "aiScoreLabel": "AI Score",
-            "cvUploadedSuccessMessage": "CV has been uploaded"
+            "otherFilesSubtitle": "Manage your other files",
+            "otherFilesDownloadLabel": "Download current",
+            "otherFilesUploadLabel": "or upload new",
+            "otherFilesUploadedSuccessMessage": "Other files have been uploaded"
         },
         "companyData": {
             "title": "Company data",

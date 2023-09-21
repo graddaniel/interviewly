@@ -22,6 +22,7 @@ export default class RespondentProfile extends Model {
     declare gender: ProfileTypes.Gender;
     declare avatarUrl: string;
     declare hasUploadedCV: boolean;
+    declare hasUploadedOtherFiles: boolean;
     declare hasInterviewVideo: boolean;
     declare hasInterviewTranscript: boolean;
     declare phoneNumber: string;
@@ -72,6 +73,10 @@ RespondentProfile.init({
         type: DataTypes.STRING,
     },
     hasUploadedCV: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+    },
+    hasUploadedOtherFiles: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
     },

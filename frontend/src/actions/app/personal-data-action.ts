@@ -19,6 +19,8 @@ export default async function PersonalDataAction({
             return updatePersonalData(formData);
         case 'cvUpload':
             return uploadCV();
+        case 'otherFilesUpload':
+            return uploadOtherFiles();
         default:
             console.error('Unrecognized action type.');
     }
@@ -166,5 +168,32 @@ async function uploadCV() {
     return {
         success: true,
         path: 'cvUpload'
+    };
+}
+
+async function uploadOtherFiles() {
+    try {
+        const uploadUrl = await ProfileService.getOtherFilesUploadUrl();
+
+        const otherFiles = (document.getElementById("otherFiles") as HTMLInputElement).files;
+        if (!otherFiles || otherFiles.length < 1) {
+            console.error('Other files not found')
+            return {
+                success: false,
+            }
+        }
+
+        await ProfileService.uploadOtherFiles(uploadUrl, otherFiles[0]);
+
+    } catch (error) {
+        return {
+            success: false,
+            error,
+        }
+    }    
+
+    return {
+        success: true,
+        path: 'otherFilesUpload'
     };
 }

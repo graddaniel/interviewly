@@ -437,8 +437,12 @@
             "cvSubtitle": "Zarządzaj swoim CV",
             "cvDownloadLabel": "Pobierz obecne",
             "cvUploadLabel": "lub wyślij nowe",
+            "cvUploadedSuccessMessage": "CV zostało wysłane",
             "aiScoreLabel": "Ocena AI",
-            "cvUploadedSuccessMessage": "CV zostało wysłane"
+            "otherFilesSubtitle": "Zarządzaj swoimi innymi plikami",
+            "otherFilesDownloadLabel": "Pobierz obecne",
+            "otherFilesUploadLabel": "lub wyślij nowe",
+            "otherFilesUploadedSuccessMessage": "Inne pliki zostały wysłane"
         },
         "companyData": {
             "title": "Dane firmy",
@@ -520,6 +524,8 @@
                 "scheduledSuccessMessage": "Scheduled",
                 "cvSubtitle": "CV Respondenta",
                 "openCVLabel": "Otwórz w nowej karcie",
+                "otherFilesSubtitle": "Inne pliki Respondenta",
+                "openOtherFilesLabel": "Otwórz w nowej karcie",
                 "aiScoreSubtitle": "Ocena AI",
                 "genderDropdownLabel": "Wybierz płeć"
             },

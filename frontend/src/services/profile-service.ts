@@ -64,4 +64,37 @@ export default class ProfileService {
 
         return data;
     }
+
+    static uploadOtherFiles = async (
+        uploadUrl: string,
+        file,
+    ) => {
+        await axios.put(uploadUrl, file, {
+            headers: {
+                'content-type': file.type,
+            },
+        });
+
+        const accessToken = sessionStorage.getItem('accessToken') || localStorage.getItem('accessToken');
+
+        await axios.put(`${API_HOST}/accounts/profile/otherFiles`, {}, {
+            headers: {
+                'authorization': `bearer ${accessToken}`
+            },
+        });
+    }
+
+    static getOtherFilesUploadUrl = async (): Promise<string> => {
+        const accessToken = sessionStorage.getItem('accessToken') || localStorage.getItem('accessToken');
+
+        const response = await axios.get(`${API_HOST}/accounts/profile/otherFiles/uploadLink`, {
+            headers: {
+                'authorization': `bearer ${accessToken}`
+            },
+        });
+
+        const { data } = response;
+
+        return data;
+    }
 }

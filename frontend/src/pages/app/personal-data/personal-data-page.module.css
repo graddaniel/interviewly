@@ -117,7 +117,7 @@
     gap: 2vw;
     flex-shrink: 0;
 }
-.cvUploader {
+.fileUploader {
     height: min-content;
     display: flex;
     flex-direction: column;
@@ -127,7 +127,7 @@
     border-radius: 1.5vw;
     background-color: var(--COLOR8);
 }
-.cvLink {
+.link {
     color: var(--BLACK);
 }
 .changePassword {

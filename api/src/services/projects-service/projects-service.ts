@@ -26,6 +26,7 @@ import ProjectValidator from '../../controllers/validators/project-validator';
 import {
     getCVBucketKeyByEmail,
     getInterviewRecordingsBucketKeyByEmail,
+    getOtherFilesBucketKeyByEmail,
 } from '../../utils'; 
 
 import type AccountsService from '../accounts-service/accounts-service';
@@ -59,6 +60,7 @@ export default class ProjectsService {
     recordingsBucketName: string;
     transcriptionsBucketName: string;
     cvBucketName: string;
+    otherFilesBucketName: string;
     interviewVideoBucket: string;
 
     constructor (
@@ -87,6 +89,7 @@ export default class ProjectsService {
         this.transcriptionsBucketName = config.get('s3.transcriptionsBucket');
 
         this.cvBucketName = config.get('s3.cvBucket');
+        this.otherFilesBucketName = config.get('s3.otherFilesBucketName');
         this.interviewVideoBucket = config.get('s3.interviewRecordingsBucket');
     }
 
@@ -883,6 +886,7 @@ export default class ProjectsService {
                 'street',
                 'childrenCount',
                 'hasUploadedCV',
+                'hasUploadedOtherFiles',
                 'hasInterviewVideo',
                 'score',
             ],
@@ -929,6 +933,13 @@ export default class ProjectsService {
             flattenedRespondentProfile.cvUrl = this.s3Adapter.getPresignedS3Url(
                 this.cvBucketName,
                 getCVBucketKeyByEmail(flattenedRespondentProfile.email)
+            );
+        }
+
+        if (flattenedRespondentProfile.hasUploadedOtherFiles) {
+            flattenedRespondentProfile.otherFilesUrl = this.s3Adapter.getPresignedS3Url(
+                this.otherFilesBucketName,
+                getOtherFilesBucketKeyByEmail(flattenedRespondentProfile.email)
             );
         }
 
