@@ -20,10 +20,10 @@ const HomePage = () => {
             <WorldSection />
             <OpenAISection />
             <SubscriptionsSection />
-            {!SAMPLE_VERSION && (<>
-            <TutorialsSection />
+            {!SAMPLE_VERSION && (
+                <TutorialsSection />
+            )}
             <BlogSection />
-            </>)}
         </article>
     );
 };

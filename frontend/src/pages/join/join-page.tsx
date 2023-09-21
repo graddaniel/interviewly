@@ -103,7 +103,7 @@ const JoinPage = () => {
                     onClose={goToHome}
                 />
             </section>
-            {(!SAMPLE_VERSION || step !== STEPS.FINAL) && (
+            {(step !== STEPS.FINAL) && (
                 <header className={classes.header}>
                     <img src={InterviewlyLogo} className={classes.logo}/>
                     <h1 className={classes.title}>{t(`join.page${step}.title`)}</h1>
@@ -273,7 +273,7 @@ const JoinPage = () => {
                 </section>
             </section>
             {step === STEPS.FINAL && 
-                (SAMPLE_VERSION ? <FakedoorFinal /> : (
+                (
                     <section className={classNames(
                         classes.content,
                     )}>
@@ -290,7 +290,7 @@ const JoinPage = () => {
                             />
                         </div>
                     </section>
-                ))
+                )
             }
             <section className={classNames(
                 classes.navigation,
@@ -308,7 +308,7 @@ const JoinPage = () => {
                     className={classes.stepper}
                     currentStep={step - 1}
                     maxSteps={maxSteps - 1}
-                    hidden={step === STEPS.TYPE_SELECTION || (step === STEPS.FINAL && SAMPLE_VERSION)}
+                    hidden={step === STEPS.TYPE_SELECTION}
                 />
                 <TextButton
                     className={classes.skipButton}

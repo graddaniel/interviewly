@@ -7,9 +7,13 @@ import MethodologyTile from '../../../components/methodology-tile/methodology-ti
 
 import classes from './methodology-step.module.css';
 import TilesIconBlack from 'images/tiles-icon-black.svg';
+import { SAMPLE_VERSION } from 'config/current';
 
 
-const METHODOLOGIES = Object.values(ProjectTypes.Methodology);
+const METHODOLOGIES = SAMPLE_VERSION
+    ? [ProjectTypes.Methodology.Interview, ProjectTypes.Methodology.OnlineCommunities]
+    : Object.values(ProjectTypes.Methodology);
+
 
 const MethodologyStep = ({
     project,

@@ -24,8 +24,8 @@ const LINKS: {
     ...(SAMPLE_VERSION ? [] : [
         ROUTES.CALCULATOR,
         ROUTES.TUTORIALS,
-        ROUTES.BLOG,
     ]),
+    ROUTES.BLOG,
     ROUTES.CONTACT,
 ].map(route => ({
     title: route.TITLE,
@@ -63,13 +63,11 @@ const NavigationBar = () => {
                     text={t('buttons.signUp')}
                     onClick={goToJoin}
                 />
-                {!SAMPLE_VERSION && (
                 <IconButton
                     className={classes.loginButton}
                     icon={AccountIcon}
                     onClick={goToAccount}
                 />
-                )}
                 <IconButton
                     className={classes.menuButton}
                     icon={MenuIcon}

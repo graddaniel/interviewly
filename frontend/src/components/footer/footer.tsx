@@ -22,8 +22,8 @@ const LINKS: {
     ...(SAMPLE_VERSION ? [] : [
         ROUTES.CALCULATOR,
         ROUTES.TUTORIALS,
-        ROUTES.BLOG,
     ]),
+    ROUTES.BLOG,
     ROUTES.CONTACT,
 ].map(route => ({
     title: route.TITLE,

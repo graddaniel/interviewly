@@ -98,7 +98,6 @@ const router = createBrowserRouter(
                 path={ROUTES.HOME.PATH}
                 element={<HomePage />}
             />
-            {!SAMPLE_VERSION && (<>
             <Route
                 path={ROUTES.LOG_IN.PATH}
                 element={
@@ -112,11 +111,12 @@ const router = createBrowserRouter(
                 path={ROUTES.BLOG.PATH}
                 element={<BlogPage />}
             />
+            {!SAMPLE_VERSION && (
             <Route
                 path={ROUTES.TUTORIALS.PATH}
                 element={<TutorialsPage />}
             />
-            </>)}
+            )}
             <Route
                 path={ROUTES.CONTACT.PATH}
                 element={<ContactPage />}
