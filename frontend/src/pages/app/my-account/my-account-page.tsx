@@ -61,11 +61,13 @@ const MyAccountPage = () => {
                 <img className={classes.headerIcon} src={CalendarIconBlack} />
                 {t('myAccount.upcomingInterviewsLabel')}
             </div>
-            <InterviewTile
-                uuid={upcomingMeeting.uuid}
-                duration={upcomingMeeting.duration}
-                date={upcomingMeeting.date}
-            />
+            {upcomingMeeting && (
+                <InterviewTile
+                    uuid={upcomingMeeting.uuid}
+                    duration={upcomingMeeting.duration}
+                    date={upcomingMeeting.date}
+                />
+            )}
         </div>
     );
 

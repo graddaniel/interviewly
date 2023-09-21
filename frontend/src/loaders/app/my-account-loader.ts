@@ -32,7 +32,7 @@ export default async function MyAccountLoader() {
         const myAccountData: any = {
             upcomingMeeting: myAccountRawData.upcomingMeeting.length > 0
                 ? myAccountRawData.upcomingMeeting[0]
-                : {},
+                : null,
             profile: myAccountRawData.profile,
         };
     
