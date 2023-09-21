@@ -513,6 +513,10 @@
                 "sessionStartDateLabel": "Session start date",
                 "sessionEndDateLabel": "Session end date"
             },
+            "projectMeeting": {
+                "downloadTranscriptLinkLabel": "Download transcript",
+                "aiScore": "AI Score"
+            },
             "respondents": {
                 "personalDataSubtitle": "Personal data",
                 "seeDetailsLabel": "See details",

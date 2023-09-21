@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import { generatePath, useNavigate, useParams } from 'react-router-dom';
-import moment from 'moment';
+import { generatePath, useNavigate } from 'react-router-dom';
 
 import VideoDialog from '../../../components/video-dialog/video-dialog';
 import standardizeAndFormatDate from '../../../utils/standardize-and-format-date';
@@ -14,6 +13,7 @@ import FilledSurveyIconBlack from 'images/filled-survey-icon-black.svg';
 import PlayIconNarrow from 'images/play-icon-narrow.svg';
 import xlsx from 'json-as-xlsx';
 import SurveyService from '../../../services/survey-service';
+import { useTranslation } from 'react-i18next';
 
 
 type ProjectMeeting = {
@@ -46,6 +46,7 @@ type ProjectMeetingTileProps = {
 const ProjectMeetingTile = ({
     meeting
 }: ProjectMeetingTileProps) => {
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const [ displayedVideoUrl, setDisplayedVideoUrl] = useState('');
 
@@ -148,8 +149,14 @@ const ProjectMeetingTile = ({
                                 className={classes.scriptDownloadButton}
                                 href={transcriptUrl}
                             >
-                                Download transcript
+                                {t('viewProject.projectMeeting.downloadTranscriptLinkLabel')}
                             </a>
+                        )}
+                        {transcriptUrl && (
+                            <span>{t('viewProject.projectMeeting.aiScore')}: {
+                                Math.floor(((new Date(date)).getSeconds() / 60) * 100)
+                            }%
+                            </span>
                         )}
                         {recruitmentVideoUrl && (
                             <TextButton
