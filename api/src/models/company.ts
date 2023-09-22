@@ -70,5 +70,5 @@ ProjectModel.associations.CompanyModel = ProjectModel.belongsTo(Company, {
     onDelete: 'cascade'
 });
 
-Company.associations.TemplateModel = TemplateModel.belongsTo(Company);
-TemplateModel.associations.CompanyModel = Company.hasMany(TemplateModel);
+Company.associations.TemplateModel = Company.hasMany(TemplateModel);
+TemplateModel.associations.CompanyModel = TemplateModel.belongsTo(Company);

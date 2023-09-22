@@ -1,11 +1,12 @@
 import { v4 as generateUuidV4 } from 'uuid';
 
-import CompanyModel from '../../models/company';
 import TemplateModel from '../../models/template';
 import NotPermittedError from '../../generic/not-permitted-error';
 import TemplateNotFoundError from './errors/template-not-found-error';
+import SequelizeConnection from '../sequelize-connection';
 
 import type CompaniesService from '../companies-service/companies-service';
+import { QueryTypes } from 'sequelize';
 
 
 export default class TemplatesService {
@@ -30,30 +31,18 @@ export default class TemplatesService {
     getCompanyAndPublicTemplates = async (
         companyUuid: string,
     ) => {
-        const companyAndPublicTemplates = await TemplateModel.findAll({
-            attributes: [
-                "uuid",
-                "name",
-                "isPrivate",
-                "CompanyId"
-            ],
-            include: [{
-                model: CompanyModel,
-                where: {
-                    uuid: companyUuid,
-                },
-                required: false,
-                attributes: [],
-            }],
-        });
+        const sequelize = SequelizeConnection.instance();
 
-        return companyAndPublicTemplates.map((t: any) => {
-            return {
-                uuid: t.uuid,
-                name: t.name,
-                isPrivate: t.isPrivate,
-            }
-        });
+        // with associations the condition is put to ON,
+        // which makes it impossible to achieve desired result
+        const companyAndPublicTemplates = await sequelize.query(`\
+SELECT templates.uuid, templates.name, IF(company_id is NULL, FALSE, TRUE) as isPrivate \
+FROM templates \
+LEFT JOIN companies ON templates.company_id = companies.id \
+WHERE companies.uuid = '${companyUuid}' OR companies.uuid IS NULL;`,
+{ type: QueryTypes.SELECT });
+
+        return companyAndPublicTemplates;
     }
 
     createNewTemplate = async (
