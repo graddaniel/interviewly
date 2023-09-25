@@ -22,9 +22,9 @@ const MyAccountPage = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
 
-    const loaderData = useLoaderHandler();
+    const { data } = useLoaderHandler();
 
-    if (!loaderData) {
+    if (!data) {
         return null;
     }
 
@@ -33,9 +33,9 @@ const MyAccountPage = () => {
         profile,
         teamMembers,
         projects,
-    } = loaderData;
+    } = data;
     
-    console.log(loaderData)
+    console.log(data)
     const latestTeamMembersSection = (
         <div className={classes.latestTeamMembers}>
             <div className={classes.header}>

@@ -132,6 +132,14 @@ export default class ProjectsService {
         return project;
     }
 
+    getAllProjects = async (query: any) => {
+        const projects = await ProjectModel.findAll({
+            where: query,
+        });
+
+        return projects;
+    }
+
     getOneCompanyProject = async (
         companyUuid: string,
         projectUuid: string,

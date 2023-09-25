@@ -4,7 +4,6 @@ import { AccountTypes, ProfileTypes } from 'shared';
 
 import Popup from '../../../components/popup/popup';
 import IconButton from '../../../components/icon-button/icon-button';
-import Pill from '../../../components/pill/pill';
 import DropdownList from '../../../components/dropdown-list/dropdown-list';
 import TextInput from '../../../components/text-input/text-input';
 import TextButton from '../../../components/text-button/text-button';
@@ -18,6 +17,7 @@ const ROLES = [
     ProfileTypes.Role.Admin,
     ProfileTypes.Role.Moderator,
     ProfileTypes.Role.Observer,
+    ProfileTypes.Role.Translator,
 ];
 const GENDERS = Object.values(ProfileTypes.Gender);
 

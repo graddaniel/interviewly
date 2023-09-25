@@ -92,7 +92,6 @@ const LibraryEditorPage = () => {
 
     const loaderData = useLoaderHandler();
     useActionHandler();
-
     
     const {
         template: currentTemplate,

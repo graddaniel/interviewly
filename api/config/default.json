@@ -57,5 +57,8 @@
     },
     "chatGPT": {
         "apiUrl": "https://api.openai.com/v1/chat/completions"
+    },
+    "cronSchedules": {
+        "upcomingProjectEmailReminder": "0 * * * *"
     }
 }

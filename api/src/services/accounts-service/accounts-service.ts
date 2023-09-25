@@ -434,13 +434,14 @@ export default class AccountsService {
             throw new IncorrectAccountType(account.type);
         }
 
-        const recruiterProfile = await RecruiterProfileModel.findOne({
-            where: {
-                account_id: account.id,
-            },
-        });
+        const recruiterProfile = account.RecruiterProfile;
         if (!recruiterProfile) {
             throw new ProfileNotFoundError();
+        }
+
+        if (recruiterProfile.role === ProfileTypes.Role.InterviewlyStaff
+            && currentUserRole !== ProfileTypes.Role.InterviewlyStaff) {
+            throw new NotPermittedError();
         }
 
         if ([

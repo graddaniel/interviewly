@@ -48,6 +48,8 @@ import JWTVerificationFailedError from './services/jwt-service/errors/jwt-verifi
 import GPTAdapter from './services/gpt-adapter';
 
 import type { Application, Request, Response, NextFunction } from 'express';
+import CronScheduler from './services/cron-scheduler';
+import SendUpcomingProjectsEmailReminders from './tasks/send-upcoming-projects-email-reminders';
 
 
 export default class Appplication {
@@ -70,6 +72,7 @@ export default class Appplication {
         const mqAdapter = new MQAdapter();
         const s3Adapter = new S3Adapter();
         const gptAdapter = new GPTAdapter(s3Adapter);
+        
         mqAdapter.init().then(() => {
             const readyRecordingsQueueName = config.get('rabbitMq.readyRecordingsQueueName') as string;
             const readyTranscriptionsQueue = config.get('rabbitMq.readyTranscriptionsQueue') as string;
@@ -128,6 +131,11 @@ export default class Appplication {
             mqAdapter,
             s3Adapter,
         );
+
+        const cronScheduler = new CronScheduler([{
+            taskName: 'upcomingProjectEmailReminder',
+            task: () => SendUpcomingProjectsEmailReminders(projectsService),
+        }]);
 
         const contactRequestController = new ContactRequestController(mailService);
         const companiesController = new CompaniesController(accountsService, companiesService);

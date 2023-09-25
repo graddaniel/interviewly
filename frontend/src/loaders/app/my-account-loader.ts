@@ -22,8 +22,8 @@ export default async function MyAccountLoader() {
         } as any;
 
         if (auth.type === AccountTypes.Type.RECRUITER) {
-            dataRequests.teamMembers = await CompanyService.getCompanyAccounts();
-            dataRequests.projects = await ProjectService.getProjects();
+            dataRequests.teamMembers = CompanyService.getCompanyAccounts();
+            dataRequests.projects = ProjectService.getProjects();
         }
 
         const myAccountRawData = await promisesMap(dataRequests) as any;
@@ -43,7 +43,7 @@ export default async function MyAccountLoader() {
 
         return {
             success: true,
-            ...myAccountData,
+            data: myAccountData,
         };
     } catch (error) {
         return {

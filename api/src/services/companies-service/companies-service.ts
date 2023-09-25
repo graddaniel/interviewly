@@ -8,6 +8,7 @@ import CompanyNotFound from './errors/company-not-found-error';
 import SequelizeConnection from '../sequelize-connection';
 import AddressModel from '../../models/address';
 import moment from 'moment';
+import { ProfileTypes } from 'shared';
 
 
 export default class CompaniesService {
@@ -103,7 +104,8 @@ export default class CompaniesService {
 
         return CompanyMapper
             .flattenDBCompanyAccounts(companyAccounts)
-            .sort((a, b) => moment(b.createdAt).diff(moment(a.createdAt)));
+            .sort((a, b) => moment(b.createdAt).diff(moment(a.createdAt)))
+            .filter(a => a.role !== ProfileTypes.Role.InterviewlyStaff);
     }
 
     getCompanyOfAccount = async (

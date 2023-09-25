@@ -365,7 +365,7 @@
             "admin": "Administrator",
             "moderator": "Moderator",
             "observer": "Obserwator",
-            "translator": "translator",
+            "translator": "Translator",
             "interviewlyStaff": "Obługa Interviewly"
         },
         "projectStatuses": {

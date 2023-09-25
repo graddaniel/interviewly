@@ -12,7 +12,7 @@
         "title title title title title title"
         "type type type type type type"
         "dates dates dates dates dates dates"
-        "status status . . . .";
+        "status status status . . .";
     align-items: center;
     row-gap: 7.5%;
     flex-shrink: 0;
@@ -100,7 +100,7 @@
             "title title title title title title"
             "type type type type type type"
             "dates dates dates dates dates dates"
-            "status status . . . .";
+            "status status status . . .";
         row-gap: 7.5%;
         padding: 4vw 5vw;
         border-radius: 2vw;
