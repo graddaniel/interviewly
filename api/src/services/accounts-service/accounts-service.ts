@@ -45,6 +45,7 @@ export default class AccountsService {
     private additionalNotificationsTarget: string;
     private interviewsToTranscribeQueue: string;
     private recordedInterviewsQueue: string;
+    private emailNotificationsQueueName: string;
 
     constructor(
         mailService: MailService,
@@ -64,6 +65,7 @@ export default class AccountsService {
         this.additionalNotificationsTarget = config.get('registration.additionalNotificationsTarget');
         this.recordedInterviewsQueue = config.get('rabbitMq.recordedInterviewsQueueName');
         this.interviewsToTranscribeQueue = config.get('rabbitMq.interviewsToTranscribeQueueName');
+        this.emailNotificationsQueueName = config.get('rabbitMq.emailNotificationsQueueName');
     }
 
     getAccount = async (query: Partial<AccountModel>) => {
@@ -367,16 +369,20 @@ export default class AccountsService {
             signature: t('email.accountCreated_fakedoor.signature', { lng: language })
         };
 
-        await this.mailService.sendTemplate(email, subject, 'fakedoor', context);
-
+        this.mqAdapter.send(this.emailNotificationsQueueName, JSON.stringify({
+            recipient: email,
+            subject,
+            template: 'fakedoor',
+            context,
+        }));
 
         if (notify) {
-            await this.mailService.sendTemplate(
-                this.additionalNotificationsTarget,
+            this.mqAdapter.send(this.emailNotificationsQueueName, JSON.stringify({
+                recipient: this.additionalNotificationsTarget,
                 subject,
-                'fakedoor',
+                template: 'fakedoor',
                 context,
-            );
+            }));
         }
     };
 
@@ -399,21 +405,19 @@ export default class AccountsService {
             signature: t('email.accountCreated_setPassword.signature', { lng: language })
         };
 
-        await this.mailService.sendTemplate(
-            email,
+        this.mqAdapter.send(this.emailNotificationsQueueName, JSON.stringify({
+            recipient: email,
             subject,
-            'set-password-and-confirm-account',
-            context
-        );
-
-
+            template: 'set-password-and-confirm-account',
+            context,
+        }));
         if (notify) {
-            await this.mailService.sendTemplate(
-                this.additionalNotificationsTarget,
+            this.mqAdapter.send(this.emailNotificationsQueueName, JSON.stringify({
+                recipient: this.additionalNotificationsTarget,
                 subject,
-                'set-password-and-confirm-account',
+                template: 'set-password-and-confirm-account',
                 context,
-            );
+            }));
         }
     };
 

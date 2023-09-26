@@ -2,6 +2,9 @@
     "registration": {
         "additionalNotificationsTarget": "contact@interviewlyapp.com"
     },
+    "mailer": {
+        "emailNotificationsDelayInMS": 2500
+    },
     "limesurvey": {
         "url": "http://ec2-3-127-163-15.eu-central-1.compute.amazonaws.com/limesurvey/index.php"
     },
@@ -19,5 +22,8 @@
         "transcriptionsBucket": "meetings-transcriptions-prod",
         "interviewRecordingsBucket": "interviewly-interview-recordings-prod",
         "interviewTranscriptsBucket": "interview-transcripts-prod"
+    },
+    "cronSchedules": {
+        "upcomingProjectEmailReminder": "0 * * * *"
     }
 }

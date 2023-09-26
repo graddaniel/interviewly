@@ -528,6 +528,8 @@
                 "scheduledSuccessMessage": "Scheduled",
                 "cvSubtitle": "Respondent's CV",
                 "openCVLabel": "Open in new tab",
+                "otherFilesSubtitle": "Other respondent files",
+                "openOtherFilesLabel": "Open in new tab",
                 "aiScoreSubtitle": "AI Score",
                 "genderDropdownLabel": "Select gender"
             },

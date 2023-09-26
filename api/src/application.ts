@@ -49,7 +49,7 @@ import GPTAdapter from './services/gpt-adapter';
 
 import type { Application, Request, Response, NextFunction } from 'express';
 import CronScheduler from './services/cron-scheduler';
-import SendUpcomingProjectsEmailReminders from './tasks/send-upcoming-projects-email-reminders';
+import sendUpcomingProjectsEmailReminders from './tasks/send-upcoming-projects-email-reminders';
 
 
 export default class Appplication {
@@ -73,30 +73,30 @@ export default class Appplication {
         const s3Adapter = new S3Adapter();
         const gptAdapter = new GPTAdapter(s3Adapter);
         
-        mqAdapter.init().then(() => {
-            const readyRecordingsQueueName = config.get('rabbitMq.readyRecordingsQueueName') as string;
-            const readyTranscriptionsQueue = config.get('rabbitMq.readyTranscriptionsQueue') as string;
+        mqAdapter.init().then(async () => {
+            console.log("Creating channels")
+            await mqAdapter.createChannelWithQueueListeners([{
+                queueName: config.get('rabbitMq.readyRecordingsQueueName') as string,
+                handler: meetingsService.addRecording,
+            }, {
+                queueName: config.get('rabbitMq.readyTranscriptionsQueue') as string,
+                handler: meetingsService.addTranscription,
+            }, {
+                queueName: config.get('rabbitMq.readyInterviewRecordingsQueueName') as string,
+                handler: accountsService.addInterviewRecording,
+            }, {
+                queueName: config.get('rabbitMq.readyInterviewTranscriptsQueueName') as string,
+                handler: accountsService.addInterviewTranscript,
+            }, {
+                queueName: 'test',
+                handler: async msg => console.log("test", msg),
+            }]);
 
-            mqAdapter.listen(
-                readyRecordingsQueueName,
-                meetingsService.addRecording,
-            );
-            mqAdapter.listen(
-                readyTranscriptionsQueue,
-                meetingsService.addTranscription,
-            );
-
-            const readyInterviewRecordings = config.get('rabbitMq.readyInterviewRecordingsQueueName') as string;
-            const readyInterviewTranscripts = config.get('rabbitMq.readyInterviewTranscriptsQueueName') as string;
-
-            mqAdapter.listen(
-                readyInterviewRecordings,
-                accountsService.addInterviewRecording,
-            );
-            mqAdapter.listen(
-                readyInterviewTranscripts,
-                accountsService.addInterviewTranscript,
-            );
+            await mqAdapter.createChannelWithQueueListeners([{
+                queueName: config.get('rabbitMq.emailNotificationsQueueName') as string,
+                handler: mailService.sendEmailNotifications,
+                messagesLimit: 1,
+            }], true);
         });
 
         const janusAdminRestApiAdapter = new JanusAdminRestApiAdapter();
@@ -123,6 +123,7 @@ export default class Appplication {
             lsqBuilder,
             s3Adapter,
             mailService,
+            mqAdapter,
         );
 
         const meetingsService = new MeetingsService(
@@ -131,11 +132,6 @@ export default class Appplication {
             mqAdapter,
             s3Adapter,
         );
-
-        const cronScheduler = new CronScheduler([{
-            taskName: 'upcomingProjectEmailReminder',
-            task: () => SendUpcomingProjectsEmailReminders(projectsService),
-        }]);
 
         const contactRequestController = new ContactRequestController(mailService);
         const companiesController = new CompaniesController(accountsService, companiesService);
@@ -149,6 +145,13 @@ export default class Appplication {
             force: config.get('database.forceSync'),
             alter: config.get('database.alterSync'),
         });
+
+        const cronScheduler = new CronScheduler([{
+            taskName: 'upcomingProjectEmailReminder',
+            task: () => sendUpcomingProjectsEmailReminders(
+                mqAdapter,
+            ),
+        }]);
 
         const fileUploadConfig = config.get('fileUpload') as any;
         const uploadHandler = multer({

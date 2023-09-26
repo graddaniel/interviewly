@@ -13,6 +13,7 @@ import SurveyModel from './survey';
 import { UUID_V4_LENGTH } from '../consts';
 import CompanyModel from './company';
 import MeetingModel from './meeting';
+import RespondentProfile from './respondent-profile';
 
 
 const TITLE_LENGTH = 64;
@@ -41,6 +42,7 @@ export default class Project extends Model {
     declare moderatorNeeded: boolean;
 
     declare Company: CompanyModel;
+    declare RespondentProfiles: RespondentProfile[];
     declare addRespondentProfiles: HasManyAddAssociationsMixin<RespondentProfileModel, RespondentProfileModel['id']>;
     declare getRespondentProfiles: HasManyGetAssociationsMixin<RespondentProfileModel>;
     declare getRecruiterProfiles: HasManyGetAssociationsMixin<RecruiterProfileModel>;

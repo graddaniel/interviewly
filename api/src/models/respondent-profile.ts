@@ -1,4 +1,5 @@
 import {
+    BelongsToGetAssociationMixin,
     BelongsToManyGetAssociationsMixin,
     DataTypes,
     Model
@@ -44,6 +45,7 @@ export default class RespondentProfile extends Model {
     declare Surveys: SurveyModel[];
     declare SurveyParticipant: SurveyParticipantModel;
     declare getSurveys: BelongsToManyGetAssociationsMixin<RespondentProfileModel>;
+    declare getAccount: BelongsToGetAssociationMixin<AccountModel>;
 };
 
 RespondentProfile.init({

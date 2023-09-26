@@ -39,6 +39,16 @@ const en = {
                     signature: `Best regards,\nInterviewly team`
                 },
             },
+            upcomingMeetingReminder: {
+                subject: 'Reminder about upcoming meeting: {{projectName}}',
+                welcomeMessage: 'Welcome {{name}},',
+                paragraphs: {
+                    first: 'We remind you about an upcoming meeting with company {{companyName}}.',
+                    second: 'We would like to ask you for preparation and presence at the specified time. If you experience any technical issues or need to reschedule the meeting, please do not hesitate to contact us.',
+                    third: 'Thank you and we are awaiting the meeting.',
+                },
+                signature: `Best regards,\nInterviewly team`
+            },
         },
         errors: {
             ...ErrorsTranslations.en.translation,

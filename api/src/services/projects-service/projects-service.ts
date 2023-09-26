@@ -34,6 +34,7 @@ import type CompaniesService from '../companies-service/companies-service';
 import type LimeSurveyAdapter from '../lime-survey-adapter';
 import type LSQBuilder from '../lsq-builder';
 import AccountModel from '../../models/account';
+import MQAdapter from '../mq-adapter';
 
 
 type LimesurveyConfig = {
@@ -56,12 +57,14 @@ export default class ProjectsService {
     limeSurveyUrl: string;
     s3Adapter: S3Adapter;
     mailService: MailService;
+    mqAdapter: MQAdapter;
 
     recordingsBucketName: string;
     transcriptionsBucketName: string;
     cvBucketName: string;
     otherFilesBucketName: string;
     interviewVideoBucket: string;
+    emailNotificationsQueueName: string;
 
     constructor (
         accountsService: AccountsService,
@@ -72,6 +75,7 @@ export default class ProjectsService {
         lsqBuilder: LSQBuilder,
         s3Adapter: S3Adapter,
         mailService: MailService,
+        mqAdapter: MQAdapter,
     ) {
         this.accountsService = accountsService;
         this.companiesService = companiesService;
@@ -81,6 +85,7 @@ export default class ProjectsService {
         this.lsqBuilder = lsqBuilder;
         this.s3Adapter = s3Adapter;
         this.mailService = mailService;
+        this.mqAdapter = mqAdapter;
 
         const limesurveyConfig = config.get('limesurvey') as LimesurveyConfig;
         this.limeSurveyUrl = limesurveyConfig.url;
@@ -91,6 +96,7 @@ export default class ProjectsService {
         this.cvBucketName = config.get('s3.cvBucket');
         this.otherFilesBucketName = config.get('s3.otherFilesBucketName');
         this.interviewVideoBucket = config.get('s3.interviewRecordingsBucket');
+        this.emailNotificationsQueueName = config.get('rabbitMq.emailNotificationsQueueName');
     }
 
     //TODO no need to find the company by user when we have its uuid
@@ -130,14 +136,6 @@ export default class ProjectsService {
         }
 
         return project;
-    }
-
-    getAllProjects = async (query: any) => {
-        const projects = await ProjectModel.findAll({
-            where: query,
-        });
-
-        return projects;
     }
 
     getOneCompanyProject = async (
@@ -620,21 +618,19 @@ export default class ProjectsService {
         } as any;
 
         respondentsAccounts.forEach(async account => {
-            const thisAccountContext = {
-                ...context,
-                welcomeMessage: t('email.projectInvitation.newRespondent.welcomeMessage', {
-                    lng: 'en',
-                    email: account.email,
-                }),
-                passwordSetUrl: `https://interviewlyapp.com/setPassword/${account.uuid}`,
-            };
-
-            await this.mailService.sendTemplate(
-                account.email,
-                subject,
-                'project-invitation-new-respondent',
-                thisAccountContext
-            )
+            this.mqAdapter.send(this.emailNotificationsQueueName, JSON.stringify({
+                recipient: account.email,
+                subject: subject,
+                template: 'project-invitation-new-respondent',
+                context: {
+                    ...context,
+                    welcomeMessage: t('email.projectInvitation.newRespondent.welcomeMessage', {
+                        lng: 'en',
+                        email: account.email,
+                    }),
+                    passwordSetUrl: `https://interviewlyapp.com/setPassword/${account.uuid}`,
+                },
+            }));
         });
     }
 
@@ -658,20 +654,18 @@ export default class ProjectsService {
         };
 
         existingRespondentsAccounts.forEach(async account => {
-            const thisAccountContext = {
-                ...context,
-                welcomeMessage: t('email.projectInvitation.existingRespondent.welcomeMessage', {
-                    lng: 'en',
-                    name: account.RespondentProfile.name,
-                }),
-            };
-
-            await this.mailService.sendTemplate(
-                account.email,
-                subject,
-                'project-invitation-existing-respondent',
-                thisAccountContext
-            )
+            this.mqAdapter.send(this.emailNotificationsQueueName, JSON.stringify({
+                recipient: account.email,
+                subject: subject,
+                template: 'project-invitation-existing-respondent',
+                context: {
+                    ...context,
+                    welcomeMessage: t('email.projectInvitation.existingRespondent.welcomeMessage', {
+                        lng: 'en',
+                        name: account.RespondentProfile.name,
+                    }),
+                },
+            }));
         });
     }
 

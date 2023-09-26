@@ -20,7 +20,8 @@
     },
     "mailer": {
         "host": "smtp.office365.com",
-        "port": 587
+        "port": 587,
+        "emailNotificationsDelayInMS": 2500
     },
     "limesurvey": {
         "url": "http://127.0.0.1/limesurvey/index.php"
@@ -45,7 +46,8 @@
         "recordedInterviewsQueueName": "recordedInterviews",
         "readyInterviewRecordingsQueueName": "readyInterviewRecordings",
         "interviewsToTranscribeQueueName": "interviewsToTranscribe",
-        "readyInterviewTranscriptsQueueName": "readyInterviewTranscripts"
+        "readyInterviewTranscriptsQueueName": "readyInterviewTranscripts",
+        "emailNotificationsQueueName": "emailNotifications"
     },
     "s3": {
         "recordingsBucket": "meetings-recordings-dev",

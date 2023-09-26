@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Example App</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
+            @media screen {
+                @font-face {
+                    font-family: 'Lato';
+                    font-style: normal;
+                    font-weight: 400;
+                    src: local('Plus Jakarta Sans'), local('Plus Jakarta Sans'), url(https://fonts.gstatic.com/s/plusjakartasans/v8/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko20yw.woff2) format('woff');
+                }
+            }
+        </style>
+    </head>
+    <body style="font-family: 'Plus Jakarta Sans', sans-serif;">
+        <h1 class="header" style="font-size: 3vw;"><img style="width: 3vw; margin-right: 1vw;" src="https://interviewlyapp.com/logo.png" />Interviewly</h1>
+        <h2 class="message" style="font-size: 2vw;">{{ welcomeMessage }}!</h2>
+        <div style="color: black;padding: 4vw 1.5vw;border-radius:2.5vw;background-color: #FBF3FF;">
+            <p style="font-size: 1vw;">{{ firstParagraph }}</p>
+            <p style="font-size: 1vw;">{{ secondParagraph }}</p>
+            <p style="font-size: 1vw;">{{ thirdParagraph }}</p>
+            <p style="font-size: 1vw;">{{ signature }}</p>
+        </div>
+        <span style="font-size: 0.75vw;">&copy; Interviewly, 2023</span>
+    </body>
+</html>
