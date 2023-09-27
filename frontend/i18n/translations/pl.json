@@ -487,6 +487,8 @@
             },
             "methodology": {
                 "interview": {
+                    "upcomingInterviewsLabel": "Nadchodzące spotkania",
+                    "finishedInterviewsLabel": "Zakończone spotkania", 
                     "createSurvey": "Stwórz ankietę",
                     "instruction": "lub wybierz jedną z naszej biblioteki",
                     "save": "Zapisz"
@@ -510,25 +512,26 @@
                         "commentPluralLabel": "komentarze"
                     }
                 },
-                "sessionStartDateLabel": "Session start date",
-                "sessionEndDateLabel": "Session end date"
+                "sessionStartDateLabel": "Data rozpoczęcia kwestionariusza",
+                "sessionEndDateLabel": "Data zakońćzenia kwestionariusza"
             },
             "projectMeeting": {
+                "interviewDateLabel": "Data spotkania",
                 "downloadTranscriptLinkLabel": "Pobierz transkrypt",
                 "aiScore": "Wynik AI"
             },
             "respondents": {
-                "personalDataSubtitle": "Personal data",
+                "personalDataSubtitle": "Dane osobowe",
                 "seeDetailsLabel": "Szczegóły",
                 "respondentVideoSubtitle": "Nagranie Kandydata",
                 "upcomingInterviewsSubtitle": "Nadchodzące spotkania",
-                "meetingSchedulerSubtitle": "Schedule the meeting",
-                "scheduleButtonText": "Schedule",
+                "meetingSchedulerSubtitle": "Zaplanuj rozmowę o pracę",
+                "scheduleButtonText": "Zaplanuj",
                 "respondentSurveysSubtitle": "Ankiety Kandydata",
                 "scheduledSuccessMessage": "Scheduled",
-                "cvSubtitle": "CV Respondenta",
+                "cvSubtitle": "CV Kandydata",
                 "openCVLabel": "Otwórz w nowej karcie",
-                "otherFilesSubtitle": "Inne pliki Respondenta",
+                "otherFilesSubtitle": "Inne dokumenty rekrutacyjne",
                 "openOtherFilesLabel": "Otwórz w nowej karcie",
                 "aiScoreSubtitle": "Ocena AI",
                 "genderDropdownLabel": "Wybierz płeć"
@@ -552,9 +555,9 @@
                 "interviewsSubtitle": "Interviews",
                 "surveysSubtitle": "Surveys",
                 "surveysStatuses": {
-                    "filled": "filled",
-                    "ended": "ended",
-                    "pending": "pending"
+                    "filled": "wypełniona",
+                    "ended": "zakończona",
+                    "pending": "oczekująca"
                 },
                 "noResponsesMessage": "No responses"
             }

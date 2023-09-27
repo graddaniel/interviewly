@@ -85,7 +85,7 @@ const InterviewSection = () => {
             />
             {upcomingInterviews.length > 0 && (<>
                 <StepTitle
-                    title={"Upcoming interviews"}
+                    title={t('viewProject.methodology.interview.upcomingInterviewsLabel')}
                     icon={ChatIcon}
                 />
                 <div className={classes.upcomingInterviews}>
@@ -99,7 +99,7 @@ const InterviewSection = () => {
             </>)}
             {finishedInterviews.length > 0 && (<>
                 <StepTitle
-                    title={"Finished interviews"}
+                    title={t('viewProject.methodology.interview.finishedInterviewsLabel')}
                     icon={FinishedMeetingIconBlack}
                 />
                 <div className={classes.finishedInterviews}>

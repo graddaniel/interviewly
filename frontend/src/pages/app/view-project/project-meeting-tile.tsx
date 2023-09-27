@@ -118,7 +118,7 @@ const ProjectMeetingTile = ({
                     classes.dateLabel,
                     hasFinished && classes.greyText
                 )}>
-                    Interview date:
+                    {t('viewProject.projectMeeting.interviewDateLabel')}:
                 </span>
                 <span className={classNames(
                     classes.date,

@@ -15,34 +15,36 @@ const POSTS = [{
     title: 'Sprint 2023: Braintrust talent all hands recap', //unused
     date: 1695756733000,
     image: 'https://picsum.photos/1400/1200',
-}, {
-    title: 'Binance.US Announces BTRST Token Listing.',
-    date: Date.now(),
-}, {
-    title: 'Growth Report #32: Turning the...',
-    date: Date.now(),
-    image: 'https://picsum.photos/1000/600',
-}, {
-    title: 'Braintrust Adds Grant Job Type, Partnerships to Become the...',
-    date: Date.now(),
-    image: 'https://picsum.photos/1001/600',
-}, {
-    title: 'How Web3 Makes Hiring (And Getting Hired) Better. ',
-    date: Date.now(),
-    image: 'https://picsum.photos/1002/600',
-}, {
-    title: 'Braintrust Adds Grant Job Type, Partnerships to Become the... ',
-    date: Date.now(),
-    image: 'https://picsum.photos/1003/600',
-}, {
-    title: 'How Web3 Makes Hiring (And Getting Hired) Better.  ',
-    date: Date.now(),
-    image: 'https://picsum.photos/1004/600',
-}, {
-    title: 'This is some random post, and there are no more available.',
-    date: Date.now(),
-    image: 'https://picsum.photos/1005/600',
-}];
+},
+//  {
+//     title: 'Binance.US Announces BTRST Token Listing.',
+//     date: Date.now(),
+// }, {
+//     title: 'Growth Report #32: Turning the...',
+//     date: Date.now(),
+//     image: 'https://picsum.photos/1000/600',
+// }, {
+//     title: 'Braintrust Adds Grant Job Type, Partnerships to Become the...',
+//     date: Date.now(),
+//     image: 'https://picsum.photos/1001/600',
+// }, {
+//     title: 'How Web3 Makes Hiring (And Getting Hired) Better. ',
+//     date: Date.now(),
+//     image: 'https://picsum.photos/1002/600',
+// }, {
+//     title: 'Braintrust Adds Grant Job Type, Partnerships to Become the... ',
+//     date: Date.now(),
+//     image: 'https://picsum.photos/1003/600',
+// }, {
+//     title: 'How Web3 Makes Hiring (And Getting Hired) Better.  ',
+//     date: Date.now(),
+//     image: 'https://picsum.photos/1004/600',
+// }, {
+//     title: 'This is some random post, and there are no more available.',
+//     date: Date.now(),
+//     image: 'https://picsum.photos/1005/600',
+// }
+];
 
 const BlogPage = () => {
     const { t, i18n } = useTranslation();

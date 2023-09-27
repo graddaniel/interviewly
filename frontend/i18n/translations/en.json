@@ -487,6 +487,8 @@
             },
             "methodology": {
                 "interview": {
+                    "upcomingInterviewsLabel": "Upcoming interviews",
+                    "finishedInterviewsLabel": "Finished interviews", 
                     "createSurvey": "Create Survey",
                     "instruction": "or choose a survey from the library",
                     "save": "Save"
@@ -514,6 +516,7 @@
                 "sessionEndDateLabel": "Session end date"
             },
             "projectMeeting": {
+                "interviewDateLabel": "Interview date",
                 "downloadTranscriptLinkLabel": "Download transcript",
                 "aiScore": "AI Score"
             },
