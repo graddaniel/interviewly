@@ -19,6 +19,9 @@ const ROUTES = {
         TITLE: 'Blog',
         PATH: '/blog',
     },
+    BLOG_ARTICLE: {
+        PATH: '/blog/article',
+    },
     CONTACT: {
         TITLE: 'Contact',
         PATH: '/contact',

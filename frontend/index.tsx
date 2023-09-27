@@ -85,6 +85,7 @@ import LoginCheckLoader from './src/loaders/login-check-loader';
 import PersonalDataLoader from './src/loaders/app/personal-data-loader';
 import PersonalDataAction from './src/actions/app/personal-data-action';
 import AppLoader from './src/loaders/app/app-loader';
+import BlogArticle from './src/pages/blog/blog-article';
 
 const { Role } = ProfileTypes;
 
@@ -110,6 +111,10 @@ const router = createBrowserRouter(
             <Route
                 path={ROUTES.BLOG.PATH}
                 element={<BlogPage />}
+            />
+            <Route
+                path={ROUTES.BLOG_ARTICLE.PATH}
+                element={<BlogArticle />}
             />
             {!SAMPLE_VERSION && (
             <Route

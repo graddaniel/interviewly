@@ -8,10 +8,12 @@ import IconButton from '../../components/icon-button/icon-button';
 import classes from './blog-page.module.css';
 import ArrowRightIconPurple from '../../../images/arrow-right-icon-purple.svg';
 import ArrowRightIcon from '../../../images/arrow-right-icon.svg';
+import { useNavigate } from 'react-router-dom';
+import ROUTES from '../../consts/routes';
 
 const POSTS = [{
-    title: 'Sprint 2023: Braintrust talent all hands recap',
-    date: Date.now(),
+    title: 'Sprint 2023: Braintrust talent all hands recap', //unused
+    date: 1695756733000,
     image: 'https://picsum.photos/1400/1200',
 }, {
     title: 'Binance.US Announces BTRST Token Listing.',
@@ -29,11 +31,11 @@ const POSTS = [{
     date: Date.now(),
     image: 'https://picsum.photos/1002/600',
 }, {
-    title: 'Braintrust Adds Grant Job Type, Partnerships to Become the...',
+    title: 'Braintrust Adds Grant Job Type, Partnerships to Become the... ',
     date: Date.now(),
     image: 'https://picsum.photos/1003/600',
 }, {
-    title: 'How Web3 Makes Hiring (And Getting Hired) Better. ',
+    title: 'How Web3 Makes Hiring (And Getting Hired) Better.  ',
     date: Date.now(),
     image: 'https://picsum.photos/1004/600',
 }, {
@@ -44,6 +46,7 @@ const POSTS = [{
 
 const BlogPage = () => {
     const { t, i18n } = useTranslation();
+    const navigate = useNavigate();
 
     const { resolvedLanguage } = i18n;
 
@@ -67,9 +70,10 @@ const BlogPage = () => {
                 <section className={classes.newestPosts}>
                     <div className={classes.latestPost}>
                         <NewestBlogPost
-                            title={latestPost.title}
+                            title={t('blogArticle.title')}
                             date={latestPost.date}
                             image={latestPost.image}
+                            onClick={() => navigate(ROUTES.BLOG_ARTICLE.PATH)}
                         />
                     </div>
                     <div className={classes.otherNewPosts}>
@@ -104,6 +108,7 @@ const NewestBlogPost = ({
     title,
     date,
     image,
+    onClick = () => console.log('Open blog article'),
 }) => {
     return (
         <article
@@ -127,7 +132,7 @@ const NewestBlogPost = ({
                     image ? '' : classes.blackButton
                 )}
                 icon={image ? ArrowRightIconPurple : ArrowRightIcon}
-                onClick={() => console.log('Open blog article')}
+                onClick={onClick}
             />
         </article>
     );

@@ -671,6 +671,32 @@
             "header": "It's ready!",
             "subheader": "You may now log in."
         },
+        "blogArticle": {
+            "title": "New Platform Feature: Automatic Candidate Assessment Using AI API",
+            "paragraphs": [
+                "Have you ever wondered how to make the recruitment and candidate selection process even more efficient? Our platform is becoming increasingly advanced, and one of the latest features we'd like to introduce today is \"Feature 4: AI API Usage.\" This innovative function significantly improves the assessment of candidates' language skills and other competencies, all thanks to the use of an external AI API.",
+                "How it works?",
+                "The process is incredibly straightforward. Simply upload a transcript of a conversation with the candidate in English. It could be a recording of a job interview where the candidate talks about themselves, their experience, and their skills. After submitting the transcript, our tool leverages the AI API to precisely evaluate the candidate's language skills and other competencies.",
+                "Marketing AI assessment of candidate skills and competencies",
+                {
+                    "listHeader": "The AI assessment is expressed as a percentage, allowing for a quick understanding of the candidate's qualifications. Here's how to interpret the results:",
+                    "list": [
+                        "0-10%: The candidate has weak language skills and struggles with basic vocabulary. Their ability to communicate in English is very limited.",
+                        "10-20%: The candidate can formulate simple sentences, but their language skills are at a low level. They may have difficulty understanding more complex questions and responses.",
+                        "20-30%: The candidate possesses basic language knowledge and can communicate in straightforward situations. Their ability to engage in more advanced conversations is limited.",
+                        "30-40%: The candidate has intermediate language skills, capable of handling more complex topics and communicating in various contexts.",
+                        "40-50%: The candidate has good language skills and can communicate effectively in different situations. Their ability to express thoughts is significantly better than candidates with lower scores.",
+                        "50-60%: The candidate has advanced language skills, proficiently using the English language and excelling in conversations requiring more advanced language abilities.",
+                        "60-70%: The candidate is fluent in English and can work in an international environment. Their communication skills are at a very high level.",
+                        "70-80%: The candidate has excellent language skills and can handle even highly complex conversations. Their negotiation and customer communication abilities are impressive.",
+                        "80-90%: The candidate is an expert in the English language and can work in roles requiring advanced language skills, such as a translator or international communication specialist.",
+                        "90-100%: The candidate possesses native-level language proficiency. They can engage in high-level conversations and effortlessly communicate in any context."
+                    ]
+                },
+                "With this innovative feature of our platform, the recruitment process becomes more efficient, and decisions regarding candidate selection are more accurate. Additionally, we can save valuable time that would have been spent manually assessing candidate skills.",
+                "Don't wait any longer; try our new \"AI API Usage\" feature now. It ensures that you select the best-suited candidates for your company!"
+            ]
+        },
         "termsAndConditions": {
             "header": "Terms of service",
             "generalProvisions": {

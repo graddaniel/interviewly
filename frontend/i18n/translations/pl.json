@@ -671,6 +671,32 @@
             "header": "Gotowe!",
             "subheader": "Możesz się teraz zalogować"
         },
+        "blogArticle": {
+            "title": "Nowa Funkcja Platformy: Automatyczna Ocena Kandydatów z Wykorzystaniem API AI",
+            "paragraphs": [
+                "Czy zastanawialiście się kiedyś, jak można jeszcze bardziej ułatwić proces rekrutacji i wybierania najlepszych kandydatów do pracy? Nasza platforma staje się coraz bardziej zaawansowana, a jedną z najnowszych funkcji, którą chcielibyśmy Wam dziś przedstawić, jest \"Funkcja 4: Użycie API AI.\" Ta innowacyjna funkcja znacząco usprawnia proces oceny umiejętności językowych i innych kompetencji kandydatów, a wszystko to dzięki wykorzystaniu zewnętrznego API AI.",
+                "Jak to działa?",
+                "Proces jest niezwykle prosty. Wystarczy przesłać do naszego systemu transkrypt rozmowy z kandydatem, w języku angielskim. To może być nagranie z rozmowy kwalifikacyjnej, w której kandydat opowiada o sobie, swoim doświadczeniu i umiejętnościach. Po przesłaniu transkryptu, nasze narzędzie korzysta z API AI, aby dokładnie ocenić umiejętności językowe oraz inne kompetencje kandydata.",
+                "Marketingowa ocena AI umiejętności i kompetencji kandydata",
+                {
+                    "listHeader": "Ocena AI jest wyrażona procentowo, co pozwala na szybkie zrozumienie poziomu kwalifikacji kandydata. Oto, jak można interpretować wyniki:",
+                    "list": [
+                        "0-10%: Kandydat ma słabe umiejętności językowe, nie potrafi posługiwać się podstawowym słownictwem. Jego zdolność do komunikacji w języku angielskim jest bardzo ograniczona.",
+                        "10-20%: Kandydat potrafi formułować proste zdania, ale jego umiejętności językowe są na niskim poziomie. Może mieć trudności z zrozumieniem bardziej skomplikowanych pytań i odpowiedzi.",
+                        "20-30%: Kandydat posiada podstawową wiedzę językową i jest w stanie porozumieć się w prostych sytuacjach. Jego zdolność do prowadzenia bardziej zaawansowanych rozmów jest ograniczona.",
+                        "30-40%: Kandydat ma umiejętności językowe na poziomie średnim. Potrafi obsługiwać bardziej skomplikowane zagadnienia i komunikować się w różnych kontekstach.",
+                        "40-50%: Kandydat posiada dobre umiejętności językowe i jest w stanie komunikować się w różnych sytuacjach. Jego zdolność do wyrażania myśli jest wyraźnie lepsza niż u kandydatów z niższym wynikiem.",
+                        "50-60%: Kandydat ma zaawansowane umiejętności językowe. Potrafi sprawnie posługiwać się językiem angielskim i radzi sobie w rozmowach wymagających bardziej zaawansowanych umiejętności językowych.",
+                        "60-70%: Kandydat jest biegły w języku angielskim i może pracować w międzynarodowym środowisku. Jego zdolność do komunikacji jest na bardzo wysokim poziomie.",
+                        "70-80%: Kandydat ma doskonałe umiejętności językowe i może obsługiwać nawet bardzo skomplikowane rozmowy. Jego zdolność do negocjacji i komunikacji z klientami jest imponująca.",
+                        "80-90%: Kandydat jest ekspertem w języku angielskim. Może pracować na stanowiskach wymagających zaawansowanych umiejętności językowych, takich jak tłumacz lub specjalista ds. komunikacji międzynarodowej.",
+                        "90-100%: Kandydat posiada doskonałe umiejętności językowe na poziomie natywnym. Jest w stanie prowadzić rozmowy na najwyższym poziomie i bez trudu komunikować się w każdym kontekście."
+                    ]
+                },
+                "Dzięki tej innowacyjnej funkcji naszej platformy proces rekrutacji staje się bardziej efektywny, a decyzje dotyczące wyboru kandydatów są bardziej trafne. Dodatkowo, możemy zaoszczędzić wiele czasu, który wcześniej byłby poświęcony na ręczne ocenianie umiejętności kandydatów.",
+                "Nie czekajcie dłużej i wypróbujcie naszą nową funkcję \"Użycie API AI\" już teraz. Dzięki niej będziecie mieli pewność, że wybieracie najlepiej dopasowanych kandydatów do Waszej firmy!"
+            ]
+        },
         "termsAndConditions": {
             "header": "Regulamin serwisu",
             "generalProvisions": {
