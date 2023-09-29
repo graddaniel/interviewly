@@ -1,12 +1,8 @@
 import { StatusCodes } from 'http-status-codes';
-import { AccountTypes, ProjectTypes } from 'shared';
-
-import ProjectValidator from './validators/project-validator';
 
 import type { Response } from 'express';
 
 import type { AuthenticatedRequest } from '../generic/types';
-import type ProjectsService from '../services/projects-service/projects-service';
 import SurveysService from '../services/surveys-service/surveys-service';
 
 

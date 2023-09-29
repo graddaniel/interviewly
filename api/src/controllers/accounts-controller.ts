@@ -124,7 +124,6 @@ export default class AccountsController {
             uuid,
         } = req.currentUser;
 
-
         await this.accountsService.confirmCVUpload(
             uuid,
         );
@@ -152,7 +151,6 @@ export default class AccountsController {
         const {
             uuid,
         } = req.currentUser;
-
 
         await this.accountsService.confirmOtherFilesUpload(
             uuid,
