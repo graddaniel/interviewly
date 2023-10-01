@@ -71,6 +71,7 @@ const DetailsStep = ({
     useEffect(() => {
         setStartDateAndTime(
             moment(startDate)
+                .startOf('day')
                 .hour(parseInt(startTime, 10))
                 .toDate()
         );
@@ -78,6 +79,7 @@ const DetailsStep = ({
     useEffect(() => {
         setEndDateAndTime(
             moment(endDate)
+                .startOf('day')
                 .hour(parseInt(endTime, 10))
                 .toDate()
         );

@@ -85,8 +85,8 @@ const APP_ROUTES = {
     PROJECT_SURVEY: {
         PATH: '/app/projects/:projectId/surveys/:surveyId',
     },
-    ONLINE_COMMUNITY_ROOM: {
-        PATH: '/app/projects/:projectId/rooms/:roomId',
+    BULLETIN_BOARD_ROOM: {
+        PATH: '/app/projects/:projectId/bulletinBoardRoom/:roomId',
     },
     MY_TEAM: {
         PATH: '/app/myTeam',

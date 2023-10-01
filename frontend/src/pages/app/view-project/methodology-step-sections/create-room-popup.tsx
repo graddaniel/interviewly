@@ -17,30 +17,37 @@ import { useTranslation } from 'react-i18next';
 type CreateRoomPopupProps = {
     onClose: () => void;
     respondents: any[];
+    bulletinBoardUuid;
 };
 
 const CreateRoomPopup = ({
     onClose,
     respondents,
+    bulletinBoardUuid,
 }: CreateRoomPopupProps) => {
     const { t } = useTranslation();
-    const [ selectedRespondents, setSelectedRespondents ] = useState<string[]>([]);
-    const toggleRespondentSelection = (email: string) => {
-        const index = selectedRespondents.indexOf(email);
+    const [ selectedRespondentUuids, setSelectedRespondentUuids ] = useState<string[]>([]);
+    const toggleRespondentSelection = (uuid: string) => {
+        const index = selectedRespondentUuids.indexOf(uuid);
 
-        const newSelectedRespondents = [...selectedRespondents];
+        const newSelectedRespondents = [...selectedRespondentUuids];
         if (index > -1) {
             newSelectedRespondents.splice(index, 1);
         } else {
-            newSelectedRespondents.push(email);
+            newSelectedRespondents.push(uuid);
         }
 
-        setSelectedRespondents(newSelectedRespondents);
+        setSelectedRespondentUuids(newSelectedRespondents);
     };
+
+    console.log(selectedRespondentUuids)
 
     return (
         <Popup className={classes.createRoomPopup}>
-            <Form className={classes.form} method="post">
+            <Form className={classes.form} method="POST">
+                <input type="hidden" name="type" value="createRoom" />
+                <input type="hidden" name="bulletinBoardUuid" value={bulletinBoardUuid} />
+                <input type="hidden" name="respondentUuids" value={JSON.stringify(selectedRespondentUuids)} />
                 <IconButton
                     className={classes.closeButton}
                     icon={CrossIcon}
@@ -67,11 +74,11 @@ const CreateRoomPopup = ({
                         <RespondentTile
                             className={classNames(
                                 classes.respondentTile,
-                                selectedRespondents.includes(respondent.email) && classes.selectedRespondentTile,
+                                selectedRespondentUuids.includes(respondent.uuid) && classes.selectedRespondentTile,
                             )}
-                            key={respondent.email}
+                            key={respondent.uuid}
                             {...respondent}
-                            onClick={() => toggleRespondentSelection(respondent.email)}
+                            onClick={() => toggleRespondentSelection(respondent.uuid)}
                         />
                     ))}
                 </div>
@@ -81,9 +88,9 @@ const CreateRoomPopup = ({
                             className={classNames(
                                 classes.respondentTile,
                             )}
-                            key={respondent.email}
+                            key={respondent.uuid}
                             {...respondent}
-                            onSelect={() => toggleRespondentSelection(respondent.email)}
+                            onSelect={() => toggleRespondentSelection(respondent.uuid)}
                         />
                     ))}
                 </div>

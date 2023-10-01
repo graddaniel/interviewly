@@ -50,7 +50,7 @@ import CompanyDataPage from './src/pages/app/company-data/company-data-page';
 import PersonalDataPage from './src/pages/app/personal-data/personal-data-page';
 import CompanyDataLoader from './src/loaders/app/company-data-loader';
 import CompanyDataAction from './src/actions/app/company-data-action';
-import OnlineCommunityRoomPage from './src/pages/app/online-community-room/online-community-room-page';
+import BulletinBoardRoom from './src/pages/app/bulletin-board-room/bulletin-board-room-page';
 import MeetingPage from './src/pages/app/meeting/meeting-page';
 import CalendarPage from './src/pages/calendar/calendar-page';
 import ViewProjectLoader from './src/loaders/app/view-project-loader';
@@ -86,6 +86,8 @@ import PersonalDataLoader from './src/loaders/app/personal-data-loader';
 import PersonalDataAction from './src/actions/app/personal-data-action';
 import AppLoader from './src/loaders/app/app-loader';
 import BlogArticle from './src/pages/blog/blog-article';
+import BulletinBoardRoomAction from './src/actions/app/bulletin-board-room-action';
+import BulletinBoardRoomLoader from './src/loaders/app/bulletin-board-room-loader';
 
 const { Role } = ProfileTypes;
 
@@ -222,8 +224,10 @@ const router = createBrowserRouter(
                         loader={ProjectSurveyLoader}
                     />
                     <Route
-                        path={APP_ROUTES.ONLINE_COMMUNITY_ROOM.PATH}
-                        element={<OnlineCommunityRoomPage />}
+                        path={APP_ROUTES.BULLETIN_BOARD_ROOM.PATH}
+                        element={<BulletinBoardRoom />}
+                        loader={BulletinBoardRoomLoader}
+                        action={BulletinBoardRoomAction}
                     />
                     <Route
                         path={APP_FORMS_ROUTES.EDIT_PROJECT.PATH}

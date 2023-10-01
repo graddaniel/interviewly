@@ -2,6 +2,7 @@
 @value min-large, max-medium, min-medium, max-small from breakpoints;
 
 .addTopicBox {
+    box-sizing: border-box;
     width: 100%;
     display: flex;
     gap: 2.5vw;

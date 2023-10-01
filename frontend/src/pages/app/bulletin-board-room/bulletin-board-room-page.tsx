@@ -7,11 +7,12 @@ import DropdownList from '../../../components/dropdown-list/dropdown-list';
 import Topic from './topic';
 import AddTopicPopup from './add-topic-popup';
 
-import classes from './online-community-room-page.module.css';
+import classes from './bulletin-board-room-page.module.css';
 import ArrowLeftIconPurple from 'images/arrow-left-icon-purple.svg';
 import PlusIconBlack from 'images/plus-icon-black.svg';
 import { useTranslation } from 'react-i18next';
 import capitalizeFirstLetter from '../../../utils/capitalize-first-letter';
+import { useLoaderHandler } from '../../../hooks/use-handlers';
 
 
 const ROOM_MEMBERS = [{
@@ -37,33 +38,36 @@ const CURRENT_USER = {
     avatarUrl: 'https://i.pravatar.cc/75',
 };
 
-type OnlineCommunityRoomPageProps = {
 
-};
-
-const OnlineCommunityRoomPage = ({
-
-}: OnlineCommunityRoomPageProps) => {
+const BulletinBoardRoom = () => {
     const { t } = useTranslation();
+    const navigate = useNavigate();
+    
+    const { data } = useLoaderHandler();
     const SORTING = [
         capitalizeFirstLetter(t('sorting.newest')),
         capitalizeFirstLetter(t('sorting.oldest')),
     ];
-
     const [ sorting, setSorting ] = useState(SORTING[0]);
     const [ isTopicPopupOpen, setIsTopicPopupOpen ] = useState(false);
-    const navigate = useNavigate();
     const goBack = () => navigate(-1);
 
+    if (!data) {
+        return null;
+    }
+
+    const { room } = data;
+    const { name, threads } = room;
+
     return (
-        <section className={classes.onlineCommunityRoom}>
+        <section className={classes.bulletinBoardRoom}>
             <IconButton
                 className={classes.backIcon}
                 icon={ArrowLeftIconPurple}
                 onClick={goBack}
             />
             <h4 className={classes.title}>
-                {t('viewProject.methodology.onlineCommunity.roomName')}
+                {name}
             </h4>
             <DropdownList
                 className={classes.sortDropdown}
@@ -82,48 +86,16 @@ const OnlineCommunityRoomPage = ({
             </button>
             <div className={classes.content}>
                 <AddTopicBox className={classes.addTopicBox} onClick={() => setIsTopicPopupOpen(true)} />
-                <Topic
-                    author={{
-                        name: 'Ewelina',
-                        surname: 'Zalewska',
-                        avatarUrl: 'https://i.pravatar.cc/75',
-                    }}
-                    postDate={new Date()}
-                    content={'Are you also having trouble creating the questionnaire?'}
-                    attachment={{
-                        type: 'video',
-                        url: 'https://media.istockphoto.com/id/1490029320/pl/filmy/niszczarka-papieru-niszczy-dokumenty-poufne-lub-niejawne.mp4?s=mp4-640x640-is&k=20&c=pmtycuwWk0aLpJUDhAeSLL26MPSNFFyvbISTugHpL68=',
-                    }}
-                />
-                <Topic
-                    author={{
-                        name: 'Karol',
-                        surname: 'Walewski',
-                    }}
-                    postDate={new Date()}
-                    content={'How can I add members to my team...'}
-                    attachment={{
-                        type: 'image',
-                        url: 'https://picsum.photos/200/300',
-                    }}
-                />
-                <Topic
-                    author={{
-                        name: 'Karol',
-                        surname: 'Walewski',
-                    }}
-                    postDate={new Date()}
-                    content={'How can I add members to my team...'}
-                    comments={[{
-                        author: {
-                            name: 'Ewelina',
-                            surname: 'Zalewska',
-                            avatarUrl: 'https://i.pravatar.cc/75',
-                        },
-                        postDate: new Date(),
-                        content: 'The attachment is missing!',
-                    }]}
-                />
+                {threads.map(thread => (
+                    <Topic
+                        key={thread.uuid}
+                        uuid={thread.uuid}
+                        author={thread.author}
+                        postDate={thread.postDate}
+                        message={thread.message}
+                        responses={thread.responses}
+                    />
+                ))}
             </div>
             {isTopicPopupOpen && (
                 <AddTopicPopup
@@ -136,4 +108,4 @@ const OnlineCommunityRoomPage = ({
     );
 };
 
-export default OnlineCommunityRoomPage;
+export default BulletinBoardRoom;

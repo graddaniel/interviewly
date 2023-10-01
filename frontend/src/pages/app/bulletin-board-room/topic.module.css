@@ -89,6 +89,10 @@
     outline: none;
     background-color: var(--COLOR3);
 }
+.addCommentButton {
+    border: none;
+    background-color: transparent;
+}
 .addCommentIcon {
     cursor: pointer;
 }

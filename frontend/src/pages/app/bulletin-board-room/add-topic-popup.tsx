@@ -14,6 +14,7 @@ import PencilIconBlack from 'images/pencil-icon-black.svg';
 import SwitchInput from '../edit-project/switch-input';
 import TextButton from '../../../components/text-button/text-button';
 import { useTranslation } from 'react-i18next';
+import { useActionHandler } from '../../../hooks/use-handlers';
 
 
 type User = {
@@ -38,8 +39,10 @@ const AddTopicPopup = ({
     const [ showInitialStep, setShowInitialStep ] = useState(true);
     const [ isVisibilityPublic, setIsVisibilityPublic ] = useState(true);
     const [ topicMembers, setTopicMembers ] = useState<string[]>([]);
-    const [ topic, setTopic ] = useState('');
+    const [ message, setMessage ] = useState('');
     const [ pickingMembers, setPickingMembers ] = useState(false);
+
+    const actionData = useActionHandler(t('viewProject.methodology.onlineCommunity.room.topicAddedSuccessMessage'));
 
     const toggleTopicMember = (email: string) => {
         const index = topicMembers.indexOf(email);
@@ -57,6 +60,7 @@ const AddTopicPopup = ({
     return (
         <Popup className={classes.popup}>
             <Form method="post">
+                <input type="hidden" name="type" value="postThread" />
                 {showInitialStep ? (
                     <div className={classes.initialStep}>
                         <IconButton
@@ -98,9 +102,9 @@ const AddTopicPopup = ({
                         </div>
                         <textarea
                             className={classes.topic}
-                            name="topicName"
-                            value={topic}
-                            onChange={e => setTopic(e.target.value)}
+                            name="message"
+                            value={message}
+                            onChange={e => setMessage(e.target.value)}
                             rows={3}
                             placeholder={t('viewProject.methodology.onlineCommunity.room.topicInputPlaceholder')}
                         ></textarea>

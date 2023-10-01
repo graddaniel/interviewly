@@ -497,11 +497,11 @@
                     "createBulletinBoardButtonText": "Stwórz Bulletin Board",
                     "membersLabel": "członków",
                     "createRoomButtonText": "Stwórz pokój",
-                    "roomName": "Nazwa pokoju",
                     "addMembersLabel": "Dodaj członków",
                     "surveySubtitle": "lub wybierz ankietę z biblioteki",
                     "room": {
                         "addTopicLabel": "Dodaj wątek",
+                        "topicAddedSuccessMessage": "Dodano wątek",
                         "visibilityLabel": "Widoczność",
                         "publicVisibility": "Publiczna",
                         "specificMembersVisibility": "Określenie członkowie",

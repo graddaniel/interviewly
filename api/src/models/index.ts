@@ -10,6 +10,13 @@ import RespondentMeeting from "./respondent-meeting";
 import Survey from "./survey";
 import SurveyParticipant from "./survey-participant";
 import Template from "./template";
+import {
+    BulletinBoard,
+    BulletinBoardRoom,
+    BulletinBoardRoomRespondent,
+    BulletinBoardThread,
+    BulletinBoardResponse
+} from "./bulletin-board";
 
 export {
     Account as AccountModel,
@@ -24,4 +31,9 @@ export {
     Survey as SurveyModel,
     SurveyParticipant as SurveyParticipantModel,
     Template as TemplateModel,
+    BulletinBoard as BulletinBoardModel,
+    BulletinBoardRoom as BulletinBoardRoomModel,
+    BulletinBoardRoomRespondent as BulletinBoardRoomRespondentModel,
+    BulletinBoardThread as BulletinBoardThreadModel,
+    BulletinBoardResponse as BulletinBoardResponseModel
 };

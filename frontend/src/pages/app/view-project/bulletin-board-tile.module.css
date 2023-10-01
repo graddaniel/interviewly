@@ -3,14 +3,20 @@
 
 .tile {
     box-sizing: border-box;
-    width: 19vw;
     display: flex;
     flex-direction: column;
     gap: 1.5vw;
     padding: 1.5vw 1vw;
     border-radius: 1.5vw;
     background-color: var(--WHITE);
-    cursor: pointer;
+}
+
+.tileHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1.5vw;
+    border-bottom: 1px dashed var(--BLACK);
 }
 
 .pill {
@@ -28,6 +34,27 @@
 .date {
     display: flex;
     gap: 1.5vw;
+}
+
+.rooms {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vw;
+}
+.roomName {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.roomEntry {
+    display: flex;
+    gap: 2.5vw;
+}
+
+.createRoomButton {
+    height: auto;
+    padding: 0.75vw 1.5vw;
+    background-color: var(--WHITE);
+    border: 1px solid var(--COLOR2);
 }
 
 @media (min-width: min-large) {

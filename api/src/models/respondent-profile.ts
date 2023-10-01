@@ -8,7 +8,7 @@ import { ProfileTypes } from 'shared';
 
 import SequelizeConnection from '../services/sequelize-connection';
 import AddressModel from './address';
-import type { AccountModel, RespondentProfileModel, SurveyModel, SurveyParticipantModel } from '.';
+import type { AccountModel, ProjectModel, RespondentProfileModel, SurveyModel, SurveyParticipantModel } from '.';
 
 
 const NAME_MAX_LENGTH = 32;
@@ -46,6 +46,7 @@ export default class RespondentProfile extends Model {
     declare SurveyParticipant: SurveyParticipantModel;
     declare getSurveys: BelongsToManyGetAssociationsMixin<RespondentProfileModel>;
     declare getAccount: BelongsToGetAssociationMixin<AccountModel>;
+    declare getProjects: BelongsToManyGetAssociationsMixin<ProjectModel>
 };
 
 RespondentProfile.init({

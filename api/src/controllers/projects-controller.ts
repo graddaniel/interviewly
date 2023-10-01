@@ -7,6 +7,7 @@ import type { Response } from 'express';
 
 import type { AuthenticatedRequest } from '../generic/types';
 import type ProjectsService from '../services/projects-service/projects-service';
+import BulletinBoardsService from '../services/bulletin-boards-service/bulletin-boards-service';
 
 
 export default class ProjectsController {
@@ -82,7 +83,6 @@ export default class ProjectsController {
         const {
             companyUuid,
             type,
-            role,
             uuid,
         } = req.currentUser;
 
@@ -91,10 +91,10 @@ export default class ProjectsController {
         } = req.params;
 
         let project: any = null;
-        if (type === AccountTypes.Type.RESPONDENT) {
-            project = await this.projectsService.getOneRespondentProject(uuid, projectUuid);
+        if (type === AccountTypes.Type.RECRUITER) {
+            project = await this.projectsService.getOneRecruiterProject(uuid, companyUuid, projectUuid);
         } else {
-            project = await this.projectsService.getOneRecruiterProject(uuid, role, companyUuid, projectUuid);
+            project = await this.projectsService.getOneRespondentProject(uuid, projectUuid);
         }
 
         res.status(StatusCodes.OK).send(
@@ -268,5 +268,102 @@ export default class ProjectsController {
         );
 
         res.status(StatusCodes.OK).send(projectMeetings);
+    }
+
+    postBulletinBoardRoom = async (
+        req: AuthenticatedRequest,
+        res: Response,
+    ) => {
+        const {
+            projectId,
+            bulletinBoardId,
+        } = req.params;
+        
+        const {
+            roomName,
+            respondentUuids,
+        } = req.body;
+
+        const { uuid } = req.currentUser;
+
+        await this.projectsService.createBulletinBoardRoom(
+            uuid,
+            projectId,
+            bulletinBoardId,
+            roomName,
+            respondentUuids,
+        );
+
+        res.status(StatusCodes.CREATED).send();
+    }
+
+    getBulletinBoardRoom = async (
+        req: AuthenticatedRequest,
+        res: Response,
+    ) => {
+        const {
+            projectId,
+            roomId,
+        } = req.params;
+
+        const { uuid } = req.currentUser;
+
+        const room = await this.projectsService.getBulletinBoardRoom(
+            uuid,
+            projectId,
+            roomId,
+        );
+
+        res.status(StatusCodes.OK).send(room);
+    }
+
+    postBulletinBoardRoomThread = async (
+        req: AuthenticatedRequest,
+        res: Response,
+    ) => {
+        const {
+            projectId,
+            roomId,
+        } = req.params;
+        
+        const {
+            message
+        } = req.body;
+
+        const { uuid } = req.currentUser;
+
+        await this.projectsService.createBulletinBoardRoomThread(
+            uuid,
+            projectId,
+            roomId,
+            message
+        );
+
+        res.status(StatusCodes.CREATED).send();
+    }
+
+    postBulletinBoardResponse = async (
+        req: AuthenticatedRequest,
+        res: Response,
+    ) => {
+        const {
+            projectId,
+            threadId,
+        } = req.params;
+        
+        const {
+            message,
+        } = req.body;
+
+        const { uuid } = req.currentUser;
+
+        await this.projectsService.createBulletinBoardResponse(
+            uuid,
+            projectId,
+            threadId,
+            message,
+        );
+
+        res.status(StatusCodes.CREATED).send();
     }
 }

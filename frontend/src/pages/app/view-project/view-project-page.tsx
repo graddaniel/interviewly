@@ -157,39 +157,44 @@ const ViewProject = () => {
                 </h4>
                 <div className={classes.statusLabel}>{t(`projectStatuses.${project.status}`)}</div>
             </header>
-            <MethodologyTile
-                className={classes.methodologyTile}
-                mini={true}
-                selected={false}
-                methodology={project.methodology}
-            />
-            <StepTitle
-                icon={FeatureChatIcon}
-                title={t('viewProject.respondentPage.interviewsSubtitle')}
-            />
-            {meeting && (
-                <MeetingBar
-                    uuid={meeting.uuid}
-                    date={meeting.date}
-                    duration={meeting.duration}
+            {project.methodology === ProjectTypes.Methodology.Interview && (<>
+                <MethodologyTile
+                    className={classes.methodologyTile}
+                    mini={true}
+                    selected={false}
+                    methodology={project.methodology}
                 />
-            )}
-            <StepTitle
-                icon={FoldersIconBlack}
-                title={t('viewProject.respondentPage.surveysSubtitle')}
-            />
-            <div className={classes.surveys}>
-                {surveys.map(survey => (
-                    <SurveyBar
-                        key={survey.uuid}
-                        uuid={survey.uuid}
-                        startDate={survey.startDate}
-                        endDate={survey.endDate}
-                        url={survey.url}
-                        hasFinished={survey.hasFinished}
+                <StepTitle
+                    icon={FeatureChatIcon}
+                    title={t('viewProject.respondentPage.interviewsSubtitle')}
+                />
+                {meeting && (
+                    <MeetingBar
+                        uuid={meeting.uuid}
+                        date={meeting.date}
+                        duration={meeting.duration}
                     />
-                ))}
-            </div>
+                )}
+                <StepTitle
+                    icon={FoldersIconBlack}
+                    title={t('viewProject.respondentPage.surveysSubtitle')}
+                />
+                <div className={classes.surveys}>
+                    {surveys.map(survey => (
+                        <SurveyBar
+                            key={survey.uuid}
+                            uuid={survey.uuid}
+                            startDate={survey.startDate}
+                            endDate={survey.endDate}
+                            url={survey.url}
+                            hasFinished={survey.hasFinished}
+                        />
+                    ))}
+                </div>
+            </>)}
+            {project.methodology === ProjectTypes.Methodology.OnlineCommunities && (
+                <MethodologyStep methodology={project.methodology}/>
+            )}
         </section>
     );
 };

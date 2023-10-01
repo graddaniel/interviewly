@@ -12,14 +12,14 @@ type CommentProps = {
         surname: string;
         avatarUrl?: string;
     },
-    postDate: Date;
-    content: string;
+    postDate: string;
+    message: string;
 };
 
 const Comment = ({
     author,
     postDate,
-    content
+    message
 }: CommentProps) => {
     const { i18n } = useTranslation();
     const { resolvedLanguage } = i18n;
@@ -31,7 +31,7 @@ const Comment = ({
             <div className={classes.commentBox}>
                 <Avatar url={author.avatarUrl} className={classes.avatar}/>
                 <span className={classes.authorName}>{author.name} {author.surname}</span>
-                <span className={classes.content}>{content}</span>
+                <span className={classes.content}>{message}</span>
             </div>
             <span className={classes.date}>
                 {localizedPostDate.format('D MMMM')} {localizedPostDate.format('LT')}

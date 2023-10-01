@@ -2,6 +2,7 @@ import { t } from "i18next";
 import { Errors } from "shared";
 
 import ProjectService from "../../services/project-service";
+import BulletinBoardService from "../../services/bulletin-board-service";
 
 const { ErrorCodes } = Errors;
 
@@ -37,7 +38,24 @@ export default async function ViewProjectAction({
             startDate,
             endDate,
         );
-    }    
+    }
+
+    if (type === "createRoom") {
+        const {
+            bulletinBoardUuid,
+            roomName,
+            respondentUuids,
+        } = formData;
+
+        return createRoom(
+            projectId,
+            bulletinBoardUuid,
+            roomName,
+            JSON.parse(respondentUuids),
+        );
+    }
+
+    console.error("Unrecognized action type", type)
 }
 
 async function markProjectAsPaid(projectId: string) {
@@ -73,7 +91,31 @@ async function addSurvey(
     try {
         await ProjectService.addSurvey(projectId, selectedTemplateUuid, startDate, endDate);
     } catch (error) {
-        console.log(error)
+        return {
+            success: false,
+            error,
+        };
+    }
+
+    return {
+        success: true,
+    };
+}
+
+async function createRoom(
+    projectUuid: string,
+    bulletinBoardUuid: string,
+    roomName: string,
+    respondentUuids: string[],
+) {
+    try {
+        await BulletinBoardService.createRoom(
+            projectUuid,
+            bulletinBoardUuid,
+            roomName,
+            respondentUuids,
+        );
+    } catch (error) {
         return {
             success: false,
             error,

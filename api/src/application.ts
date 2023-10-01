@@ -50,6 +50,7 @@ import GPTAdapter from './services/gpt-adapter';
 import type { Application, Request, Response, NextFunction } from 'express';
 import CronScheduler from './services/cron-scheduler';
 import sendUpcomingProjectsEmailReminders from './tasks/send-upcoming-projects-email-reminders';
+import BulletinBoardsService from './services/bulletin-boards-service/bulletin-boards-service';
 
 
 export default class Appplication {
@@ -114,6 +115,7 @@ export default class Appplication {
         );
         const templatesService = new TemplatesService(companiesService);
         const surveysService = new SurveysService(accountsService, limeSurveyAdapter);
+        const bulletinBoardsService = new BulletinBoardsService(accountsService);
         const projectsService = new ProjectsService(
             accountsService,
             companiesService,
@@ -124,6 +126,7 @@ export default class Appplication {
             s3Adapter,
             mailService,
             mqAdapter,
+            bulletinBoardsService,
         );
 
         const meetingsService = new MeetingsService(
@@ -339,6 +342,38 @@ export default class Appplication {
                 ProfileTypes.Role.Moderator,
             ]),
             projectsController.putProjectRespondentMeeting,
+        );
+        projectsRouter.post(
+            '/:projectId/bulletinBoards/:bulletinBoardId/rooms',
+            requireJWT,
+            requireAccountType(AccountTypes.Type.RECRUITER),
+            requireProfileRoles([
+                ProfileTypes.Role.InterviewlyStaff,
+                ProfileTypes.Role.Admin,
+                ProfileTypes.Role.Moderator,
+            ]),
+            projectsController.postBulletinBoardRoom,
+        );
+        projectsRouter.get(
+            '/:projectId/bulletinBoardRooms/:roomId',
+            requireJWT,
+            projectsController.getBulletinBoardRoom,
+        );
+        projectsRouter.post(
+            '/:projectId/bulletinBoardRooms/:roomId/threads',
+            requireJWT,
+            requireAccountType(AccountTypes.Type.RECRUITER),
+            requireProfileRoles([
+                ProfileTypes.Role.InterviewlyStaff,
+                ProfileTypes.Role.Admin,
+                ProfileTypes.Role.Moderator,
+            ]),
+            projectsController.postBulletinBoardRoomThread,
+        );
+        projectsRouter.post(
+            '/:projectId/bulletinBoardThreads/:threadId',
+            requireJWT,
+            projectsController.postBulletinBoardResponse,
         );
         this.app.use('/projects', projectsRouter);
 

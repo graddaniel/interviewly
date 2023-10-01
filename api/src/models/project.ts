@@ -14,6 +14,7 @@ import { UUID_V4_LENGTH } from '../consts';
 import CompanyModel from './company';
 import MeetingModel from './meeting';
 import RespondentProfile from './respondent-profile';
+import { BulletinBoard as BulletinBoardModel } from './bulletin-board';
 
 
 const TITLE_LENGTH = 64;
@@ -43,10 +44,13 @@ export default class Project extends Model {
 
     declare Company: CompanyModel;
     declare RespondentProfiles: RespondentProfile[];
+    declare BulletinBoards: BulletinBoardModel[];
     declare addRespondentProfiles: HasManyAddAssociationsMixin<RespondentProfileModel, RespondentProfileModel['id']>;
     declare getRespondentProfiles: HasManyGetAssociationsMixin<RespondentProfileModel>;
     declare getRecruiterProfiles: HasManyGetAssociationsMixin<RecruiterProfileModel>;
     declare getMeetings: HasManyGetAssociationsMixin<MeetingModel>;
+    declare addBulletinBoards: HasManyAddAssociationsMixin<BulletinBoardModel, BulletinBoardModel['id']>;
+    declare getBulletinBoards: HasManyGetAssociationsMixin<BulletinBoardModel>;
 };
 
 Project.init({
@@ -179,3 +183,6 @@ Project.associations.SurveyModel = Project.hasMany(SurveyModel, {
     },
 });
 SurveyModel.associations.ProjectModel = SurveyModel.belongsTo(Project);
+
+Project.associations.BulletinBoardModel = Project.hasMany(BulletinBoardModel);
+BulletinBoardModel.associations.ProjectModel = BulletinBoardModel.belongsTo(Project);

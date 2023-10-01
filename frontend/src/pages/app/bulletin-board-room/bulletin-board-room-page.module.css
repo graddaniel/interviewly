@@ -1,7 +1,7 @@
 @value breakpoints: "../../../consts/breakpoints.css";
 @value min-large, max-medium, min-medium, max-small from breakpoints;
 
-.onlineCommunityRoom {
+.bulletinBoardRoom {
     display: grid;
     grid-template-columns: min-content auto;
     column-gap: 3vw;
@@ -74,7 +74,7 @@
 }
 
 @media (min-width: min-medium) and (max-width: max-medium) {
-    .onlineCommunityRoom {
+    .bulletinBoardRoom {
         display: grid;
         grid-template-columns: 47% 47%;
         column-gap: 4.5vw;
@@ -124,7 +124,7 @@
 }
 
 @media (max-width: max-small) {
-    .onlineCommunityRoom {
+    .bulletinBoardRoom {
         display: flex;
         flex-direction: column;
         gap: 10vw;

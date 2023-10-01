@@ -74,10 +74,12 @@ export default class AccountsService {
                 ...query,
             },
             include: [{
-                model: RecruiterProfileModel,
-                include: [CompanyModel],
+                association: AccountModel.associations.RecruiterProfileModel,
+                include: [{
+                    association: RecruiterProfileModel.associations.CompanyModel,
+                }],
             }, {
-                model: RespondentProfileModel,
+                association: AccountModel.associations.RespondentProfileModel,
             }],
         });
 

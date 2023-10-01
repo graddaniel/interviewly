@@ -35,6 +35,10 @@ import type LimeSurveyAdapter from '../lime-survey-adapter';
 import type LSQBuilder from '../lsq-builder';
 import AccountModel from '../../models/account';
 import MQAdapter from '../mq-adapter';
+import { BulletinBoardModel, BulletinBoardRoomModel } from '../../models';
+import BulletinBoardsService from '../bulletin-boards-service/bulletin-boards-service';
+import UnexpectedError from '../../generic/unexpected-error';
+import { where } from 'sequelize';
 
 
 type LimesurveyConfig = {
@@ -47,6 +51,8 @@ type RespondentFileEntry = {
     gender: string;
 };
 
+const Methodology = ProjectTypes.Methodology;
+
 export default class ProjectsService {
     accountsService: AccountsService;
     companiesService: CompaniesService;
@@ -58,6 +64,7 @@ export default class ProjectsService {
     s3Adapter: S3Adapter;
     mailService: MailService;
     mqAdapter: MQAdapter;
+    bulletinBoardsService: BulletinBoardsService;
 
     recordingsBucketName: string;
     transcriptionsBucketName: string;
@@ -76,6 +83,7 @@ export default class ProjectsService {
         s3Adapter: S3Adapter,
         mailService: MailService,
         mqAdapter: MQAdapter,
+        bulletinBoardsService: BulletinBoardsService,
     ) {
         this.accountsService = accountsService;
         this.companiesService = companiesService;
@@ -86,6 +94,7 @@ export default class ProjectsService {
         this.s3Adapter = s3Adapter;
         this.mailService = mailService;
         this.mqAdapter = mqAdapter;
+        this.bulletinBoardsService = bulletinBoardsService;
 
         const limesurveyConfig = config.get('limesurvey') as LimesurveyConfig;
         this.limeSurveyUrl = limesurveyConfig.url;
@@ -99,6 +108,38 @@ export default class ProjectsService {
         this.emailNotificationsQueueName = config.get('rabbitMq.emailNotificationsQueueName');
     }
 
+    assertUserAccessToTheProject = async (
+        userUuid: string,
+        projectUuid: string,
+    ) => {
+        const Roles = ProfileTypes.Role;
+        const account = await this.accountsService.getAccount({
+            uuid: userUuid,
+        });
+
+        let profile: any = null;
+        if (account.type === AccountTypes.Type.RECRUITER) {
+            profile = account.RecruiterProfile;
+        } else if (account.type === AccountTypes.Type.RESPONDENT) {
+            profile = account.RespondentProfile;
+        }
+
+        if (![Roles.Admin, Roles.InterviewlyStaff]
+            .includes(profile.role)
+        ) {
+            const projects = await profile.getProjects({
+                where: {
+                    uuid: projectUuid,
+                },
+            });
+
+            const userHasAccessToTheProject = projects.length > 0;
+            if (!userHasAccessToTheProject) {
+                throw new NotPermittedError();
+            } 
+        }
+    }
+
     //TODO no need to find the company by user when we have its uuid
     createNewProject = async (
         currentUserUuid: string,
@@ -106,8 +147,7 @@ export default class ProjectsService {
     ): Promise<ProjectModel> => {
         const account = await this.accountsService.getAccount({ uuid: currentUserUuid });
 
-        //@ts-ignore
-        const company = await account.RecruiterProfile.getCompany();
+        const company = account.RecruiterProfile.Company;
 
         const project = await ProjectModel.create({
             title,
@@ -177,6 +217,16 @@ export default class ProjectsService {
                 where: {
                     uuid: companyUuid,
                 },
+            }, {
+                association: ProjectModel.associations.BulletinBoardModel,
+                attributes: ['startDate', 'endDate', 'uuid'],
+                include: [{
+                    association: BulletinBoardModel.associations.BulletinBoardRoomModel,
+                    include: [{
+                        association: BulletinBoardRoomModel.associations.RespondentProfileModel,
+                        attributes: ['id']
+                    }],
+                }]
             }]
         });
 
@@ -191,29 +241,10 @@ export default class ProjectsService {
 
     getOneRecruiterProject = async (
         recruiterUuid: string,
-        recruiterRole: ProfileTypes.Role,
         companyUuid: string,
         projectUuid: string,
     ) => {
-        if ([ProfileTypes.Role.Moderator,
-            ProfileTypes.Role.Observer,
-            ProfileTypes.Role.Translator,
-        ].includes(recruiterRole)) {
-            const recruiterAccount = await this.accountsService.getAccount({
-                uuid: recruiterUuid,
-            });
-    
-            const projects = await recruiterAccount.RecruiterProfile.getProjects({
-                where: {
-                    uuid: projectUuid,
-                }
-            });
-
-            const userHasAccess = projects.length > 0;
-            if (!userHasAccess) {
-                throw new NotPermittedError();
-            }
-        }
+        await this.assertUserAccessToTheProject(recruiterUuid, projectUuid);
 
         const project = await this.getOneCompanyProject(
             companyUuid,
@@ -230,8 +261,8 @@ export default class ProjectsService {
         projectUuid: string,
     ) => {
         const account = await this.accountsService.getAccount({ uuid });
-        //@ts-ignore
-        const respondentProfile = await account.getRespondentProfile();
+
+        const respondentProfile = account.RespondentProfile;
 
         const project = await ProjectModel.findOne({
             attributes: [
@@ -247,6 +278,19 @@ export default class ProjectsService {
                 where: {
                     id: respondentProfile.id,
                 },
+            }, {
+                association: ProjectModel.associations.BulletinBoardModel,
+                attributes: ['startDate', 'endDate', 'uuid'],
+                include: [{
+                    association: BulletinBoardModel.associations.BulletinBoardRoomModel,
+                    include: [{
+                        association: BulletinBoardRoomModel.associations.RespondentProfileModel,
+                        attributes: ['id'],
+                        where: {
+                            id: respondentProfile.id,
+                        },
+                    }],
+                }]
             }]
         });
 
@@ -295,6 +339,7 @@ export default class ProjectsService {
         const {
             RespondentProfiles: respondentProfiles,
             Surveys: surveys,
+            BulletinBoards,
             ...projectData
         } = project;
 
@@ -310,11 +355,29 @@ export default class ProjectsService {
                 ...account,
             };
         });
+
+        const bulletinBoards = BulletinBoards.map(board => {
+            console.log(board)
+            const {
+                BulletinBoardRooms,
+                ...rest
+            } = board;
+
+            return {
+                ...rest,
+                rooms: BulletinBoardRooms.map(room => ({
+                    name: room.name,
+                    uuid: room.uuid,
+                    membersCount: room.RespondentProfiles.length,
+                })),
+            };
+        });
         
         return {
             ...projectData,
             respondents: flattenedRespondentProfiles,
             surveys,
+            bulletinBoards,
         };
     }
     
@@ -322,11 +385,23 @@ export default class ProjectsService {
         const {
             RespondentProfiles: respondentProfiles,
             surveys,
+            BulletinBoards,
             ...projectData
         } = project;
 
         return {
             ...projectData,
+            bulletinBoards: BulletinBoards.map(board => {
+                return {
+                    startDate: board.startDate,
+                    endDate: board.endDate,
+                    uuid: board.uuid,
+                    rooms: board.BulletinBoardRooms.map(room => ({
+                        uuid: room.uuid,
+                        name: room.name,
+                    })),
+                }
+            }),
             surveys: surveys.map(survey => {
                 const {
                     Project,
@@ -479,7 +554,7 @@ export default class ProjectsService {
         return project;
     }
 
-    updateProject = async (
+    updateProject = SequelizeConnection.transaction(async (
         companyUuid,
         projectUuid,
         projectData,
@@ -496,51 +571,109 @@ export default class ProjectsService {
         } = projectData;
 
         if (allRespondentsEntries) {
-            const {
-                new: newRespondentsEntries,
-                existing: existingRespondentsEntries,
-            } = await this.separateNewRespondentsFromExisting(allRespondentsEntries);
-
-            const newRespondentsAccounts = await this.registerNewRespondents(newRespondentsEntries);
-            const existingRespondentsAccounts = await AccountModel.findAll({
-                where: {
-                    email: existingRespondentsEntries.map(e => e.email),
-                },
-                include: {
-                    association: AccountModel.associations.RespondentProfileModel,
-                    required: true,
-                }
-            });
-
-            const allRespondentsEmails = allRespondentsEntries.map(r => r.email);
-            const allRespondentsProfiles = await RespondentProfileModel.findAll({
-                include: [{
-                    association: RespondentProfileModel.associations.AccountModel,
-                    where: {
-                        email: allRespondentsEmails,
-                    }
-                }]
-            });
-
-            await project.addRespondentProfiles(allRespondentsProfiles);
-
-            this.sendProjectInvitationsToNewRespondents(
-                project.title,
-                newRespondentsAccounts,
-            );
-
-            this.sendProjectInvitationsByCompanyToExistingRespondents(
-                project.title,
-                project.Company.name,
-                existingRespondentsAccounts,
+            await this.addRespondentsToProject(
+                allRespondentsEntries,
+                project,
             );
         }
+
+        await this.assureCorrectBulletinBoardState(
+            project,
+            projectData,
+        );
 
         await project.update(projectDetails);
 
         await project.save();
 
         //TODO check if user belongs to the project and if has admin role
+    })
+
+    private addRespondentsToProject = async (
+        allRespondentsEntries: any,
+        project: ProjectModel,
+    ) => {
+        const {
+            new: newRespondentsEntries,
+            existing: existingRespondentsEntries,
+        } = await this.separateNewRespondentsFromExisting(allRespondentsEntries);
+
+        const newRespondentsAccounts = await this.registerNewRespondents(newRespondentsEntries);
+        const existingRespondentsAccounts = await AccountModel.findAll({
+            where: {
+                email: existingRespondentsEntries.map(e => e.email),
+            },
+            include: {
+                association: AccountModel.associations.RespondentProfileModel,
+                required: true,
+            }
+        });
+
+        const allRespondentsEmails = allRespondentsEntries.map(r => r.email);
+        const allRespondentsProfiles = await RespondentProfileModel.findAll({
+            include: [{
+                association: RespondentProfileModel.associations.AccountModel,
+                where: {
+                    email: allRespondentsEmails,
+                }
+            }]
+        });
+
+        await project.addRespondentProfiles(allRespondentsProfiles);
+
+        this.sendProjectInvitationsToNewRespondents(
+            project.title,
+            newRespondentsAccounts,
+        );
+
+        this.sendProjectInvitationsByCompanyToExistingRespondents(
+            project.title,
+            project.Company.name,
+            existingRespondentsAccounts,
+        );
+    }
+
+    private assureCorrectBulletinBoardState = async (
+        project: ProjectModel,
+        projectNewData: any,
+    ) => {
+        if (
+            projectNewData.methodology
+            && projectNewData.methodology === Methodology.OnlineCommunities
+            && project.methodology !== Methodology.OnlineCommunities
+        ) {
+            // TODO replace these temporary project's dates
+            const bulletinBoard = await BulletinBoardModel.create({
+                startDate: 0,
+                endDate: 1,
+                uuid: generateUuidV4(),
+            });
+            project.addBulletinBoards([bulletinBoard]);
+        } else if (
+            projectNewData.methodology
+            && project.methodology === Methodology.OnlineCommunities
+            && projectNewData.methodology !== Methodology.OnlineCommunities
+        ) {
+            await BulletinBoardModel.destroy({
+                where: {
+                    project_id: project.id,
+                },
+            });
+        }
+
+        if (
+            (projectNewData.startDate && project.startDate !== projectNewData.startDate)
+            || (projectNewData.endDate && project.endDate !== projectNewData.endDate)
+        ) {
+            const bulletinBoards = await project.getBulletinBoards();
+
+            bulletinBoards.forEach(b => {
+                b.startDate = projectNewData.startDate;
+                b.endDate = projectNewData.endDate;
+            });
+
+            await Promise.all(bulletinBoards.map(b => b.save()));
+        }
     }
 
     private separateNewRespondentsFromExisting = async (
@@ -1000,6 +1133,8 @@ export default class ProjectsService {
         respondentAccountUuid: string,
         meetingDate: Date,
     ) => {
+        await this.assertUserAccessToTheProject(currentUserUuid, projectUuid);
+
         const account = await this.accountsService.getAccount({ uuid: currentUserUuid });
         const companyUuid = account.RecruiterProfile.Company.uuid as string;
 
@@ -1008,31 +1143,12 @@ export default class ProjectsService {
             projectUuid,
         );
 
-        const { RecruiterProfile: recruiterProfile } = account;
-        if (![
-            ProfileTypes.Role.InterviewlyStaff,
-            ProfileTypes.Role.Admin,
-        ].includes(recruiterProfile.role)) {
-            const currentUsersInTheProject = await project.getRecruiterProfiles({
-                where: {
-                    id: account.RecruiterProfile.id,
-                }
-            });
-    
-            if (currentUsersInTheProject.length < 1) {
-                throw new NotPermittedError();
-            }
-        }
-
         if (![
             ProjectTypes.Status.New,
             ProjectTypes.Status.InProgress,
         ].includes(project.status)) {
             throw new IncorrectProjectStatusError();
         }
-
-        //TODO Check if this particular user has access to the project
-        //should be done once accounts get assigned to projects
 
         const respondents = await project.getRespondentProfiles({
             attributes: ['id', 'AccountId'],
@@ -1144,7 +1260,7 @@ export default class ProjectsService {
         currentUserUuid: string,
     ) => {
         const account = await this.accountsService.getAccount({ uuid: currentUserUuid });
-        const company = await account.RecruiterProfile.getCompany();
+        const company = account.RecruiterProfile.Company;
 
         const project = await ProjectModel.findOne({
             attributes: ['id', 'CompanyId'],
@@ -1249,5 +1365,70 @@ export default class ProjectsService {
         });
 
         return flattenedMeetings;
+    }
+
+    createBulletinBoardRoom = async (
+        currentUserUuid: string,
+        projectUuid: string,
+        bulletinBoardUuid: string,
+        name: string,
+        respondentUuids: string[],
+    ) => {
+        await this.assertUserAccessToTheProject(currentUserUuid, projectUuid);
+
+        await this.bulletinBoardsService.createRoom(
+            projectUuid,
+            bulletinBoardUuid,
+            name,
+            respondentUuids,
+        );
+    }
+
+    getBulletinBoardRoom = async (
+        currentUserUuid: string,
+        projectUuid: string,
+        roomUuid: string,
+    ) => {
+        await this.assertUserAccessToTheProject(currentUserUuid, projectUuid);
+
+        const room = await this.bulletinBoardsService.findUsersRoom(
+            currentUserUuid,
+            projectUuid,
+            roomUuid,
+        );
+
+        return room;
+    }
+
+    createBulletinBoardRoomThread = async (
+        currentUserUuid: string,
+        projectUuid: string,
+        roomUuid: string,
+        message: string,
+    ) => {
+        await this.assertUserAccessToTheProject(currentUserUuid, projectUuid);
+
+        await this.bulletinBoardsService.createThread(
+            currentUserUuid,
+            projectUuid,
+            roomUuid,
+            message,
+        );
+    }
+
+    createBulletinBoardResponse = async (
+        currentUserUuid: string,
+        projectUuid: string,
+        threadUuid: string,
+        message: string,
+    ) => {
+        await this.assertUserAccessToTheProject(currentUserUuid, projectUuid);
+
+        await this.bulletinBoardsService.createThreadResponse(
+            currentUserUuid,
+            projectUuid,
+            threadUuid,
+            message,
+        );
     }
 }
