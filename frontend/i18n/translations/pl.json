@@ -497,6 +497,7 @@
                     "createBulletinBoardButtonText": "Stwórz Bulletin Board",
                     "membersLabel": "członków",
                     "createRoomButtonText": "Stwórz pokój",
+                    "roomName": "Nazwa pokoju",
                     "addMembersLabel": "Dodaj członków",
                     "surveySubtitle": "lub wybierz ankietę z biblioteki",
                     "room": {
