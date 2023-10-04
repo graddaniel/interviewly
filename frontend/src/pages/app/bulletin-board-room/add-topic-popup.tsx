@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Form } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { Form, useSubmit } from 'react-router-dom';
 
 import Popup from '../../../components/popup/popup';
 import IconButton from '../../../components/icon-button/icon-button';
@@ -36,6 +36,8 @@ const AddTopicPopup = ({
     onClose,
 }: AddTopicPopupProps) => {
     const { t } = useTranslation();
+    const resetFormRef = useRef(null);
+    const submit = useSubmit();
     const [ showInitialStep, setShowInitialStep ] = useState(true);
     const [ isVisibilityPublic, setIsVisibilityPublic ] = useState(true);
     const [ topicMembers, setTopicMembers ] = useState<string[]>([]);
@@ -43,6 +45,14 @@ const AddTopicPopup = ({
     const [ pickingMembers, setPickingMembers ] = useState(false);
 
     const actionData = useActionHandler(t('viewProject.methodology.onlineCommunity.room.topicAddedSuccessMessage'));
+    const errors = actionData?.error ?? {};
+    console.log(errors)
+    useEffect(() => {
+        if (actionData?.success) {
+            submit(resetFormRef.current);
+            onClose();
+        }
+    }, [actionData]);
 
     const toggleTopicMember = (email: string) => {
         const index = topicMembers.indexOf(email);
@@ -59,6 +69,9 @@ const AddTopicPopup = ({
 
     return (
         <Popup className={classes.popup}>
+            <Form method="POST" ref={resetFormRef}>
+                <input type="hidden" name="type" value="reset" />
+            </Form>
             <Form method="post">
                 <input type="hidden" name="type" value="postThread" />
                 {showInitialStep ? (
@@ -108,6 +121,9 @@ const AddTopicPopup = ({
                             rows={3}
                             placeholder={t('viewProject.methodology.onlineCommunity.room.topicInputPlaceholder')}
                         ></textarea>
+                        <p className={classes.error}>
+                            {errors.messageData}
+                        </p>
                         <input
                             className={classes.fileUpload}
                             type="file"

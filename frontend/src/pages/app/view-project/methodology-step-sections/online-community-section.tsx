@@ -30,8 +30,6 @@ const OnlineCommunitySection = () => {
         },
     } = data;
 
-    console.log(data, bulletinBoards)
-
     return (
         <div className={classes.content}>
             <MethodologyTile

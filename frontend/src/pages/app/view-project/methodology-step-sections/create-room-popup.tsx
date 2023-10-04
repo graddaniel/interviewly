@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import Popup from '../../../../components/popup/popup';
 import IconButton from '../../../../components/icon-button/icon-button';
@@ -7,11 +7,12 @@ import classes from './create-room-popup.module.css';
 import CrossIcon from 'images/cross-icon.svg';
 import TextInput from '../../../../components/text-input/text-input';
 import SubmitButton from '../../../../components/submit-button/submit-button';
-import { Form } from 'react-router-dom';
+import { Form, useSubmit } from 'react-router-dom';
 import RespondentTile from '../../../../components/respondent-tile/respondent-tile';
 import classNames from 'classnames';
 import SelectableRespondentTile from './selectable-respondent-tile';
 import { useTranslation } from 'react-i18next';
+import { useActionHandler } from '../../../../hooks/use-handlers';
 
 
 type CreateRoomPopupProps = {
@@ -26,24 +27,37 @@ const CreateRoomPopup = ({
     bulletinBoardUuid,
 }: CreateRoomPopupProps) => {
     const { t } = useTranslation();
+    const resetFormRef = useRef(null);
+    const submit = useSubmit();
+    
     const [ selectedRespondentUuids, setSelectedRespondentUuids ] = useState<string[]>([]);
     const toggleRespondentSelection = (uuid: string) => {
         const index = selectedRespondentUuids.indexOf(uuid);
-
+        
         const newSelectedRespondents = [...selectedRespondentUuids];
         if (index > -1) {
             newSelectedRespondents.splice(index, 1);
         } else {
             newSelectedRespondents.push(uuid);
         }
-
+        
         setSelectedRespondentUuids(newSelectedRespondents);
     };
+    const actionData = useActionHandler(t('viewProject.methodology.onlineCommunity.createRoomSuccess'));
+    const errors = actionData?.error ?? {};
 
-    console.log(selectedRespondentUuids)
-
+    useEffect(() => {
+        if (actionData?.success) {
+            submit(resetFormRef.current);
+            onClose();
+        }
+    }, [actionData]);
+    
     return (
         <Popup className={classes.createRoomPopup}>
+            <Form method="POST" ref={resetFormRef}>
+                <input type="hidden" name="type" value="reset" />
+            </Form>
             <Form className={classes.form} method="POST">
                 <input type="hidden" name="type" value="createRoom" />
                 <input type="hidden" name="bulletinBoardUuid" value={bulletinBoardUuid} />
@@ -65,6 +79,7 @@ const CreateRoomPopup = ({
                     }}
                     name="roomName"
                     placeholder={t('viewProject.methodology.onlineCommunity.roomName')}
+                    error={errors.roomName}
                 />
                 <h6 className={classes.subtitle}>
                     {t('viewProject.methodology.onlineCommunity.addMembersLabel')}:

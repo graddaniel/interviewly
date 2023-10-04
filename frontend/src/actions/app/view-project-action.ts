@@ -3,6 +3,7 @@ import { Errors } from "shared";
 
 import ProjectService from "../../services/project-service";
 import BulletinBoardService from "../../services/bulletin-board-service";
+import BulletinBoardValidator from "../../validators/bulletin-board-validator";
 
 const { ErrorCodes } = Errors;
 
@@ -109,6 +110,10 @@ async function createRoom(
     respondentUuids: string[],
 ) {
     try {
+        await BulletinBoardValidator.validateNewRoom({
+            roomName,
+        });
+
         await BulletinBoardService.createRoom(
             projectUuid,
             bulletinBoardUuid,
@@ -124,5 +129,6 @@ async function createRoom(
 
     return {
         success: true,
+        path: "createRoom",
     };
 }

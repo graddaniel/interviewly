@@ -3,6 +3,7 @@ import { Errors } from "shared";
 
 import ProjectService from "../../services/project-service";
 import BulletinBoardService from "../../services/bulletin-board-service";
+import BulletinBoardValidator from "../../validators/bulletin-board-validator";
 
 const { ErrorCodes } = Errors;
 
@@ -18,6 +19,11 @@ export default async function BulletinBoardRoomAction({
     const {
         type,
     } = formData;
+
+    // workaround to hide past results
+    if (type === "reset") {
+        return null;
+    }
 
     if (type === "postThread") {
         const { message } = formData;
@@ -51,6 +57,10 @@ async function postThread(
     message: string,
 ) {
     try {
+        await BulletinBoardValidator.validateNewMessage({
+            messageData: message,
+        });
+
         await BulletinBoardService.createThread(
             projectId,
             roomId,
@@ -74,6 +84,10 @@ async function postResponse(
     message: string,
 ) {
     try {
+        await BulletinBoardValidator.validateNewMessage({
+            messageData: message,
+        });
+
         await BulletinBoardService.postResponse(
             projectId,
             threadId,

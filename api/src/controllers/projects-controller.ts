@@ -8,6 +8,7 @@ import type { Response } from 'express';
 import type { AuthenticatedRequest } from '../generic/types';
 import type ProjectsService from '../services/projects-service/projects-service';
 import BulletinBoardsService from '../services/bulletin-boards-service/bulletin-boards-service';
+import BulletinBoardValidator from './validators/bulletin-board-validator';
 
 
 export default class ProjectsController {
@@ -286,6 +287,8 @@ export default class ProjectsController {
 
         const { uuid } = req.currentUser;
 
+        await BulletinBoardValidator.validateNewRoom({ roomName });
+
         await this.projectsService.createBulletinBoardRoom(
             uuid,
             projectId,
@@ -332,6 +335,8 @@ export default class ProjectsController {
 
         const { uuid } = req.currentUser;
 
+        await BulletinBoardValidator.validateMessage({ message });
+
         await this.projectsService.createBulletinBoardRoomThread(
             uuid,
             projectId,
@@ -356,6 +361,8 @@ export default class ProjectsController {
         } = req.body;
 
         const { uuid } = req.currentUser;
+
+        await BulletinBoardValidator.validateMessage({ message });
 
         await this.projectsService.createBulletinBoardResponse(
             uuid,

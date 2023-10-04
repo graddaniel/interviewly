@@ -7,7 +7,6 @@ const validateParams = async (
     schema: Schema,
     data: any,
 ) => {
-    console.log("data", data, schema)
     const errors: any = {};
 
     try {

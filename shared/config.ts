@@ -94,6 +94,16 @@ const config = {
             otherRequirements: {
                 max: 512,
             },
+            bulletinBoard: {
+                roomName: {
+                    min: 4,
+                    max: 32,
+                },
+                message: {
+                    min: 1,
+                    max: 512,
+                }
+            },
         },
         contactRequest: {
             min: 32,

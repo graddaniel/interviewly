@@ -85,7 +85,10 @@ const BulletinBoardRoom = () => {
                 {t('viewProject.methodology.onlineCommunity.room.addTopicLabel')}
             </button>
             <div className={classes.content}>
-                <AddTopicBox className={classes.addTopicBox} onClick={() => setIsTopicPopupOpen(true)} />
+                <AddTopicBox
+                    className={classes.addTopicBox}
+                    onClick={() => setIsTopicPopupOpen(true)}
+                />
                 {threads.map(thread => (
                     <Topic
                         key={thread.uuid}

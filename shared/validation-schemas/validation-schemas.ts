@@ -81,6 +81,10 @@ export default class ValidationSchemas {
     template: {
 
     };
+    bulletinBoard: {
+        roomName: Schema;
+        message: Schema;
+    };
     contactRequestMessage: Schema;
 
     static instance = () => {
@@ -247,7 +251,7 @@ export default class ValidationSchemas {
                 .oneOf(Object.values(BoolStrings), `${ErrorCodes.ProjectTranscriptionIncorrect}`),
             moderatorNeeded: string()
                 .required(`${ErrorCodes.ProjectModeratorRequired}`)
-                .oneOf(Object.values(BoolStrings), `${ErrorCodes.ProjectModeratorIncorreect}`),
+                .oneOf(Object.values(BoolStrings), `${ErrorCodes.ProjectModeratorIncorrect}`),
         };
 
         //TODO finish this
@@ -266,6 +270,29 @@ export default class ValidationSchemas {
                 correctAnswerIndexes: array().of(number()),
             })).required(),
         };
+
+        this.bulletinBoard = {
+            roomName: string()
+                .required(`${ErrorCodes.ProjectBulletinBoardRoomNameRequired}`)
+                .min(
+                    validationConfig.project.bulletinBoard.roomName.min,
+                    `${ErrorCodes.ProjectBulletinBoardRoomNameTooShort}`
+                )
+                .max(
+                    validationConfig.project.bulletinBoard.roomName.max,
+                    `${ErrorCodes.ProjectBulletinBoardRoomNameTooLong}`
+                ),
+            message: string()
+                .required(`${ErrorCodes.ProjectBulletinBoardMessageRequired}`)
+                .min(
+                    validationConfig.project.bulletinBoard.message.min,
+                    `${ErrorCodes.ProjectBulletinBoardMessageTooShort}`
+                )
+                .max(
+                    validationConfig.project.bulletinBoard.message.max,
+                    `${ErrorCodes.ProjectBulletinBoardMessageTooLong}`
+                ),
+        }
 
         this.contactRequestMessage = string()
             .required(`${ErrorCodes.ContactRequestMessageRequired}`)

@@ -32,8 +32,6 @@ export function useHandleErrorWithFeedback (result) {
         const {
             error,
         } = result;
-        
-        console.log("Handling error:", error);
 
         let errorMessage = error.message;
         if (error instanceof AxiosError) {
@@ -57,7 +55,7 @@ export function useHandleErrorWithFeedback (result) {
                 }
             }
         }
-
+        console.log(errorMessage)
         if (errorMessage) {
             setFeedbackMessage({
                 type: 'error',
